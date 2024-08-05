@@ -6,6 +6,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Conceptos y actividades sobre el modelado conceptual de bases de datos">
+      
       
       
         <link rel="canonical" href="https://aitor-medrano.github.io/bd/02er.html">
@@ -22,7 +24,7 @@
     
     
       
-        <title>2.- Modelo conceptual: Entidad relación - Bases de datos</title>
+        <title>Diseño Conceptual - Modelo Entidad Relación - Bases de datos</title>
       
     
     
@@ -69,9 +71,9 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="2.- Modelo conceptual: Entidad relación - Bases de datos" >
+        <meta  property="og:title"  content="Diseño Conceptual - Modelo Entidad Relación - Bases de datos" >
       
-        <meta  property="og:description"  content="None" >
+        <meta  property="og:description"  content="Conceptos y actividades sobre el modelado conceptual de bases de datos" >
       
         <meta  property="og:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/02er.png" >
       
@@ -85,9 +87,9 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="2.- Modelo conceptual: Entidad relación - Bases de datos" >
+        <meta  name="twitter:title"  content="Diseño Conceptual - Modelo Entidad Relación - Bases de datos" >
       
-        <meta  name="twitter:description"  content="None" >
+        <meta  name="twitter:description"  content="Conceptos y actividades sobre el modelado conceptual de bases de datos" >
       
         <meta  name="twitter:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/02er.png" >
       
@@ -147,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2.- Modelo conceptual: Entidad relación
+              Diseño Conceptual - Modelo Entidad Relación
             
           </span>
         </div>
@@ -292,14 +294,6 @@
     1.- Sistemas de almacenamiento
   </span>
   
-    
-  
-  
-    <span class="md-status md-status--new" title="Recién añadido">
-    </span>
-  
-
-  
 
       </a>
     </li>
@@ -387,9 +381,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-10h" class="md-nav__link">
+  <a href="#programacion-de-aula-11h" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación de Aula (10h)
+      Programación de Aula (11h)
     </span>
   </a>
   
@@ -407,22 +401,142 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Diseño de BD">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-modelo-entidad-relacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      El modelo Entidad Relación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El modelo Entidad Relación">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#propiedad-de-los-modelos" class="md-nav__link">
+  <a href="#elementos" class="md-nav__link">
     <span class="md-ellipsis">
-      Propiedad de los modelos
+      Elementos
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#elementos" class="md-nav__link">
+  <a href="#propiedades" class="md-nav__link">
     <span class="md-ellipsis">
-      Elementos
+      Propiedades
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entidades
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relaciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relaciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinalidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cardinalidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1:1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1n" class="md-nav__link">
+    <span class="md-ellipsis">
+      1:N
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nm" class="md-nav__link">
+    <span class="md-ellipsis">
+      N:M
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atributos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atributos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-modelo-entidad-relacion-extendido" class="md-nav__link">
+    <span class="md-ellipsis">
+      El modelo Entidad Relación Extendido
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El modelo Entidad Relación Extendido">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generalización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agregacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agregación
     </span>
   </a>
   
@@ -534,9 +648,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-10h" class="md-nav__link">
+  <a href="#programacion-de-aula-11h" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación de Aula (10h)
+      Programación de Aula (11h)
     </span>
   </a>
   
@@ -554,22 +668,142 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Diseño de BD">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-modelo-entidad-relacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      El modelo Entidad Relación
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El modelo Entidad Relación">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#propiedad-de-los-modelos" class="md-nav__link">
+  <a href="#elementos" class="md-nav__link">
     <span class="md-ellipsis">
-      Propiedad de los modelos
+      Elementos
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#elementos" class="md-nav__link">
+  <a href="#propiedades" class="md-nav__link">
     <span class="md-ellipsis">
-      Elementos
+      Propiedades
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entidades
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Relaciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Relaciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cardinalidad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cardinalidad
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1:1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1n" class="md-nav__link">
+    <span class="md-ellipsis">
+      1:N
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nm" class="md-nav__link">
+    <span class="md-ellipsis">
+      N:M
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atributos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Atributos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-modelo-entidad-relacion-extendido" class="md-nav__link">
+    <span class="md-ellipsis">
+      El modelo Entidad Relación Extendido
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El modelo Entidad Relación Extendido">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generalización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agregacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agregación
     </span>
   </a>
   
@@ -611,11 +845,28 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="tags.html#modelo-conceptual" class="md-tag">Modelo conceptual</a>
+    
+  
+    
+    
+    
+      <a href="tags.html#ra6" class="md-tag">RA6</a>
+    
+  
+</nav>
+
 
 
 <h1 id="diseno-conceptual-modelo-entidad-relacion">Diseño Conceptual: Modelo Entidad Relación<a class="headerlink" href="#diseno-conceptual-modelo-entidad-relacion" title="Permanent link">&para;</a></h1>
 <h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
-<p>En esta UT vamos a comenzar a trabajar el RA6: <strong>Diseña modelos relacionales normalizados interpretando diagramas entidad/relación</strong>.</p>
+<p>En esta unidad vamos a comenzar a trabajar el RA6: <strong>Diseña modelos relacionales normalizados interpretando diagramas entidad/relación</strong>.</p>
 <h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
 <ul>
 <li><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>: Se han identificado las tablas del diseño lógico.</li>
@@ -625,9 +876,11 @@
 </ul>
 <h3 id="contenidos">Contenidos<a class="headerlink" href="#contenidos" title="Permanent link">&para;</a></h3>
 <p>Interpretación de Diagramas Entidad/Relación:</p>
-<p>− El modelo E/R. Entidades y relaciones. Cardinalidades. Debilidad.
-− El modelo E/R ampliado. Generalización y especialización. Agregación.</p>
-<h3 id="programacion-de-aula-10h">Programación de Aula (10h)<a class="headerlink" href="#programacion-de-aula-10h" title="Permanent link">&para;</a></h3>
+<ul>
+<li>El modelo E/R. Entidades y relaciones. Cardinalidades. Debilidad.</li>
+<li>El modelo E/R ampliado. Generalización y especialización. Agregación.</li>
+</ul>
+<h3 id="programacion-de-aula-11h">Programación de Aula (11h)<a class="headerlink" href="#programacion-de-aula-11h" title="Permanent link">&para;</a></h3>
 <p>Esta unidad es la segunda, con lo que se imparte en la primera evaluación, con una duración estimada de 10 horas, durante la última semana de septiembre y la primera quincena de octubre:</p>
 <table>
 <thead>
@@ -641,9 +894,9 @@
 <tbody>
 <tr>
 <td>1</td>
-<td>Modelo ER. Tipos de entidades</td>
-<td></td>
-<td></td>
+<td>Modelo Entidad Relación. Entidades</td>
+<td><a href="#AC201">AC201</a></td>
+<td><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr></td>
 </tr>
 <tr>
 <td>2</td>
@@ -654,7 +907,7 @@
 <tr>
 <td>3</td>
 <td>Atributos</td>
-<td></td>
+<td>ACXXX</td>
 <td></td>
 </tr>
 <tr>
@@ -666,7 +919,7 @@
 <tr>
 <td>5</td>
 <td>Relaciones 1:1</td>
-<td></td>
+<td>ACXXX</td>
 <td></td>
 </tr>
 <tr>
@@ -678,13 +931,13 @@
 <tr>
 <td>7</td>
 <td>Relaciones N:M</td>
-<td></td>
+<td>ACXX</td>
 <td></td>
 </tr>
 <tr>
 <td>8</td>
 <td>Modelados sencillos</td>
-<td></td>
+<td>ACXXX</td>
 <td></td>
 </tr>
 <tr>
@@ -696,61 +949,144 @@
 <tr>
 <td>10</td>
 <td>Modelados extendidos</td>
+<td>ACXXX</td>
 <td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Interpretando modelos</td>
+<td>ACXXX</td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <h2 id="diseno-de-bd">Diseño de BD<a class="headerlink" href="#diseno-de-bd" title="Permanent link">&para;</a></h2>
-<p>Conceptual: a partir de los requisitos y conocido el problema, mediante un lenguaje de alto nivel (EER) → esquema conceptual
-Lógico: Transformación de un modelo conceptual a un modelo de datos concreto para poder representar el problema (relacional, jerárquico, ...) → esquema lógico
-Físico: Aplicar el modelo lógico de datos del punto anterior sobre un SGBD concreto → esquema físico</p>
-<p>FIXME: gráfico</p>
-<h3 id="propiedad-de-los-modelos">Propiedad de los modelos<a class="headerlink" href="#propiedad-de-los-modelos" title="Permanent link">&para;</a></h3>
-<p>Propiedades estáticas: objetos de información (entidades), propiedades de los objetos (atributos), relaciones entre los objetos, y restricciones sobre los objetos o sus relaciones.
-Propiedades dinámicas: operaciones sobre los objetos o sus relaciones, relaciones entre operaciones (transacciones) y restricciones dinámicas sobre la evolución de los objetos y sus relaciones.</p>
+<p>FIXME: Revisar</p>
+<p>En la unidad anterior hemos trabajado conceptos generales asociados a las bases de datos y los sistemas gestores de bases de datos. Estudiamos que existen diferentes modelos de datos que dan lugar a diferentes tipos de soluciones.</p>
+<p>Pero antes de entrar en uno de los modelos, conviene saber cual es el proceso de diseño de una base de datos. Queda claro que un buen diseño sobre los datos va a facilitar el posterior desarrollo de las aplicaciones que explotan la base de datos.</p>
+<p>Las fases que se realizan a la hora de diseñar una base de datos son tres:</p>
+<ol>
+<li><strong>Diseño conceptual</strong>: a partir de los requisitos y conocido el problema (conocido como el mundo real), mediante un modelo conceptual de alto nivel (EER) crearemos el <strong>esquema conceptual</strong>.</li>
+<li><strong>Diseño lógico</strong>: transformación de un modelo conceptual a un modelo de datos concreto para poder representar el problema (relacional, jerárquico, ...). En este paso, ya nos tenemos que haber decidido por un modelo de datos, y en algunos casos, incluso por un SGBD concreto. El resultado del diseño lógico es el <strong>esquema lógico/canónico</strong>.</li>
+<li><strong>Diseño físico</strong>: sobre el modelo lógico de datos del punto anterior sobre un SGBD concreto, se define la representación física de las estructuras, obteniendo el <strong>esquema físico/interno</strong>.</li>
+</ol>
+<p>Estas tres fases se resumen en el siguiente gráfico:</p>
+<figure style="align: center;">
+    <img src="images/02modelos.png" width="800" title="Del diseño a los modelos">
+    <figcaption>Del diseño a los modelos</figcaption>
+</figure>
+
+<p>En las siguientes unidades vamos a ir pasando de una fase del diseño a la siguiente. En nuestro caso, en el modelo conceptual aprenderemos el modelo Entidad Relación, como modelo lógico veremos el Modelo Relacional, y como modelo físico, usaremos el sublenguaje DDL de SQL, ya centrándonos en un SGBD concreto.</p>
+<p>Así pues, en esta unidad comenzamos con el diseño conceptual a través del modelo conceptual más extendido, el modelo entidad-relación.</p>
+<h2 id="el-modelo-entidad-relacion">El modelo Entidad Relación<a class="headerlink" href="#el-modelo-entidad-relacion" title="Permanent link">&para;</a></h2>
+<p>Entendemos como <strong>modelo conceptual</strong> el conjunto de conceptos y reglas que nos permiten aplicar una serie de abstracciones con el propósito de definir y manipular datos de la realidad, almacenándola en una base de datos.</p>
+<p>Centrándonos en el <strong>modelo entidad/relación</strong>, cuyo nombre completo es modelo entidad/interrelación (<em>entity/relationship</em> en inglés), es un modelo de datos conceptual de alto nivel, propuesto por <em>Peter Chen</em> en 1976, y vigente a día de hoy por su simplicidad y legibilidad, ya que el resultado del análisis del problema se representa de forma visual mediante diagramas entidad/relación.
+Ha tenido numerosas extensiones y aportaciones de muchos otros autores, teniendo soporte por numerosas herramientas de software de diseño (CASE), lo que ha dado lugar a que no exista un único Modelo ER, sino una familia de modelos.</p>
+<p>El modelo ER describe el <em>mundo real</em> como un conjunto de <strong>entidades</strong> y de <strong>relaciones</strong> entre ellas.</p>
 <h3 id="elementos">Elementos<a class="headerlink" href="#elementos" title="Permanent link">&para;</a></h3>
-<p>Un <strong>objeto</strong> es cualquier persona, concepto, suceso o evento (en definitiva, cualquier “cosa”) con existencia independiente sobre la cual se desea almacenar información.
-El modelo representa un tipo de objeto, el concepto que permite representar a un conjunto de objetos similares.
-Ejemplo: Persona, Cliente, Alumno, Asignatura</p>
-<p>Un tipo de objeto define de forma genérica a un conjunto de objetos a través de propiedades (o atributos)
-    A través de cualquier información que interesa guardar sobre los objetos del tipo.
-Se realiza mediante un proceso de abstracción que se conoce como clasificación.
-Ejemplo: nombre, dirección, fecha de nacimiento, saldo, teléfono</p>
-<p>Una <strong>relación</strong> es una asociación entre objetos.
+<p>Una <strong>entidad</strong> es cualquier persona, concepto, suceso o evento (en definitiva, cualquier <em>cosa</em>) con existencia independiente sobre la cual se desea almacenar información.
+La entidad representa un tipo de objeto, el concepto que permite representar a un conjunto de objetos similares. Por ejemplo <code>Persona</code>, <code>Cliente</code>, <code>Alumno</code>, <code>Asignatura</code>, etc... serían entidades.</p>
+<p>Por otro lado, una entidad define de forma genérica a un conjunto de objetos a través de propiedades (o <strong>atributos</strong>): cualquier información que interesa guardar sobre las entidades
+Se obtienen mediante un proceso de abstracción que se conoce como <em>clasificación</em>. Ejemplos de atributos serían <code>nombre</code>, <code>dirección</code>, <code>fecha de nacimiento</code>, <code>saldo</code>, <code>teléfono</code>, etc...</p>
+<p>Finalmente, una <strong>relación</strong> es una asociación entre entidades.
 Un tipo de relación en un modelo de datos permite representar un conjunto de relaciones de características similares.
-Igual que los objetos, las relaciones también pueden tener atributos, para representar información que no es propia de ninguno de los objetos participantes en la relación.
-Ejemplo: Matricular, Contratar, Reservar</p>
-<p>Restricción de Integridad Estática
-Es una propiedad del mundo real, representado por el esquema, que limita sus extensiones (ocurrencias) válidas (permitidas).
-Tipos
-Sobre atributos: valores posibles, valor no nulo Sobre objetos: restricción de identificación Sobre relaciones: restricciones de cardinalidad</p>
-<p>Operación
-Es una acción elemental (indivisible) sobre un objeto o una relación
-Las operaciones permiten:
-Crear
-Eliminar
-Modificar
-Consultar objetos y relaciones</p>
-<p>Transacción
-Es una secuencia de operaciones que se considera atómica en lo que se refiere a su ejecución
-Se ejecutan todas sus operaciones o ninguna de ellas.</p>
-<p>ACID → Atomicidad, Consistencia, aIslamiento, Durabilidad
-Ejemplo: Transferencia Bancaria</p>
-<p>Restricción de integridad dinámica
-Representan propiedades del mundo real que restringen la posible evolución en el tiempo de la base de datos, limitando la secuencia de extensión válidas del esquema.
-Ejemplo: El número de alumnos matriculados en una asignatura debe ser menor o igual a 20.</p>
-<p>Ejemplo de Sistema de Información
-Una empresa vende productos a varios clientes.
-Se necesita conocer los datos personales de los clientes (nombre, apellidos, dni, dirección y fecha de nacimiento).
-Cada producto tiene un nombre y un código, así como un precio unitario. Un cliente puede comprar varios productos a la empresa, y un mismo producto puede ser comprado por varios clientes.
-Los productos son suministrados por diferentes proveedores. Se debe tener en cuenta que un producto sólo puede ser suministrado por un proveedor, y que un proveedor puede suministrar diferentes productos. De cada proveedor se desea conocer el NIF, nombre y dirección</p>
+Igual que las entidades, las relaciones también pueden tener atributos, para representar información que no es propia de ninguno de los objetos participantes en la relación. Ejemplos de relaciones serían <code>Matricular</code>, <code>Contratar</code>, <code>Reservar</code>, etc...</p>
+<div class="admonition tip">
+<p class="admonition-title">Nomenclatura</p>
+<ul>
+<li>Las entidades suelen ser sustantivos y se nombran en singular y mayúsculas.</li>
+<li>Los atributos también en singular, pero en minúsculas.</li>
+<li>Las relaciones son verbos en mayúsculas.</li>
+</ul>
+</div>
+<h3 id="propiedades">Propiedades<a class="headerlink" href="#propiedades" title="Permanent link">&para;</a></h3>
+<p>El modelo conceptual también define una serie de propiedades sobre los elementos, como son las propiedades:</p>
+<ul>
+<li>
+<p><strong><em>estáticas</em></strong>: restricciones sobre las entidades y relaciones. Por ejemplo, la restricción de integridad estática, limita las extensiones (ocurrencias) válidas (permitidas) para una propiedad. Existen varios tipos:</p>
+<ul>
+<li>Sobre atributos: valores posibles, valor no nulo.</li>
+<li>Sobre entidades: restricción de identificación.</li>
+<li>Sobre relaciones: restricciones de cardinalidad.</li>
+</ul>
+</li>
+<li>
+<p><strong><em>dinámicas</em></strong>: operaciones sobre los objetos o sus relaciones, relaciones entre operaciones (transacciones) y restricciones dinámicas sobre la evolución de los objetos y sus relaciones, como por ejemplo, "<em>El número de alumnado matriculado en una asignatura debe ser menor o igual a 20</em>".</p>
+<div class="admonition info">
+<p class="admonition-title">Operación vs Transacción</p>
+<p>Una <strong>operación</strong> es una acción elemental (indivisible) sobre un objeto o una relación. Las operaciones permiten crear, rliminar, modificar y consultar objetos y relaciones.</p>
+<p>Una <strong>transacción</strong> es una secuencia de operaciones que se considera atómica en lo que se refiere a su ejecución. Es decir, se ejecutan todas sus operaciones o ninguna de ellas, como por ejemplo, al realizar una transferencia bancaria.</p>
+<p>Las bases de datos soportan las transacciones gracias a las propiedades ACID (que estudiamos en la <a href="01intro-bd.html#ACID">sesión anterior</a>)</p>
+</div>
+</li>
+</ul>
+<h3 id="entidades">Entidades<a class="headerlink" href="#entidades" title="Permanent link">&para;</a></h3>
+<p>Una entidad es cualquier objeto (real o abstracto) sobre el que queremos almacenar información en la base de datos.</p>
+<p>Se representa mediante un rectángulo con el nombre de la entidad en singular y mayúsculas. Se suele identificar con un sustantivo y suelen estar asociados a objetos (coche, libro, vehículo, etc...), personas (cliente, empleado, proveedor, ...), lugares (ciudad, provincia, etc...), organizaciones (hospital, aula, empresa, ...), etc...</p>
+<figure style="align: center;">
+    <img src="images/02entidades.png" width="335" title="Ejemplo con dos entidades">
+    <figcaption>Ejemplo con dos entidades</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title">Control de redundancia</p>
+<p>Cada entidad solo puede aparecer una única vez en el modelo.</p>
+</div>
+<figure style="float: right;">
+    <img src="images/02fuerte-debil.png" width="150" title="Entidad fuerte vs débil">
+    <figcaption>Entidad fuerte vs débil</figcaption>
+</figure>
+
+<p>Existe dos tipos de entidades:</p>
+<ul>
+<li>Regulares o <strong>fuertes</strong>: existen por sí mismas, sin necesidad de otra entidad. Por ejemplo, los clientes de nuestra empresa. Se representan mediante un rectángulo simple.</li>
+<li>
+<p><strong>Débiles</strong>: su existencia depende de otra entidad. Por ejemplo, los familiares de los clientes sería una entidad débil, ya que no tiene sentido almacenarlos si ya no tenemos a los clientes. Se representan mediante un rectángulo doble.</p>
+<p>Una entidad débil se identifica por sus propiedades y por las propiedades de las entidades de las que depende. Además, al eliminar la entidad fuerte, también se elimina la entidad débil.</p>
+</li>
+</ul>
+<p>Finalmente, el término ocurrencia indica un elemento de la entidad, un objeto en concreto. Por ejemplo, en la entidad <code>PRODUCTO</code>, una ocurrencia sería <code>Bolígrafo azul de gel</code> cuyo código es <code>BOLIAZUL01</code> y fecha de alta en el sistema el <code>1/1/24</code>.</p>
+<h3 id="relaciones">Relaciones<a class="headerlink" href="#relaciones" title="Permanent link">&para;</a></h3>
+<p>Una relación representa una asociación, relacionando los datos del modelo.</p>
+<h4 id="tipos">Tipos<a class="headerlink" href="#tipos" title="Permanent link">&para;</a></h4>
+<h4 id="cardinalidad">Cardinalidad<a class="headerlink" href="#cardinalidad" title="Permanent link">&para;</a></h4>
+<h4 id="11">1:1<a class="headerlink" href="#11" title="Permanent link">&para;</a></h4>
+<h4 id="1n">1:N<a class="headerlink" href="#1n" title="Permanent link">&para;</a></h4>
+<h4 id="nm">N:M<a class="headerlink" href="#nm" title="Permanent link">&para;</a></h4>
+<h3 id="atributos">Atributos<a class="headerlink" href="#atributos" title="Permanent link">&para;</a></h3>
+<p>Describen propiedades de las entidades y de las relaciones.</p>
+<p>Tipos:</p>
+<ul>
+<li>Identificador: identifican las ocurrencias de la entidad</li>
+<li>Compuesto de atributos simples</li>
+<li>No nulo: restricción de valor no nulo</li>
+<li>Multivaluado: puede tomar varios valores</li>
+<li>Atributo derivado: Su valor se deduce a partir de otros atributos de la misma entidad u otras entidades.
+*Atributo en una relación: Su valor depende de la relación, no de ninguna entidad</li>
+</ul>
+<h2 id="el-modelo-entidad-relacion-extendido">El modelo Entidad Relación Extendido<a class="headerlink" href="#el-modelo-entidad-relacion-extendido" title="Permanent link">&para;</a></h2>
+<h3 id="generalizacion">Generalización<a class="headerlink" href="#generalizacion" title="Permanent link">&para;</a></h3>
+<h3 id="agregacion">Agregación<a class="headerlink" href="#agregacion" title="Permanent link">&para;</a></h3>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <p><a name="AC201"></a></p>
 <ul>
-<li><strong>AC201</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr> // 3p) asdf</li>
+<li>
+<p><strong>AC201</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr> // 3p) A partir del siguiente sistema de información, identifica las entidades, atributos y relaciones:</p>
+<p>Una empresa vende productos a varios clientes.
+Se necesita conocer los datos personales de los clientes (nombre, apellidos, dni, dirección y fecha de nacimiento).
+Cada producto tiene un nombre y un código, así como un precio unitario. Un cliente puede comprar varios productos a la empresa, y un mismo producto puede ser comprado por varios clientes.
+Los productos son suministrados por diferentes proveedores. Se debe tener en cuenta que un producto sólo puede ser suministrado por un proveedor, y que un proveedor puede suministrar diferentes productos. De cada proveedor se desea conocer el NIF, nombre y dirección</p>
+</li>
 </ul>
+<p><a name="AC202"></a>
+* <strong>AC202</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr> // 3p) aaaa</p>
+<p><a name="AC203"></a>
+* <strong>AC203</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr> // 3p) aaaa</p>
+<p><a name="AC204"></a>
+* <strong>AC204</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr> // 3p) aaaa</p>
+<p><a name="AC205"></a>
+* <strong>AC205</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr> // 3p) aaaa</p>
 
 
 
