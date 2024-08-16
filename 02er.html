@@ -1059,14 +1059,14 @@
 <td></td>
 </tr>
 <tr>
-<td>8</td>
-<td>Modelos con restricciones</td>
+<td>9</td>
+<td>Modelado EER. Generalización y especialización</td>
 <td><a href="#AC209">AC209</a></td>
 <td><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr></td>
 </tr>
 <tr>
-<td>9</td>
-<td>Modelado EER. Generalización y especialización</td>
+<td>8</td>
+<td>Modelados con generalización</td>
 <td><a href="#AC210">AC210</a></td>
 <td><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr></td>
 </tr>
@@ -1232,11 +1232,11 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <p>Así pues, si aplicamos la regla de izquierda a derecha tenemos <code>PRODUCTO, PERTENECER, (1,1), CATEGORIA</code>, lo que significa que un producto pertenece siempre a una categoría y como mucho a una también. En cambio, si la aplicamos de derecha a izquierda tenemos <code>CATEGORIA, PERTENECER, (0,N), PRODUCTO</code> indica que a una categoría puede no pertenecer ningún producto pero también muchos.</p>
 </div>
 <h4 id="tipos">Tipos<a class="headerlink" href="#tipos" title="Permanent link">&para;</a></h4>
-<p>Así pues, si nos fijamos en las cardinalidades máximas, tenemos tres tipos de relaciones binarias:</p>
+<p>Si nos fijamos en las cardinalidades máximas, tenemos tres tipos de relaciones binarias:</p>
 <ul>
 <li>1:1 (<strong>uno a uno</strong>) – Un elemento de la primera relación se corresponde con uno solo de la segunda y viceversa. Por ejemplo, una pantalla digital está en un aula y en un aula sólo hay una pantalla digital.</li>
-<li>1:N (<strong>uno a muchos</strong>) – Un elemento de la primera relación se corresponde con uno o varios de la segunda y uno de la segunda se relaciona con uno solo de la primera. Por ejemplo, un trabajador solo puede trabajar en una empresa y en la empresa puede haber muchos trabajadores</li>
-<li>N:M (<strong>muchos a muchos</strong>) – Un elemento de la primera relación se corresponden con muchos de la segunda y viceversa. Por ejemplo, un alumno puede estar matriculado en varias asignaturas y en una asignatura puede haber muchos alumnos</li>
+<li>1:N (<strong>uno a muchos</strong>) – Un elemento de la primera relación se corresponde con uno o varios de la segunda y uno de la segunda se relaciona con uno solo de la primera. Por ejemplo, un trabajador solo puede trabajar en una empresa y en la empresa puede haber muchos trabajadores.</li>
+<li>N:M (<strong>muchos a muchos</strong>) – Un elemento de la primera relación se corresponden con muchos de la segunda y viceversa. Por ejemplo, un alumno puede estar matriculado en varias asignaturas y en una asignatura puede haber muchos alumnos.</li>
 </ul>
 <p>Para representar las relaciones, además de la notación de <em>Chen</em> (indicando las cardinalidades en el lado opuesto), utilizaremos la notación de pata de gallo:</p>
 <table>
@@ -1305,8 +1305,12 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
     <figcaption>Ocurrencias 1:1</figcaption>
 </figure>
 
-<p>Si nos fijamos en las ocurrencias de las entidades, vemos como cada departamento tiene asignado siempre un empleado. Por ello, <code>Card(DPTO, DIRIGIR) = (1,1)</code>. En cambio, tenemos empleados que no tienen asignado ningún departamento, y en el caso de tenerlo, sólo tienen uno, lo que implica que <code>Card(EMPLEADO, DIRIGIR) = (0,1)</code>.</p>
+<p>Si nos fijamos en las ocurrencias de las entidades, vemos como cada departamento tiene asignado siempre un empleado y sólo uno. Por ello, <code>Card(DPTO, DIRIGIR) = (1,1)</code>. En cambio, tenemos empleados que no tienen asignado ningún departamento, y en el caso de tenerlo, sólo tienen uno, lo que implica que <code>Card(EMPLEADO, DIRIGIR) = (0,1)</code>.</p>
 <p>Como las dos cardinalidades máximas son 1, decimos que la relación es uno a uno.</p>
+<div class="admonition question">
+<p class="admonition-title">Autoevaluación</p>
+<p>¿En qué cambiaría el gráfico de ocurrencias si las cardinalidades fueran <code>Card(DPTO, DIRIGIR) = (0,1)</code> y <code>Card(EMPLEADO, DIRIGIR) = (1,1)</code>?</p>
+</div>
 <h4 id="relacion-1n">Relación 1:N<a class="headerlink" href="#relacion-1n" title="Permanent link">&para;</a></h4>
 <p>En las relaciones uno a muchos, en un sentido hay una cardinalidad máxima de uno, y en la otra de muchos, es decir, una ocurrencia de la entidad A se relaciona con una de la entidad B, pero una ocurrencia de la entidad B lo hace con muchas de la entidad A.</p>
 <p>En el siguiente ejemplo, tenemos que cada producto tendrá una categoría y en cambio, que de una categoría, tendremos muchos productos.</p>
@@ -1321,6 +1325,11 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 </figure>
 
 <p>Si nos fijamos en las ocurrencias de las entidades, vemos como un producto pertenece a una categoría, y siempre a una. Por ello, <code>Card(PRODUCTO, PERTENECER) = (1,1)</code>. En cambio, tenemos categorías a las que pertenecen muchos productos, e incluso categorías sin productos, lo que implica que <code>Card(CATEGORIA, PERTENECER) = (0,N)</code>.</p>
+<div class="admonition question">
+<p class="admonition-title">Autoevaluación</p>
+<p>¿En qué cambiaría el gráfico de ocurrencias si las cardinalidades fueran <code>Card(PRODUCTO, PERTENECER) = (0,1)</code> y <code>Card(CATEGORIA, PERTENECER) = (1,N)</code>?</p>
+<p>¿Y si les damos la vuelta siendo <code>Card(PRODUCTO, PERTENECER) = (1,N)</code> y <code>Card(CATEGORIA, PERTENECER) = (0,1)</code>?</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Supuesto Empresa</p>
 <p>Queremos gestionar la información sobre los empleados de una empresa, a partir de las siguientes condiciones: para cada empleado dispondremos de su DNI, nombre, fecha de nacimiento, salario y departamento en el que trabaja.</p>
@@ -1343,6 +1352,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <li>Relación 1:N nombrada como <code>TRABAJAR</code> entre <code>DEPARTAMENTO</code> Y <code>EMPLEADO</code>, de manera que en un departamento trabajan muchos empleados, pero un empleado sólo trabaja en un departamento.</li>
 <li>Relación 1:1 nombrada como <code>SER_JEFE</code> entre <code>DEPARTAMENTO</code> y <code>EMPLEADO</code>. Un empleado es jefe de un departamento, y en un departamento, un empleado es el jefe.</li>
 </ul>
+<p>Este modelo demuestra que dos entidades se pueden relacionar mediante más de una relación, incluso con diferentes cardinalidades.</p>
 </details>
 </div>
 <h4 id="relacion-nm">Relación N:M<a class="headerlink" href="#relacion-nm" title="Permanent link">&para;</a></h4>
@@ -1367,7 +1377,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <li>Los atributos también en singular, pero en minúsculas.</li>
 <li>Las relaciones son verbos en mayúsculas.</li>
 </ul>
-<p>Respecto a la notación, por ejemplo, en la Universidad de Alicante emplean rombos coloreados para expresar las cardinalidades máximas:</p>
+<p>Respecto a la notación, por ejemplo, en la Universidad de Alicante emplean rombos coloreados para expresar las cardinalidades máximas a N:</p>
 <p><figure style="align: center;">
     <img src="images/02notacionUA.png" width="500" title="Notación UA">
     <figcaption>Notación UA</figcaption>
@@ -1379,7 +1389,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
     <figcaption>Relación reflexiva</figcaption>
 </figure>
 
-<p>Las relaciones reflexivas (o unarias) son aquellas relaciones de grado uno donde la misma entidad cumple dos roles diferentes en la relación.</p>
+<p>Las relaciones reflexivas (o unarias) son aquellas relaciones de grado uno donde la misma entidad cumple dos roles diferentes en la relación, los cuales se representan escribiéndolo en cada lado de la relación.</p>
 <p>Algunos ejemplos comunes son cuando una persona se casa con otra persona, una pieza que se compone de otras piezas o un empleado es responsable de otro empleado.</p>
 <p>Vamos a centrarnos en el caso de que un empleado sea el responsable de otro, donde podemos decir que todo empleado trabaja para otro pero que el empleado responsable (el jefe) lo es de varios empleados, lo que daría lugar a una relación 1:N. Así pues, creamos una relación <code>TRABAJAR</code> y la unimos con <code>EMPLEADO</code> por los dos sentidos de la misma, y anotamos el rol en cada una de las cardinalidades.</p>
 <h3 id="atributos">Atributos<a class="headerlink" href="#atributos" title="Permanent link">&para;</a></h3>
@@ -1394,17 +1404,17 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <li>Identificador (clave): atributos únicos que identifican las ocurrencias de la entidad. Se subraya la palabra, como el <code>dni</code> que identifica a un cliente (no tendremos dos clientes con el mismo DNI)</li>
 <li>Compuesto: agrupación de varios atributos, ya sean simples o compuestos. Por ejemplo, el campo <code>direccion</code> se compone de la calle, número, etc... Se representa mediante óvalos conectados entre sí, y pondremos el nombre compuesto entre paréntesis.</li>
 <li>Multivaluado: el atributo puede tomar varios valores, como el <code>telefono</code> del cliente, que realmente puede almacenar el fijo, el móvil y el número del trabajo. Se representa mediante un doble óvalo. (en otras notaciones, se pone una <code>n</code> al lado del conector del atributo)</li>
-<li>Derivado: Su valor se deduce a partir de otros atributos de la misma entidad u otras entidades, o se calcula partir de un dato. Por ejemplo, el campo <code>edad</code> se obtiene a partir de la fecha de nacimiento del cliente.</li>
+<li>Derivado: Su valor se deduce a partir de otros atributos de la misma entidad, otras entidades con las que se relaciona o se calcula a partir de un dato. Por ejemplo, el campo <code>edad</code> se obtiene a partir de la fecha de nacimiento del cliente. Se representa mediante un óvalo con el borde punteado.</li>
 <li>Opcional: el atributo puede contener valores nulos, como el <code>email</code>. </li>
 <li>No nulo: opuesto al atributo opcional, marca el atributo como obligatorio. En alguna notaciones se indica con un pequeño circulo entre el conector y el óvalo. </li>
 <li>En una relación: Su valor depende de la relación, no de ninguna entidad</li>
 </ul>
 <div class="admonition question">
 <p class="admonition-title">Autoevaluación</p>
-<p>Piensa en dos entidades que tengan una relación con la cardinalidad que consideres, y define al menos un atributo de cada tipo.</p>
+<p>Piensa en dos entidades que tengan una relación con la cardinalidad que consideres, e identifica al menos un atributo de cada tipo.</p>
 </div>
 <h4 id="identificadores">Identificadores<a class="headerlink" href="#identificadores" title="Permanent link">&para;</a></h4>
-<p>En toda entidad es obligatorio tener uno o más atributos identificadores.</p>
+<p>Recuerda esta frase: <strong>Toda entidad debe tener uno o más atributos identificadores</strong>. Más adelante veremos que en algún caso particular de entidad no es necesario, pero por lo general, al realizar el modelo conceptual siempre debemos comprobar si hemos identificado un atributo identificador para cada entidad.</p>
 <p>Respecto a los atributos identificadores podemos tener:</p>
 <ul>
 <li>atributos identificadores sencillos. Un atributo identifica de forma unívoca a una ocurrencia de la entidad. Por ejemplo, el <code>isbn</code> de un libro.</li>
@@ -1444,11 +1454,6 @@ cuales no puede pertenecer a más de un área.</li>
 </div>
 <h3 id="restricciones">Restricciones<a class="headerlink" href="#restricciones" title="Permanent link">&para;</a></h3>
 <p>En el apartado de <a href="#entidades">Entidades</a> vimos que tenemos entidades fuertes y débiles, y en las débiles su existencia depende de otra entidad, de manera que se identifica por sus propiedades y por las propiedades de las entidades de las que depende.</p>
-<figure style="float: right;">
-    <img src="images/02restriccion-id.png" width="320" title="Restricción de ID">
-    <figcaption>Restricción de ID</figcaption>
-</figure>
-
 <p>Las entidades débiles presentan dos tipos de dependencia:</p>
 <ul>
 <li>
@@ -1458,7 +1463,23 @@ cuales no puede pertenecer a más de un área.</li>
 <p>Dependencia en <strong>identificación</strong>: debe darse una dependencia en existencia y además, una ocurrencia de la entidad débil no puede identificarse por sí misma, debiendo hacerse mediante los atributos identificadores de la entidad fuerte asociada. La representación de este tipo de dependencia incluirá una <code>ID</code> en el conector o en el interior de la relación débil. También se puede representar con un rombo doble. Además de que la cardinalidad mínima será 1, es muy común que en estos casos, la relación tenga una cardinalidad de 1:N.</p>
 </li>
 </ul>
-<p>En el ejemplo tenemos una relación que tiene una restricción de identificación entre una línea de pédido (entidad débil) respecto a un pedido. El pedido tendrá un código y un montante total que se calcula a partir de los valores de las líneas de pedido. La propia restricción de identificación implica que las líneas de pedido realmente se identifican por su número de línea y por el código del pedido, por ejemplo la línea <code>1</code> del pedido <code>R2024A01</code>.</p>
+<figure style="float: right;">
+    <img src="images/02restriccion-id.png" width="320" title="Restricción de ID">
+    <figcaption>Restricción de ID</figcaption>
+</figure>
+
+<p>En el ejemplo tenemos una relación que tiene una restricción de identificación entre una línea de pedido (entidad débil) respecto a un pedido. El pedido tendrá un código y un montante total que se calcula a partir de los valores de las líneas de pedido. La propia restricción de identificación implica que las líneas de pedido realmente se identifican por su número de línea y por el código del pedido, por ejemplo la línea <code>1</code> del pedido <code>R2024A01</code>, la línea <code>2</code> del mismo pedido, etc... o la línea <code>1</code> de otro pedido diferente.</p>
+<p>En las restricciones de identificación es muy común que la entidad débil se identifique mediante un número o código secuencial, el cual se reinicia por cada cambio de la entidad fuerte.</p>
+<p>Por ejemplo, todos los apartamentos de un edificio empiezan desde el número <code>101</code>, pudiendo tener el apartamento <code>102</code> del edificio <code>E1</code> y el apartamento <code>102</code> del edificio <code>E2</code>, es decir, la entidad <code>APARTAMENTO</code> tiene una restricción de identificación con <code>EDIFICIO</code>. Pongamos otro ejemplo, si identificamos al alumnado por su número de lista y por el grupo al que pertenecen, tendremos que no será el mismo estudiante el número <code>1</code> del grupo <code>1K</code> que el estudiante <code>1</code> del grupo <code>2K</code>, de manera que tendremos una restricción de identificación entre la entidad <code>ESTUDIANTE</code> y la entidad <code>GRUPO</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Cardinalidades exactas</p>
+<p>En ocasiones sabemos la cantidad exacta de ocurrencias con las que se puede relacionar una entidad. En dicho caso, seguirán siendo relaciones 1:N o N:M, pero en el modelo, indicaremos la cantidad de ocurrencias.</p>
+<p>Por ejemplo, si en una clase se matriculan un mínimo de 5 estudiantes y un máximo de 24, y un estudiante se matricula en al menos 2 clases y 6 como máximo, tendremos:</p>
+<p><figure style="align: center;">
+    <img src="images/02cardinalidades-exactas.png" width="543" title="Cardinalidades exactas">
+    <figcaption>Cardinalidades exactas</figcaption>
+</figure></p>
+</div>
 <h2 id="el-modelo-entidad-relacion-extendido">El modelo Entidad Relación Extendido<a class="headerlink" href="#el-modelo-entidad-relacion-extendido" title="Permanent link">&para;</a></h2>
 <p>Con los años se extendió el modelo relacional con la incorporación de los conceptos de clase y subclase, junto con los conceptos de generalización y especialización, así como la agregación de entidades.  </p>
 <h3 id="generalizacion">Generalización<a class="headerlink" href="#generalizacion" title="Permanent link">&para;</a></h3>
@@ -1649,16 +1670,28 @@ De cada hotel se desea conocer la siguiente información: código de hotel, nomb
 </ul>
 <p><a name="AC209"></a></p>
 <ul>
-<li><strong>AC209</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) </li>
-</ul>
-<p>FIXME: Completar con restricciones ID, E</p>
-<p><a name="AC210"></a></p>
-<ul>
 <li>
-<p><strong>AC210</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo ER del siguiente sistema de información sobre cine:</p>
+<p><strong>AC209</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo ER del siguiente sistema de información sobre cine:</p>
 <p>De cada película le interesará conocer el título, el año de producción, la nacionalidad, y los datos (nombre, fecha_nacimiento y nacionalidad) de los intérpretes (como mucho los 6 intérpretes principales), el director y los autores del guión en el que está basada la película. De este último -el guión- se sabrá además el título.</p>
 <p>También desea conocer los posibles Oscars ganados por cada película en las modalidades de: mejor película, mejor guión, mejores intérpretes y mejor director.</p>
 <p>Por último, se tendrán identificadas las películas que son remakes de otras, conociendo en ese caso, la película original y los distintos remakes.</p>
+</li>
+</ul>
+<p><a name="AC210"></a></p>
+<ul>
+<li>
+<p><strong>AC210</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo ER del siguiente sistema de información sobre un campeonato de ajedrez que gestiona toda la información participantes, alojamientos y partidas :</p>
+<p>En el campeonato participan jugadores y árbitros; de ambos se requiere conocer el número de asociado, nombre, dirección, teléfono de contacto y campeonatos en los que han participado (como jugador o como árbitro). De los jugadores se precisa además el nivel de juego en una escala de 1 a 10. Ningún árbitro puede participar como jugador.</p>
+<p>Los países envían al campeonato un conjunto de jugadores y
+árbitros, aunque no todos los países envían participantes. Todo jugador y árbitro es enviado por un único país. Un país puede ser representado por otro país. Cada país se identifica por un número correlativo según su orden alfabético e interesa conocer además de su nombre, el número de clubes de ajedrez existentes en el mismo.</p>
+<p>Cada partida se identifica por un numero correlativo (<code>codigop</code>), la juegan dos jugadores y la arbitra un árbitro. Interesa registrar las partidas que juegan cada jugador y el color (blancas o negras) con el que juega. Ha de tenerse en cuenta que un arbitro no puede arbitrar a jugadores enviados por el mismo país que le ha enviado a él. Todo participante participa en al menos una partida.</p>
+<p>Tanto jugadores como árbitros se alojan en uno de los hoteles en los que se desarrollan las partidas, se desea conocer en qué hotel y en qué fechas se ha alojado cada uno de los participantes. Los participantes pueden no permanecer en el mismo hotel que se realiza el campeonato durante todo el campeonato, sino acudir cuando tienen que jugar alguna partida alojándose en el mismo o distinto hotel. De cada hotel, se desea
+conocer el nombre, la dirección y el número de teléfono.</p>
+<p>El campeonato se desarrolla a lo largo de una serie de jornadas (año, mes, día) y cada partida tiene lugar en una de las jornadas
+aunque no tengan lugar partidas todas las jornadas.</p>
+<p>Cada partida se celebra en una de las salas de las que pueden disponer los hoteles, se desea conocer el número de entradas vendidas en la sala para cada partida. De cada sala, se desea conocer la capacidad y medios de que dispone (radio, televisión, video...) para facilitar la retransmisión de los encuentros. Una sala puede disponer de varios medios distintos.</p>
+<p>De cada partida se pretende registrar todos los movimientos que la componen. La identificación de movimiento se establece en base a un numero de orden dentro de cada partida: para cada movimiento se guardan la jugada (5 posiciones) y un breve comentario realizado
+por un experto.</p>
 </li>
 </ul>
 <p><a name="AC211"></a></p>
@@ -1717,7 +1750,7 @@ De cada hotel se desea conocer la siguiente información: código de hotel, nomb
 <li>Utilizar una generalización o agregación.</li>
 </ul>
 <p>Se debe entrar un informe con el sistema de información, el modelo EER y describir las decisiones tomadas en su elaboración.</p>
-<p>La rúbrica empleada para su evaluación será similar a la siguiente:</p>
+<p>Se utilizará una rúbrica para su evaluación en base a la siguiente lista de cotejo:</p>
 <ul>
 <li>Todas las entidades tienen un atributo que las identifica.</li>
 <li>La nomenclatura es homogénea en todo el modelo.</li>
@@ -1728,6 +1761,14 @@ De cada hotel se desea conocer la siguiente información: código de hotel, nomb
 </ul>
 </li>
 </ul>
+<!--
+TODO: 
+* AC209 Restricción ID,E
+* Explicar Supuesto Generalización ...
+* Completar rúbrica reto
+* Revisar apartado inicial sobre ing software
+* Añadir preguntas cuestionario inicial
+-->
 
 
 
