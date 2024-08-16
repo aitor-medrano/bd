@@ -1091,12 +1091,12 @@
 </tbody>
 </table>
 <h2 id="diseno-de-bd">Diseño de BD<a class="headerlink" href="#diseno-de-bd" title="Permanent link">&para;</a></h2>
-<p>FIXME: Revisar - Hablar algo de ingeniería del sw?</p>
 <p>En la unidad anterior hemos trabajado conceptos generales asociados a las bases de datos y los sistemas gestores de bases de datos. Estudiamos que existen diferentes modelos de datos que dan lugar a diferentes tipos de soluciones.</p>
 <p>Pero antes de entrar en uno de los modelos, conviene saber cual es el proceso de diseño de una base de datos. Queda claro que un buen diseño sobre los datos va a facilitar el posterior desarrollo de las aplicaciones que explotan la base de datos.</p>
+<p>Antes de comenzar el diseño, el primer paso y más crítico es determinar los requisitos de la base de datos mediante un sistema de información, describiendo el problema que la base de datos debe cubrir. Este paso está más asociado a la ingeniería del software y lo estudiarás en detalle en el módulo de <em>Entornos de Desarrollo</em>.</p>
 <p>Las fases que se realizan a la hora de diseñar una base de datos son tres:</p>
 <ol>
-<li><strong>Diseño conceptual</strong>: a partir de los requisitos y conocido el problema (conocido como el mundo real), mediante un modelo conceptual de alto nivel (EER) crearemos el <strong>esquema conceptual</strong>.</li>
+<li><strong>Diseño conceptual</strong>: a partir de los requisitos y entendido el problema (conocido como el mundo real), mediante un modelo conceptual de alto nivel (EER) crearemos el <strong>esquema conceptual</strong>.</li>
 <li><strong>Diseño lógico</strong>: transformación de un modelo conceptual a un modelo de datos concreto para poder representar el problema (relacional, jerárquico, ...). En este paso, ya nos tenemos que haber decidido por un modelo de datos, y en algunos casos, incluso por un SGBD concreto. El resultado del diseño lógico es el <strong>esquema lógico/canónico</strong>.</li>
 <li><strong>Diseño físico</strong>: sobre el modelo lógico de datos del punto anterior sobre un SGBD concreto, se define la representación física de las estructuras, obteniendo el <strong>esquema físico/interno</strong>.</li>
 </ol>
@@ -1109,7 +1109,7 @@
 <p>En las siguientes unidades vamos a ir pasando de una fase del diseño a la siguiente. En nuestro caso, en el modelo conceptual aprenderemos el modelo Entidad Relación, como modelo lógico veremos el Modelo Relacional, y como modelo físico, usaremos el sublenguaje DDL de SQL, ya centrándonos en un SGBD concreto.</p>
 <p>Así pues, en esta unidad comenzamos con el diseño conceptual a través del modelo conceptual más extendido, el modelo entidad-relación.</p>
 <h2 id="reto-i-disenamos">Reto I - Diseñamos<a class="headerlink" href="#reto-i-disenamos" title="Permanent link">&para;</a></h2>
-<p>A los largo de las cuatro siguientes unidades vamos a desarrollar una base de datos desde cero. Para ello, en equipos de 3-4 personas, y siguiendo un enfoque metodológico de <a href="https://catedu.github.io/ACbR/">Aprendizaje Colaborativo basado en Retos</a> cada equipo va a definir:</p>
+<p>A los largo de las cuatro siguientes unidades vamos a desarrollar una base de datos desde cero. Para ello, en equipos de 3-4 personas, y siguiendo un enfoque metodológico de <a href="https://catedu.github.io/ACbR/">Aprendizaje Colaborativo basado en Retos</a>, cada equipo va a definir:</p>
 <ul>
 <li>Un sistema de información.</li>
 <li>El modelo entidad relación (diseño conceptual)</li>
@@ -1162,7 +1162,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 
 <div class="admonition tip">
 <p class="admonition-title">Control de redundancia</p>
-<p>Cada entidad solo puede aparecer una única vez en el modelo.</p>
+<p>Cada entidad solo puede aparecer una única vez en el modelo, con lo que no podemos repetir el nombre de dos entidades en el mismo modelo.</p>
 </div>
 <figure style="float: right;">
     <img src="images/02fuerte-debil.png" width="150" title="Entidad fuerte vs débil">
@@ -1177,7 +1177,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <p>Una entidad débil se identifica por sus propiedades y por las propiedades de las entidades de las que depende. Además, al eliminar la entidad fuerte, también se elimina la entidad débil.</p>
 </li>
 </ul>
-<p>Finalmente, el término ocurrencia indica un elemento de la entidad, un objeto en concreto. Por ejemplo, en la entidad <code>PRODUCTO</code>, una ocurrencia sería <code>Bolígrafo azul de gel</code> cuyo código es <code>BOLIAZUL01</code> y fecha de alta en el sistema el <code>1/1/24</code>.</p>
+<p>Finalmente, el término ocurrencia (o instancia de entidad) indica un elemento de la entidad, un objeto en concreto. Por ejemplo, en la entidad <code>PRODUCTO</code>, una ocurrencia sería <code>Bolígrafo azul de gel</code> cuyo código es <code>BOLIAZUL01</code> y fecha de alta en el sistema el <code>1/1/24</code>.</p>
 <h3 id="relaciones">Relaciones<a class="headerlink" href="#relaciones" title="Permanent link">&para;</a></h3>
 <p>Una relación representa una asociación, relacionando los datos del modelo. Para ello, dibujaremos un rombo que unirá las entidad que participan en la relación, y la nombraremos mediante un verbo en mayúsculas:</p>
 <figure style="align: center;">
@@ -1187,14 +1187,14 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 
 <div class="admonition info">
 <p class="admonition-title">Notación</p>
-<p>Existen multiples notaciones para representar las relaciones (las entidades se suelen representar igual en todas las notaciones). En los apuntes vamos a utilizar tanto la notación empleada por la herramienta <a href="https://erdplus.com/">ERDPlus</a> (también conocida como de pata de gallo), como diferentes notaciones empleadas de forma generalizada por las empresas.</p>
+<p>Existen multiples notaciones para representar las relaciones (las entidades se suelen representar igual en todas las notaciones). En los apuntes vamos a utilizar tanto la notación empleada por la herramienta <a href="https://erdplus.com/">ERDPlus</a> (también conocida como de pata de gallo), la notación de Chen (con las cardinalidades mínima y máxima) así como diferentes notaciones empleadas de forma generalizada por las empresas.</p>
 <p>Una vez dominada una notación es muy fácil entender y cambiar a cualquiera de las otras. Eso sí, debes ser constante y modelar siempre con la misma notación.</p>
 </div>
 <h4 id="grado">Grado<a class="headerlink" href="#grado" title="Permanent link">&para;</a></h4>
 <p>Se denomina grado de una relación a la cantidad de entidades involucradas en una relación, lo que nos permite clasificarlas las relaciones en:</p>
 <ul>
 <li>binarias: son las más comunes, e implica la participación de dos entidades.</li>
-<li>ternarias: participan tres entidades. A ser posible, es mejor simplificarlas mediante el uso de varias relaciones binarias y agregaciones. Por ejemplo, la relación existente entre un libro, su autor y la editorial donde se publica el libro.</li>
+<li>ternarias: participan tres entidades. A ser posible, es mejor simplificarlas mediante el uso de varias relaciones binarias y agregaciones. Por ejemplo, la relación existente entre un libro, su autor y la editorial donde se publica el libro. En este curso no vamos a trabajar las relaciones ternarias y en su caso, cuando sea posible, haremos uso de agregaciones o entidades asociativas.</li>
 <li>n-arias: muy excepcionales, ya que involucran 4 o más entidades.</li>
 <li>reflexivas (unarias): son relaciones binarias entre la misma entidad. Por ejemplo, una persona se casa con otra persona.</li>
 </ul>
@@ -1202,28 +1202,35 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <p>La cardinalidad define la cantidad de ocurrencias de una entidad que se relacionan con una relación (que a su vez se relaciona con otra entidad).</p>
 <p>Para ello, definimos las cardinalidades:</p>
 <ul>
-<li><strong>mínima</strong>: indica el número mínimo de asociaciones en las que aparecerá cada ejemplar de la entidad. Los valores que puede tomar son cero (opcional) o uno (obligatorio)</li>
+<li><strong>mínima</strong> (también conocido como participación): indica el número mínimo de asociaciones en las que aparecerá cada ejemplar de la entidad. Los valores que puede tomar son cero (opcional) o uno (obligatorio)</li>
 <li><strong>máxima</strong>: indica el número máximo de relaciones en las que puede aparecer cada ejemplar de la entidad. Los valores pueden ser uno o N (muchos).</li>
 </ul>
-<p>La cardinalidad entre una entidad y una relación se representa entre paréntesis indicando el valor mínimo a la izquierda (también conocido como participación), y el mayor a la derecha mediante <code>Card(E,R) = (min, max)</code>. Las posibles combinaciones son:</p>
+<p>La cardinalidad entre una entidad y una relación se representa entre paréntesis indicando el valor mínimo a la izquierda y el mayor a la derecha mediante <code>Card(E,R) = (min, max)</code>. Las posibles combinaciones son:</p>
 <ul>
 <li><code>(0, 1)</code> - Una ocurrencia de una entidad se puede relacionar con ninguna o una ocurrencia de otra/s entidad/es.</li>
 <li><code>(1, 1)</code> - Una ocurrencia de una entidad se relaciona siempre con una ocurrencia de otra/s entidad/es.</li>
 <li><code>(0, N)</code> - Una ocurrencia de una entidad se puede relacionar con ninguna o muchas ocurrencias de otra/s entidad/es.</li>
 <li><code>(1, N)</code> - Una ocurrencia de una entidad se puede relacionar con una o muchas ocurrencias de otra/s entidad/es.</li>
 </ul>
-<p>Si por ejemplo, pensamos en la relación que existe un producto y la categoría la que pertenece, tendremos dos cardinalidades para cada lado de la relación:</p>
+<p>Para averiguar la cardinalidad entre dos entidades vía una relación, cogemos una ocurrencia de una entidad y nos preguntamos con cuantas ocurrencias de la otra entidad se va a relacionar.</p>
+<p>Pongamos un ejemplo. Si pensamos en la relación que existe un producto y la categoría la que pertenece, tendremos dos cardinalidades para cada lado de la relación.</p>
+<p>Si tenemos un producto concreto ¿A cuantas categorías va a pertenecer como mínimo y como máximo?:</p>
 <ul>
 <li><code>Card(PRODUCTO, PERTENECER) = (1, 1)</code> - Un producto siempre pertenece a una categoría</li>
+</ul>
+<p>Y en el otro sentido, dada una categoría concreta, ¿cuántos productos van a pertenecer a esta categoría?</p>
+<ul>
 <li><code>Card(CATEGORIA, PERTENECER) = (0, N)</code> - Una categoría puede no tener productos, pero si tiene, pertenecerán muchos.</li>
 </ul>
-<p>Para representar la cardinalidad en el modelo ER, las cardinalidades se anotan en el extremo opuesto de la entidad, utilizándose la regla <em>Entidad, Relación, Cardinalidad, Entidad</em>:</p>
-<figure style="align: center;">
+<div class="admonition tip">
+<p class="admonition-title">Representación</p>
+<p>Para representar la cardinalidad en el modelo ER, <strong>las cardinalidades se anotan en el extremo opuesto de la entidad</strong>, utilizándose la regla <em>Entidad, Relación, Cardinalidad, Entidad</em>:</p>
+<p><figure style="align: center;">
     <img src="images/02card-producto-categoria.png" width="505" title="Cardinalidades en la relación">
     <figcaption>Cardinalidades en la relación</figcaption>
-</figure>
-
-<p>Así pues, si aplicamos la regla de izquierda a derecha tenemos <code>PRODUCTO, PERTENECER, (1,1), CATEGORIA</code>, lo que significa que un producto pertenece siempre a una categoría y como mucho a una también. En cambio, si la aplicamos de derecha a izquierda tenemos <code>CATEGORIA, PERTENECER, (0,N), PRODUCTO</code> lo que indica que a una categoría puede no pertenecer ningún producto pero también muchos.</p>
+</figure></p>
+<p>Así pues, si aplicamos la regla de izquierda a derecha tenemos <code>PRODUCTO, PERTENECER, (1,1), CATEGORIA</code>, lo que significa que un producto pertenece siempre a una categoría y como mucho a una también. En cambio, si la aplicamos de derecha a izquierda tenemos <code>CATEGORIA, PERTENECER, (0,N), PRODUCTO</code> indica que a una categoría puede no pertenecer ningún producto pero también muchos.</p>
+</div>
 <h4 id="tipos">Tipos<a class="headerlink" href="#tipos" title="Permanent link">&para;</a></h4>
 <p>Así pues, si nos fijamos en las cardinalidades máximas, tenemos tres tipos de relaciones binarias:</p>
 <ul>
@@ -1231,7 +1238,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <li>1:N (<strong>uno a muchos</strong>) – Un elemento de la primera relación se corresponde con uno o varios de la segunda y uno de la segunda se relaciona con uno solo de la primera. Por ejemplo, un trabajador solo puede trabajar en una empresa y en la empresa puede haber muchos trabajadores</li>
 <li>N:M (<strong>muchos a muchos</strong>) – Un elemento de la primera relación se corresponden con muchos de la segunda y viceversa. Por ejemplo, un alumno puede estar matriculado en varias asignaturas y en una asignatura puede haber muchos alumnos</li>
 </ul>
-<p>Para representar las relaciones, además de la notación de Chen (indicando las cardinalidades en el lado opuesto) utilizaremos la notación de pata de gallo:</p>
+<p>Para representar las relaciones, además de la notación de <em>Chen</em> (indicando las cardinalidades en el lado opuesto), utilizaremos la notación de pata de gallo:</p>
 <table>
 <thead>
 <tr>
@@ -1241,42 +1248,47 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 </thead>
 <tbody>
 <tr>
-<td>Un anillo representa "cero"</td>
+<td>Un anillo representa "<em>cero</em>"</td>
 <td><img alt="Notación (0,1)" src="images/02notacion0.png" /></td>
 </tr>
 <tr>
-<td>Un guión representa "uno"</td>
+<td>Un guión representa "<em>uno</em>"</td>
 <td><img alt="Notación (1,1)" src="images/02notacion1.png" /></td>
 </tr>
 <tr>
-<td>El pie de gallo representa "muchos" (N)</td>
+<td>El pie de gallo representa "<em>muchos</em>" (N)</td>
 <td><img alt="Notación (1,1)" src="images/02notacionn.png" /></td>
 </tr>
 </tbody>
 </table>
-<p>Con lo que las cardinalidades quedarían:</p>
+<p>Para ello, dibujaremos la cardinalidad máxima lo más cerca de cada entidad y la mínima lo más separada. En la siguiente tabla se supone que tenemos la relación a la izquierda y la entidad a la derecha:</p>
 <table>
 <thead>
 <tr>
 <th>Descripción</th>
+<th>Cardinalidad</th>
 <th>Símbolo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Anillo y guión: Cero mínimo, máximo uno</td>
+<td>Anillo y guión</td>
+<td>(0, 1)</td>
 <td><img alt="Notación (0,1)" src="images/02notacion01.png" /></td>
 </tr>
 <tr>
-<td>Guión y guión: Mínimo uno, máximo uno</td>
+<td>Guión y guión</td>
+<td>(1, 1)</td>
 <td><img alt="Notación (1,1)" src="images/02notacion11.png" /></td>
 </tr>
 <tr>
-<td>Anillo y pata de gallo: Mínimo cero, máximo de N</td>
+<td>Anillo y pata de gallo</td>
+<td>(0, N)</td>
 <td><img alt="Notación (0,1)" src="images/02notacion0n.png" /></td>
 </tr>
 <tr>
-<td>Guion y pata de gallo: Mínimo uno, máximo de N</td>
+<td>Guion y pata de gallo</td>
+<td>(1, N)</td>
 <td><img alt="Notación (0,1)" src="images/02notacion1n.png" /></td>
 </tr>
 </tbody>
@@ -1371,7 +1383,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <p>Algunos ejemplos comunes son cuando una persona se casa con otra persona, una pieza que se compone de otras piezas o un empleado es responsable de otro empleado.</p>
 <p>Vamos a centrarnos en el caso de que un empleado sea el responsable de otro, donde podemos decir que todo empleado trabaja para otro pero que el empleado responsable (el jefe) lo es de varios empleados, lo que daría lugar a una relación 1:N. Así pues, creamos una relación <code>TRABAJAR</code> y la unimos con <code>EMPLEADO</code> por los dos sentidos de la misma, y anotamos el rol en cada una de las cardinalidades.</p>
 <h3 id="atributos">Atributos<a class="headerlink" href="#atributos" title="Permanent link">&para;</a></h3>
-<p>Los atributos describen propiedades de las entidades y de las relaciones, y se representan mediante un elipses u óvalos conectado a la entidad o la relación. Es importante destacar que en una misma entidad, el nombre de los atributos no se puede repetir, pero sí en entidades diferentes.</p>
+<p>Los atributos describen propiedades de las entidades y de las relaciones, y se representan mediante elipses u óvalos conectado a la entidad o la relación mediante una línea. Es importante destacar que en una misma entidad, el nombre de los atributos no se puede repetir, pero sí en entidades diferentes.</p>
 <figure style="align: center;">
     <img src="images/02atributos.png" width="555" title="Atributos">
     <figcaption>Atributos</figcaption>
@@ -1379,7 +1391,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 
 <p>Existen diferentes tipos de atributos:</p>
 <ul>
-<li>Identificador (clave): identifican las ocurrencias de la entidad. Se subraya la palabra, como el <code>dni</code> que identifica a un cliente (no tendremos dos clientes con el mismo DNI)</li>
+<li>Identificador (clave): atributos únicos que identifican las ocurrencias de la entidad. Se subraya la palabra, como el <code>dni</code> que identifica a un cliente (no tendremos dos clientes con el mismo DNI)</li>
 <li>Compuesto: agrupación de varios atributos, ya sean simples o compuestos. Por ejemplo, el campo <code>direccion</code> se compone de la calle, número, etc... Se representa mediante óvalos conectados entre sí, y pondremos el nombre compuesto entre paréntesis.</li>
 <li>Multivaluado: el atributo puede tomar varios valores, como el <code>telefono</code> del cliente, que realmente puede almacenar el fijo, el móvil y el número del trabajo. Se representa mediante un doble óvalo. (en otras notaciones, se pone una <code>n</code> al lado del conector del atributo)</li>
 <li>Derivado: Su valor se deduce a partir de otros atributos de la misma entidad u otras entidades, o se calcula partir de un dato. Por ejemplo, el campo <code>edad</code> se obtiene a partir de la fecha de nacimiento del cliente.</li>
@@ -1392,6 +1404,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <p>Piensa en dos entidades que tengan una relación con la cardinalidad que consideres, y define al menos un atributo de cada tipo.</p>
 </div>
 <h4 id="identificadores">Identificadores<a class="headerlink" href="#identificadores" title="Permanent link">&para;</a></h4>
+<p>En toda entidad es obligatorio tener uno o más atributos identificadores.</p>
 <p>Respecto a los atributos identificadores podemos tener:</p>
 <ul>
 <li>atributos identificadores sencillos. Un atributo identifica de forma unívoca a una ocurrencia de la entidad. Por ejemplo, el <code>isbn</code> de un libro.</li>
