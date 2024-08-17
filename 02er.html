@@ -996,13 +996,20 @@
 </ul>
 <div class="admonition question">
 <p class="admonition-title">Cuestionario inicial</p>
-<ul>
+<ol>
 <li>¿Conoces algún modelo conceptual?</li>
-<li>¿Qué tres elementos son los más importantes en un modelo ER?</li>
+<li>¿Cuál es el propósito del modelo <abbr title="Entidad-Relación">ER</abbr>?</li>
+<li>¿Qué tres elementos son los más importantes en un modelo <abbr title="Entidad-Relación">ER</abbr>?</li>
 <li>¿Qué valores puede tomar la cardinalidad mínima? ¿Y la máxima?</li>
 <li>¿Qué diferencia una entidad fuerte de una débil?</li>
-</ul>
-<p>TODO: completar</p>
+<li>A partir de la cardinalidad máxima, ¿que tres tipos de relaciones binarias se pueden dar?</li>
+<li>¿Qué tipos de atributos conoces?</li>
+<li>¿Qué es una relación reflexiva?</li>
+<li>¿Qué relación existe entre la generalización y la especialización?</li>
+<li>¿Qué relación existe entre una superclase y una subclase?</li>
+<li>¿Qué diferencia una restricciones de existencia a una de identificación?</li>
+<li>¿Cuándo se utiliza una agregación o entidad asociativa?</li>
+</ol>
 </div>
 <h3 id="programacion-de-aula-11h">Programación de Aula (11h)<a class="headerlink" href="#programacion-de-aula-11h" title="Permanent link">&para;</a></h3>
 <p>Esta unidad es la segunda, con lo que se imparte en la primera evaluación, con una duración estimada de 10 horas, durante la última semana de septiembre y la primera quincena de octubre:</p>
@@ -1060,7 +1067,7 @@
 </tr>
 <tr>
 <td>9</td>
-<td>Modelado EER. Generalización y especialización</td>
+<td>Modelado <abbr title="Entidad-Relación Extendido">EER</abbr>. Generalización y especialización</td>
 <td><a href="#AC209">AC209</a></td>
 <td><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr></td>
 </tr>
@@ -1084,19 +1091,19 @@
 </tr>
 <tr>
 <td>12</td>
-<td>Reto - Diseñando una BD</td>
+<td>Reto - Diseñando una <abbr title="Base de datos">BD</abbr></td>
 <td><a href="#PR215">PR215</a></td>
 <td><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr></td>
 </tr>
 </tbody>
 </table>
-<h2 id="diseno-de-bd">Diseño de BD<a class="headerlink" href="#diseno-de-bd" title="Permanent link">&para;</a></h2>
+<h2 id="diseno-de-bd">Diseño de <abbr title="Base de datos">BD</abbr><a class="headerlink" href="#diseno-de-bd" title="Permanent link">&para;</a></h2>
 <p>En la unidad anterior hemos trabajado conceptos generales asociados a las bases de datos y los sistemas gestores de bases de datos. Estudiamos que existen diferentes modelos de datos que dan lugar a diferentes tipos de soluciones.</p>
 <p>Pero antes de entrar en uno de los modelos, conviene saber cual es el proceso de diseño de una base de datos. Queda claro que un buen diseño sobre los datos va a facilitar el posterior desarrollo de las aplicaciones que explotan la base de datos.</p>
 <p>Antes de comenzar el diseño, el primer paso y más crítico es determinar los requisitos de la base de datos mediante un sistema de información, describiendo el problema que la base de datos debe cubrir. Este paso está más asociado a la ingeniería del software y lo estudiarás en detalle en el módulo de <em>Entornos de Desarrollo</em>.</p>
 <p>Las fases que se realizan a la hora de diseñar una base de datos son tres:</p>
 <ol>
-<li><strong>Diseño conceptual</strong>: a partir de los requisitos y entendido el problema (conocido como el mundo real), mediante un modelo conceptual de alto nivel (EER) crearemos el <strong>esquema conceptual</strong>.</li>
+<li><strong>Diseño conceptual</strong>: a partir de los requisitos y entendido el problema (conocido como el mundo real), mediante un modelo conceptual de alto nivel (<abbr title="Entidad-Relación Extendido">EER</abbr>) crearemos el <strong>esquema conceptual</strong>.</li>
 <li><strong>Diseño lógico</strong>: transformación de un modelo conceptual a un modelo de datos concreto para poder representar el problema (relacional, jerárquico, ...). En este paso, ya nos tenemos que haber decidido por un modelo de datos, y en algunos casos, incluso por un SGBD concreto. El resultado del diseño lógico es el <strong>esquema lógico/canónico</strong>.</li>
 <li><strong>Diseño físico</strong>: sobre el modelo lógico de datos del punto anterior sobre un SGBD concreto, se define la representación física de las estructuras, obteniendo el <strong>esquema físico/interno</strong>.</li>
 </ol>
@@ -1122,8 +1129,8 @@
 <h2 id="el-modelo-entidad-relacion">El modelo Entidad Relación<a class="headerlink" href="#el-modelo-entidad-relacion" title="Permanent link">&para;</a></h2>
 <p>Entendemos como <strong>modelo conceptual</strong> el conjunto de conceptos y reglas que nos permiten aplicar una serie de abstracciones con el propósito de definir y manipular datos de la realidad, almacenándola en una base de datos.</p>
 <p>Centrándonos en el <strong>modelo entidad/relación</strong>, cuyo nombre completo es modelo entidad/interrelación (<em>entity/relationship</em> en inglés), es un modelo de datos conceptual de alto nivel, propuesto por <em>Peter Chen</em> en 1976, y vigente a día de hoy por su simplicidad y legibilidad, ya que el resultado del análisis del problema se representa de forma visual mediante diagramas entidad/relación.
-Ha tenido numerosas extensiones y aportaciones de muchos otros autores, teniendo soporte por numerosas herramientas de software de diseño (CASE), lo que ha dado lugar a que no exista un único Modelo ER, sino una familia de modelos.</p>
-<p>El modelo ER describe el <em>mundo real</em> como un conjunto de <strong>entidades</strong> y de <strong>relaciones</strong> entre ellas.</p>
+Ha tenido numerosas extensiones y aportaciones de muchos otros autores, teniendo soporte por numerosas herramientas de software de diseño (CASE), lo que ha dado lugar a que no exista un único Modelo <abbr title="Entidad-Relación">ER</abbr>, sino una familia de modelos.</p>
+<p>El modelo <abbr title="Entidad-Relación">ER</abbr> describe el <em>mundo real</em> como un conjunto de <strong>entidades</strong> y de <strong>relaciones</strong> entre ellas.</p>
 <h3 id="elementos">Elementos<a class="headerlink" href="#elementos" title="Permanent link">&para;</a></h3>
 <p>Una <strong>entidad</strong> es cualquier persona, concepto, suceso o evento (en definitiva, cualquier <em>cosa</em>) con existencia independiente sobre la cual se desea almacenar información.
 La entidad representa un tipo de objeto, el concepto que permite representar a un conjunto de objetos similares. Por ejemplo <code>Persona</code>, <code>Cliente</code>, <code>Alumno</code>, <code>Asignatura</code>, etc... serían entidades.</p>
@@ -1224,7 +1231,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Representación</p>
-<p>Para representar la cardinalidad en el modelo ER, <strong>las cardinalidades se anotan en el extremo opuesto de la entidad</strong>, utilizándose la regla <em>Entidad, Relación, Cardinalidad, Entidad</em>:</p>
+<p>Para representar la cardinalidad en el modelo <abbr title="Entidad-Relación">ER</abbr>, <strong>las cardinalidades se anotan en el extremo opuesto de la entidad</strong>, utilizándose la regla <em>Entidad, Relación, Cardinalidad, Entidad</em>:</p>
 <p><figure style="align: center;">
     <img src="images/02card-producto-categoria.png" width="505" title="Cardinalidades en la relación">
     <figcaption>Cardinalidades en la relación</figcaption>
@@ -1383,6 +1390,16 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
     <figcaption>Notación UA</figcaption>
 </figure></p>
 </div>
+<h5 id="relaciones-nm-con-fechas">Relaciones N:M con fechas<a class="headerlink" href="#relaciones-nm-con-fechas" title="Permanent link">&para;</a></h5>
+<p>En algunos casos, las relaciones muchos a muchos pueden tener múltiples ocurrencias entre las mismas entidades en fechas distintas.</p>
+<p>Por ejemplo, en el contexto de una biblioteca, si pensamos en la relación <code>PRESTAR</code> entre <code>LIBRO</code> y <code>USUARIO</code>, podemos deducir que un usuario puede llevarse prestados muchos libros y un libro lo pueden prestar muchos usuarios. Pero ¿cómo modelamos que un usuario se lleva el mismo libro en fechas diferentes?</p>
+<p>Si ponemos un atributo fecha en la relación, estamos almacenando la fecha del préstamo, pero no indicamos de ninguna manera que podemos tener más de una fecha. Una solución factible es hacer el atributo <code>fecha</code> multivaluado, lo que cubriría el caso.</p>
+<figure style="align: center;">
+    <img src="images/02relacionesnm-fecha.png" width="509" title="Relación N:M con fechas">
+    <figcaption>Relación N:M con fechas</figcaption>
+</figure>
+
+<p>Otra posibilidad es crear una entidad débil, por ejemplo, <code>PRESTAMO</code>, con restricciones de ID con <code>LIBRO</code> y <code>USUARIO</code>.</p>
 <h4 id="relaciones-reflexivas">Relaciones reflexivas<a class="headerlink" href="#relaciones-reflexivas" title="Permanent link">&para;</a></h4>
 <figure style="float: right;">
     <img src="images/02relacion-reflexiva.png" width="166" title="Relación reflexiva">
@@ -1425,7 +1442,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Supuesto Carreteras</p>
-<p>Se desea diseñar una base de datos que contenga la información relativa a todas las carreteras de España. Se pide realizar el diseño del modelo ER sabiendo que:</p>
+<p>Se desea diseñar una base de datos que contenga la información relativa a todas las carreteras de España. Se pide realizar el diseño del modelo <abbr title="Entidad-Relación">ER</abbr> sabiendo que:</p>
 <ul>
 <li>Las carreteras se encuentran divididas en tramos.</li>
 <li>Un tramo, del que nos interesa su longitud, siempre pertenece a una única carretera y no puede cambiar de carretera.</li>
@@ -1564,7 +1581,7 @@ y los comunes se colocan en la superclase.</p>
 </details>
 </div>
 <h3 id="agregacion">Agregación<a class="headerlink" href="#agregacion" title="Permanent link">&para;</a></h3>
-<p>La agregación surge de la limitación que existe en el modelo ER de no permitir expresar relaciones
+<p>La agregación surge de la limitación que existe en el modelo <abbr title="Entidad-Relación">ER</abbr> de no permitir expresar relaciones
 entre relaciones binarias, y en gran medida, haciendo uso de agregaciones podemos evitar hacer uso de relaciones ternarias.</p>
 <p>Así pues, una agregación se comporta como una entidad más, con un nivel de abstracción mayor que la propia relación.</p>
 <p>Por ejemplo, tengamos el caso de un docente que imparte clase en una determinada aula. El docente dará clase a varios grupos en el aula, y en el aula entran varios docentes. Queda claro que una relación N:M entre <code>DOCENTE</code> y <code>AULA</code> (por ejemplo, <code>IMPARTIR</code>) nos permite modelar este caso. Pero ¿y si queremos registrar las incidencias que se producen en el aula cuando un docente está dando clase? Si unimos la entidad <code>INCIDENCIA</code> con <code>DOCENTE</code> o con <code>AULA</code>, estaríamos perdiendo información.</p>
@@ -1584,10 +1601,10 @@ tercera entidad, como si ocurre en las ternarias.</p>
 <p>Herramienta gráfica <a href="https://erdplus.com/">ERDPlus</a> para la realización de diagramas entidad relación.</p>
 </li>
 <li>
-<p>Materiales sobre el módulo de BD:</p>
+<p>Materiales sobre el módulo de <abbr title="Base de datos">BD</abbr>:</p>
 <ul>
 <li>Modelo Entidad Relación: <a href="https://jorgesanchez.net/manuales/gbd/entidad-relacion.html">Jorge Sanchez</a></li>
-<li>Interpretación de Diagramas ER: <a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut2/recopila.html">Javier Gutierrez</a></li>
+<li>Interpretación de Diagramas <abbr title="Entidad-Relación">ER</abbr>: <a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut2/recopila.html">Javier Gutierrez</a></li>
 <li>Diseño de modelo lógicos normalizados: <a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema2/index.html">gestionbasesdatos.readthedocs.io</a></li>
 </ul>
 </li>
@@ -1605,12 +1622,12 @@ Los productos son suministrados por diferentes proveedores. Se debe tener en cue
 </ul>
 <p><a name="AC202"></a></p>
 <ul>
-<li><strong>AC202</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del ejercicio anterior, realiza el modelo ER unicamente con las entidades y las relaciones (sin colocar los atributos) y define las cardinalidades de las relaciones. Para ello, dibuja en un folio el modelo y escanea o adjunta una foto del resultado y súbelo a Aules.</li>
+<li><strong>AC202</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del ejercicio anterior, realiza el modelo <abbr title="Entidad-Relación">ER</abbr> unicamente con las entidades y las relaciones (sin colocar los atributos) y define las cardinalidades de las relaciones. Para ello, dibuja en un folio el modelo y escanea o adjunta una foto del resultado y súbelo a Aules.</li>
 </ul>
 <p><a name="AC203"></a></p>
 <ul>
 <li>
-<p><strong>AC203</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr> // 3p) A partir del siguiente modelo ER, indica las cardinalidades de las relaciones, y a continuación, redacta el texto que daría lugar como resultado este modelo:</p>
+<p><strong>AC203</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr> // 3p) A partir del siguiente modelo <abbr title="Entidad-Relación">ER</abbr>, indica las cardinalidades de las relaciones, y a continuación, redacta el texto que daría lugar como resultado este modelo:</p>
 <p><figure style="align: center;">
     <img src="images/02ac203.png" width="1000" title="Actividad 203">
     <figcaption>Actividad 203</figcaption>
@@ -1620,7 +1637,7 @@ Los productos son suministrados por diferentes proveedores. Se debe tener en cue
 <p><a name="AC204"></a></p>
 <ul>
 <li>
-<p><strong>AC204</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 1,5p) Realiza el modelo ER del siguiente sistema de información:</p>
+<p><strong>AC204</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 1,5p) Realiza el modelo <abbr title="Entidad-Relación">ER</abbr> del siguiente sistema de información:</p>
 <p>Una empresa ubicada en distintos edificios de distintos polígonos industriales desea registrar la distribución de sus departamentos.<br />
 Un departamento puede estar distribuido en varios edificios. Del departamento tenemos su nombre y el número de empleados que lo integran.<br />
 De los edificios sabemos su nombre y el número de despachos que tienen. En cada edificio (que está localizado en un polígono industrial, y del que se conoce su nombre y la ciudad en la que está situado) pueden ubicarse distintos departamentos.<br />
@@ -1630,7 +1647,7 @@ Debido a esto, se desea controlar el número de despachos que cada departamento 
 <p><a name="AC205"></a></p>
 <ul>
 <li>
-<p><strong>AC205</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr> // 1,5p) Realiza el modelo ER del siguiente sistema de información:</p>
+<p><strong>AC205</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr> // 1,5p) Realiza el modelo <abbr title="Entidad-Relación">ER</abbr> del siguiente sistema de información:</p>
 <p>Una pequeña empresa telefónica desea crear una base de datos para el control de las llamadas efectuadas exclusivamente entre sus clientes.<br />
 Dispondrá de información sobre las terminales de su red (si se trata de teléfonos móviles o fijos, el no de teléfono y el nombre del cliente), y de cada llamada realizada entre ellos se almacenará: números de teléfono del emisor y el receptor de la llamada, la hora de comienzo de la misma y su duración.</p>
 </li>
@@ -1638,7 +1655,7 @@ Dispondrá de información sobre las terminales de su red (si se trata de teléf
 <p><a name="AR206"></a></p>
 <ul>
 <li>
-<p><strong>AR206</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo ER de una base de datos que almacenará información sobre los ríos de España.</p>
+<p><strong>AR206</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo <abbr title="Entidad-Relación">ER</abbr> de una base de datos que almacenará información sobre los ríos de España.</p>
 <p>En esta base de datos vamos a almacenar el nombre y el número de habitantes de todas las comunidades autónomas, el nombre y el número de habitantes de algunas ciudades, así como la autonomía a la que pertenecen.<br />
 Se desea conocer el nombre, longitud y caudal de algunos ríos, registrando las ciudades (de entre las que tenemos almacenadas) por las que pasan, así como las comunidades que bañan. Además, se guardará el número de kilómetros que de cada río discurren por cada comunidad autónoma.</p>
 </li>
@@ -1646,7 +1663,7 @@ Se desea conocer el nombre, longitud y caudal de algunos ríos, registrando las 
 <p><a name="AP207"></a></p>
 <ul>
 <li>
-<p><strong>AP207</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo ER del siguiente sistema de información:</p>
+<p><strong>AP207</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo <abbr title="Entidad-Relación">ER</abbr> del siguiente sistema de información:</p>
 <p>Una agencia de viajes pretende informatizar su gestión, que hasta ahora se venía haciendo de forma manual. De cada viaje se tiene la siguiente información: código del viaje, nombre del viaje y países visitados</p>
 <p>Cada viaje se desarrolla en una serie de jornadas (días). De cada jornada se desea mantener la siguiente información: número de la jornada en el viaje, descripción, localidad de partida, localidad de destino y localidades intermedias que se visitan (se puede visitar 0,1 o más localidades intermedias), principal medio de transporte utilizado (0 ó 1), kilómetros recorridos y hotel de pernocta (puede ocurrir que una jornada no incluya ningún hotel de pernocta, por ejemplo, una jornada de vuelo).</p>
 <p>En un viaje se visitan uno o más países. De cada país se cuenta con la siguiente información: nombre, pasaporte (si/no), localidad capital y descripción.</p>
@@ -1658,7 +1675,7 @@ De cada hotel se desea conocer la siguiente información: código de hotel, nomb
 <p><a name="AC208"></a></p>
 <ul>
 <li>
-<p><strong>AC208</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Completa el siguiente modelo ER a partir del siguiente sistema de información sobre una prueba ciclista, teniendo en cuenta que no están modeladas todas las entidades, relaciones y/o atributos:</p>
+<p><strong>AC208</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Completa el siguiente modelo <abbr title="Entidad-Relación">ER</abbr> a partir del siguiente sistema de información sobre una prueba ciclista, teniendo en cuenta que no están modeladas todas las entidades, relaciones y/o atributos:</p>
 <p>A los ciclistas inscritos en la prueba se les asigna un dorsal único. De cada ciclista participante se desea conocer su edad, nombre y equipo al que pertenece. De cada equipo se desea conocer su director.</p>
 <p>La prueba es por etapas. De cada etapa se registra el número de etapa, los kilómetros, la ciudad de salida y la de llegada (con unas breves reseñas geográficas, históricas y económicas) y los puertos por los que pasa la etapa (nombre, altura, categoría).</p>
 <p>Se quiere conocer qué ciclista ha ganado en cada puerto y quién ha ganado cada etapa.</p>
@@ -1671,7 +1688,7 @@ De cada hotel se desea conocer la siguiente información: código de hotel, nomb
 <p><a name="AC209"></a></p>
 <ul>
 <li>
-<p><strong>AC209</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo ER del siguiente sistema de información sobre cine:</p>
+<p><strong>AC209</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo <abbr title="Entidad-Relación">ER</abbr> del siguiente sistema de información sobre cine:</p>
 <p>De cada película le interesará conocer el título, el año de producción, la nacionalidad, y los datos (nombre, fecha_nacimiento y nacionalidad) de los intérpretes (como mucho los 6 intérpretes principales), el director y los autores del guión en el que está basada la película. De este último -el guión- se sabrá además el título.</p>
 <p>También desea conocer los posibles Oscars ganados por cada película en las modalidades de: mejor película, mejor guión, mejores intérpretes y mejor director.</p>
 <p>Por último, se tendrán identificadas las películas que son remakes de otras, conociendo en ese caso, la película original y los distintos remakes.</p>
@@ -1680,7 +1697,7 @@ De cada hotel se desea conocer la siguiente información: código de hotel, nomb
 <p><a name="AC210"></a></p>
 <ul>
 <li>
-<p><strong>AC210</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo ER del siguiente sistema de información sobre un campeonato de ajedrez que gestiona toda la información participantes, alojamientos y partidas :</p>
+<p><strong>AC210</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo <abbr title="Entidad-Relación">ER</abbr> del siguiente sistema de información sobre un campeonato de ajedrez que gestiona toda la información participantes, alojamientos y partidas :</p>
 <p>En el campeonato participan jugadores y árbitros; de ambos se requiere conocer el número de asociado, nombre, dirección, teléfono de contacto y campeonatos en los que han participado (como jugador o como árbitro). De los jugadores se precisa además el nivel de juego en una escala de 1 a 10. Ningún árbitro puede participar como jugador.</p>
 <p>Los países envían al campeonato un conjunto de jugadores y
 árbitros, aunque no todos los países envían participantes. Todo jugador y árbitro es enviado por un único país. Un país puede ser representado por otro país. Cada país se identifica por un número correlativo según su orden alfabético e interesa conocer además de su nombre, el número de clubes de ajedrez existentes en el mismo.</p>
@@ -1697,7 +1714,7 @@ por un experto.</p>
 <p><a name="AC211"></a></p>
 <ul>
 <li>
-<p><strong>AC211</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo ER del siguiente sistema de información sobre las cadenas de radio del panorama radiofónico:</p>
+<p><strong>AC211</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo <abbr title="Entidad-Relación">ER</abbr> del siguiente sistema de información sobre las cadenas de radio del panorama radiofónico:</p>
 <!--  Agregación - 02p2 16 Radio - Escanear 5.png-->
 <p>De cada cadena conoceremos el nombre, el género (musical, de noticias, deportiva, ...) y además, el nombre de las provincias en las que emite, teniendo en cuenta que una cadena puede tener varias emisoras en una misma provincia, cada una de ellas emitiendo en su correspondiente dial.</p>
 <p>Por otra parte, conoceremos el nombre y la antigüedad de todos los empleados de cada cadena de radio. De los técnicos conoceremos además su especialidad (de sonido, de archivo, de mantenimiento, ...) y de los locutores los programas que presentan.</p>
@@ -1709,7 +1726,7 @@ por un experto.</p>
 <p><a name="AR212"></a></p>
 <ul>
 <li>
-<p><strong>AR212</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo ER del siguiente sistema de información sobre la Eurocopa:</p>
+<p><strong>AR212</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo <abbr title="Entidad-Relación">ER</abbr> del siguiente sistema de información sobre la Eurocopa:</p>
 <p>Nos interesa conocer el nombre de cada selección y su indumentaria habitual (color de la camiseta, del pantalón y las calzas), el nombre del seleccionador y el número de años que éste lleva en el cargo, y los nombres, número de camiseta y posición (portero, defensa, centrocampista, ...) de los 22 jugadores de cada equipo.</p>
 <p>Además, se desea almacenar información de todos los partidos jugados por cada equipo: la fecha, el lugar, el equipo local y el resultado (número de goles del equipo local y del visitante).</p>
 <p>También, de cada gol marcado, el jugador que lo marca, el portero que lo encaja, el minuto de juego y el tipo de gol (de falta, de penalty, en jugada, etc...).</p>
@@ -1722,10 +1739,10 @@ por un experto.</p>
 <p><a name="AC214"></a></p>
 <ul>
 <li>
-<p><strong>AC214</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) A partir del siguiente modelo EER sobre un concurso de cocina:</p>
+<p><strong>AC214</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) A partir del siguiente modelo <abbr title="Entidad-Relación Extendido">EER</abbr> sobre un concurso de cocina:</p>
 <p><figure style="align: center;">
     <img src="images/02cocina.png" width="1080" title="Modelo ER Cocina">
-    <figcaption>Modelo ER Cocina</figcaption>
+    <figcaption>Modelo <abbr title="Entidad-Relación">ER</abbr> Cocina</figcaption>
 </figure></p>
 <p>Contesta las siguientes cuestiones justificando tu respuesta:</p>
 <ol>
@@ -1749,7 +1766,7 @@ por un experto.</p>
 <li>Emplear atributos de diferente tipo.</li>
 <li>Utilizar una generalización o agregación.</li>
 </ul>
-<p>Se debe entrar un informe con el sistema de información, el modelo EER y describir las decisiones tomadas en su elaboración.</p>
+<p>Se debe entrar un informe con el sistema de información, el modelo <abbr title="Entidad-Relación Extendido">EER</abbr> y describir las decisiones tomadas en su elaboración.</p>
 <p>Se utilizará una rúbrica para su evaluación en base a la siguiente lista de cotejo:</p>
 <ul>
 <li>Todas las entidades tienen un atributo que las identifica.</li>
@@ -1763,11 +1780,9 @@ por un experto.</p>
 </ul>
 <!--
 TODO: 
-* AC209 Restricción ID,E
 * Explicar Supuesto Generalización ...
-* Completar rúbrica reto
+* Completar rúbrica reto... repensar con lista de cotejo
 * Revisar apartado inicial sobre ing software
-* Añadir preguntas cuestionario inicial
 -->
 
 
