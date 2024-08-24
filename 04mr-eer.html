@@ -6,6 +6,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="Conceptos y actividades sobre la transformación del modelado conceptual entidad relación al modelo lógico relacional">
+      
       
       
         <link rel="canonical" href="https://aitor-medrano.github.io/bd/04mr-eer.html">
@@ -18,7 +20,7 @@
     
     
       
-        <title>Diseño Lógico: Tranformación del modelo ER a MR - Bases de datos</title>
+        <title>Diseño Lógico - Transformación del modelo ER a MR - Bases de datos</title>
       
     
     
@@ -65,9 +67,9 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Diseño Lógico: Tranformación del modelo ER a MR - Bases de datos" >
+        <meta  property="og:title"  content="Diseño Lógico - Transformación del modelo ER a MR - Bases de datos" >
       
-        <meta  property="og:description"  content="None" >
+        <meta  property="og:description"  content="Conceptos y actividades sobre la transformación del modelado conceptual entidad relación al modelo lógico relacional" >
       
         <meta  property="og:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/04mr-eer.png" >
       
@@ -81,9 +83,9 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Diseño Lógico: Tranformación del modelo ER a MR - Bases de datos" >
+        <meta  name="twitter:title"  content="Diseño Lógico - Transformación del modelo ER a MR - Bases de datos" >
       
-        <meta  name="twitter:description"  content="None" >
+        <meta  name="twitter:description"  content="Conceptos y actividades sobre la transformación del modelado conceptual entidad relación al modelo lógico relacional" >
       
         <meta  name="twitter:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/04mr-eer.png" >
       
@@ -108,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#diseno-logico-tranformacion-del-modelo-er-a-mr" class="md-skip">
+        <a href="#diseno-logico-transformacion-del-modelo-er-a-mr" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -143,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Diseño Lógico: Tranformación del modelo ER a MR
+              Diseño Lógico - Transformación del modelo ER a MR
             
           </span>
         </div>
@@ -305,7 +307,27 @@
         
   
   <span class="md-ellipsis">
-    2.- Modelo conceptual: Entidad relación
+    2.- Diseño conceptual: Modelo Entidad/Relación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03mr.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.- Diseño lógico: Modelo Relacional
   </span>
   
 
@@ -403,9 +425,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#apuntes" class="md-nav__link">
+  <a href="#pasos" class="md-nav__link">
     <span class="md-ellipsis">
-      Apuntes
+      Pasos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
     </span>
   </a>
   
@@ -433,22 +464,42 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="tags.html#modelo-entidad-relacion" class="md-tag">Modelo Entidad Relación</a>
+    
+  
+    
+    
+    
+      <a href="tags.html#modelo-relacional" class="md-tag">Modelo Relacional</a>
+    
+  
+    
+    
+    
+      <a href="tags.html#ra6" class="md-tag">RA6</a>
+    
+  
+</nav>
 
 
-<h1 id="diseno-logico-tranformacion-del-modelo-er-a-mr">Diseño Lógico: Tranformación del modelo ER a MR<a class="headerlink" href="#diseno-logico-tranformacion-del-modelo-er-a-mr" title="Permanent link">&para;</a></h1>
+
+<h1 id="diseno-logico-transformacion-del-modelo-er-a-mr">Diseño Lógico: Transformación del modelo ER a MR<a class="headerlink" href="#diseno-logico-transformacion-del-modelo-er-a-mr" title="Permanent link">&para;</a></h1>
 <h2 id="programacion">Programación<a class="headerlink" href="#programacion" title="Permanent link">&para;</a></h2>
-<p>En esta UT vamos a trabajar los siguientes resultados de aprendizaje (RA):</p>
-<ul>
-<li>RA6: <strong>Diseña modelos relacionales normalizados interpretando diagramas entidad/relación</strong>.</li>
-</ul>
+<p>En esta UT vamos a terminar de trabajar el RA6: <strong>Diseña modelos relacionales normalizados interpretando diagramas entidad/relación</strong>.</p>
 <h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
 <ul>
-<li><abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>: Se han utilizado herramientas gráficas para representar el diseño lógico.</li>
-<li><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>: Se han identificado las tablas del diseño lógico.</li>
-<li><abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>: Se han identificado los campos que forman parte de las tablas del diseño lógico.</li>
-<li><abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>: Se han analizado las relaciones entre las tablas del diseño lógico.</li>
-<li><abbr title="Se han identificado los campos clave.">CE6e</abbr>: Se han identificado los campos clave.</li>
-<li><abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>: Se han aplicado reglas de integridad.</li>
+<li><strong><abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr></strong>: Se han utilizado herramientas gráficas para representar el diseño lógico.</li>
+<li><strong><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr></strong>: Se han identificado las tablas del diseño lógico.</li>
+<li><strong><abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr></strong>: Se han identificado los campos que forman parte de las tablas del diseño lógico.</li>
+<li><strong><abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr></strong>: Se han analizado las relaciones entre las tablas del diseño lógico.</li>
+<li><strong><abbr title="Se han identificado los campos clave.">CE6e</abbr></strong>: Se han identificado los campos clave.</li>
+<li><strong><abbr title="Se han aplicado reglas de integridad.">CE6f</abbr></strong>: Se han aplicado reglas de integridad.</li>
 </ul>
 <h3 id="contenidos">Contenidos<a class="headerlink" href="#contenidos" title="Permanent link">&para;</a></h3>
 <p>Interpretación de Diagramas Entidad/Relación:</p>
@@ -509,7 +560,7 @@
 </tr>
 <tr>
 <td>8</td>
-<td>Prueba objetiva</td>
+<td>Reto - diseño lógico</td>
 <td></td>
 <td></td>
 </tr>
@@ -519,10 +570,17 @@
 <td></td>
 <td></td>
 </tr>
+<tr>
+<td>10</td>
+<td>Prueba objetiva</td>
+<td></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <p>Al finalizar esta unidad, realizaremos una prueba objetiva consistente en modelar supuestos sencillos y posteriormente transformarlos a modelo relacional, así como interpretar modelos ya existentes.</p>
-<h2 id="apuntes">Apuntes<a class="headerlink" href="#apuntes" title="Permanent link">&para;</a></h2>
+<h2 id="pasos">Pasos<a class="headerlink" href="#pasos" title="Permanent link">&para;</a></h2>
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 
 
