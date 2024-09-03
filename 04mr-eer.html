@@ -393,13 +393,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#programacion" class="md-nav__link">
+  <a href="#propuesta-didactica" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación
+      Propuesta didáctica
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Programación">
+    <nav class="md-nav" aria-label="Propuesta didáctica">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -657,13 +657,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#programacion" class="md-nav__link">
+  <a href="#propuesta-didactica" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación
+      Propuesta didáctica
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Programación">
+    <nav class="md-nav" aria-label="Propuesta didáctica">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -905,7 +905,7 @@
 
 
 <h1 id="diseno-logico-transformacion-del-modelo-er-a-mr">Diseño Lógico: Transformación del modelo ER a MR<a class="headerlink" href="#diseno-logico-transformacion-del-modelo-er-a-mr" title="Permanent link">&para;</a></h1>
-<h2 id="programacion">Programación<a class="headerlink" href="#programacion" title="Permanent link">&para;</a></h2>
+<h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
 <p>En esta UT vamos a terminar de trabajar el RA6: <strong>Diseña modelos relacionales normalizados interpretando diagramas entidad/relación</strong>.</p>
 <h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1229,7 +1229,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </code></p>
 <p>De esta manera, toda ocurrencia de A debe tener una de B.</p>
 <h3 id="identificacion">Identificación<a class="headerlink" href="#identificacion" title="Permanent link">&para;</a></h3>
-<p>La clave ajena forma parte de la clave primaria.</p>
+<p>En las restricciones de identificación, la entidad débil se identifica, completamente o en parte. con la entidad fuerte. Es por ello, que la clave ajena debe formar parte de la clave primaria.</p>
 <p><code>
 <strong>A</strong> (<ins>a0</ins>, <ins>b0</ins><code>*</code>, a1)<br />
 · PK: (a0, bo)<br />
@@ -1261,30 +1261,6 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · PK: (a0)<br />
 · FK: (a0) → A<br />
 </code></p>
-<h3 id="alternativas">Alternativas<a class="headerlink" href="#alternativas" title="Permanent link">&para;</a></h3>
-<p>Otros planteamientos diferentes a explicitar consisten en:</p>
-<ul>
-<li>
-<p><strong>colapsar</strong>: </p>
-</li>
-<li>
-<p><strong>dividir</strong>:</p>
-</li>
-</ul>
-<p>Crear una sola tabla -  COLAPSAR
- Los subtipos se diferencian en muy pocos atributos
-Las relaciones que los asocian al resto de las entidades sean las mismas para los subtipos.
-+ rápida, peor semántica
-
-
-Los accesos a los datos de los subtipos siempre afectan a los atributos comunes.
- + eficiente en consultas sobre hijos, menos en atributos comunes.
-
-Crear una tabla por cada subtipo, pero no para el padre - DIVIDIR
-
-Existen muchos atributos distintos entre los subtipos
-
-redundancia, peor semántica</p>
 <p>Por ejemplo, supongamos el siguiente modelo que representa la especialización de una persona en estudiante o trabajador:</p>
 <p>Si explicitamos las tablas obtendremos:</p>
 <p><code>
@@ -1301,8 +1277,68 @@ redundancia, peor semántica</p>
 · PK: (dni)<br />
 · FK: (dni) → PERSONA 
 </code></p>
+<h3 id="alternativas">Alternativas<a class="headerlink" href="#alternativas" title="Permanent link">&para;</a></h3>
+<p>Otros planteamientos diferentes a explicitar consisten en:</p>
+<ul>
+<li>
+<p><strong>Colapsar</strong>: consiste en crea un única tabla con los datos de la superclase y las subclases. Es válido cuando las subclases se diferencian en muy pocos atributos. Como desventaja, las relaciones que los asocian al resto de las entidades son las mismas para las subclases, sin poder diferenciarlas. Así pues, es un solución más rápida, pero aporta peor semántica al modelo.</p>
+</li>
+<li>
+<p><strong>Dividir</strong>: si existen muchos atributos distintos entre las subclases y los accesos a los datos de las subclases también afectan a los atributos comunes, es mejor dividir los datos y crear una tabla por cada subclase, pero no para el padre. Este planteamiento es más eficiente en consultas sobre los hijos, pero aporta más redundancia de datos y peor semántica.</p>
+</li>
+</ul>
+<p>Si retomamos el mismo ejemplo con estos planteamientos tendríamos:</p>
+<ul>
+<li>
+<p>Colapsar: Una única tabla, creando un atributo tipo para indicar si es <code>estudiante</code> o <code>trabajador</code>:</p>
+<p><code>
+<strong>PERSONA</strong> (<ins>dni</ins>, nombre, dirección, telefono, tipo, nivelEst, lugarEst, horasCur, numSegSocial, salario)<br />
+· PK: (dni)<br />
+</code></p>
+</li>
+<li>
+<p>Dividir: Una tabla por cada subclase:</p>
+<p><code>
+<strong>ESTUDIANTE</strong> (<ins>dni</ins>, nombre, dirección, telefono, nivelEst, lugarEst, horasCur)<br />
+· PK: (dni)<br />
+</code></p>
+<p><code>
+<strong>TRABAJADOR</strong> (<ins>dni</ins>, nombre, dirección, telefono, numSegSocial, salario)<br />
+· PK: (dni)<br />
+</code></p>
+</li>
+</ul>
 <h2 id="agregacion">Agregación<a class="headerlink" href="#agregacion" title="Permanent link">&para;</a></h2>
-<p>FIXME: completar</p>
+<p>Una agregación no es más que una relación muchos a muchos, sobre la cual se relacionan otras tablas.</p>
+<p>Vamos a pasar al modelo relacional el ejemplo que hicimos en la unidad de modelo conceptual, sobre las incidencias que se registran en un centro educativo.</p>
+<p>El modelo ER es el siguiente, donde la entidad <code>SESION</code> es una agregación entre <code>DOCENTE</code> y <code>AULA</code>. La agregación que conceptualmente es una relación N:M se traduce en dos relaciones uno a muchos:</p>
+<figure style="float: left;">
+    <img src="images/02agregacion.png" width="467" title="Agregación">
+    <figcaption>Agregación</figcaption>
+</figure>
+
+<p>Así pues, el modelo relacional sería:</p>
+<p><code>
+<strong>DOCENTE</strong> (<ins>dni</ins>, nombre)<br />
+· PK: (dni)
+</code></p>
+<p><code>
+<strong>AULA</strong> (<ins>codigo</ins>, tipo)<br />
+· PK: (codigo)
+</code></p>
+<p>Si nos fijamos, la agregación tiene el mismo esquema que una relación muchos a muchos:</p>
+<p><code>
+<strong>SESION</strong> (<ins>dni</ins><code>*</code>, <ins>codigo</ins><code>*</code>, grupo)<br />
+· PK: (dni, codigo)<br />
+· FK: (dni) → DOCENTE <br />
+· FK: (codigo) → AULA <br />
+</code></p>
+<p>Y al relacionar <code>INCIDENCIA</code> con <code>SESION</code>, como la clave primaria de <code>SESION</code> es compuesta, también lo será la clave ajena de la relación uno a muchos:</p>
+<p><code>
+<strong>INCIDENCIA</strong> (<ins>codigo</ins><code>*</code>, descripcion, dniSesion<code>*</code>, codigoSesion<code>*</code>)<br />
+· PK: (codigo)<br />
+· FK: (dniSesion, codigoSesion) → SESION <br />
+</code></p>
 <div class="admonition info">
 <p class="admonition-title">Relaciones N-arias</p>
 <p>Cuando tengamos relaciones de grado 3 o mayor, se transforman de forma similar a las relaciones muchos a muchos.</p>
