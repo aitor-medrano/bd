@@ -1245,7 +1245,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · PK: (b0)
 </code></p>
 <figure style="float: right;">
-    <img src="images/04ejemplo-id.png" width="308" title="Ejemplo de restricción de ID">
+    <img src="images/04ejemplo-id2.png" width="637" title="Ejemplo de restricción de ID">
     <figcaption>Ejemplo de restricción de ID</figcaption>
 </figure>
 
@@ -1261,7 +1261,12 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </code></p>
 <h2 id="generalizacion">Generalización<a class="headerlink" href="#generalizacion" title="Permanent link">&para;</a></h2>
 <p>Cuando tenemos una relación de tipo generalización, crearemos una tabla para el padre y otra para cada hijo. Este planteamiento se conoce como <strong>explicitar</strong> las entidades.</p>
-<p>Para ello, las subclases, las entidades hijo, tienen como clave principal y ajena la clave de la superclase, el padre.</p>
+<figure style="float: right;">
+    <img src="images/04generalizacion.png" width="305" title="Generalización">
+    <figcaption>Generalización</figcaption>
+</figure>
+
+<p>Para ello, las subclases, las entidades hijo, tienen como clave principal y ajena la clave de la superclase, el padre. De esta manera, los hijos tienen como clave primaria la misma que el padre.</p>
 <p><code>
 <strong>A</strong> (<ins>a0</ins>, a1)<br />
 · PK: (a0)
@@ -1271,6 +1276,12 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · PK: (a0)<br />
 · FK: (a0) → A<br />
 </code></p>
+<p>Independientemente de si la generalización es disjunta o solapada, o total o parcial, el modelo relacional se realiza igual, perdiendo la semántica del modelo conceptual.</p>
+<figure style="float: right;">
+    <img src="images/04ejemplo-gen.png" width="566" title="Ejemplo de Generalización de Persona">
+    <figcaption>Ejemplo de Generalización de Persona</figcaption>
+</figure>
+
 <p>Por ejemplo, supongamos el siguiente modelo que representa la especialización de una persona en estudiante o trabajador:</p>
 <p>Si explicitamos las tablas obtendremos:</p>
 <p><code>
@@ -1447,11 +1458,23 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </ul>
 <p><a name="AC407"></a></p>
 <ul>
-<li><strong>AC407</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) Hacer la actividad 203 con min 1</li>
+<li>
+<p><strong>AC407</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) Crea el modelo relacional a partir del modelo conceptual presentado en la <a href="02er.html#AC214">actividad 203</a> sobre un centro educativo.</p>
+<p><figure style="align: center;">
+    <img src="images/02ac203.png" width="1080" title="Modelo ER Cocina">
+    <figcaption>Modelo ER Centro Educativo</figcaption>
+</figure></p>
+</li>
 </ul>
 <p><a name="PR408"></a></p>
 <ul>
-<li><strong>PR408</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 10p) Hacer la actividad 214 con generalización - Supuesto de cocina, comprobando si está normalizada y generando su diccionario de datos.</li>
+<li>
+<p><strong>PR408</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 10p) Crea el modelo relacional a partir del modelo conceptual presentado en la <a href="02er.html#AC214">actividad 214</a> sobre una cocina de un restaurante.</p>
+<p><figure style="align: center;">
+    <img src="images/02cocina.png" width="1080" title="Modelo ER Cocina">
+    <figcaption>Modelo ER Cocina</figcaption>
+</figure></p>
+</li>
 </ul>
 <p><a name="AC409"></a></p>
 <ul>
@@ -1484,9 +1507,9 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p>Esquema 2</p>
 <p><code>
 <strong>A</strong> (<ins>a0</ins>, a1, bo<code>*</code>)<br />
-· PK: (a0)
-· UK: (b0)
-· VNN: (b0)
+· PK: (a0)<br />
+· UK: (b0)<br />
+· VNN: (b0)<br />
 · FK: (b0) → B<br />
 </code></p>
 <p><code>
@@ -1590,6 +1613,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p><strong>PO413</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 30p) La prueba objetiva que agrupa todo el resultado de aprendizaje consistirá en:</p>
 <ul>
 <li>Crear un modelo ER a partir de un sistema de información</li>
+<li>Interpreta un modelo ER</li>
 <li>Crear un modelo relacional a partir de un modelo ER</li>
 <li>Crear un modelo ER a partir de un modelo relacional</li>
 </ul>
@@ -1597,7 +1621,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </ul>
 <!--
 TODO: UT04
-    * Gráficos identificación, generalización
+    * Gráficos generalización
     * Actividades MR -> ER
     * revisar CEs actividades
     * Programación de Aula... repensar
