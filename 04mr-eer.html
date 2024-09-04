@@ -1229,7 +1229,12 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </code></p>
 <p>De esta manera, toda ocurrencia de A debe tener una de B.</p>
 <h3 id="identificacion">Identificación<a class="headerlink" href="#identificacion" title="Permanent link">&para;</a></h3>
-<p>En las restricciones de identificación, la entidad débil se identifica, completamente o en parte. con la entidad fuerte. Es por ello, que la clave ajena debe formar parte de la clave primaria.</p>
+<figure style="float: right;">
+    <img src="images/04restric-id.png" width="602" title="Restricción de ID">
+    <figcaption>Restricción de ID</figcaption>
+</figure>
+
+<p>En las restricciones de identificación, la entidad débil se identifica, completamente o en parte, con la entidad fuerte. Es por ello, que la clave ajena debe formar parte de la clave primaria.</p>
 <p><code>
 <strong>A</strong> (<ins>a0</ins>, <ins>b0</ins><code>*</code>, a1)<br />
 · PK: (a0, bo)<br />
@@ -1239,7 +1244,12 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <strong>B</strong> (<ins>b0</ins>, b1)<br />
 · PK: (b0)
 </code></p>
-<p>En el siguiente ejemplo, tenemos que cada sala se identifica por el cine al que pertenece:</p>
+<figure style="float: right;">
+    <img src="images/04ejemplo-id.png" width="308" title="Ejemplo de restricción de ID">
+    <figcaption>Ejemplo de restricción de ID</figcaption>
+</figure>
+
+<p>En el siguiente ejemplo, tenemos que cada sala se identifica por el cine al que pertenece por un número de sala, el cual se reinicia por cada cine. Es decir, la sala 1 del cine IMF no es la misma tupla que la sala 1 del cine ABC:</p>
 <p><code>
 <strong>CINE</strong> (<ins>codigo</ins>, nombre, direccion)<br />
 · PK: (codigo)
@@ -1576,12 +1586,22 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </ul>
 <p><a name="PO413"></a></p>
 <ul>
-<li><strong>PO413</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 30p) Prueba objetiva</li>
+<li>
+<p><strong>PO413</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 30p) La prueba objetiva que agrupa todo el resultado de aprendizaje consistirá en:</p>
+<ul>
+<li>Crear un modelo ER a partir de un sistema de información</li>
+<li>Crear un modelo relacional a partir de un modelo ER</li>
+<li>Crear un modelo ER a partir de un modelo relacional</li>
+</ul>
+</li>
 </ul>
 <!--
 TODO: UT04
+    * Gráficos identificación, generalización
+    * Actividades MR -> ER
     * revisar CEs actividades
     * Programación de Aula... repensar
+    * Definir Reto
 -->
 
 
