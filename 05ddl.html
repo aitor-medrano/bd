@@ -6,15 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Apuntes y actividades del módulo profesional de Base de Datos el CFGS de DAM/DAW">
+        <meta name="description" content="Conceptos y actividades sobre">
       
       
       
-        <link rel="canonical" href="https://aitor-medrano.github.io/bd/index.html">
+        <link rel="canonical" href="https://aitor-medrano.github.io/bd/05ddl.html">
       
       
-      
-        <link rel="next" href="01intro.html">
       
       
       <link rel="icon" href="images/favicon.png">
@@ -22,7 +20,7 @@
     
     
       
-        <title>Bases de datos - Bases de datos</title>
+        <title>Modelo Físico - SQL - Instrucciones DDL y DML - Bases de datos</title>
       
     
     
@@ -69,11 +67,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Bases de datos" >
+        <meta  property="og:title"  content="Modelo Físico - SQL - Instrucciones DDL y DML - Bases de datos" >
       
-        <meta  property="og:description"  content="Apuntes y actividades del módulo profesional de Base de Datos el CFGS de DAM/DAW" >
+        <meta  property="og:description"  content="Conceptos y actividades sobre" >
       
-        <meta  property="og:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/index.png" >
+        <meta  property="og:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/05ddl.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -81,15 +79,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://aitor-medrano.github.io/bd/index.html" >
+        <meta  property="og:url"  content="https://aitor-medrano.github.io/bd/05ddl.html" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Bases de datos" >
+        <meta  name="twitter:title"  content="Modelo Físico - SQL - Instrucciones DDL y DML - Bases de datos" >
       
-        <meta  name="twitter:description"  content="Apuntes y actividades del módulo profesional de Base de Datos el CFGS de DAM/DAW" >
+        <meta  name="twitter:description"  content="Conceptos y actividades sobre" >
       
-        <meta  name="twitter:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/index.png" >
+        <meta  name="twitter:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/05ddl.png" >
       
     
     
@@ -112,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bases-de-datos" class="md-skip">
+        <a href="#modelo-fisico-sql-instrucciones-ddl-y-dml" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -147,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Bases de datos
+              Modelo Físico - SQL - Instrucciones DDL y DML
             
           </span>
         </div>
@@ -239,8 +237,6 @@
           
             
               
-                
-              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -264,30 +260,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Inicio
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -296,62 +272,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#resultados-de-aprendizaje" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resultados de Aprendizaje
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#unidades-de-trabajo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Unidades de Trabajo
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#evaluacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Evaluación
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#materiales" class="md-nav__link">
-    <span class="md-ellipsis">
-      Materiales
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -464,9 +384,7 @@
             
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -485,36 +403,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#resultados-de-aprendizaje" class="md-nav__link">
+  <a href="#propuesta-didactica" class="md-nav__link">
     <span class="md-ellipsis">
-      Resultados de Aprendizaje
+      Propuesta didáctica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Propuesta didáctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#unidades-de-trabajo" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#contenidos" class="md-nav__link">
     <span class="md-ellipsis">
-      Unidades de Trabajo
+      Contenidos
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#evaluacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Evaluación
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#materiales" class="md-nav__link">
+  <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
-      Materiales
+      Referencias
     </span>
   </a>
   
@@ -533,249 +457,78 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="tags.html#modelo-fisico" class="md-tag">Modelo Físico</a>
+    
+  
+    
+    
+    
+      <a href="tags.html#sql" class="md-tag">SQL</a>
+    
+  
+    
+    
+    
+      <a href="tags.html#sql-ddl" class="md-tag">SQL - DDL</a>
+    
+  
+    
+    
+    
+      <a href="tags.html#sql-dml" class="md-tag">SQL - DML</a>
+    
+  
+    
+    
+    
+      <a href="tags.html#ra2" class="md-tag">RA2</a>
+    
+  
+    
+    
+    
+      <a href="tags.html#ra4" class="md-tag">RA4</a>
+    
+  
+</nav>
 
 
-<h1 id="bases-de-datos">Bases de Datos<a class="headerlink" href="#bases-de-datos" title="Permanent link">&para;</a></h1>
-<p>En este repositorio vamos a agrupar los materiales y actividades realizadas en el módulo 0484 de <strong><em>Bases de Datos</em></strong> del CFGS de <em>Desarrollo de Aplicaciones Multiplataforma</em> (DAM), cuyo curriculum viene fijado por el <a href="https://www.boe.es/boe/dias/2023/06/03/pdfs/BOE-A-2023-13221.pdf">Real Decreto 405/2023</a>, impartido en el <a href="https://portal.edu.gva.es/03013224">IES Severo Ochoa</a> de Elche.</p>
-<p>La <ins>competencia</ins> que se trabaja en este curso es:</p>
+
+<h1 id="modelo-fisico-sql-instrucciones-ddl-y-dml">Modelo Físico: SQL - Instrucciones DDL y DML<a class="headerlink" href="#modelo-fisico-sql-instrucciones-ddl-y-dml" title="Permanent link">&para;</a></h1>
+<h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
+<p>Una vez conocido el modelo relacional, en esta unidad vamos a comenzar a trabajar el RA2: <strong>Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional</strong>.</p>
+<h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
 <ul>
-<li>d) Gestionar bases de datos, interpretando su diseño lógico y verificando integridad, consistencia, seguridad y accesibilidad de los datos.</li>
+<li><strong><abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr></strong>: Se ha analizado el formato de almacenamiento de la información. </li>
+<li><strong><abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr></strong>: Se han creado las tablas y las relaciones entre ellas. </li>
+<li><strong><abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr></strong>: Se han seleccionado los tipos de datos adecuados. </li>
+<li><strong><abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr></strong>: Se han definido los campos clave en las tablas. </li>
+<li><strong><abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr></strong>: Se han implantado las restricciones reflejadas en el diseño lógico. </li>
 </ul>
-<p>Y el <ins>objetivo general</ins> correspondiente es:</p>
+<h3 id="contenidos">Contenidos<a class="headerlink" href="#contenidos" title="Permanent link">&para;</a></h3>
+<p>Bases de datos relacionales:</p>
 <ul>
-<li>e) Interpretar el diseño lógico, verificando los parámetros establecidos para gestionar bases de datos.</li>
+<li>Lenguaje de descripción de datos (DDL).</li>
 </ul>
-<h2 id="resultados-de-aprendizaje">Resultados de Aprendizaje<a class="headerlink" href="#resultados-de-aprendizaje" title="Permanent link">&para;</a></h2>
-<p>Los diferentes resultados de aprendizaje (<abbr title="Resultado de aprendizaje">RA</abbr>) trabajados junto con su peso aproximado son:</p>
-<table>
-<thead>
-<tr>
-<th>Código</th>
-<th>Descripción</th>
-<th>Peso (%)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RA1</abbr></td>
-<td>Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores.</td>
-<td>8</td>
-</tr>
-<tr>
-<td><abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional.">RA2</abbr></td>
-<td>Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional.</td>
-<td>12</td>
-</tr>
-<tr>
-<td><abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RA3</abbr></td>
-<td>Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.</td>
-<td>25</td>
-</tr>
-<tr>
-<td><abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RA4</abbr></td>
-<td>Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.</td>
-<td>10</td>
-</tr>
-<tr>
-<td><abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RA5</abbr></td>
-<td>Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.</td>
-<td>15</td>
-</tr>
-<tr>
-<td><abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RA6</abbr></td>
-<td>Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.</td>
-<td>15</td>
-</tr>
-<tr>
-<td><abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RA7</abbr></td>
-<td>Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.</td>
-<td>15</td>
-</tr>
-</tbody>
-</table>
-<h2 id="unidades-de-trabajo">Unidades de Trabajo<a class="headerlink" href="#unidades-de-trabajo" title="Permanent link">&para;</a></h2>
-<p>A partir de los <abbr title="Resultado de aprendizaje">RA</abbr>, hemos definido 13 unidades de trabajo (<abbr title="Unidad de trabajo">UT</abbr>).</p>
-<p>El módulo de <em>Base de Datos</em> viene fijado con una carga lectiva de <strong>160h</strong>, repartidas en <strong>5 sesiones semanales</strong>, a lo largo de 32 semanas. Este curso se ha planificado sobre un total de 28 semanas, dejando las últimas 4 semanas para el desarrollo, por parte del alumnado, del programa formativo dual en la empresa. Estas 28 semanas hacen un total de 140h lectivas.</p>
-<p>A continuación, en la siguiente tabla y a modo de mapa general, se muestran las diferentes <abbr title="Unidad de trabajo">UT</abbr> y los <abbr title="Resultado de aprendizaje">RA</abbr> que cubren, indicando la carga horaria aproximada empleada en cada una de ellas:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Unidades de Trabajo</th>
-<th style="text-align: center;"><abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RA1</abbr></th>
-<th style="text-align: center;"><abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional.">RA2</abbr></th>
-<th style="text-align: center;"><abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RA3</abbr></th>
-<th style="text-align: center;"><abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RA4</abbr></th>
-<th style="text-align: center;"><abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RA5</abbr></th>
-<th style="text-align: center;"><abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RA6</abbr></th>
-<th style="text-align: center;"><abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RA7</abbr></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><a href="01intro.html">1. Introducción a las bases de datos</a></td>
-<td style="text-align: center;">9</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="02er.html">2. Diseño conceptual. Modelo Entidad/Relación</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">12</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="03mr.html">3. Diseño lógico: Modelo relacional</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">7</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="04mr-eer.html">4. Diseño lógico: Transformación de modelos</a></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">12</td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">5. Modelo Físico - SQL - Instrucciones DDL y DML</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">7</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">6</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">6. Lenguaje SQL: selección de datos I</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">7. Lenguaje SQL: selección de datos II</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">8. Lenguaje SQL: selección de datos III</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">9. Lenguaje SQL: Control de Datos DCL y Transacciones TCL</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">10. Lenguaje Programación BBDD I</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">11. Lenguaje Programación BBDD II</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">X</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr>
-<td style="text-align: left;">12. Bases de datos NoSQL. Clave Valor.</td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">8</td>
-</tr>
-<tr>
-<td style="text-align: left;">13. Bases de datos documental. MongoDB.</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">12</td>
-</tr>
-</tbody>
-</table>
-<p>Si nos centramos en la temporalización, hemos agrupado los unidades en diferentes bloques repartidos a lo largo del curso del siguiente modo:</p>
-<pre class="mermaid"><code>timeline
-    title Planificación temporal
-    section 1ª Evaluación
-        Introducción : Presentación : 1.- Intro BD 
-        Diseño : 2.- Modelo ER : 3.- Modelo relacional : 4.- Transformación
-        SQL Definición: 5.- DDL
-    section 2ª Evaluación
-        SQL Consulta : 6.- SQL I : 7.- SQL II : 8.- SQL III
-        SQL Control : 9.- DCL
-    section 3ª Evaluación
-        PL-SQL : 10.- Programación I : 11.- Programación II
-        NoSQL : 12.- Redis : 13.- MongoDB
-        Dual</code></pre>
-<h2 id="evaluacion">Evaluación<a class="headerlink" href="#evaluacion" title="Permanent link">&para;</a></h2>
-<p>Para la evaluación del módulo de <em>Base de Datos</em> se ponderarán los resultados de aprendizaje respecto a los porcentajes indicados en el apartado anterior.</p>
-<p>Para la evaluación de cada <abbr title="Resultado de aprendizaje">RA</abbr>, emplearemos diferentes Instrumentos de Evaluación (<abbr title="Instrumento de evaluación">IE</abbr>), como pueden ser:</p>
+<p>Tratamiento de datos:</p>
 <ul>
-<li><strong>Actividades de enseñanza/aprendizaje</strong>, normalmente realizadas en el aula, acompañadas de una rúbrica. Distinguiremos las <strong>actividades de clase</strong> (AC), las cuales se calificarán normalmente sobre una escala de 3 puntos, de las <strong>actividades de refuerzo</strong> (AR), también sobre 3 puntos para consolidar uno o varios <abbr title="Criterio de evaluación">CE</abbr> no conseguidos, así como <strong>actividades de profundización</strong> (AP) que aportarán puntos extra al <abbr title="Resultado de aprendizaje">RA</abbr>.</li>
-<li><strong>Prácticas</strong> (PR) o <strong>trabajo de investigación</strong> (TI), con una carga temporal variable, entre una semana o toda una unidad didáctica. Normalmente calificados sobre 10 puntos.</li>
-<li><strong>Proyectos</strong> (PY), bien de desarrollo individual o en parejas, sobre un determinado <abbr title="Resultado de aprendizaje">RA</abbr>. Normalmente calificados sobre 30 puntos.</li>
-<li><strong>Pruebas objetivas</strong> (PO). En algunos <abbr title="Resultado de aprendizaje">RA</abbr>, y no de forma generalizada, se realizará una prueba objetiva (ya sea escrita o en ordenador). Normalmente calificados sobre 30 puntos.</li>
+<li>Inserción, borrado y modificación de registros.</li>
+<li>Integridad referencial.</li>
 </ul>
-<p>Para calcular la calificación de cada resultado de aprendizaje, se realizará la media ponderada simple de los diferentes instrumentos de evaluación empleados en dicho <abbr title="Resultado de aprendizaje">RA</abbr>.</p>
-<p>Todas las calificaciones, tanto de los instrumentos de evaluación como de los propios <abbr title="Resultado de aprendizaje">RA</abbr>, se podrá consultar en todo momento en la plataforma Aules del curso.</p>
-<h2 id="materiales">Materiales<a class="headerlink" href="#materiales" title="Permanent link">&para;</a></h2>
-<p>A lo largo del curso, iremos trabajando diferentes materiales disponibles en este espacio web.</p>
-<p>Cada una de las <abbr title="Unidad de trabajo">UT</abbr> comenzará con un resumen de la <strong>Propuesta Didáctica</strong> que se plantea, los elementos que va a cubrir, tanto el <abbr title="Resultado de aprendizaje">RA</abbr> a trabajar como sus criterios de evaluación (<abbr title="Criterio de evaluación">CE</abbr>) asociados, así como un cuestionario inicial para reflexionar nuestro conocimiento previo.</p>
-<p>En la parte final de cada sesión, además de diferentes recursos de <strong>Referencia</strong> para ampliar conocimientos, se plantean una serie de <strong>Actividades</strong> que iremos trabajando en su mayor medida en el aula. Cada una de las actividades indica el <abbr title="Resultado de aprendizaje">RA</abbr> que cubre, los <abbr title="Criterio de evaluación">CE</abbr> que trabaja así como su calificación, la cual luego se verá reflejada en la rúbrica de la entrega dicha tarea en Aules. Además, las actividades están codificadas con el prefijo del tipo de instrumento de evaluación, así como la unidad que cubren (por ejemplo, la actividad AC207, será la 7ª actividad de clase de la unidad 2).</p>
-<p>Respecto a los recursos tecnológicos, aunque inicialmente trabajaremos mucho con papel y lápiz (para modelar es más rápido crear esbozos en papel), luego pasaremos a utilizar los <abbr title="Sistema gestor de base de datos">SGBD</abbr> de <a href="https://mariadb.org/">MariaDB</a> y <a href="https://www.postgresql.org/">PostgreSQL</a> indistintamente, tanto mediante contenedores <a href="https://www.docker.com">Docker</a> como con soluciones <em>cloud</em> en <a href="https://aws.amazon.com">AWS</a>. En las últimas unidades, trabajaremos con <a href="https://redis.io">Redis</a> y <a href="https://www.mongodb.com/">MongoDB</a>.</p>
-<!--
-https://bookdown.org/paranedagarcia/database/
--->
+<div class="admonition question">
+<p class="admonition-title">Cuestionario inicial</p>
+<ol>
+<li>xxx</li>
+</ol>
+</div>
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<p>https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html</p>
 
 
 
@@ -790,8 +543,6 @@ https://bookdown.org/paranedagarcia/database/
 
   
 
-
-  
 
 
   <form class="md-feedback" name="feedback" hidden>
@@ -853,30 +604,6 @@ https://bookdown.org/paranedagarcia/database/
       
         <footer class="md-footer">
   
-    
-      
-        
-      
-      <nav class="md-footer__inner md-grid" aria-label="Pie" >
-        
-        
-          
-          <a href="01intro.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 1.- Sistemas de almacenamiento">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Siguiente
-              </span>
-              <div class="md-ellipsis">
-                1.- Sistemas de almacenamiento
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
