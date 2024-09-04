@@ -2562,28 +2562,33 @@ relación.</li>
 </ul>
 <p><a name="AC312"></a></p>
 <ul>
-<li><strong>AC312</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) A</li>
+<li><strong>AC312</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) A partir de un gráfico de un modelo relacional, interpretar el diagrama</li>
 </ul>
 <p><a name="AC313"></a></p>
 <ul>
-<li><strong>AC313</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) A</li>
+<li><strong>AC313</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Normalización fácil</li>
 </ul>
 <p><a name="AC314"></a></p>
 <ul>
-<li><strong>AC314</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) A</li>
+<li><strong>AC314</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Normalización media</li>
 </ul>
 <p><a name="AC315"></a></p>
 <ul>
 <li>
 <p><strong>AC315</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) A partir del siguiente esquema relacional de una librería, desnormalízalo para simplificar su estructura:</p>
 <p><code>
-<strong>LIBRO</strong> (<ins>isbn</ins>, titulo, autor<code>*</code>, numPaginas)<br />
+<strong>LIBRO</strong> (<ins>isbn</ins>, titulo, autor<code>*</code>, editorial<code>*</code>, numPaginas)<br />
 · PK: (nif)
 · FK: (autor) → ESCRITOR<br />
+· FK: (editorial) → EDITORIAL<br />
 </code></p>
 <p><code>
 <strong>ESCRITOR</strong> (<ins>nif</ins><code>*</code>, nombre, pais)<br />
 · PK: (nif)<br />
+</code></p>
+<p><code>
+<strong>EDITORIAL</strong> (<ins>codigo</ins><code>*</code>, nombre, pais)<br />
+· PK: (codigo)<br />
 </code></p>
 </li>
 </ul>
