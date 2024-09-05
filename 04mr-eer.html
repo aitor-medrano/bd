@@ -450,6 +450,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Atributos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#claves-compuestas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claves compuestas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -722,6 +737,21 @@
       Atributos
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Atributos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#claves-compuestas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claves compuestas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1045,7 +1075,7 @@
 <li>Las relaciones, dependiendo de la cardinalidad, pasarán a ser claves ajenas y/o tablas.</li>
 </ol>
 <h2 id="atributos">Atributos<a class="headerlink" href="#atributos" title="Permanent link">&para;</a></h2>
-<p>Conviene recordar que dentro de una tabla, no se puede repetir el nombre de ningún atributos, pero sí en tablas diferentes.</p>
+<p>Conviene recordar que dentro de una tabla, no se puede repetir el nombre de ningún atributo, pero sí en tablas diferentes.</p>
 <p>Algunos profesionales prefieren que no se repitan los identificadores entre diferentes tablas de una misma <abbr title="Base de datos">BD</abbr>, aunque es cierto que las herramientas ORM de generación de modelos físicos a partir de definición de clases u objetos suelen nombrar todas las claves primarias como <code>id</code> o <code>_id</code>.</p>
 <p>En cuanto a los atributos <strong>compuestos</strong>, se separan como atributos individuales dentro de la tabla, pudiéndoles poner el prefijo del atributo compuesto o el propio nombre del atributo si no da pie a confusión.</p>
 <p>Para los atributos <strong>derivados</strong>, dependiendo del caso, bien no se añaden como atributo (ya que se obtendrán a partir de los datos de las relaciones), o bien se renombra el atributo para almacenar el dato en crudo sobre el cual se realiza el cálculo necesario.</p>
@@ -1054,12 +1084,27 @@
     <figcaption>Transformación de atributos</figcaption>
 </figure>
 
-<p>Por ejemplo, si tenemos el siguiente modelo ER de un cliente, el modelo relacional podría ser el siguiente (hemos renombrado <code>numero</code> a <code>numPiso</code> y cambiado la edad por la fecha de nacimiento):</p>
+<p>Por ejemplo, si partimos de un sencillo modelo ER de un cliente, su transformación al modelo relacional sería la siguiente:</p>
 <p><code>
 <strong>CLIENTE</strong> (<ins>dni</ins>, nombre, calle, numPiso, ciudad, fnac)<br />
 · PK: (dni)
 </code></p>
+<p>Destacar que no hemos puesto el nombre del atributo compuesto, sino cada uno de sus atributos, y además, hemos renombrado <code>numero</code> a <code>numPiso</code> para evitar confusiones con otras entidades; respecto al atributo derivado edad, lo hemos cambiado por la fecha de nacimiento.</p>
 <p>Respecto a los atributos <strong>multivaluados</strong>, derivan en una relación uno a muchos (1:N), tal como veremos a continuación.</p>
+<h3 id="claves-compuestas">Claves compuestas<a class="headerlink" href="#claves-compuestas" title="Permanent link">&para;</a></h3>
+<p>Normalmente, cada entidad tendrá un atributo identificador que traduciremos en una clave primaria. Pero puede darse el caso que una entidad tenga una clave compuesta, o tenga marcados dos atributos identificadores (en este caso, uno será la clave primaria y el otro será una clave alternativa que marcaremos como única).</p>
+<p>Por ejemplo, el siguiente diagrama representa un aula que se identifica mediante una clave compuesta:</p>
+<p><code>
+<strong>AULA</strong> (<ins>edificio</ins>, <ins>numSala</ins>, numAsientos)<br />
+· PK: (edificio, numSala)
+</code></p>
+<p>Sin embargo, también podemos tener un empleado con dos atributos identificadores:</p>
+<p><code>
+<strong>EMPLEADO</strong> (<ins>codigo</ins>, nif, nombre, salario)<br />
+· PK: (codigo)
+· UK: (nif)
+</code></p>
+<p>TODO: Completar con gráficos</p>
 <h2 id="relaciones">Relaciones<a class="headerlink" href="#relaciones" title="Permanent link">&para;</a></h2>
 <p>Al transformar las relaciones, dependiendo de la cardinalidad deberemos colocar la clave ajena en un lugar u otro.</p>
 <h3 id="1n">1:N<a class="headerlink" href="#1n" title="Permanent link">&para;</a></h3>
@@ -1103,6 +1148,10 @@
     <figcaption>Esquema relacional en ERDPlus</figcaption>
 </figure>
 
+<div class="admonition tip">
+<p class="admonition-title">Atributos multivaluados</p>
+<p>TODO: completar</p>
+</div>
 <h3 id="11">1:1<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
 <p>En este caso, la clave ajena se pone en cualquier entidad y se añade como clave alternativa/única (<code>UK</code>). </p>
 <figure style="float: right;">
@@ -1422,9 +1471,10 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <li>
 <p>Materiales sobre el módulo de <abbr title="Base de datos">BD</abbr>:</p>
 <ul>
-<li>Modelo Relacional: <a href="https://jorgesanchez.net/manuales/gbd/modelo-relacional.html">Jorge Sanchez</a></li>
-<li>Bases de datos relacionales: <a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut3/recopila.html">Javier Gutierrez</a></li>
-<li>Diseño de modelo lógicos normalizados: <a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema2/index.html">gestionbasesdatos.readthedocs.io</a></li>
+<li><em><a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u3/a1/continguts.html">Model Relacional</a> - Institut Obert de Catalunya</em></li>
+<li><a href="https://jorgesanchez.net/manuales/gbd/diseno-logico-relacional.html">Diseño lógico relacional</a> de <em>Jorge Sánchez</em></li>
+<li><a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut3/recopila.html">Bases de datos relacionales</a> de <em>Javier Gutiérrez</em></li>
+<li><a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema2/index.html">Diseño de modelo lógicos normalizados</a> de gestionbasesdatos.readthedocs.io</li>
 <li>Diseño lógico: <a href="https://www.cs.us.es/cursos/bd-2023/temas/BD-Tema-2.pdf">Universidad de Sevilla</a></li>
 </ul>
 </li>
@@ -1684,6 +1734,10 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </ul>
 <!--
 TODO: UT04
+
+    * Claves compuestas - pdf pg 95
+    * Atributos multivaluados - 1:N
+    * Relaciones reflexivas
     * Explicar de MR a ER
     * revisar CEs actividades
     * Programación de Aula... repensar

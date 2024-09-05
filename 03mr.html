@@ -1158,7 +1158,7 @@
 </tbody>
 </table>
 <h2 id="el-modelo-relacional">El modelo relacional<a class="headerlink" href="#el-modelo-relacional" title="Permanent link">&para;</a></h2>
-<p>En la <a href="02er.html#diseno-de-bd">unidad anterior</a> estudiamos que un <strong>modelo lógico</strong> representa de forma conceptual la estructura de una base de datos, pero dependiendo del <abbr title="Sistema gestor de bases de datos">SGBD</abbr> a utilizar.</p>
+<p>En la <a href="02er.html#diseno-de-bd">unidad anterior</a> estudiamos que un <def><strong>modelo lógico</strong></def> representa de forma conceptual la estructura de una base de datos, pero dependiendo del <abbr title="Sistema gestor de bases de datos">SGBD</abbr> a utilizar.</p>
 <figure style="align: center;">
     <img src="images/03modelo-logico.png" width="730" title="Modelo lógico">
     <figcaption>Modelo lógico</figcaption>
@@ -1680,7 +1680,7 @@ clave primaria de la tabla que relaciona.</p>
 <p>El primer fallo que encontramos es que el campo <code>CURSAR.nifEstudiante</code> contiene nulos. Aunque las claves ajenas permiten valores nulos, al tratarse también de una clave primaria, estaría incumpliendo la integridad de entidad.</p>
 <p>El segundo error es que el valor <code>66666666Z</code> referencia a un estudiante invalido, y este valor sí que viola la integridad referencial, ya que dicho valor no existe en <code>ESTUDIANTE.nif</code>.</p>
 <h2 id="notacion">Notación<a class="headerlink" href="#notacion" title="Permanent link">&para;</a></h2>
-<p>Para representar una tabla en el modelo relación usaremos la una notación textual que facilita su comprensión y posterior transformación al modelo físico. A esta representación se le conoce como <strong>esquema relacional</strong> (o esquema lógico/canónico).</p>
+<p>Para representar una tabla en el modelo relación usaremos una notación textual que facilita su comprensión y posterior transformación al modelo físico. A esta representación se le conoce como <strong>esquema relacional</strong> (o esquema lógico/canónico).</p>
 <p>Pondremos el nombre de la tabla en mayúsculas, y a continuación, entre paréntesis, enumeraremos los campos mediante su nombre en minúsculas (y opcionalmente su dominio). Como convención, el primer atributo será aquel que hace la función de clave primaria, el cual además subrayaremos para facilitar la legibilidad, y a aquellos campos que sean claves ajenas les añadiremos un asterisco (<code>*</code>) para indicar su condición.</p>
 <p>Tras el listado de campos, enumeraremos las restricciones, con el siguiente orden:</p>
 <ol>
@@ -2213,11 +2213,11 @@ clave primaria de la tabla que relaciona.</p>
 <li>
 <p>Materiales sobre el módulo de <abbr title="Base de datos">BD</abbr>:</p>
 <ul>
-<li>Modelo Relacional: <a href="https://jorgesanchez.net/manuales/gbd/modelo-relacional.html">Jorge Sanchez</a></li>
-<li>Bases de datos relacionales: <a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut3/recopila.html">Javier Gutierrez</a></li>
-<li>Diseño de modelo lógicos normalizados: <a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema2/index.html">gestionbasesdatos.readthedocs.io</a></li>
-<li>Diseño lógico: <a href="https://www.cs.us.es/cursos/bd-2023/temas/BD-Tema-2.pdf">Universidad de Sevilla</a></li>
-<li>Normalización: <a href="https://www.cs.us.es/cursos/bd-2023/temas/BD-Tema-6.pdf">Universidad de Sevilla</a></li>
+<li><em><a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u3/a1/continguts.html">Model Relacional</a> - Institut Obert de Catalunya</em></li>
+<li><a href="https://jorgesanchez.net/manuales/gbd/modelo-relacional.html">Modelo Relacional</a> de <em>Jorge Sánchez</em></li>
+<li><a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut3/recopila.html">Bases de datos relacionales</a> de <em>Javier Gutiérrez</em></li>
+<li><a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema2/index.html">Diseño de modelo lógicos normalizados</a> de gestionbasesdatos.readthedocs.io</li>
+<li><a href="https://www.cs.us.es/cursos/bd-2023/temas/BD-Tema-2.pdf">Diseño lógico</a> y <a href="https://www.cs.us.es/cursos/bd-2023/temas/BD-Tema-6.pdf">Normalización</a> de la <em>Universidad de Sevilla</em></li>
 </ul>
 </li>
 </ul>
