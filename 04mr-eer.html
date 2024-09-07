@@ -1378,10 +1378,73 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p>De esta manera, toda ocurrencia de A debe tener una de B.</p>
 <div class="admonition question">
 <p class="admonition-title">Cardinalidad mínima en N</p>
-<p>Supongamos la siguiente relación:</p>
-<p>TODO: Poner gráfico relación al revés</p>
-<p>Si la cardinalidad mínima está en el lado de N, se produce una pérdida expresiva, porque a nivel de base de datos no podemos obligar que para cada registro de A haya uno de B.</p>
-<p>TODO: Poner tablas de datos con ejemplos - pg 101 pdf</p>
+<p><figure style="float: right;">
+    <img src="images/04restric-min1N.png" width="515" title="Cardinalidad mínima a 1 en N">
+    <figcaption>Cardinalidad mínima a 1 en N</figcaption>
+</figure></p>
+<p>Supongamos la misma relación que el caso que acabamos de ver, pero ahora ambos lados tienen la cardinalidad mínima a 1. El modelo relacional será el mismo:</p>
+<p><code>
+<strong>A</strong> (<ins>a0</ins>, a1, b0<code>*</code>)<br />
+· PK: (a0)<br />
+· FK: (b0) → B<br />
+· VNN: (b0)
+</code></p>
+<p><code>
+<strong>B</strong> (<ins>b0</ins>, b1)<br />
+· PK: (b0)
+</code>   </p>
+<p>Si la cardinalidad mínima está en el lado de N, se produce una pérdida expresiva, porque a nivel de base de datos no podemos obligar que para cada registro de B haya como mínimo uno de A.</p>
+<p>Vamos a comprobar con datos de ejemplo la pérdida expresiva. Si en la tabla A tenemos:</p>
+<table>
+<thead>
+<tr>
+<th><ins>a0</ins></th>
+<th>a1</th>
+<th>bo<code>*</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>alfa</td>
+<td>x</td>
+</tr>
+<tr>
+<td>2</td>
+<td>beta</td>
+<td>x</td>
+</tr>
+<tr>
+<td>3</td>
+<td>gamma</td>
+<td>y</td>
+</tr>
+</tbody>
+</table>
+<p>y en la tabla B tenemos</p>
+<table>
+<thead>
+<tr>
+<th><ins>b0</ins></th>
+<th>b1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>rojo</td>
+</tr>
+<tr>
+<td>y</td>
+<td>azul</td>
+</tr>
+<tr>
+<td>z</td>
+<td>amarillo</td>
+</tr>
+</tbody>
+</table>
+<p>No podemos asegurar que todo valor de B aparezca en A, ya que el valor <code>z</code> de <code>B</code> no aparece para ninguna clave ajena en <code>A</code>.</p>
 </div>
 <h3 id="identificacion">Identificación<a class="headerlink" href="#identificacion" title="Permanent link">&para;</a></h3>
 <figure style="float: right;">
@@ -1817,7 +1880,6 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 TODO: UT04
 
     * pdf pg 101
-    * Relaciones reflexivas - 
     * Explicar de MR a ER
     * revisar CEs actividades
     * Programación de Aula... repensar
