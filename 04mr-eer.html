@@ -16,7 +16,7 @@
         <link rel="prev" href="03mr.html">
       
       
-        <link rel="next" href="tags.html">
+        <link rel="next" href="vocabulari.html">
       
       
       <link rel="icon" href="images/favicon.png">
@@ -641,6 +641,26 @@
   
   
     <li class="md-nav__item">
+      <a href="vocabulari.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    <em>Vocabulari</em>
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="tags.html" class="md-nav__link">
         
   
@@ -1101,10 +1121,14 @@
 <p>Sin embargo, también podemos tener un empleado con dos atributos identificadores:</p>
 <p><code>
 <strong>EMPLEADO</strong> (<ins>codigo</ins>, nif, nombre, salario)<br />
-· PK: (codigo)
+· PK: (codigo)<br />
 · UK: (nif)
 </code></p>
-<p>TODO: Completar con gráficos</p>
+<figure style="align: center;">
+    <img src="images/04claves-compuestas.png" width="633" title="Clave primaria compuesta vs claves candidatas">
+    <figcaption>Clave primaria compuesta vs claves candidatas</figcaption>
+</figure>
+
 <h2 id="relaciones">Relaciones<a class="headerlink" href="#relaciones" title="Permanent link">&para;</a></h2>
 <p>Al transformar las relaciones, dependiendo de la cardinalidad deberemos colocar la clave ajena en un lugar u otro.</p>
 <h3 id="1n">1:N<a class="headerlink" href="#1n" title="Permanent link">&para;</a></h3>
@@ -1148,9 +1172,31 @@
     <figcaption>Esquema relacional en ERDPlus</figcaption>
 </figure>
 
+<p>Recordad la regla de integridad referencial del modelo relacional, donde cada valor de la clave ajena debe coincidir con un valor existente de la clave primaria a la que referencia (o ser nulo). De esta manera, no podemos tener un <code>dni</code> en la tabla <code>TELEFONO</code> que no exista previamente en la tabla <code>PERSONA</code>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Atributos multivaluados</p>
-<p>TODO: completar</p>
+<p>Cuando tenemos un atributo multivaluado, éste se mapea en una relación separada.</p>
+<p>Podemos crear una nueva tabla con un código o atributo identificador para cada registro y añadir una clave ajena a modo de relación 1:N.</p>
+<p><figure style="float: right;">
+    <img src="images/04atributos-multivaluado.png" width="313" title="Atributo multivaluado">
+    <figcaption>Atributo multivaluado</figcaption>
+</figure></p>
+<p>Así pues, si tenemos un empleado que tiene muchos teléfonos mediante un atributo, generaremos dos tablas:</p>
+<p><code>
+<strong>EMPLEADO</strong> (<ins>nif</ins>, nombre)<br />
+· PK: (nif)
+</code></p>
+<p><code>
+<strong>TELEFONO</strong> (<ins>numero</ins>, dni<code>*</code>)<br />
+· PK: (numero)<br />
+· FK: (dni) → EMPLEADO
+</code></p>
+<p>Si fuera un valor que pudiese compartirse entre varios empleados, como pudiera ser que un empleado tiene muchos cargos, y ese mismo cargo lo pueden tener varios empleados (pero no nos interesa a priori modelarlo conceptualmente como una entidad), podríamos crear una clave primaria compuesta:</p>
+<p><code>
+<strong>CARGO</strong> (<ins>cargo</ins>, <ins>dni</ins><code>*</code>)<br />
+· PK: (cargo, dni)<br />
+· FK: (dni) → EMPLEADO
+</code>  </p>
 </div>
 <h3 id="11">1:1<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
 <p>En este caso, la clave ajena se pone en cualquier entidad y se añade como clave alternativa/única (<code>UK</code>). </p>
@@ -1281,7 +1327,35 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · FK: (matricula) → VEHICULO<br />
 </code></p>
 <h3 id="reflexivas">Reflexivas<a class="headerlink" href="#reflexivas" title="Permanent link">&para;</a></h3>
-<p>TODO: Completar</p>
+<figure style="float: right;">
+    <img src="images/04relacion-reflexiva.png" width="281" title="Relación reflexiva 1:N">
+    <figcaption>Relación reflexiva 1:N</figcaption>
+</figure>
+
+<p>Recuerda que consideramos una relación reflexiva cuando una entidad se relaciona consigo misma.</p>
+<p>Dependiendo de la cardinalidad de la relación, si tenemos una cardinalidad 1:1 o 1:N, la clave ajena apuntará a la misma tabla, y por lo tanto tendremos que añadir un nuevo atributo (más los propios de la relación) a la tabla y si tenemos una relación N:M, las dos claves ajenas apuntarán a la misma entidad.</p>
+<p>Así pues, con el siguiente modelo 1:N tendríamos una entidad con sus atributos propios (<code>a0</code> y <code>a1</code>), al cual le añadimos la clave ajena (<code>a0r</code>) y los atributos de la relación (en este caso, <code>r0</code>):</p>
+<p><code>
+<strong>A</strong> (<ins>a0</ins>, a1, a0r<code>*</code>, r0)<br />
+· PK: (a0)<br />
+· FK: (a0r) → A<br />
+</code></p>
+<div class="admonition question">
+<p class="admonition-title">Claves ajenas compuestas</p>
+<p>¿Y si nuestra entidad tiene una clave primaria compuesta? En este caso, la clave ajena también deberá compuesta.</p>
+<p><figure style="float: right;">
+    <img src="images/04ejemplo-reflexiva.png" width="319" title="Ejemplo de reflexiva 1:N">
+    <figcaption>Ejemplo de reflexiva 1:N</figcaption>
+</figure></p>
+<p>Supongamos el siguiente diagrama donde tenemos que un producto puede ser el sustituto de uno o más productos de un almacén. Además, cada producto se identifica mediante una atributo compuesto que dará lugar a una clave primaria compuesta.</p>
+<p>Así pues, el modelo relacional sería:</p>
+<p><code>
+<strong>PRODUCTO</strong> (<ins>dpto</ins>, <ins>numero</ins>, nombre, pvp, <ins>dptoS</ins><code>*</code>, <ins>numeroS</ins><code>*</code>, fecha)<br />
+· PK: (dpto, numero)<br />
+· FK: (dptoS, numeroS) → PRODUCTO<br />
+</code></p>
+<p>Donde la clave ajena también es compuesta.</p>
+</div>
 <h2 id="restricciones">Restricciones<a class="headerlink" href="#restricciones" title="Permanent link">&para;</a></h2>
 <p>Una vez visto como se transforman los atributos y las relaciones, vamos a ver algunas particularidades a la hora de aplicar restricciones sobre las cardinalidades.</p>
 <h3 id="cardinalidad-minima-1">Cardinalidad mínima 1<a class="headerlink" href="#cardinalidad-minima-1" title="Permanent link">&para;</a></h3>
@@ -1302,6 +1376,13 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · PK: (b0)
 </code></p>
 <p>De esta manera, toda ocurrencia de A debe tener una de B.</p>
+<div class="admonition question">
+<p class="admonition-title">Cardinalidad mínima en N</p>
+<p>Supongamos la siguiente relación:</p>
+<p>TODO: Poner gráfico relación al revés</p>
+<p>Si la cardinalidad mínima está en el lado de N, se produce una pérdida expresiva, porque a nivel de base de datos no podemos obligar que para cada registro de A haya uno de B.</p>
+<p>TODO: Poner tablas de datos con ejemplos - pg 101 pdf</p>
+</div>
 <h3 id="identificacion">Identificación<a class="headerlink" href="#identificacion" title="Permanent link">&para;</a></h3>
 <figure style="float: right;">
     <img src="images/04restric-id.png" width="602" title="Restricción de ID">
@@ -1735,9 +1816,8 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <!--
 TODO: UT04
 
-    * Claves compuestas - pdf pg 95
-    * Atributos multivaluados - 1:N
-    * Relaciones reflexivas
+    * pdf pg 101
+    * Relaciones reflexivas - 
     * Explicar de MR a ER
     * revisar CEs actividades
     * Programación de Aula... repensar
@@ -1839,13 +1919,13 @@ TODO: UT04
         
         
           
-          <a href="tags.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Tags">
+          <a href="vocabulari.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: &lt;em&gt;Vocabulari&lt;/em&gt;">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Siguiente
               </span>
               <div class="md-ellipsis">
-                Tags
+                <em>Vocabulari</em>
               </div>
             </div>
             <div class="md-footer__button md-icon">
