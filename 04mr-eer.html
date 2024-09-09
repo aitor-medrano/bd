@@ -1173,6 +1173,84 @@
 </figure>
 
 <p>Recordad la regla de integridad referencial del modelo relacional, donde cada valor de la clave ajena debe coincidir con un valor existente de la clave primaria a la que referencia (o ser nulo). De esta manera, no podemos tener un <code>dni</code> en la tabla <code>TELEFONO</code> que no exista previamente en la tabla <code>PERSONA</code>.</p>
+<div class="grid cards">
+<ul>
+<li>
+<p><code>PERSONA</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>dni</ins></th>
+<th>nombre</th>
+<th>direccion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11111111A</td>
+<td>Pedro Casas</td>
+<td>Calle Mayor, 1</td>
+</tr>
+<tr>
+<td>22222222B</td>
+<td>Laura García</td>
+<td>Avda Libertad, 33</td>
+</tr>
+<tr>
+<td>33333333C</td>
+<td>Mireia Vidal</td>
+<td>Paseo de la Estación, 5</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>TELEFONO</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>numero</ins></th>
+<th>propio</th>
+<th>dni<code>*</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>636111111</td>
+<td>true</td>
+<td>22222222B</td>
+</tr>
+<tr>
+<td>686222222</td>
+<td>true</td>
+<td>11111111A</td>
+</tr>
+<tr>
+<td>666333333</td>
+<td>false</td>
+<td>11111111A</td>
+</tr>
+<tr>
+<td>666444444</td>
+<td>true</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Renombrando claves ajenas</p>
+<p>Aunque es muy común que el nombre del atributo que hace de clave ajena coincida con la clave primaria a la que apunta, podemos renombrarla y ponerle un nombre que facilite su comprensión.</p>
+<p>En el caso de la tabla <code>TELEFONO</code>, el campo <code>dni</code> hace referencia al titular del teléfono, no es que un teléfono tenga un dni. Podríamos haber modelado la tabla renombrando el <code>TELEFONO.dni</code> como <code>TELEFONO.propietario</code> dando un valor semántico al atributo:</p>
+<p><code>
+<strong>TELEFONO</strong> (<ins>numero</ins>, propio, propietario<code>*</code>)<br />
+· PK: (numero)<br />
+· FK: (propietario) → PERSONA
+</code></p>
+<p>Lo que sí es obligatorio es que los dominios de las claves ajenas y las claves primarias coincidan.</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Atributos multivaluados</p>
 <p>Cuando tenemos un atributo multivaluado, éste se mapea en una relación separada.</p>
@@ -1233,7 +1311,7 @@
     <figcaption>Ejemplo de relación 1:1</figcaption>
 </figure>
 
-<p>Vamos a poner otro ejemplo. En este caso, tenemos la relación existente entre un vehículo y el empleado que lo conduce en una empresa, dando lugar a una relación 1:1:</p>
+<p>Vamos a poner otro ejemplo. En este caso, tenemos la relación existente entre un vehículo y el empleado que lo conduce en una empresa, dando lugar a una relación 1:1 (fíjate como en este caso, hemos renombrado la clave ajena a <code>dniEmpleado</code> para facilitar la compresión):</p>
 <p><code>
 <strong>EMPLEADO</strong> (<ins>dni</ins>, nombre, dirección)<br />
 · PK: (dni)<br />
@@ -1302,6 +1380,94 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
     <figcaption>Esquema relacional en ERDPlus</figcaption>
 </figure>
 
+<p>Y comprobamos con datos cómo sí se cumplen las cardinalidades:</p>
+<div class="grid cards">
+<ul>
+<li>
+<p><code>AUTOBUS</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>matricula</ins></th>
+<th>categoria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1111ABC</td>
+<td>normal</td>
+</tr>
+<tr>
+<td>2222BCD</td>
+<td>larga distancia</td>
+</tr>
+<tr>
+<td>3333DEF</td>
+<td>larga distancia</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>CONDUCTOR</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>nif</ins></th>
+<th>nombre</th>
+<th>experiencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11111111A</td>
+<td>Andrés Checa</td>
+<td>1</td>
+</tr>
+<tr>
+<td>22222222B</td>
+<td>José Escrig</td>
+<td>2</td>
+</tr>
+<tr>
+<td>33333333B</td>
+<td>Marina Fernández</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>CONDUCIR</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>nif</ins><code>*</code></th>
+<th><ins>matricula</ins><code>*</code></th>
+<th>trayecto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11111111A</td>
+<td>1111ABC</td>
+<td>A</td>
+</tr>
+<tr>
+<td>22222222B</td>
+<td>1111ABC</td>
+<td>B</td>
+</tr>
+<tr>
+<td>11111111A</td>
+<td>3333DEF</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
 <h4 id="nm-con-dimension-temporal">N:M con dimensión temporal<a class="headerlink" href="#nm-con-dimension-temporal" title="Permanent link">&para;</a></h4>
 <p>Si la relación tiene atributos de tipo fecha, será necesario incluir al menos uno en la clave primaria.</p>
 <p>Supongamos una empresa de alquiler de vehiculos, donde tenemos que un cliente puede alquilar el mismo vehículo en fechas diferentes, o alquilar diferentes vehículos. Claramente, un vehículo lo pueden alquilar diferentes clientes en fechas diferentes. Para ello, creamos una relación muchos a muchos, colocando la fecha de inicio y de finalización del alquiler en la propia relación.</p>
@@ -1328,7 +1494,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </code></p>
 <h3 id="reflexivas">Reflexivas<a class="headerlink" href="#reflexivas" title="Permanent link">&para;</a></h3>
 <figure style="float: right;">
-    <img src="images/04relacion-reflexiva.png" width="281" title="Relación reflexiva 1:N">
+    <img src="images/04relacion-reflexiva.png" width="260" title="Relación reflexiva 1:N">
     <figcaption>Relación reflexiva 1:N</figcaption>
 </figure>
 
@@ -1340,6 +1506,48 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · PK: (a0)<br />
 · FK: (a0r) → A<br />
 </code></p>
+<figure style="float: right;">
+    <img src="images/04relacion-reflexiva-mr.png" width="188" title="Relación reflexiva 1:N en MR">
+    <figcaption>Relación reflexiva 1:N en MR</figcaption>
+</figure>
+
+<p>A nivel de tabla, tendríamos que unos posibles datos serían los siguientes, donde los valores de <code>a0r</code> deben ser algunos de los existentes previamente en <code>a0</code>:</p>
+<table>
+<thead>
+<tr>
+<th><ins>a0</ins></th>
+<th>a1</th>
+<th>a0r<code>*</code></th>
+<th>r0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>alfa</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>beta</td>
+<td>1</td>
+<td>azul</td>
+</tr>
+<tr>
+<td>3</td>
+<td>gamma</td>
+<td>2</td>
+<td>amarillo</td>
+</tr>
+<tr>
+<td>4</td>
+<td>delta</td>
+<td>1</td>
+<td>verde</td>
+</tr>
+</tbody>
+</table>
 <div class="admonition question">
 <p class="admonition-title">Claves ajenas compuestas</p>
 <p>¿Y si nuestra entidad tiene una clave primaria compuesta? En este caso, la clave ajena también deberá compuesta.</p>
@@ -1355,6 +1563,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · FK: (dptoS, numeroS) → PRODUCTO<br />
 </code></p>
 <p>Donde la clave ajena también es compuesta.</p>
+<p>¿Serías capaz de dibujar el diagrama del modelo relacional?</p>
 </div>
 <h2 id="restricciones">Restricciones<a class="headerlink" href="#restricciones" title="Permanent link">&para;</a></h2>
 <p>Una vez visto como se transforman los atributos y las relaciones, vamos a ver algunas particularidades a la hora de aplicar restricciones sobre las cardinalidades.</p>
@@ -1394,7 +1603,11 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · PK: (b0)
 </code>   </p>
 <p>Si la cardinalidad mínima está en el lado de N, se produce una pérdida expresiva, porque a nivel de base de datos no podemos obligar que para cada registro de B haya como mínimo uno de A.</p>
-<p>Vamos a comprobar con datos de ejemplo la pérdida expresiva. Si en la tabla A tenemos:</p>
+<p>Vamos a comprobar con datos de ejemplo la pérdida expresiva. Si en la tablas tenemos los siguientes datos:</p>
+<div class="grid cards" markdown>
+<ul>
+<li>
+<p><code>A</code></p>
 <table>
 <thead>
 <tr>
@@ -1421,7 +1634,9 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </tr>
 </tbody>
 </table>
-<p>y en la tabla B tenemos</p>
+</li>
+<li>
+<p><code>B</code></p>
 <table>
 <thead>
 <tr>
@@ -1444,6 +1659,9 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </tr>
 </tbody>
 </table>
+</li>
+</ul>
+</div>
 <p>No podemos asegurar que todo valor de B aparezca en A, ya que el valor <code>z</code> de <code>B</code> no aparece para ninguna clave ajena en <code>A</code>.</p>
 </div>
 <h3 id="identificacion">Identificación<a class="headerlink" href="#identificacion" title="Permanent link">&para;</a></h3>
@@ -1452,7 +1670,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
     <figcaption>Restricción de ID</figcaption>
 </figure>
 
-<p>En las restricciones de identificación, la entidad débil se identifica, completamente o en parte, con la entidad fuerte. Es por ello, que la clave ajena debe formar parte de la clave primaria.</p>
+<p>En las restricciones de identificación, la entidad débil se identifica, completamente o en parte, con la entidad fuerte. Es por ello, que la clave ajena debe formar parte de la clave primaria compuesta por la clave primaria de la entidad fuerte y la débil:</p>
 <p><code>
 <strong>A</strong> (<ins>a0</ins>, <ins>b0</ins><code>*</code>, a1)<br />
 · PK: (a0, bo)<br />
@@ -1477,6 +1695,97 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · PK: (numero, codCine)<br />
 · FK: (codCine) → CINE<br />
 </code></p>
+<p>Las tablas de datos de ejemplo demuestran que aunque la entidad débil repita número, la clave de la entidad fuerte deshace la ambigüedad:</p>
+<div class="grid cards">
+<ul>
+<li>
+<p><code>CINE</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>codigo</ins></th>
+<th>nombre</th>
+<th>direccion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ABC</td>
+<td>Elche</td>
+</tr>
+<tr>
+<td>2</td>
+<td>IMF</td>
+<td>Ondara</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Odeón</td>
+<td>Elche</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>SALA</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>numero</ins></th>
+<th><ins>codCine</ins><code>*</code></th>
+<th>aforo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>50</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>60</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>70</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>55</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Ejemplo resuelto ID</p>
+<p>Supongamos el diagrama ER que vimos en la unidad 2 al tratar las <a href="02er.html#restricciones">restricciones de ID</a>. Vamos a obtener el modelo MR del mismo, teniendo en cuenta que la entidad <code>LINEA_PEDIDO</code> es una entidad débil respecto a la relación <code>CONTENER</code>, pero hace de entidad fuerte respecto a la relación <code>TENER</code>:</p>
+<p><figure style="float: right;">
+    <img src="images/02restriccion-id-fuerte.png" width="528" title="Restricción de ID">
+    <figcaption>Restricción de ID</figcaption>
+</figure></p>
+<p><code>
+<strong>PEDIDO</strong> (<ins>codigo</ins>, fecha)<br />
+· PK: (codigo)
+</code></p>
+<p><code>
+<strong>LINEA_PEDIDO</strong> (<ins>numero</ins>, <ins>codigo</ins><code>*</code>, concepto, valor)<br />
+· PK: (numero, codigo)<br />
+· FK: (codigo) → PEDIDO<br />
+</code></p>
+<p><code>
+<strong>OBSERVACION</strong> (<ins>codigo</ins>, descripcion, numPedido<code>*</code>, codPedido<code>*</code>)<br />
+· PK: (codigo)<br />
+· FK: (numPedido, codPedido) → LINEA_PEDIDO<br />
+</code></p>
+<p>¿Qué ha pasado con el atributo <code>PEDIDO.total</code>? <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+</div>
 <h2 id="generalizacion">Generalización<a class="headerlink" href="#generalizacion" title="Permanent link">&para;</a></h2>
 <p>Cuando tenemos una relación de tipo generalización, crearemos una tabla para el padre y otra para cada hijo. Este planteamiento se conoce como <strong>explicitar</strong> las entidades.</p>
 <figure style="float: right;">
@@ -1884,6 +2193,15 @@ TODO: UT04
     * revisar CEs actividades
     * Programación de Aula... repensar
 -->
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Que al tratarse de un atributo derivado, no se traduce al modelo relacional, si no que formará parte de la aplicación que después se encargará de obtener el dato mediante una consulta.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 

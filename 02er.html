@@ -1536,7 +1536,7 @@ cuales no puede pertenecer a más de un área.</li>
 </div>
 <h3 id="restricciones">Restricciones<a class="headerlink" href="#restricciones" title="Permanent link">&para;</a></h3>
 <p>En el apartado de <a href="#entidades">Entidades</a> vimos que tenemos entidades fuertes y débiles, y en las débiles su existencia depende de otra entidad, de manera que se identifica por sus propiedades y por las propiedades de las entidades de las que depende.</p>
-<p>Las entidades débiles presentan dos tipos de dependencia:</p>
+<p>Las entidades débiles, que representamos mediante un doble rectángulo, presentan dos tipos de dependencia:</p>
 <ul>
 <li>
 <p>Dependencia en <strong>existencia</strong>: la entidad débil no puede existir sin la entidad débil, lo que implica que, si desaparece una instancia de entidad fuerte desaparecerán las instancias de entidad débiles que dependan de la primera. La representación de este tipo de dependencia incluirá una <code>E</code> en el conector o en el interior de la relación débil. En todos casos las restricciones de existencia implican que la cardinalidad mínima es 1.</p>
@@ -1550,9 +1550,18 @@ cuales no puede pertenecer a más de un área.</li>
     <figcaption>Restricción de ID</figcaption>
 </figure>
 
-<p>En el ejemplo tenemos una relación que tiene una restricción de identificación entre una línea de pedido (entidad débil) respecto a un pedido. El pedido tendrá un código y un montante total que se calcula a partir de los valores de las líneas de pedido. La propia restricción de identificación implica que las líneas de pedido realmente se identifican por su número de línea y por el código del pedido, por ejemplo la línea <code>1</code> del pedido <code>R2024A01</code>, la línea <code>2</code> del mismo pedido, etc... o la línea <code>1</code> de otro pedido diferente.</p>
-<p>En las restricciones de identificación es muy común que la entidad débil se identifique mediante un número o código secuencial, el cual se reinicia por cada cambio de la entidad fuerte.</p>
-<p>Por ejemplo, todos los apartamentos de un edificio empiezan desde el número <code>101</code>, pudiendo tener el apartamento <code>102</code> del edificio <code>E1</code> y el apartamento <code>102</code> del edificio <code>E2</code>, es decir, la entidad <code>APARTAMENTO</code> tiene una restricción de identificación con <code>EDIFICIO</code>. Pongamos otro ejemplo, si identificamos al alumnado por su número de lista y por el grupo al que pertenecen, tendremos que no será el mismo estudiante el número <code>1</code> del grupo <code>1K</code> que el estudiante <code>1</code> del grupo <code>2K</code>, de manera que tendremos una restricción de identificación entre la entidad <code>ESTUDIANTE</code> y la entidad <code>GRUPO</code>.</p>
+<p>En el ejemplo del gráfico tenemos una relación que tiene una restricción de identificación entre una línea de pedido (entidad débil) respecto a un pedido (entidad fuerte). El pedido tendrá un código y un montante total que se calcula a partir de los valores de las líneas de pedido. La propia restricción de identificación implica que las líneas de pedido realmente se identifican por su número de línea y por el código del pedido, por ejemplo la línea <code>1</code> del pedido <code>R2024A01</code>, la línea <code>2</code> del mismo pedido, etc... o la línea <code>1</code> de otro pedido diferente.</p>
+<p>En las restricciones de identificación es muy común que la entidad débil se identifique mediante un número o código secuencial, el cual se reinicia por cada cambio de la entidad fuerte. Por ejemplo, pensemos en que todos los apartamentos de un edificio empiezan desde el número <code>101</code>, pudiendo tener el apartamento <code>102</code> del edificio <code>E1</code> y el apartamento <code>102</code> del edificio <code>E2</code>, es decir, la entidad <code>APARTAMENTO</code> tiene una restricción de identificación con <code>EDIFICIO</code>.</p>
+<p>Pongamos otro ejemplo, si identificamos al alumnado por su número de lista y por el grupo al que pertenecen, tendremos que no será el mismo estudiante el número <code>1</code> del grupo <code>1K</code> que el estudiante <code>1</code> del grupo <code>2K</code>, de manera que tendremos una restricción de identificación entre la entidad <code>ESTUDIANTE</code> y la entidad <code>GRUPO</code>.</p>
+<div class="admonition question">
+<p class="admonition-title">Débil o fuerte</p>
+<p><figure style="float: right;">
+    <img src="images/02restriccion-id-fuerte.png" width="528" title="Restricción de ID">
+    <figcaption>Restricción de ID</figcaption>
+</figure></p>
+<p>Hay casos en los que una entidad tiene relación con varias entidades, comportándose como débil en una, y como fuerte en otras. Es por ello, que además de marcar la entidad como débil, debemos marcar la relación con un doble rombo. </p>
+<p>Veámoslo con un ejemplo. Si sobre la línea de pedido, añadimos una relación 1:N con observaciones sobre la misma, tendríamos el siguiente modelo, donde <code>LINEA_PEDIDO</code> es una entidad débil respecto a la relación <code>CONTENER</code>, pero hace de entidad fuerte respecto a la relación <code>TENER</code>.</p>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Cardinalidades exactas</p>
 <p>En ocasiones sabemos la cantidad exacta de ocurrencias con las que se puede relacionar una entidad. En dicho caso, seguirán siendo relaciones 1:N o N:M, pero en el modelo, indicaremos la cantidad de ocurrencias.</p>
