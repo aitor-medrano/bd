@@ -606,6 +606,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="De MR a ER">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supuesto-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supuesto I
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supuesto-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supuesto II
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -913,6 +937,30 @@
       De MR a ER
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="De MR a ER">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supuesto-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supuesto I
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supuesto-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supuesto II
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1916,7 +1964,71 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </ul>
 </li>
 </ul>
-<p>FIXME: ejemplo</p>
+<h3 id="supuesto-i">Supuesto I<a class="headerlink" href="#supuesto-i" title="Permanent link">&para;</a></h3>
+<p>Vamos a crear el modelo conceptual partiendo del siguiente modelo relacional:</p>
+<p><code>
+<strong>A</strong> (<ins>a0</ins>, a1, a2)<br />
+· PK: (a0)
+</code></p>
+<p><code>
+<strong>B</strong> (<ins>b0</ins>, b1, a0<code>*</code>, c0<code>*</code>)<br />
+· PK: (b0)<br />
+· FK: (a0) → A<br />
+· FK: (c0) → D<br />
+</code></p>
+<p><code>
+<strong>C</strong> (<ins>c0</ins>, c1, c2)<br />
+· PK: (c0)
+</code></p>
+<p><code>
+<strong>D</strong> (<ins>c0</ins>, d0)<br />
+· PK: (c0)<br />
+· FK: (c0) → C<br />
+</code></p>
+<details class="example">
+<summary>Solución</summary>
+<p>El primer paso es dibujar aquellas entidades que no tienen ninguna clave ajena que salga de ellas, es decir, entidades <em>"finales"</em>. Así pues empezaremos modelando la entidad <code>A</code>. Para modelar la entidad <code>B</code>, necesitamos previamente haber modelado las entidades <code>C</code> y <code>D</code>. Así pues, vamos a continuar con la entidad <code>C</code>.</p>
+<p>Cuando nos planteamos la entidad <code>D</code>, vemos que tiene un atributo que es clave ajena hacía <code>D</code>, el cual además es clave primaria, por lo tanto, podemos decir que <code>D</code> es una subclase de <code>C</code>.</p>
+<p>Finalmente, modelamos la entidad <code>B</code>, la cual tiene dos claves ajenas sencillas que no son claves primarias, y por lo tanto, son relaciones 1:N con las entidades a las que referencia.</p>
+<p>El resultado se puede comprobar en el siguiente diagrama:</p>
+<p><figure style="align: center;">
+    <img src="images/04ejemploMR-ER.png" width="892" title="Supuesto MR-ER">
+    <figcaption>Supuesto MR-ER</figcaption>
+</figure></p>
+</details>
+<h3 id="supuesto-ii">Supuesto II<a class="headerlink" href="#supuesto-ii" title="Permanent link">&para;</a></h3>
+<p>En este caso, vamos a realizar un ejemplo más complejo. Partimos del siguiente modelo relacional:</p>
+<p><code>
+<strong>A</strong> (<ins>a0</ins>, a1)<br />
+· PK: (a0)
+</code></p>
+<p><code>
+<strong>B</strong> (<ins>b0</ins><code>*</code>, b1, b2, b3<code>*</code>)<br />
+· PK: (b0)<br />
+· FK: (b0) → A<br />
+· FK: (b3) → C<br />
+· VNN: (b3)
+</code></p>
+<p><code>
+<strong>C</strong> (<ins>c0</ins>, c1)<br />
+· PK: (c0)<br />
+· FK: (c0) → A<br />
+</code></p>
+<p><code>
+<strong>D</strong> (<ins>d0</ins>, d1, d2)<br />
+· PK: (d0, d2)<br />
+· FK: (d2) → C<br />
+</code></p>
+<p><code>
+<strong>E</strong> (<ins>e0</ins>, e1, e2, e3)<br />
+· PK: (e0, e1, e2)<br />
+· FK: (e0) → A<br />
+· FK: (e1, e2) → D<br />
+</code></p>
+<details class="example">
+<summary>Solución</summary>
+<p>En este caso, el orden de creación de las entidades serán <code>A</code>, <code>C</code> y D, B y E.</p>
+</details>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
