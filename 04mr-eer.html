@@ -421,9 +421,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-12h" class="md-nav__link">
+  <a href="#programacion-de-aula-13h" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación de Aula (12h)
+      Programación de Aula (13h)
     </span>
   </a>
   
@@ -753,9 +753,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-12h" class="md-nav__link">
+  <a href="#programacion-de-aula-13h" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación de Aula (12h)
+      Programación de Aula (13h)
     </span>
   </a>
   
@@ -1044,10 +1044,13 @@
 <li>¿Qué tipo de relación provoca la creación de una nueva tabla?</li>
 <li>Cuando hablamos de generalizaciones, ¿qué tres opciones podemos plantear al transformarlas al modelo relacional?</li>
 <li>¿Qué diferencia una entidad débil respecto a una fuerte en el modelo relacional?</li>
+<li>Cuando una clave ajena además es clave alternativa, ¿que tipo de relación existe entre las entidades?</li>
+<li>¿Y si la clave ajena además está marcada como valor no nulo?</li>
+<li>Cuando tenemos una clave primaria que toda ella es una clave primaria, ¿que tipo de relación existe entre las entidades?</li>
 </ol>
 </div>
-<h3 id="programacion-de-aula-12h">Programación de Aula (12h)<a class="headerlink" href="#programacion-de-aula-12h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la cuarta, con lo que se imparte en la primera evaluación, durante el mes de noviembre, con una duración estimada de 10 horas:</p>
+<h3 id="programacion-de-aula-13h">Programación de Aula (13h)<a class="headerlink" href="#programacion-de-aula-13h" title="Permanent link">&para;</a></h3>
+<p>Esta unidad es la cuarta, con lo que se imparte en la primera evaluación, durante el mes de noviembre, con una duración estimada de 13 sesiones lectivas:</p>
 <table>
 <thead>
 <tr>
@@ -1108,24 +1111,30 @@
 </tr>
 <tr>
 <td>9</td>
-<td>Reto - diseño lógico</td>
-<td><a href="#PY412">PY412</a></td>
-<td><abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>-<abbr title="Se han aplicado reglas de normalización.">CE6g</abbr></td>
+<td>Interpretando MR</td>
+<td><a href="#AC413">AC413</a></td>
+<td><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>-<abbr title="Se han aplicado reglas de integridad.">CE6f</abbr></td>
 </tr>
 <tr>
 <td>10</td>
 <td>Reto - diseño lógico</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>11</td>
-<td>Prueba objetiva</td>
-<td><a href="#PO413">PO413</a></td>
+<td><a href="#PY414">PY414</a></td>
 <td><abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>-<abbr title="Se han aplicado reglas de normalización.">CE6g</abbr></td>
 </tr>
 <tr>
+<td>11</td>
+<td>Reto - diseño lógico</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
 <td>12</td>
+<td>Prueba objetiva</td>
+<td><a href="#PO415">PO415</a></td>
+<td><abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>-<abbr title="Se han aplicado reglas de normalización.">CE6g</abbr></td>
+</tr>
+<tr>
+<td>13</td>
 <td>Prueba objetiva</td>
 <td></td>
 <td></td>
@@ -2010,24 +2019,33 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · VNN: (b3)
 </code></p>
 <p><code>
-<strong>C</strong> (<ins>c0</ins>, c1)<br />
+<strong>C</strong> (<ins>c0</ins><code>*</code>, c1)<br />
 · PK: (c0)<br />
 · FK: (c0) → A<br />
 </code></p>
 <p><code>
-<strong>D</strong> (<ins>d0</ins>, d1, d2)<br />
+<strong>D</strong> (<ins>d0</ins>, d1, <ins>d2</ins><code>*</code>)<br />
 · PK: (d0, d2)<br />
 · FK: (d2) → C<br />
 </code></p>
 <p><code>
-<strong>E</strong> (<ins>e0</ins>, e1, e2, e3)<br />
+<strong>E</strong> (<ins>e0</ins><code>*</code>, <ins>e1</ins><code>*</code>, <ins>e2</ins><code>*</code>, e3)<br />
 · PK: (e0, e1, e2)<br />
 · FK: (e0) → A<br />
 · FK: (e1, e2) → D<br />
 </code></p>
 <details class="example">
 <summary>Solución</summary>
-<p>En este caso, el orden de creación de las entidades serán <code>A</code>, <code>C</code> y D, B y E.</p>
+<p>En este caso, el orden de creación de las entidades serán <code>A</code>, luego <code>C</code> y <code>D</code>, y finalmente <code>B</code> y <code>E</code>.</p>
+<p>En caso de <code>C</code>, al tener una clave ajena que es una clave primaria (completa), entonces <code>C</code> es una subclase de <code>A</code>.
+Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma parte de la clave primaria (es un subconjunto de la clave primaria), y por tanto, es una restricción de identificación respecto a la entidad <code>C</code>.</p>
+<p>Una vez tenemos <code>A</code>, <code>C</code> y <code>D</code>, nos centramos en <code>B</code>. <code>B</code> sigue la misma estructura que <code>C</code>, por lo tanto, <code>B</code> también es una subclase de <code>A</code>, y además tiene otra clave ajena marcada como valor no nulo, que implica que es una relación 1:N (al no estar marcado como clave única), pero que sí tiene una cardinalidad mínima a 1 (por el valor no nulo).</p>
+<p>Para terminar, la entidad <code>E</code> tiene dos claves ajenas que cubren toda la clave primaria. Por lo tanto, es una relación N:M entre <code>A</code> y <code>D</code>.</p>
+<p>El resultado se puede comprobar en el siguiente diagrama:</p>
+<p><figure style="align: center;">
+    <img src="images/04ejemploMR-ER2.png" width="977" title="Supuesto II MR-ER">
+    <figcaption>Supuesto II MR-ER</figcaption>
+</figure></p>
 </details>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
@@ -2189,7 +2207,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p><a name="AC410"></a></p>
 <ul>
 <li>
-<p><strong>AC410</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p)) A partir de los siguiente modelo relacional, dibuja el diagrama ER:</p>
+<p><strong>AC410</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) A partir del siguiente modelo relacional, dibuja el diagrama ER:</p>
 <p><code>
 <strong>EMPLEADO</strong> (<ins>num</ins>, dni, nombre, direccion, banco)<br />
 · PK: (num)
@@ -2260,12 +2278,69 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </ul>
 <p><a name="AR411"></a></p>
 <ul>
-<li><strong>AR411</strong>. De MR a ER</li>
+<li>
+<p><strong>AR411</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) A partir del siguiente modelo relacional, dibuja el diagrama ER:</p>
+<p><code>
+<strong>EDIFICIO</strong> (<ins>num</ins>, numPlantas, gestor<code>*</code>)<br />
+· PK: (num)<br />
+· FK: (gestor) → GESTOR<br />
+</code></p>
+<p><code>
+<strong>GESTOR</strong> (<ins>codigo</ins>, nombre, apellido1, apellido2, salario, residencia<code>*</code>)<br />
+· PK: (codigo)<br />
+· FK: (residencia) → EDIFICIO<br />
+· UK: (residencia)
+</code></p>
+<p><code>
+<strong>INSPECTOR</strong> (<ins>codigo</ins>, nombre) <br />
+· PK: (codigo) 
+</code></p>
+<p><code>
+<strong>SUPERVISAR</strong> (<ins>codigo</ins><code>*</code>, <ins>num</ins><code>*</code>, fUltima, fSiguiente)<br />
+· PK: (codigo, num)<br />
+· FK: (codigo) → INSPECTOR<br />
+· FK: (num) → EDIFICIO
+</code></p>
+<p><code>
+<strong>TRABAJADOR</strong> (<ins>codigo</ins>, nombre)<br />
+· PK: (codigo) 
+</code></p>
+<p><code>
+<strong>APARTAMENTO</strong> (<ins>numA</ins>, <ins>numE</ins><code>*</code>, dormitorios)  <br />
+· PK: (numA, numE)<br />
+· FK: (numE) → EDIFICIO 
+</code>   </p>
+<p><code>
+<strong>LIMPIAR</strong> (<ins>codigo</ins><code>*</code>, <ins>numA</ins><code>*</code>, <ins>numE</ins><code>*</code>)<br />
+· PK: (codigo, numA, numE)<br />
+· FK: (numA, numE) → APARTAMENTO<br />
+· FK: (codigo) → TRABAJADOR 
+</code>   </p>
+</li>
 </ul>
-<p><a name="PY412"></a></p>
+<p><a name="AP412"></a></p>
 <ul>
 <li>
-<p><strong>PY412</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 30p) Una vez finalizamos el bloque de <em>Diseño de bases de datos,</em> ya estamos en condiciones de finalizar el reto <a href="02er.html#reto-i-disenamos">Diseñamos</a>.</p>
+<p><strong>AP412</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Una vez realizada la actividad <a href="#AR411">AR411</a>, añade una entidad <code>PERSONA</code> a modo de generalización de las tablas <code>GESTOR</code>, <code>INSPECTOR</code> y <code>TRABAJADOR</code>.</p>
+<p>Crea las tablas en el modelo relacional, modificando aquellas que sean necesarias, y comprueba si las tablas que dependen de ellas también deben modificarse.</p>
+</li>
+</ul>
+<p><a name="AC413"></a></p>
+<ul>
+<li>
+<p><strong>AC413</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 30p) A partir del siguiente modelo relacional:</p>
+<p>Contesta a las siguientes preguntas argumentado tus respuestas:</p>
+<p>FIXME: Pensar supuesto y hacer preguntas</p>
+<ol>
+<li>¿Puede ...?</li>
+<li>¿Cuantos...?</li>
+</ol>
+</li>
+</ul>
+<p><a name="PY414"></a></p>
+<ul>
+<li>
+<p><strong>PY414</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 30p) Una vez finalizamos el bloque de <em>Diseño de bases de datos,</em> ya estamos en condiciones de afrontar el reto <a href="02er.html#reto-i-disenamos">Diseñamos</a>.</p>
 <p>Para ello, a partir del modelo conceptual obtenido en la <a href="02er.html#PY215">actividad de proyecto 215</a>, cada equipo debe entregar:</p>
 <ul>
 <li>El modelo ER</li>
@@ -2286,10 +2361,10 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </ul>
 </li>
 </ul>
-<p><a name="PO413"></a></p>
+<p><a name="PO415"></a></p>
 <ul>
 <li>
-<p><strong>PO413</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 30p) La prueba objetiva que agrupa todo el resultado de aprendizaje consistirá en:</p>
+<p><strong>PO415</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 30p) La prueba objetiva que agrupa todo el resultado de aprendizaje consistirá en:</p>
 <ul>
 <li>Crear un modelo ER a partir de un sistema de información</li>
 <li>Interpreta un modelo ER</li>
@@ -2302,7 +2377,6 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 TODO: UT04
 
     * pdf pg 101
-    * Explicar de MR a ER
     * revisar CEs actividades
     * Programación de Aula... repensar
 -->
