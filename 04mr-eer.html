@@ -1046,7 +1046,7 @@
 <li>¿Qué diferencia una entidad débil respecto a una fuerte en el modelo relacional?</li>
 <li>Cuando una clave ajena además es clave alternativa, ¿que tipo de relación existe entre las entidades?</li>
 <li>¿Y si la clave ajena además está marcada como valor no nulo?</li>
-<li>Cuando tenemos una clave primaria que toda ella es una clave primaria, ¿que tipo de relación existe entre las entidades?</li>
+<li>Cuando tenemos una clave ajena que toda ella es una clave primaria, ¿que tipo de relación existe entre las entidades?</li>
 </ol>
 </div>
 <h3 id="programacion-de-aula-13h">Programación de Aula (13h)<a class="headerlink" href="#programacion-de-aula-13h" title="Permanent link">&para;</a></h3>
@@ -2321,19 +2321,63 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <p><a name="AP412"></a></p>
 <ul>
 <li>
-<p><strong>AP412</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Una vez realizada la actividad <a href="#AR411">AR411</a>, añade una entidad <code>PERSONA</code> a modo de generalización de las tablas <code>GESTOR</code>, <code>INSPECTOR</code> y <code>TRABAJADOR</code>.</p>
+<p><strong>AP412</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Una vez realizada la actividad <a href="#AR411">AR411</a>, añade en el modelo ER una entidad <code>PERSONA</code> a modo de generalización de las tablas <code>GESTOR</code>, <code>INSPECTOR</code> y <code>TRABAJADOR</code>.</p>
 <p>Crea las tablas en el modelo relacional, modificando aquellas que sean necesarias, y comprueba si las tablas que dependen de ellas también deben modificarse.</p>
 </li>
 </ul>
 <p><a name="AC413"></a></p>
 <ul>
 <li>
-<p><strong>AC413</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 30p) A partir del siguiente modelo relacional:</p>
+<p><strong>AC413</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) A partir del siguiente modelo relacional:</p>
+<p><code>
+<strong>EQUIPO</strong> (<ins>num</ins>, fUltimaRevision, fAlta, detalle<code>*</code>)<br />
+· PK: (num)<br />
+· FK: (detalle) → DETALLE_EQUIPO<br />
+· VNN: (detalle)<br />
+</code></p>
+<p><code>
+<strong>DETALLE_EQUIPO</strong> (<ins>codigo</ins>, tipo, modelo, fUltimaRevision)<br />
+· PK: (codigo)<br />
+</code></p>
+<p><code>
+<strong>VENTA</strong> (<ins>codigo</ins>, precio, fecha, equipo<code>*</code>, cliente<code>*</code>, comercial<code>*</code>)<br />
+· PK: (num)<br />
+· FK: (equipo) → EQUIPO<br />
+· FK: (cliente) → CLIENTE<br />
+· FK: (comercial) → COMERCIAL<br />
+· VNN: (equipo)<br />
+· VNN: (cliente)<br />
+· VNN: (comercial)<br />
+</code></p>
+<p><code>
+<strong>ALQUILER</strong> (<ins>codigo</ins>, precio, fecha, equipo<code>*</code>, cliente<code>*</code>, comercial<code>*</code>)<br />
+· PK: (num)<br />
+· FK: (equipo) → EQUIPO<br />
+· FK: (cliente) → CLIENTE<br />
+· FK: (comercial) → COMERCIAL<br />
+· VNN: (equipo)<br />
+· VNN: (cliente)<br />
+· VNN: (comercial)<br />
+</code></p>
+<p><code>
+<strong>CLIENTE</strong> (<ins>id</ins>, nombre, categoría)<br />
+· PK: (id)<br />
+</code></p>
+<p><code>
+<strong>COMERCIAL</strong> (<ins>codigo</ins>, nombre, apellido1, rango, mentor<code>*</code>)<br />
+· PK: (id)<br />
+· FK: (mentor) → COMERCIAL<br />
+</code></p>
 <p>Contesta a las siguientes preguntas argumentado tus respuestas:</p>
-<p>FIXME: Pensar supuesto y hacer preguntas</p>
 <ol>
-<li>¿Puede ...?</li>
-<li>¿Cuantos...?</li>
+<li>¿Puede un <code>EQUIPO</code> tener más de un <code>DETALLE_EQUIPO</code>?</li>
+<li>¿Puede un <code>COMERCIAL</code> vender varios <code>EQUIPO</code>?</li>
+<li>¿Un <code>ALQUILER</code> cuantos <code>DETALLE_EQUIPO</code> tendrá?</li>
+<li>¿Puede un <code>CLIENTE</code> alquilar y vender el mismo <code>EQUIPO</code>?</li>
+<li>¿Podemos averiguar que <code>COMERCIAL</code> vendió un determinado <code>EQUIPO</code>?</li>
+<li>¿Una persona puede ser <code>CLIENTE</code> y <code>COMERCIAL</code> a la vez?</li>
+<li>¿Todo <code>COMERCIAL</code> debe tener un mentor?</li>
+<li>¿Un <code>COMERCIAL</code> puede tener varios mentores o un mentor puede mentorizar a varios comerciales?</li>
 </ol>
 </li>
 </ul>
@@ -2540,7 +2584,7 @@ TODO: UT04
       
       
     
-    <a href="https://twitter.com/aitormedrano" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+    <a href="https://x.com/aitormedrano" target="_blank" rel="noopener" title="x.com" class="md-social__link">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z"/></svg>
     </a>
   
