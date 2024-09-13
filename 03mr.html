@@ -1964,7 +1964,7 @@ clave primaria de la tabla que relaciona.</p>
 <p>Un principio del diseño relacional es que "<em>hechos distintos se deben almacenar en objetos distintos</em>".</p>
 <p>Para conseguir este objetivo, la normalización es un técnica dentro del diseño de bases de datos relacionales que consiste en la separación de atributos en tablas lo más simples posibles para suprimir dependencias erróneas entre atributos, así como optimizar los procesos de inserción, modificación y borrado en la bases de datos.</p>
 <p>Así pues, se basa en el análisis de dependencias entre atributos mediante un proceso que consiste en identificar y aplicar una serie de reglas a las relaciones obtenidas del esquema relacional.</p>
-<div class="admonition info">
+<div class="admonition abstract">
 <p class="admonition-title">Supuesto Comerciales</p>
 <p>Supongamos los siguientes datos sobre ventas que realizan una serie de comerciales de los cuales tenemos su código y nombre, su estado laboral (con un código y una descripción), la ciudad y la provincia donde realizan las ventas, así como las poblaciones de dichas ciudades y provincias.</p>
 <table>
@@ -2079,29 +2079,38 @@ clave primaria de la tabla que relaciona.</p>
 <ul>
 <li>
 <p><strong>Dependencia funcional</strong> (DF): es la relación semántica existente entre atributos de una misma tabla. Decimos que <strong>A → B</strong>, es decir, que <strong>B depende funcionalmente de A</strong> (o A determina a B), si y solo si para cada valor de A sólo puede existir un B.</p>
-<p>Con el ejemplo de los comerciales, necesitamos para cada columna, identificar las dependencias que hay entre los atributos.</p>
-<p>Por ejemplo, cogemos el nombre del comercial, y detectamos que dependen funcionalmente del identificador del comercial, por lo tanto: <code>comercialID → comercialNom</code>.</p>
-<p>Pero si nos fijamos bien en los nombre, no podemos decir lo mismo en el sentido contrario, ya que tenemos un nombre repetido en diferentes códigos de comercial (¡qué casualidad!), con lo que no es correcto decir <code>comercialNom → comercialID</code>.</p>
+<div class="admonition abstract">
+<p class="admonition-title">DF - Supuesto Comerciales</p>
+<p>El primer paso es para cada columna, identificar las dependencias que hay entre los atributos.</p>
+<p>Por ejemplo, cogemos el nombre del comercial, y detectamos que dependen funcionalmente del identificador del comercial, por lo tanto: <code>comercialID → comercialNom</code>. Pero si nos fijamos bien en los nombres de los comerciales, no podemos decir lo mismo en el sentido contrario, ya que tenemos un nombre repetido en diferentes códigos de comercial (¡qué casualidad!), con lo que no es correcto decir <code>comercialNom → comercialID</code>.</p>
 <p>Si hacemos lo mismo con el identificador del estado del comercial, deducimos que depende también del identificador, obteniendo <code>comercialID → estadoID</code>.</p>
 <p>Y lo mismo con la descripción del estado. En este caso, se cumplen que tanto el identificador del comercial como el identificador del estado permiten obtener la descripción del estado, obteniendo <code>comercialID → estadoDesc</code> y <code>estadoID → estadoDesc</code>.</p>
 <p>Si continuamos con todos los atributos y agrupamos las dependencias funcionales tenemos:    </p>
 <ul>
 <li><code>comercialID → comercialNom, estadoID, estadoDesc</code></li>
 <li><code>estadoID → estadoDesc</code></li>
+<li><code>estadoDesc → estadoID</code></li>
 <li><code>provincia → provinciaPob</code></li>
 <li><code>ciudad, provincia → ciudadPob</code>, por ejemplo, tenemos dos ciudades <code>Valencia</code> en provincias diferentes</li>
 <li><code>comercialID , ciudad, provincia → ventas</code> </li>
 </ul>
 <p>Tal como hemos comentado previamente, cuando agrupamos los atributos, la dependencia <code>comercialID → comercialNom, estadoID, estadoDesc</code> significa que tanto el nombre del comercial, como el código de su estado y el estado dependen del identificador del comercial.</p>
+</div>
 </li>
 <li>
 <p><strong>Dependencia funcional completa</strong> (DFC): cuando tenemos que <em>A1, A2, ...AN → B</em> (B tiene una dependencia funcional del conjunto A1, A2, ...AN), pero no de ninguno de sus subconjuntos.</p>
 <p>Es decir, B depende de la combinación completa de atributos, y no de un parte de la clave.</p>
-<p>En el caso de los comerciales, tenemos que las ventas dependen de la combinación <code>comercialID , ciudad, provincia</code> y no de un subconjunto de ellas.</p>
+<div class="admonition abstract">
+<p class="admonition-title">DFC - Supuesto Comerciales</p>
+<p>Tenemos que las ventas dependen de la combinación <code>comercialID, ciudad, provincia</code> y no de un subconjunto de ellas, es decir, <code>comercialID, ciudad, provincia → ventas</code>.</p>
+</div>
 </li>
 <li>
 <p><strong>Dependencia funcional transitiva</strong> (DFT): se dice que hay un DFT entre A y B, si A → B y B → C, siendo A y B columnas no claves. Dicho de otro modo, cuando tenemos columnas no claves que determinan otras columnas no clave.</p>
-<p>En el caso de los comerciales, tenemos que <code>estadoID → estadoDesc</code> y que <code>estadoDesc → estadoID</code>.</p>
+<div class="admonition abstract">
+<p class="admonition-title">DFT - Supuesto Comerciales</p>
+<p>Tenemos que <code>estadoID → estadoDesc</code> y que <code>estadoDesc → estadoID</code>.</p>
+</div>
 </li>
 </ul>
 <h3 id="formas-normales">Formas Normales<a class="headerlink" href="#formas-normales" title="Permanent link">&para;</a></h3>
