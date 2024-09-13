@@ -1223,7 +1223,7 @@
 <p>Un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> se compone de:</p>
 <ul>
 <li><strong>Diccionario de datos</strong>: metadatos con las estructuras de las diferentes bases de datos, relaciones entre los datos, restricciones existentes así como información sobre las cuentas y permisos de los usuarios.</li>
-<li><strong>Espacio de datos</strong>: zona sonde se almacenan los datos en sí. Se pueden organizar de diferentes maneras, dependiente del sistemas gestor. Por ejemplo, Oracle lo realiza mediante el uso de <em>tablespaces</em> y otros gestores con el concepto de base de datos.</li>
+<li><strong>Espacio de datos</strong>: zona sonde se almacenan los datos en sí. Se pueden organizar de diferentes maneras, dependiente del sistemas gestor. Por ejemplo, <em>Oracle</em> lo realiza mediante el uso de <em>tablespaces</em> y otros gestores con el concepto de base de datos.</li>
 <li>Un conjunto de herramientas, las cuales suele gestionar el rol de DBA (<em>Database Administrator</em>) para<ul>
 <li>Crear y especificar los datos (mediante el <em>Data Definition Language</em> - DDL), el control de datos (mediante el <em>Data Control Language</em> - DCL) y su manipulación (mediante el <em>Data Manipulation Language</em> - DML)</li>
 <li>Recuperación (<em>failover</em>). Tras una caída del sistema, configurar los posibles mecanismos de recuperación y aceptación o revisión de las operaciones pendientes.</li>
@@ -1236,7 +1236,7 @@
 <h3 id="arquitectura-de-3-niveles">Arquitectura de 3 niveles<a class="headerlink" href="#arquitectura-de-3-niveles" title="Permanent link">&para;</a></h3>
 <p>Antes ya habíamos comentado que un <strong>modelo de datos</strong> es un conjunto de herramientas conceptuales para describir los datos, sus relaciones, su semántica y sus restricciones.</p>
 <p>Podemos definir un <strong>esquema</strong> como una descripción específica en términos de un modelo de datos.</p>
-<p>El grupo ANSII/SPARC, a mediados de los años 70, definió una arquitectura en 3 niveles diferenciando tres esquemas, con el objetivo de separar a las aplicaciones de los datos, permitir que los usuarios tuvieran diferentes vistas, y utilizar un catálogo para almacenar el esquema de la base de datos.</p>
+<p>El grupo <em>ANSII/SPARC</em>, a mediados de los años 70, definió una arquitectura en 3 niveles diferenciando tres esquemas, con el objetivo de separar a las aplicaciones de los datos, permitir que los usuarios tuvieran diferentes vistas, y utilizar un catálogo para almacenar el esquema de la base de datos.</p>
 <p>¿Y cómo se consigue? Si queremos independencia entre los datos y las aplicaciones, necesitamos que cada programa que accede a la base de datos manipule sólo ciertos datos y estructura, de manera que cada programa posee una visión de la base de datos, lo que se conoce como <strong>esquema externo</strong>.
 La unión de todos los datos y sus relaciones forman el llamado <strong>esquema conceptual</strong>.
 Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de los datos y sus formas de acceso.</p>
@@ -1257,6 +1257,15 @@ Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de 
 <li><strong>Independencia física</strong>: capacidad de modificar el esquema interno sin tener que alterar ni el esquema conceptual, ni los externos. Por ejemplo, se pueden reorganizar los archivos físicos con el
 fin de mejorar el rendimiento de las operaciones de consulta o de actualización, o se pueden añadir nuevos archivos de datos porque los que había se han llenado.</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Arquitecturas físicas</p>
+<p>Si nos centramos en la organización física de la infraestructura necesaria a la hora de desplegar un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> (comentados en los <a href="#tipos-de-bases-de-datos">Tipos de Bases de Datos</a>), podemos clasificar las arquitecturas en:</p>
+<ul>
+<li>Centralizada: en un único ordenador, no permitiendo el acceso concurrente (MS Access)</li>
+<li>Cliente-Servidor: Los datos están en un servidor, pero se desacoplan los clientes los cuales se conectan vía red/internet.</li>
+<li>Distribuida: Existen múltiples servidores, ya sea replicando o fragmentando los datos, facilitando la robustez del sistema. </li>
+</ul>
+</div>
 <h3 id="perfiles">Perfiles<a class="headerlink" href="#perfiles" title="Permanent link">&para;</a></h3>
 <p>A la hora de emplear un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> existen diferentes perfiles o usuarios:</p>
 <ul>

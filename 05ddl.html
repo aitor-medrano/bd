@@ -465,6 +465,87 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#modelo-fisico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelo físico
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operaciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operaciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modificaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modificaciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Modificaciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filtrando" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtrando
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inserciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inserciones
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#borrados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Borrados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Borrados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filtrando_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtrando
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       Referencias
@@ -643,8 +724,40 @@
 </tbody>
 </table>
 <p>Al finalizar esta unidad, comenzaremos un nuevo reto, centrado en el modelo físico, creando y cargando datos.</p>
+<h2 id="modelo-fisico">Modelo físico<a class="headerlink" href="#modelo-fisico" title="Permanent link">&para;</a></h2>
+<h2 id="operaciones">Operaciones<a class="headerlink" href="#operaciones" title="Permanent link">&para;</a></h2>
+<p>Sobre una tabla, las operaciones que vamos a poder realizar son:</p>
+<ul>
+<li>insertar datos en una tabla</li>
+<li>modificar datos de una tabla</li>
+<li>eliminar datos de una tabla</li>
+</ul>
+<p>Cuando hablamos de "datos de una tabla", podemos referirnos a registros completos, campos concretos o incluso elementos relacionados de varias tablas.</p>
+<p>Para realizar estas operaciones, se utiliza el subconjunto DML (<em>Data Manipulation Language</em>) de SQL.</p>
+<h3 id="modificaciones">Modificaciones<a class="headerlink" href="#modificaciones" title="Permanent link">&para;</a></h3>
+<p>La sintaxis es:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">campo</span><span class="o">=</span><span class="n">valor</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="filtrando">Filtrando<a class="headerlink" href="#filtrando" title="Permanent link">&para;</a></h4>
+<p>Si queremos decidir qué elementos modificar, añadimos la expresión <code>WHERE</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">campo</span><span class="o">=</span><span class="n">valor</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condicion</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="inserciones">Inserciones<a class="headerlink" href="#inserciones" title="Permanent link">&para;</a></h3>
+<p>La sintaxis es:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">valor1</span><span class="p">,</span><span class="w"> </span><span class="n">valor2</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+</code></pre></div>
+<h3 id="borrados">Borrados<a class="headerlink" href="#borrados" title="Permanent link">&para;</a></h3>
+<p>La sintaxis es:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DELETE</span><span class="w"> </span><span class="n">campo</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tabla</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="filtrando_1">Filtrando<a class="headerlink" href="#filtrando_1" title="Permanent link">&para;</a></h4>
+<p>Si queremos decidir qué elementos eliminar, del mismo modo que en las modificaciones, añadimos la expresión <code>WHERE</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DELETE</span><span class="w"> </span><span class="n">campo</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condicion</span><span class="p">;</span>
+</code></pre></div>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
-<p>https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html</p>
+<!--
+https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
+-->
 
 
 
