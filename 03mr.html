@@ -1964,25 +1964,144 @@ clave primaria de la tabla que relaciona.</p>
 <p>Un principio del diseño relacional es que "<em>hechos distintos se deben almacenar en objetos distintos</em>".</p>
 <p>Para conseguir este objetivo, la normalización es un técnica dentro del diseño de bases de datos relacionales que consiste en la separación de atributos en tablas lo más simples posibles para suprimir dependencias erróneas entre atributos, así como optimizar los procesos de inserción, modificación y borrado en la bases de datos.</p>
 <p>Así pues, se basa en el análisis de dependencias entre atributos mediante un proceso que consiste en identificar y aplicar una serie de reglas a las relaciones obtenidas del esquema relacional.</p>
+<div class="admonition info">
+<p class="admonition-title">Supuesto Comerciales</p>
+<p>Supongamos los siguientes datos sobre ventas que realizan una serie de comerciales de los cuales tenemos su código y nombre, su estado laboral (con un código y una descripción), la ciudad y la provincia donde realizan las ventas, así como las poblaciones de dichas ciudades y provincias.</p>
+<table>
+<thead>
+<tr>
+<th>comercialID</th>
+<th>comercialNom</th>
+<th>estadoID</th>
+<th>estadoDesc</th>
+<th>ciudad</th>
+<th>provincia</th>
+<th>ciudadPob</th>
+<th>provinciaPob</th>
+<th>ventas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>Carlos Suarez</td>
+<td>JC</td>
+<td>Jornada Completa</td>
+<td>Elche</td>
+<td>Alicante</td>
+<td>230.000</td>
+<td>1.800.000</td>
+<td>33</td>
+</tr>
+<tr>
+<td>C1</td>
+<td>Carlos Suarez</td>
+<td>JC</td>
+<td>Jornada Completa</td>
+<td>Denia</td>
+<td>Alicante</td>
+<td>42.000</td>
+<td>1.800.000</td>
+<td>22</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Manoli Campos</td>
+<td>JC</td>
+<td>Jornada Completa</td>
+<td>Elche</td>
+<td>Alicante</td>
+<td>230.000</td>
+<td>1.800.000</td>
+<td>55</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Manoli Campos</td>
+<td>JC</td>
+<td>Jornada Completa</td>
+<td>Aspe</td>
+<td>Alicante</td>
+<td>22.000</td>
+<td>1.800.000</td>
+<td>44</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Carlos Suarez</td>
+<td>JPM</td>
+<td>Jornada Partida Mañanas</td>
+<td>Cartagena</td>
+<td>Murcia</td>
+<td>218.000</td>
+<td>1.520.000</td>
+<td>17</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>Sonia Sánchez</td>
+<td>JPT</td>
+<td>Jornada Partida Tardes</td>
+<td>Gandía</td>
+<td>Valencia</td>
+<td>73.000</td>
+<td>2.550.000</td>
+<td>27</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Marina Vidal</td>
+<td>JC</td>
+<td>Jornada Completa</td>
+<td>Valencia</td>
+<td>Valencia</td>
+<td>807.000</td>
+<td>1.800.000</td>
+<td>37</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Michael Johnson</td>
+<td>JC</td>
+<td>Jornada Completa</td>
+<td>Valencia</td>
+<td>California</td>
+<td>63.000</td>
+<td>38.940.000</td>
+<td>47</td>
+</tr>
+</tbody>
+</table>
+<p>Claramente, tenemos datos redundantes que con otra organización de los mismos podríamos evitar dependencias.</p>
+</div>
 <h3 id="dependencias-funcionales">Dependencias funcionales<a class="headerlink" href="#dependencias-funcionales" title="Permanent link">&para;</a></h3>
 <p>Antes de entrar a conocer los pasos de las normalización, previamente tenemos que definir una serie de conceptos:</p>
 <ul>
 <li>
 <p><strong>Dependencia funcional</strong> (DF): es la relación semántica existente entre atributos de una misma tabla. Decimos que <strong>A → B</strong>, es decir, que <strong>B depende funcionalmente de A</strong> (o A determina a B), si y solo si para cada valor de A sólo puede existir un B.</p>
-<p>Por ejemplo, si tenemos la relación <code>EMPLEADO(<ins>nif</ins>, nombre, direccion, fnac)</code> decimos que <code>NIF → nombre, direccion, fnac</code>, es decir, que tanto el nombre, como la dirección y la fecha de nacimiento dependen funcionalmente del NIF, ya que para un determinado NIF, no podemos tener dos nombres, direcciones o fechas de nacimiento.</p>
-<p>Por el contrario, no es correcto decir que <code>direccion → NIF</code>, ya que dada una dirección, podemos tener más de un NIF viviendo allí.</p>
+<p>Con el ejemplo de los comerciales, necesitamos para cada columna, identificar las dependencias que hay entre los atributos.</p>
+<p>Por ejemplo, cogemos el nombre del comercial, y detectamos que dependen funcionalmente del identificador del comercial, por lo tanto: <code>comercialID → comercialNom</code>.</p>
+<p>Pero si nos fijamos bien en los nombre, no podemos decir lo mismo en el sentido contrario, ya que tenemos un nombre repetido en diferentes códigos de comercial (¡qué casualidad!), con lo que no es correcto decir <code>comercialNom → comercialID</code>.</p>
+<p>Si hacemos lo mismo con el identificador del estado del comercial, deducimos que depende también del identificador, obteniendo <code>comercialID → estadoID</code>.</p>
+<p>Y lo mismo con la descripción del estado. En este caso, se cumplen que tanto el identificador del comercial como el identificador del estado permiten obtener la descripción del estado, obteniendo <code>comercialID → estadoDesc</code> y <code>estadoID → estadoDesc</code>.</p>
+<p>Si continuamos con todos los atributos y agrupamos las dependencias funcionales tenemos:    </p>
+<ul>
+<li><code>comercialID → comercialNom, estadoID, estadoDesc</code></li>
+<li><code>estadoID → estadoDesc</code></li>
+<li><code>provincia → provinciaPob</code></li>
+<li><code>ciudad, provincia → ciudadPob</code>, por ejemplo, tenemos dos ciudades <code>Valencia</code> en provincias diferentes</li>
+<li><code>comercialID , ciudad, provincia → ventas</code> </li>
+</ul>
+<p>Tal como hemos comentado previamente, cuando agrupamos los atributos, la dependencia <code>comercialID → comercialNom, estadoID, estadoDesc</code> significa que tanto el nombre del comercial, como el código de su estado y el estado dependen del identificador del comercial.</p>
 </li>
 <li>
 <p><strong>Dependencia funcional completa</strong> (DFC): cuando tenemos que <em>A1, A2, ...AN → B</em> (B tiene una dependencia funcional del conjunto A1, A2, ...AN), pero no de ninguno de sus subconjuntos.</p>
 <p>Es decir, B depende de la combinación completa de atributos, y no de un parte de la clave.</p>
-<p>FIXME: continuar ... ver apuntes Gloria</p>
+<p>En el caso de los comerciales, tenemos que las ventas dependen de la combinación <code>comercialID , ciudad, provincia</code> y no de un subconjunto de ellas.</p>
 </li>
 <li>
-<p><strong>Dependencia funcional transitiva</strong> (DFT): se dice que hay un DFT entre A y C, si A → B y B → C.</p>
-<p>Por ejemplo, </p>
-</li>
-<li>
-<p><strong>Determinante</strong>: todo atributo simple o compuesto del que DFC algún otro atributo</p>
+<p><strong>Dependencia funcional transitiva</strong> (DFT): se dice que hay un DFT entre A y B, si A → B y B → C, siendo A y B columnas no claves. Dicho de otro modo, cuando tenemos columnas no claves que determinan otras columnas no clave.</p>
+<p>En el caso de los comerciales, tenemos que <code>estadoID → estadoDesc</code> y que <code>estadoDesc → estadoID</code>.</p>
 </li>
 </ul>
 <h3 id="formas-normales">Formas Normales<a class="headerlink" href="#formas-normales" title="Permanent link">&para;</a></h3>
@@ -1992,7 +2111,7 @@ clave primaria de la tabla que relaciona.</p>
 </figure>
 
 <p>La normalización consiste en una serie de pasos, cada uno de los cuales se corresponde a una forma normal (<abbr title="Forma normal">FN</abbr>). Conforme se va avanzando en la normalización, las tablas tienen una estructura más limpia y con menor redundancia.</p>
-<p><em>Codd</em> propuso en 1972 tres formas normales, a las que se sumó la forma normal de <em>Boyce-Codd</em> en 1974, y luego se añadieron dos más por parte de <em>Fagin</em> entre 1977 y 1979. En este curso, nos vamos a centrar en las tres primeras más la <abbr title="Forma Normal de Boyce-Codd">FNBC</abbr>, que cubren la mayoría de casos con los que nos vamos a encontrar, ya que se considera que una base de datos que está en 3FN o en <abbr title="Forma Normal de Boyce-Codd">FNBC</abbr> es una base de datos correctamente diseñada</p>
+<p><em>Codd</em> propuso en 1972 tres formas normales, a las que se sumó la forma normal de <em>Boyce-Codd</em> en 1974, y luego se añadieron dos más por parte de <em>Fagin</em> entre 1977 y 1979. En este curso, nos vamos a centrar en las tres primeras, que cubren la mayoría de casos con los que nos vamos a encontrar, ya que se considera que una base de datos que está en 3FN es una base de datos correctamente diseñada</p>
 <p>Todas las formas normales se construyen sobre una forma normal previa, de forma que se anidan unas dentro de otras:</p>
 <ul>
 <li>
@@ -2002,15 +2121,10 @@ clave primaria de la tabla que relaciona.</p>
 <li>
 <p><strong>2FN</strong>: una relación está en segunda forma normal si está en 1FN y todas las columnas que no son clave tienen un DFC de la clave primaria. </p>
 <p>Para ello, descompondremos la tabla en varias tablas, y comprobamos que ningún subconjunto de los atributos no clave determinan campos no principales.</p>
-<p>Si todas las claves candidatas de las tablas en 1FN son simples (unitarias), automáticamente las tablas ya están en 2FN.</p>
+<p>Si todas las claves candidatas de las tablas en 1FN son simples (unitarias), automáticamente las tablas ya están en 2FN. En cambio, si la clave primaria es compuesta, deberemos comprobar que todos los atributos dependen de la clave primaria compuesta y no de un subconjunto de esta.</p>
 </li>
 <li>
-<p><strong>3FN</strong>: 2FN + todo atributo que no es clave primaria no tienen una DFT</p>
-<p>Ejemplo</p>
-</li>
-<li>
-<p><abbr title="Forma Normal de Boyce-Codd">FNBC</abbr>: 3FN + todo determinante es una clave candidata</p>
-<p>Ejemplo</p>
+<p><strong>3FN</strong>: 2FN + todo atributo que no es clave primaria no tienen una dependencia funcional transitiva de otro atributo no clave, es decir, depende únicamente de la clave primaria de modo no transitivo.    </p>
 </li>
 </ul>
 <h4 id="ejemplo_1">Ejemplo<a class="headerlink" href="#ejemplo_1" title="Permanent link">&para;</a></h4>
