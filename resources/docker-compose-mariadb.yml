@@ -1,6 +1,7 @@
 services:
   mariadb:
     image: mariadb:latest
+    container_name: mdb
     ports:
       - 3306:3306
     environment:
@@ -13,6 +14,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin
+    container_name: phpma
     ports:
       - 8080:80
     environment:

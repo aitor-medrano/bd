@@ -1261,9 +1261,12 @@ fin de mejorar el rendimiento de las operaciones de consulta o de actualización
 <p class="admonition-title">Arquitecturas físicas</p>
 <p>Si nos centramos en la organización física de la infraestructura necesaria a la hora de desplegar un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> (comentados en los <a href="#tipos-de-bases-de-datos">Tipos de Bases de Datos</a>), podemos clasificar las arquitecturas en:</p>
 <ul>
-<li>Centralizada: en un único ordenador, no permitiendo el acceso concurrente (MS Access)</li>
-<li>Cliente-Servidor: Los datos están en un servidor, pero se desacoplan los clientes los cuales se conectan vía red/internet.</li>
-<li>Distribuida: Existen múltiples servidores, ya sea replicando o fragmentando los datos, facilitando la robustez del sistema. </li>
+<li>Centralizada<ul>
+<li>Monousuario: en un único ordenador, no permitiendo el acceso concurrente (MS Access)</li>
+<li>Cliente-Servidor: Los datos están en un servidor, pero se desacoplan los clientes los cuales se conectan vía red/internet (MySQL, PostreSQL, Oracle)</li>
+</ul>
+</li>
+<li>Distribuida: Existen múltiples servidores, ya sea replicando, particionando o fragmentando los datos, facilitando la robustez del sistema (Oracle cloud, MongoDB, Redis)</li>
 </ul>
 </div>
 <h3 id="perfiles">Perfiles<a class="headerlink" href="#perfiles" title="Permanent link">&para;</a></h3>

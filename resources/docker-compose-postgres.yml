@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres
+    container_name: pg
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=s8a
+      - POSTGRES_PASSWORD=s8a
+      - POSTGRES_DB=pruebas
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@s8a.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+  pg-data:
+  pgadmin-data:

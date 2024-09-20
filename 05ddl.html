@@ -474,22 +474,106 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#versiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versiones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ddl" class="md-nav__link">
     <span class="md-ellipsis">
       DDL
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#operaciones" class="md-nav__link">
+    <nav class="md-nav" aria-label="DDL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#puesta-en-marcha" class="md-nav__link">
     <span class="md-ellipsis">
-      Operaciones
+      Puesta en marcha
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Operaciones">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bases-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bases de datos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motores-de-almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motores de almacenamiento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipos-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipos de datos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tablas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restricciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restricciones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dml" class="md-nav__link">
+    <span class="md-ellipsis">
+      DML
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DML">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -572,6 +656,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -630,7 +723,7 @@
 
 <h1 id="modelo-fisico-sql-instrucciones-ddl-y-dml">Modelo Físico: SQL - Instrucciones DDL y DML<a class="headerlink" href="#modelo-fisico-sql-instrucciones-ddl-y-dml" title="Permanent link">&para;</a></h1>
 <h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
-<p>Una vez conocido el modelo relacional, en esta unidad vamos a comenzar a trabajar el RA2: <strong>Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional</strong>, además que continuar con el RA5:  <strong>Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos</strong></p>
+<p>Una vez conocido el modelo relacional, en esta unidad vamos a comenzar a trabajar el RA2 "<strong>Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional</strong>", además de continuar con el RA5 "<strong>Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos</strong>".</p>
 <h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
 <p>Respecto al RA2:</p>
 <ul>
@@ -743,9 +836,240 @@
 </table>
 <p>Al finalizar esta unidad, comenzaremos un nuevo reto, centrado en el modelo físico, creando y cargando datos.</p>
 <h2 id="modelo-fisico">Modelo físico<a class="headerlink" href="#modelo-fisico" title="Permanent link">&para;</a></h2>
+<p>Traducción del modelo lógico en un esquema interpretable por un SGBD.</p>
+<p>Para ello, transformaremos el modelo relacional al modelo físico utilizando un lenguaje específico de cada SGBD, el cual se conoce como DDL.</p>
+<h2 id="sql">SQL<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h2>
+<p>El lenguaje SQL...</p>
+<p>Podemos dividirlo a su vez en:</p>
+<ul>
+<li>DDL (Data Definition Language): permite crear y manipular la estructura de una BD</li>
+<li>DML (Data Manipulation Language): Permite recuperar, almacenar, modificar, eliminar,
+insertar y actualizar datos de una BD</li>
+<li>DCL (<em>Data Control Language</em>): Permite crear roles, permisos e integridad
+referencial, así como el control de acceso</li>
+</ul>
+<p>La sintaxis de SQL se define mediante instrucciones que tiene diferentes parámetros, unos opcionales, otros con diferentes valores, etc.. La nomenclatura que vamos a emplear al explicar la sintaxis de cada instrucción será la siguiente:</p>
+<table>
+<thead>
+<tr>
+<th>Símbolo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MAYÚSCULAS</td>
+<td>Palabras reservadas (<em>keywords</em>) de SQL</td>
+</tr>
+<tr>
+<td>minúsculas</td>
+<td>variable que hay que sustituir por un elemento concreto</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>opcional</td>
+</tr>
+<tr>
+<td><code>|</code></td>
+<td>separa opciones alternativas</td>
+</tr>
+<tr>
+<td><code>[ | ]</code></td>
+<td>se elige uno de los valores</td>
+</tr>
+<tr>
+<td><code>{}</code></td>
+<td>obliga a elegir uno de los valores</td>
+</tr>
+<tr>
+<td><code>...</code></td>
+<td>número variable de datos</td>
+</tr>
+</tbody>
+</table>
+<p>Así pues, si por ejemplo, la sintaxis de una instrucción es la siguiente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="p">[</span><span class="k">ALL</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">DISTINCT</span><span class="p">]</span><span class="w"> </span><span class="n">columna1</span><span class="w"> </span><span class="p">[,</span><span class="n">columna2</span><span class="p">,</span><span class="w"> </span><span class="n">columna3</span><span class="p">,.......]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">*</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">tabla1</span><span class="w"> </span><span class="p">[</span><span class="n">tabla2</span><span class="p">,</span><span class="w"> </span><span class="n">tabla3</span><span class="p">,</span><span class="w"> </span><span class="err">…</span><span class="p">.]</span>
+<span class="linenos" data-linenos="3 "></span><span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="n">condición</span><span class="w"> </span><span class="p">]</span>
+<span class="linenos" data-linenos="4 "></span><span class="p">[</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">expr1</span><span class="w"> </span><span class="p">[</span><span class="k">DESC</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">ASC</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">expr2</span><span class="w"> </span><span class="p">[</span><span class="k">DESC</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">ASC</span><span class="p">]</span><span class="w"> </span><span class="p">....]</span>
+</code></pre></div>
+<p>posibles sentencias que cumplen la sintaxis serían:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">dni</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">salario</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">salario</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salario</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salario</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="versiones">Versiones<a class="headerlink" href="#versiones" title="Permanent link">&para;</a></h3>
+<p>El lenguaje SQL ha ido evolucionando conforme lo han hecho los diferentes SGBD y tecnologías:</p>
+<ul>
+<li>SQL-86: funcionalidad mínima para que un lenguaje se considere SQL.</li>
+<li>SQL-89: añade instrucciones para gestionar las claves ajenas (reglas de integridad referencial).</li>
+<li>SQL-92: standard base.</li>
+<li>SQL:1999: se añaden extensiones hacia la programación orientada objetos + triggers / procedimientos</li>
+<li>SQL:2003: añade características de SQL/ XML.</li>
+</ul>
 <h2 id="ddl">DDL<a class="headerlink" href="#ddl" title="Permanent link">&para;</a></h2>
+<p>Al empezar esta unidad habíamos comentado que DDL es el lenguaje encargado de definir las estructuras de las bases de datos.</p>
+<p>Para ello, utilizaremos principalmente tres tipos de sentencia:</p>
+<ul>
+<li><code>CREATE</code>: permite crear nuevas tablas, vistas e índices.</li>
+<li><code>ALTER</code>: permite modificar las tablas agregando o eliminando campos, cambiar la definición de tipos, etc...</li>
+<li><code>DROP</code>: empleado para eliminar las tablas y los índices.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">TRUNCATE</p>
+<p>Mientras que con <code>DROP</code> podemos borrar una tabla, con <code>TRUNCATE</code> vaciaremos las tablas de contenido. Es por ello, que no se considera una operación DDL, sino más bien DML.</p>
+</div>
+<h3 id="puesta-en-marcha">Puesta en marcha<a class="headerlink" href="#puesta-en-marcha" title="Permanent link">&para;</a></h3>
+<p>Enlace a 00</p>
+<p>Una vez instalados los SGBD y conectados a los mismos, ya sean mediante la consola o la interfaz gráfica, debemos saber que aunque el 90% de la sintaxis de SQL es común, cada SGBD tiene sus particularidades. Es por ello, que en este curso vamos a trabajar con MariaDB y PostreSQL de manera indistinta.</p>
+<p>Todas las instrucciones terminan en <code>;</code> (recuerda que vamos a dejar en MAYÚSCULAS las <em>keywords</em> para facilitar la lectura, aunque no es obligatorio escribirlas en mayúsculas):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">USE</span><span class="w"> </span><span class="n">mibd</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">SHOW</span><span class="w"> </span><span class="n">TABLES</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">DESCRIBE</span><span class="w"> </span><span class="n">mitabla</span><span class="p">;</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">MariaDB</label><label for="__tabbed_1_2">PostgreSQL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Primero nos conectamos al contenedor (el cual en el archivo <em>docker-compose</em> hemos llamado <code>mdb</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>mdb<span class="w"> </span>bash
+</code></pre></div>
+<p>A continuación, con el cliente del SGBD, nos conectamos al servidor (al ser <code>localhost</code> no hace falta que lo indiquemos) pasándole el usuario (<code>-u nomusuario</code>) y la contraseña (<code>-pcontraseña</code>)`:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mariadb<span class="w"> </span>-u<span class="w"> </span>s8a<span class="w"> </span>-ps8a<span class="w"> </span>pruebas
+</code></pre></div>
+<p>Obteniendo información como que nos hemos conectado correctamente, y en la última línea muestra que ha conectado con la bd <code>pruebas</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>root@e6dbf61ca4db:/# mariadb -u s8a -ps8a pruebas
+<span class="linenos" data-linenos=" 2 "></span>Welcome to the MariaDB monitor.  Commands end with ; or \g.
+<span class="linenos" data-linenos=" 3 "></span>Your MariaDB connection id is 5
+<span class="linenos" data-linenos=" 4 "></span>Server version: 11.4.2-MariaDB-ubu2404 mariadb.org binary distribution
+<span class="hll"><span class="linenos" data-linenos=" 5 "></span>
+</span><span class="linenos" data-linenos=" 6 "></span>Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span>Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span>MariaDB [pruebas]&gt;
+</code></pre></div>
+<p>Si quieres más información sobre como conectar con <em>MariaDB</em> y todos los parámetros disponibles, consulta la <a href="https://mariadb.com/kb/en/connecting-to-mariadb/">documentación oficial</a>.</p>
+</div>
+<div class="tabbed-block">
+<p>Primero nos conectamos al contenedor (el cual en el archivo <em>docker-compose</em> hemos llamado <code>pg</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>pg<span class="w"> </span>bash
+</code></pre></div>
+<p>A continuación, con el cliente del SGBD, nos conectamos al servidor (al ser <code>localhost</code> no hace falta que lo indiquemos) pasándole el usuario (<code>-U nomusuario</code>) y luego rellenando la contraseña (<code>s8a</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>psql<span class="w"> </span>-U<span class="w"> </span>s8a<span class="w"> </span>pruebas
+</code></pre></div>
+<p>Obteniendo información de la versión instalada y en la última línea muestra que ha conectado con la bd <code>pruebas</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>root@6475b31d89f4:/# psql -U s8a pruebas
+<span class="linenos" data-linenos="2 "></span>psql (16.4 (Debian 16.4-1.pgdg120+1))
+<span class="linenos" data-linenos="3 "></span>Type &quot;help&quot; for help.
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span>pruebas=#
+</code></pre></div>
+</div>
+</div>
+</div>
+<hr />
+<p>Comencemos con un caso muy sencillo, donde vamos a crear una tabla con un campo, insertar un registro y finalmente consultar la información recién almacenada:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">ejemplo8a</span><span class="w"> </span><span class="p">(</span><span class="w"> </span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">ejemplo8a</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Aitor Medrano&quot;</span><span class="p">);</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">ejemplo8a</span><span class="p">;</span>
+</code></pre></div>
+<p>Una vez conectados a nuestros SGBD y comprobado que podemos crear estructuras, insertar datos y consultarlos, vamos a profundizar en la definición de los esquemas relacionales.</p>
+<h3 id="bases-de-datos">Bases de datos<a class="headerlink" href="#bases-de-datos" title="Permanent link">&para;</a></h3>
+<p>El principal elemento en un SGBD es la base de datos.</p>
+<p>Cuando nos conectamos indicaremos siempre a qué base de datos lo hacemos. De todos modos, siempre podemos consultar las bases de datos existentes:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">MariaDB</label><label for="__tabbed_2_2">PostgreSQL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>En el caso de <em>MariaDB</em> usaremos el commando <a href="https://mariadb.com/kb/en/show-databases/"><code>SHOW DATABASES</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>MariaDB [pruebas]&gt; show databases;
+<span class="linenos" data-linenos="2 "></span>+--------------------+
+<span class="linenos" data-linenos="3 "></span>| Database           |
+<span class="linenos" data-linenos="4 "></span>+--------------------+
+<span class="linenos" data-linenos="5 "></span>| information_schema |
+<span class="linenos" data-linenos="6 "></span>| pruebas            |
+<span class="linenos" data-linenos="7 "></span>+--------------------+
+<span class="linenos" data-linenos="8 "></span>2 rows in set (0.001 sec)
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Si solo queremos el nombre de las bases de datos, podemos hacer una consulta a la tabla <code>pg_database</code> (la cual hace la función de diccionario de datos):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>pruebas=# SELECT datname FROM pg_database;
+<span class="linenos" data-linenos="2 "></span>datname  
+<span class="linenos" data-linenos="3 "></span>-----------
+<span class="linenos" data-linenos="4 "></span>postgres
+<span class="linenos" data-linenos="5 "></span>pruebas
+<span class="linenos" data-linenos="6 "></span>template1
+<span class="linenos" data-linenos="7 "></span>template0
+<span class="linenos" data-linenos="8 "></span>(4 rows)
+</code></pre></div>
+<p>Si queremos toda la información, podemos hacer uso del comando <code>\l</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>pruebas=# \l
+<span class="linenos" data-linenos=" 2 "></span>                                                List of databases
+<span class="linenos" data-linenos=" 3 "></span>Name    | Owner | Encoding | Locale Provider |  Collate   |   Ctype    | ICU Locale | ICU Rules | Access privileges       
+<span class="linenos" data-linenos=" 4 "></span>-----------+-------+----------+-----------------+------------+------------+------------+-----------+-------------------      
+<span class="linenos" data-linenos=" 5 "></span>postgres  | s8a   | UTF8     | libc            | en_US.utf8 | en_US.utf8 |            |           |
+<span class="linenos" data-linenos=" 6 "></span>pruebas   | s8a   | UTF8     | libc            | en_US.utf8 | en_US.utf8 |            |           |
+<span class="linenos" data-linenos=" 7 "></span>template0 | s8a   | UTF8     | libc            | en_US.utf8 | en_US.utf8 |            |           | =c/s8a           +      
+<span class="linenos" data-linenos=" 8 "></span>        |       |          |                 |            |            |            |           | s8a=CTc/s8a
+<span class="linenos" data-linenos=" 9 "></span>template1 | s8a   | UTF8     | libc            | en_US.utf8 | en_US.utf8 |            |           | =c/s8a           +      
+<span class="linenos" data-linenos="10 "></span>        |       |          |                 |            |            |            |           | s8a=CTc/s8a
+<span class="linenos" data-linenos="11 "></span>(4 rows)
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Para crear una base de datos, usaremos la sentencia <code>CREATE DATABASE</code>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">MariaDB</label><label for="__tabbed_3_2">PostgreSQL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span><span class="w"> </span><span class="n">nombreBD</span><span class="p">;</span>
+</code></pre></div>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">midb</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">severo</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Más información en la <a href="https://www.postgresql.org/docs/current/sql-createdatabase.html">documentación oficial</a></p>
+</div>
+</div>
+</div>
+<p>Si necesitamos borrarla, porque ya no la necesitamos, usaremos la sentencia <code>DROP DATABASE</code>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">MariaDB</label><label for="__tabbed_4_2">PostgreSQL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span><span class="w"> </span><span class="n">nombreBD</span><span class="p">;</span>
+</code></pre></div>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">drop</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">prueba</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">drop</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">severo</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Más información en la <a href="https://www.postgresql.org/docs/current/sql-dropdatabase.html">documentación oficial</a></p>
+</div>
+</div>
+</div>
+<h3 id="motores-de-almacenamiento">Motores de almacenamiento<a class="headerlink" href="#motores-de-almacenamiento" title="Permanent link">&para;</a></h3>
+<p>InnoDB
+MyISAM</p>
+<h3 id="tipos-de-datos">Tipos de datos<a class="headerlink" href="#tipos-de-datos" title="Permanent link">&para;</a></h3>
+<p><code>CREATE DOMAIN</code></p>
+<h3 id="tablas">Tablas<a class="headerlink" href="#tablas" title="Permanent link">&para;</a></h3>
 <p><code>CREATE TABLE</code></p>
-<h2 id="operaciones">Operaciones<a class="headerlink" href="#operaciones" title="Permanent link">&para;</a></h2>
+<p><code>ALTER TABLE</code></p>
+<p><code>DROP TABLE</code></p>
+<h3 id="restricciones">Restricciones<a class="headerlink" href="#restricciones" title="Permanent link">&para;</a></h3>
+<div class="admonition info">
+<p class="admonition-title">Otros elementos</p>
+<p>Vistas
+Índices
+Disparadores</p>
+</div>
+<h2 id="dml">DML<a class="headerlink" href="#dml" title="Permanent link">&para;</a></h2>
 <p>Sobre una tabla, las operaciones que vamos a poder realizar son:</p>
 <ul>
 <li>insertar datos en una tabla</li>
@@ -779,6 +1103,8 @@
 <!--
 https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 -->
+
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 
 
 
