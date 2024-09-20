@@ -1121,9 +1121,12 @@
 <li>¿Todas las tablas tienen más de una clave candidata?</li>
 <li>¿En qué consiste la integridad referencial?</li>
 <li>¿El valor de una clave ajena siempre debe tener valor?</li>
+<li>¿Qué es una dependencia funcional?</li>
+<li>¿Y una dependencia funcional completa?</li>
+<li>¿En qué consiste la 1FN? ¿Y la 2FN? ¿Y la 3FN?</li>
+<li>¿Qué es la denormalización y cual es su objetivo?</li>
 </ol>
 </div>
-<p>TODO: Cuestiones normalización</p>
 <h3 id="programacion-de-aula-8h">Programación de Aula (8h)<a class="headerlink" href="#programacion-de-aula-8h" title="Permanent link">&para;</a></h3>
 <p>Esta unidad es la tercera, con lo que se imparte en la primera evaluación, durante la segunda quincena de octubre, con una duración estimada de 10 horas:</p>
 <table>
@@ -2738,14 +2741,203 @@ relación.</li>
 <ul>
 <li>
 <p><strong>AC313</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) A partir de la siguiente tabla, indica las dependencias funcionales:</p>
-<p>FIXME: completar</p>
+<table>
+<thead>
+<tr>
+<th>codEnvio</th>
+<th>fEnvio</th>
+<th>codCamion</th>
+<th>tipoCamion</th>
+<th>codProducto</th>
+<th>tipoProducto</th>
+<th>cantidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>111</td>
+<td>1/1/24</td>
+<td>C1</td>
+<td>Trailer</td>
+<td>A</td>
+<td>Zapatos</td>
+<td>180</td>
+</tr>
+<tr>
+<td>111</td>
+<td>1/1/24</td>
+<td>C1</td>
+<td>Trailer</td>
+<td>B</td>
+<td>Gorras</td>
+<td>120</td>
+</tr>
+<tr>
+<td>222</td>
+<td>2/1/24</td>
+<td>C2</td>
+<td>Trailer</td>
+<td>C</td>
+<td>Camisetas</td>
+<td>2000</td>
+</tr>
+<tr>
+<td>333</td>
+<td>3/1/24</td>
+<td>C3</td>
+<td>Furgoneta</td>
+<td>D</td>
+<td>Calcetines</td>
+<td>1200</td>
+</tr>
+<tr>
+<td>333</td>
+<td>3/1/24</td>
+<td>C3</td>
+<td>Furgoneta</td>
+<td>A</td>
+<td>Zapatos</td>
+<td>360</td>
+</tr>
+<tr>
+<td>444</td>
+<td>3/1/24</td>
+<td>C2</td>
+<td>Trailer</td>
+<td>C</td>
+<td>Camisetas</td>
+<td>3000</td>
+</tr>
+<tr>
+<td>555</td>
+<td>3/1/24</td>
+<td>C1</td>
+<td>Trailer</td>
+<td>B</td>
+<td>Gorras</td>
+<td>140</td>
+</tr>
+</tbody>
+</table>
 </li>
 </ul>
 <p><a name="AC314"></a></p>
 <ul>
 <li>
-<p><strong>AC314</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Comprueba si las siguientes tablas estan normalizadas:</p>
-<p>FIXME: completar</p>
+<p><strong>AC314</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Considera la siguiente relación que almacena información acerca de proyectos en una gran empresa aeroespacial. Se pide normalizar los datos hasta la tercera forma normal.</p>
+<p><code><strong>TRABAJO</strong> (nomProy, jefeProy, idEmp, horas, nomEmp, fondos, fInicio,
+salario, nomDpto, jefeDpto, puntos)</code></p>
+<p>Teniendo en cuenta que:</p>
+<ol>
+<li>Cada proyecto tiene un nombre único.</li>
+<li>Los nombres de los empleados, jefes de proyectos y jefes de departamentos no son únicos.</li>
+<li>Cada proyecto tiene un jefe de proyecto.</li>
+<li>Muchos empleados se pueden asignar para trabajar en cada proyecto, y un empleado se puede asignar a más de un proyecto.</li>
+<li>El atributo <code>horas</code> indica la cantidad de horas por semana que un empleado particular se asigna a trabajar en un proyecto particular.</li>
+<li>El atributo <code>fondos</code> almacena la cantidad de dinero asignada para un proyecto.</li>
+<li>El atributo <code>fInicio</code> da la fecha de comienzo para un proyecto.</li>
+<li>El atributo <code>nomDpto</code> proporciona el nombre del departamento al que pertenece un empleado. Los nombres de departamentos son únicos.</li>
+<li>El atributo <code>jefeDpto</code> proporciona el nombre del supervisor de departamento, que puede no ser el mismo que el supervisor o jefe del proyecto.</li>
+<li>El atributo <code>puntos</code> proporciona una medida del buen hacer de un empleado en un proyecto particular. El jefe de proyecto asigna la calificación al final del trabajo del empleado en dicho proyecto.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">nomProy</th>
+<th style="text-align: left;">jefeProy</th>
+<th style="text-align: left;">idEmp</th>
+<th style="text-align: left;">horas</th>
+<th style="text-align: left;">nomEmp</th>
+<th style="text-align: left;">fondos</th>
+<th style="text-align: left;">fInicio</th>
+<th style="text-align: left;">salario</th>
+<th style="text-align: left;">nomDpto</th>
+<th style="text-align: left;">jefeDpto</th>
+<th style="text-align: left;">puntos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Zeus</td>
+<td style="text-align: left;">Duque</td>
+<td style="text-align: left;">E101</td>
+<td style="text-align: left;">25</td>
+<td style="text-align: left;">Pedro</td>
+<td style="text-align: left;">20.000</td>
+<td style="text-align: left;">1/4/24</td>
+<td style="text-align: left;">30.000</td>
+<td style="text-align: left;">Aeronáutica</td>
+<td style="text-align: left;">Ángel</td>
+<td style="text-align: left;">9</td>
+</tr>
+<tr>
+<td style="text-align: left;">Zeus</td>
+<td style="text-align: left;">Duque</td>
+<td style="text-align: left;">E105</td>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">Laura</td>
+<td style="text-align: left;">20.000</td>
+<td style="text-align: left;">1/4/24</td>
+<td style="text-align: left;">26.000</td>
+<td style="text-align: left;">Robótica</td>
+<td style="text-align: left;">Paco</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Zeus</td>
+<td style="text-align: left;">Duque</td>
+<td style="text-align: left;">E110</td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">Miguel</td>
+<td style="text-align: left;">20.000</td>
+<td style="text-align: left;">1/4/24</td>
+<td style="text-align: left;">21.000</td>
+<td style="text-align: left;">Aeronáutica</td>
+<td style="text-align: left;">Ángel</td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr>
+<td style="text-align: left;">Atreus</td>
+<td style="text-align: left;">Meca</td>
+<td style="text-align: left;">E101</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">Pedro</td>
+<td style="text-align: left;">50.000</td>
+<td style="text-align: left;">15/10/24</td>
+<td style="text-align: left;">30.000</td>
+<td style="text-align: left;">Aeronáutica</td>
+<td style="text-align: left;">Ángel</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Atreus</td>
+<td style="text-align: left;">Meca</td>
+<td style="text-align: left;">E110</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">Miguel</td>
+<td style="text-align: left;">50.000</td>
+<td style="text-align: left;">15/10/24</td>
+<td style="text-align: left;">21.000</td>
+<td style="text-align: left;">Aeronáutica</td>
+<td style="text-align: left;">Ángel</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">Atreus</td>
+<td style="text-align: left;">Meca</td>
+<td style="text-align: left;">E120</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">Noa</td>
+<td style="text-align: left;">50.000</td>
+<td style="text-align: left;">15/10/24</td>
+<td style="text-align: left;">25.000</td>
+<td style="text-align: left;">Lanzamientos</td>
+<td style="text-align: left;">Paco</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+<!-- ver hoja de cálculo -->
 </li>
 </ul>
 <p><a name="AC315"></a></p>
@@ -2768,9 +2960,12 @@ relación.</li>
 </code></p>
 </li>
 </ul>
+<p><a name="AR316"></a></p>
+<ul>
+<li><strong>AR316</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
+</ul>
 <!--
 TODO: UT03
-    * apartado normalización
     * revisar CEs actividades
     * Programación de Aula... repensar
 -->
