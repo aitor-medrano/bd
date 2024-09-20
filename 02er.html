@@ -381,9 +381,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-11h" class="md-nav__link">
+  <a href="#programacion-de-aula-12h" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación de Aula (11h)
+      Programación de Aula (12h)
     </span>
   </a>
   
@@ -765,9 +765,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-11h" class="md-nav__link">
+  <a href="#programacion-de-aula-12h" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación de Aula (11h)
+      Programación de Aula (12h)
     </span>
   </a>
   
@@ -1075,7 +1075,7 @@
 <li>¿Cuándo se utiliza una agregación o entidad asociativa?</li>
 </ol>
 </div>
-<h3 id="programacion-de-aula-11h">Programación de Aula (11h)<a class="headerlink" href="#programacion-de-aula-11h" title="Permanent link">&para;</a></h3>
+<h3 id="programacion-de-aula-12h">Programación de Aula (12h)<a class="headerlink" href="#programacion-de-aula-12h" title="Permanent link">&para;</a></h3>
 <p>Esta unidad es la segunda, con lo que se imparte en la primera evaluación, con una duración estimada de 10 horas, durante la última semana de septiembre y la primera quincena de octubre:</p>
 <table>
 <thead>
@@ -1107,7 +1107,7 @@
 </tr>
 <tr>
 <td>4</td>
-<td>Relaciones 1:1, 1:M, N:M</td>
+<td>Atributos</td>
 <td><a href="#AC203">AC203</a></td>
 <td><abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr></td>
 </tr>
@@ -1130,14 +1130,14 @@
 <td></td>
 </tr>
 <tr>
-<td>9</td>
+<td>8</td>
 <td>Modelado <abbr title="Entidad-Relación Extendido">EER</abbr>. Generalización y especialización</td>
 <td><a href="#AC209">AC209</a></td>
 <td><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr></td>
 </tr>
 <tr>
-<td>8</td>
-<td>Modelados con generalización</td>
+<td>9</td>
+<td>Modelados con generalizaciones</td>
 <td><a href="#AC210">AC210</a></td>
 <td><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr></td>
 </tr>
@@ -1646,7 +1646,7 @@ y los comunes se colocan en la superclase.</p>
 <ul>
 <li>De todos los trabajadores nos interesa almacenar su DNI, nombre completo y número de teléfono, así como el departamento en el que trabajan.</li>
 <li>Existen tres tipos de trabajadores: gerentes (del que guardaremos el bonus anual), jefes (nos interesa almacenar cuantos vendedores tiene a su cargo) y vendedores (de cada vendedor, guardaremos su sueldo base y la zona donde trabaja).</li>
-<li>Cada departamento lo dirige un gerente, aunque se puede dar el caso que tengamos gerentes que no dirijan ningún departamento.</li>
+<li>Cada departamento lo dirige un gerente, aunque se puede dar el caso que tengamos gerentes que no dirijan ningún departamento, pero nunca dirigirán más de uno.</li>
 <li>Un gerente tiene a su cargo a un cierto número de jefes y éstos a su vez a un cierto número de vendedores.</li>
 <li>En cuanto a los productos nos interesa su código, nombre y precio, y departamento en el que se encuentran.</li>
 <li>Cada producto lo pueden vender muchos vendedores, y cada vendedor, a su vez, puede vender muchos productos. Además, cada vendedor le aplicará un determinado descuento a los productos con los que trabaja.</li>
@@ -1654,10 +1654,24 @@ y los comunes se colocan en la superclase.</p>
 <details class="example">
 <summary>Solución</summary>
 <p><figure style="align: center;">
-    <img src="images/02solucion-tienda.png" width="952" title="Solución supuesto Tienda">
+    <img src="images/02solucion-tienda.png" width="948" title="Solución supuesto Tienda">
     <figcaption>Solución supuesto Tienda</figcaption>
 </figure></p>
-<p>FIXME: Explicar</p>
+<p>Primero localizamos las entidades y sus atributos:</p>
+<ul>
+<li>Entidades: <code>TRABAJADOR</code>, <code>DPTO</code>, <code>PRODUCTO</code>. Los trabajadores a su vez, se descomponen en las subclases <code>VENDEDOR</code>, <code>JEFE</code> y <code>GERENTE</code>.</li>
+<li>Atributos: los trabajadores se identifican por su <code>dni</code>, mientras que los departamentos y los productos por su <code>codigo</code>.</li>
+</ul>
+<p>Las relaciones son:</p>
+<ul>
+<li>Relación 1:N nombrada como <code>PERTENECER</code> entre <code>TRABAJADOR</code> Y <code>DPTO</code>, ya que de los trabajadores nos interesa "<strong>el departamento en el que trabajan</strong>" y se entiende que a un departamento pertenecerán varios trabajadores.</li>
+<li>Generalización total y disjunta entre <code>TRABAJADOR</code> y sus hijos <code>VENDEDOR</code>, <code>JEFE</code> y <code>GERENTE</code>, cada uno con sus propios atributos. Destacar que el atributo de <code>cantVendedores</code> es derivado, ya que se obtiene de la cardinalidad de la relación <code>SUPERVISAR</code>.</li>
+<li>Relación 1:1 nombrada como <code>DIRIGIR</code> entre <code>DPTO</code> Y <code>GERENTE</code>, ya que "<strong>Cada departamento lo dirige un gerente, aunque se puede dar el caso que tengamos gerentes que no dirijan ningún departamento, pero nunca dirigirán más de uno</strong>"</li>
+<li>Relación 1:N nombrada como <code>MANDAR</code> entre <code>GERENTE</code> Y <code>JEFE</code>, ya que "<strong>Un gerente tiene a su cargo a un cierto número de jefes</strong>".</li>
+<li>Relación 1:N nombrada como <code>SUPERVISAR</code> entre <code>JEFE</code> Y <code>VENDEDOR</code>, continuando "<strong>y éstos (los jefes) a su vez a un cierto número de vendedores</strong>".</li>
+<li>Relación 1:N nombrada como <code>ENCONTRAR</code> entre <code>DPTO</code> Y <code>PRODUCTO</code>, ya que "En cuanto a los productos nos interesa ... <strong>departamento en el que se encuentran</strong>", y entendemos que en un departamento encontraremos varios productos.</li>
+<li>Relación N:M nombrada como <code>VENDER</code> entre <code>VENDEDOR</code> y <code>PRODUCTO</code>, ya que "<strong>Cada producto lo pueden vender muchos vendedores, y cada vendedor, a su vez, puede vender muchos productos</strong>". Además, añadimos el atributo <code>descuento</code> en la relación para almacenar el descuento que cada vendedor aplica a los productos.</li>
+</ul>
 </details>
 </div>
 <h3 id="agregacion">Agregación<a class="headerlink" href="#agregacion" title="Permanent link">&para;</a></h3>
@@ -1862,7 +1876,6 @@ por un experto.</p>
 </ul>
 <!--
 TODO: UT02 
-* Explicar Supuesto Generalización ...
 * Completar rúbrica reto... repensar con lista de cotejo
 * Revisar apartado inicial sobre ing software
 -->
