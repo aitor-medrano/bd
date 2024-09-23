@@ -484,9 +484,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#versiones" class="md-nav__link">
+  <a href="#sintaxis" class="md-nav__link">
     <span class="md-ellipsis">
-      Versiones
+      Sintaxis
     </span>
   </a>
   
@@ -532,12 +532,60 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Motores de almacenamiento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formato-de-almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Formato de almacenamiento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#juegos-de-caracteres" class="md-nav__link">
+    <span class="md-ellipsis">
+      Juegos de caracteres
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
   <a href="#tipos-de-datos" class="md-nav__link">
     <span class="md-ellipsis">
       Tipos de datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipos de datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enumeraciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumeraciones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creando-dominios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creando dominios
     </span>
   </a>
   
@@ -549,6 +597,21 @@
       Tablas
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Tablas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -854,18 +917,36 @@
 </table>
 <p>Al finalizar esta unidad, comenzaremos un nuevo reto, centrado en el modelo físico, creando y cargando datos.</p>
 <h2 id="modelo-fisico">Modelo físico<a class="headerlink" href="#modelo-fisico" title="Permanent link">&para;</a></h2>
-<p>Traducción del modelo lógico en un esquema interpretable por un SGBD.</p>
-<p>Para ello, transformaremos el modelo relacional al modelo físico utilizando un lenguaje específico de cada SGBD, el cual se conoce como DDL.</p>
+<p>El modelo físico es la traducción del modelo lógico a un modelo interno, dando lugar a un esquema físico interpretable por un SGBD concreto, paso final del diseño de las bases de datos.</p>
+<figure style="align: center;">
+    <img src="images/02modelos.png" width="800" title="Del diseño a los modelos">
+    <figcaption>Del diseño a los modelos</figcaption>
+</figure>
+
+<p>Para ello, transformaremos el modelo relacional al modelo físico utilizando un lenguaje específico de cada SGBD que nos permite definir los elementos, el cual se conoce como DDL (<em>Data Definition Language</em>).</p>
 <h2 id="sql">SQL<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h2>
-<p>El lenguaje SQL...</p>
-<p>Podemos dividirlo a su vez en:</p>
+<p>SQL (<em>sequel</em> en inglés) es la <em>lingua franca</em> para interactuar con las bases de datos relacionales. Es un lenguaje declarativo, donde lo importante es definir qué se quiere hacer, en lugar de cómo se va a hacer. </p>
+<p>Su origen se se remonta a 1970 cuando <em>Edgar Frank Codd</em> publica el documento “<em>Un modelo relacional de datos para grandes bancos de datos compartidos</em>”, donde se definieron las bases del modelo relacional.</p>
+<div class="admonition info">
+<p class="admonition-title">Versiones</p>
+<p>El lenguaje SQL ha ido evolucionando conforme lo han hecho los diferentes SGBD y tecnologías, desde el primer estandar en el archivo 1986 hasta la última versión de 2023:</p>
 <ul>
-<li>DDL (Data Definition Language): permite crear y manipular la estructura de una BD</li>
-<li>DML (Data Manipulation Language): Permite recuperar, almacenar, modificar, eliminar,
-insertar y actualizar datos de una BD</li>
-<li>DCL (<em>Data Control Language</em>): Permite crear roles, permisos e integridad
-referencial, así como el control de acceso</li>
+<li>SQL-86: funcionalidad mínima para que un lenguaje se considere SQL.</li>
+<li>SQL-89: añade instrucciones para gestionar las claves ajenas (reglas de integridad referencial).</li>
+<li>SQL-92: standard base.</li>
+<li>SQL:1999: se añaden extensiones hacia la programación orientada objetos + triggers / procedimientos</li>
+<li>SQL:2003: añade características de SQL/ XML.</li>
+<li>SQL:2023: añade características de SQL/ XML.</li>
 </ul>
+</div>
+<p>SQL se divide a su vez en cuatro "sublenguajes" respecto a la funcionalidad que ofrecen:</p>
+<ul>
+<li>DDL (Data Definition Language): permite crear y manipular la estructura de una base de datos.</li>
+<li>DML (Data Manipulation Language): permite recuperar, almacenar, modificar, y eliminar datos de una BD</li>
+<li>DCL (<em>Data Control Language</em>): permite crear roles, permisos y usuarios, controlando el acceso a los elementos de nuestras bases de datos.</li>
+<li>TCL (<em>Transaction Control Language</em>): administra las modificaciones creadas con el DML.</li>
+</ul>
+<h3 id="sintaxis">Sintaxis<a class="headerlink" href="#sintaxis" title="Permanent link">&para;</a></h3>
 <p>La sintaxis de SQL se define mediante instrucciones que tiene diferentes parámetros, unos opcionales, otros con diferentes valores, etc.. La nomenclatura que vamos a emplear al explicar la sintaxis de cada instrucción será la siguiente:</p>
 <table>
 <thead>
@@ -911,41 +992,35 @@ referencial, así como el control de acceso</li>
 <span class="linenos" data-linenos="3 "></span><span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="n">condición</span><span class="w"> </span><span class="p">]</span>
 <span class="linenos" data-linenos="4 "></span><span class="p">[</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">expr1</span><span class="w"> </span><span class="p">[</span><span class="k">DESC</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">ASC</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">expr2</span><span class="w"> </span><span class="p">[</span><span class="k">DESC</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">ASC</span><span class="p">]</span><span class="w"> </span><span class="p">....]</span>
 </code></pre></div>
-<p>posibles sentencias que cumplen la sintaxis serían:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">dni</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">salario</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">salario</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salario</span><span class="p">;</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salario</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+<div class="admonition info inline end">
+<p class="admonition-title">Case sensitive</p>
+<p>En entornos Windows no se distingue entre mayúsculas y minúsculas, pero en entornos Linux sí.</p>
+</div>
+<p>Destacar que las instrucciones finalizan con el signo de punto y coma (<code>;</code>) y que se emplea el doble guión (<code>--</code>) para introducir comentarios. Además, cualquier instrucción SQL puede ser partida por espacios o saltos de línea
+antes de finalizar la instrucción, facilitando su lectura. Así pues, posibles sentencias que cumplen la sintaxis serían:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Ejemplos de instrucciones SQL</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">dni</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">salario</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">salario</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salario</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">nombre</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">salario</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="versiones">Versiones<a class="headerlink" href="#versiones" title="Permanent link">&para;</a></h3>
-<p>El lenguaje SQL ha ido evolucionando conforme lo han hecho los diferentes SGBD y tecnologías:</p>
-<ul>
-<li>SQL-86: funcionalidad mínima para que un lenguaje se considere SQL.</li>
-<li>SQL-89: añade instrucciones para gestionar las claves ajenas (reglas de integridad referencial).</li>
-<li>SQL-92: standard base.</li>
-<li>SQL:1999: se añaden extensiones hacia la programación orientada objetos + triggers / procedimientos</li>
-<li>SQL:2003: añade características de SQL/ XML.</li>
-</ul>
 <h2 id="ddl">DDL<a class="headerlink" href="#ddl" title="Permanent link">&para;</a></h2>
-<p>Al empezar esta unidad habíamos comentado que DDL es el lenguaje encargado de definir las estructuras de las bases de datos.</p>
-<p>Para ello, utilizaremos principalmente tres tipos de sentencia:</p>
+<p>Al empezar esta unidad habíamos comentado que DDL es el lenguaje encargado de definir las estructuras de las bases de datos, esto es, permite la creación, modificación y eliminación de los objetos de la base de datos (metadatos), como, por ejemplo, las bases de datos, tablas, índices o vistas.</p>
+<div class="admonition info inline end">
+<p class="admonition-title">TRUNCATE</p>
+<p>Mientras que con <code>DROP</code> podemos borrar una tabla, con <code>TRUNCATE</code> vaciaremos las tablas de contenido. Es por ello, que no se considera una operación DDL, sino más bien DML.</p>
+</div>
+<p>Para ello, utilizaremos principalmente tres tipos de sentencias:</p>
 <ul>
 <li><code>CREATE</code>: permite crear nuevas tablas, vistas e índices.</li>
 <li><code>ALTER</code>: permite modificar las tablas agregando o eliminando campos, cambiar la definición de tipos, etc...</li>
 <li><code>DROP</code>: empleado para eliminar las tablas y los índices.</li>
 </ul>
-<div class="admonition info">
-<p class="admonition-title">TRUNCATE</p>
-<p>Mientras que con <code>DROP</code> podemos borrar una tabla, con <code>TRUNCATE</code> vaciaremos las tablas de contenido. Es por ello, que no se considera una operación DDL, sino más bien DML.</p>
-</div>
 <h3 id="puesta-en-marcha">Puesta en marcha<a class="headerlink" href="#puesta-en-marcha" title="Permanent link">&para;</a></h3>
-<p>Enlace a 00</p>
-<p>Una vez instalados los SGBD y conectados a los mismos, ya sean mediante la consola o la interfaz gráfica, debemos saber que aunque el 90% de la sintaxis de SQL es común, cada SGBD tiene sus particularidades. Es por ello, que en este curso vamos a trabajar con MariaDB y PostreSQL de manera indistinta.</p>
-<p>Todas las instrucciones terminan en <code>;</code> (recuerda que vamos a dejar en MAYÚSCULAS las <em>keywords</em> para facilitar la lectura, aunque no es obligatorio escribirlas en mayúsculas):</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">USE</span><span class="w"> </span><span class="n">mibd</span><span class="p">;</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">SHOW</span><span class="w"> </span><span class="n">TABLES</span><span class="p">;</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">DESCRIBE</span><span class="w"> </span><span class="n">mitabla</span><span class="p">;</span>
-</code></pre></div>
+<p>Para trabajar con un SGBD tenemos varias posibilidades. Una de ellas es mediante una solución ya desplegada en la nube, como veremos en la siguiente unidad. La segunda sería que lo instalásemos en nuestro sistema operativo mediante las instrucciones que ofrecen en sus páginas web, o bien utilizar uno de los paquetes "todo incluido" que ofrecen plataformas como <a href="https://bitnami.com/">Bitnami</a> (ya sea <a href="https://www.apachefriends.org/bitnami_for_xampp.html">XAMPP</a> u otro paquete). Nosotros nos hemos decantado por la tercera posibilidad, el uso de contenedores <a href="https://www.docker.com/">Docker</a> para aislar los servicios que utilicemos con lo que tengamos instalado en nuestros ordenadores. Por ello, en <a href="00entorno.html">Entornos</a> tiene toda la información necesaria tanto para poner en marcha <a href="00entorno.html#mariadb">MariaDB</a> como <a href="00entorno.html#postgresql">PostreSQL</a>.</p>
+<p>Una vez instalados los SGBD y conectados a los mismos, ya sean mediante la consola o la interfaz gráfica, debemos saber que aunque el 90% de la sintaxis de SQL es común, cada SGBD tiene sus particularidades. Es por ello, que en este curso vamos a trabajar con <em>MariaDB</em> y <em>PostreSQL</em> de manera indistinta.</p>
+<p>Recuerda que todas las instrucciones terminan en <code>;</code>y que vamos a dejar en MAYÚSCULAS las <em>keywords</em> para facilitar la lectura, aunque no es obligatorio escribirlas así.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">MariaDB</label><label for="__tabbed_1_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -955,18 +1030,18 @@ referencial, así como el control de acceso</li>
 <p>A continuación, con el cliente del SGBD, nos conectamos al servidor (al ser <code>localhost</code> no hace falta que lo indiquemos) pasándole el usuario (<code>-u nomusuario</code>) y la contraseña (<code>-pcontraseña</code>)`:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mariadb<span class="w"> </span>-u<span class="w"> </span>s8a<span class="w"> </span>-ps8a<span class="w"> </span>pruebas
 </code></pre></div>
-<p>Obteniendo información como que nos hemos conectado correctamente, y en la última línea muestra que ha conectado con la bd <code>pruebas</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>root@e6dbf61ca4db:/# mariadb -u s8a -ps8a pruebas
-<span class="linenos" data-linenos=" 2 "></span>Welcome to the MariaDB monitor.  Commands end with ; or \g.
-<span class="linenos" data-linenos=" 3 "></span>Your MariaDB connection id is 5
-<span class="linenos" data-linenos=" 4 "></span>Server version: 11.4.2-MariaDB-ubu2404 mariadb.org binary distribution
-<span class="hll"><span class="linenos" data-linenos=" 5 "></span>
-</span><span class="linenos" data-linenos=" 6 "></span>Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+<p>Y obtendremos información como que nos hemos conectado correctamente, y en la última línea muestra que ha conectado con la bd <code>pruebas</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="gp">root@e6dbf61ca4db:/# </span>mariadb<span class="w"> </span>-u<span class="w"> </span>s8a<span class="w"> </span>-ps8a<span class="w"> </span>pruebas
+<span class="linenos" data-linenos=" 2 "></span><span class="go">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="go">Your MariaDB connection id is 5</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="go">Server version: 11.4.2-MariaDB-ubu2404 mariadb.org binary distribution</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="go">Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</span>
 <span class="linenos" data-linenos=" 7 "></span>
-<span class="linenos" data-linenos=" 8 "></span>Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+<span class="linenos" data-linenos=" 8 "></span><span class="go">Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.</span>
 <span class="linenos" data-linenos=" 9 "></span>
-<span class="linenos" data-linenos="10 "></span>MariaDB [pruebas]&gt;
-</code></pre></div>
+<span class="hll"><span class="linenos" data-linenos="10 "></span><span class="go">MariaDB [pruebas]&gt;</span>
+</span></code></pre></div>
 <p>Si quieres más información sobre como conectar con <em>MariaDB</em> y todos los parámetros disponibles, consulta la <a href="https://mariadb.com/kb/en/connecting-to-mariadb/">documentación oficial</a>.</p>
 </div>
 <div class="tabbed-block">
@@ -977,16 +1052,39 @@ referencial, así como el control de acceso</li>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>psql<span class="w"> </span>-U<span class="w"> </span>s8a<span class="w"> </span>pruebas
 </code></pre></div>
 <p>Obteniendo información de la versión instalada y en la última línea muestra que ha conectado con la bd <code>pruebas</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>root@6475b31d89f4:/# psql -U s8a pruebas
-<span class="linenos" data-linenos="2 "></span>psql (16.4 (Debian 16.4-1.pgdg120+1))
-<span class="linenos" data-linenos="3 "></span>Type &quot;help&quot; for help.
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="gp">root@6475b31d89f4:/# </span>psql<span class="w"> </span>-U<span class="w"> </span>s8a<span class="w"> </span>pruebas
+<span class="linenos" data-linenos="2 "></span><span class="go">psql (16.4 (Debian 16.4-1.pgdg120+1))</span>
+<span class="linenos" data-linenos="3 "></span><span class="go">Type &quot;help&quot; for help.</span>
 <span class="linenos" data-linenos="4 "></span>
-<span class="linenos" data-linenos="5 "></span>pruebas=#
-</code></pre></div>
+<span class="hll"><span class="linenos" data-linenos="5 "></span><span class="go">pruebas=#</span>
+</span></code></pre></div>
 </div>
 </div>
 </div>
 <hr />
+<div class="admonition question">
+<p class="admonition-title">Autoevaluación</p>
+<p>En este momento deberías tener tanto <em>MariaDB</em> como <em>PostreSQL</em> instalado en local y ser capaz de conectarte desde la línea de comandos.</p>
+<p>Una vez dentro, ejecuta los siguientes comandos y comprueba si entiendes qué realiza cada una de las siguientes sentencias:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">MariaDB</label><label for="__tabbed_2_2">PostgreSQL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">USE</span><span class="w"> </span><span class="n">mibd</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">SHOW</span><span class="w"> </span><span class="n">TABLES</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">DESCRIBE</span><span class="w"> </span><span class="n">mitabla</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">version</span><span class="p">();</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">datname</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pg_database</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="err">\</span><span class="n">l</span>
+<span class="linenos" data-linenos="4 "></span><span class="err">\</span><span class="n">dt</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
 <p>Comencemos con un caso muy sencillo, donde vamos a crear una tabla con un campo, insertar un registro y finalmente consultar la información recién almacenada:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">ejemplo8a</span><span class="w"> </span><span class="p">(</span><span class="w"> </span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
@@ -998,7 +1096,7 @@ referencial, así como el control de acceso</li>
 <h3 id="bases-de-datos">Bases de datos<a class="headerlink" href="#bases-de-datos" title="Permanent link">&para;</a></h3>
 <p>El principal elemento en un SGBD es la base de datos.</p>
 <p>Cuando nos conectamos indicaremos siempre a qué base de datos lo hacemos. De todos modos, siempre podemos consultar las bases de datos existentes:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">MariaDB</label><label for="__tabbed_2_2">PostgreSQL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">MariaDB</label><label for="__tabbed_3_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>En el caso de <em>MariaDB</em> usaremos el commando <a href="https://mariadb.com/kb/en/show-databases/"><code>SHOW DATABASES</code></a>:</p>
@@ -1040,15 +1138,16 @@ referencial, así como el control de acceso</li>
 </div>
 </div>
 <p>Para crear una base de datos, usaremos la sentencia <code>CREATE DATABASE</code>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">MariaDB</label><label for="__tabbed_3_2">PostgreSQL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">MariaDB</label><label for="__tabbed_4_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span><span class="w"> </span><span class="n">nombreBD</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="p">[</span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="p">]</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span><span class="w"> </span><span class="n">nombreBD</span><span class="p">;</span>
 </code></pre></div>
 <p>Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">midb</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">severo</span><span class="p">;</span>
 </code></pre></div>
+<p>Más información en la <a href="https://mariadb.com/kb/en/create-database/">documentación oficial</a></p>
 </div>
 <div class="tabbed-block">
 <p>Más información en la <a href="https://www.postgresql.org/docs/current/sql-createdatabase.html">documentación oficial</a></p>
@@ -1056,7 +1155,7 @@ referencial, así como el control de acceso</li>
 </div>
 </div>
 <p>Si necesitamos borrarla, porque ya no la necesitamos, usaremos la sentencia <code>DROP DATABASE</code>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">MariaDB</label><label for="__tabbed_4_2">PostgreSQL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">MariaDB</label><label for="__tabbed_5_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span><span class="w"> </span><span class="n">nombreBD</span><span class="p">;</span>
@@ -1065,22 +1164,401 @@ referencial, así como el control de acceso</li>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">drop</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">prueba</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">drop</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">severo</span><span class="p">;</span>
 </code></pre></div>
+<p>Más información en la <a href="https://mariadb.com/kb/en/drop-database/">documentación oficial</a></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span><span class="w"> </span><span class="n">nombreBD</span><span class="p">;</span>
+</code></pre></div>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">drop</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">prueba</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">drop</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">exists</span><span class="w"> </span><span class="n">severo</span><span class="p">;</span>
+</code></pre></div>
+<p>Más información en la <a href="https://www.postgresql.org/docs/current/sql-dropdatabase.html">documentación oficial</a></p>
+</div>
+</div>
+</div>
+<h3 id="motores-de-almacenamiento">Motores de almacenamiento<a class="headerlink" href="#motores-de-almacenamiento" title="Permanent link">&para;</a></h3>
+<p>En los SGBD, y en concreto en <em>MariaDB</em> y <em>PostgreSQL</em>, los motores de almacenamiento (<em>storage engines</em>) son fundamentales para definir el formato de almacenamiento, es decir, cómo se almacenan y gestionan los datos en las bases de datos. Tanto <em>MariaDB</em> como <em>PostgreSQL</em> ofrecen diferentes motores de almacenamiento que proporcionan distintas capacidades, los cuales influyen en cómo gestionan y organizan los datos en disco, afectando el rendimiento, la concurrencia y la eficiencia del espacio.</p>
+<div class="admonition info inline end">
+<p class="admonition-title">Bloqueo a nivel de fila (<em>row-level locking</em>)</p>
+<p>Técnica de control de concurrencia que permite a las bases de datos bloquear únicamente las filas que están siendo accedidas o modificadas por una transacción, en lugar de bloquear toda la tabla o bloques más grandes de datos.</p>
+<p>Permite que múltiples transacciones trabajen en diferentes partes de una tabla sin interferir entre sí.</p>
+</div>
+<p>En el caso de MariaDB, los motores más conocidos son:</p>
+<ul>
+<li>
+<p><strong><em>InnoDB</em></strong>: motor de almacenamiento predeterminado en MariaDB, desde la versión 10.2. Proporciona soporte completo para transacciones ACID. Maneja bloqueo a nivel de fila y cuenta con soporte para claves ajenas. Finalmente, es adecuado para aplicaciones donde la integridad y las transacciones sean críticas.</p>
+</li>
+<li>
+<p><strong><em>MyISAM</em></strong>: Históricamente, fue el motor de almacenamiento por defecto en <em>MySQL</em> antes de <em>InnoDB</em>. Su uso ha caído al no ser transaccional y no soportar claves ajenas. Se utiliza principalmente en aplicaciones que priorizan el rendimiento de las lecturas sobre la integridad de los datos.</p>
+</li>
+</ul>
+<p>Existen otros motores más específicos como <em>TokuDB</em> (para grandes volúmenes de datos con alta concurrencia y compresión), <em>Aria</em> (utilizado para recuperación rápida y consultas de solo lectura), <em>ColumnStore</em> (en aplicaciones de análisis de datos) o <em>Memory</em> (para tablas temporales y cachés rápidas)</p>
+<p>En cambio, <em>PostgreSQL</em> no utiliza el concepto de múltiples motores de almacenamiento como <em>MariaDB</em>, sino que emplea un único motor nativo altamente configurable que ofrece muchas características avanzadas: </p>
+<div class="admonition info inline end">
+<p class="admonition-title">MVCC - <em>Multiversion Concurrency Control</em></p>
+<p>Cuando hay una modificación de datos, en lugar de sobrescribir una fila en actualizaciones, se almacena una nueva versión de la fila mientras mantiene la versión anterior hasta que ya no sea necesaria (las transacciones que la usan han finalizado).</p>
+<p>Las versiones anteriores de una fila se almacenan en el espacio de "deshacer" (<em>undo space</em>) para permitir transacciones y lecturas consistentes.</p>
+</div>
+<ul>
+<li>Proporciona soporte completo para transacciones ACID, integridad referencial (claves foráneas) y MVCC para la gestión de concurrencia.</li>
+<li>Bloqueo a nivel de fila.</li>
+<li>Muy eficiente para grandes volúmenes de datos y con soporte completo para tipos de datos avanzados como JSON, XML, y más.</li>
+</ul>
+<p>Además, es posible ajustar su comportamiento, por ejemplo, permitiendo acceder a datos externos a través de FDW (<em>Foreign Data Wrappers</em>), y optimizaciones internas mediante tablas particionadas y configuraciones adicionales.</p>
+<h4 id="formato-de-almacenamiento">Formato de almacenamiento<a class="headerlink" href="#formato-de-almacenamiento" title="Permanent link">&para;</a></h4>
+<p>En <em>MariaDB</em>, el formato de almacenamiento depende principalmente del <em>motor de almacenamiento</em> que se esté utilizando, ya que cada motor tiene su propia manera de organizar y almacenar los datos. En el caso de <em>InnoDB</em>:</p>
+<ul>
+<li>
+<p>Estructura basada en páginas y bloques: Se organizan los datos en <ins>páginas</ins> (normalmente de 16 KB) dentro de <ins>bloques</ins> que componen tablas e índices.</p>
+<ul>
+<li>Estos bloques se almacenan en un archivo de <ins>tablaspace</ins> (generalmente <code>ibdata1</code> para bases de datos que comparten un <em>tablespace</em>, o en un archivo por tabla).</li>
+</ul>
+</li>
+<li>
+<p>Filas: Se almacenan las filas de las tablas utilizando un formato compacto o redondeado, dependiendo de la configuración.</p>
+<ul>
+<li>Cada fila contiene una clave primaria (o un índice que actúa como clave primaria) y los datos correspondientes.</li>
+</ul>
+</li>
+</ul>
+<p>En el caso de <em>PostgreSQL</em>, algunos aspectos clave del formato de almacenamiento son:</p>
+<ul>
+<li>
+<p>Tablas basadas en <em>tablespaces</em> y páginas: un <strong>tablespace</strong> es un directorio en el sistema de archivos donde se almacenan las bases de datos y sus objetos (tablas, índices, etc.). De manera predeterminada, todas las bases de datos utilizan el <em>tablespace</em> <code>pg_default</code>, pero se pueden crear otros <em>tablaspaces</em> personalizados.</p>
+</li>
+<li>
+<p>Archivos de bases de datos: Cada base de datos se representa por un directorio con un nombre numérico (OID) dentro del <em>tablespace</em>. Dentro de esta carpeta se encuentran archivos que representan tablas, índices, secuencias y otros objetos de la base de datos.</p>
+</li>
+<li>
+<p>Archivos de tabla: cada tabla se almacena en un archivo separado, y estos archivos están divididos en páginas de 8 KB. Si una tabla crece más allá de un tamaño específico (1 GB), se fragmenta en varios archivos con un sufijo numérico.</p>
+</li>
+<li>
+<p>Organización de filas y páginas: las filas se organizan  dentro de páginas de 8 KB, donde cada página contiene múltiples tuplas (filas). Cada fila o tupla en una tabla tiene un ctid (<em>tuple identifier</em>) que identifica su ubicación física en el archivo de datos.</p>
+</li>
+</ul>
+<h4 id="juegos-de-caracteres">Juegos de caracteres<a class="headerlink" href="#juegos-de-caracteres" title="Permanent link">&para;</a></h4>
+<p>En <strong>MariaDB</strong> y <strong>PostgreSQL</strong>, los juegos de caracteres (<em>character sets</em>) y las colaciones (<em>collations</em>) juegan un papel importante en cómo se almacenan y comparan las cadenas de texto. Cada sistema maneja los juegos de caracteres de manera diferente, y a continuación vamos a estudiar cómo funciona en cada uno:</p>
+<p><em>MariaDB</em> admite múltiples juegos de caracteres y colaciones, que pueden establecerse a nivel de <strong>base de datos</strong>, <strong>tabla</strong>, <strong>columna</strong> o incluso a nivel de <strong>sesión</strong>. </p>
+<ul>
+<li>
+<p><em>MariaDB</em> ofrece una gran flexibilidad con varios juegos de caracteres (como <code>utf8</code>, <code>utf8mb4</code>, <code>latin1</code>, etc.) y permite especificar colaciones para determinar cómo se comparan y ordenan los textos. Puedes cambiar el juego de caracteres y la colación de forma granular (a nivel de base de datos, tabla o columna).</p>
+</li>
+<li>
+<p><em>PostgreSQL</em>, en cambio, está optimizado principalmente para el uso de <strong>UTF-8</strong>, con menos enfoque en otros juegos de caracteres. Las colaciones y clasificaciones son más dependientes de las configuraciones del sistema operativo y se aplican al nivel de la base de datos o columna, pero la mayoría de los sistemas de producción usan UTF-8 por su versatilidad.</p>
+</li>
+</ul>
+<p>En resumen, ambos sistemas ofrecen soporte completo para <em>Unicode</em>, pero <em>MariaDB</em> tiene más flexibilidad en cuanto a la elección y uso de diferentes juegos de caracteres y colaciones. <em>PostgreSQL</em> prioriza la simplicidad y la eficiencia a través de UTF-8, con soporte para colaciones mediante el sistema operativo.</p>
+<p>MariadB:</p>
+<ol>
+<li><strong>Juegos de caracteres comunes</strong>:</li>
+</ol>
+<ul>
+<li><strong>utf8</strong>: Es un juego de caracteres común que usa hasta 3 bytes por carácter, y cubre una gran parte del conjunto Unicode.</li>
+<li><strong>utf8mb4</strong>: Es una extensión de <code>utf8</code> que usa hasta 4 bytes por carácter, lo que le permite almacenar todos los caracteres de Unicode, incluidos emojis y otros símbolos que no se pueden representar en <code>utf8</code>.</li>
+<li><strong>latin1</strong>: Juego de caracteres de un solo byte, muy utilizado en aplicaciones occidentales. Es más limitado que <code>utf8</code> y <code>utf8mb4</code>.</li>
+<li><strong>ascii</strong>: Usa solo caracteres ASCII (un byte por carácter), por lo que es adecuado solo para textos en inglés sin símbolos especiales.</li>
+</ul>
+<ol start="2">
+<li>
+<p><strong>Colaciones</strong>:
+   - Las colaciones definen cómo se comparan y ordenan las cadenas de texto para un juego de caracteres específico.
+   - Por ejemplo, el juego de caracteres <code>utf8</code> tiene varias colaciones, como:</p>
+<ul>
+<li><code>utf8_general_ci</code>: Colación insensible a mayúsculas/minúsculas (case-insensitive).</li>
+<li><code>utf8_bin</code>: Colación binaria, sensible a mayúsculas/minúsculas y que compara los caracteres basándose en sus valores binarios.</li>
+</ul>
+</li>
+<li>
+<p><strong>Jerarquía de configuración</strong>:
+   - Puedes definir el juego de caracteres y colación predeterminados al nivel de <strong>servidor</strong>, <strong>base de datos</strong>, <strong>tabla</strong> o <strong>columna</strong>.
+   - El nivel más específico sobrescribe los ajustes predeterminados de niveles superiores.</p>
+</li>
+<li>
+<p><strong>Cambio en tiempo de ejecución</strong>:
+   - MariaDB permite cambiar el juego de caracteres y la colación a nivel de sesión con las variables <code>SET NAMES</code> y <code>SET CHARACTER SET</code>.</p>
+</li>
+</ol>
+<p>A su vez, <em>PostgreSQL</em> maneja los juegos de caracteres de manera diferente a <em>MariaDB</em>, con un enfoque más simplificado.</p>
+<ol>
+<li>
+<p><strong>Codificación predeterminada</strong>:
+   - PostgreSQL se basa principalmente en <strong>UTF-8</strong> para el almacenamiento de cadenas de texto. UTF-8 es el único juego de caracteres recomendado y compatible para bases de datos que manejan múltiples idiomas y caracteres especiales.
+   - Soporta otros juegos de caracteres, como <strong>SQL_ASCII</strong>, pero su uso es desaconsejado debido a la falta de soporte adecuado para internacionalización.</p>
+</li>
+<li>
+<p><strong>Colación y clasificación</strong>:
+   - A diferencia de MariaDB, PostgreSQL no usa colaciones específicas asociadas a juegos de caracteres como tal, pero sí utiliza el sistema operativo para definir la <strong>colación</strong> y el <strong>formato de clasificación</strong> al momento de crear la base de datos.
+   - La colación afecta cómo PostgreSQL ordena y compara cadenas de texto. Se puede especificar en la creación de la base de datos o ajustar mediante configuraciones a nivel de tabla o columna.
+   - Las colaciones más comunes incluyen:</p>
+<ul>
+<li><code>en_US.UTF-8</code>: Colación en inglés, sensible a mayúsculas/minúsculas.</li>
+<li><code>es_ES.UTF-8</code>: Colación en español.</li>
+</ul>
+</li>
+<li>
+<p><strong>Configuración al crear la base de datos</strong>:
+   - La codificación y la colación se especifican al crear una base de datos con las opciones <code>ENCODING</code> y <code>LC_COLLATE</code>.
+   - Ejemplo:
+     <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">mi_base_de_datos</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">ENCODING</span><span class="w"> </span><span class="s1">&#39;UTF8&#39;</span>
+<span class="linenos" data-linenos="3 "></span><span class="n">LC_COLLATE</span><span class="w"> </span><span class="s1">&#39;es_ES.UTF-8&#39;</span>
+<span class="linenos" data-linenos="4 "></span><span class="n">LC_CTYPE</span><span class="w"> </span><span class="s1">&#39;es_ES.UTF-8&#39;</span><span class="p">;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Cambio de colaciones</strong>:
+   - Aunque PostgreSQL permite definir colaciones para bases de datos, tablas y columnas individuales, cambiar la colación de una base de datos existente no es sencillo. Implica un <strong>dump</strong> y <strong>restore</strong> de la base de datos con las nuevas configuraciones.
+   - Para las tablas o columnas individuales, es posible asignar una colación diferente al crear la tabla o modificarla:
+     <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">mi_tabla</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">mi_columna</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="ss">&quot;es_ES.UTF-8&quot;</span><span class="p">;</span>
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="tipos-de-datos">Tipos de datos<a class="headerlink" href="#tipos-de-datos" title="Permanent link">&para;</a></h3>
+<p> https://mariadb.com/kb/en/data-types/
+ CHAR: cadena de texto fijo (&lt;256)
+ VARCHAR: cadena de texto variable (&lt;4000)
+ TEXT: texto con restricciones (varios GB)
+ BIT, TINYINT, INT (-2.147.483.648 a 2.147.483.647),
+BIGINT, DECIMAL(M,D), FLOAT y DOUBLE,REAL.
+ id INT UNSIGNED (0 a 4.294.967.295)
+ DATE, DATETIME, TIMESTAMP
+ fecha TIMESTAMP default
+CURRENT_TIMESTAMP
+ para booleanos: BOOLEAN o TINYINT(1)</p>
+<h4 id="enumeraciones">Enumeraciones<a class="headerlink" href="#enumeraciones" title="Permanent link">&para;</a></h4>
+<p>Enumeraciones
+ https://mariadb.com/kb/en/enum/
+ Permiten restringir el conjunto de valores de
+un determinado campo.
+curso ENUM ('0', '1', '2'),
+horario ENUM ('mañana', 'tarde', 'noche')</p>
+<h3 id="creando-dominios">Creando dominios<a class="headerlink" href="#creando-dominios" title="Permanent link">&para;</a></h3>
+<p><code>CREATE DOMAIN</code></p>
+<h3 id="tablas">Tablas<a class="headerlink" href="#tablas" title="Permanent link">&para;</a></h3>
+<p><code>CREATE TABLE</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">MariaDB</label><label for="__tabbed_6_2">PostgreSQL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Más información en la <a href="https://mariadb.com/kb/en/drop-database/">documentación oficial</a></p>
 </div>
 <div class="tabbed-block">
 <p>Más información en la <a href="https://www.postgresql.org/docs/current/sql-dropdatabase.html">documentación oficial</a></p>
 </div>
 </div>
 </div>
-<h3 id="motores-de-almacenamiento">Motores de almacenamiento<a class="headerlink" href="#motores-de-almacenamiento" title="Permanent link">&para;</a></h3>
-<p>InnoDB
-MyISAM</p>
-<h3 id="tipos-de-datos">Tipos de datos<a class="headerlink" href="#tipos-de-datos" title="Permanent link">&para;</a></h3>
-<p><code>CREATE DOMAIN</code></p>
-<h3 id="tablas">Tablas<a class="headerlink" href="#tablas" title="Permanent link">&para;</a></h3>
-<p><code>CREATE TABLE</code></p>
+<p>CREATE TABLE [IF NOT EXISTS]
+[basededatos.]nombreDeTabla (
+columna1 tipoDato1, columna2
+tipoDato2,...
+columnaN tipoDatoN);</p>
+<blockquote>
+<p>CREATE TABLE USUARIO (nombre VARCHAR(25));</p>
+</blockquote>
+<p>No puede haber nombres de tablas repetidas.
+ Deben comenzar por un carácter alfabético.
+ Su longitud máxima es de 30 caracteres.
+ Sólo se permiten letras del alfabeto inglés, dígitos o el signo de guión bajo.
+ No puede coincidir con las palabras reservadas de SQL (por ejemplo, no podemos llamar a una tabla WHERE).
+ No se distingue entre mayúsculas y minúsculas.
+ Convención: TABLAS en MAYÚSCULAS y columnas en minúsculas</p>
+<h4 id="ejemplos">Ejemplos<a class="headerlink" href="#ejemplos" title="Permanent link">&para;</a></h4>
+<p>Ejemplos de CREATE TABLE:</p>
+<p>CREATE TABLE PROVEEDOR(nombre VARCHAR(25));</p>
+<p> CREATE TABLE PROVEEDOR (
+nombre VARCHAR(25),
+localidad VARCHAR(30) DEFAULT 'Elche');</p>
+<p> CREATE TABLE PRESTAMO (
+idPrestamo DECIMAL(8),
+fechaPrestamo DATE DEFAULT (CURRENT_DATE)
+);</p>
+<p>CREATE TABLE CIUDAD (
+nombre CHAR(20) NOT NULL,
+poblacion INT NULL,
+codigoPostal DECIMAL(6) NOT NULL DEFAULT 28941);</p>
+<p> CREATE TABLE CIUDAD (
+nombre CHAR(20) NOT NULL,
+poblacion INT DEFAULT 5000);</p>
+<p>Indicando la PK
+ CREATE TABLE CIUDAD (
+nombre CHAR(20) PRIMARY KEY,
+poblacion INT DEFAULT 5000);
+ CREATE TABLE CIUDAD (
+nombre CHAR(20),
+poblacion INT DEFAULT 5000,
+PRIMARY KEY(nombre));
+ CREATE TABLE EMPLEADO (
+codigo VARCHAR(9),
+departamento VARCHAR(15),
+nombre VARCHAR(40),
+PRIMARY KEY (codigo, departamento));</p>
+<p>PK autoincrementable
+ Campo de tipo numérico + AUTO_INCREMENT
+ En Oracle se utiliza una secuencia (SEQUENCE)
+ Con cada inserción, se crea un nuevo valor.
+CREATE TABLE PERSONA (
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(40),
+fecha DATE);</p>
 <p><code>ALTER TABLE</code></p>
+<p> Renombrar:
+ ALTER TABLE nombreTablaViejo RENAME TO
+nombreNuevo;</p>
+<p>Operaciones con columnas
+ https://mariadb.com/kb/en/alter-table/
+ Para añadir columnas
+ ALTER TABLE nombreTabla ADD (nombreColumna
+TipoDatos [Propiedades] [,columnaSiguiente
+tipoDatos [propiedades]…)
+ Borrar columnas
+ ALTER TABLE nombreTabla DROP(columna
+[,columnaSiguiente,...]);
+ Modificar columnas:
+ ALTER TABLE nombreTabla MODIFY(columna tipo
+[propiedades] [columnaSiguiente tipo
+[propiedades] ...]</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">MariaDB</label><label for="__tabbed_7_2">PostgreSQL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Más información en la <a href="https://mariadb.com/kb/en/drop-database/">documentación oficial</a></p>
+</div>
+<div class="tabbed-block">
+<p>Más información en la <a href="https://www.postgresql.org/docs/current/sql-dropdatabase.html">documentación oficial</a></p>
+</div>
+</div>
+</div>
+<p>CREATE TABLE CLIENTE (
+dni VARCHAR(9) PRIMARY KEY,
+cnombre VARCHAR(50),
+direccion VARCHAR(60));
+ CREATE TABLE MASCOTA (
+codigo INTEGER PRIMARY KEY,
+nombre VARCHAR(50),
+raza VARCHAR(50));
+38
+Ejemplos ALTER TABLE II
+ ALTER TABLE MASCOTA ADD especie
+VARCHAR(10) AFTER raza;
+ ALTER TABLE MASCOTA ADD cliente
+VARCHAR(9) AFTER nombre;
+ ALTER TABLE MASCOTA ADD CONSTRAINT
+fk_duenyo FOREIGN KEY (cliente)
+REFERENCES CLIENTE(dni);
+ ALTER TABLE MASCOTA MODIFY codigo
+INT(3) AUTO_INCREMENT;
+ ALTER TABLE clientes CHANGE nombre
+nomMascosta VARCHAR(50);</p>
 <p><code>DROP TABLE</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">MariaDB</label><label for="__tabbed_8_2">PostgreSQL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Más información en la <a href="https://mariadb.com/kb/en/drop-database/">documentación oficial</a></p>
+</div>
+<div class="tabbed-block">
+<p>Más información en la <a href="https://www.postgresql.org/docs/current/sql-dropdatabase.html">documentación oficial</a></p>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Creando tablas con consultas</p>
+<p>Creando tablas a partir de
+consultas
+ CREATE TABLE nombreTabla [IGNORE |
+REPLACE] [AS] SELECT…</p>
+<blockquote>
+<p>create table director as
+select e.nombre, e.apellido1,
+e.apellido2, e.email
+from empleado e
+where e.puesto like "%Director%";</p>
+</blockquote>
+<p>Volveremos a esta operación cuando aprendamos a realizar consultas.</p>
+</div>
 <h3 id="restricciones">Restricciones<a class="headerlink" href="#restricciones" title="Permanent link">&para;</a></h3>
+<p>CREATE [TEMPORARY] TABLE [db.]tabla
+(campo1 tipo [(tamaño)] [NOT NULL | NULL]
+[DEFAULT valor] [UNIQUE [KEY] |PRIMARY KEY]
+[REFERENCES tablaexterna [(campoexterno1,
+campoexterno2)]
+[ON DELETE {CASCADE | SET NULL | NO ACTION}]
+[ON UPDATE {CASCADE | SET NULL | NO ACTION}],
+....,
+[CONSTRAINT de múltiples campos]) ENGINE =
+Innodb;
+ InnodDB → motor que soporta claves ajenas. Es el motor
+por defecto para MariaDB</p>
+<p>Gestionando restricciones
+Añadiendo:
+ALTER TABLE tabla ADD [CONSTRAINT nombre]
+tipoDeRestricción (columnas);
+ Borrando:
+ALTER TABLE tabla DROP {PRIMARY KEY |
+CONSTRAINT nombreRestricción} [CASCADE]
+ Habilitando/ deshabilitando claves
+ALTER TABLE tabla ENABLE KEYS;
+ALTER TABLE tabla DISABLE KEYS;</p>
+<p>Indicando la AK → UK
+ Atributo UNIQUE
+ No permite repetidos
+ Implica la creación de un índice
+CREATE TABLE EMPLEADO(
+dni VARCHAR(9) PRIMARY KEY,
+nSegSocial VARCHAR(15) UNIQUE,
+nombre VARCHAR(40));</p>
+<p>Claves ajenas como atributos
+ https://mariadb.com/kb/en/constraint/
+ CONSTRAINT nombre FOREIGN KEY col
+REFERENCES tabla (clave1)
+CREATE TABLE ALQUILER (
+dni VARCHAR(9),
+codPelicula INT UNSIGNED,
+CONSTRAINT PK_ALQUILER PRIMARY KEY (dni,
+codPelicula),
+CONSTRAINT FK_ALQ_CLI FOREIGN KEY (dni)
+REFERENCES CLIENTE(dni),
+CONSTRAINT FK_ALQ_PEL FOREIGN KEY (codPelicula)
+REFERENCES PELICULA(cod)
+);</p>
+<p>Clave ajena compuesta
+CREATE TABLE EXISTENCIA (
+tipo CHAR(9),
+modelo DECIMAL(3),
+numAlmacen DECIMAL(1)
+cantidad DECIMAL(7),
+CONSTRAINT FK_EXI_PIE FOREIGN KEY (tipo,
+modelo) REFERENCES PIEZA,
+CONSTRAINT FK_EXI_ALM FOREIGN KEY (numAlmacen)
+REFERENCES ALMACEN,
+CONSTRAINT PK_EXISTENCIAS PRIMARY KEY(tipo,
+modelo, numAlmacen)
+);</p>
+<p>Restricciones de propagación
+ ON DELETE, ON UPDATE
+ NO ACTION: se impide la operación
+ Comportamiento por defecto
+ CASCADE: la operación se propaga
+ SET NULL: la clave ajena se pone a NULL
+ CREATE TABLE TELEFONO (
+numero CHAR(12) PRIMARY KEY,
+id INT,
+CONSTRAINT FK_TEL_PER FOREIGN KEY (id)
+REFERENCES PERSONA (id)
+ON DELETE CASCADE ON UPDATE SET NULL);</p>
+<p>Restricciones de validación
+ Atributo CHECK
+CREATE TABLE INGRESO (
+cod DECIMAL(5) PRIMARY KEY,
+concepto VARCHAR(40) NOT NULL,
+importe DECIMAL(11,2),
+CONSTRAINT CK_INGRESO CHECK (importe&gt;0 AND
+importe&lt;8000));
+CREATE TABLE INGRESO2(
+cod DECIMAL(5) PRIMARY KEY,
+concepto VARCHAR(40) NOT NULL,
+importeMax DECIMAL(11,2),
+importe DECIMAL(11,2),
+CONSTRAINT CK_INGRESO CHECK (importe&lt;importeMax));</p>
 <div class="admonition info">
 <p class="admonition-title">Otros elementos</p>
 <p>Vistas
@@ -1130,6 +1608,80 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 -->
 
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<p><a name="AC501"></a></p>
+<ul>
+<li>
+<p><strong>AC501</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr> // 3p) Formato de almacenamiento</p>
+<p>En <em>MariaDB</em>, descarga la base de datos worlds.sql.zip, y tras descomprimirla y cargarla mediante PhpMyAdmin.</p>
+<p>A continuación, averigua:
+    * cuantas tablas tiene
+    * los campos de la tabla <code>city</code>
+    * el formato de almacenamiento de la base de datos</p>
+</li>
+</ul>
+<p><a name="AC502"></a></p>
+<ul>
+<li>
+<p><strong>AC502</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr> // 3p) DDL Tabla, relaciones, tipos de datos, campos clave</p>
+<p>Crear el siguiente modelo relacional en MariaDB:</p>
+<p> DEPARTAMENTO(codD, nombre, direcc)  PK:codD
+ VNN:nombre</p>
+<p> EMPLEADO(dni, nombrec, salario, direcc, departamento)
+ PK: dni
+ AK:nombrec
+ VNN:nombrec, salario, departamento  FK:departamento → DEPARTAMENTO
+ CK:salario&gt;=900
+ Valor por defecto en salario de 900</p>
+<p>ALTER TABLE:</p>
+<p>Eliminar la clave ajena de la tabla EMPLEADO.
+Volver añadir la clave ajena. Eliminar las tablas creadas.
+<a name="AC503"></a></p>
+</li>
+<li>
+<p><strong>AC502</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr> // 3p) DDL Tabla, relaciones, tipos de datos, campos clave - ALTER TABLE</p>
+<p>Tabla FABRICANTE
+codFabricante: entero autoincrementable nombre: cadena 32
+pais: cadena 32
+Restricciones
+La clave primaria es codFabricante EL nombre no puede ser nulo</p>
+<p>Tabla ARTICULO
+codigo:cadena 32
+codFabricante: entero
+peso: numérico con dos decimales categoria: cadena 16
+precioVenta: numérico con dos decimales precioCompra: numérico con dos decimales existencias: entero
+Restricciones:
+La clave primaria es: codigo, codFabricante, peso, categoría.
+El peso, precioVenta, precioCompra deben de ser mayores de 0.
+La categoría ha de ser primera, segunda o tercera.</p>
+<p>Añade una clave ajena a la tabla ARTICULO desde
+codFabricante a la tabla FABRICANTE.
+2) Modifica el atributo pais de la tabla FABRICANTE
+para que el valor por defecto sea España.
+3) Cambia la clave primaria de FABRICANTE al nombre. Dejar el codFabricante con clave única para la clave ajena con ARTICULO
+4) Desactiva la restricción de clave primaria de FABRICANTE.</p>
+</li>
+</ul>
+<p>ARXXX</p>
+<p>Coger un MR de las unidades 3 y 4 y crear el DDL</p>
+<p><a name="AC504"></a></p>
+<ul>
+<li><strong>AC504</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr> // 3p) DDL Dominios</li>
+</ul>
+<p><a name="AC505"></a></p>
+<ul>
+<li><strong>AC505</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr> // 3p) DDL Restricciones</li>
+</ul>
+<!--
+
+=== "MariaDB"
+
+    Más información en la [documentación oficial](https://mariadb.com/kb/en/drop-database/)
+
+=== "PostgreSQL"
+
+    Más información en la [documentación oficial](https://www.postgresql.org/docs/current/sql-dropdatabase.html)
+
+-->
 
 
 
