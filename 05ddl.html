@@ -586,17 +586,17 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-        
           <li class="md-nav__item">
   <a href="#creando-dominios" class="md-nav__link">
     <span class="md-ellipsis">
       Creando dominios
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -611,9 +611,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ejemplos" class="md-nav__link">
+  <a href="#creando-tablas" class="md-nav__link">
     <span class="md-ellipsis">
-      Ejemplos
+      Creando tablas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clave-primaria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clave primaria
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modificando-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modificando tablas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eliminando-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eliminando tablas
     </span>
   </a>
   
@@ -630,6 +657,48 @@
       Restricciones
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Restricciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#claves-unicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claves únicas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#claves-ajenas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claves ajenas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propagacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Propagación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validaciones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -859,32 +928,32 @@
 <tr>
 <td>1</td>
 <td>Modelo físico. Puesta en marcha</td>
-<td></td>
-<td></td>
+<td><a href="#AC501">AC501</a></td>
+<td><abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr></td>
 </tr>
 <tr>
 <td>2</td>
-<td>DDL Tablas</td>
+<td>DDL BD y tipos de datos</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>3</td>
-<td>DDL Atributos</td>
-<td></td>
-<td></td>
+<td>DDL Tablas</td>
+<td><a href="#AC502">AC501</a></td>
+<td><abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr> <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr></td>
 </tr>
 <tr>
 <td>4</td>
 <td>Restricciones</td>
 <td></td>
-<td></td>
+<td><abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr></td>
 </tr>
 <tr>
 <td>5</td>
 <td>Supuesto DDL</td>
 <td></td>
-<td></td>
+<td><abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr></td>
 </tr>
 <tr>
 <td>6</td>
@@ -1159,6 +1228,11 @@ antes de finalizar la instrucción, facilitando su lectura. Así pues, posibles 
 <p>Más información en la <a href="https://mariadb.com/kb/en/create-database/">documentación oficial</a></p>
 </div>
 <div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">nombreBD</span><span class="p">;</span>
+</code></pre></div>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">midb</span><span class="p">;</span>
+</code></pre></div>
 <p>Más información en la <a href="https://www.postgresql.org/docs/current/sql-createdatabase.html">documentación oficial</a></p>
 </div>
 </div>
@@ -1288,10 +1362,10 @@ antes de finalizar la instrucción, facilitando su lectura. Así pues, posibles 
 </ul>
 </div>
 <h4 id="juegos-de-caracteres">Juegos de caracteres<a class="headerlink" href="#juegos-de-caracteres" title="Permanent link">&para;</a></h4>
-<p>Entendemos como <strong>juego de caracteres</strong> a la codificación que utiliza el SGBD para representar los datos, definiendo qué caracteres pueden almacenarse en la base de datos y cómo esos caracteres son codificados internamente.</p>
-<p>Los juegos de caracteres más conocidos son <code>ASCII</code> (caracteres básicos en inglés), <code>iso-8859-1 latin</code> (expande ASCII para incluir los caracteres acentuados y símbolos de los lenguajes occidentales) y <code>utf-8</code>, el cual parte de la familia de estándares <em>Unicode</em>, que puede representar caracteres de casi todos los lenguajes del mundo, incluidos caracteres <em>multibyte</em>.</p>
-<p>Además, podemos configurar la <strong>colación</strong>, la cual define cómo se comparan y ordenan las cadenas de texto para un juego de caracteres específico, teniendo en cuenta cosas como el uso de mayúsculas y minúsculas o el tratamiento de acentos</p>
-<p>En <em>MariaDB</em> y <em>PostgreSQL</em>, los juegos de caracteres (<em>character sets</em>) y las colaciones (<em>collations</em>) juegan un papel importante en cómo se almacenan y comparan las cadenas de texto. Cada sistema maneja los juegos de caracteres de manera diferente, y a continuación vamos a estudiar cómo funciona en cada uno:</p>
+<p>Entendemos como <strong>juego de caracteres</strong> (<em>character sets</em>) a la codificación que utiliza el SGBD para representar los datos, definiendo qué caracteres pueden almacenarse en la base de datos y cómo esos caracteres son codificados internamente.</p>
+<p>Tal como ya habéis estudiado en el módulo profesional de <em>Sistemas Informáticos</em>, los juegos de caracteres más conocidos son <code>ASCII</code> (caracteres básicos en inglés), <code>iso-8859-1 latin</code> (expande ASCII para incluir los caracteres acentuados y símbolos de los lenguajes occidentales) y <code>utf-8</code>, el cual parte de la familia de estándares <em>Unicode</em>, que puede representar caracteres de casi todos los lenguajes del mundo, incluidos caracteres <em>multibyte</em>.</p>
+<p>Además, podemos configurar la <strong>colación</strong> (<em>collation</em>), la cual define cómo se comparan y ordenan las cadenas de texto para un juego de caracteres específico, teniendo en cuenta cosas como el uso de mayúsculas y minúsculas o el tratamiento de acentos</p>
+<p>En <em>MariaDB</em> y <em>PostgreSQL</em>, los juegos de caracteres y las colaciones juegan un papel importante en cómo se almacenan y comparan las cadenas de texto. Cada sistema maneja los juegos de caracteres de manera diferente, y a continuación vamos a estudiar cómo funciona en cada uno:</p>
 <div class="grid cards">
 <ul>
 <li>
@@ -1306,13 +1380,11 @@ antes de finalizar la instrucción, facilitando su lectura. Así pues, posibles 
 </li>
 </ul>
 </div>
-<p>FIXME: quitar resumen y meter en las cajas.</p>
-<p>En resumen, ambos sistemas ofrecen soporte completo para <em>Unicode</em>, pero <em>MariaDB</em> tiene más flexibilidad en cuanto a la elección y uso de diferentes juegos de caracteres y colaciones. <em>PostgreSQL</em> prioriza la simplicidad y la eficiencia a través de UTF-8, con soporte para colaciones mediante el sistema operativo.</p>
-<p>La configuración del juego de caracteres y la colación dependen del SGBD empleado:</p>
+<p>Del mismo modo, la configuración del juego de caracteres y la colación dependen del SGBD empleado:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">MariaDB</label><label for="__tabbed_6_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>La codificación y la colación se especifican al crear una base de datos con las opciones <code>CHARACTER SET</code> y <code>COLLATE</code>.</p>
+<p>La codificación y la colación se especifican al crear una base de datos mediante <a href="https://mariadb.com/kb/en/create-database/"><code>CREATE DATABASE</code></a> con las opciones <code>CHARACTER SET</code> y <code>COLLATE</code>.</p>
 <p>Además de <code>utf8</code>, <code>latin1</code>y <code>ascii</code> ya comentados previamente, una codificación muy empleado es <strong><code>utf8mb4</code></strong>, la cual es una extensión de <code>utf8</code> que permite almacenar todos los caracteres de <em>Unicode</em>, incluidos emojis y otros símbolos que no se pueden representar en <code>utf8</code>.</p>
 <p>Además, luego para cada juego de caracteres, tenemos sus colaciones. Por ejemplo, el juego de caracteres <code>utf8</code> tiene varias colaciones como:</p>
 <ul>
@@ -1325,7 +1397,7 @@ antes de finalizar la instrucción, facilitando su lectura. Así pues, posibles 
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>La codificación y la colación se especifican al crear una base de datos con las opciones <code>ENCODING</code> y <code>LC_COLLATE</code>.</p>
+<p>La codificación y la colación se especifican al crear una base de datos mediante <a href="https://www.postgresql.org/docs/current/sql-createdatabase.html"><code>CREATE DATABASE</code></a> con las opciones <code>ENCODING</code> y <code>LC_COLLATE</code>.</p>
 <p>Las colaciones más comunes son:</p>
 <ul>
 <li><code>en_US.UTF-8</code>: Colación en inglés, sensible a mayúsculas/minúsculas.</li>
@@ -1340,108 +1412,174 @@ antes de finalizar la instrucción, facilitando su lectura. Así pues, posibles 
 </div>
 </div>
 <h3 id="tipos-de-datos">Tipos de datos<a class="headerlink" href="#tipos-de-datos" title="Permanent link">&para;</a></h3>
-<p> https://mariadb.com/kb/en/data-types/
- CHAR: cadena de texto fijo (&lt;256)
- VARCHAR: cadena de texto variable (&lt;4000)
- TEXT: texto con restricciones (varios GB)
- BIT, TINYINT, INT (-2.147.483.648 a 2.147.483.647),
-BIGINT, DECIMAL(M,D), FLOAT y DOUBLE,REAL.
- id INT UNSIGNED (0 a 4.294.967.295)
- DATE, DATETIME, TIMESTAMP
- fecha TIMESTAMP default
-CURRENT_TIMESTAMP
- para booleanos: BOOLEAN o TINYINT(1)</p>
+<p>Antes de entrar a ver cómo podemos crear las tablas, necesitamos conocer los tipos de datos que van a poder tener las columnas que definamos. <em>A grosso modo</em>, los tipos más empleados en <a href="https://mariadb.com/kb/en/data-types/">MariaDB</a> y <a href="https://www.postgresql.org/docs/current/datatype.html#DATATYPE-TABLE">PostgreSQL</a> son:</p>
+<table>
+<thead>
+<tr>
+<th>Tipo de dato</th>
+<th><em>MariaDB</em></th>
+<th><em>PostgreSQL</em></th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Numéricos</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>TINYINT</code></td>
+<td>Sí</td>
+<td>No</td>
+<td>Entero pequeño, de 1 byte (<em>MariaDB</em>)</td>
+</tr>
+<tr>
+<td><code>SMALLINT</code></td>
+<td>Sí</td>
+<td>Sí, alias <code>int2</code></td>
+<td>Entero pequeño, de 2 bytes</td>
+</tr>
+<tr>
+<td><code>MEDIUMINT</code></td>
+<td>Sí</td>
+<td>No</td>
+<td>Entero de 3 bytes (<em>MariaDB</em>)</td>
+</tr>
+<tr>
+<td><code>INT</code>, <code>INTEGER</code></td>
+<td>Sí</td>
+<td>Sí, alias <code>int4</code></td>
+<td>Entero estándar de 4 bytes</td>
+</tr>
+<tr>
+<td><code>BIGINT</code></td>
+<td>Sí</td>
+<td>Sí, alias <code>int8</code></td>
+<td>Entero grande de 8 bytes</td>
+</tr>
+<tr>
+<td><code>DECIMAL</code>, <code>NUMERIC</code></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Número con precisión fija (exacta)</td>
+</tr>
+<tr>
+<td><code>FLOAT</code></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Número de coma flotante de precisión simple</td>
+</tr>
+<tr>
+<td><code>DOUBLE</code></td>
+<td>Sí</td>
+<td>Sí, alias <code>float8</code></td>
+<td>Número de coma flotante de precisión doble</td>
+</tr>
+<tr>
+<td><code>SERIAL</code></td>
+<td>No</td>
+<td>Sí, alias <code>serial4</code></td>
+<td>Entero autoincremental (<em>PostgreSQL</em>) <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></td>
+</tr>
+<tr>
+<td><strong>Cadenas</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>CHAR(n)</code></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Cadena de longitud fija</td>
+</tr>
+<tr>
+<td><code>VARCHAR(n)</code></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Cadena de longitud variable</td>
+</tr>
+<tr>
+<td><code>TEXT</code></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Cadena de longitud ilimitada</td>
+</tr>
+<tr>
+<td><strong>Fechas y horas</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>DATE</code></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Fecha (año, mes, día)</td>
+</tr>
+<tr>
+<td><code>TIME</code></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Hora (sin zona horaria)</td>
+</tr>
+<tr>
+<td><code>DATETIME</code></td>
+<td>Sí</td>
+<td>No</td>
+<td>Fecha y hora (<em>MariaDB</em>)</td>
+</tr>
+<tr>
+<td><code>TIMESTAMP</code></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>Marca de tiempo (con o sin zona horaria)</td>
+</tr>
+<tr>
+<td><strong>Booleanos</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>BOOLEAN</code></td>
+<td>Sí (alias de <code>TINYINT</code>)</td>
+<td>Sí, alias <code>bool</code></td>
+<td>Tipo booleano (en <em>MariaDB</em> es alias de <code>TINYINT</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Algunos ejemplos de tipos serían:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">bigint</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">char</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+<span class="linenos" data-linenos="4 "></span><span class="nb">decimal</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="c1">-- 5 dígitos en total, con 2 decimales, por ejemplo 123,45</span>
+</code></pre></div>
 <h4 id="enumeraciones">Enumeraciones<a class="headerlink" href="#enumeraciones" title="Permanent link">&para;</a></h4>
-<p>Enumeraciones
- https://mariadb.com/kb/en/enum/
- Permiten restringir el conjunto de valores de
-un determinado campo.
-curso ENUM ('0', '1', '2'),
-horario ENUM ('mañana', 'tarde', 'noche')</p>
-<h3 id="creando-dominios">Creando dominios<a class="headerlink" href="#creando-dominios" title="Permanent link">&para;</a></h3>
-<p><code>CREATE DOMAIN</code></p>
-<h3 id="tablas">Tablas<a class="headerlink" href="#tablas" title="Permanent link">&para;</a></h3>
-<p><code>CREATE TABLE</code></p>
+<p>Además de los tipos vistos, podemos crear enumeraciones como un conjunto de valores restringidos que puede tomar un determinado campo, haciendo uso de la keyword <code>ENUM</code> tanto en <a href="https://mariadb.com/kb/en/enum/">MariaDB</a> como en <a href="https://www.postgresql.org/docs/16/datatype-enum.html">PostgreSQL</a>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">MariaDB</label><label for="__tabbed_7_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Más información en la <a href="https://mariadb.com/kb/en/drop-database/">documentación oficial</a></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">curso</span><span class="w"> </span><span class="n">ENUM</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">horario</span><span class="w"> </span><span class="n">ENUM</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;mañana&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;tarde&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;noche&#39;</span><span class="p">)</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>Más información en la <a href="https://www.postgresql.org/docs/current/sql-dropdatabase.html">documentación oficial</a></p>
+<p>Primero debemos definir un tipo y luego asociar ese tipo al campo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="n">animo</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ENUM</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;feliz&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;triste&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;normal&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">estado</span><span class="w"> </span><span class="n">animo</span><span class="p">;</span>
+</code></pre></div>
 </div>
 </div>
 </div>
-<p>CREATE TABLE [IF NOT EXISTS]
-[basededatos.]nombreDeTabla (
-columna1 tipoDato1, columna2
-tipoDato2,...
-columnaN tipoDatoN);</p>
-<blockquote>
-<p>CREATE TABLE USUARIO (nombre VARCHAR(25));</p>
-</blockquote>
-<p>No puede haber nombres de tablas repetidas.
- Deben comenzar por un carácter alfabético.
- Su longitud máxima es de 30 caracteres.
- Sólo se permiten letras del alfabeto inglés, dígitos o el signo de guión bajo.
- No puede coincidir con las palabras reservadas de SQL (por ejemplo, no podemos llamar a una tabla WHERE).
- No se distingue entre mayúsculas y minúsculas.
- Convención: TABLAS en MAYÚSCULAS y columnas en minúsculas</p>
-<h4 id="ejemplos">Ejemplos<a class="headerlink" href="#ejemplos" title="Permanent link">&para;</a></h4>
-<p>Ejemplos de CREATE TABLE:</p>
-<p>CREATE TABLE PROVEEDOR(nombre VARCHAR(25));</p>
-<p> CREATE TABLE PROVEEDOR (
-nombre VARCHAR(25),
-localidad VARCHAR(30) DEFAULT 'Elche');</p>
-<p> CREATE TABLE PRESTAMO (
-idPrestamo DECIMAL(8),
-fechaPrestamo DATE DEFAULT (CURRENT_DATE)
-);</p>
-<p>CREATE TABLE CIUDAD (
-nombre CHAR(20) NOT NULL,
-poblacion INT NULL,
-codigoPostal DECIMAL(6) NOT NULL DEFAULT 28941);</p>
-<p> CREATE TABLE CIUDAD (
-nombre CHAR(20) NOT NULL,
-poblacion INT DEFAULT 5000);</p>
-<p>Indicando la PK
- CREATE TABLE CIUDAD (
-nombre CHAR(20) PRIMARY KEY,
-poblacion INT DEFAULT 5000);
- CREATE TABLE CIUDAD (
-nombre CHAR(20),
-poblacion INT DEFAULT 5000,
-PRIMARY KEY(nombre));
- CREATE TABLE EMPLEADO (
-codigo VARCHAR(9),
-departamento VARCHAR(15),
-nombre VARCHAR(40),
-PRIMARY KEY (codigo, departamento));</p>
-<p>PK autoincrementable
- Campo de tipo numérico + AUTO_INCREMENT
- En Oracle se utiliza una secuencia (SEQUENCE)
- Con cada inserción, se crea un nuevo valor.
-CREATE TABLE PERSONA (
-id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-nombre VARCHAR(40),
-fecha DATE);</p>
-<p><code>ALTER TABLE</code></p>
-<p> Renombrar:
- ALTER TABLE nombreTablaViejo RENAME TO
-nombreNuevo;</p>
-<p>Operaciones con columnas
- https://mariadb.com/kb/en/alter-table/
- Para añadir columnas
- ALTER TABLE nombreTabla ADD (nombreColumna
-TipoDatos [Propiedades] [,columnaSiguiente
-tipoDatos [propiedades]…)
- Borrar columnas
- ALTER TABLE nombreTabla DROP(columna
-[,columnaSiguiente,...]);
- Modificar columnas:
- ALTER TABLE nombreTabla MODIFY(columna tipo
-[propiedades] [columnaSiguiente tipo
-[propiedades] ...]</p>
+<h4 id="creando-dominios">Creando dominios<a class="headerlink" href="#creando-dominios" title="Permanent link">&para;</a></h4>
+<p>Además de todos los tipos de datos vistos (y algunos más que se salen del alcance del curso), podemos crear nuestros propios tipos de datos o dominios:</p>
+<p><code>CREATE DOMAIN</code></p>
+<h3 id="tablas">Tablas<a class="headerlink" href="#tablas" title="Permanent link">&para;</a></h3>
+<h4 id="creando-tablas">Creando tablas<a class="headerlink" href="#creando-tablas" title="Permanent link">&para;</a></h4>
+<p><code>CREATE TABLE</code></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">MariaDB</label><label for="__tabbed_8_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1452,28 +1590,93 @@ tipoDatos [propiedades]…)
 </div>
 </div>
 </div>
-<p>CREATE TABLE CLIENTE (
-dni VARCHAR(9) PRIMARY KEY,
-cnombre VARCHAR(50),
-direccion VARCHAR(60));
- CREATE TABLE MASCOTA (
-codigo INTEGER PRIMARY KEY,
-nombre VARCHAR(50),
-raza VARCHAR(50));
-38
-Ejemplos ALTER TABLE II
- ALTER TABLE MASCOTA ADD especie
-VARCHAR(10) AFTER raza;
- ALTER TABLE MASCOTA ADD cliente
-VARCHAR(9) AFTER nombre;
- ALTER TABLE MASCOTA ADD CONSTRAINT
-fk_duenyo FOREIGN KEY (cliente)
-REFERENCES CLIENTE(dni);
- ALTER TABLE MASCOTA MODIFY codigo
-INT(3) AUTO_INCREMENT;
- ALTER TABLE clientes CHANGE nombre
-nomMascosta VARCHAR(50);</p>
-<p><code>DROP TABLE</code></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="p">[</span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="p">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="p">[</span><span class="n">basededatos</span><span class="p">.]</span><span class="n">nombreDeTabla</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="3 "></span><span class="n">columna1</span><span class="w"> </span><span class="n">tipoDato1</span><span class="p">,</span><span class="w"> </span><span class="n">columna2</span>
+<span class="linenos" data-linenos="4 "></span><span class="n">tipoDato2</span><span class="p">,...</span>
+<span class="linenos" data-linenos="5 "></span><span class="n">columnaN</span><span class="w"> </span><span class="n">tipoDatoN</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">USUARIO</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">));</span>
+</code></pre></div>
+<p>No puede haber nombres de tablas repetidas.
+ Deben comenzar por un carácter alfabético.
+ Su longitud máxima es de 30 caracteres.
+ Sólo se permiten letras del alfabeto inglés, dígitos o el signo de guión bajo.
+ No puede coincidir con las palabras reservadas de SQL (por ejemplo, no podemos llamar a una tabla WHERE).
+ No se distingue entre mayúsculas y minúsculas.
+ Convención: TABLAS en MAYÚSCULAS y columnas en minúsculas</p>
+<p>A continuación tenemos algunos ejemplos de creaciones de tablas con diferentes tipos de datos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PROVEEDOR</span><span class="p">(</span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">));</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PROVEEDOR</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">localidad</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PRESTAMO</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">idPrestamo</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">fechaPrestamo</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">));</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CIUDAD</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="n">codigoPostal</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">28941</span><span class="p">);</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CIUDAD</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">5000</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="clave-primaria">Clave primaria<a class="headerlink" href="#clave-primaria" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Indicando la PK</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CIUDAD</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">5000</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CIUDAD</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">nombre</span><span class="p">));</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="n">codigo</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">departamento</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">codigo</span><span class="p">,</span><span class="w"> </span><span class="n">departamento</span><span class="p">));</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Tipo Serial</p>
+<p>En <em>PostreSQL</em> existe el tipo <a href="https://www.postgresql.org/docs/current/datatype-numeric.html#DATATYPE-SERIAL"><code>serial</code></a> para crear una secuencia entera autoincrementable.</p>
+<p>FIXME: continuar</p>
+</div>
+<p>PK autoincrementable
+ Campo de tipo numérico + AUTO_INCREMENT
+ En Oracle se utiliza una secuencia (SEQUENCE)
+ Con cada inserción, se crea un nuevo valor.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PERSONA</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
+<span class="linenos" data-linenos="4 "></span><span class="n">fecha</span><span class="w"> </span><span class="nb">DATE</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="modificando-tablas">Modificando tablas<a class="headerlink" href="#modificando-tablas" title="Permanent link">&para;</a></h4>
+<p><code>ALTER TABLE</code></p>
+<p> Renombrar:
+ ALTER TABLE nombreTablaViejo RENAME TO
+nombreNuevo;</p>
+<p>Operaciones con columnas
+ https://mariadb.com/kb/en/alter-table/
+ Para añadir columnas</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="p">(</span><span class="n">nombreColumna</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">TipoDatos</span><span class="w"> </span><span class="p">[</span><span class="n">Propiedades</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">columnaSiguiente</span>
+<span class="linenos" data-linenos="3 "></span><span class="n">tipoDatos</span><span class="w"> </span><span class="p">[</span><span class="n">propiedades</span><span class="p">]</span><span class="err">…</span><span class="p">)</span>
+</code></pre></div>
+<p> Borrar columnas</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="k">DROP</span><span class="p">(</span><span class="n">columna</span>
+<span class="linenos" data-linenos="2 "></span><span class="p">[,</span><span class="n">columnaSiguiente</span><span class="p">,...]);</span>
+</code></pre></div>
+<p> Modificar columnas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="k">MODIFY</span><span class="p">(</span><span class="n">columna</span><span class="w"> </span><span class="n">tipo</span>
+<span class="linenos" data-linenos="2 "></span><span class="p">[</span><span class="n">propiedades</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="n">columnaSiguiente</span><span class="w"> </span><span class="n">tipo</span>
+<span class="linenos" data-linenos="3 "></span><span class="p">[</span><span class="n">propiedades</span><span class="p">]</span><span class="w"> </span><span class="p">...]</span>
+</code></pre></div>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">MariaDB</label><label for="__tabbed_9_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1484,105 +1687,151 @@ nomMascosta VARCHAR(50);</p>
 </div>
 </div>
 </div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CLIENTE</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">dni</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="n">cnombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="linenos" data-linenos="4 "></span><span class="n">direccion</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">60</span><span class="p">));</span>
+<span class="linenos" data-linenos="5 "></span><span class="err"></span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">MASCOTA</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="6 "></span><span class="n">codigo</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="7 "></span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="linenos" data-linenos="8 "></span><span class="n">raza</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">));</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="err"></span><span class="w"> </span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">MASCOTA</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">especie</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">AFTER</span><span class="w"> </span><span class="n">raza</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="err"></span><span class="w"> </span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">MASCOTA</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="n">cliente</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="k">AFTER</span><span class="w"> </span><span class="n">nombre</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="err"></span><span class="w"> </span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">MASCOTA</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="n">fk_duenyo</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">cliente</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">CLIENTE</span><span class="p">(</span><span class="n">dni</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="err"></span><span class="w"> </span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">MASCOTA</span><span class="w"> </span><span class="k">MODIFY</span><span class="w"> </span><span class="n">codigo</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="nb">INT</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span><span class="err"></span><span class="w"> </span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">clientes</span><span class="w"> </span><span class="n">CHANGE</span><span class="w"> </span><span class="n">nombre</span>
+<span class="linenos" data-linenos="11 "></span><span class="n">nomMascosta</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="eliminando-tablas">Eliminando tablas<a class="headerlink" href="#eliminando-tablas" title="Permanent link">&para;</a></h4>
+<p><code>DROP TABLE</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">MariaDB</label><label for="__tabbed_10_2">PostgreSQL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Más información en la <a href="https://mariadb.com/kb/en/drop-table/">documentación oficial</a></p>
+</div>
+<div class="tabbed-block">
+<p>Más información en la <a href="https://www.postgresql.org/docs/current/sql-droptable.html">documentación oficial</a></p>
+</div>
+</div>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Creando tablas con consultas</p>
-<p>Creando tablas a partir de
-consultas
- CREATE TABLE nombreTabla [IGNORE |
-REPLACE] [AS] SELECT…</p>
-<blockquote>
-<p>create table director as
-select e.nombre, e.apellido1,
-e.apellido2, e.email
-from empleado e
-where e.puesto like "%Director%";</p>
-</blockquote>
+<p>Creando tablas a partir de consultas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="p">[</span><span class="k">IGNORE</span><span class="w"> </span><span class="o">|</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">REPLACE</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="k">AS</span><span class="p">]</span><span class="w"> </span><span class="k">SELECT</span><span class="err">…</span>
+<span class="linenos" data-linenos="3 "></span><span class="o">&gt;</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">director</span><span class="w"> </span><span class="k">as</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">apellido1</span><span class="p">,</span>
+<span class="linenos" data-linenos="5 "></span><span class="n">e</span><span class="p">.</span><span class="n">apellido2</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">email</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span>
+<span class="linenos" data-linenos="7 "></span><span class="k">where</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">puesto</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="ss">&quot;%Director%&quot;</span><span class="p">;</span>
+</code></pre></div>
 <p>Volveremos a esta operación cuando aprendamos a realizar consultas.</p>
 </div>
 <h3 id="restricciones">Restricciones<a class="headerlink" href="#restricciones" title="Permanent link">&para;</a></h3>
-<p>CREATE [TEMPORARY] TABLE [db.]tabla
-(campo1 tipo [(tamaño)] [NOT NULL | NULL]
-[DEFAULT valor] [UNIQUE [KEY] |PRIMARY KEY]
-[REFERENCES tablaexterna [(campoexterno1,
-campoexterno2)]
-[ON DELETE {CASCADE | SET NULL | NO ACTION}]
-[ON UPDATE {CASCADE | SET NULL | NO ACTION}],
-....,
-[CONSTRAINT de múltiples campos]) ENGINE =
-Innodb;
- InnodDB → motor que soporta claves ajenas. Es el motor
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="p">[</span><span class="k">TEMPORARY</span><span class="p">]</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="p">[</span><span class="n">db</span><span class="p">.]</span><span class="n">tabla</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="p">(</span><span class="n">campo1</span><span class="w"> </span><span class="n">tipo</span><span class="w"> </span><span class="p">[(</span><span class="n">tamaño</span><span class="p">)]</span><span class="w"> </span><span class="p">[</span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">NULL</span><span class="p">]</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="p">[</span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">valor</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="k">UNIQUE</span><span class="w"> </span><span class="p">[</span><span class="k">KEY</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">]</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="p">[</span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">tablaexterna</span><span class="w"> </span><span class="p">[(</span><span class="n">campoexterno1</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="n">campoexterno2</span><span class="p">)]</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="p">[</span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="err">{</span><span class="k">CASCADE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">NO</span><span class="w"> </span><span class="n">ACTION</span><span class="err">}</span><span class="p">]</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="p">[</span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="err">{</span><span class="k">CASCADE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">NO</span><span class="w"> </span><span class="n">ACTION</span><span class="err">}</span><span class="p">],</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="p">....,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="p">[</span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">de</span><span class="w"> </span><span class="n">múltiples</span><span class="w"> </span><span class="n">campos</span><span class="p">])</span><span class="w"> </span><span class="n">ENGINE</span><span class="w"> </span><span class="o">=</span>
+<span class="linenos" data-linenos="10 "></span><span class="n">Innodb</span><span class="p">;</span>
+</code></pre></div>
+<p> InnodDB → motor que soporta claves ajenas. Es el motor
 por defecto para MariaDB</p>
 <p>Gestionando restricciones
-Añadiendo:
-ALTER TABLE tabla ADD [CONSTRAINT nombre]
-tipoDeRestricción (columnas);
- Borrando:
-ALTER TABLE tabla DROP {PRIMARY KEY |
-CONSTRAINT nombreRestricción} [CASCADE]
- Habilitando/ deshabilitando claves
-ALTER TABLE tabla ENABLE KEYS;
-ALTER TABLE tabla DISABLE KEYS;</p>
+Añadiendo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="p">[</span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">nombre</span><span class="p">]</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">tipoDeRestricción</span><span class="w"> </span><span class="p">(</span><span class="n">columnas</span><span class="p">);</span>
+</code></pre></div>
+<p> Borrando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="err">{</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="o">|</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">nombreRestricción</span><span class="err">}</span><span class="w"> </span><span class="p">[</span><span class="k">CASCADE</span><span class="p">]</span>
+</code></pre></div>
+<p> Habilitando/ deshabilitando claves</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="n">ENABLE</span><span class="w"> </span><span class="n">KEYS</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="n">DISABLE</span><span class="w"> </span><span class="n">KEYS</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="claves-unicas">Claves únicas<a class="headerlink" href="#claves-unicas" title="Permanent link">&para;</a></h4>
 <p>Indicando la AK → UK
  Atributo UNIQUE
  No permite repetidos
- Implica la creación de un índice
-CREATE TABLE EMPLEADO(
-dni VARCHAR(9) PRIMARY KEY,
-nSegSocial VARCHAR(15) UNIQUE,
-nombre VARCHAR(40));</p>
+ Implica la creación de un índice</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="p">(</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">dni</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="n">nSegSocial</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
+<span class="linenos" data-linenos="4 "></span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">));</span>
+</code></pre></div>
+<h4 id="claves-ajenas">Claves ajenas<a class="headerlink" href="#claves-ajenas" title="Permanent link">&para;</a></h4>
 <p>Claves ajenas como atributos
- https://mariadb.com/kb/en/constraint/
- CONSTRAINT nombre FOREIGN KEY col
-REFERENCES tabla (clave1)
-CREATE TABLE ALQUILER (
-dni VARCHAR(9),
-codPelicula INT UNSIGNED,
-CONSTRAINT PK_ALQUILER PRIMARY KEY (dni,
-codPelicula),
-CONSTRAINT FK_ALQ_CLI FOREIGN KEY (dni)
-REFERENCES CLIENTE(dni),
-CONSTRAINT FK_ALQ_PEL FOREIGN KEY (codPelicula)
-REFERENCES PELICULA(cod)
-);</p>
+ https://mariadb.com/kb/en/constraint/</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">col</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="p">(</span><span class="n">clave1</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">ALQUILER</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="n">dni</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="n">codPelicula</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">PK_ALQUILER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">dni</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="n">codPelicula</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">FK_ALQ_CLI</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">dni</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">CLIENTE</span><span class="p">(</span><span class="n">dni</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">FK_ALQ_PEL</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">codPelicula</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">PELICULA</span><span class="p">(</span><span class="n">cod</span><span class="p">)</span>
+<span class="linenos" data-linenos="10 "></span><span class="p">);</span>
+</code></pre></div>
 <p>Clave ajena compuesta
-CREATE TABLE EXISTENCIA (
-tipo CHAR(9),
-modelo DECIMAL(3),
-numAlmacen DECIMAL(1)
-cantidad DECIMAL(7),
-CONSTRAINT FK_EXI_PIE FOREIGN KEY (tipo,
-modelo) REFERENCES PIEZA,
-CONSTRAINT FK_EXI_ALM FOREIGN KEY (numAlmacen)
-REFERENCES ALMACEN,
-CONSTRAINT PK_EXISTENCIAS PRIMARY KEY(tipo,
-modelo, numAlmacen)
-);</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">EXISTENCIA</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="n">tipo</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="n">modelo</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="n">numAlmacen</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="n">cantidad</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">FK_EXI_PIE</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">tipo</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="n">modelo</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">PIEZA</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">FK_EXI_ALM</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">numAlmacen</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">ALMACEN</span><span class="p">,</span>
+<span class="linenos" data-linenos="10 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">PK_EXISTENCIAS</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">tipo</span><span class="p">,</span>
+<span class="linenos" data-linenos="11 "></span><span class="n">modelo</span><span class="p">,</span><span class="w"> </span><span class="n">numAlmacen</span><span class="p">)</span>
+<span class="linenos" data-linenos="12 "></span><span class="p">);</span>
+</code></pre></div></p>
+<h4 id="propagacion">Propagación<a class="headerlink" href="#propagacion" title="Permanent link">&para;</a></h4>
 <p>Restricciones de propagación
  ON DELETE, ON UPDATE
  NO ACTION: se impide la operación
  Comportamiento por defecto
  CASCADE: la operación se propaga
- SET NULL: la clave ajena se pone a NULL
- CREATE TABLE TELEFONO (
-numero CHAR(12) PRIMARY KEY,
-id INT,
-CONSTRAINT FK_TEL_PER FOREIGN KEY (id)
-REFERENCES PERSONA (id)
-ON DELETE CASCADE ON UPDATE SET NULL);</p>
+ SET NULL: la clave ajena se pone a NULL</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">TELEFONO</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">numero</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">FK_TEL_PER</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">PERSONA</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="validaciones">Validaciones<a class="headerlink" href="#validaciones" title="Permanent link">&para;</a></h4>
 <p>Restricciones de validación
- Atributo CHECK
-CREATE TABLE INGRESO (
-cod DECIMAL(5) PRIMARY KEY,
-concepto VARCHAR(40) NOT NULL,
-importe DECIMAL(11,2),
-CONSTRAINT CK_INGRESO CHECK (importe&gt;0 AND
-importe&lt;8000));
-CREATE TABLE INGRESO2(
-cod DECIMAL(5) PRIMARY KEY,
-concepto VARCHAR(40) NOT NULL,
-importeMax DECIMAL(11,2),
-importe DECIMAL(11,2),
-CONSTRAINT CK_INGRESO CHECK (importe&lt;importeMax));</p>
+ Atributo CHECK</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">INGRESO</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="n">cod</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="n">concepto</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="n">importe</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">CK_INGRESO</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">importe</span><span class="o">&gt;</span><span class="mi">0</span><span class="w"> </span><span class="k">AND</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="n">importe</span><span class="o">&lt;</span><span class="mi">8000</span><span class="p">));</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">INGRESO2</span><span class="p">(</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="n">cod</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="10 "></span><span class="n">concepto</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos="11 "></span><span class="n">importeMax</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+<span class="linenos" data-linenos="12 "></span><span class="n">importe</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+<span class="linenos" data-linenos="13 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">CK_INGRESO</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">importe</span><span class="o">&lt;</span><span class="n">importeMax</span><span class="p">));</span>
+</code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Otros elementos</p>
 <p>Vistas
@@ -1635,8 +1884,7 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 <p><a name="AC501"></a></p>
 <ul>
 <li>
-<p><strong>AC501</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr> // 3p) Formato de almacenamiento</p>
-<p>En <em>MariaDB</em>, descarga la base de datos worlds.sql.zip, y tras descomprimirla y cargarla mediante PhpMyAdmin.</p>
+<p><strong>AC501</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr> // 3p) En <em>MariaDB</em>, descarga la base de datos <a href="resources/world.sql.zip">world.sql.zip</a>, y tras descomprimirla y cargala mediante <em>PhpMyAdmin</em>.</p>
 <p>A continuación, averigua:
     * cuantas tablas tiene
     * los campos de la tabla <code>city</code>
@@ -1645,22 +1893,6 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 </ul>
 <p><a name="AC502"></a></p>
 <ul>
-<li>
-<p><strong>AC502</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr> // 3p) DDL Tabla, relaciones, tipos de datos, campos clave</p>
-<p>Crear el siguiente modelo relacional en MariaDB:</p>
-<p> DEPARTAMENTO(codD, nombre, direcc)  PK:codD
- VNN:nombre</p>
-<p> EMPLEADO(dni, nombrec, salario, direcc, departamento)
- PK: dni
- AK:nombrec
- VNN:nombrec, salario, departamento  FK:departamento → DEPARTAMENTO
- CK:salario&gt;=900
- Valor por defecto en salario de 900</p>
-<p>ALTER TABLE:</p>
-<p>Eliminar la clave ajena de la tabla EMPLEADO.
-Volver añadir la clave ajena. Eliminar las tablas creadas.
-<a name="AC503"></a></p>
-</li>
 <li>
 <p><strong>AC502</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr> // 3p) DDL Tabla, relaciones, tipos de datos, campos clave - ALTER TABLE</p>
 <p>Tabla FABRICANTE
@@ -1685,6 +1917,33 @@ para que el valor por defecto sea España.
 4) Desactiva la restricción de clave primaria de FABRICANTE.</p>
 </li>
 </ul>
+<p><a name="AC503"></a></p>
+<ul>
+<li>
+<p><strong>AC503</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr> // 3p) Crea el siguiente modelo relacional en <em>MariaDB</em> y en <em>PostreSQL</em>:</p>
+<p><code>
+<strong>DEPARTAMENTO</strong> (<ins>codD</ins>, nombre, direcc)<br />
+· PK: (codD)<br />
+· VNN: (nombre)
+</code></p>
+<p><code>
+<strong>EMPLEADO</strong> (<ins>dni</ins>, , nombrec, salario, direcc, departamento<code>*</code>)<br />
+· PK: (cdnidD)<br />
+· UK: (nombrec)<br />
+· VNN: (nombrec)<br />
+· VNN: (salario)<br />
+· VNN: (departamento)<br />
+· FK: (departamento) → DEPARTAMENTO 
+</code></p>
+<p>Además, el salario de cada empleado debe ser igual o superior a 900, y su valor por defecto es de 900.</p>
+<p>A continuación, mediante haciendo uso de <code>ALTER TABLE</code>:</p>
+<ul>
+<li>Elimina la clave ajena de la tabla <code>EMPLEADO</code>.</li>
+<li>Vuelve a añadir la clave ajena</li>
+</ul>
+<p>Finalmente, elimina las las tablas creadas.</p>
+</li>
+</ul>
 <p>ARXXX</p>
 <p>Coger un MR de las unidades 3 y 4 y crear el DDL</p>
 <p><a name="AC504"></a></p>
@@ -1695,6 +1954,7 @@ para que el valor por defecto sea España.
 <ul>
 <li><strong>AC505</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr> // 3p) DDL Restricciones</li>
 </ul>
+<p>AR : crear una bd con un tablespace y un juego de caracteres y colation específico.</p>
 <!--
 
 === "MariaDB"
@@ -1706,6 +1966,15 @@ para que el valor por defecto sea España.
     Más información en la [documentación oficial](https://www.postgresql.org/docs/current/sql-dropdatabase.html)
 
 -->
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>en MariaDB se hace con la cláusula <code>AUTO_INCREMENT</code>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
