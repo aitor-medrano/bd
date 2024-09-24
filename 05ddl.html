@@ -526,19 +526,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#almacenamiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      Almacenamiento
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Almacenamiento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#motores-de-almacenamiento" class="md-nav__link">
     <span class="md-ellipsis">
       Motores de almacenamiento
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Motores de almacenamiento">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#formato-de-almacenamiento" class="md-nav__link">
+  <a href="#jerarquia-logica-de-una-bd" class="md-nav__link">
     <span class="md-ellipsis">
-      Formato de almacenamiento
+      Jerarquía lógica de una BD
     </span>
   </a>
   
@@ -1177,144 +1186,159 @@ antes de finalizar la instrucción, facilitando su lectura. Así pues, posibles 
 </div>
 </div>
 </div>
-<h3 id="motores-de-almacenamiento">Motores de almacenamiento<a class="headerlink" href="#motores-de-almacenamiento" title="Permanent link">&para;</a></h3>
+<h3 id="almacenamiento">Almacenamiento<a class="headerlink" href="#almacenamiento" title="Permanent link">&para;</a></h3>
+<p>A la hora de almacenar la información de una base de datos, tanto a nivel lógico como físico, necesitamos de diferentes elementos que conviene conocer.</p>
+<h4 id="motores-de-almacenamiento">Motores de almacenamiento<a class="headerlink" href="#motores-de-almacenamiento" title="Permanent link">&para;</a></h4>
 <p>En los SGBD, y en concreto en <em>MariaDB</em> y <em>PostgreSQL</em>, los motores de almacenamiento (<em>storage engines</em>) son fundamentales para definir el formato de almacenamiento, es decir, cómo se almacenan y gestionan los datos en las bases de datos. Tanto <em>MariaDB</em> como <em>PostgreSQL</em> ofrecen diferentes motores de almacenamiento que proporcionan distintas capacidades, los cuales influyen en cómo gestionan y organizan los datos en disco, afectando el rendimiento, la concurrencia y la eficiencia del espacio.</p>
-<div class="admonition info inline end">
-<p class="admonition-title">Bloqueo a nivel de fila (<em>row-level locking</em>)</p>
-<p>Técnica de control de concurrencia que permite a las bases de datos bloquear únicamente las filas que están siendo accedidas o modificadas por una transacción, en lugar de bloquear toda la tabla o bloques más grandes de datos.</p>
-<p>Permite que múltiples transacciones trabajen en diferentes partes de una tabla sin interferir entre sí.</p>
-</div>
-<p>En el caso de MariaDB, los motores más conocidos son:</p>
+<div class="grid cards">
 <ul>
 <li>
-<p><strong><em>InnoDB</em></strong>: motor de almacenamiento predeterminado en MariaDB, desde la versión 10.2. Proporciona soporte completo para transacciones ACID. Maneja bloqueo a nivel de fila y cuenta con soporte para claves ajenas. Finalmente, es adecuado para aplicaciones donde la integridad y las transacciones sean críticas.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.157 4.412c-.676.284-.79.31-1.673.372-.65.045-.757.057-1.212.209-.75.246-1.395.75-2.02 1.59-.296.398-1.249 1.913-1.249 1.988 0 .057-.65.998-.915 1.32-.574.713-1.08 1.079-2.14 1.59-.77.36-1.224.524-4.102 1.477-1.073.353-2.133.738-2.367.864-.852.449-1.515 1.036-2.203 1.938-1.003 1.32-.972 1.313-3.042.947a12 12 0 0 0-.675-.063c-.644-.05-1.023.044-1.332.334L0 17.193l.177.088c.094.05.353.234.561.398.215.17.461.347.55.391.088.044.17.088.183.101s-.089.17-.228.353c-.435.581-.593.871-.574 1.048.019.164.032.17.43.17.517-.006.826-.056 1.261-.208.65-.233 2.058-.94 2.784-1.4.776-.5 1.717-.998 1.956-1.042.082-.02.354-.07.594-.114.58-.107 1.464-.095 2.587.05.108.013.373.045.6.064.227.025.43.057.454.076.026.012.474.037.998.056.934.026 1.104.007 1.3-.189.126-.133.385-.631.498-.985.209-.643.417-.921.366-.492-.113.966-.322 1.692-.713 2.411-.259.499-.663 1.092-.934 1.395-.322.347-.315.36.088.315.619-.063 1.471-.397 2.096-.82.827-.562 1.647-1.691 2.19-3.03.107-.27.22-.22.183.083-.013.094-.038.315-.057.498l-.031.328.353-.202c.833-.48 1.414-1.262 2.127-2.884.227-.518.877-2.922 1.073-3.976a10 10 0 0 1 .271-1.042c.127-.429.196-.555.48-.858.183-.19.625-.555.978-.808.72-.505.953-.75 1.187-1.205.208-.417.284-1.13.132-1.357-.132-.202-.284-.196-.763.006"/></svg></span> <strong><em>MariaDB</em></strong></p>
+<p>Los motores más conocidos son:</p>
+<ul>
+<li>
+<p><strong><em>InnoDB</em></strong>: motor de almacenamiento predeterminado en <em>MariaDB</em>, desde la versión 10.2. Proporciona soporte completo para transacciones ACID. Maneja bloqueo a nivel de fila y cuenta con soporte para claves ajenas. Finalmente, es adecuado para aplicaciones donde la integridad y las transacciones sean críticas.</p>
 </li>
 <li>
 <p><strong><em>MyISAM</em></strong>: Históricamente, fue el motor de almacenamiento por defecto en <em>MySQL</em> antes de <em>InnoDB</em>. Su uso ha caído al no ser transaccional y no soportar claves ajenas. Se utiliza principalmente en aplicaciones que priorizan el rendimiento de las lecturas sobre la integridad de los datos.</p>
 </li>
 </ul>
 <p>Existen otros motores más específicos como <em>TokuDB</em> (para grandes volúmenes de datos con alta concurrencia y compresión), <em>Aria</em> (utilizado para recuperación rápida y consultas de solo lectura), <em>ColumnStore</em> (en aplicaciones de análisis de datos) o <em>Memory</em> (para tablas temporales y cachés rápidas)</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.56 14.723a.5.5 0 0 0-.057-.12q-.21-.395-1.007-.231c-1.654.34-2.294.13-2.526-.02 1.342-2.048 2.445-4.522 3.041-6.83.272-1.05.798-3.523.122-4.73a1.6 1.6 0 0 0-.15-.236C21.693.91 19.8.025 17.51.001c-1.495-.016-2.77.346-3.116.479a10 10 0 0 0-.516-.082 8 8 0 0 0-1.312-.127c-1.182-.019-2.203.264-3.05.84C8.66.79 4.729-.534 2.296 1.19.935 2.153.309 3.873.43 6.304c.041.818.507 3.334 1.243 5.744q.69 2.26 1.433 3.582.83 1.493 1.714 1.79c.448.148 1.133.143 1.858-.729a56 56 0 0 1 1.945-2.206c.435.235.906.362 1.39.377v.004a11 11 0 0 0-.247.305c-.339.43-.41.52-1.5.745-.31.064-1.134.233-1.146.811a.6.6 0 0 0 .091.327c.227.423.922.61 1.015.633 1.335.333 2.505.092 3.372-.679-.017 2.231.077 4.418.345 5.088.221.553.762 1.904 2.47 1.904q.375.001.829-.094c1.782-.382 2.556-1.17 2.855-2.906.15-.87.402-2.875.539-4.101.017-.07.036-.12.057-.136 0 0 .07-.048.427.03l.044.007.254.022.015.001c.847.039 1.911-.142 2.531-.43.644-.3 1.806-1.033 1.595-1.67M2.37 11.876c-.744-2.435-1.178-4.885-1.212-5.571-.109-2.172.417-3.683 1.562-4.493 1.837-1.299 4.84-.54 6.108-.13l-.01.01C6.795 3.734 6.843 7.226 6.85 7.44c0 .082.006.199.016.36.034.586.1 1.68-.074 2.918-.16 1.15.194 2.276.973 3.089q.12.126.252.237c-.347.371-1.1 1.193-1.903 2.158-.568.682-.96.551-1.088.508-.392-.13-.813-.587-1.239-1.322-.48-.839-.963-2.032-1.415-3.512m6.007 5.088a1.6 1.6 0 0 1-.432-.178c.089-.039.237-.09.483-.14 1.284-.265 1.482-.451 1.915-1 .099-.127.211-.27.367-.443a.4.4 0 0 0 .074-.13c.17-.151.272-.11.436-.042.156.065.308.26.37.475.03.102.062.295-.045.445-.904 1.266-2.222 1.25-3.168 1.013m2.094-3.988-.052.14c-.133.357-.257.689-.334 1.004-.667-.002-1.317-.288-1.81-.803-.628-.655-.913-1.566-.783-2.5.183-1.308.116-2.447.08-3.059l-.013-.22c.296-.262 1.666-.996 2.643-.772.446.102.718.406.83.928.585 2.704.078 3.83-.33 4.736a9 9 0 0 0-.23.546m7.364 4.572q-.024.266-.062.596l-.146.438a.4.4 0 0 0-.018.108c-.006.475-.054.649-.115.87-.064.229-.135.488-.18 1.057-.11 1.414-.878 2.227-2.417 2.556-1.515.325-1.784-.496-2.02-1.221a7 7 0 0 0-.078-.227c-.215-.586-.19-1.412-.157-2.555.016-.561-.025-1.901-.33-2.646q.006-.44.019-.892a.4.4 0 0 0-.016-.113 2 2 0 0 0-.044-.208c-.122-.428-.42-.786-.78-.935-.142-.059-.403-.167-.717-.087.067-.276.183-.587.309-.925l.053-.142c.06-.16.134-.325.213-.5.426-.948 1.01-2.246.376-5.178-.237-1.098-1.03-1.634-2.232-1.51-.72.075-1.38.366-1.709.532a6 6 0 0 0-.196.104c.092-1.106.439-3.174 1.736-4.482a4 4 0 0 1 .303-.276.35.35 0 0 0 .145-.064c.752-.57 1.695-.85 2.802-.833q.616.01 1.174.081c1.94.355 3.244 1.447 4.036 2.383.814.962 1.255 1.931 1.431 2.454-1.323-.134-2.223.127-2.68.78-.992 1.418.544 4.172 1.282 5.496.135.242.252.452.289.54.24.583.551.972.778 1.256.07.087.138.171.189.245-.4.116-1.12.383-1.055 1.717-.013.156-.043.447-.084.815-.046.208-.07.46-.1.766m.89-1.621c-.04-.832.27-.919.597-1.01l.135-.041a1 1 0 0 0 .134.103c.57.376 1.583.421 3.007.134-.202.177-.519.4-.953.601-.41.19-1.096.333-1.747.364-.72.034-1.086-.08-1.173-.151m.57-9.271c-.006.35-.054.669-.105 1.001-.055.358-.112.728-.127 1.177-.014.436.04.89.093 1.33.107.887.216 1.8-.207 2.701a4 4 0 0 1-.188-.385 8 8 0 0 0-.325-.617c-.616-1.104-2.057-3.69-1.32-4.744.38-.543 1.342-.566 2.179-.463m.228 7.013-.085-.107-.035-.044c.726-1.2.584-2.387.457-3.439-.052-.432-.1-.84-.088-1.222.013-.407.066-.755.118-1.092.064-.415.13-.844.111-1.35a.6.6 0 0 0 .012-.19c-.046-.486-.6-1.938-1.73-3.253a7.8 7.8 0 0 0-2.688-2.04A9.3 9.3 0 0 1 17.62.746c2.052.046 3.675.814 4.824 2.283a1 1 0 0 1 .067.1c.723 1.356-.276 6.275-2.987 10.54m-8.816-6.116c-.025.18-.31.423-.621.423a1 1 0 0 1-.081-.006.8.8 0 0 1-.506-.315c-.046-.06-.12-.178-.106-.285a.22.22 0 0 1 .093-.149c.118-.089.352-.122.61-.086.316.044.642.193.61.418m7.93-.411c.011.08-.049.2-.153.31a.72.72 0 0 1-.408.223 1 1 0 0 1-.075.005c-.293 0-.541-.234-.56-.371-.024-.177.264-.31.56-.352.298-.042.612.009.636.185"/></svg></span> <strong><em>PostgreSQL</em></strong></p>
 <p>En cambio, <em>PostgreSQL</em> no utiliza el concepto de múltiples motores de almacenamiento como <em>MariaDB</em>, sino que emplea un único motor nativo altamente configurable que ofrece muchas características avanzadas: </p>
-<div class="admonition info inline end">
-<p class="admonition-title">MVCC - <em>Multiversion Concurrency Control</em></p>
-<p>Cuando hay una modificación de datos, en lugar de sobrescribir una fila en actualizaciones, se almacena una nueva versión de la fila mientras mantiene la versión anterior hasta que ya no sea necesaria (las transacciones que la usan han finalizado).</p>
-<p>Las versiones anteriores de una fila se almacenan en el espacio de "deshacer" (<em>undo space</em>) para permitir transacciones y lecturas consistentes.</p>
-</div>
 <ul>
 <li>Proporciona soporte completo para transacciones ACID, integridad referencial (claves foráneas) y MVCC para la gestión de concurrencia.</li>
 <li>Bloqueo a nivel de fila.</li>
 <li>Muy eficiente para grandes volúmenes de datos y con soporte completo para tipos de datos avanzados como JSON, XML, y más.</li>
 </ul>
 <p>Además, es posible ajustar su comportamiento, por ejemplo, permitiendo acceder a datos externos a través de FDW (<em>Foreign Data Wrappers</em>), y optimizaciones internas mediante tablas particionadas y configuraciones adicionales.</p>
-<h4 id="formato-de-almacenamiento">Formato de almacenamiento<a class="headerlink" href="#formato-de-almacenamiento" title="Permanent link">&para;</a></h4>
-<p>En <em>MariaDB</em>, el formato de almacenamiento depende principalmente del <em>motor de almacenamiento</em> que se esté utilizando, ya que cada motor tiene su propia manera de organizar y almacenar los datos. En el caso de <em>InnoDB</em>:</p>
+</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Bloqueo a nivel de fila (<em>row-level locking</em>)</p>
+<p>Técnica de control de concurrencia que permite a las bases de datos bloquear únicamente las filas que están siendo accedidas o modificadas por una transacción, en lugar de bloquear toda la tabla o bloques más grandes de datos.</p>
+<p>Permite que múltiples transacciones trabajen en diferentes partes de una tabla sin interferir entre sí.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">MVCC - <em>Multiversion Concurrency Control</em></p>
+<p>Cuando hay una modificación de datos, en lugar de sobrescribir una fila en actualizaciones, se almacena una nueva versión de la fila mientras se mantiene la versión anterior hasta que ya no sea necesaria (las transacciones que la usan han finalizado).</p>
+<p>Las versiones anteriores de una fila se almacenan en el espacio de "deshacer" (<em>undo space</em>) para permitir transacciones y lecturas consistentes.</p>
+</div>
+<h4 id="jerarquia-logica-de-una-bd">Jerarquía lógica de una BD<a class="headerlink" href="#jerarquia-logica-de-una-bd" title="Permanent link">&para;</a></h4>
+<figure style="float: right;">
+    <img src="images/05estructura-logica.png" width="425" title="Jerarquía lógica">
+    <figcaption>Jerarquía lógica</figcaption>
+</figure>
+
+<p>A nivel lógico, los elementos que organizan la información de una base de datos se definen mediante la siguiente jerarquía:</p>
+<ul>
+<li><em>Tablespace</em> o espacio de tablas: estructura física (normalmente una carpeta/directorio) para agrupar varias bases de datos o esquemas.</li>
+<li>Base de datos: elemento lógico de nivel superior</li>
+<li>Esquema: agrupación lógica de una o más tablas (en <em>MySQL</em>/<em>MariaDB</em> un esquema es una base de datos).</li>
+<li>Tabla: representación de una tabla relacional, que contiene datos organizados en filas y columnas. Cada tabla pertenece a un base de datos específica, y sus datos se almacenan en el <em>tablespace</em> asociado.</li>
+<li>Fila: cada uno de los registros de la tabla</li>
+</ul>
+<p>En cuanto a los <em>tablespaces</em>, podemos crearlos mediante la instrucción <code>CREATE TABLESPACE</code> en <a href="https://www.postgresql.org/docs/current/sql-createtablespace.html">PostgreSQL</a> (en <em>MariaDB</em> <a href="https://mariadb.com/kb/en/create-tablespace/">no está soportado</a>), y a partir de él, crear bases de datos y tablas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="w"> </span><span class="n">mi_tablespace</span><span class="w"> </span><span class="k">LOCATION</span><span class="w"> </span><span class="s1">&#39;/ruta/al/directorio&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">mi_db</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="w"> </span><span class="n">mi_tablespace</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">mi_tabla</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="linenos" data-linenos="8 "></span><span class="p">)</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="w"> </span><span class="n">mi_tablespace</span><span class="p">;</span>
+</code></pre></div>
+<p>En cambio, a nivel físico, el formato de almacenamiento depende principalmente del <em>motor de almacenamiento</em> que se esté utilizando, ya que cada motor tiene su propia manera de organizar y almacenar los datos.</p>
+<div class="grid cards">
 <ul>
 <li>
-<p>Estructura basada en páginas y bloques: Se organizan los datos en <ins>páginas</ins> (normalmente de 16 KB) dentro de <ins>bloques</ins> que componen tablas e índices.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.157 4.412c-.676.284-.79.31-1.673.372-.65.045-.757.057-1.212.209-.75.246-1.395.75-2.02 1.59-.296.398-1.249 1.913-1.249 1.988 0 .057-.65.998-.915 1.32-.574.713-1.08 1.079-2.14 1.59-.77.36-1.224.524-4.102 1.477-1.073.353-2.133.738-2.367.864-.852.449-1.515 1.036-2.203 1.938-1.003 1.32-.972 1.313-3.042.947a12 12 0 0 0-.675-.063c-.644-.05-1.023.044-1.332.334L0 17.193l.177.088c.094.05.353.234.561.398.215.17.461.347.55.391.088.044.17.088.183.101s-.089.17-.228.353c-.435.581-.593.871-.574 1.048.019.164.032.17.43.17.517-.006.826-.056 1.261-.208.65-.233 2.058-.94 2.784-1.4.776-.5 1.717-.998 1.956-1.042.082-.02.354-.07.594-.114.58-.107 1.464-.095 2.587.05.108.013.373.045.6.064.227.025.43.057.454.076.026.012.474.037.998.056.934.026 1.104.007 1.3-.189.126-.133.385-.631.498-.985.209-.643.417-.921.366-.492-.113.966-.322 1.692-.713 2.411-.259.499-.663 1.092-.934 1.395-.322.347-.315.36.088.315.619-.063 1.471-.397 2.096-.82.827-.562 1.647-1.691 2.19-3.03.107-.27.22-.22.183.083-.013.094-.038.315-.057.498l-.031.328.353-.202c.833-.48 1.414-1.262 2.127-2.884.227-.518.877-2.922 1.073-3.976a10 10 0 0 1 .271-1.042c.127-.429.196-.555.48-.858.183-.19.625-.555.978-.808.72-.505.953-.75 1.187-1.205.208-.417.284-1.13.132-1.357-.132-.202-.284-.196-.763.006"/></svg></span> <strong><em>MariaDB - InnoDB</em></strong></p>
 <ul>
-<li>Estos bloques se almacenan en un archivo de <ins>tablaspace</ins> (generalmente <code>ibdata1</code> para bases de datos que comparten un <em>tablespace</em>, o en un archivo por tabla).</li>
+<li>
+<p>Un bloque almacena los datos de tablas e índices mediante páginas (normalmente de 16 KB)</p>
+</li>
+<li>
+<p>Los bloques se almacenan en un archivo de <ins>tablaspace</ins> (generalmente <code>ibdata1</code> para bases de datos que comparten un <em>tablespace</em>, o en un archivo por tabla).</p>
+</li>
+<li>
+<p>Respecto a las filas, se almacenan utilizando un formato compacto o redondeado, dependiendo de la configuración. Cada fila contiene una clave primaria (o un índice que actúa como clave primaria) y los datos correspondientes.</p>
+</li>
 </ul>
 </li>
 <li>
-<p>Filas: Se almacenan las filas de las tablas utilizando un formato compacto o redondeado, dependiendo de la configuración.</p>
-<ul>
-<li>Cada fila contiene una clave primaria (o un índice que actúa como clave primaria) y los datos correspondientes.</li>
-</ul>
-</li>
-</ul>
-<p>En el caso de <em>PostgreSQL</em>, algunos aspectos clave del formato de almacenamiento son:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.56 14.723a.5.5 0 0 0-.057-.12q-.21-.395-1.007-.231c-1.654.34-2.294.13-2.526-.02 1.342-2.048 2.445-4.522 3.041-6.83.272-1.05.798-3.523.122-4.73a1.6 1.6 0 0 0-.15-.236C21.693.91 19.8.025 17.51.001c-1.495-.016-2.77.346-3.116.479a10 10 0 0 0-.516-.082 8 8 0 0 0-1.312-.127c-1.182-.019-2.203.264-3.05.84C8.66.79 4.729-.534 2.296 1.19.935 2.153.309 3.873.43 6.304c.041.818.507 3.334 1.243 5.744q.69 2.26 1.433 3.582.83 1.493 1.714 1.79c.448.148 1.133.143 1.858-.729a56 56 0 0 1 1.945-2.206c.435.235.906.362 1.39.377v.004a11 11 0 0 0-.247.305c-.339.43-.41.52-1.5.745-.31.064-1.134.233-1.146.811a.6.6 0 0 0 .091.327c.227.423.922.61 1.015.633 1.335.333 2.505.092 3.372-.679-.017 2.231.077 4.418.345 5.088.221.553.762 1.904 2.47 1.904q.375.001.829-.094c1.782-.382 2.556-1.17 2.855-2.906.15-.87.402-2.875.539-4.101.017-.07.036-.12.057-.136 0 0 .07-.048.427.03l.044.007.254.022.015.001c.847.039 1.911-.142 2.531-.43.644-.3 1.806-1.033 1.595-1.67M2.37 11.876c-.744-2.435-1.178-4.885-1.212-5.571-.109-2.172.417-3.683 1.562-4.493 1.837-1.299 4.84-.54 6.108-.13l-.01.01C6.795 3.734 6.843 7.226 6.85 7.44c0 .082.006.199.016.36.034.586.1 1.68-.074 2.918-.16 1.15.194 2.276.973 3.089q.12.126.252.237c-.347.371-1.1 1.193-1.903 2.158-.568.682-.96.551-1.088.508-.392-.13-.813-.587-1.239-1.322-.48-.839-.963-2.032-1.415-3.512m6.007 5.088a1.6 1.6 0 0 1-.432-.178c.089-.039.237-.09.483-.14 1.284-.265 1.482-.451 1.915-1 .099-.127.211-.27.367-.443a.4.4 0 0 0 .074-.13c.17-.151.272-.11.436-.042.156.065.308.26.37.475.03.102.062.295-.045.445-.904 1.266-2.222 1.25-3.168 1.013m2.094-3.988-.052.14c-.133.357-.257.689-.334 1.004-.667-.002-1.317-.288-1.81-.803-.628-.655-.913-1.566-.783-2.5.183-1.308.116-2.447.08-3.059l-.013-.22c.296-.262 1.666-.996 2.643-.772.446.102.718.406.83.928.585 2.704.078 3.83-.33 4.736a9 9 0 0 0-.23.546m7.364 4.572q-.024.266-.062.596l-.146.438a.4.4 0 0 0-.018.108c-.006.475-.054.649-.115.87-.064.229-.135.488-.18 1.057-.11 1.414-.878 2.227-2.417 2.556-1.515.325-1.784-.496-2.02-1.221a7 7 0 0 0-.078-.227c-.215-.586-.19-1.412-.157-2.555.016-.561-.025-1.901-.33-2.646q.006-.44.019-.892a.4.4 0 0 0-.016-.113 2 2 0 0 0-.044-.208c-.122-.428-.42-.786-.78-.935-.142-.059-.403-.167-.717-.087.067-.276.183-.587.309-.925l.053-.142c.06-.16.134-.325.213-.5.426-.948 1.01-2.246.376-5.178-.237-1.098-1.03-1.634-2.232-1.51-.72.075-1.38.366-1.709.532a6 6 0 0 0-.196.104c.092-1.106.439-3.174 1.736-4.482a4 4 0 0 1 .303-.276.35.35 0 0 0 .145-.064c.752-.57 1.695-.85 2.802-.833q.616.01 1.174.081c1.94.355 3.244 1.447 4.036 2.383.814.962 1.255 1.931 1.431 2.454-1.323-.134-2.223.127-2.68.78-.992 1.418.544 4.172 1.282 5.496.135.242.252.452.289.54.24.583.551.972.778 1.256.07.087.138.171.189.245-.4.116-1.12.383-1.055 1.717-.013.156-.043.447-.084.815-.046.208-.07.46-.1.766m.89-1.621c-.04-.832.27-.919.597-1.01l.135-.041a1 1 0 0 0 .134.103c.57.376 1.583.421 3.007.134-.202.177-.519.4-.953.601-.41.19-1.096.333-1.747.364-.72.034-1.086-.08-1.173-.151m.57-9.271c-.006.35-.054.669-.105 1.001-.055.358-.112.728-.127 1.177-.014.436.04.89.093 1.33.107.887.216 1.8-.207 2.701a4 4 0 0 1-.188-.385 8 8 0 0 0-.325-.617c-.616-1.104-2.057-3.69-1.32-4.744.38-.543 1.342-.566 2.179-.463m.228 7.013-.085-.107-.035-.044c.726-1.2.584-2.387.457-3.439-.052-.432-.1-.84-.088-1.222.013-.407.066-.755.118-1.092.064-.415.13-.844.111-1.35a.6.6 0 0 0 .012-.19c-.046-.486-.6-1.938-1.73-3.253a7.8 7.8 0 0 0-2.688-2.04A9.3 9.3 0 0 1 17.62.746c2.052.046 3.675.814 4.824 2.283a1 1 0 0 1 .067.1c.723 1.356-.276 6.275-2.987 10.54m-8.816-6.116c-.025.18-.31.423-.621.423a1 1 0 0 1-.081-.006.8.8 0 0 1-.506-.315c-.046-.06-.12-.178-.106-.285a.22.22 0 0 1 .093-.149c.118-.089.352-.122.61-.086.316.044.642.193.61.418m7.93-.411c.011.08-.049.2-.153.31a.72.72 0 0 1-.408.223 1 1 0 0 1-.075.005c-.293 0-.541-.234-.56-.371-.024-.177.264-.31.56-.352.298-.042.612.009.636.185"/></svg></span> <strong><em>PostgreSQL</em></strong></p>
 <ul>
 <li>
-<p>Tablas basadas en <em>tablespaces</em> y páginas: un <strong>tablespace</strong> es un directorio en el sistema de archivos donde se almacenan las bases de datos y sus objetos (tablas, índices, etc.). De manera predeterminada, todas las bases de datos utilizan el <em>tablespace</em> <code>pg_default</code>, pero se pueden crear otros <em>tablaspaces</em> personalizados.</p>
+<p>De manera predeterminada, todas las bases de datos utilizan el <em>tablespace</em> <code>pg_default</code>, pero se pueden crear otros <em>tablespaces</em> personalizados.</p>
 </li>
 <li>
-<p>Archivos de bases de datos: Cada base de datos se representa por un directorio con un nombre numérico (OID) dentro del <em>tablespace</em>. Dentro de esta carpeta se encuentran archivos que representan tablas, índices, secuencias y otros objetos de la base de datos.</p>
+<p>Cada base de datos se representa por un directorio con un nombre numérico (OID) dentro del <em>tablespace</em>. Dentro de esta carpeta se encuentran archivos que representan tablas, índices, secuencias y otros objetos de la base de datos.</p>
 </li>
 <li>
-<p>Archivos de tabla: cada tabla se almacena en un archivo separado, y estos archivos están divididos en páginas de 8 KB. Si una tabla crece más allá de un tamaño específico (1 GB), se fragmenta en varios archivos con un sufijo numérico.</p>
+<p>Cada tabla se almacena en un archivo separado, y estos archivos están divididos en páginas de 8 KB. Si una tabla crece más allá de un tamaño específico (1 GB), se fragmenta en varios archivos con un sufijo numérico.</p>
 </li>
 <li>
-<p>Organización de filas y páginas: las filas se organizan  dentro de páginas de 8 KB, donde cada página contiene múltiples tuplas (filas). Cada fila o tupla en una tabla tiene un ctid (<em>tuple identifier</em>) que identifica su ubicación física en el archivo de datos.</p>
+<p>Las filas se organizan dentro de páginas de 8 KB, donde cada página contiene múltiples tuplas (filas). Cada fila o tupla en una tabla tiene un ctid (<em>tuple identifier</em>) que identifica su ubicación física en el archivo de datos.</p>
 </li>
 </ul>
+</li>
+</ul>
+</div>
 <h4 id="juegos-de-caracteres">Juegos de caracteres<a class="headerlink" href="#juegos-de-caracteres" title="Permanent link">&para;</a></h4>
-<p>En <strong>MariaDB</strong> y <strong>PostgreSQL</strong>, los juegos de caracteres (<em>character sets</em>) y las colaciones (<em>collations</em>) juegan un papel importante en cómo se almacenan y comparan las cadenas de texto. Cada sistema maneja los juegos de caracteres de manera diferente, y a continuación vamos a estudiar cómo funciona en cada uno:</p>
-<p><em>MariaDB</em> admite múltiples juegos de caracteres y colaciones, que pueden establecerse a nivel de <strong>base de datos</strong>, <strong>tabla</strong>, <strong>columna</strong> o incluso a nivel de <strong>sesión</strong>. </p>
+<p>Entendemos como <strong>juego de caracteres</strong> a la codificación que utiliza el SGBD para representar los datos, definiendo qué caracteres pueden almacenarse en la base de datos y cómo esos caracteres son codificados internamente.</p>
+<p>Los juegos de caracteres más conocidos son <code>ASCII</code> (caracteres básicos en inglés), <code>iso-8859-1 latin</code> (expande ASCII para incluir los caracteres acentuados y símbolos de los lenguajes occidentales) y <code>utf-8</code>, el cual parte de la familia de estándares <em>Unicode</em>, que puede representar caracteres de casi todos los lenguajes del mundo, incluidos caracteres <em>multibyte</em>.</p>
+<p>Además, podemos configurar la <strong>colación</strong>, la cual define cómo se comparan y ordenan las cadenas de texto para un juego de caracteres específico, teniendo en cuenta cosas como el uso de mayúsculas y minúsculas o el tratamiento de acentos</p>
+<p>En <em>MariaDB</em> y <em>PostgreSQL</em>, los juegos de caracteres (<em>character sets</em>) y las colaciones (<em>collations</em>) juegan un papel importante en cómo se almacenan y comparan las cadenas de texto. Cada sistema maneja los juegos de caracteres de manera diferente, y a continuación vamos a estudiar cómo funciona en cada uno:</p>
+<div class="grid cards">
 <ul>
 <li>
-<p><em>MariaDB</em> ofrece una gran flexibilidad con varios juegos de caracteres (como <code>utf8</code>, <code>utf8mb4</code>, <code>latin1</code>, etc.) y permite especificar colaciones para determinar cómo se comparan y ordenan los textos. Puedes cambiar el juego de caracteres y la colación de forma granular (a nivel de base de datos, tabla o columna).</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.157 4.412c-.676.284-.79.31-1.673.372-.65.045-.757.057-1.212.209-.75.246-1.395.75-2.02 1.59-.296.398-1.249 1.913-1.249 1.988 0 .057-.65.998-.915 1.32-.574.713-1.08 1.079-2.14 1.59-.77.36-1.224.524-4.102 1.477-1.073.353-2.133.738-2.367.864-.852.449-1.515 1.036-2.203 1.938-1.003 1.32-.972 1.313-3.042.947a12 12 0 0 0-.675-.063c-.644-.05-1.023.044-1.332.334L0 17.193l.177.088c.094.05.353.234.561.398.215.17.461.347.55.391.088.044.17.088.183.101s-.089.17-.228.353c-.435.581-.593.871-.574 1.048.019.164.032.17.43.17.517-.006.826-.056 1.261-.208.65-.233 2.058-.94 2.784-1.4.776-.5 1.717-.998 1.956-1.042.082-.02.354-.07.594-.114.58-.107 1.464-.095 2.587.05.108.013.373.045.6.064.227.025.43.057.454.076.026.012.474.037.998.056.934.026 1.104.007 1.3-.189.126-.133.385-.631.498-.985.209-.643.417-.921.366-.492-.113.966-.322 1.692-.713 2.411-.259.499-.663 1.092-.934 1.395-.322.347-.315.36.088.315.619-.063 1.471-.397 2.096-.82.827-.562 1.647-1.691 2.19-3.03.107-.27.22-.22.183.083-.013.094-.038.315-.057.498l-.031.328.353-.202c.833-.48 1.414-1.262 2.127-2.884.227-.518.877-2.922 1.073-3.976a10 10 0 0 1 .271-1.042c.127-.429.196-.555.48-.858.183-.19.625-.555.978-.808.72-.505.953-.75 1.187-1.205.208-.417.284-1.13.132-1.357-.132-.202-.284-.196-.763.006"/></svg></span> <strong><em>MariaDB</em></strong></p>
+<p>Admite múltiples juegos de caracteres y colaciones, que pueden establecerse a nivel de base de datos, tabla, columna o incluso a nivel de sesión.</p>
+<p>Así pues, ofrece una gran flexibilidad con varios juegos de caracteres (como <code>utf8</code>, <code>utf8mb4</code>, <code>latin1</code>, etc.) y permite especificar colaciones para determinar cómo se comparan y ordenan los textos.</p>
 </li>
 <li>
-<p><em>PostgreSQL</em>, en cambio, está optimizado principalmente para el uso de <strong>UTF-8</strong>, con menos enfoque en otros juegos de caracteres. Las colaciones y clasificaciones son más dependientes de las configuraciones del sistema operativo y se aplican al nivel de la base de datos o columna, pero la mayoría de los sistemas de producción usan UTF-8 por su versatilidad.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.56 14.723a.5.5 0 0 0-.057-.12q-.21-.395-1.007-.231c-1.654.34-2.294.13-2.526-.02 1.342-2.048 2.445-4.522 3.041-6.83.272-1.05.798-3.523.122-4.73a1.6 1.6 0 0 0-.15-.236C21.693.91 19.8.025 17.51.001c-1.495-.016-2.77.346-3.116.479a10 10 0 0 0-.516-.082 8 8 0 0 0-1.312-.127c-1.182-.019-2.203.264-3.05.84C8.66.79 4.729-.534 2.296 1.19.935 2.153.309 3.873.43 6.304c.041.818.507 3.334 1.243 5.744q.69 2.26 1.433 3.582.83 1.493 1.714 1.79c.448.148 1.133.143 1.858-.729a56 56 0 0 1 1.945-2.206c.435.235.906.362 1.39.377v.004a11 11 0 0 0-.247.305c-.339.43-.41.52-1.5.745-.31.064-1.134.233-1.146.811a.6.6 0 0 0 .091.327c.227.423.922.61 1.015.633 1.335.333 2.505.092 3.372-.679-.017 2.231.077 4.418.345 5.088.221.553.762 1.904 2.47 1.904q.375.001.829-.094c1.782-.382 2.556-1.17 2.855-2.906.15-.87.402-2.875.539-4.101.017-.07.036-.12.057-.136 0 0 .07-.048.427.03l.044.007.254.022.015.001c.847.039 1.911-.142 2.531-.43.644-.3 1.806-1.033 1.595-1.67M2.37 11.876c-.744-2.435-1.178-4.885-1.212-5.571-.109-2.172.417-3.683 1.562-4.493 1.837-1.299 4.84-.54 6.108-.13l-.01.01C6.795 3.734 6.843 7.226 6.85 7.44c0 .082.006.199.016.36.034.586.1 1.68-.074 2.918-.16 1.15.194 2.276.973 3.089q.12.126.252.237c-.347.371-1.1 1.193-1.903 2.158-.568.682-.96.551-1.088.508-.392-.13-.813-.587-1.239-1.322-.48-.839-.963-2.032-1.415-3.512m6.007 5.088a1.6 1.6 0 0 1-.432-.178c.089-.039.237-.09.483-.14 1.284-.265 1.482-.451 1.915-1 .099-.127.211-.27.367-.443a.4.4 0 0 0 .074-.13c.17-.151.272-.11.436-.042.156.065.308.26.37.475.03.102.062.295-.045.445-.904 1.266-2.222 1.25-3.168 1.013m2.094-3.988-.052.14c-.133.357-.257.689-.334 1.004-.667-.002-1.317-.288-1.81-.803-.628-.655-.913-1.566-.783-2.5.183-1.308.116-2.447.08-3.059l-.013-.22c.296-.262 1.666-.996 2.643-.772.446.102.718.406.83.928.585 2.704.078 3.83-.33 4.736a9 9 0 0 0-.23.546m7.364 4.572q-.024.266-.062.596l-.146.438a.4.4 0 0 0-.018.108c-.006.475-.054.649-.115.87-.064.229-.135.488-.18 1.057-.11 1.414-.878 2.227-2.417 2.556-1.515.325-1.784-.496-2.02-1.221a7 7 0 0 0-.078-.227c-.215-.586-.19-1.412-.157-2.555.016-.561-.025-1.901-.33-2.646q.006-.44.019-.892a.4.4 0 0 0-.016-.113 2 2 0 0 0-.044-.208c-.122-.428-.42-.786-.78-.935-.142-.059-.403-.167-.717-.087.067-.276.183-.587.309-.925l.053-.142c.06-.16.134-.325.213-.5.426-.948 1.01-2.246.376-5.178-.237-1.098-1.03-1.634-2.232-1.51-.72.075-1.38.366-1.709.532a6 6 0 0 0-.196.104c.092-1.106.439-3.174 1.736-4.482a4 4 0 0 1 .303-.276.35.35 0 0 0 .145-.064c.752-.57 1.695-.85 2.802-.833q.616.01 1.174.081c1.94.355 3.244 1.447 4.036 2.383.814.962 1.255 1.931 1.431 2.454-1.323-.134-2.223.127-2.68.78-.992 1.418.544 4.172 1.282 5.496.135.242.252.452.289.54.24.583.551.972.778 1.256.07.087.138.171.189.245-.4.116-1.12.383-1.055 1.717-.013.156-.043.447-.084.815-.046.208-.07.46-.1.766m.89-1.621c-.04-.832.27-.919.597-1.01l.135-.041a1 1 0 0 0 .134.103c.57.376 1.583.421 3.007.134-.202.177-.519.4-.953.601-.41.19-1.096.333-1.747.364-.72.034-1.086-.08-1.173-.151m.57-9.271c-.006.35-.054.669-.105 1.001-.055.358-.112.728-.127 1.177-.014.436.04.89.093 1.33.107.887.216 1.8-.207 2.701a4 4 0 0 1-.188-.385 8 8 0 0 0-.325-.617c-.616-1.104-2.057-3.69-1.32-4.744.38-.543 1.342-.566 2.179-.463m.228 7.013-.085-.107-.035-.044c.726-1.2.584-2.387.457-3.439-.052-.432-.1-.84-.088-1.222.013-.407.066-.755.118-1.092.064-.415.13-.844.111-1.35a.6.6 0 0 0 .012-.19c-.046-.486-.6-1.938-1.73-3.253a7.8 7.8 0 0 0-2.688-2.04A9.3 9.3 0 0 1 17.62.746c2.052.046 3.675.814 4.824 2.283a1 1 0 0 1 .067.1c.723 1.356-.276 6.275-2.987 10.54m-8.816-6.116c-.025.18-.31.423-.621.423a1 1 0 0 1-.081-.006.8.8 0 0 1-.506-.315c-.046-.06-.12-.178-.106-.285a.22.22 0 0 1 .093-.149c.118-.089.352-.122.61-.086.316.044.642.193.61.418m7.93-.411c.011.08-.049.2-.153.31a.72.72 0 0 1-.408.223 1 1 0 0 1-.075.005c-.293 0-.541-.234-.56-.371-.024-.177.264-.31.56-.352.298-.042.612.009.636.185"/></svg></span> <strong><em>PostgreSQL</em></strong></p>
+<p>Está optimizado principalmente para el uso de <code>utf8</code>, con menos enfoque en otros juegos de caracteres.</p>
+<p>Las colaciones son más dependientes de las configuraciones del sistema operativo y se aplican al nivel de la base de datos o columna, pero la mayoría de los sistemas de producción usan <code>utf8</code> por su versatilidad.</p>
 </li>
 </ul>
+</div>
+<p>FIXME: quitar resumen y meter en las cajas.</p>
 <p>En resumen, ambos sistemas ofrecen soporte completo para <em>Unicode</em>, pero <em>MariaDB</em> tiene más flexibilidad en cuanto a la elección y uso de diferentes juegos de caracteres y colaciones. <em>PostgreSQL</em> prioriza la simplicidad y la eficiencia a través de UTF-8, con soporte para colaciones mediante el sistema operativo.</p>
-<p>MariadB:</p>
-<ol>
-<li><strong>Juegos de caracteres comunes</strong>:</li>
-</ol>
+<p>La configuración del juego de caracteres y la colación dependen del SGBD empleado:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">MariaDB</label><label for="__tabbed_6_2">PostgreSQL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>La codificación y la colación se especifican al crear una base de datos con las opciones <code>CHARACTER SET</code> y <code>COLLATE</code>.</p>
+<p>Además de <code>utf8</code>, <code>latin1</code>y <code>ascii</code> ya comentados previamente, una codificación muy empleado es <strong><code>utf8mb4</code></strong>, la cual es una extensión de <code>utf8</code> que permite almacenar todos los caracteres de <em>Unicode</em>, incluidos emojis y otros símbolos que no se pueden representar en <code>utf8</code>.</p>
+<p>Además, luego para cada juego de caracteres, tenemos sus colaciones. Por ejemplo, el juego de caracteres <code>utf8</code> tiene varias colaciones como:</p>
 <ul>
-<li><strong>utf8</strong>: Es un juego de caracteres común que usa hasta 3 bytes por carácter, y cubre una gran parte del conjunto Unicode.</li>
-<li><strong>utf8mb4</strong>: Es una extensión de <code>utf8</code> que usa hasta 4 bytes por carácter, lo que le permite almacenar todos los caracteres de Unicode, incluidos emojis y otros símbolos que no se pueden representar en <code>utf8</code>.</li>
-<li><strong>latin1</strong>: Juego de caracteres de un solo byte, muy utilizado en aplicaciones occidentales. Es más limitado que <code>utf8</code> y <code>utf8mb4</code>.</li>
-<li><strong>ascii</strong>: Usa solo caracteres ASCII (un byte por carácter), por lo que es adecuado solo para textos en inglés sin símbolos especiales.</li>
-</ul>
-<ol start="2">
-<li>
-<p><strong>Colaciones</strong>:
-   - Las colaciones definen cómo se comparan y ordenan las cadenas de texto para un juego de caracteres específico.
-   - Por ejemplo, el juego de caracteres <code>utf8</code> tiene varias colaciones, como:</p>
-<ul>
-<li><code>utf8_general_ci</code>: Colación insensible a mayúsculas/minúsculas (case-insensitive).</li>
+<li><code>utf8_general_ci</code>: Colación insensible a mayúsculas/minúsculas (<em>case-insensitive</em>).</li>
 <li><code>utf8_bin</code>: Colación binaria, sensible a mayúsculas/minúsculas y que compara los caracteres basándose en sus valores binarios.</li>
 </ul>
-</li>
-<li>
-<p><strong>Jerarquía de configuración</strong>:
-   - Puedes definir el juego de caracteres y colación predeterminados al nivel de <strong>servidor</strong>, <strong>base de datos</strong>, <strong>tabla</strong> o <strong>columna</strong>.
-   - El nivel más específico sobrescribe los ajustes predeterminados de niveles superiores.</p>
-</li>
-<li>
-<p><strong>Cambio en tiempo de ejecución</strong>:
-   - MariaDB permite cambiar el juego de caracteres y la colación a nivel de sesión con las variables <code>SET NAMES</code> y <code>SET CHARACTER SET</code>.</p>
-</li>
-</ol>
-<p>A su vez, <em>PostgreSQL</em> maneja los juegos de caracteres de manera diferente a <em>MariaDB</em>, con un enfoque más simplificado.</p>
-<ol>
-<li>
-<p><strong>Codificación predeterminada</strong>:
-   - PostgreSQL se basa principalmente en <strong>UTF-8</strong> para el almacenamiento de cadenas de texto. UTF-8 es el único juego de caracteres recomendado y compatible para bases de datos que manejan múltiples idiomas y caracteres especiales.
-   - Soporta otros juegos de caracteres, como <strong>SQL_ASCII</strong>, pero su uso es desaconsejado debido a la falta de soporte adecuado para internacionalización.</p>
-</li>
-<li>
-<p><strong>Colación y clasificación</strong>:
-   - A diferencia de MariaDB, PostgreSQL no usa colaciones específicas asociadas a juegos de caracteres como tal, pero sí utiliza el sistema operativo para definir la <strong>colación</strong> y el <strong>formato de clasificación</strong> al momento de crear la base de datos.
-   - La colación afecta cómo PostgreSQL ordena y compara cadenas de texto. Se puede especificar en la creación de la base de datos o ajustar mediante configuraciones a nivel de tabla o columna.
-   - Las colaciones más comunes incluyen:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">mi_base_de_datos</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">COLLATE</span><span class="w"> </span><span class="n">utf8mb4_unicode_ci</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>La codificación y la colación se especifican al crear una base de datos con las opciones <code>ENCODING</code> y <code>LC_COLLATE</code>.</p>
+<p>Las colaciones más comunes son:</p>
 <ul>
 <li><code>en_US.UTF-8</code>: Colación en inglés, sensible a mayúsculas/minúsculas.</li>
 <li><code>es_ES.UTF-8</code>: Colación en español.</li>
 </ul>
-</li>
-<li>
-<p><strong>Configuración al crear la base de datos</strong>:
-   - La codificación y la colación se especifican al crear una base de datos con las opciones <code>ENCODING</code> y <code>LC_COLLATE</code>.
-   - Ejemplo:
-     <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">mi_base_de_datos</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">mi_base_de_datos</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">ENCODING</span><span class="w"> </span><span class="s1">&#39;UTF8&#39;</span>
 <span class="linenos" data-linenos="3 "></span><span class="n">LC_COLLATE</span><span class="w"> </span><span class="s1">&#39;es_ES.UTF-8&#39;</span>
 <span class="linenos" data-linenos="4 "></span><span class="n">LC_CTYPE</span><span class="w"> </span><span class="s1">&#39;es_ES.UTF-8&#39;</span><span class="p">;</span>
-</code></pre></div></p>
-</li>
-<li>
-<p><strong>Cambio de colaciones</strong>:
-   - Aunque PostgreSQL permite definir colaciones para bases de datos, tablas y columnas individuales, cambiar la colación de una base de datos existente no es sencillo. Implica un <strong>dump</strong> y <strong>restore</strong> de la base de datos con las nuevas configuraciones.
-   - Para las tablas o columnas individuales, es posible asignar una colación diferente al crear la tabla o modificarla:
-     <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">mi_tabla</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">mi_columna</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">COLLATE</span><span class="w"> </span><span class="ss">&quot;es_ES.UTF-8&quot;</span><span class="p">;</span>
-</code></pre></div></p>
-</li>
-</ol>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h3 id="tipos-de-datos">Tipos de datos<a class="headerlink" href="#tipos-de-datos" title="Permanent link">&para;</a></h3>
 <p> https://mariadb.com/kb/en/data-types/
  CHAR: cadena de texto fijo (&lt;256)
@@ -1338,7 +1362,7 @@ horario ENUM ('mañana', 'tarde', 'noche')</p>
 <p><code>CREATE DOMAIN</code></p>
 <h3 id="tablas">Tablas<a class="headerlink" href="#tablas" title="Permanent link">&para;</a></h3>
 <p><code>CREATE TABLE</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">MariaDB</label><label for="__tabbed_6_2">PostgreSQL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">MariaDB</label><label for="__tabbed_7_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Más información en la <a href="https://mariadb.com/kb/en/drop-database/">documentación oficial</a></p>
@@ -1418,7 +1442,7 @@ tipoDatos [propiedades]…)
  ALTER TABLE nombreTabla MODIFY(columna tipo
 [propiedades] [columnaSiguiente tipo
 [propiedades] ...]</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">MariaDB</label><label for="__tabbed_7_2">PostgreSQL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">MariaDB</label><label for="__tabbed_8_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Más información en la <a href="https://mariadb.com/kb/en/drop-database/">documentación oficial</a></p>
@@ -1450,7 +1474,7 @@ INT(3) AUTO_INCREMENT;
  ALTER TABLE clientes CHANGE nombre
 nomMascosta VARCHAR(50);</p>
 <p><code>DROP TABLE</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">MariaDB</label><label for="__tabbed_8_2">PostgreSQL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">MariaDB</label><label for="__tabbed_9_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Más información en la <a href="https://mariadb.com/kb/en/drop-database/">documentación oficial</a></p>
