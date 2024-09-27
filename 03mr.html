@@ -1124,7 +1124,7 @@
 <li>¿Qué es una dependencia funcional?</li>
 <li>¿Y una dependencia funcional completa?</li>
 <li>¿En qué consiste la 1FN? ¿Y la 2FN? ¿Y la 3FN?</li>
-<li>¿Qué es la denormalización y cual es su objetivo?</li>
+<li>¿Qué es la denormalización y cuál es su objetivo?</li>
 </ol>
 </div>
 <h3 id="programacion-de-aula-8h">Programación de Aula (8h)<a class="headerlink" href="#programacion-de-aula-8h" title="Permanent link">&para;</a></h3>
@@ -1206,7 +1206,7 @@ Es el modelo lógico más extendido, y <em>por ende</em>, el mercado de <abbr ti
 </ul>
 </li>
 <li>Independencia lógica<ul>
-<li>La aplicaciones que usan el <abbr title="Sistema gestor de bases de datos">SGBD</abbr> no debe sufrir una modificación cuando se modifique una <abbr title="Base de datos">BD</abbr>.</li>
+<li>Las aplicaciones que usan el <abbr title="Sistema gestor de bases de datos">SGBD</abbr> no deben sufrir una modificación cuando se modifique una <abbr title="Base de datos">BD</abbr>.</li>
 </ul>
 </li>
 <li>Flexibilidad<ul>
@@ -1369,11 +1369,11 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 </tr>
 </tbody>
 </table>
-<p>El campo <code>dni</code> funciona como clave primaria de la tabla, ya que no hay dos clientes con el mismo DNI. Pero, ¿y el campo <code>nombre</code>? Aunque en la tabla no tengamos ahora mismo dos clientes con el mismo nombre, conceptualmente sabemos que se puede dar el caso, y por lo tanto, no sería una elección correcta, ya que el nombre de un cliente no lo identifica de forma univoca.</p>
+<p>El campo <code>dni</code> funciona como clave primaria de la tabla, ya que no hay dos clientes con el mismo DNI. Pero ¿y el campo <code>nombre</code>? Aunque en la tabla no tengamos ahora mismo dos clientes con el mismo nombre, conceptualmente sabemos que se puede dar el caso, y por lo tanto, no sería una elección correcta, ya que el nombre de un cliente no lo identifica de forma univoca.</p>
 <h4 id="claves-candidatas">Claves candidatas<a class="headerlink" href="#claves-candidatas" title="Permanent link">&para;</a></h4>
 <p>Si una tabla tiene más de un campo (o un conjunto de ellos) que pueden identificar unívocamente a cada tupla de la tabla, se dice que todas las claves posibles son <strong>claves candidatas</strong>.</p>
 <p>De entre las claves candidatas, elegiremos una como la clave primaria y el resto serán <strong>claves alternativas</strong>. Así pues, una clave alternativa es una clave candidata que no es primaria.</p>
-<p>Por ejemplo, si pensamos en la tabla <code>ESTUDIANTE</code> podemos definir los siguientes campos: <code>nif</code>, <code>codigo</code>, <code>nombre</code>, <code>fMatricula</code>, <code>direccion</code>. Las claves candidatas serían <code>ESTUDIANTE.codigo</code> y <code>ESTUDIANTE.nif</code>, ya que permiten identificar de forma unívoca a cada estudante. Si nos decantamos por <code>ESTUDIANTE.codigo</code> como su clave primaria, entonces <code>ESTUDIANTE.nif</code> sería una clave alternativa.</p>
+<p>Por ejemplo, si pensamos en la tabla <code>ESTUDIANTE</code> podemos definir los siguientes campos: <code>nif</code>, <code>codigo</code>, <code>nombre</code>, <code>fMatricula</code>, <code>direccion</code>. Las claves candidatas serían <code>ESTUDIANTE.codigo</code> y <code>ESTUDIANTE.nif</code>, ya que permiten identificar de forma unívoca a cada estudiante. Si nos decantamos por <code>ESTUDIANTE.codigo</code> como su clave primaria, entonces <code>ESTUDIANTE.nif</code> sería una clave alternativa.</p>
 <table>
 <thead>
 <tr>
@@ -1625,7 +1625,7 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 <p>Las bases de datos relacionales admiten utilizar ese valor en todo tipo de operaciones.</p>
 <p>En cuanto a los campos booleano (V/F), define un tercer valor en la lógica, ya que además del valor verdadero o falso, existe el valor para los nulos.</p>
 <h3 id="integridad-de-entidad">Integridad de entidad<a class="headerlink" href="#integridad-de-entidad" title="Permanent link">&para;</a></h3>
-<p>La integridad de entidad define que todas las claves primarias deben tener valor, y por lo tanto, no admiten valores nulos.</p>
+<p>La integridad de entidad define que todas las claves primarias deben tener valor, y, por lo tanto, no admiten valores nulos.</p>
 <p>Si volvemos a la <code>ESTUDIANTE</code>, no podemos tener ningún estudiante con el nif vacío.</p>
 <p>Al definir un campo como <code>PK</code> ya estamos declarando que dicho campo no admite valores nulos (ni repetidos por el propio concepto de clave primaria).</p>
 <h3 id="integridad-referencial">Integridad referencial<a class="headerlink" href="#integridad-referencial" title="Permanent link">&para;</a></h3>
@@ -1859,7 +1859,7 @@ clave primaria de la tabla que relaciona.</p>
 <h3 id="diccionario-de-datos">Diccionario de datos<a class="headerlink" href="#diccionario-de-datos" title="Permanent link">&para;</a></h3>
 <p>El diccionario de datos de un modelo relacional es un repositorio central que almacena metadatos sobre los elementos de una base de datos.</p>
 <p>En un sistema de bases de datos relacional, el diccionario de datos incluye detalles sobre las estructuras de las tablas, las relaciones entre las tablas, las columnas, los índices, las restricciones, los procedimientos almacenados y otros objetos de la base de datos. Es esencialmente un <em>catálogo</em> que describe la estructura lógica y la organización de la base de datos.</p>
-<p>Las funciones del diccionarios de datos son:</p>
+<p>Las funciones del diccionario de datos son:</p>
 <ul>
 <li>
 <p><strong>Documentación</strong>: Sirve como referencia para desarrolladores y administradores de bases de datos, ayudándoles a entender la estructura y organización de la base de datos.</p>
@@ -1971,7 +1971,7 @@ clave primaria de la tabla que relaciona.</p>
 </ul>
 <h2 id="normalizacion">Normalización<a class="headerlink" href="#normalizacion" title="Permanent link">&para;</a></h2>
 <p>Un principio del diseño relacional es que "<em>hechos distintos se deben almacenar en objetos distintos</em>".</p>
-<p>Para conseguir este objetivo, la normalización es un técnica dentro del diseño de bases de datos relacionales que consiste en la separación de atributos en tablas lo más simples posibles para suprimir dependencias erróneas entre atributos, así como optimizar los procesos de inserción, modificación y borrado en la bases de datos.</p>
+<p>Para conseguir este objetivo, la normalización es una técnica dentro del diseño de bases de datos relacionales que consiste en la separación de atributos en tablas lo más simples posibles para suprimir dependencias erróneas entre atributos, así como optimizar los procesos de inserción, modificación y borrado en la bases de datos.</p>
 <p>Así pues, se basa en el análisis de dependencias entre atributos mediante un proceso que consiste en identificar y aplicar una serie de reglas a las relaciones obtenidas del esquema relacional.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Supuesto Comerciales</p>
@@ -2084,7 +2084,7 @@ clave primaria de la tabla que relaciona.</p>
 <p>Claramente, tenemos datos redundantes que con otra organización de los mismos podríamos evitar dependencias.</p>
 </div>
 <h3 id="dependencias-funcionales">Dependencias funcionales<a class="headerlink" href="#dependencias-funcionales" title="Permanent link">&para;</a></h3>
-<p>Antes de entrar a conocer los pasos de las normalización, previamente tenemos que definir una serie de conceptos:</p>
+<p>Antes de entrar a conocer los pasos de la normalización, previamente tenemos que definir una serie de conceptos:</p>
 <ul>
 <li>
 <p><strong>Dependencia funcional</strong> (DF): es la relación semántica existente entre atributos de una misma tabla. Decimos que <strong>A → B</strong>, es decir, que <strong>B depende funcionalmente de A</strong> (o A determina a B), si y solo si para cada valor de A sólo puede existir un B.</p>
@@ -2142,7 +2142,7 @@ clave primaria de la tabla que relaciona.</p>
 <p>Si todas las claves candidatas de las tablas en 1FN son simples (unitarias), automáticamente las tablas ya están en 2FN. En cambio, si la clave primaria es compuesta, deberemos comprobar que todos los atributos dependen de la clave primaria compuesta y no de un subconjunto de esta.</p>
 </li>
 <li>
-<p><strong>3FN</strong>: 2FN + todo atributo que no es clave primaria no tienen una dependencia funcional transitiva de otro atributo no clave, es decir, depende únicamente de la clave primaria de modo no transitivo.    </p>
+<p><strong>3FN</strong>: 2FN + todo atributo que no es clave primaria no tiene una dependencia funcional transitiva de otro atributo no clave, es decir, depende únicamente de la clave primaria de modo no transitivo.    </p>
 </li>
 </ul>
 <h4 id="ejemplo_1">Ejemplo<a class="headerlink" href="#ejemplo_1" title="Permanent link">&para;</a></h4>
@@ -2217,14 +2217,14 @@ clave primaria de la tabla que relaciona.</p>
 <li><code>(cod-alumno, cod-asignatura, cod-profesor) → nota</code>: La combinación del código del alumno, el código de la asignatura y el código del profesor determina la nota.</li>
 </ul>
 <p>Las claves candidatas de la relación serían <code>cod-alumno</code>, <code>cod-asignatura</code>, <code>cod-profesor</code> y <code>(cod-alumno, cod-asignatura, cod-profesor)</code> y los campos no clave serían <code>nom-alumno</code>, <code>nom-asignatura</code>, <code>nom-profesor</code> y <code>nota</code>.</p>
-<p>A continuación comprobamos si cumple las diferentes formas normales:</p>
+<p>A continuación, comprobamos si cumple las diferentes formas normales:</p>
 <ul>
 <li>
-<p>¿Está en 1FN? Comprobamos que la tabla no tiene campos multivaluados y por lo tanto, la tabla de por sí ya está en primera forma normal.</p>
+<p>¿Está en 1FN? Comprobamos que la tabla no tiene campos multivaluados y, por lo tanto, la tabla de por sí ya está en primera forma normal.</p>
 </li>
 <li>
 <p>¿Está en 2FN? Está en 1FN y comprobamos las dependencias funcionales completas entre los atributos de la relación, es decir, todos los atributos no clave tienen una DFC de la clave primaria.</p>
-<p>Como los atributos <code>nom-alumno</code>, <code>nom-asignatura</code>, <code>nom-profesor</code> tienen no tienen una DFC de la clave <code>(cod-alumno, cod-asignatura, cod-profesor)</code> (ya que la tienen de un subconjunto de la clave, por ejemplo, el nombre del alumno DF de su código), necesitamos descomponer la relación en las siguiente tablas:</p>
+<p>Como los atributos <code>nom-alumno</code>, <code>nom-asignatura</code>, <code>nom-profesor</code> tienen no tienen una DFC de la clave <code>(cod-alumno, cod-asignatura, cod-profesor)</code> (ya que la tienen de un subconjunto de la clave, por ejemplo, el nombre del alumno DF de su código), necesitamos descomponer la relación en las siguientes tablas:</p>
 <ul>
 <li><code>ALUMNO(cod-alumno, nom-alumno)</code></li>
 <li><code>ASIGNATURA(cod-asignatura, nom-asignatura)</code></li>
@@ -2758,7 +2758,7 @@ relación.</li>
 <td>111</td>
 <td>1/1/24</td>
 <td>C1</td>
-<td>Trailer</td>
+<td>Tráiler</td>
 <td>A</td>
 <td>Zapatos</td>
 <td>180</td>
@@ -2767,7 +2767,7 @@ relación.</li>
 <td>111</td>
 <td>1/1/24</td>
 <td>C1</td>
-<td>Trailer</td>
+<td>Tráiler</td>
 <td>B</td>
 <td>Gorras</td>
 <td>120</td>
@@ -2776,7 +2776,7 @@ relación.</li>
 <td>222</td>
 <td>2/1/24</td>
 <td>C2</td>
-<td>Trailer</td>
+<td>Tráiler</td>
 <td>C</td>
 <td>Camisetas</td>
 <td>2000</td>
@@ -2803,7 +2803,7 @@ relación.</li>
 <td>444</td>
 <td>3/1/24</td>
 <td>C2</td>
-<td>Trailer</td>
+<td>Tráiler</td>
 <td>C</td>
 <td>Camisetas</td>
 <td>3000</td>
@@ -2812,7 +2812,7 @@ relación.</li>
 <td>555</td>
 <td>3/1/24</td>
 <td>C1</td>
-<td>Trailer</td>
+<td>Tráiler</td>
 <td>B</td>
 <td>Gorras</td>
 <td>140</td>
