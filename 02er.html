@@ -1263,7 +1263,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 
 <div class="admonition info">
 <p class="admonition-title">Notación</p>
-<p>Existen multiples notaciones para representar las relaciones (las entidades se suelen representar igual en todas las notaciones). En los apuntes vamos a utilizar tanto la notación empleada por la herramienta <a href="https://erdplus.com/">ERDPlus</a> (también conocida como de pata de gallo), la notación de Chen (con las cardinalidades mínima y máxima) así como diferentes notaciones empleadas de forma generalizada por las empresas.</p>
+<p>Existen múltiples notaciones para representar las relaciones (las entidades se suelen representar igual en todas las notaciones). En los apuntes vamos a utilizar tanto la notación empleada por la herramienta <a href="https://erdplus.com/">ERDPlus</a> (también conocida como de pata de gallo), la notación de Chen (con las cardinalidades mínima y máxima) así como diferentes notaciones empleadas de forma generalizada por las empresas.</p>
 <p>Una vez dominada una notación es muy fácil entender y cambiar a cualquiera de las otras. Eso sí, debes ser constante y modelar siempre con la misma notación.</p>
 </div>
 <h4 id="grado">Grado<a class="headerlink" href="#grado" title="Permanent link">&para;</a></h4>
@@ -1290,7 +1290,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 </ul>
 <p>Para averiguar la cardinalidad entre dos entidades vía una relación, cogemos una ocurrencia de una entidad y nos preguntamos con cuantas ocurrencias de la otra entidad se va a relacionar.</p>
 <p>Pongamos un ejemplo. Si pensamos en la relación que existe un producto y la categoría la que pertenece, tendremos dos cardinalidades para cada lado de la relación.</p>
-<p>Si tenemos un producto concreto ¿A cuantas categorías va a pertenecer como mínimo y como máximo?:</p>
+<p>Si tenemos un producto concreto ¿A cuántas categorías va a pertenecer como mínimo y como máximo?:</p>
 <ul>
 <li><code>Card(PRODUCTO, PERTENECER) = (1, 1)</code> - Un producto siempre pertenece a una categoría</li>
 </ul>
@@ -1579,7 +1579,7 @@ cuales no puede pertenecer a más de un área.</li>
 <h2 id="el-modelo-entidad-relacion-extendido">El modelo Entidad Relación Extendido<a class="headerlink" href="#el-modelo-entidad-relacion-extendido" title="Permanent link">&para;</a></h2>
 <p>Con los años se extendió el modelo relacional con la incorporación de los conceptos de clase y subclase, junto con los conceptos de generalización y especialización, así como la agregación de entidades.  </p>
 <h3 id="generalizacion">Generalización<a class="headerlink" href="#generalizacion" title="Permanent link">&para;</a></h3>
-<p>La descomposición de tipos de entidad en varios subtipos o subclases permite identificar jerarquías de entidades, entre una una entidad general, que denominamos entidad superclase (o entidad padre), que se puede especializar en entidades subclase (o entidades hijas):</p>
+<p>La descomposición de tipos de entidad en varios subtipos o subclases permite identificar jerarquías de entidades, entre una entidad general, que denominamos entidad superclase (o entidad padre), que se puede especializar en entidades subclase (o entidades hijas):</p>
 <ul>
 <li>La entidad <strong>superclase</strong> modelan las características comunes de la entidad vista de una forma genérica.</li>
 <li>Las entidades <strong>subclase</strong> modelan las características propias de sus especializaciones.</li>
@@ -1588,7 +1588,7 @@ cuales no puede pertenecer a más de un área.</li>
 <div class="admonition info">
 <p class="admonition-title">Generalización vs Especialización</p>
 <p>Se dice que tenemos una generalización, cuando dos o más tipos de entidades van a compartir diferentes atributos. Para ello, la entidad superclase contendrá aquellos atributos comunes a las subclases.
-En cambio, se dice que realizamos una especialización cuando un tipo de entidad tiene algunos atributos que tienen sentido para algunos subclases, pero
+En cambio, se dice que realizamos una especialización cuando un tipo de entidad tiene algunos atributos que tienen sentido para algunas subclases, pero
 no para todas. Para ello, cada subclase contendrá sus atributos específicos,
 y los comunes se colocan en la superclase.</p>
 <p>Así pues, se dice que la generalización va de abajo hacía arriba, subiendo los atributos comunes al padre, y en consecuencia, la especialización va de arriba a abajo, colocando en los hijos los atributos específicos que no comparten todas las subclases.</p>
@@ -1717,7 +1717,7 @@ Los productos son suministrados por diferentes proveedores. Se debe tener en cue
 </ul>
 <p><a name="AC202"></a></p>
 <ul>
-<li><strong>AC202</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del ejercicio anterior, realiza el modelo <abbr title="Entidad-Relación">ER</abbr> unicamente con las entidades y las relaciones utilizando ambas notaciones (sin colocar los atributos) y define las cardinalidades de las relaciones. Para ello, dibuja en un folio el modelo y escanea o adjunta una foto del resultado y súbelo a Aules.</li>
+<li><strong>AC202</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del ejercicio anterior, realiza el modelo <abbr title="Entidad-Relación">ER</abbr> únicamente con las entidades y las relaciones utilizando ambas notaciones (sin colocar los atributos) y define las cardinalidades de las relaciones. Para ello, dibuja en un folio el modelo y escanea o adjunta una foto del resultado y súbelo a Aules.</li>
 </ul>
 <p><a name="AC203"></a></p>
 <ul>
@@ -1784,23 +1784,21 @@ De cada hotel se desea conocer la siguiente información: código de hotel, nomb
 <ul>
 <li>
 <p><strong>AC209</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo <abbr title="Entidad-Relación">ER</abbr> del siguiente sistema de información sobre cine:</p>
-<p>De cada película le interesará conocer el título, el año de producción, la nacionalidad, y los datos (nombre, fecha_nacimiento y nacionalidad) de los intérpretes (como mucho los 6 intérpretes principales), el director y los autores del guión en el que está basada la película. De este último -el guión- se sabrá además el título.</p>
-<p>También desea conocer los posibles Oscars ganados por cada película en las modalidades de: mejor película, mejor guión, mejores intérpretes y mejor director.</p>
+<p>De cada película le interesará conocer el título, el año de producción, la nacionalidad, y los datos (nombre, fecha de nacimiento y nacionalidad) de los intérpretes (como mucho los 6 intérpretes principales), el director y los autores del guion en el que está basada la película. De este último -el guion- se sabrá además el título.</p>
+<p>También desea conocer los posibles Oscars ganados por cada película en las modalidades de: mejor película, mejor guion, mejores intérpretes y mejor director.</p>
 <p>Por último, se tendrán identificadas las películas que son remakes de otras, conociendo en ese caso, la película original y los distintos remakes.</p>
 </li>
 </ul>
 <p><a name="AC210"></a></p>
 <ul>
 <li>
-<p><strong>AC210</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo <abbr title="Entidad-Relación">ER</abbr> del siguiente sistema de información sobre un campeonato de ajedrez que gestiona toda la información participantes, alojamientos y partidas :</p>
+<p><strong>AC210</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo <abbr title="Entidad-Relación">ER</abbr> del siguiente sistema de información sobre un campeonato de ajedrez que gestiona toda la información participantes, alojamientos y partidas:</p>
 <p>En el campeonato participan jugadores y árbitros; de ambos se requiere conocer el número de asociado, nombre, dirección, teléfono de contacto y campeonatos en los que han participado (como jugador o como árbitro). De los jugadores se precisa además el nivel de juego en una escala de 1 a 10. Ningún árbitro puede participar como jugador.</p>
 <p>Los países envían al campeonato un conjunto de jugadores y
 árbitros, aunque no todos los países envían participantes. Todo jugador y árbitro es enviado por un único país. Un país puede ser representado por otro país. Cada país se identifica por un número correlativo según su orden alfabético e interesa conocer además de su nombre, el número de clubes de ajedrez existentes en el mismo.</p>
-<p>Cada partida se identifica por un numero correlativo (<code>codigop</code>), la juegan dos jugadores y la arbitra un árbitro. Interesa registrar las partidas que juegan cada jugador y el color (blancas o negras) con el que juega. Ha de tenerse en cuenta que un arbitro no puede arbitrar a jugadores enviados por el mismo país que le ha enviado a él. Todo participante participa en al menos una partida.</p>
-<p>Tanto jugadores como árbitros se alojan en uno de los hoteles en los que se desarrollan las partidas, se desea conocer en qué hotel y en qué fechas se ha alojado cada uno de los participantes. Los participantes pueden no permanecer en el mismo hotel que se realiza el campeonato durante todo el campeonato, sino acudir cuando tienen que jugar alguna partida alojándose en el mismo o distinto hotel. De cada hotel, se desea
-conocer el nombre, la dirección y el número de teléfono.</p>
-<p>El campeonato se desarrolla a lo largo de una serie de jornadas (año, mes, día) y cada partida tiene lugar en una de las jornadas
-aunque no tengan lugar partidas todas las jornadas.</p>
+<p>Cada partida se identifica por un numero correlativo (<code>codigop</code>), la juegan dos jugadores y la arbitra un árbitro. Interesa registrar las partidas que juegan cada jugador y el color (blancas o negras) con el que juega. Ha de tenerse en cuenta que un árbitro no puede arbitrar a jugadores enviados por el mismo país que le ha enviado a él. Todo participante participa en al menos una partida.</p>
+<p>Tanto jugadores como árbitros se alojan en uno de los hoteles en los que se desarrollan las partidas, se desea conocer en qué hotel y en qué fechas se ha alojado cada uno de los participantes. Los participantes pueden no permanecer en el mismo hotel que se realiza el campeonato durante todo el campeonato, sino acudir cuando tienen que jugar alguna partida alojándose en el mismo o distinto hotel. De cada hotel, se desea conocer el nombre, la dirección y el número de teléfono.</p>
+<p>El campeonato se desarrolla a lo largo de una serie de jornadas (año, mes, día) y cada partida tiene lugar en una de las jornadas aunque no tengan lugar partidas todas las jornadas.</p>
 <p>Cada partida se celebra en una de las salas de las que pueden disponer los hoteles, se desea conocer el número de entradas vendidas en la sala para cada partida. De cada sala, se desea conocer la capacidad y medios de que dispone (radio, televisión, video...) para facilitar la retransmisión de los encuentros. Una sala puede disponer de varios medios distintos.</p>
 <p>De cada partida se pretende registrar todos los movimientos que la componen. La identificación de movimiento se establece en base a un numero de orden dentro de cada partida: para cada movimiento se guardan la jugada (5 posiciones) y un breve comentario realizado
 por un experto.</p>
@@ -1824,7 +1822,7 @@ por un experto.</p>
 <p><strong>AR212</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo <abbr title="Entidad-Relación">ER</abbr> del siguiente sistema de información sobre la Eurocopa:</p>
 <p>Nos interesa conocer el nombre de cada selección y su indumentaria habitual (color de la camiseta, del pantalón y las calzas), el nombre del seleccionador y el número de años que éste lleva en el cargo, y los nombres, número de camiseta y posición (portero, defensa, centrocampista, ...) de los 22 jugadores de cada equipo.</p>
 <p>Además, se desea almacenar información de todos los partidos jugados por cada equipo: la fecha, el lugar, el equipo local y el resultado (número de goles del equipo local y del visitante).</p>
-<p>También, de cada gol marcado, el jugador que lo marca, el portero que lo encaja, el minuto de juego y el tipo de gol (de falta, de penalty, en jugada, etc...).</p>
+<p>También, de cada gol marcado, el jugador que lo marca, el portero que lo encaja, el minuto de juego y el tipo de gol (de falta, de penalti, en jugada, etc...).</p>
 </li>
 </ul>
 <p><a name="AP213"></a></p>
