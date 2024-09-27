@@ -1884,37 +1884,60 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 <p><a name="AC501"></a></p>
 <ul>
 <li>
-<p><strong>AC501</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr> // 3p) En <em>MariaDB</em>, descarga la base de datos <a href="resources/world.sql.zip">world.sql.zip</a>, y tras descomprimirla y cargala mediante <em>PhpMyAdmin</em>.</p>
-<p>A continuación, averigua:
-    * cuantas tablas tiene
-    * los campos de la tabla <code>city</code>
-    * el formato de almacenamiento de la base de datos</p>
+<p><strong>AC501</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr> // 3p) En <em>MariaDB</em>, descarga la base de datos <a href="resources/world.sql.zip">world.sql.zip</a>, y tras descomprimirla y cargala mediante <em>PhpMyAdmin</em>. A continuación, averigua:</p>
+<ul>
+<li>¿Cuantas tablas tiene?</li>
+<li>¿Cuantos y de qué tipos son los campos de la tabla <code>city</code>?</li>
+<li>¿Cual es el formato de almacenamiento de la base de datos? ¿Qué motor de almacenamiento emplea?</li>
+</ul>
 </li>
 </ul>
 <p><a name="AC502"></a></p>
 <ul>
 <li>
 <p><strong>AC502</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr> // 3p) DDL Tabla, relaciones, tipos de datos, campos clave - ALTER TABLE</p>
-<p>Tabla FABRICANTE
-codFabricante: entero autoincrementable nombre: cadena 32
-pais: cadena 32
-Restricciones
-La clave primaria es codFabricante EL nombre no puede ser nulo</p>
-<p>Tabla ARTICULO
-codigo:cadena 32
-codFabricante: entero
-peso: numérico con dos decimales categoria: cadena 16
-precioVenta: numérico con dos decimales precioCompra: numérico con dos decimales existencias: entero
-Restricciones:
-La clave primaria es: codigo, codFabricante, peso, categoría.
-El peso, precioVenta, precioCompra deben de ser mayores de 0.
-La categoría ha de ser primera, segunda o tercera.</p>
-<p>Añade una clave ajena a la tabla ARTICULO desde
-codFabricante a la tabla FABRICANTE.
-2) Modifica el atributo pais de la tabla FABRICANTE
-para que el valor por defecto sea España.
-3) Cambia la clave primaria de FABRICANTE al nombre. Dejar el codFabricante con clave única para la clave ajena con ARTICULO
-4) Desactiva la restricción de clave primaria de FABRICANTE.</p>
+<ul>
+<li>
+<p>Tabla <code>FABRICANTE</code></p>
+<ul>
+<li>Campos:<ul>
+<li><code>codFabricante</code>: entero autoincrementable</li>
+<li><code>nombre</code>: cadena 32</li>
+<li><code>pais</code>: cadena 32</li>
+</ul>
+</li>
+<li>Restricciones:<ul>
+<li>La clave primaria es <code>codFabricante</code></li>
+<li>El <code>nombre</code> no puede ser nulo</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Tabla <code>ARTICULO</code></p>
+<ul>
+<li>Campos:<ul>
+<li><code>codigo</code>: cadena 32</li>
+<li><code>codFabricante</code>: entero</li>
+<li><code>peso</code>: numérico con dos decimales categoria: cadena 16</li>
+<li><code>precioVenta</code>: numérico con dos decimales</li>
+<li><code>precioCompra</code>: numérico con dos decimales existencias: entero</li>
+</ul>
+</li>
+<li>Restricciones:<ul>
+<li>La clave primaria es: <code>codigo</code>, <code>codFabricante</code>, <code>peso</code>, <code>categoría</code>.</li>
+<li>El peso, precioVenta, precioCompra deben de ser mayores de 0.</li>
+<li>La categoría ha de ser primera, segunda o tercera.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>Añade una clave ajena a la tabla ARTICULO desde codFabricante a la tabla FABRICANTE.</li>
+<li>Modifica el atributo pais de la tabla FABRICANTE para que el valor por defecto sea España.</li>
+<li>Desactiva la restricción de clave primaria de FABRICANTE.</li>
+</ol>
 </li>
 </ul>
 <p><a name="AC503"></a></p>
