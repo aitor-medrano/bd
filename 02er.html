@@ -1503,11 +1503,11 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <p>Recuerda esta frase: <strong>Toda entidad debe tener uno o más atributos identificadores</strong>. Más adelante veremos que en algún caso particular de entidad no es necesario, pero por lo general, al realizar el modelo conceptual siempre debemos comprobar si hemos identificado un atributo identificador para cada entidad.</p>
 <p>Respecto a los atributos identificadores podemos tener:</p>
 <ul>
-<li>atributos identificadores sencillos. Un atributo identifica de forma unívoca a una ocurrencia de la entidad. Por ejemplo, el <code>isbn</code> de un libro.</li>
-<li>atributos identificadores compuestos, donde una entidad se identifica por dos o más atributos a la vez. Por ejemplo, una calle que se identifique por el tipo de via y por el nombre de la calle, de manera  que no es lo mismo la "<em>Avenida América</em>" que la "<em>Calle América</em>".</li>
-<li>varios atributos que pueden identificar a la entidad. Por ejemplo, una persona que podemos identificar mediante su DNI, número de pasaporte, número de la seguridad social, etc.. Todos los atributos pueden identificar a la entidad <code>PERSONA</code>. Lo que haremos es elegir uno de ellos como identificador (el más común o importante dependiendo del contexto del problema), y el resto de atributos se consideran <em>claves alternativas</em>, y se marcan como que aceptan valores únicos subrayando el nombre de los atributos con una línea troceada.<br />
+<li>Atributos identificadores <strong>sencillos</strong>. Un atributo identifica de forma unívoca a una ocurrencia de la entidad. Por ejemplo, el <code>isbn</code> de un libro.</li>
+<li>Atributos identificadores <strong>compuestos</strong>, donde una entidad se identifica por dos o más atributos a la vez. Por ejemplo, una calle que se identifique por el tipo de via y por el nombre de la calle, de manera  que no es lo mismo la "<em>Avenida América</em>" que la "<em>Calle América</em>".</li>
+<li>Varios atributos <strong>candidatos</strong> que pueden identificar a la entidad. Por ejemplo, una persona que podemos identificar mediante su DNI, número de pasaporte, número de la seguridad social, etc.. Todos los atributos pueden identificar a la entidad <code>PERSONA</code>. Lo que haremos es elegir uno de ellos como identificador (el más común o importante dependiendo del contexto del problema), y el resto de atributos se consideran <em>claves alternativas</em>, y se marcan como que aceptan valores únicos subrayando el nombre de los atributos con una línea troceada.<br />
 ¿Y si tenemos una entidad que no tiene aparentemente ningún atributo identificador? En ese caso, crearemos un nuevo atributo que lo haga, como <code>codigo</code> o <code>id</code>, y más adelante, el SGBD le dará un valor secuencial.</li>
-<li>atributos identificadores que se complementan con otra entidad (este tipo lo estudiaremos en esta unidad dentro de las <a href="#restricciones">Restricciones</a>)</li>
+<li>Atributos identificadores que se <strong>complementan</strong> con otra entidad (este tipo lo estudiaremos en esta unidad dentro de las <a href="#restricciones">Restricciones</a>)</li>
 </ul>
 <p><a name="supuesto-carreteras"></a></p>
 <div class="admonition info">
@@ -1577,7 +1577,7 @@ cuales no puede pertenecer a más de un área.</li>
 </figure></p>
 </div>
 <h2 id="el-modelo-entidad-relacion-extendido">El modelo Entidad Relación Extendido<a class="headerlink" href="#el-modelo-entidad-relacion-extendido" title="Permanent link">&para;</a></h2>
-<p>Con los años se extendió el modelo relacional con la incorporación de los conceptos de clase y subclase, junto con los conceptos de generalización y especialización, así como la agregación de entidades.  </p>
+<p>Con el paso de los años, y dadas ciertas carencias del modelo entidad relación, a mediados de los años 80 se extendió con la incorporación de los conceptos de clase y subclase, junto con los conceptos de generalización y especialización, así como la agregación de entidades, dando lugar al modelo <em>Entidad Relación Extendido</em> (<strong><abbr title="Entidad-Relación Extendido">EER</abbr></strong>).</p>
 <h3 id="generalizacion">Generalización<a class="headerlink" href="#generalizacion" title="Permanent link">&para;</a></h3>
 <p>La descomposición de tipos de entidad en varios subtipos o subclases permite identificar jerarquías de entidades, entre una entidad general, que denominamos entidad superclase (o entidad padre), que se puede especializar en entidades subclase (o entidades hijas):</p>
 <ul>
@@ -1696,11 +1696,11 @@ tercera entidad, como si ocurre en las ternarias.</p>
 <li>
 <p>Materiales sobre el módulo de <abbr title="Base de datos">BD</abbr>:</p>
 <ul>
-<li><em><a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u2/a1/continguts.html">Conceptes del model Entitat-Relació. Entitats. Relacions</a> i <a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u2/a2/continguts.html">Diagrames Entitat-Relació</a> - Institut Obert de Catalunya</em></li>
-<li><a href="https://jorgesanchez.net/manuales/gbd/entidad-relacion.html">Modelo Entidad Relación</a> de <em>Jorge Sánchez</em></li>
-<li><a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut2/recopila.html">Interpretación de Diagramas <abbr title="Entidad-Relación">ER</abbr></a> de <em>Javier Gutiérrez</em></li>
+<li><em><a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u2/a1/continguts.html">Conceptes del model Entitat-Relació. Entitats. Relacions</a> i <a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u2/a2/continguts.html">Diagrames Entitat-Relació</a> - Institut Obert de Catalunya</em>.</li>
+<li><a href="https://jorgesanchez.net/manuales/gbd/entidad-relacion.html">Modelo Entidad Relación</a> de <em>Jorge Sánchez</em>.</li>
+<li><a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut2/recopila.html">Interpretación de Diagramas <abbr title="Entidad-Relación">ER</abbr></a> de <em>Javier Gutiérrez</em>.</li>
 <li><a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema2/index.html">Diseño de modelo lógicos normalizados</a> gestionbasesdatos.readthedocs.io</li>
-<li><a href="https://www.cs.us.es/cursos/bd-2023/temas/BD-Tema-2.pdf">Diseño conceptual de bases de datos</a> de la <em>Universidad de Sevilla</em></li>
+<li><a href="https://www.cs.us.es/cursos/bd-2023/temas/BD-Tema-2.pdf">Diseño conceptual de bases de datos</a>, por <em>Luis Valencia</em> y <em>David Orellana</em>, de la <em>Universidad de Sevilla</em>.</li>
 </ul>
 </li>
 </ul>
