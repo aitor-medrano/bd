@@ -1089,25 +1089,25 @@
 <tbody>
 <tr>
 <td>1</td>
-<td>Modelo Entidad Relación.</td>
+<td><a href="#el-modelo-entidad-relacion">Modelo Entidad Relación</a>.</td>
 <td><a href="#AC201">AC201</a></td>
 <td><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr></td>
 </tr>
 <tr>
 <td>2</td>
-<td>Entidades. Relaciones - Cardinalidad</td>
+<td><a href="#entidades">Entidades</a>. Relaciones - Cardinalidad</td>
 <td><a href="#AC202">AC202</a></td>
 <td><abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr></td>
 </tr>
 <tr>
 <td>3</td>
-<td>Relaciones 1:1, 1:M, N:M</td>
+<td><a href="#relaciones">Relaciones</a> <a href="#relacion-11">1:1</a>, <a href="#relacion-1n">1:N</a>, <a href="#relacion-nm">N:M</a></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>4</td>
-<td>Atributos</td>
+<td><a href="#atributos">Atributos</a></td>
 <td><a href="#AC203">AC203</a></td>
 <td><abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr></td>
 </tr>
@@ -1125,13 +1125,13 @@
 </tr>
 <tr>
 <td>7</td>
-<td>Restricciones</td>
+<td><a href="#restricciones">Restricciones</a></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>8</td>
-<td>Modelado <abbr title="Entidad-Relación Extendido">EER</abbr>. Generalización y especialización</td>
+<td><a href="#el-modelo-entidad-relacion-extendido">Modelado <abbr title="Entidad-Relación Extendido">EER</abbr></a>. Generalización. <a href="#tipos_1">Tipos</a></td>
 <td><a href="#AC209">AC209</a></td>
 <td><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr></td>
 </tr>
@@ -1143,7 +1143,7 @@
 </tr>
 <tr>
 <td>10</td>
-<td>Agregaciones</td>
+<td><a href="#agregacion">Agregaciones</a></td>
 <td><a href="#AC211">AC211</a></td>
 <td><abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr></td>
 </tr>
@@ -1594,12 +1594,12 @@ y los comunes se colocan en la superclase.</p>
 <p>Así pues, se dice que la generalización va de abajo hacía arriba, subiendo los atributos comunes al padre, y en consecuencia, la especialización va de arriba a abajo, colocando en los hijos los atributos específicos que no comparten todas las subclases.</p>
 </div>
 <p>Con generalización y la especialización se establece una relación <strong><em>ES-UN</em></strong> (en inglés, <em>IS-A</em>), indicando que una entidad hijo ES-UN con la entidad padre. Por ejemplo, si la superclase es <code>VEHICULO</code>, ejemplos de subclases serían <code>CAMION</code>, <code>AUTOBUS</code>, <code>MOTO</code>, etc... ya que un <code>CAMION</code> es un <code>VEHICULO</code>.</p>
+<p>En la generalización/especialización, las características (atributos o interrelaciones) de la entidad superclase se propagan hacia las entidades subclase. Es lo que se denomina <strong>herencia de propiedades</strong>.</p>
 <figure style="float: right;">
     <img src="images/02generalizacion.png" width="479" title="Generalización">
     <figcaption>Generalización</figcaption>
 </figure>
 
-<p>En la generalización/especialización, las características (atributos o interrelaciones) de la entidad superclase se propagan hacia las entidades subclase. Es lo que se denomina <strong>herencia de propiedades</strong>.</p>
 <p>Las generalizaciones siempre se representan en vertical, situando la entidad superclase arriba y las subclases debajo. Para conectarlas, se utiliza un círculo que puede contener la letra <code>d</code> o la letra <code>o</code> de forma similar al ejemplo que tenemos en el lateral, para indicar que la especialización es disjunta o solapada (<em>overlap</em>). Entre la clase padre y el círculo, si se utiliza una línea simple indicamos que es una especialización parcial y si es doble, que se trata de una generalización total.</p>
 <p>Finalmente, el circulo conecta con los hijos mediante una línea que contiene un arco indicando el sentido del padre a los hijos.</p>
 <p>Así pues, en el ejemplo tenemos que un <code>LIBRO</code> tiene un isbn y un título. Y que un <code>EBOOK</code> <em>ES-UN</em> <code>LIBRO</code> y que <code>EN_PAPEL</code> también <em>ES-UN</em> <code>LIBRO</code>. Un <code>EBOOK</code> en total tiene tres atributos, los dos que hereda del padre, más el formato del <em>ebook</em>. De forma similar, <code>EN_PAPEL</code>, también tiene tres atributos, los dos que hereda de <code>LIBRO</code> más el número de páginas de la copia impresa.</p>
