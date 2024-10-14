@@ -1714,8 +1714,7 @@ y los comunes se colocan en la superclase.</p>
 </details>
 </div>
 <h3 id="agregacion">Agregación<a class="headerlink" href="#agregacion" title="Permanent link">&para;</a></h3>
-<p>La agregación surge de la limitación que existe en el modelo <abbr title="Entidad-Relación">ER</abbr> de no permitir expresar relaciones
-entre relaciones binarias, y en gran medida, haciendo uso de agregaciones podemos evitar hacer uso de relaciones ternarias.</p>
+<p>La agregación surge de la limitación que existe en el modelo <abbr title="Entidad-Relación">ER</abbr> de no permitir expresar relaciones entre relaciones binarias, y en gran medida, haciendo uso de agregaciones podemos evitar hacer uso de relaciones ternarias.</p>
 <p>Así pues, una agregación se comporta como una entidad más, con un nivel de abstracción mayor que la propia relación.</p>
 <p>Por ejemplo, tengamos el caso de un docente que imparte clase en una determinada aula. El docente dará clase a varios grupos en el aula, y en el aula entran varios docentes. Queda claro que una relación N:M entre <code>DOCENTE</code> y <code>AULA</code> (por ejemplo, <code>IMPARTIR</code>) nos permite modelar este caso. Pero ¿y si queremos registrar las incidencias que se producen en el aula cuando un docente está dando clase? Si unimos la entidad <code>INCIDENCIA</code> con <code>DOCENTE</code> o con <code>AULA</code>, estaríamos perdiendo información.</p>
 <figure style="float: right;">
@@ -1723,11 +1722,9 @@ entre relaciones binarias, y en gran medida, haciendo uso de agregaciones podemo
     <figcaption>Agregación</figcaption>
 </figure>
 
-<p>Así pues, creamos una entidad asociativa que funciona como una agregación, y la nombramos, por ejemplo como <code>SESION</code> (una sesión lectiva la imparte un docente en un aula) y ésta es la que relacionamos con la entidad <code>INCIDENCIA</code> mediante la relación <code>REGISTRAR</code>.</p>
-<p>El mecanismo de agregación lo que hace es abstraer las entidades y la relación que las asocia para
-obtener una entidad compleja, conocida como entidad asociativa, que a su vez puede relacionarse como una entidad normal con el resto de entidades de nuestro sistema.</p>
-<p>Aunque tiene muchos puntos de contacto con una relación ternaria, la agregación remarca la relación entre una determinada pareja de entidades, al mismo tiempo que no implica una necesaria asociación con la
-tercera entidad, como si ocurre en las ternarias.</p>
+<p>Así pues, creamos una entidad asociativa que funciona como una agregación, y la nombramos, por ejemplo como <code>SESION</code> (una sesión lectiva la imparte un docente en un aula) y ésta es la que relacionamos con la entidad <code>INCIDENCIA</code> mediante la relación <code>REGISTRAR</code>. Es importante destacar que la entidad asociativa no tiene atributo identificador, porque realmente es como si tuviera una restricción de identificación respecto a las otras entidades, a modo de entidad débil que necesita de todas las entidades con las que se asocia para identificarse.</p>
+<p>El mecanismo de agregación lo que hace es abstraer las entidades y la relación que las asocia para obtener una entidad compleja, conocida como entidad asociativa, que a su vez puede relacionarse como una entidad normal con el resto de entidades de nuestro sistema.</p>
+<p>Aunque tiene muchos puntos de contacto con una relación ternaria, la agregación remarca la relación entre una determinada pareja de entidades, al mismo tiempo que no implica una necesaria asociación con la tercera entidad, como si ocurre en las ternarias.</p>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
