@@ -2813,13 +2813,13 @@ relación.</li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP307</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p)  A partir del siguiente esquema relacional, crea tres tablas con datos ficticios, y explica el tipo de relación existente entre los campos y las tablas relacionadas (cardinalidad):</p>
 <p><code>
 <strong>CONDUCTOR</strong> (<ins>nif</ins>, nombre, fAlta)<br />
-· PK: (nif)<br />
+· PK: (nif)
 </code></p>
 <p><code>
 <strong>CONDUCIR</strong> (<ins>nif</ins><code>*</code>, <ins>matricula</ins><code>*</code>, cantidad)<br />
 · PK: (nif, matricula)<br />
 · FK: (nif) → CONDUCTOR<br />
-&emsp;&emsp;&emsp;&ensp;(matricula) → AUTOBUS
+&emsp;&emsp;&emsp;&emsp;(matricula) → AUTOBUS
 </code></p>
 <p><code>
 <strong>AUTOBUS</strong> (<ins>matricula</ins>, tipo, numPlazas)<br />
