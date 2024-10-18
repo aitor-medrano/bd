@@ -1452,7 +1452,100 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 <h4 id="claves-ajenas">Claves ajenas<a class="headerlink" href="#claves-ajenas" title="Permanent link">&para;</a></h4>
 <p>Finalmente, tenemos las <strong>claves ajenas</strong> (<strong>FK</strong> / <em>foreign key</em>), los cuales son campos cuyos valores referencian a valores de otra tabla.</p>
 <p>Dentro del modelo relacional, el hecho de relacionar los datos de una tabla con otra es crucial, y se realiza mediante las claves ajenas. Así pues, la clave ajena de una tabla referencia, normalmente, al valor de la clave primaria de otra tabla. Por ello, los dominios de la clave ajena y de la clave primaria referenciada deben ser iguales (un campo numérico no puede referenciar a un campo de texto).</p>
-<p>Por ejemplo, tenemos dos tablas, una para estudiantes (igual que la anterior) y otra para almacenar qué cursos realizan los estudiantes, similares a las siguientes:</p>
+<p>Comencemos con el mismo ejemplo que vimos con las <a href="02er.html#relación-1n">relaciones 1:N</a> del modelo conceptual, donde teníamos que todo producto tiene una categoría, pero de una categoría, tenemos muchos productos, el cual representamos así:</p>
+<figure style="align: center;">
+    <img src="images/02relaciones1n.png" width="505" title="Relación 1:N">
+    <figcaption>Relación 1:N</figcaption>
+</figure>
+
+<p>Si lo representamos mediante tablas, podríamos tener la siguiente estructura:</p>
+<div class="grid cards">
+<ul>
+<li>
+<p><code>CATEGORIA</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>codigo</ins></th>
+<th>nombre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Consola</td>
+</tr>
+<tr>
+<td>2</td>
+<td>TIC</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Cocina</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Bricolaje</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>PRODUCTO</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>codigo</ins></th>
+<th>nombre</th>
+<th>codCategoria*</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>PS5</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Nevera</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Teclado</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>XBOX</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Ratón</td>
+<td>2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Volante</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Representación de las ocurrencias</p>
+<hr />
+<p><figure style="align:center;">
+    <img src="images/02ocurrencias1n.png" width="300" title="Ocurrencias 1:N">
+    <figcaption>Ocurrencias 1:N</figcaption>
+</figure></p>
+</li>
+</ul>
+</div>
+<p>Puedes observar como hemos subrayado las claves primaria de cada tabla. ¿Qué atributo tiene la función de clave ajena? En este ejemplo, la columna <code>PRODUCTO.codCategoria</code> es una clave ajena que apunta a <code>CATEGORIA.codigo</code> (fíjate que en este caso, al atributo que es clave ajena le hemos puesto un asterisco <code>*</code> tras su nombre). Si revisamos los valores, podemos comprobar como podemos tener valores repetidos y valores nulos, facilitando que de una categoría tengamos varios productos (categorías de los productos <code>1</code> y <code>4</code>), que de una categoría no tengamos productos (la categoría <code>4</code> no está asociada a ningún producto) y, aunque el modelo conceptual no representaba dicha cardinalidad, que tengamos productos sin categoría (como el producto <code>6</code>).</p>
+<p>Veamos otro ejemplo, donde tenemos dos tablas, una para estudiantes (igual que el ejemplo de las claves candidatas) y otra para almacenar qué cursos realizan los estudiantes, similares a las siguientes:</p>
 <ul>
 <li>
 <p><code>ESTUDIANTE</code></p>
