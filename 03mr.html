@@ -1188,19 +1188,19 @@
 </tr>
 <tr>
 <td>2</td>
-<td>Elementos</td>
+<td><a href="#elementos">Elementos</a></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>3</td>
-<td>Restricciones</td>
+<td><a href="#restricciones-semanticas">Restricciones</a></td>
 <td><a href="#AC303">AC303</a></td>
 <td><abbr title="Se han aplicado reglas de integridad.">CE6f</abbr></td>
 </tr>
 <tr>
 <td>4</td>
-<td>Notación</td>
+<td><a href="#notacion">Notación</a></td>
 <td><a href="#AC305">AC305</a>, <a href="#AC306">AC306</a></td>
 <td><abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr></td>
 </tr>
@@ -1212,7 +1212,7 @@
 </tr>
 <tr>
 <td>6</td>
-<td>Diccionario de datos</td>
+<td><a href="#diccionario-de-datos">Diccionario de datos</a></td>
 <td><a href="#AC311">AC311</a></td>
 <td><abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr></td>
 </tr>
@@ -1452,7 +1452,7 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 <h4 id="claves-ajenas">Claves ajenas<a class="headerlink" href="#claves-ajenas" title="Permanent link">&para;</a></h4>
 <p>Finalmente, tenemos las <strong>claves ajenas</strong> (<strong>FK</strong> / <em>foreign key</em>), los cuales son campos cuyos valores referencian a valores de otra tabla.</p>
 <p>Dentro del modelo relacional, el hecho de relacionar los datos de una tabla con otra es crucial, y se realiza mediante las claves ajenas. Así pues, la clave ajena de una tabla referencia, normalmente, al valor de la clave primaria de otra tabla. Por ello, los dominios de la clave ajena y de la clave primaria referenciada deben ser iguales (un campo numérico no puede referenciar a un campo de texto).</p>
-<p>Comencemos con el mismo ejemplo que vimos con las <a href="02er.html#relación-1n">relaciones 1:N</a> del modelo conceptual, donde teníamos que todo producto tiene una categoría, pero de una categoría, tenemos muchos productos, el cual representamos así:</p>
+<p>Comencemos con el mismo ejemplo que vimos con las <a href="02er.html#relacion-1n">relaciones 1:N</a> del modelo conceptual, donde teníamos que todo producto tiene una categoría, pero de una categoría, tenemos muchos productos, el cual representamos así:</p>
 <figure style="align: center;">
     <img src="images/02relaciones1n.png" width="505" title="Relación 1:N">
     <figcaption>Relación 1:N</figcaption>
@@ -1497,7 +1497,7 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 <tr>
 <th><ins>codigo</ins></th>
 <th>nombre</th>
-<th>codCategoria*</th>
+<th>codCategoria<code>*</code></th>
 </tr>
 </thead>
 <tbody>
@@ -1589,7 +1589,7 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 <table>
 <thead>
 <tr>
-<th><ins>nifEstudiante</ins>*</th>
+<th><ins>nifEstudiante</ins><code>*</code></th>
 <th><ins>asignatura</ins></th>
 <th><ins>anyo</ins></th>
 <th>repetidor</th>
@@ -1673,7 +1673,7 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 <table>
 <thead>
 <tr>
-<th><ins>nifEstudiante</ins>*</th>
+<th><ins>nifEstudiante</ins><code>*</code></th>
 <th><ins>asignatura</ins></th>
 <th><ins>anyo</ins></th>
 <th>repetidor</th>
@@ -1760,7 +1760,7 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 <p>En cuanto a los campos booleano (V/F), define un tercer valor en la lógica, ya que además del valor verdadero o falso, existe el valor para los nulos.</p>
 <h3 id="integridad-de-entidad">Integridad de entidad<a class="headerlink" href="#integridad-de-entidad" title="Permanent link">&para;</a></h3>
 <p>La integridad de entidad define que todas las claves primarias deben tener valor, y, por lo tanto, no admiten valores nulos.</p>
-<p>Si volvemos a la <code>ESTUDIANTE</code>, no podemos tener ningún estudiante con el nif vacío.</p>
+<p>Si volvemos a la tabla <code>ESTUDIANTE</code>, no podemos tener ningún estudiante con el NIF vacío.</p>
 <p>Al definir un campo como <code>PK</code> ya estamos declarando que dicho campo no admite valores nulos (ni repetidos por el propio concepto de clave primaria).</p>
 <h3 id="integridad-referencial">Integridad referencial<a class="headerlink" href="#integridad-referencial" title="Permanent link">&para;</a></h3>
 <p>Si una relación R1 posee una clave ajena que la enlaza con la relación R2, entonces diremos que cumple la restricción de <strong>integridad referencial</strong> si todo valor de dicha clave ajena de R1 cumple una de las dos condiciones:</p>
@@ -1814,7 +1814,7 @@ clave primaria de la tabla que relaciona.</p>
 <table>
 <thead>
 <tr>
-<th><ins>nifEstudiante</ins>*</th>
+<th><ins>nifEstudiante</ins><code>*</code></th>
 <th><ins>asignatura</ins></th>
 <th><ins>anyo</ins></th>
 <th>repetidor</th>
@@ -1969,10 +1969,10 @@ clave primaria de la tabla que relaciona.</p>
 <p>Así pues, comprobamos que tenemos un autor (el <code>3</code> con dos libros), e incluso un libro sin autor, confirmando la relación 1:N conforme queríamos diseñar.</p>
 <div class="admonition question">
 <p class="admonition-title">Cardinalidad de las relaciones</p>
-<p>Con lo que sabemos hasta ahora, piensa cómo</p>
+<p>Con lo que sabemos hasta ahora, piensa:</p>
 <ul>
-<li>¿Evitamos que la cardinalidad mínima sea 0 entre LIBRO y AUTOR, es decir, que <code>Card(LIBRO, ESCRIBIR) = (1,1)</code>, de manera que cada libro lo escriba siempre un autor, no permitiendo valores nulos en la clave ajena?</li>
-<li>¿Cambiamos la relación de 1:N a una relación 1:1, para que cada autor solo pudiera escribir un libro?</li>
+<li>¿Cómo evitamos que la cardinalidad mínima sea 0 entre LIBRO y AUTOR, es decir, que <code>Card(LIBRO, ESCRIBIR) = (1,1)</code>, de manera que cada libro lo escriba siempre un autor, no permitiendo valores nulos en la clave ajena?</li>
+<li>¿Cómo cambiamos la relación de 1:N a una relación 1:1, para que cada autor solo pudiera escribir un libro?</li>
 </ul>
 </div>
 <h3 id="representacion-grafica">Representación gráfica<a class="headerlink" href="#representacion-grafica" title="Permanent link">&para;</a></h3>
