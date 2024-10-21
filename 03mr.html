@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -1362,15 +1362,15 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 <p>Como cada atributo sólo puede tomar un valor para una misma tupla (los valores de los campos son atómicos), no podríamos poner dos DNIs o dos fechas a un mismo cliente.</p>
 <p>A muy alto nivel, los tipos de datos básicos para los dominios son:</p>
 <ul>
-<li>texto: cadena de caracteres, letras, símbolos o números con lo que se realizan operaciones (por ejemplo, un código postal)</li>
-<li>numérico: números sobre los cuales se pueden realizar operaciones matemáticas.</li>
-<li>fecha/hora: fechas, horas, o ambas</li>
-<li>booleano (V/F - Sí/No): datos con dos posibles valores</li>
-<li>autonumérico: secuencia (1,2,3,...) que el <abbr title="Sistema gestor de bases de datos">SGBD</abbr> incrementa de forma automática cuando se añade un nuevo registro</li>
+<li>Texto: cadena de caracteres, letras, símbolos o números con lo que se realizan operaciones (por ejemplo, un código postal).</li>
+<li>Numérico: números sobre los cuales se pueden realizar operaciones matemáticas.</li>
+<li>Fecha/hora: fechas, horas, o ambas.</li>
+<li>Booleano (V/F - Sí/No): datos con dos posibles valores.</li>
+<li>Autonumérico: secuencia (1,2,3,...) que el <abbr title="Sistema gestor de bases de datos">SGBD</abbr> incrementa de forma automática cuando se añade un nuevo registro.</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Tipos de dominio</p>
-<p>Cuando estudiamos el modelo físico haremos más hincapié en todos los tipos de dominio existente. De momento, lo más importante es tener claro que todos los valores de un determinado campo en una tabla comparten el mismo dominio.</p>
+<p>Cuando estudiemos el modelo físico haremos más hincapié en todos los tipos de dominio existente. De momento, lo más importante es tener claro que todos los valores de un determinado campo en una tabla comparten el mismo dominio.</p>
 </div>
 <h3 id="claves">Claves<a class="headerlink" href="#claves" title="Permanent link">&para;</a></h3>
 <p>Cada tabla tiene una columna (o en algunos casos un conjunto de columnas) que sirven como <strong>clave primaria</strong> (<strong>PK</strong> / <em>primary key</em>). Su propósito es distinguir a una tupla de otra dentro de la tabla. </p>
@@ -2859,8 +2859,7 @@ relación.</li>
 <li>Si quisiéramos obtener cuales son las provincias de los clientes donde se realizan más pedidos ¿qué deberíamos añadir?</li>
 <li>¿Podemos tener dos proveedores con el mismo nombre?</li>
 <li>¿Todo <code>PRODUCTO</code> obligatoriamente pertenecerá a una <code>CATEGORIA</code>?</li>
-<li>¿Podemos tener dos categorías con el mismo nombre?</li>
-<li>Cuando en un pedido compramos dos unidades de un producto ¿Cuantas <code>LINEA_PEDIDO</code> necesitamos? ¿Y si son del mismo producto?</li>
+<li>Cuando en un pedido compramos dos producto diferentes ¿Cuantas <code>LINEA_PEDIDO</code> necesitamos? ¿Y si son del mismo producto?</li>
 </ol>
 </li>
 </ul>
@@ -3336,10 +3335,10 @@ TODO: UT03
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>
