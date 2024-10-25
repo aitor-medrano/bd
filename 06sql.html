@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.35f28582.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -505,6 +505,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#algebra-relacional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algebra Relacional
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Algebra Relacional">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operaciones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#consultas-sql" class="md-nav__link">
     <span class="md-ellipsis">
       Consultas SQL
@@ -539,13 +563,14 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#filtrando-datos" class="md-nav__link">
+  <a href="#seleccion" class="md-nav__link">
     <span class="md-ellipsis">
-      Filtrando datos
+      Selección
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Selección">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#rangos" class="md-nav__link">
@@ -592,19 +617,15 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ordenando" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ordenando
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#limitando" class="md-nav__link">
+  <a href="#ordenando-y-limitando" class="md-nav__link">
     <span class="md-ellipsis">
-      Limitando
+      Ordenando y Limitando
     </span>
   </a>
   
@@ -633,6 +654,15 @@
   
     <nav class="md-nav" aria-label="Funciones">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funciones-agregadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funciones agregadas
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#cadenas" class="md-nav__link">
@@ -745,15 +775,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#funciones-agregadas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Funciones agregadas
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       Referencias
@@ -847,25 +868,25 @@
 <tbody>
 <tr>
 <td>1</td>
-<td>SQL</td>
+<td>Algebra relacional</td>
 <td><a href="#AC601">AC601</a></td>
 <td></td>
 </tr>
 <tr>
 <td>2</td>
-<td>Select</td>
+<td>SQL</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>3</td>
-<td>Filtrando</td>
+<td>Select</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>4</td>
-<td>Ordenando</td>
+<td>Filtrando y Ordenando</td>
 <td></td>
 <td></td>
 </tr>
@@ -932,6 +953,591 @@ Cláusula ORDER BY.
 Cláusula LIMIT.
 -->
 
+<h2 id="algebra-relacional">Algebra Relacional<a class="headerlink" href="#algebra-relacional" title="Permanent link">&para;</a></h2>
+<p>El álgebra relacional es un lenguaje formal utilizado para realizar consultas y operaciones sobre bases de datos relacionales. Fue propuesto por Edgar F. Codd en 1970 como parte de su trabajo en la teoría de bases de datos relacionales. En lugar de ser un lenguaje de programación como SQL, es un conjunto de operaciones matemáticas que permiten manipular conjuntos de datos (relaciones o tablas) de una manera lógica y estructurada.</p>
+<h3 id="operaciones">Operaciones<a class="headerlink" href="#operaciones" title="Permanent link">&para;</a></h3>
+<p>Las operaciones que podemos realizar son:</p>
+<table>
+<thead>
+<tr>
+<th>Operación</th>
+<th>Notación</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Selección</strong></td>
+<td><strong>σ</strong><sub>condición</sub>(Relación)</td>
+<td>Selecciona las tuplas que cumplen una condición específica.</td>
+</tr>
+<tr>
+<td><strong>Proyección</strong></td>
+<td><strong>π</strong><sub>atributos</sub>(Relación)</td>
+<td>Devuelve una nueva relación con solo las columnas seleccionadas.</td>
+</tr>
+<tr>
+<td><strong>Unión</strong></td>
+<td>Relación1 <strong>∪</strong> Relación2</td>
+<td>Combina las tuplas de dos relaciones con el mismo esquema.</td>
+</tr>
+<tr>
+<td><strong>Intersección</strong></td>
+<td>Relación1 <strong>∩</strong> Relación2</td>
+<td>Devuelve las tuplas que están en ambas relaciones.</td>
+</tr>
+<tr>
+<td><strong>Diferencia</strong></td>
+<td>Relación1 <strong>−</strong> Relación2</td>
+<td>Devuelve las tuplas que están en la primera relación pero no en la segunda.</td>
+</tr>
+<tr>
+<td><strong>Producto cartesiano</strong></td>
+<td>Relación1 <strong>×</strong> Relación2</td>
+<td>Combina cada tupla de la primera relación con cada tupla de la segunda.</td>
+</tr>
+<tr>
+<td><strong>Renombrar</strong></td>
+<td><strong>ρ</strong><sub>nuevoNombre</sub>(Relación)</td>
+<td>Cambia el nombre de una relación o de sus atributos.</td>
+</tr>
+<tr>
+<td><strong>Join natural</strong></td>
+<td>Relación1 <strong>⨝</strong> Relación2</td>
+<td>Une dos relaciones en función de un atributo común de forma implícita.</td>
+</tr>
+<tr>
+<td><strong>Join equi</strong></td>
+<td>Relación1 <strong>⨝</strong><sub>condición</sub> Relación2</td>
+<td>Une dos relaciones en función de una condición, normalmente una igualdad.</td>
+</tr>
+</tbody>
+</table>
+<p>Supongamos que tenemos el siguiente esquema relacional:</p>
+<p>Y las siguientes tablas con datos:</p>
+<div class="grid cards">
+<ul>
+<li>
+<p><code>PRODUCTO</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>id</ins></th>
+<th>nombre</th>
+<th>precio</th>
+<th>categoria_id<code>*</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Televisor</td>
+<td>500</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Laptop</td>
+<td>1200</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Smartphone</td>
+<td>800</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lavadora</td>
+<td>400</td>
+<td>3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tostadora</td>
+<td>50</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>CATEGORIA</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>id</ins></th>
+<th>nombre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Electrónica</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Informática</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Electrodomésticos</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<div class="grid cards">
+<ul>
+<li>
+<p><code>PRODUCTO_IMPORTACION</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>id</ins></th>
+<th>nombre</th>
+<th>precio</th>
+<th>categoria_id<code>*</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>Monitor</td>
+<td>300</td>
+<td>1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Teclado</td>
+<td>20</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>PRODUCTO_LUJO</code> (productos con precio mayor a 500)</p>
+<table>
+<thead>
+<tr>
+<th><ins>id</ins></th>
+<th>nombre</th>
+<th>precio</th>
+<th>categoria_id<code>*</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Laptop</td>
+<td>1200</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Smartphone</td>
+<td>800</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<p>Veamos el resultado de realizar algunas operaciones:</p>
+<div class="grid cards">
+<ul>
+<li>
+<p>Selección <strong>σ</strong></p>
+<hr />
+<p><code>σ&lt;sub&gt;precio &gt; 100&lt;/sub&gt;(PRODUCTO)</code></p>
+<p>Selecciona los productos con un precio mayor a 100.</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>nombre</th>
+<th>precio</th>
+<th>categoria_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Televisor</td>
+<td>500</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Laptop</td>
+<td>1200</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Smartphone</td>
+<td>800</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lavadora</td>
+<td>400</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Proyección <strong>π</strong></p>
+<hr />
+<p><code>π&lt;sub&gt;nombre, precio&lt;/sub&gt;(PRODUCTO)</code><br />
+<strong>Descripción</strong>: Muestra solo los nombres y precios de los productos.</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>nombre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Televisor</td>
+<td>500</td>
+</tr>
+<tr>
+<td>Laptop</td>
+<td>1200</td>
+</tr>
+<tr>
+<td>Smartphone</td>
+<td>800</td>
+</tr>
+<tr>
+<td>Lavadora</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Tostadora</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<div class="grid cards">
+<ul>
+<li>
+<p>Unión <strong>∪</strong></p>
+<hr />
+<p><code>PRODUCTO ∪ PRODUCTO_IMPORTACION</code>  </p>
+<p>Combina dos tablas de productos. Es necesario que ambas tablas compartan el mismo esquema (cantidad de columnas y dominios).</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>nombre</th>
+<th>precio</th>
+<th>categoria_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Televisor</td>
+<td>500</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Laptop</td>
+<td>1200</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Smartphone</td>
+<td>800</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lavadora</td>
+<td>400</td>
+<td>3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tostadora</td>
+<td>50</td>
+<td>3</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Monitor</td>
+<td>300</td>
+<td>1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Teclado</td>
+<td>20</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Intersección <strong>∩</strong></p>
+<hr />
+<p><code>PRODUCTO ∩ PRODUCTO_LUJO</code>  </p>
+<p>Muestra los productos que están tanto en <strong>PRODUCTO</strong> como en <strong>PRODUCTO_LUJO</strong> </p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>nombre</th>
+<th>precio</th>
+<th>categoria_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Laptop</td>
+<td>1200</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Smartphone</td>
+<td>800</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<div class="grid cards">
+<ul>
+<li>
+<p>Diferencia <strong>−</strong></p>
+<hr />
+<p><code>PRODUCTO ∪ PRODUCTO_LUJO</code></p>
+<p>Devuelve los productos que están en <strong>PRODUCTO</strong> pero no en <strong>PRODUCTO_LUJO</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>nombre</th>
+<th>precio</th>
+<th>categoria_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Televisor</td>
+<td>500</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lavadora</td>
+<td>400</td>
+<td>3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tostadora</td>
+<td>50</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Producto cartesiano <strong>×</strong></p>
+<hr />
+<p><code>PRODUCTO × CATEGORIA</code>  </p>
+<p>Combina cada producto con cada categoría (mostramos solo algunas combinaciones por espacio):</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>nombre</th>
+<th>precio</th>
+<th>categoria_id</th>
+<th>nombre_categoria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Televisor</td>
+<td>500</td>
+<td>1</td>
+<td>Electrónica</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Televisor</td>
+<td>500</td>
+<td>2</td>
+<td>Informática</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Televisor</td>
+<td>500</td>
+<td>3</td>
+<td>Electrodomésticos</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Laptop</td>
+<td>1200</td>
+<td>1</td>
+<td>Electrónica</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Laptop</td>
+<td>1200</td>
+<td>2</td>
+<td>Informática</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<div class="grid cards">
+<ul>
+<li>
+<p><em>Join natural </em><em>⨝</em>*</p>
+<hr />
+<p><code>PRODUCTO ⨝ CATEGORIA</code>  </p>
+<p>Combina las tablas de <strong>PRODUCTO</strong> y <strong>CATEGORIA</strong> basándose en los atributos que tengan comunes, en este caso, <code>categoria_id</code>.</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>nombre</th>
+<th>precio</th>
+<th>categoria_id</th>
+<th>nombre_categoria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Televisor</td>
+<td>500</td>
+<td>1</td>
+<td>Electrónica</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Laptop</td>
+<td>1200</td>
+<td>2</td>
+<td>Informática</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Smartphone</td>
+<td>800</td>
+<td>2</td>
+<td>Informática</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lavadora</td>
+<td>400</td>
+<td>3</td>
+<td>Electrodomésticos</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tostadora</td>
+<td>50</td>
+<td>3</td>
+<td>Electrodomésticos</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Join equi <strong>⨝<sub>expresión</sub></strong></p>
+<hr />
+<p><code>PRODUCTO ⨝&lt;sub&gt;PRODUCTO.categoria_id = CATEGORIA.id&lt;/sub&gt; CATEGORIA</code>  </p>
+<p>Une las tablas <strong>PRODUCTO</strong> y <strong>CATEGORIA</strong> basándose en la condición de igualdad entre <code>PRODUCTO.categoria_id</code> y <code>CATEGORIA.id</code>. En este caso, es igual al <em>join natural</em>:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>nombre</th>
+<th>precio</th>
+<th>categoria_id</th>
+<th>nombre_categoria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Televisor</td>
+<td>500</td>
+<td>1</td>
+<td>Electrónica</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Laptop</td>
+<td>1200</td>
+<td>2</td>
+<td>Informática</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Smartphone</td>
+<td>800</td>
+<td>2</td>
+<td>Informática</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lavadora</td>
+<td>400</td>
+<td>3</td>
+<td>Electrodomésticos</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tostadora</td>
+<td>50</td>
+<td>3</td>
+<td>Electrodomésticos</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<p>Estas operaciones forman la base teórica de cómo las bases de datos relacionales manipulan los datos y son fundamentales para comprender el funcionamiento de lenguajes como SQL.</p>
 <h2 id="consultas-sql">Consultas SQL<a class="headerlink" href="#consultas-sql" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Preparando los datos</p>
@@ -1020,43 +1626,89 @@ Cláusula LIMIT.
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+</span>
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
 </code></pre></div>
-<h3 id="filtrando-datos">Filtrando datos<a class="headerlink" href="#filtrando-datos" title="Permanent link">&para;</a></h3>
-<p>Permite filtrar los datos
- Funciones y operadores:
-https://mariadb.com/kb/en/function-and-operator-reference/
- Comparaciones: expresion1 operador
-expresion2
- Operadores relacionales: &lt;, &lt;=, &gt;, &gt;=, =, !=</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">&#39;DIRGE&#39;</span><span class="p">;</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">where</span><span class="w"> </span><span class="n">SalEmp</span><span class="o">&lt;</span><span class="mi">2000000</span><span class="p">;</span>
+<h3 id="seleccion">Selección<a class="headerlink" href="#seleccion" title="Permanent link">&para;</a></h3>
+<p>Para filtrar los datos y realizar una selección de tuplas, podemos emplear tanto <a href="https://mariadb.com/kb/en/function-and-operator-reference/">funciones como operadores</a> dentro del <code>WHERE</code>. Para realizar las comparaciones, se expresan mediante <code>expresion1 operador expresion2</code>, pudiendo utilizar los  operadores relacionales <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>!=</code>, etc..</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">&#39;DIRGE&#39;</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Nomemp                      | FecNaEmp   |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +-----------------------------+------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | Saladino Mandamás, Augusto  | 1961-08-07 |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +-----------------------------+------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- 1 row in set (0.003 sec)</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">SalEmp</span><span class="o">&lt;</span><span class="mi">2000000</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="10 "></span><span class="c1">-- +-------------------------+------------+</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- | NomEmp                  | SalEmp     |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- +-------------------------+------------+</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | Forzado López, Galeote  | 1600000.00 |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- | Mascullas Alto, Eloísa  | 1600000.00 |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- | Mosc Amuerta, Mario     | 1300000.00 |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- +-------------------------+------------+</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
 </code></pre></div>
-<h3 id="rangos">Rangos<a class="headerlink" href="#rangos" title="Permanent link">&para;</a></h3>
+<p>Como puede observarse, no es necesario que el o los atributos que usemos en la selección luego aparezcan en la proyección, ni viceversa.</p>
+<h4 id="rangos">Rangos<a class="headerlink" href="#rangos" title="Permanent link">&para;</a></h4>
 <p>https://mariadb.com/kb/en/between-and/
  Comprueba si un dato está comprendido entre
 otros dos:
  expresión1 [NOT] BETWEEN expresión2
 AND expresión3</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="w"> </span><span class="k">from</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">FecInEmp</span><span class="w"> </span><span class="k">between</span>
-<span class="linenos" data-linenos="3 "></span><span class="s1">&#39;1970/01/01&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="s1">&#39;1980/01/01&#39;</span><span class="p">;</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">Salemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-<span class="linenos" data-linenos="5 "></span><span class="k">where</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="mi">2000000</span><span class="w"> </span><span class="k">and</span>
-<span class="linenos" data-linenos="6 "></span><span class="mi">6000000</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+</span><span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">where</span><span class="w"> </span><span class="n">FecInEmp</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="s1">&#39;1970/01/01&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="s1">&#39;1980/01/01&#39;</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +-----------------------------+------------+</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | NomEmp                      | FecNaEmp   |</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +-----------------------------+------------+</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | Saladino Mandamás, Augusto  | 1961-08-07 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | Alada Veraz, Juana          | 1958-03-08 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- +-----------------------------+------------+</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- 2 rows in set (0.000 sec)</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+</span><span class="hll"><span class="linenos" data-linenos="12 "></span><span class="k">where</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="mi">2000000</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="mi">6000000</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="13 "></span><span class="c1">-- +-----------------------------+------------+</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- | NomEmp                      | Salemp     |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- +-----------------------------+------------+</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- | Saladino Mandamás, Augusto  | 7200000.00 |</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- | Alada Veraz, Juana          | 6200000.00 |</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- | Forzado López, Galeote      | 1600000.00 |</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">-- | Mascullas Alto, Eloísa      | 1600000.00 |</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">-- | Mosc Amuerta, Mario         | 1300000.00 |</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">-- +-----------------------------+------------+</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">-- 5 rows in set (0.000 sec)</span>
 </code></pre></div>
-<h3 id="conjuntos">Conjuntos<a class="headerlink" href="#conjuntos" title="Permanent link">&para;</a></h3>
+<h4 id="conjuntos">Conjuntos<a class="headerlink" href="#conjuntos" title="Permanent link">&para;</a></h4>
 <p>https://mariadb.com/kb/en/in/
  Comprueba si el resultado de exp1 coincide con
 uno de la lista de valores expresados tras IN.
  exp1 [NOT] IN (const1 [,const2] …)
  Los valores a comparar han de ser del mismo tipo</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">Salemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">where</span><span class="w"> </span><span class="n">Codemp</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">);</span>
-<span class="linenos" data-linenos="3 "></span><span class="err"></span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span>
-<span class="linenos" data-linenos="4 "></span><span class="n">CodDep</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;PROZS&#39;</span><span class="p">,</span><span class="s1">&#39;VENZS&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">Salemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="k">where</span><span class="w"> </span><span class="n">Codemp</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +-----------------------------+------------+</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | NomEmp                      | Salemp     |</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +-----------------------------+------------+</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | Saladino Mandamás, Augusto  | 7200000.00 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | Monforte Cid, Roldán        | 5200000.00 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | Alada Veraz, Juana          | 6200000.00 |</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | Forzado López, Galeote      | 1600000.00 |</span>
+</span><span class="linenos" data-linenos="10 "></span><span class="c1">-- +-----------------------------+------------+</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- 4 rows in set (0.000 sec)</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span>
+<span class="linenos" data-linenos="14 "></span><span class="n">CodDep</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;PROZS&#39;</span><span class="p">,</span><span class="s1">&#39;VENZS&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- +-------------------------+</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- | NomEmp                  |</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- +-------------------------+</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- | Forzado López, Galeote  |</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">-- | Mascullas Alto, Eloísa  |</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">-- | Mando Correa, Rosa      |</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">-- | Mosc Amuerta, Mario     |</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">-- | Monforte Cid, Roldán    |</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">-- | Topaz Illán, Carlos     |</span>
+<span class="linenos" data-linenos="24 "></span><span class="c1">-- +-------------------------+</span>
+<span class="linenos" data-linenos="25 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
 </code></pre></div>
-<h3 id="patron-texto">Patrón texto<a class="headerlink" href="#patron-texto" title="Permanent link">&para;</a></h3>
+<h4 id="patron-texto">Patrón texto<a class="headerlink" href="#patron-texto" title="Permanent link">&para;</a></h4>
 <p>https://mariadb.com/kb/en/like/
  Comprueba si campos de columna se
 corresponden con patrón.
@@ -1067,7 +1719,7 @@ corresponden con patrón.
 <span class="linenos" data-linenos="3 "></span><span class="err"></span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
 <span class="linenos" data-linenos="4 "></span><span class="k">where</span><span class="w"> </span><span class="n">Nomemp</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;_a%&#39;</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="valor-nulo">Valor nulo<a class="headerlink" href="#valor-nulo" title="Permanent link">&para;</a></h3>
+<h4 id="valor-nulo">Valor nulo<a class="headerlink" href="#valor-nulo" title="Permanent link">&para;</a></h4>
 <p>https://mariadb.com/kb/en/is-null/
  Comprueba si el valor contenido en un campo es
 o no nulo (NULL).
@@ -1075,7 +1727,7 @@ o no nulo (NULL).
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="operadores-logicos">Operadores lógicos<a class="headerlink" href="#operadores-logicos" title="Permanent link">&para;</a></h3>
+<h4 id="operadores-logicos">Operadores lógicos<a class="headerlink" href="#operadores-logicos" title="Permanent link">&para;</a></h4>
 <p>Composición de condiciones
  AND (conjunción), OR (disyunción), NOT
 (negación).</p>
@@ -1087,7 +1739,7 @@ o no nulo (NULL).
 <span class="linenos" data-linenos="6 "></span><span class="p">(</span><span class="s1">&#39;ADMZS&#39;</span><span class="p">,</span><span class="s1">&#39;PROZS&#39;</span><span class="p">,</span><span class="s1">&#39;VENZS&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AND</span>
 <span class="linenos" data-linenos="7 "></span><span class="n">SalEmp</span><span class="o">&gt;</span><span class="mi">5000000</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="ordenando">Ordenando<a class="headerlink" href="#ordenando" title="Permanent link">&para;</a></h3>
+<h3 id="ordenando-y-limitando">Ordenando y Limitando<a class="headerlink" href="#ordenando-y-limitando" title="Permanent link">&para;</a></h3>
 <p>Permite ordenar el resultado de una consulta
  ORDER BY {campo | pos} [ASC|DESC]</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
@@ -1097,10 +1749,8 @@ o no nulo (NULL).
 <span class="linenos" data-linenos="5 "></span><span class="err"></span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
 <span class="linenos" data-linenos="6 "></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="limitando">Limitando<a class="headerlink" href="#limitando" title="Permanent link">&para;</a></h3>
-<p>Restringe el número de resultados de la
-consulta
- LIMIT cantidad
+<p>Si queremos restringir y limitar el número de resultados de la consulta</p>
+<p> LIMIT cantidad
  LIMIT inicio, cantidad</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">;</span>
@@ -1118,6 +1768,29 @@ asignaciones:</p>
 <span class="linenos" data-linenos="3 "></span><span class="k">as</span><span class="w"> </span><span class="n">bonus</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
 </code></pre></div>
 <h2 id="funciones">Funciones<a class="headerlink" href="#funciones" title="Permanent link">&para;</a></h2>
+<h3 id="funciones-agregadas">Funciones agregadas<a class="headerlink" href="#funciones-agregadas" title="Permanent link">&para;</a></h3>
+<p>Se emplean para realizar cálculos sobre el total de elementos de la consulta (o agrupación)</p>
+<ul>
+<li><code>count(*)</code>: cuenta las filas</li>
+<li><code>sum(col)</code>: Suma de todos los valores de una columna</li>
+<li><code>min(col)</code> / <code>max(col)</code>: Mínimo o máximo de una columna</li>
+<li><code>avg(col)</code>: Valor medio de una columna</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Cantidad de empleados</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- Cantidad de empleados con hijos</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">NumHi</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- Cantidad de empleados que tienen habilidades</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">codemp</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">codemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">codemp</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- Total de hijos de los empleados</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">select</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- Salario más alto</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- Salario medio</span>
+<span class="linenos" data-linenos="13 "></span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+</code></pre></div>
+<p>En la próxima unidad estudiaremos como podemos agregar datos por algún columnas y realizar cálculos sobre ella, lo que nos permitirá obtener información del tipo <em>"Cantidad de empleados de cada departamento"</em>, <em>"Salario medio por centro de los empleados"</em>, etc...</p>
 <h3 id="cadenas">Cadenas<a class="headerlink" href="#cadenas" title="Permanent link">&para;</a></h3>
 <p>https://mariadb.com/kb/en/built-in-functions/
  Cadenas: https://mariadb.com/kb/en/string-functions/
@@ -1332,29 +2005,6 @@ ser el mismo</p>
 <span class="linenos" data-linenos="13 "></span><span class="k">except</span>
 <span class="linenos" data-linenos="14 "></span><span class="k">select</span><span class="w"> </span><span class="n">codemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">numhi</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span>
 </code></pre></div>
-<h2 id="funciones-agregadas">Funciones agregadas<a class="headerlink" href="#funciones-agregadas" title="Permanent link">&para;</a></h2>
-<p>Se emplean para realizar cálculos sobre el total de elementos de la consulta (o agrupación)</p>
-<ul>
-<li><code>count(*)</code>: cuenta las filas</li>
-<li><code>sum(col)</code>: Suma de todos los valores de una columna</li>
-<li><code>min(col)</code> / <code>max(col)</code>: Mínimo o máximo de una columna</li>
-<li><code>avg(col)</code>: Valor medio de una columna</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Cantidad de empleados</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- Cantidad de empleados con hijos</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">NumHi</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- Cantidad de empleados que tienen habilidades</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">codemp</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">codemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">codemp</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- Total de hijos de los empleados</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="k">select</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">-- Salario más alto</span>
-<span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1">-- Salario medio</span>
-<span class="linenos" data-linenos="13 "></span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-</code></pre></div>
-<p>En la próxima unidad estudiaremos como podemos agregar datos por algún columnas y realizar cálculos sobre ella, lo que nos permitirá obtener información del tipo <em>"Cantidad de empleados de cada departamento"</em>, <em>"Salario medio por centro de los empleados"</em>, etc...</p>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <!--
 https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
@@ -1582,10 +2232,10 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
   </body>
