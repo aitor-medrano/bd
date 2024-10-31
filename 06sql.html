@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.35f28582.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -1710,44 +1710,35 @@ uno de la lista de valores expresados tras IN.
 </code></pre></div>
 <h4 id="patron-texto">Patrón texto<a class="headerlink" href="#patron-texto" title="Permanent link">&para;</a></h4>
 <p>https://mariadb.com/kb/en/like/
- Comprueba si campos de columna se
-corresponden con patrón.
+ Comprueba si campos de columna se corresponden con patrón.
  columna [NOT] LIKE patrón
  Comodines: _ un carácter, % cero o más caracteres</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomcen</span><span class="p">,</span><span class="w"> </span><span class="n">Pobcen</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">where</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">Nomcen</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%Sur&#39;</span><span class="p">;</span>
-<span class="linenos" data-linenos="3 "></span><span class="err"></span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">where</span><span class="w"> </span><span class="n">Nomemp</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;_a%&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomcen</span><span class="p">,</span><span class="w"> </span><span class="n">Pobcen</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Nomcen</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%Sur&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span>
+<span class="linenos" data-linenos="3 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Nomemp</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;_a%&#39;</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="valor-nulo">Valor nulo<a class="headerlink" href="#valor-nulo" title="Permanent link">&para;</a></h4>
 <p>https://mariadb.com/kb/en/is-null/
- Comprueba si el valor contenido en un campo es
-o no nulo (NULL).
+ Comprueba si el valor contenido en un campo es o no nulo (NULL).
  columna IS [NOT] NULL</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="operadores-logicos">Operadores lógicos<a class="headerlink" href="#operadores-logicos" title="Permanent link">&para;</a></h4>
 <p>Composición de condiciones
- AND (conjunción), OR (disyunción), NOT
-(negación).</p>
+ AND (conjunción), OR (disyunción), NOT (negación).</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">where</span><span class="w"> </span><span class="n">Coddep</span><span class="o">=</span><span class="s1">&#39;ADMZS&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">IS</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">NULL</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">Coddep</span><span class="o">=</span><span class="s1">&#39;ADMZS&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span>
 <span class="linenos" data-linenos="4 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">Salemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-<span class="linenos" data-linenos="5 "></span><span class="k">where</span><span class="w"> </span><span class="n">Coddep</span><span class="w"> </span><span class="k">in</span>
-<span class="linenos" data-linenos="6 "></span><span class="p">(</span><span class="s1">&#39;ADMZS&#39;</span><span class="p">,</span><span class="s1">&#39;PROZS&#39;</span><span class="p">,</span><span class="s1">&#39;VENZS&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AND</span>
-<span class="linenos" data-linenos="7 "></span><span class="n">SalEmp</span><span class="o">&gt;</span><span class="mi">5000000</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">Coddep</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;ADMZS&#39;</span><span class="p">,</span><span class="s1">&#39;PROZS&#39;</span><span class="p">,</span><span class="s1">&#39;VENZS&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">SalEmp</span><span class="o">&gt;</span><span class="mi">5000000</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="ordenando-y-limitando">Ordenando y Limitando<a class="headerlink" href="#ordenando-y-limitando" title="Permanent link">&para;</a></h3>
 <p>Permite ordenar el resultado de una consulta
  ORDER BY {campo | pos} [ASC|DESC]</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">;</span>
-<span class="linenos" data-linenos="3 "></span><span class="err"></span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">Coddep</span><span class="p">,</span><span class="w"> </span><span class="n">Nomemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">Coddep</span><span class="p">,</span><span class="w"> </span><span class="n">Nomemp</span><span class="w"> </span><span class="k">desc</span><span class="p">;</span>
-<span class="linenos" data-linenos="5 "></span><span class="err"></span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-<span class="linenos" data-linenos="6 "></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="n">Coddep</span><span class="p">,</span><span class="w"> </span><span class="n">Nomemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">Coddep</span><span class="p">,</span><span class="w"> </span><span class="n">Nomemp</span><span class="w"> </span><span class="k">desc</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </code></pre></div>
 <p>Si queremos restringir y limitar el número de resultados de la consulta</p>
 <p> LIMIT cantidad
@@ -1768,8 +1759,9 @@ asignaciones:</p>
 <span class="linenos" data-linenos="3 "></span><span class="k">as</span><span class="w"> </span><span class="n">bonus</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
 </code></pre></div>
 <h2 id="funciones">Funciones<a class="headerlink" href="#funciones" title="Permanent link">&para;</a></h2>
+<p>A la hora de recuperar o filtrar datos, es muy común utilizar <a href="https://mariadb.com/kb/en/built-in-functions/">funciones</a> que facilitan el trabajo con cadenas, cálculos numéricos, etc..</p>
 <h3 id="funciones-agregadas">Funciones agregadas<a class="headerlink" href="#funciones-agregadas" title="Permanent link">&para;</a></h3>
-<p>Se emplean para realizar cálculos sobre el total de elementos de la consulta (o agrupación)</p>
+<p>Se emplean para realizar cálculos sobre el total de elementos de la consulta (o agrupación). Tras el <code>select</code> indicaremos la función (o funciones) a realizar sobre el total de elementos devueltos por la consulta:</p>
 <ul>
 <li><code>count(*)</code>: cuenta las filas</li>
 <li><code>sum(col)</code>: Suma de todos los valores de una columna</li>
@@ -1789,87 +1781,85 @@ asignaciones:</p>
 <span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- Salario medio</span>
 <span class="linenos" data-linenos="13 "></span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- Salario máximo y medio de empleados que tienen al menos un hijo</span>
+<span class="linenos" data-linenos="15 "></span><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">),</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">NumHi</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </code></pre></div>
 <p>En la próxima unidad estudiaremos como podemos agregar datos por algún columnas y realizar cálculos sobre ella, lo que nos permitirá obtener información del tipo <em>"Cantidad de empleados de cada departamento"</em>, <em>"Salario medio por centro de los empleados"</em>, etc...</p>
 <h3 id="cadenas">Cadenas<a class="headerlink" href="#cadenas" title="Permanent link">&para;</a></h3>
-<p>https://mariadb.com/kb/en/built-in-functions/
- Cadenas: https://mariadb.com/kb/en/string-functions/
- CHAR_LENGTH(cadena) → tamaño
- CONCAT(cadena1,cadena2,…)
- LOWER(cadena) / UPPER → minus / MAYUS
- REPLACE(cadena, cadenaOrigen, cadenaDestino)
- REVERSE(cadena)
- LEFT(cadena, longitud) / RIGHT
- TRIM(cadena) / LTRIM / RTRIM
- select CONCAT(nomemp,' -- ',coddep) as
-concatenacion from empleado;
- select UPPER(nomemp) from empleado;</p>
+<p>Con <a href="https://mariadb.com/kb/en/string-functions/">funciones de cadenas de texto</a> podemos realizar múltiples operaciones:</p>
+<ul>
+<li><code>CHAR_LENGTH(cadena)</code> → tamaño</li>
+<li><code>CONCAT(cadena1,cadena2,…)</code></li>
+<li><code>LOWER(cadena) / UPPER</code> → minus / MAYUS</li>
+<li><code>REPLACE(cadena, cadenaOrigen, cadenaDestino)</code></li>
+<li><code>REVERSE(cadena)</code></li>
+<li><code>LEFT(cadena, longitud)</code> / <code>RIGHT</code></li>
+<li><code>TRIM(cadena)</code> / <code>LTRIM</code> / <code>RTRIM</code></li>
+</ul>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">nomemp</span><span class="p">,</span><span class="s1">&#39; -- &#39;</span><span class="p">,</span><span class="n">coddep</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">concatenacion</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="k">UPPER</span><span class="p">(</span><span class="n">nomemp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+</code></pre></div>
 <h3 id="fecha-hora">Fecha / Hora<a class="headerlink" href="#fecha-hora" title="Permanent link">&para;</a></h3>
-<p>https://mariadb.com/kb/en/date-time-functions/
- NOW(): fecha y hora actual del sistema.
- CURDATE(): fecha actual en formato ‘yyyy-mm-dd' o
-yyyymmdd.
- DATEDIFF(fec1,fec2): diferencia de días
- YEAR(fecha): año en formato aaaa
- MONTH(fecha): mes en formato mm
- DATE_ADD(fecha, INTERVAL expresion Tipo) / DATE_SUB
- Tipos → SECOND, MINUTE, HOUR, DAY, WEEK, …
- select DATEDIFF(NOW(),'2020-03-13');
- select NOW(), DATE_ADD(NOW(), INTERVAL +3
-MONTH)</p>
+<p>Si trabajamos con campos de tipo fecha, podemos emplear las siguientes <a href="https://mariadb.com/kb/en/date-time-functions/">funciones</a>:</p>
+<ul>
+<li><code>NOW()</code>: fecha y hora actual del sistema.</li>
+<li><code>CURDATE()</code>: fecha actual en formato ‘yyyy-mm-dd' o yyyymmdd.</li>
+<li><code>DATEDIFF(fec1,fec2)</code>: diferencia de días</li>
+<li><code>YEAR(fecha)</code>: año en formato aaaa</li>
+<li><code>MONTH(fecha)</code>: mes en formato mm</li>
+<li><code>DATE_ADD(fecha, INTERVAL expresion Tipo)</code> / <code>DATE_SUB</code></li>
+<li>Tipos → <code>SECOND</code>, <code>MINUTE</code>, <code>HOUR</code>, <code>DAY</code>, <code>WEEK</code>, …</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">DATEDIFF</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span><span class="s1">&#39;2020-03-13&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="n">DATE_ADD</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="o">+</span><span class="mi">3</span><span class="w"> </span><span class="k">MONTH</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="otras">Otras<a class="headerlink" href="#otras" title="Permanent link">&para;</a></h3>
 <p>Matemáticas:
-https://mariadb.com/kb/en/numeric-functions/
- SQRT(x), POW(x,y)
+https://mariadb.com/kb/en/numeric-functions/</p>
+<p> SQRT(x), POW(x,y)
  RAND() → numero aleatorio
  ROUND(x) / FLOOR(x) / CEILING(x)
- TRUNCATE(x,d) → trunca x con d decimales
- Encriptación / Compresión:
-https://mariadb.com/kb/en/encryption-hashing-and-co
-mpression-functions/
- Geográficas:
+ TRUNCATE(x,d) → trunca x con d decimales</p>
+<p> Encriptación / Compresión:
+https://mariadb.com/kb/en/encryption-hashing-and-compression-functions/</p>
+<p> Geográficas:
 https://mariadb.com/kb/en/geographic-functions/</p>
 <h2 id="uniendo-tablas">Uniendo Tablas<a class="headerlink" href="#uniendo-tablas" title="Permanent link">&para;</a></h2>
-<p>Para unir varias tablas tenemos diferentes
-formas de hacerlo:
- https://mariadb.com/kb/en/join-syntax/
- cross join
+<p>Para unir varias tablas tenemos diferentes <a href="https://mariadb.com/kb/en/join-syntax/">formas</a> de hacerlo:</p>
+<p> cross join
  inner join
  natural join
  outer join</p>
 <p>GRAFICO CON TODAS LAS OPERACIONES</p>
 <h3 id="producto-cartesiano">Producto cartesiano<a class="headerlink" href="#producto-cartesiano" title="Permanent link">&para;</a></h3>
-<p>El producto cartesiano (cross join) de dos tablas
-son todas las combinaciones de las filas de una
-tabla unidas a las filas de la otra tabla.
- Cada fila de A con todas las de B.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err"></span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">nomdep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">,</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
+<p>El producto cartesiano (cross join) de dos tablas son todas las combinaciones de las filas de una tabla unidas a las filas de la otra tabla. Es decir, cada fila de A se cruza con todas las de B.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">nomdep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">,</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
 </code></pre></div>
 <p>Empleado: 10 registros X Departamento: 6 registros
 Resultado: 60 registros</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err"></span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="n">nomdep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">cross</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="n">nomdep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">cross</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="composicion-interna">Composición interna<a class="headerlink" href="#composicion-interna" title="Permanent link">&para;</a></h3>
 <p>La operación [INNER] JOIN combina registros de
 dos tablas siempre que existan valores coincidentes
 en un campo común (clave ajena con clave primaria).</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err"></span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="n">nomdep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">join</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">departamento</span><span class="w"> </span><span class="k">on</span>
-<span class="linenos" data-linenos="3 "></span><span class="n">empleado</span><span class="p">.</span><span class="n">coddep</span><span class="o">=</span><span class="n">departamento</span><span class="p">.</span><span class="n">coddep</span><span class="p">;</span>
-<span class="linenos" data-linenos="4 "></span><span class="err"></span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="n">nomdep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-<span class="linenos" data-linenos="5 "></span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">on</span>
-<span class="linenos" data-linenos="6 "></span><span class="n">empleado</span><span class="p">.</span><span class="n">coddep</span><span class="o">=</span><span class="n">departamento</span><span class="p">.</span><span class="n">coddep</span><span class="p">;</span>
-<span class="linenos" data-linenos="7 "></span><span class="err"></span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">registros</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">nomdep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">on</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">empleado</span><span class="p">.</span><span class="n">coddep</span><span class="o">=</span><span class="n">departamento</span><span class="p">.</span><span class="n">coddep</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="n">nomdep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">on</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="n">empleado</span><span class="p">.</span><span class="n">coddep</span><span class="o">=</span><span class="n">departamento</span><span class="p">.</span><span class="n">coddep</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- 10 registros</span>
 </code></pre></div>
 <p>Es conveniente poner un alias a las tablas.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err"></span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="n">nomdep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">on</span>
-<span class="linenos" data-linenos="3 "></span><span class="n">e</span><span class="p">.</span><span class="n">coddep</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">coddep</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="n">nomdep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">on</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">e</span><span class="p">.</span><span class="n">coddep</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">coddep</span><span class="p">;</span>
 </code></pre></div>
-<p> Este tipo de join es el que se realiza por defecto, con
-lo que se puede indicar dentro del WHERE</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err"></span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="n">nomdep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="p">,</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">coddep</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">coddep</span><span class="p">;</span>
+<p>En versiones antiguas de SQL, era más común realizar el <em>join</em> en el <code>WHERE</code>, uniendo la clave ajena con la clave primaria de la tabla a la que referencia. Aunque a ningún funcional el resultado es el mismo, es recomendable utilizar la sintaxis <code>JOIN ... ON</code> para que el optimizador de consultas del SGBD funcione mejor:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">--- SQL XX</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="n">nomdep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">coddep</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">coddep</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">--- SQL 99</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="n">nomdep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">coddep</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">coddep</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="natural-join">Natural join<a class="headerlink" href="#natural-join" title="Permanent link">&para;</a></h3>
 <p>Especialización de INNER JOIN.
@@ -2232,10 +2222,10 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
   </body>
