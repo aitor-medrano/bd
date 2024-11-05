@@ -1900,7 +1900,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p><code>
 <strong>B</strong> (<ins>a0</ins><code>*</code>, b0, b1)<br />
 · PK: (a0)<br />
-· FK: (a0) → A<br />
+· FK: (a0) → A
 </code></p>
 <p>Independientemente de si la generalización es disjunta o solapada, o total o parcial, el modelo relacional se realiza igual, perdiendo la semántica del modelo conceptual.</p>
 <figure style="float: right;">
@@ -1940,18 +1940,18 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p>Colapsar: Una única tabla, creando un atributo tipo para indicar si es <code>estudiante</code> o <code>trabajador</code>:</p>
 <p><code>
 <strong>PERSONA</strong> (<ins>dni</ins>, nombre, dirección, telefono, tipo, nivelEst, lugarEst, horasCur, numSegSocial, salario)<br />
-· PK: (dni)<br />
+· PK: (dni)
 </code></p>
 </li>
 <li>
 <p>Dividir: Una tabla por cada subclase:</p>
 <p><code>
 <strong>ESTUDIANTE</strong> (<ins>dni</ins>, nombre, dirección, telefono, nivelEst, lugarEst, horasCur)<br />
-· PK: (dni)<br />
+· PK: (dni)
 </code></p>
 <p><code>
 <strong>TRABAJADOR</strong> (<ins>dni</ins>, nombre, dirección, telefono, numSegSocial, salario)<br />
-· PK: (dni)<br />
+· PK: (dni)
 </code></p>
 </li>
 </ul>
@@ -1978,13 +1978,13 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <strong>SESION</strong> (<ins>dni</ins><code>*</code>, <ins>codigo</ins><code>*</code>, grupo)<br />
 · PK: (dni, codigo)<br />
 · FK: (dni) → DOCENTE <br />
-· FK: (codigo) → AULA <br />
+· FK: (codigo) → AULA
 </code></p>
 <p>Y al relacionar <code>INCIDENCIA</code> con <code>SESION</code>, como la clave primaria de <code>SESION</code> es compuesta, también lo será la clave ajena de la relación uno a muchos:</p>
 <p><code>
 <strong>INCIDENCIA</strong> (<ins>codigo</ins><code>*</code>, descripcion, dniSesion<code>*</code>, codigoSesion<code>*</code>)<br />
 · PK: (codigo)<br />
-· FK: (dniSesion, codigoSesion) → SESION <br />
+· FK: (dniSesion, codigoSesion) → SESION
 </code></p>
 <div class="admonition info">
 <p class="admonition-title">Relaciones N-arias</p>
@@ -2219,7 +2219,7 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <strong>B</strong> (b0, b1, b2, <ins>a0</ins><code>*</code>, c0<code>*</code>)<br />
 · PK: (a0)<br />
 · FK: (a0) → A<br />
-· FK: (c0) → C<br />
+· FK: (c0) → C
 </code></p>
 <p><code>
 <strong>C</strong> (<ins>c0</ins>, c1)<br />
@@ -2228,7 +2228,7 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <p><code>
 <strong>M</strong> (<ins>c0</ins><code>*</code>, <ins>m</ins>, n)<br />
 · PK: (c0, m)<br />
-· FK: (c0) → C<br />
+· FK: (c0) → C
 </code></p>
 </li>
 <li>
@@ -2238,11 +2238,11 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 · PK: (a0)<br />
 · UK: (b0)<br />
 · VNN: (b0)<br />
-· FK: (b0) → B<br />
+· FK: (b0) → B
 </code></p>
 <p><code>
 <strong>B</strong> (b0, b1)<br />
-· PK: (b0)<br />
+· PK: (b0)
 </code></p>
 <p><code>
 <strong>C</strong> (<ins>b0</ins><code>*</code>, <ins>a0</ins><code>*</code>, c0)<br />
@@ -2267,30 +2267,30 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <p><code>
 <strong>MEDICO</strong> (<ins>num</ins><code>*</code>, espec, anyo)<br />
 · PK: (num)<br />
-· FK: (num) → EMPLEADO<br />
+· FK: (num) → EMPLEADO
 </code></p>
 <p><code>
 <strong>SOCIO</strong> (<ins>num</ins><code>*</code>, dni, nombre, direccion, fechaNac, banco, medicoChequeo<code>*</code>, fechaChequeo, resultadoChequeo)<br />
 · PK: (num)<br />
 · UK: (dni)<br />
 · FK: (num) → EMPLEADO<br />
-· FK: (medicoChequeo) → MEDICO<br />
+· FK: (medicoChequeo) → MEDICO
 </code></p>
 <p><code>
 <strong>TAQUILLA</strong> (<ins>num</ins><code>*</code>, estado, tamaño)<br />
-· PK: (nun)<br />
+· PK: (nun)
 </code></p>
 <p><code>
 <strong>FIJA</strong> (<ins>num</ins><code>*</code>, socio<code>*</code>)<br />
 · PK: (num)<br />
 · FK: (num) → TAQUILLA<br />
-· FK: (socio) → SOCIO<br />
+· FK: (socio) → SOCIO
 </code></p>
 <p><code>
 <strong>DIARIA</strong> (<ins>num</ins><code>*</code>, socio<code>*</code>)<br />
 · PK: (num)<br />
 · FK: (num) → TAQUILLA<br />
-· FK: (socio) → SOCIO<br />
+· FK: (socio) → SOCIO
 </code></p>
 <p><code>
 <strong>DISCIPLINA</strong> (<ins>nombre</ins>, descripcion)<br />
@@ -2300,7 +2300,7 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <strong>MONITOR</strong> (<ins>num</ins><code>*</code>, fnac, disciplina<code>*</code>)<br />
 · PK: (num)<br />
 · FK: (num) → EMPLEADO<br />
-· FK: (disciplina) → DISCIPLINA<br />
+· FK: (disciplina) → DISCIPLINA
 </code></p>
 <p><code>
 <strong>SESION</strong> (<ins>dia</ins>, <ins>hora</ins>, <ins>sala</ins>, monitor<code>*</code>, disciplina<code>*</code>)<br />
@@ -2308,22 +2308,22 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 · FK: (monitor) → MONITOR<br />
 · FK: (disciplina) → DISCIPLINA<br />
 · VNN: (monitor)<br />
-· VNN: (disciplina)<br />
+· VNN: (disciplina)
 </code></p>
 <p><code>
 <strong>TECNICO</strong> (<ins>num</ins><code>*</code>)<br />
 · PK: (num)<br />
-· FK: (num) → EMPLEADO<br />
+· FK: (num) → EMPLEADO
 </code></p>
 <p><code>
 <strong>MODELO</strong> (<ins>codigo</ins>, descripcion, empresas, tecnico<code>*</code>)<br />
 · PK: (codigo)<br />
-· FK: (tecnico) → TECNICO<br />
+· FK: (tecnico) → TECNICO
 </code></p>
 <p><code>
 <strong>APARATO</strong> (<ins>num</ins>, <ins>codigo</ins><code>*</code>, fechaAdquisic, estado)<br />
 · PK: (num, codigo)<br />
-· FK: (codigo) → MODELO<br />
+· FK: (codigo) → MODELO
 </code></p>
 </li>
 </ul>
@@ -2334,7 +2334,7 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <p><code>
 <strong>EDIFICIO</strong> (<ins>num</ins>, numPlantas, gestor<code>*</code>)<br />
 · PK: (num)<br />
-· FK: (gestor) → GESTOR<br />
+· FK: (gestor) → GESTOR
 </code></p>
 <p><code>
 <strong>GESTOR</strong> (<ins>codigo</ins>, nombre, apellido1, apellido2, salario, residencia<code>*</code>)<br />
@@ -2344,7 +2344,7 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 </code></p>
 <p><code>
 <strong>INSPECTOR</strong> (<ins>codigo</ins>, nombre) <br />
-· PK: (codigo) 
+· PK: (codigo)
 </code></p>
 <p><code>
 <strong>SUPERVISAR</strong> (<ins>codigo</ins><code>*</code>, <ins>num</ins><code>*</code>, fUltima, fSiguiente)<br />
@@ -2354,18 +2354,18 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 </code></p>
 <p><code>
 <strong>TRABAJADOR</strong> (<ins>codigo</ins>, nombre)<br />
-· PK: (codigo) 
+· PK: (codigo)
 </code></p>
 <p><code>
 <strong>APARTAMENTO</strong> (<ins>numA</ins>, <ins>numE</ins><code>*</code>, dormitorios)  <br />
 · PK: (numA, numE)<br />
-· FK: (numE) → EDIFICIO 
+· FK: (numE) → EDIFICIO
 </code>   </p>
 <p><code>
 <strong>LIMPIAR</strong> (<ins>codigo</ins><code>*</code>, <ins>numA</ins><code>*</code>, <ins>numE</ins><code>*</code>)<br />
 · PK: (codigo, numA, numE)<br />
 · FK: (numA, numE) → APARTAMENTO<br />
-· FK: (codigo) → TRABAJADOR 
+· FK: (codigo) → TRABAJADOR
 </code>   </p>
 </li>
 </ul>
@@ -2384,11 +2384,11 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <strong>EQUIPO</strong> (<ins>num</ins>, fUltimaRevision, fAlta, detalle<code>*</code>)<br />
 · PK: (num)<br />
 · FK: (detalle) → DETALLE_EQUIPO<br />
-· VNN: (detalle)<br />
+· VNN: (detalle)
 </code></p>
 <p><code>
 <strong>DETALLE_EQUIPO</strong> (<ins>codigo</ins>, tipo, modelo, fUltimaRevision)<br />
-· PK: (codigo)<br />
+· PK: (codigo)
 </code></p>
 <p><code>
 <strong>VENTA</strong> (<ins>codigo</ins>, precio, fecha, equipo<code>*</code>, cliente<code>*</code>, comercial<code>*</code>)<br />
@@ -2398,7 +2398,7 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 · FK: (comercial) → COMERCIAL<br />
 · VNN: (equipo)<br />
 · VNN: (cliente)<br />
-· VNN: (comercial)<br />
+· VNN: (comercial)
 </code></p>
 <p><code>
 <strong>ALQUILER</strong> (<ins>codigo</ins>, precio, fecha, equipo<code>*</code>, cliente<code>*</code>, comercial<code>*</code>)<br />
@@ -2408,16 +2408,16 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 · FK: (comercial) → COMERCIAL<br />
 · VNN: (equipo)<br />
 · VNN: (cliente)<br />
-· VNN: (comercial)<br />
+· VNN: (comercial)
 </code></p>
 <p><code>
 <strong>CLIENTE</strong> (<ins>id</ins>, nombre, categoría)<br />
-· PK: (id)<br />
+· PK: (id)
 </code></p>
 <p><code>
 <strong>COMERCIAL</strong> (<ins>codigo</ins>, nombre, apellido1, rango, mentor<code>*</code>)<br />
 · PK: (id)<br />
-· FK: (mentor) → COMERCIAL<br />
+· FK: (mentor) → COMERCIAL
 </code></p>
 <p>Contesta a las siguientes preguntas argumentado tus respuestas:</p>
 <ol>
