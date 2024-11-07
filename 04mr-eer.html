@@ -1658,7 +1658,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p><code>
 <strong>PRODUCTO</strong> (<ins>dpto</ins>, <ins>numero</ins>, nombre, pvp, <ins>dptoS</ins><code>*</code>, <ins>numeroS</ins><code>*</code>, fecha)<br />
 · PK: (dpto, numero)<br />
-· FK: (dptoS, numeroS) → PRODUCTO<br />
+· FK: (dptoS, numeroS) → PRODUCTO
 </code></p>
 <p>Donde la clave ajena también es compuesta.</p>
 <p>¿Serías capaz de dibujar el diagrama del modelo relacional?</p>
@@ -1772,7 +1772,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p><code>
 <strong>A</strong> (<ins>a0</ins>, <ins>b0</ins><code>*</code>, a1)<br />
 · PK: (a0, bo)<br />
-· FK: (b0) → B<br />
+· FK: (b0) → B
 </code></p>
 <p><code>
 <strong>B</strong> (<ins>b0</ins>, b1)<br />
@@ -1791,7 +1791,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p><code>
 <strong>SALA</strong> (<ins>numero</ins>, <ins>codCine</ins><code>*</code>, aforo)<br />
 · PK: (numero, codCine)<br />
-· FK: (codCine) → CINE<br />
+· FK: (codCine) → CINE
 </code></p>
 <p>Las tablas de datos de ejemplo demuestran que aunque la entidad débil repita número, la clave de la entidad fuerte deshace la ambigüedad:</p>
 <div class="grid cards">
@@ -1917,12 +1917,12 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p><code>
 <strong>ESTUDIANTE</strong> (<ins>dni</ins><code>*</code>, nivelEst, lugarEst, horasCur)<br />
 · PK: (dni)<br />
-· FK: (dni) → PERSONA 
+· FK: (dni) → PERSONA
 </code></p>
 <p><code>
 <strong>TRABAJADOR</strong> (<ins>dni</ins><code>*</code>, numSegSocial, salario)<br />
 · PK: (dni)<br />
-· FK: (dni) → PERSONA 
+· FK: (dni) → PERSONA
 </code></p>
 <h3 id="alternativas">Alternativas<a class="headerlink" href="#alternativas" title="Permanent link">&para;</a></h3>
 <p>Otros planteamientos diferentes a explicitar consisten en:</p>
@@ -2024,7 +2024,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <strong>B</strong> (<ins>b0</ins>, b1, a0<code>*</code>, c0<code>*</code>)<br />
 · PK: (b0)<br />
 · FK: (a0) → A<br />
-· FK: (c0) → D<br />
+· FK: (c0) → D
 </code></p>
 <p><code>
 <strong>C</strong> (<ins>c0</ins>, c1, c2)<br />
@@ -2033,7 +2033,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p><code>
 <strong>D</strong> (<ins>c0</ins>, d0)<br />
 · PK: (c0)<br />
-· FK: (c0) → C<br />
+· FK: (c0) → C
 </code></p>
 <details class="example">
 <summary>Solución</summary>
@@ -2062,18 +2062,18 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p><code>
 <strong>C</strong> (<ins>c0</ins><code>*</code>, c1)<br />
 · PK: (c0)<br />
-· FK: (c0) → A<br />
+· FK: (c0) → A
 </code></p>
 <p><code>
 <strong>D</strong> (<ins>d0</ins>, d1, <ins>d2</ins><code>*</code>)<br />
 · PK: (d0, d2)<br />
-· FK: (d2) → C<br />
+· FK: (d2) → C
 </code></p>
 <p><code>
 <strong>E</strong> (<ins>e0</ins><code>*</code>, <ins>e1</ins><code>*</code>, <ins>e2</ins><code>*</code>, e3)<br />
 · PK: (e0, e1, e2)<br />
 · FK: (e0) → A<br />
-· FK: (e1, e2) → D<br />
+· FK: (e1, e2) → D
 </code></p>
 <details class="example">
 <summary>Solución</summary>
