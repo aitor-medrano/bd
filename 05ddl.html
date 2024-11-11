@@ -1601,7 +1601,7 @@ antes de finalizar la instrucción, facilitando su lectura. Así pues, posibles 
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">MariaDB</label><label for="__tabbed_2_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>En el caso de <em>MariaDB</em> usaremos el commando <a href="https://mariadb.com/kb/en/show-databases/"><code>SHOW DATABASES</code></a>:</p>
+<p>En el caso de <em>MariaDB</em> usaremos el comando <a href="https://mariadb.com/kb/en/show-databases/"><code>SHOW DATABASES</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>MariaDB [pruebas]&gt; show databases;
 <span class="linenos" data-linenos="2 "></span>+--------------------+
 <span class="linenos" data-linenos="3 "></span>| Database           |
@@ -1743,7 +1743,7 @@ antes de finalizar la instrucción, facilitando su lectura. Así pues, posibles 
 <p>Un bloque almacena los datos de tablas e índices mediante páginas (normalmente de 16 KB)</p>
 </li>
 <li>
-<p>Los bloques se almacenan en un archivo de <ins>tablaspace</ins> (generalmente <code>ibdata1</code> para bases de datos que comparten un <em>tablespace</em>, o en un archivo por tabla).</p>
+<p>Los bloques se almacenan en un archivo de <ins>tablespace</ins> (generalmente <code>ibdata1</code> para bases de datos que comparten un <em>tablespace</em>, o en un archivo por tabla).</p>
 </li>
 <li>
 <p>Respecto a las filas, se almacenan utilizando un formato compacto o redondeado, dependiendo de la configuración. Cada fila contiene una clave primaria (o un índice que actúa como clave primaria) y los datos correspondientes.</p>
@@ -2053,8 +2053,8 @@ antes de finalizar la instrucción, facilitando su lectura. Así pues, posibles 
 </div>
 </div>
 <h4 id="clave-primaria">Clave primaria<a class="headerlink" href="#clave-primaria" title="Permanent link">&para;</a></h4>
-<p>Una vez visto como crear la tablas y sus atributos, nos centramos en la creación de la clave primaria. Toda tabla debe tener una clave primaria (ya sea simple o compuesta). Para ello, si tenemos un atributo simple, podemos añadir la propiedad <code>PRIMARY KEY</code> al atributo, aunque por convenciones de código, es mejor definir la clave primaria después de todos los atributos, a modo de restricciones. </p>
-<p><div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CIUDAD</span><span class="w"> </span><span class="p">(</span>
+<p>Una vez visto como crear las tablas y sus atributos, nos centramos en la creación de la clave primaria. Toda tabla debe tener una clave primaria (ya sea simple o compuesta). Para ello, si tenemos un atributo simple, podemos añadir la propiedad <code>PRIMARY KEY</code> al atributo, aunque por convenciones de código, es mejor definir la clave primaria después de todos los atributos, a modo de restricciones. </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CIUDAD</span><span class="w"> </span><span class="p">(</span>
 <span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"> </span><span class="c1">-- clave primaria como propiedad</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">5000</span><span class="p">);</span>
 <span class="linenos" data-linenos=" 4 "></span>
@@ -2069,7 +2069,7 @@ antes de finalizar la instrucción, facilitando su lectura. Así pues, posibles 
 <span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
 <span class="hll"><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">codigo</span><span class="p">,</span><span class="w"> </span><span class="n">departamento</span><span class="p">));</span><span class="w"> </span><span class="c1">-- clave primaria compuesta</span>
 </span></code></pre></div>
-Un buena práctica es definir un atributo a modo de <code>codigo</code> (o <code>id</code>) asociado a un número entero autoincrementable. Para ello, tras la definición del atributo como entero (sin signo), añadiremos la propiedad <code>AUTO_INCREMENT</code> en la definición del atributo.</p>
+<p>Una buena práctica es definir un atributo a modo de <code>codigo</code> (o <code>id</code>) asociado a un número entero autoincrementable. Para ello, tras la definición del atributo como entero (sin signo), añadiremos la propiedad <code>AUTO_INCREMENT</code> en la definición del atributo.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PERSONA</span><span class="w"> </span><span class="p">(</span>
 <span class="hll"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 </span><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
@@ -2089,7 +2089,7 @@ Un buena práctica es definir un atributo a modo de <code>codigo</code> (o <code
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Creando tablas con consultas</p>
-<p>Un caso particular de la creación de tablas es hacerlo a partir del resultado de una consulta, de manera que contiene la estructura (tipos de datos) y los datos obtenido. Para ello, en vez de indicar los campos y restricciones, realizamos la consulta mediante <code>SELECT</code>: </p>
+<p>Un caso particular de la creación de tablas es hacerlo a partir del resultado de una consulta, de manera que contiene la estructura (tipos de datos) y los datos obtenidos. Para ello, en vez de indicar los campos y restricciones, realizamos la consulta mediante <code>SELECT</code>: </p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">SELECT</span><span class="err">…</span>
 </code></pre></div>
 <p>Por ejemplo, para crear una tabla <code>GERENTE</code> con los datos de empleados catalogados como Gerentes, haríamos:</p>
@@ -2101,13 +2101,13 @@ Un buena práctica es definir un atributo a modo de <code>codigo</code> (o <code
 <p>Volveremos a esta posibilidad cuando aprendamos a realizar consultas mediante SQL:</p>
 </div>
 <h4 id="modificando-tablas">Modificando tablas<a class="headerlink" href="#modificando-tablas" title="Permanent link">&para;</a></h4>
-<p>Una vez creada una tabla, podemos modifica su estructura mediante las sentencias <strong><code>ALTER TABLE</code></strong>, tanto en <a href="https://mariadb.com/kb/en/alter-table/">MariaDB</a> como en <a href="https://www.postgresql.org/docs/current/sql-altertable.html">PostgreSQL</a>.</p>
+<p>Una vez creada una tabla, podemos modificar su estructura mediante las sentencias <strong><code>ALTER TABLE</code></strong>, tanto en <a href="https://mariadb.com/kb/en/alter-table/">MariaDB</a> como en <a href="https://www.postgresql.org/docs/current/sql-altertable.html">PostgreSQL</a>.</p>
 <p>Para añadir columnas, usaremos la opción <strong><code>ADD</code></strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">nombreColumna</span><span class="w"> </span><span class="n">tipoDatos</span><span class="w"> </span><span class="p">[</span><span class="n">propiedades</span><span class="p">]</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="p">[,</span><span class="n">columnaSiguiente</span><span class="w"> </span><span class="n">tipoDatos</span><span class="w"> </span><span class="p">[</span><span class="n">propiedades</span><span class="p">]</span><span class="err">…</span><span class="p">)</span>
 </code></pre></div>
-<p>De este modo, si queremos añadir un campo para almacenar el teléfono de los empleados (sus campos estarán inicializados a <code>NULL</code> cada cada registro de la tabla <code>EMPLEADO</code>), haríamos:</p>
+<p>De este modo, si queremos añadir un campo para almacenar el teléfono de los empleados (sus campos estarán inicializados a <code>NULL</code> cada registro de la tabla <code>EMPLEADO</code>), haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="p">(</span><span class="n">telefono</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">12</span><span class="p">));</span>
 </code></pre></div>
 <p>En cambio, si queremos eliminar una columna, usaremos la opción <code>DROP</code>:</p>
@@ -2168,7 +2168,7 @@ Un buena práctica es definir un atributo a modo de <code>codigo</code> (o <code
 </code></pre></div>
 <p>Las restricciones las podemos definir a nivel de opciones dentro de cada campo, o tras la definición de todos los campos, mediante la <em>keyword</em> <code>CONSTRAINT</code> tanto en <a href="https://mariadb.com/kb/en/constraint/">MariaDB</a> como en <a href="https://www.postgresql.org/docs/current/ddl-constraints.html">PostgreSQL</a>.</p>
 <h4 id="claves-unicas">Claves únicas<a class="headerlink" href="#claves-unicas" title="Permanent link">&para;</a></h4>
-<p>Cuando marcábamos en el modelo relación una propiedad como <code>UK</code>, es decir, clave única o alternativa, estamos indicando que dicho atributo no permite repetidos, y provocará la creación de un índice (los índices los estudiaremos en la unidad 9). Para ello, ahora usaremos la propiead <strong><code>UNIQUE</code></strong>.</p>
+<p>Cuando marcábamos en el modelo relación una propiedad como <code>UK</code>, es decir, clave única o alternativa, estamos indicando que dicho atributo no permite repetidos, y provocará la creación de un índice (los índices los estudiaremos en la unidad 9). Para ello, ahora usaremos la propiedad <strong><code>UNIQUE</code></strong>.</p>
 <p>Recuerda que las claves alternativas, normalmente, son una de las claves candidatas que no hemos elegido como clave primaria:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="p">(</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">dni</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
@@ -2177,7 +2177,7 @@ Un buena práctica es definir un atributo a modo de <code>codigo</code> (o <code
 </code></pre></div>
 <p>La principal diferencia entre una clave primaria y una clave única es que la clave única permite valores nulos.</p>
 <h4 id="claves-ajenas">Claves ajenas<a class="headerlink" href="#claves-ajenas" title="Permanent link">&para;</a></h4>
-<p>Para indicar las claves ajena, aunque podemos hacerlo a nivel de campo, es mucho mejor acostumbrarse a definirlas siempre como restricciones. Para ello, usaremos la siguiente estructura, donde <code>col</code> es el campo que apunta a la clave primaria <code>clave</code> de la tabla <code>tabla</code>. </p>
+<p>Para indicar las claves ajenas, aunque podemos hacerlo a nivel de campo, es mucho mejor acostumbrarse a definirlas siempre como restricciones. Para ello, usaremos la siguiente estructura, donde <code>col</code> es el campo que apunta a la clave primaria <code>clave</code> de la tabla <code>tabla</code>. </p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="p">(</span><span class="n">clave</span><span class="p">)</span>
 </code></pre></div>
 <p>A toda esta definición le pondremos un <code>nombre</code> por si más adelante necesitamos acceder a ella para modificarla, eliminarla, etc... Para definir este nombre, una convención es anteponer el tipo de restricción (<code>PK</code>, <code>FK</code>, <code>CK</code>, ...), y utilizando la barra de subrayado como separador, los nombres o siglas de los elementos involucrados.</p>
@@ -2292,7 +2292,7 @@ Un buena práctica es definir un atributo a modo de <code>codigo</code> (o <code
 <p>Las posibilidades son:</p>
 <ul>
 <li><code>NO ACTION</code>: se impide la operación, rechazando el borrado o la actualización. Este es el comportamiento por defecto si no indicamos nada.</li>
-<li><code>CASCADE</code>: la operación se propaga de la tabla origen a la destino. Esto es, si borramos el estudiante, borrará los registros de <code>CURSAR</code>. Si modificamos su <code>nif</code>, también modificará los <code>nifEstudiante</code> de <code>CURSAR</code>.</li>
+<li><code>CASCADE</code>: la operación se propaga de la tabla origen a la de destino. Esto es, si borramos el estudiante, borrará los registros de <code>CURSAR</code>. Si modificamos su <code>nif</code>, también modificará los <code>nifEstudiante</code> de <code>CURSAR</code>.</li>
 <li><code>SET NULL</code>: la clave ajena se pone a <code>NULL</code>, de manera que se pierde la relación existente, provocando probablemente inconsistencia de datos.</li>
 </ul>
 <p>Si volvemos a definir la tabla CURSAR indicando las restricciones de propagación, podríamos hacer:</p>
@@ -2432,13 +2432,13 @@ Un buena práctica es definir un atributo a modo de <code>codigo</code> (o <code
 <p>Para crear la copia de seguridad haremos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>pg_basebackup<span class="w"> </span>-D<span class="w"> </span>/ruta/destino<span class="w"> </span>-Fp<span class="w"> </span>-Xs<span class="w"> </span>-P<span class="w"> </span>-U<span class="w"> </span>usuario
 </code></pre></div>
-<p>Para restaurar los datos, hemos de copiar los archivo del <em>backup</em> a la ruta del directorio de datos y reiniciar el servicio (tareas normalmente realizadas por perfiles más cercanos a la administración de sistemas que a un desarrollador).</p>
+<p>Para restaurar los datos, hemos de copiar los archivos del <em>backup</em> a la ruta del directorio de datos y reiniciar el servicio (tareas normalmente realizadas por perfiles más cercanos a la administración de sistemas que a un desarrollador).</p>
 </div>
 </div>
 </div>
 </div>
 <h2 id="dml">DML<a class="headerlink" href="#dml" title="Permanent link">&para;</a></h2>
-<p>Una vez que ya sabemos como crear las estructuras de datos para guardar la información, vamos a aprender a gestionarla.</p>
+<p>Una vez que ya sabemos cómo crear las estructuras de datos para guardar la información, vamos a aprender a gestionarla.</p>
 <div class="admonition tip inline end">
 <p class="admonition-title">CRUD</p>
 <p>Las operaciones DML se asocian al acrónimo CRUD:</p>
@@ -2483,7 +2483,7 @@ Un buena práctica es definir un atributo a modo de <code>codigo</code> (o <code
 <p>Si queremos insertar los valores por defectos asociados a una columna o un valor nulo (por ejemplo, a una clave ajena) usaremos <code>DEFAULT</code> y <code>NULL</code> respectivamente. Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dml8a</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">66</span><span class="p">,</span><span class="w"> </span><span class="k">DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
 </code></pre></div>
-<p>En el caso de <em>PostgreSQL</em>, si queremos recuperar la información sobre la fila recién insertada, podemos emplear la clausula <code>RETURNIN</code>:</p>
+<p>En el caso de <em>PostgreSQL</em>, si queremos recuperar la información sobre la fila recién insertada, podemos emplear la cláusula <code>RETURNING</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dml8a</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;David Suárez&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;david@gmail.com&quot;</span><span class="p">)</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">RETURNING</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
@@ -2498,7 +2498,7 @@ Un buena práctica es definir un atributo a modo de <code>codigo</code> (o <code
 <p>La sentencia para actualizar datos es <code>UPDATE ... SET</code>, tanto en <a href="https://mariadb.com/kb/en/update">MariaDB</a> como en <a href="https://www.postgresql.org/docs/current/sql-update.html">PostgreSQL</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">campo</span><span class="o">=</span><span class="n">valor1</span><span class="w"> </span><span class="p">[,</span><span class="n">campo2</span><span class="o">=</span><span class="n">valor2</span><span class="p">];</span>
 </code></pre></div>
-<p>Si queremos decidir qué elementos modificar, añadimos la expresión <code>WHERE</code>, ya que si no, actualizaremos todos los registros de la tabla:</p>
+<p>Si queremos decidir qué elementos modificar, añadimos la expresión <code>WHERE</code>, ya que, si no, actualizaremos todos los registros de la tabla:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">campo</span><span class="o">=</span><span class="n">valor</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condicion</span><span class="p">;</span>
 </code></pre></div>
 <p>Veamos unos ejemplos. Podemos modificar el email de un usuario concreto:</p>
@@ -2513,11 +2513,11 @@ Un buena práctica es definir un atributo a modo de <code>codigo</code> (o <code
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Incrementamos la población de Elche en un 10%</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">CIUDAD</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">poblacion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poblacion</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">10</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Elche&quot;</span><span class="p">;</span>
 </code></pre></div>
-<p>El filtado de los datos mediante la instrucción <code>WHERE</code> ofrece múltiples posibilidades, tanto con operadores relacionales, aritméticos, funciones de tratamiento de textos, fechas, etc... como comparación con el resultado de una consulta u operaciones de conjuntos. A partir de la próxima unidad profundizaremos en todas la alternativas del atributo <code>WHERE</code>.</p>
+<p>El filtrado de los datos mediante la instrucción <code>WHERE</code> ofrece múltiples posibilidades, tanto con operadores relacionales, aritméticos, funciones de tratamiento de textos, fechas, etc... como comparación con el resultado de una consulta u operaciones de conjuntos. A partir de la próxima unidad profundizaremos en todas las alternativas del atributo <code>WHERE</code>.</p>
 <h3 id="borrados">Borrados<a class="headerlink" href="#borrados" title="Permanent link">&para;</a></h3>
 <div class="admonition tip inline end">
 <p class="admonition-title">No te olvides...</p>
-<p>Si no conoces este meme, hazte el favor y mira el siguiente <a href="https://youtu.be/i_cVJgIz_Cs?si=MPgAHrZyaWcfH4On">video</a>.</p>
+<p>Si no conoces este meme, hazte el favor y mira el siguiente <a href="https://youtu.be/i_cVJgIz_Cs?si=MPgAHrZyaWcfH4On">vídeo</a>.</p>
 <p><figure style="align: center;">
     <img src="images/05no-te-olvides.png" width="200" title="Hice un delete...">
     <figcaption>Hice un delete...</figcaption>
@@ -2531,14 +2531,14 @@ Un buena práctica es definir un atributo a modo de <code>codigo</code> (o <code
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Integridad referencial</p>
-<p>Recuerda que si eliminamos un registro referenciado por una clave ajena, se ejecutará la regla descrita en la tabla de origen, de manera, que es posible que no podamos eliminar ciertos datos al estar referenciado desde otra tabla (si estaban configuradas con <code>NO ACTION</code> o <code>RESTRICT</code>).</p>
-<p>En cambio, si la clave ajena se configuró con <code>CASCADE</code>, al borrar el registro, se borrarán todos los registros de las tabla origen que referenciaban a éste.</p>
+<p>Recuerda que, si eliminamos un registro referenciado por una clave ajena, se ejecutará la regla descrita en la tabla de origen, de manera, que es posible que no podamos eliminar ciertos datos al estar referenciado desde otra tabla (si estaban configuradas con <code>NO ACTION</code> o <code>RESTRICT</code>).</p>
+<p>En cambio, si la clave ajena se configuró con <code>CASCADE</code>, al borrar el registro, se borrarán todos los registros de las tablas origen que referenciaban a éste.</p>
 <p>Finalmente, si se configuró con <code>NULL</code>, la tabla origen modificará el valor de su clave ajena se pondrá a nulo.</p>
 </div>
-<p>Conviene destacar que si queremos eliminar todos los datos de una tabla, es mucho más eficiente utilizar el comando <code>TRUNCATE TABLE</code>, tanto en <a href="https://mariadb.com/kb/en/truncate-table/">MariaDB</a> como en <a href="https://www.postgresql.org/docs/current/sql-truncate.html">PostgreSQL</a></p>
+<p>Conviene destacar que, si queremos eliminar todos los datos de una tabla, es mucho más eficiente utilizar el comando <code>TRUNCATE TABLE</code>, tanto en <a href="https://mariadb.com/kb/en/truncate-table/">MariaDB</a> como en <a href="https://www.postgresql.org/docs/current/sql-truncate.html">PostgreSQL</a></p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">TRUNCATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">dml8s</span>
 </code></pre></div>
-<p>Por debajo, cuando truncamos una tabla, realmente está eliminando la tabla y volviéndola a crear, eliminando todos los ficheros de datos y reinicinado los campos autonuméricos.</p>
+<p>Por debajo, cuando truncamos una tabla, realmente está eliminando la tabla y volviéndola a crear, eliminando todos los ficheros de datos y reiniciando los campos autonuméricos.</p>
 <h2 id="reto-ii-creamos">Reto II - Creamos<a class="headerlink" href="#reto-ii-creamos" title="Permanent link">&para;</a></h2>
 <p>En el <a href="02er.html#reto-i-disenamos">reto anterior</a> diseñamos una base de datos. En este reto nos vamos a centrar en la creación del modelo físico, creando y cargando datos, para posteriormente definir una serie de informes y KPIs que generaremos mediante consultas utilizando SQL.</p>
 <div class="admonition info">
@@ -2693,7 +2693,7 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 <p>A continuación, mediante haciendo uso de <code>ALTER TABLE</code>:</p>
 <ul>
 <li>Elimina la clave ajena de la tabla <code>EMPLEADO</code>.</li>
-<li>Vuelve a añadir la clave ajena, de manera que al modificar un departamento, el cambio se propague en cascada, pero que al eliminarlo, no realice ningún acción.</li>
+<li>Vuelve a añadir la clave ajena, de manera que, al modificar un departamento, el cambio se propague en cascada, pero que al eliminarlo, no realice ningún acción.</li>
 </ul>
 <p>Finalmente, elimina las tablas creadas.</p>
 </li>
@@ -2812,7 +2812,7 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 <ol>
 <li>Añade un nuevo departamento llamado <code>Formación</code>.</li>
 <li>Renombra el departamento <code>IT</code> por <code>Informática</code>.</li>
-<li>Añade el campo <code>email</code> al final de la tabla <code>DEPARTAMENTO</code>, y rellenalos todos con <code>email@ac510.com</code>.</li>
+<li>Añade el campo <code>email</code> al final de la tabla <code>DEPARTAMENTO</code>, y rellénalos todos con <code>email@ac510.com</code>.</li>
 <li>Incrementa el salario de todos los empleados del departamento de informática en 300€.</li>
 <li>Inserta un nuevo empleado con tus datos en el departamento <code>Formación</code>.</li>
 <li>Cambia al empleado <code>12345678A</code> al departamento de <code>Formación</code>.</li>
@@ -2823,7 +2823,10 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 </ul>
 <p><a name="AP511"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span>  <strong>AP511</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr> // 3p) Sobre la actividad <a href="#AC510">AC510</a>, añade una nueva tabla <code>DIETAS</code> donde podamos anotar los gastos ocasionados por las dietas de los empleados, como son la fecha, el coste y una descripción de la misma. A continuación, inserta 10 dietas de diferentes empleados. Debes tener en cuenta que si eliminamos un empleado, no debe permitir realizar la operación ni eliminar las dietas, ya que si no, luego no nos cuadraría la contabilidad. ¿Cómo solucionamos dar de baja a un empleado pero no eliminarlo del sistema?</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span>  <strong>AP511</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr> // 3p) Sobre la actividad <a href="#AC510">AC510</a>, añade una nueva tabla <code>DIETAS</code> donde podamos anotar los gastos ocasionados por las dietas de los empleados, como son la fecha, el coste y una descripción de la misma. A continuación, inserta 10 dietas de diferentes empleados.</p>
+<p>Debes tener en cuenta que si eliminamos un empleado, no debe permitir realizar la operación ni eliminar las dietas, ya que, si no, luego no nos cuadraría la contabilidad. ¿Cómo solucionamos dar de baja a un empleado pero no eliminarlo del sistema?</p>
+</li>
 </ul>
 <p><a name="AR512"></a></p>
 <ul>
@@ -2896,10 +2899,10 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 <p>Realiza las siguientes operaciones:</p>
 <ol>
 <li>Cambia la clave primaria de libro al título. Realiza los cambios necesarios para que la tabla libros y prestamos estén relacionadas.</li>
-<li>Eliminar aquellos libros que sean del genero de historia. ¿Se elimina el registro de la tabla <code>LIBRO</code>? Razona la respuesta.<ol>
+<li>Eliminar aquellos libros que sean del género de historia. ¿Se elimina el registro de la tabla <code>LIBRO</code>? Razona la respuesta.<ol>
 <li>Si no lo has conseguido, cambia la restricción de la clave ajena para que la operación se propague.</li>
 <li>Vuelve a realizar la operación de borrado de libros.</li>
-<li>¿Cuantos registros tiene ahora la tabla <code>PRESTAMO</code>?</li>
+<li>¿Cuántos registros tiene ahora la tabla <code>PRESTAMO</code>?</li>
 </ol>
 </li>
 <li>Inserta los siguientes libros (<em>Loba Negra</em>, <em>MariaDB Essentials</em>), buscando en  Internet la información que necesites.</li>
@@ -3224,7 +3227,7 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.563 1.396a.95.95 0 0 0-.534.184c-.404.307-.501.9-.425 1.654.075.755.335 1.704.751 2.8.357.937.835 1.984 1.407 3.095-1.17.146-2.24.338-3.158.57-1.08.274-1.958.6-2.583.973C.397 11.045 0 11.484 0 12s.397.955 1.021 1.328c.55.33 1.308.618 2.217.87a1 1 0 0 0-.006.097c0 .485.365.887.82.887.368 0 .678-.26.784-.616q.89.171 1.898.297a31 31 0 0 0-1.408 3.067c-.421 1.093-.686 2.04-.765 2.795-.08.754.016 1.347.42 1.656.201.154.46.208.734.181s.572-.125.896-.287c.649-.323 1.407-.894 2.244-1.67.962-.89 2.026-2.058 3.118-3.421 1.086 1.37 2.146 2.543 3.103 3.439.834.78 1.588 1.355 2.235 1.682.323.163.62.265.894.293s.534-.025.736-.178c.405-.307.502-.9.426-1.654-.054-.54-.206-1.18-.437-1.9a.91.91 0 0 0 .343-.72.92.92 0 0 0-.238-.625.8.8 0 0 0-.701-.251c-.312-.75-.69-1.557-1.125-2.4a27 27 0 0 0 3.187-.575c1.08-.273 1.958-.597 2.583-.97.624-.374 1.021-.813 1.021-1.329s-.397-.957-1.021-1.33c-.625-.373-1.503-.696-2.583-.969a27 27 0 0 0-3.156-.568 31 31 0 0 0 1.406-3.063c.422-1.093.687-2.04.766-2.795.08-.754-.017-1.347-.42-1.656a.95.95 0 0 0-.531-.185 1.3 1.3 0 0 0-.203.004c-.274.026-.57.127-.895.289-.51.254-1.092.665-1.722 1.205a.8.8 0 0 0-.418-.123c-.456 0-.82.4-.82.886q0 .178.06.334a35 35 0 0 0-2.465 2.791c-1.086-1.37-2.146-2.543-3.103-3.439-.834-.78-1.588-1.355-2.235-1.682-.323-.163-.62-.265-.894-.293a1.3 1.3 0 0 0-.204-.006zm.021.385a1 1 0 0 1 .143.004c.205.02.462.105.757.254.592.298 1.33.855 2.147 1.62.955.893 2.022 2.077 3.119 3.466-.428.544-.859 1.12-1.29 1.72a42 42 0 0 0-3.29.235 31 31 0 0 1-1.453-3.184c-.409-1.075-.658-2.002-.729-2.7-.07-.7.05-1.136.276-1.307a.55.55 0 0 1 .32-.108m12.854.033a.55.55 0 0 1 .32.108c.225.172.343.61.27 1.308s-.33 1.624-.743 2.698a31 31 0 0 1-1.455 3.15 42 42 0 0 0-3.312-.234 49 49 0 0 0-1.274-1.717 35 35 0 0 1 2.436-2.772.78.78 0 0 0 .543.223c.456 0 .82-.401.82-.887a.94.94 0 0 0-.133-.484c.61-.519 1.163-.909 1.625-1.139.297-.147.555-.23.76-.25a1 1 0 0 1 .142-.004zm-6.442 5.622c.344.443.69.913 1.035 1.394q-.51-.012-1.031-.014-.532.001-1.05.014c.35-.481.699-.95 1.046-1.394M12 9.203q.668.001 1.314.02.398.563.793 1.154c.366.55.71 1.093 1.041 1.633a54 54 0 0 1-1.046 1.623q-.395.584-.791 1.138-.646.02-1.311.022-.684-.001-1.348-.022a53 53 0 0 1-.789-1.148 52 52 0 0 1-1.04-1.633 53 53 0 0 1 1.84-2.765q.658-.02 1.337-.022m-1.824.04q-.315.444-.625.905c-.334.496-.647.988-.953 1.477a47 47 0 0 1-1.239-2.178 41 41 0 0 1 2.817-.205zm3.625 0a41 41 0 0 1 2.838.202 47 47 0 0 1-1.264 2.198 53 53 0 0 0-1.574-2.4m3.248.251c1.213.146 2.317.34 3.252.576 1.057.268 1.907.587 2.478.928s.834.689.834.998-.263.655-.834.996c-.57.342-1.421.662-2.478.93-.943.239-2.056.433-3.281.58a47 47 0 0 0-1.416-2.492 47 47 0 0 0 1.445-2.516M6.95 9.496c.424.805.899 1.64 1.418 2.494a47 47 0 0 0-1.443 2.508 30 30 0 0 1-2.059-.318.9.9 0 0 0-.23-.508.8.8 0 0 0-.584-.262.8.8 0 0 0-.696.418c-.894-.247-1.63-.53-2.136-.832C.65 12.655.387 12.31.387 12s.263-.654.834-.996c.57-.342 1.421-.662 2.478-.93.935-.237 2.039-.431 3.252-.578zm4.34.8c-.576 0-1.041.5-1.041 1.112 0 .484.29.897.695 1.049v.063c0 .612.466 1.109 1.041 1.109.576 0 1.041-.497 1.041-1.11q0-.025-.002-.05c.424-.141.73-.565.73-1.063 0-.294-.107-.575-.302-.783a1.01 1.01 0 0 0-.738-.326 1 1 0 0 0-.711.3 1 1 0 0 0-.713-.3zm-2.695 2.061a51 51 0 0 0 1.572 2.397c-.99-.04-1.941-.108-2.832-.205q.573-1.067 1.26-2.192m6.779.02c.448.743.862 1.472 1.236 2.176a42 42 0 0 1-2.814.199q.313-.443.625-.902c.333-.495.647-.986.953-1.473m-8.23 2.537c1.033.117 2.141.198 3.304.236.427.6.854 1.179 1.278 1.723-1.103 1.382-2.176 2.561-3.135 3.45-.821.76-1.562 1.31-2.155 1.605-.296.147-.554.23-.76.25s-.35-.018-.462-.104c-.225-.172-.343-.61-.27-1.308s.329-1.624.742-2.698c.366-.948.861-2.018 1.458-3.154m9.656.004c.459.884.854 1.727 1.178 2.504a.91.91 0 0 0-.348.724c0 .486.364.887.82.887a1 1 0 0 0 .123-.01c.218.686.36 1.293.408 1.782.07.698-.05 1.135-.275 1.306-.113.086-.258.124-.463.104s-.462-.105-.758-.254c-.59-.298-1.329-.855-2.146-1.62-.955-.893-2.023-2.077-3.12-3.466.43-.545.862-1.123 1.294-1.725a42 42 0 0 0 3.287-.232m-3.776.246a49 49 0 0 1-1.05 1.4 49 49 0 0 1-1.04-1.398 47 47 0 0 0 2.09-.002"/></svg></span> <strong>PR515</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr>, <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr>, <abbr title="Se han identificado las herramientas y sentencias para modificar el contenido de la base de datos.">CE4a</abbr>, <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr> // 10p) A partir del modelo diseñado en la actividad <a href="04mr-eer.html#PY415">PY415</a> asociada al primer reto de diseño de la base de datos, ahora nos vamos a centrar en crear el modelo físico y cargar datos para trabajar con él. Para ello, como equipo, deberéis decantaros por un SGBD en concreto.</p>
 <p>Para ello, se pide:</p>
 <ul>
-<li>Informe con el modelo ER, el modelo MR y justificacion de las decisiones tomadas respecto a las restricciones incluidas en el modelo físico.</li>
+<li>Informe con el modelo ER, el modelo MR y justificación de las decisiones tomadas respecto a las restricciones incluidas en el modelo físico.</li>
 <li>Script SQL con las sentencias DDL.</li>
 <li>Script SQL con las sentencias DML para cargar datos.</li>
 <li>Script SQL para vaciar todas las tablas.</li>
