@@ -711,7 +711,7 @@
 <p><em>MariaDB</em> es un SGBD relacional basado en <em>MySQL</em>, ampliamente utilizado en el desarrollo de aplicaciones web y multiplataforma.</p>
 <p><em>MariaDB</em> dispone de un interfaz basada en páginas web llamada <em>PhpMyAdmin</em>, que a través de un servidor web, por ejemplo <em>Apache</em>, permite administrar las bases de datos de un servidor desde cualquier equipo de la red.</p>
 <p>Este <em>software</em> dispone de opciones para realizar prácticamente cualquier operación que se pueda realizar vía SQL. Permite gestionar las bases de datos de un servidor, crear, borrar y modificar tablas, lanzar comandos SQL, exportar e importar información, recopilar estadísticas, hacer copias de seguridad, etc. Además dispone de un pequeño diseñador que permite gestionar las relaciones de las tablas.</p>
-<p>Para lanzar tanto <em>MariaDB</em> com <em>PhpMyAdmin</em> mediante <em>Docker</em>, el primer paso es crear la definición de los dos contenedores en un archivo <em>Docker Compose</em>, el cual hemos llamado <a href="resources/docker-compose-mariadb.yml"><code>docker-compose-mariadb.yml</code></a>), donde además de la definición de ambos contenedores, configurarmos el usuario para acceder al SBGD, así como el volumen para los datos:</p>
+<p>Para lanzar tanto <em>MariaDB</em> com <em>PhpMyAdmin</em> mediante <em>Docker</em>, el primer paso es crear la definición de los dos contenedores en un archivo <em>Docker Compose</em>, el cual hemos llamado <a href="resources/docker-compose-mariadb.yml"><code>docker-compose-mariadb.yml</code></a>), donde además de la definición de ambos contenedores, configuraremos el usuario para acceder al SBGD, así como el volumen para los datos:</p>
 <div class="highlight"><span class="filename">docker-compose-mariadb.yml</span><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">services</span><span class="p">:</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">mariadb</span><span class="p">:</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mariadb:latest</span>
@@ -779,7 +779,7 @@
 </figure>
 
 <h3 id="phpmyadmin">PhpMyAdmin<a class="headerlink" href="#phpmyadmin" title="Permanent link">&para;</a></h3>
-<p>Para acceder a la interfaz gráfica de <em>PhpMyAdmin</em>, desde nuestro navegador web, nos  conectamos a <a href="https://localhost:8080">https://localhost:8080</a>, donde veremos el interfaz de <em>login</em>, y entramos con el usuario <code>s8a</code> y la contraseña <code>s8a</code> que habíamos configurado previamente en la definición del contenedor.</p>
+<p>Para acceder a la interfaz gráfica de <em>PhpMyAdmin</em>, desde nuestro navegador web, nos  conectamos a <a href="http://localhost:8080">http://localhost:8080</a>, donde veremos el interfaz de <em>login</em>, y entramos con el usuario <code>s8a</code> y la contraseña <code>s8a</code> que habíamos configurado previamente en la definición del contenedor.</p>
 <p>Una vez dentro, en el menú lateral veremos las bases de datos a las cuales tenemos acceso, así como, una vez seleccionada una en concreto, las tablas con sus columnas e índices, y en la parte derecha, las diferentes opciones mediante el menú superior (desde herramientas para insertar o buscar registros, como importar o exportar los datos u obtener una representación gráfica del modelo físico):</p>
 <figure style="align: center;">
     <img src="images/00phpmyadmin-estructura.png">
@@ -788,7 +788,7 @@
 
 <div class="admonition info">
 <p class="admonition-title">Aprendiendo <em>PhpMyAdmin</em></p>
-<p>Aunque en la red existen multitud de recursos con artículos y tutoriales sobre PhpMyAdmin, a lo largo del curso iremos utilizando la herramienta y viendo las posibilidades que ofrece conforme las vayamos necesitando.</p>
+<p>Aunque en la red existen multitud de recursos con artículos y tutoriales sobre <em>PhpMyAdmin</em>, a lo largo del curso iremos utilizando la herramienta y viendo las posibilidades que ofrece conforme las vayamos necesitando.</p>
 </div>
 <h2 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h2>
 <p><em>PostgreSQL</em> es un SGBD relacional que sigue un modelo cliente-servidor, soportando accesos concurrentes de múltiples usuarios. </p>
