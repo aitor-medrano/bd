@@ -2366,6 +2366,22 @@ antes de finalizar la instrucción, facilitando su lectura. Así pues, posibles 
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="n">ENABLE</span><span class="w"> </span><span class="n">KEYS</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="n">DISABLE</span><span class="w"> </span><span class="n">KEYS</span><span class="p">;</span>
 </code></pre></div>
+<p>Finalmente, si queremos comprobar todas las restricciones que tiene una tabla, podemos ejecuta la sentencia <code>SHOW CREATE TABLE</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">SHOW</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CURSAR</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Table  | Create Table                                                                                                                                                                                                                                                                                                                                                                         |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | CURSAR | CREATE TABLE `CURSAR` (</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">--   `nifEstudiante` varchar(9) NOT NULL,</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">--   `asignatura` int(11) NOT NULL,</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">--   `anyo` int(11) NOT NULL,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">--   `repetidor` tinyint(1) DEFAULT NULL,</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">--   PRIMARY KEY (`nifEstudiante`,`asignatura`,`anyo`),</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">--   CONSTRAINT `FK_CUR_EST` FOREIGN KEY (`nifEstudiante`) REFERENCES `ESTUDIANTE` (`nif`)</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- 1 row in set (0.001 sec)</span>
+</code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Otros elementos</p>
 <p>Existen otras estructuras que forman parte de DDL pero que veremos más adelante son:</p>
