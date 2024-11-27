@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Consultas sencillas">
+        <meta name="description" content="Consultas sencillas son una tabla, mediante operaciones de proyección y selección. Uso de funciones. Combinaciones internas y externas de tablas.">
       
       
       
@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.35f28582.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -73,7 +73,7 @@
       
         <meta  property="og:title"  content="SQL - Selección de datos I - Bases de datos" >
       
-        <meta  property="og:description"  content="Consultas sencillas" >
+        <meta  property="og:description"  content="Consultas sencillas son una tabla, mediante operaciones de proyección y selección. Uso de funciones. Combinaciones internas y externas de tablas." >
       
         <meta  property="og:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/06sql.png" >
       
@@ -89,7 +89,7 @@
       
         <meta  name="twitter:title"  content="SQL - Selección de datos I - Bases de datos" >
       
-        <meta  name="twitter:description"  content="Consultas sencillas" >
+        <meta  name="twitter:description"  content="Consultas sencillas son una tabla, mediante operaciones de proyección y selección. Uso de funciones. Combinaciones internas y externas de tablas." >
       
         <meta  name="twitter:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/06sql.png" >
       
@@ -400,7 +400,7 @@
           
   
   <span class="md-ellipsis">
-    6.- Consultas I
+    6.- Consultas sencillas
   </span>
   
 
@@ -411,7 +411,7 @@
         
   
   <span class="md-ellipsis">
-    6.- Consultas I
+    6.- Consultas sencillas
   </span>
   
 
@@ -692,7 +692,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Composición interna">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#natural-join" class="md-nav__link">
@@ -700,6 +701,11 @@
       Natural join
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -719,7 +725,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Composición externa">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#full-outer-join" class="md-nav__link">
@@ -727,6 +734,11 @@
       Full Outer Join
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1116,7 +1128,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Composición interna">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#natural-join" class="md-nav__link">
@@ -1124,6 +1137,11 @@
       Natural join
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1143,7 +1161,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Composición externa">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#full-outer-join" class="md-nav__link">
@@ -1151,6 +1170,11 @@
       Full Outer Join
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2619,7 +2643,7 @@ Cláusula LIMIT.
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">cross</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="composicion-interna">Composición interna<a class="headerlink" href="#composicion-interna" title="Permanent link">&para;</a></h3>
-<p>La operación <code>[INNER] JOIN</code> combina registros de dos tablas siempre que existan valores coincidentes en un campo común (clave ajena con clave primaria). Para ello, se indica una tabla seguida de <code>join</code> con la segunda tabla, y tras <code>on</code>, igualamos la clave ajena con la primaria:</p>
+<p>La operación <code>[INNER] JOIN</code> combina registros de dos tablas siempre que existan valores coincidentes en un campo común (clave ajena con clave primaria). Para ello, se indica una tabla seguida (opcionalmente con el prefijo <code>inner</code>) de <code>join</code> con la segunda tabla, y tras <code>on</code>, igualamos la clave ajena con la primaria:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">empleado</span><span class="p">.</span><span class="n">CodDep</span><span class="o">=</span><span class="n">departamento</span><span class="p">.</span><span class="n">CodDep</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+----------------------------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | NomDep                     |</span>
@@ -2656,8 +2680,8 @@ Cláusula LIMIT.
 <span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span>
 <span class="linenos" data-linenos="9 "></span><span class="w">    </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span><span class="p">;</span>
 </code></pre></div>
-<h3 id="natural-join">Natural join<a class="headerlink" href="#natural-join" title="Permanent link">&para;</a></h3>
-<p>Forma parte del estándar SQL desde SQL:1999, y se trata de una especialización de INNER JOIN, ya que simplifica la unión entre dos tablas al basarse automáticamente en las columnas con nombres coincidentes en ambas tablas.</p>
+<h4 id="natural-join">Natural join<a class="headerlink" href="#natural-join" title="Permanent link">&para;</a></h4>
+<p>Forma parte del estándar SQL desde SQL:1999, y se trata de una especialización de <code>INNER JOIN</code>, ya que simplifica la unión entre dos tablas al basarse automáticamente en las columnas con nombres coincidentes en ambas tablas.</p>
 <p>La tabla resultante contiene sólo una columna por cada par de columnas con el mismo nombre.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">natural</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
@@ -2744,67 +2768,182 @@ Cláusula LIMIT.
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
 </code></pre></div>
 <h3 id="composicion-externa">Composición externa<a class="headerlink" href="#composicion-externa" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Cuando efectuamos una combinación interna los registros que se quedan sin emparejar en la otra tabla no aparecen en el resultado.</li>
-<li>Mediante una combinación externa, aparecerán los datos emparejados más los que no están relacionados, ya sea por la:<ul>
-<li>Izquierda: <code>left [outer] join</code> – Todos los de la tabla de la izquierda, y de la derecha los relacionados.</li>
-<li>Derecha: <code>right [outer] join</code> – Los de la izquierda los relacionados, y de la derecha todos los datos.</li>
-</ul>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- OUTER JOIN CON DOS TABLAS</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- Empleado y código de la habilidad</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- (empleados que tienen habilidades)</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">codhab</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">codemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">codemp</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- Todos los empleados y código de la habilidad si la tienen</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- (puede haber habilidades nulas)</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">codhab</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">outer</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">codemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">codemp</span><span class="p">;</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">-- Igual que el join, ya que para todo habemp siempre hay un empleado</span>
-<span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">codhab</span>
-<span class="linenos" data-linenos="12 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">right</span><span class="w"> </span><span class="k">outer</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">codemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">codemp</span><span class="p">;</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">-- Misma consulta que left join pero en orden inverso</span>
-<span class="linenos" data-linenos="14 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">codhab</span>
-<span class="linenos" data-linenos="15 "></span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">right</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">codemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">codemp</span><span class="p">;</span>
+<p>Cuando efectuamos una combinación interna los registros que se quedan sin emparejar en la otra tabla no aparecen en el resultado.</p>
+<p>En ocasiones no queremos únicamente los registros que están conectados, sino que nos interesa recuperarlos todos (conectados y no conectados) y de los conectados, sus datos. En otras ocasiones, queremos recuperar todos los que no están conectados... Para ello, necesitamos hacer uso de las composiciones externas.</p>
+<p>Mediante una combinación externa, aparecerán los datos emparejados más los que no están relacionados, ya sea por la:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>* Izquierda: `left [outer] join` – Todos los de la tabla de la izquierda, y de la derecha los relacionados.
+<span class="linenos" data-linenos="2 "></span>* Derecha: `right [outer] join` – Los de la izquierda los relacionados, y de la derecha todos los datos.
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- OUTER JOIN CON TRES TABLAS</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- Empleado y nombre de la habilidad</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- (empleados que tienen habilidades)</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">deshab</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">codemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">codemp</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="k">join</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">codhab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">codhab</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- Todos los empleados y nombre de la habilidad si la tienen</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- (puede haber habilidades nulas)</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- Mal: al hacer el segundo join, elimina los que tienen</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">-- la habilidad nula</span>
-<span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">deshab</span>
-<span class="linenos" data-linenos="12 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">codemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">codemp</span>
-<span class="linenos" data-linenos="13 "></span><span class="k">join</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">codhab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">codhab</span><span class="p">;</span>
-<span class="linenos" data-linenos="14 "></span><span class="c1">-- Bien, primero unimos los códigos y habilidades,</span>
-<span class="linenos" data-linenos="15 "></span><span class="c1">-- y luego todos los empleados</span>
-<span class="linenos" data-linenos="16 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">deshab</span>
-<span class="linenos" data-linenos="17 "></span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">codhab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">codhab</span>
-<span class="linenos" data-linenos="18 "></span><span class="k">right</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">codemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">codemp</span><span class="p">;</span>
-<span class="linenos" data-linenos="19 "></span><span class="c1">-- Todas las habilidades, y si lo hay, el empleado que la tiene</span>
-<span class="linenos" data-linenos="20 "></span><span class="k">select</span><span class="w"> </span><span class="n">nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">deshab</span>
-<span class="linenos" data-linenos="21 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">codemp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">codemp</span>
-<span class="linenos" data-linenos="22 "></span><span class="k">right</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">codhab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">codhab</span><span class="p">;</span>
+<p>Veamos con un ejemplo qué datos obtenemos. Primero realizamos un join entre empleados y sus habilidades para obtener los empleados que tienen habilidades (obtenemos 6 registros porque tenemos clientes que tienen más de una habilidad, pero no todos los clientes tienen habilidades):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | NomEmp                      | CodHab | CodEmp | NivHab |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | GEREN  |      1 |     10 |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | RELPU  |      1 |      9 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán        | MARKE  |      3 |      9 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | GESCO  |      5 |      9 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | RELPU  |      5 |      8 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      8 | Mascullas Alto, Eloísa      | FONTA  |      8 |      7 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- 6 rows in set (0.001 sec)</span>
 </code></pre></div>
-<h3 id="full-outer-join">Full Outer Join<a class="headerlink" href="#full-outer-join" title="Permanent link">&para;</a></h3>
-<p>No está soportado por MariaDB / MySQL</p>
-<ul>
-<li>Combinación externa completa</li>
-<li>Presenta los resultados de la tabla de la izquierda y de la tabla de la derecha aunque no tengan
-correspondencia en la otra tabla.</li>
-<li>La tabla combinada contendrá entonces todos los registros de ambas tablas y presentará valores nulos para registros sin pareja.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- full outer join sin repetidos</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t1</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">id</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">union</span>
-<span class="linenos" data-linenos="5 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t1</span>
-<span class="linenos" data-linenos="6 "></span><span class="k">right</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">id</span>
+<p>Si en cambio queremos recuperar todos los empleados, y si tienen habilidades, su información, haríamos un <em>left join</em>. Ahora se muestran todos los clientes, y además, aquellos que tienen habilidades, aparecerá tantas veces como habilidades tenga. En cambio, de los que no tienen habilidades aparecerá <code>NULL</code> en las columnas correspondientes:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | NomEmp                      | CodHab | CodEmp | NivHab |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | GEREN  |      1 |     10 |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | RELPU  |      1 |      9 |</span>
+<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      2 | Manrique Bacterio, Luisa    | NULL   |   NULL |   NULL |</span>
+</span><span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán        | MARKE  |      3 |      9 |</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      4 | Topaz Illán, Carlos         | NULL   |   NULL |   NULL |</span>
+</span><span class="linenos" data-linenos="10 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | GESCO  |      5 |      9 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | RELPU  |      5 |      8 |</span>
+<span class="hll"><span class="linenos" data-linenos="12 "></span><span class="c1">-- |      6 | Gozque Altanero, Cándido    | NULL   |   NULL |   NULL |</span>
+</span><span class="hll"><span class="linenos" data-linenos="13 "></span><span class="c1">-- |      7 | Forzado López, Galeote      | NULL   |   NULL |   NULL |</span>
+</span><span class="linenos" data-linenos="14 "></span><span class="c1">-- |      8 | Mascullas Alto, Eloísa      | FONTA  |      8 |      7 |</span>
+<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="c1">-- |      9 | Mando Correa, Rosa          | NULL   |   NULL |   NULL |</span>
+</span><span class="hll"><span class="linenos" data-linenos="16 "></span><span class="c1">-- |     10 | Mosc Amuerta, Mario         | NULL   |   NULL |   NULL |</span>
+</span><span class="linenos" data-linenos="17 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- 12 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>Si cambiamos la consulta y hacemos un <em>right</em> join, recuperaremos la misma información que con un <em>inner join</em> ya que en la tabla <code>habemp</code> no podemos tener registros que no referencien a empleados existentes, por la propia definición de integridad referencial.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">right</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | NomEmp                      | CodHab | CodEmp | NivHab |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | GEREN  |      1 |     10 |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | RELPU  |      1 |      9 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán        | MARKE  |      3 |      9 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | GESCO  |      5 |      9 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | RELPU  |      5 |      8 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      8 | Mascullas Alto, Eloísa      | FONTA  |      8 |      7 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- 6 rows in set (0.001 sec)</span>
+</code></pre></div>
+<p>No obstante, si cambiamos el orden de las tablas en el <em>join</em>, sí que tiene sentido hacer un <em>right join</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">right</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+--------+--------+--------+-----------------------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodHab | CodEmp | NivHab | CodEmp | NomEmp                      |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+--------+--------+--------+-----------------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | GEREN  |      1 |     10 |      1 | Saladino Mandamás, Augusto  |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | RELPU  |      1 |      9 |      1 | Saladino Mandamás, Augusto  |</span>
+<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | NULL   |   NULL |   NULL |      2 | Manrique Bacterio, Luisa    |</span>
+</span><span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | MARKE  |      3 |      9 |      3 | Monforte Cid, Roldán        |</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | NULL   |   NULL |   NULL |      4 | Topaz Illán, Carlos         |</span>
+</span><span class="linenos" data-linenos="10 "></span><span class="c1">-- | GESCO  |      5 |      9 |      5 | Alada Veraz, Juana          |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- | RELPU  |      5 |      8 |      5 | Alada Veraz, Juana          |</span>
+<span class="hll"><span class="linenos" data-linenos="12 "></span><span class="c1">-- | NULL   |   NULL |   NULL |      6 | Gozque Altanero, Cándido    |</span>
+</span><span class="hll"><span class="linenos" data-linenos="13 "></span><span class="c1">-- | NULL   |   NULL |   NULL |      7 | Forzado López, Galeote      |</span>
+</span><span class="linenos" data-linenos="14 "></span><span class="c1">-- | FONTA  |      8 |      7 |      8 | Mascullas Alto, Eloísa      |</span>
+<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="c1">-- | NULL   |   NULL |   NULL |      9 | Mando Correa, Rosa          |</span>
+</span><span class="hll"><span class="linenos" data-linenos="16 "></span><span class="c1">-- | NULL   |   NULL |   NULL |     10 | Mosc Amuerta, Mario         |</span>
+</span><span class="linenos" data-linenos="17 "></span><span class="c1">-- +--------+--------+--------+--------+-----------------------------+</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- 12 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>¿Y si tenemos tres tablas? Vamos a unir las habilidades de los empleados con todas las existentes (seguimos recuperando los mismos 6 registros, sólo que ahora tenemos acceso a los nombres de las habilidades):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">join</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | CodEmp | NomEmp                      | CodHab | CodEmp | NivHab | CodHab | DesHab               |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | GEREN  |      1 |     10 | GEREN  | Gerencia             |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | RELPU  |      1 |      9 | RELPU  | Relaciones Públicas  |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán        | MARKE  |      3 |      9 | MARKE  | Marketing            |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | GESCO  |      5 |      9 | GESCO  | Gestión Contable     |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | RELPU  |      5 |      8 | RELPU  | Relaciones Públicas  |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- |      8 | Mascullas Alto, Eloísa      | FONTA  |      8 |      7 | FONTA  | Fontanería           |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>Si quiero recuperar todos los empleados y el nombre de la habilidad si la tienen, tenemos que hacer un <em>left join</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">join</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | CodEmp | NomEmp                      | CodHab | CodEmp | NivHab | CodHab | DesHab               |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | GEREN  |      1 |     10 | GEREN  | Gerencia             |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | RELPU  |      1 |      9 | RELPU  | Relaciones Públicas  |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán        | MARKE  |      3 |      9 | MARKE  | Marketing            |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | GESCO  |      5 |      9 | GESCO  | Gestión Contable     |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | RELPU  |      5 |      8 | RELPU  | Relaciones Públicas  |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- |      8 | Mascullas Alto, Eloísa      | FONTA  |      8 |      7 | FONTA  | Fontanería           |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- 6 rows in set (0.001 sec)</span>
+</code></pre></div>
+<p>¿Qué ha pasado? ¿Por qué sólo 6 registros? Al realizar el segundo <em>join</em>, ha eliminado aquellos registros que tienen la habilidad nula.</p>
+<p>¿Cómo lo solucionamos? Primero vamos a unir los códigos y habilidades, y luego hacemos el <em>join</em> por la derecha con todos los empleados:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">right</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | CodEmp | NomEmp                      | CodHab | CodEmp | NivHab | CodHab | DesHab               |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | GEREN  |      1 |     10 | GEREN  | Gerencia             |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | RELPU  |      1 |      9 | RELPU  | Relaciones Públicas  |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      2 | Manrique Bacterio, Luisa    | NULL   |   NULL |   NULL | NULL   | NULL                 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán        | MARKE  |      3 |      9 | MARKE  | Marketing            |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- |      4 | Topaz Illán, Carlos         | NULL   |   NULL |   NULL | NULL   | NULL                 |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | GESCO  |      5 |      9 | GESCO  | Gestión Contable     |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | RELPU  |      5 |      8 | RELPU  | Relaciones Públicas  |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- |      6 | Gozque Altanero, Cándido    | NULL   |   NULL |   NULL | NULL   | NULL                 |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- |      7 | Forzado López, Galeote      | NULL   |   NULL |   NULL | NULL   | NULL                 |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- |      8 | Mascullas Alto, Eloísa      | FONTA  |      8 |      7 | FONTA  | Fontanería           |</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- |      9 | Mando Correa, Rosa          | NULL   |   NULL |   NULL | NULL   | NULL                 |</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- |     10 | Mosc Amuerta, Mario         | NULL   |   NULL |   NULL | NULL   | NULL                 |</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">-- 12 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>Veamos otro ejemplo. Ahora quiero recuperar todas las habilidades, y si lo hay, el empleado que la tiene. En este caso, pongo a la izquierda las habilidades y hago dos <em>left joins</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+----------------------+--------+--------+--------+--------+-----------------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | CodHab | DesHab               | CodHab | CodEmp | NivHab | CodEmp | NomEmp                      |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------+----------------------+--------+--------+--------+--------+-----------------------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | FONTA  | Fontanería           | FONTA  |      8 |      7 |      8 | Mascullas Alto, Eloísa      |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | GEREN  | Gerencia             | GEREN  |      1 |     10 |      1 | Saladino Mandamás, Augusto  |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | GESCO  | Gestión Contable     | GESCO  |      5 |      9 |      5 | Alada Veraz, Juana          |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | INFOR  | INFORMATICA          | NULL   |   NULL |   NULL |   NULL | NULL                        |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- | MARKE  | Marketing            | MARKE  |      3 |      9 |      3 | Monforte Cid, Roldán        |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | MECAN  | Mecanografía         | NULL   |   NULL |   NULL |   NULL | NULL                        |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | RELPU  | Relaciones Públicas  | RELPU  |      1 |      9 |      1 | Saladino Mandamás, Augusto  |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- | RELPU  | Relaciones Públicas  | RELPU  |      5 |      8 |      5 | Alada Veraz, Juana          |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- | TELEF  | Telefonista          | NULL   |   NULL |   NULL |   NULL | NULL                        |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- +--------+----------------------+--------+--------+--------+--------+-----------------------------+</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- 9 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>La misma consulta con sólo una consulta externa sería:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">right</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+----------------------+--------+--------+--------+--------+-----------------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | CodHab | DesHab               | CodHab | CodEmp | NivHab | CodEmp | NomEmp                      |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------+----------------------+--------+--------+--------+--------+-----------------------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | FONTA  | Fontanería           | FONTA  |      8 |      7 |      8 | Mascullas Alto, Eloísa      |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | GEREN  | Gerencia             | GEREN  |      1 |     10 |      1 | Saladino Mandamás, Augusto  |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | GESCO  | Gestión Contable     | GESCO  |      5 |      9 |      5 | Alada Veraz, Juana          |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | INFOR  | INFORMATICA          | NULL   |   NULL |   NULL |   NULL | NULL                        |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- | MARKE  | Marketing            | MARKE  |      3 |      9 |      3 | Monforte Cid, Roldán        |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | MECAN  | Mecanografía         | NULL   |   NULL |   NULL |   NULL | NULL                        |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | RELPU  | Relaciones Públicas  | RELPU  |      1 |      9 |      1 | Saladino Mandamás, Augusto  |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- | RELPU  | Relaciones Públicas  | RELPU  |      5 |      8 |      5 | Alada Veraz, Juana          |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- | TELEF  | Telefonista          | NULL   |   NULL |   NULL |   NULL | NULL                        |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- +--------+----------------------+--------+--------+--------+--------+-----------------------------+</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- 9 rows in set (0.000 sec)</span>
+</code></pre></div>
+<h4 id="full-outer-join">Full Outer Join<a class="headerlink" href="#full-outer-join" title="Permanent link">&para;</a></h4>
+<p>Aunque no está soportado por <em>MariaDB</em>^, conviene conocer la combinación externa completa, aunque su uso es muy limitado (por la propia restricción de integridad referencial). Su resultado presenta los resultados de la tabla de la izquierda y de la tabla de la derecha aunque no tengan correspondencia en la otra tabla.</p>
+<p>Es decir, la tabla combinada contendrá entonces todos los registros de ambas tablas y presentará valores nulos para registros sin pareja.</p>
+<p>Si necesitamos dicho resultado, podemos simularlo haciendo una union entre un <em>left join</em> y un <em>right join</em>. De esta manera obtendríamo todos los registros de T1 y los valores de T2 relacionados o nulos en los que no, y en una segunda consulta, los valores de T1 relacionados o nulos en los que no, y todos los valores de T2:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t1</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">id</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">union</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t1</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="k">right</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">id</span>
 </code></pre></div>
 <h2 id="operadores-de-conjuntos">Operadores de conjuntos<a class="headerlink" href="#operadores-de-conjuntos" title="Permanent link">&para;</a></h2>
 <p>Los operadores de conjuntos no operan sobre tipos de datos simples, sino sobre los resultados de dos o más consultas, las cuales deben tener la misma estructura, es decir, que la cantidad y los tipos de datos debe ser el mismo:</p>
@@ -3336,10 +3475,10 @@ TODO:
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
   </body>
