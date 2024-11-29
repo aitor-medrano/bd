@@ -1250,7 +1250,7 @@
 
 <h1 id="sql-seleccion-de-datos-i">SQL - Selección de datos I<a class="headerlink" href="#sql-seleccion-de-datos-i" title="Permanent link">&para;</a></h1>
 <h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
-<p>En esta UT vamos a comenzar a trabajar el RA3: <strong>Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.</strong>.</p>
+<p>En esta UT vamos a comenzar a trabajar el RA3: <strong>Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos</strong>.</p>
 <h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong><abbr title="Se han identificado las herramientas y sentencias para realizar consultas.">CE3a</abbr></strong>: Se han identificado las herramientas y sentencias para realizar consultas. </li>
@@ -1281,7 +1281,7 @@
 </ol>
 </div>
 <h3 id="programacion-de-aula-11h">Programación de Aula (11h)<a class="headerlink" href="#programacion-de-aula-11h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la quinta, siendo la primera del bloque de consultas, impartiéndose al principio de la segunda evaluación, a principios de diciembre, con una duración estimada de 11 sesiones lectivas:</p>
+<p>Esta unidad es la sexta, siendo la primera del bloque de consultas, impartiéndose al principio de la segunda evaluación, a principios de diciembre, con una duración estimada de 11 sesiones lectivas:</p>
 <table>
 <thead>
 <tr>
@@ -2352,9 +2352,9 @@ Cláusula LIMIT.
 <h3 id="ordenando-y-limitando">Ordenando y Limitando<a class="headerlink" href="#ordenando-y-limitando" title="Permanent link">&para;</a></h3>
 <p>Es muy común tener que ordenar el resultado de una consulta para darle más importancia a unos campos que otros, e incluso, reducir el número de tuplas recuperadas.</p>
 <p>Así pues, para ordenar mediante la clausula <a href="https://mariadb.com/kb/en/order-by/"><code>ORDER BY {campo | pos} [ASC|DESC]</code></a>, indicando los diferentes campos separados por coma. Por defecto, la ordenación se realiza de forma ascendente.</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NifEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+-----------+</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Nomemp                      | Nifemp    |</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | NifEmp    |</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +-----------------------------+-----------+</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | Alada Veraz, Juana          | 38223923T |</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | Forzado López, Galeote      | 47123132D |</span>
@@ -2369,9 +2369,9 @@ Cláusula LIMIT.
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- +-----------------------------+-----------+</span>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- 10 rows in set (0.003 sec)</span>
 <span class="linenos" data-linenos="17 "></span>
-<span class="hll"><span class="linenos" data-linenos="18 "></span><span class="k">select</span><span class="w"> </span><span class="n">Coddep</span><span class="p">,</span><span class="w"> </span><span class="n">Nomemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">Coddep</span><span class="p">,</span><span class="w"> </span><span class="n">Nomemp</span><span class="w"> </span><span class="k">desc</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="18 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">desc</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="19 "></span><span class="c1">-- +--------+-----------------------------+</span>
-<span class="linenos" data-linenos="20 "></span><span class="c1">-- | Coddep | Nomemp                      |</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">-- | CodDep | NomEmp                      |</span>
 <span class="linenos" data-linenos="21 "></span><span class="c1">-- +--------+-----------------------------+</span>
 <span class="linenos" data-linenos="22 "></span><span class="c1">-- | ADMZS  | Alada Veraz, Juana          |</span>
 <span class="linenos" data-linenos="23 "></span><span class="c1">-- | DIRGE  | Saladino Mandamás, Augusto  |</span>
@@ -2386,9 +2386,9 @@ Cláusula LIMIT.
 <span class="linenos" data-linenos="32 "></span><span class="c1">-- +--------+-----------------------------+</span>
 <span class="linenos" data-linenos="33 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
 <span class="linenos" data-linenos="34 "></span>
-<span class="hll"><span class="linenos" data-linenos="35 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="35 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="36 "></span><span class="c1">-- +-----------------------------+-----------+</span>
-<span class="linenos" data-linenos="37 "></span><span class="c1">-- | Nomemp                      | Nifemp    |</span>
+<span class="linenos" data-linenos="37 "></span><span class="c1">-- | NomEmp                      | Nifemp    |</span>
 <span class="linenos" data-linenos="38 "></span><span class="c1">-- +-----------------------------+-----------+</span>
 <span class="linenos" data-linenos="39 "></span><span class="c1">-- | Alada Veraz, Juana          | 38223923T |</span>
 <span class="linenos" data-linenos="40 "></span><span class="c1">-- | Forzado López, Galeote      | 47123132D |</span>
@@ -2427,9 +2427,9 @@ Cláusula LIMIT.
 </code></pre></div>
 <h3 id="seleccion">Selección<a class="headerlink" href="#seleccion" title="Permanent link">&para;</a></h3>
 <p>Para filtrar los datos y realizar una selección de tuplas, podemos emplear tanto <a href="https://mariadb.com/kb/en/function-and-operator-reference/">funciones como operadores</a> dentro del <code>WHERE</code>. Para realizar las comparaciones, se expresan mediante <code>expresion1 operador expresion2</code>, pudiendo utilizar los  operadores relacionales <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>!=</code>, etc..</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">&#39;DIRGE&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">&#39;DIRGE&#39;</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+--------+------------+</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Nomemp                      | CodDep | FecNaEmp   |</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | CodDep | FecNaEmp   |</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +-----------------------------+--------+------------+</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | Saladino Mandamás, Augusto  | DIRGE  | 1961-08-07 |</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +-----------------------------+--------+------------+</span>
@@ -2474,7 +2474,7 @@ Cláusula LIMIT.
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
 </span><span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="mi">2000000</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="mi">6000000</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +-----------------------------+------------+</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | NomEmp                      | Salemp     |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | NomEmp                      | SalEmp     |</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +-----------------------------+------------+</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | Saladino Mandamás, Augusto  | 7200000.00 |</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | Alada Veraz, Juana          | 6200000.00 |</span>
@@ -2496,9 +2496,9 @@ Cláusula LIMIT.
 </code></pre></div>
 <h4 id="conjuntos">Conjuntos<a class="headerlink" href="#conjuntos" title="Permanent link">&para;</a></h4>
 <p>Si en vez de un rango, queremos comprobar si el resultado de la expresión coincide con uno de entre una lista de valores (los cuales deben coincidir en su tipo de datos), usaremos el operador <a href="https://mariadb.com/kb/en/in/"><code>IN</code></a> con la sintaxis <code>exp1 [NOT] IN (const1 [,const2])</code></p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Codemp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">Salemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Codemp</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Codemp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Codemp</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">);</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+-----------------------------+------------+</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Codemp | NomEmp                      | Salemp     |</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Codemp | NomEmp                      | SalEmp     |</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+-----------------------------+------------+</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | 7200000.00 |</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán        | 5200000.00 |</span>
@@ -2546,9 +2546,9 @@ Cláusula LIMIT.
 </code></pre></div>
 <h4 id="valor-nulo">Valor nulo<a class="headerlink" href="#valor-nulo" title="Permanent link">&para;</a></h4>
 <p>Para comprobar si un campo contiene valores nulos (o si queremos saber si tiene algún valor, sea cual sea) usaremos el operador <a href="https://mariadb.com/kb/en/is-null/"><code>IS NULL</code></a> con la sintaxis <code>columna IS [NOT] NULL</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-------------------------+----------+</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Nomemp                  | ExtelEmp |</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                  | ExtelEmp |</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +-------------------------+----------+</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | Forzado López, Galeote  | NULL     |</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | Mascullas Alto, Eloísa  | NULL     |</span>
@@ -2556,9 +2556,9 @@ Cláusula LIMIT.
 <span class="linenos" data-linenos=" 8 "></span><span class="c1">-- +-------------------------+----------+</span>
 <span class="linenos" data-linenos=" 9 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
 <span class="linenos" data-linenos="10 "></span>
-<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="12 "></span><span class="c1">-- +-----------------------------+----------+</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">-- | Nomemp                      | ExtelEmp |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | NomEmp                      | ExtelEmp |</span>
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- +-----------------------------+----------+</span>
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- | Saladino Mandamás, Augusto  | 1111     |</span>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- | Manrique Bacterio, Luisa    | 2233     |</span>
@@ -2571,10 +2571,10 @@ Cláusula LIMIT.
 </code></pre></div>
 <h4 id="operadores-logicos">Operadores lógicos<a class="headerlink" href="#operadores-logicos" title="Permanent link">&para;</a></h4>
 <p>Respecto a las condiciones compuestas, podemos unir operadores mediante <code>AND</code> (conjunción), <code>OR</code> (disyunción) y <code>NOT</code> (negación).</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">Coddep</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-</span><span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">Coddep</span><span class="o">=</span><span class="s1">&#39;ADMZS&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+</span><span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">&#39;ADMZS&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +-------------------------+--------+----------+</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | Nomemp                  | Coddep | ExtelEmp |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | NomEmp                  | CodDep | ExtelEmp |</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +-------------------------+--------+----------+</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | Alada Veraz, Juana      | ADMZS  | 1239     |</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | Forzado López, Galeote  | PROZS  | NULL     |</span>
@@ -2582,10 +2582,10 @@ Cláusula LIMIT.
 <span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | Mosc Amuerta, Mario     | PROZS  | NULL     |</span>
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- +-------------------------+--------+----------+</span>
 <span class="linenos" data-linenos="11 "></span>
-<span class="hll"><span class="linenos" data-linenos="12 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">Coddep</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-</span><span class="hll"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">Coddep</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;ADMZS&#39;</span><span class="p">,</span><span class="s1">&#39;PROZS&#39;</span><span class="p">,</span><span class="s1">&#39;VENZS&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">SalEmp</span><span class="o">&gt;</span><span class="mi">5000000</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="12 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+</span><span class="hll"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;ADMZS&#39;</span><span class="p">,</span><span class="s1">&#39;PROZS&#39;</span><span class="p">,</span><span class="s1">&#39;VENZS&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">SalEmp</span><span class="o">&gt;</span><span class="mi">5000000</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="14 "></span><span class="c1">-- +-----------------------+--------+------------+</span>
-<span class="linenos" data-linenos="15 "></span><span class="c1">-- | Nomemp                | Coddep | SalEmp     |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- | NomEmp                | CodDep | SalEmp     |</span>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- +-----------------------+--------+------------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- | Alada Veraz, Juana    | ADMZS  | 6200000.00 |</span>
 <span class="linenos" data-linenos="18 "></span><span class="c1">-- | Monforte Cid, Roldán  | VENZS  | 5200000.00 |</span>
@@ -3019,7 +3019,7 @@ Cláusula LIMIT.
 <ul>
 <li><em>Consultes de selecció <a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u4/a1/continguts.html">simple</a> i <a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u4/a2/continguts.html">complexes</a> - Institut Obert de Catalunya</em>.</li>
 <li>Consultas <a href="https://josejuansanchez.org/bd/unidad-05-teoria/index.html">sobre una tabla</a>, sobre <a href="https://josejuansanchez.org/bd/unidad-06-teoria/index.html">varias tablas con composición interna</a>, y con <a href="https://josejuansanchez.org/bd/unidad-07-teoria/index.html">varias tablas con composición externa</a> de <em>José Juan Sánchez</em>.</li>
-<li><a href="https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html">Introducción a SQL</a> de <em>Jorge Sánchez</em>.</li>
+<li><a href="https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html">Introducción a SQL</a> y <a href="https://jorgesanchez.net/manuales/sql/select-join-sql2016.html">Consultas sobre varias tablas. Cláusula join</a> de <em>Jorge Sánchez</em>.</li>
 <li><a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut4/recopila.html">Realización de consultas</a> de <em>Javier Gutiérrez</em>.</li>
 <li><a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema4/index.html">Consulta de bases de datos</a> de gestionbasesdatos.readthedocs.io</li>
 <li><a href="https://www.cs.us.es/cursos/bd-2023/temas/BD-Tema-5.pdf">Introducción a SQL</a>, por <em>Luis Valencia</em> y <em>David Orellana</em>, de la <em>Universidad de Sevilla</em>.</li>
@@ -3051,7 +3051,7 @@ Cláusula LIMIT.
 <li>Lista los nombres y sus presupuestos de todos los departamentos de la tabla <code>departamento</code>, convirtiendo los nombres a mayúscula.</li>
 <li>Lista los nombres y los salarios de todos los empleados, convirtiendo los nombres a minúsculas.</li>
 <li>Lista el nombre de todos los empleados en una columna, y en otra columna recupera en mayúsculas los dos primeros caracteres del código del departamento.</li>
-<li>Lista el codigo del empleado y del departamentode todos los empleados, así como un código formado por los datos campos unidos.</li>
+<li>Lista el código del empleado y del departamento de todos los empleados, así como un código formado por los datos campos unidos.</li>
 <li>Lista el nombre de los empleados, así como un campo para su nombre y otro para sus apellidos (puedes utilizar las funciones <a href="https://mariadb.com/kb/en/locate/"><code>LOCATE(subcadena, cadena)</code></a> y <a href="https://mariadb.com/kb/en/substring/"><code>SUBSTRING(cadena, posición [,longitud])</code></a>)</li>
 <li>Lista los nombres, el salario y el salario incrementado un 12%, redondeando el salario incrementado.</li>
 <li>Lista los nombres, el salario y el salario incrementado un 12%, truncando el salario incrementado con un único decimal.</li>
@@ -3131,10 +3131,10 @@ b) Fueron contratados en 1994.</p>
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC610</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr> // 3p) Sobre la base de datos <code>empresa</code>, y utilizando composiciones internas, realiza las siguientes consultas:</p>
 <ol>
-<li>Muestra para cada departamento, su nombre, presupuesto y el nombre del centro al que pertence.</li>
+<li>Muestra para cada departamento, su nombre, presupuesto y el nombre del centro al que pertenece.</li>
 <li>Muestra para cada departamento, su nombre, presupuesto y el nombre del empleado que lo dirige.</li>
-<li>Muestra para cada departamento, su nombre, presupuesto, el nombre del centro al que pertence y el nombre del empleado que lo dirige.</li>
-<li>Muestra el nombre del departamento, el nombre del centro al que pertence y el nombre del empleado que lo dirige, de aquel departamento que tenga el presupuesto más alto.</li>
+<li>Muestra para cada departamento, su nombre, presupuesto, el nombre del centro al que pertenece y el nombre del empleado que lo dirige.</li>
+<li>Muestra el nombre del departamento, el nombre del centro al que pertenece y el nombre del empleado que lo dirige, de aquel departamento que tenga el presupuesto más alto.</li>
 <li>Listar los empleados del centro <code>Fábrica Zona Sur</code>.</li>
 <li>Listar el nombre del empleado y el nombre y fecha de nacimiento de su hijo/hija para aquellos empleados con un único hijo. Ordenar por fecha de nacimiento de los hijos.</li>
 <li>
@@ -3220,7 +3220,7 @@ b) Fueron contratados en 1994.</p>
 <li>Documentación de las consultas.</li>
 <li>El informe entregado no contiene faltas de ortografía.</li>
 <li>El informe entregado tiene un formato adecuado (portada, apartados, autores, etc...).</li>
-<li>El infoque debe indicar cómo se han repartido las tareas y qué ha realizado cada alumno/a.</li>
+<li>El informe debe indicar cómo se han repartido las tareas y qué ha realizado cada alumno/a.</li>
 </ul>
 </li>
 </ul>
