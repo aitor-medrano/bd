@@ -2131,28 +2131,28 @@ Poner ejemplos de 3 o 4 consultas que combinen operadores de AR
 <p>Se emplean para realizar cálculos sobre el total de elementos de la consulta (o agrupación). Tras el <code>select</code> indicaremos la función (o funciones) a realizar sobre el total de elementos devueltos por la consulta:</p>
 <p>Vamos a comenzar contando la cantidad de filas mediante la función <a href="https://mariadb.com/kb/en/count/"><code>COUNT(expr)</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Cantidad de empleados</span>
-<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +----------+</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | count(*) |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | COUNT(*) |</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +----------+</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |       10 |</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1">-- +----------+</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 <span class="linenos" data-linenos=" 9 "></span>
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- Cantidad de registros en la relación N:M entre empleado y habilidad</span>
-<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="12 "></span><span class="c1">-- +----------+</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">-- | count(*) |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | COUNT(*) |</span>
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- +----------+</span>
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- |        6 |</span>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- +----------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 </code></pre></div>
-<p>Si queremos recuperar cuantos elementos diferentes tenemos de un campo, en la expresión usaremos <code>distinct</code>:</p>
+<p>Si queremos recuperar cuantos elementos diferentes tenemos de un campo, en la expresión usaremos <code>DISTINCT</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Cantidad de empleados que tienen habilidades</span>
-<span class="hll"><span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="w"> </span><span class="n">codemp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">codemp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="3 "></span><span class="c1">-- +------------------------+</span>
-<span class="linenos" data-linenos="4 "></span><span class="c1">-- | count(distinct codemp) |</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">-- | COUNT(DISTINCT codemp) |</span>
 <span class="linenos" data-linenos="5 "></span><span class="c1">-- +------------------------+</span>
 <span class="linenos" data-linenos="6 "></span><span class="c1">-- |                      4 |</span>
 <span class="linenos" data-linenos="7 "></span><span class="c1">-- +------------------------+</span>
@@ -2160,41 +2160,41 @@ Poner ejemplos de 3 o 4 consultas que combinen operadores de AR
 </code></pre></div>
 <p>Otras funciones de agregación que podemos emplear son:</p>
 <ul>
-<li><a href="https://mariadb.com/kb/en/sum/"><code>sum(expr)</code></a>: Suma todos los valores de una expresión/columna</li>
-<li><a href="https://mariadb.com/kb/en/min/"><code>min(expr)</code></a> / <a href="https://mariadb.com/kb/en/max/"><code>max(expr)</code></a>: Mínimo o máximo de una expresión/columna</li>
-<li><a href="https://mariadb.com/kb/en/avg/"><code>avg(expr)</code></a>: Valor medio de una expresión/columna</li>
+<li><a href="https://mariadb.com/kb/en/sum/"><code>SUM(expr)</code></a>: Suma todos los valores de una expresión/columna</li>
+<li><a href="https://mariadb.com/kb/en/min/"><code>MIN(expr)</code></a> / <a href="https://mariadb.com/kb/en/max/"><code>MAX(expr)</code></a>: Mínimo o máximo de una expresión/columna</li>
+<li><a href="https://mariadb.com/kb/en/avg/"><code>AVG(expr)</code></a>: Valor medio de una expresión/columna</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Total de hijos de los empleados</span>
-<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +------------+</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | sum(NumHi) |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | SUM(NumHi) |</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +------------+</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |          7 |</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1">-- +------------+</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 <span class="linenos" data-linenos=" 9 "></span>
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- Salario más alto</span>
-<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="12 "></span><span class="c1">-- +-------------+</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">-- | max(SalEmp) |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | MAX(SalEmp) |</span>
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- +-------------+</span>
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- |  7200000.00 |</span>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- +-------------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 1 row in set (0.001 sec)</span>
 <span class="linenos" data-linenos="18 "></span>
 <span class="linenos" data-linenos="19 "></span><span class="c1">-- Salario medio</span>
-<span class="hll"><span class="linenos" data-linenos="20 "></span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="20 "></span><span class="k">select</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="21 "></span><span class="c1">-- +----------------+</span>
-<span class="linenos" data-linenos="22 "></span><span class="c1">-- | avg(SalEmp)    |</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">-- | AVG(SalEmp)    |</span>
 <span class="linenos" data-linenos="23 "></span><span class="c1">-- +----------------+</span>
 <span class="linenos" data-linenos="24 "></span><span class="c1">-- | 3890000.000000 |</span>
 <span class="linenos" data-linenos="25 "></span><span class="c1">-- +----------------+</span>
 <span class="linenos" data-linenos="26 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 <span class="linenos" data-linenos="27 "></span>
 <span class="linenos" data-linenos="28 "></span><span class="c1">-- Salario máximo y medio de empleados</span>
-<span class="hll"><span class="linenos" data-linenos="29 "></span><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">),</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="29 "></span><span class="k">select</span><span class="w"> </span><span class="k">MAX</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">),</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="30 "></span><span class="c1">-- +-------------+----------------+</span>
-<span class="linenos" data-linenos="31 "></span><span class="c1">-- | max(SalEmp) | avg(SalEmp)    |</span>
+<span class="linenos" data-linenos="31 "></span><span class="c1">-- | MAX(SalEmp) | AVG(SalEmp)    |</span>
 <span class="linenos" data-linenos="32 "></span><span class="c1">-- +-------------+----------------+</span>
 <span class="linenos" data-linenos="33 "></span><span class="c1">-- |  7200000.00 | 3890000.000000 |</span>
 <span class="linenos" data-linenos="34 "></span><span class="c1">-- +-------------+----------------+</span>
