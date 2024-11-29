@@ -786,17 +786,54 @@
 </code></pre></div>
 <p>En esta unidad vamos a trabajar con ellas, la cual nos permite agregar datos y realizar cálculos sobre columnas resumen.</p>
 <h2 id="consultas-agregadas">Consultas agregadas<a class="headerlink" href="#consultas-agregadas" title="Permanent link">&para;</a></h2>
-<!--
-Inspirar en JJ
--->
 <p>Tal como vimos en el apartado <a href="06sql.html#funciones-agregadas">Funciones agregadas</a> de la sesión anterior, podemos utilizar los operadores <a href="https://mariadb.com/kb/en/count/"><code>count(expr)</code></a>, <a href="https://mariadb.com/kb/en/sum/"><code>sum(expr)</code></a>, <a href="https://mariadb.com/kb/en/min/"><code>min(expr)</code></a>, <a href="https://mariadb.com/kb/en/max/"><code>max(expr)</code></a> y <a href="https://mariadb.com/kb/en/avg/"><code>avg(expr)</code></a> para operar sobre una columna o expresión.</p>
-<p>Por ejemplo, podemos obtener la cantidad total empleadas por los presupuestos de los departamentos mediante:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
+<p>Para este apartado, nos vamos a centrar en la tabla de empleados:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NumHi</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+----------+-----------------------------+-------+------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | ExTelEmp | NomEmp                      | NumHi | SalEmp     |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+----------+-----------------------------+-------+------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- |      1 | 1111     | Saladino Mandamás, Augusto  |     1 | 7200000.00 |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      2 | 2233     | Manrique Bacterio, Luisa    |     0 | 4500000.00 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      3 | 2133     | Monforte Cid, Roldán        |     1 | 5200000.00 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      4 | 3838     | Topaz Illán, Carlos         |     0 | 3200000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      5 | 1239     | Alada Veraz, Juana          |     1 | 6200000.00 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      6 | 23838    | Gozque Altanero, Cándido    |     1 | 5000000.00 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- |      7 | NULL     | Forzado López, Galeote      |     0 | 1600000.00 |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- |      8 | NULL     | Mascullas Alto, Eloísa      |     1 | 1600000.00 |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- |      9 | 12124    | Mando Correa, Rosa          |     2 | 3100000.00 |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- |     10 | NULL     | Mosc Amuerta, Mario         |     0 | 1300000.00 |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- +--------+----------+-----------------------------+-------+------------+</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>1.1 Funciones de agregación
-1.1.1 Diferencia entre COUNT(*) y COUNT(columna)
-1.1.2 Contar valores distintos COUNT(DISTINCT columna)</p>
-<p>Total del presupuesto anual de los departamento</p>
+<p>Por ejemplo, podemos obtener la cantidad que gasta la empresa en salarios de los empleados utilizaremos la función <code>sum</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">-- +-------------+</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- | sum(SalEmp) |</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">-- +-------------+</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- | 38900000.00 |</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">-- +-------------+</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.001 sec)</span>
+</code></pre></div>
+<p>En el caso de <code>count(expr)</code> es muy común emplear <code>count(*)</code> para indicar todos los elementos de la consulta resultante. Dicho esto, también podemos hacerlo sobre una determinada columnas, obteniendo cuantos de dichos elementos contienen valor. Si la columna contiene valores nulos, nos devolverá cuantos tienen valor.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">CodEmp</span><span class="p">),</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">-- +----------+---------------+-----------------+</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- | count(*) | count(CodEmp) | count(ExTelEmp) |</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">-- +----------+---------------+-----------------+</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- |       10 |            10 |               7 |</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">-- +----------+---------------+-----------------+</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.001 sec)</span>
+</code></pre></div>
+<p>En este caso, obtenemos que tenemos diez registros, diez valores en código de empleado (que al ser clave primaria, debe coincidir con el total de registros), pero en cambio sólo tenemos 7 extensiones telefónicas.</p>
+<p>Si lo que nos interesa es la cantidad de valores distintos que tenemos de una columna, podemos hacer un <code>count(distinct expr)</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="p">),</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="p">)),</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">NumHi</span><span class="p">),</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="k">distinct</span><span class="p">(</span><span class="n">NumHi</span><span class="p">))</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">-- +----------+-----------------+---------------------------+--------------+------------------------+</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- | count(*) | count(ExTelEmp) | count(distinct(ExTelEmp)) | count(NumHi) | count(distinct(NumHi)) |</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">-- +----------+-----------------+---------------------------+--------------+------------------------+</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- |       10 |               7 |                         7 |           10 |                      3 |</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">-- +----------+-----------------+---------------------------+--------------+------------------------+</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
+</code></pre></div>
+<p>Aquí podemos observar como de las 7 extensiones telefónicas que teníamos, ninguna se repite. Pero en cambio, sabemos que todos los empleados tiene la cantidad de hijos anotados y que tenemos 3 posibles valores (<code>0</code>, <code>1</code> y <code>2</code> hijos)</p>
 <h3 id="group-by">Group by<a class="headerlink" href="#group-by" title="Permanent link">&para;</a></h3>
 <p>Mediante <a href="https://mariadb.com/kb/en/group-by/"><code>GROUP BY</code></a> podemos realizar cálculos en vertical, es decir, sobre el resultado de agrupar registros.</p>
 <p>Los pasos que vamos a realizar son:</p>
@@ -904,20 +941,29 @@ Inspirar en JJ
 <p>Una vez creada, podemos hacer consultas sobre la vista.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">representante</span><span class="p">;</span>
 </code></pre></div>
-<p>No se puede cuando la vista utiliza having / group by / distinct / union / union all / funciones agregadas (max, min, sum, count)…
-Todos los campos de la vista deben contener los campos no nulos de las tablas base que no tienen valores por defecto.
-Los campos de la vista son campos simples, sin derivados (cálculos, lowercase, …)</p>
-<p>Al ser consultas precompiladas, su rendimiento es algo mejor.
-Permiten restringir el acceso a columnas (solo nombre, apellidos y teléfono de los clientes), incluso a nivel de fila (sólo los clientes de Alicante).
-Facilitan procesos de normalización/denormalización.</p>
-<div class="admonition info">
-<p class="admonition-title">Vistas materializadas</p>
-<p>XXX</p>
-</div>
+<p>Cualquier sentencia que realicemos sobre la vista repercute directamente en la tabla (o tablas) de la que procede. Además, los vistas, como estructuras virtuales, son dinámicas, al reflejar los cambios que se producen en las tablas de origen.</p>
+<p>TODO: ejemplo probando a hacer un insert en representante</p>
+<p>Entre las ventajas de su uso, cabe destacar que:</p>
+<ul>
+<li>Al ser consultas precompiladas, su rendimiento es algo mejor que hacer las consultas directamente.</li>
+<li>Permiten restringir el acceso a ciertas columnas (solo nombre, apellidos y teléfono de los clientes), incluso a nivel de fila (sólo los clientes de Alicante),de manera que podemos restringir que un cierto usuario sólo pueda acceder a una vista, ajustando aun más su esquema externo.</li>
+<li>Facilitan procesos de normalización/denormalización.</li>
+</ul>
+<p>FIXME: Revisar - https://www.datacamp.com/tutorial/views-in-sql</p>
+<p>Dicho esto, también tienen ciertas restricciones:</p>
+<ul>
+<li>No se puede cuando la vista utiliza having / group by / distinct / union / union all / funciones agregadas (max, min, sum, count)…</li>
+<li>Todos los campos de la vista deben contener los campos no nulos de las tablas base que no tienen valores por defecto.</li>
+<li>Los campos de la vista son campos simples, sin derivados (cálculos, lowercase, …)</li>
+</ul>
 <h3 id="gestionando">Gestionando<a class="headerlink" href="#gestionando" title="Permanent link">&para;</a></h3>
 <p>Las vistas no se pueden modificar. Si necesitamos cambiar su estado, necesitamos borrarla y volverla a crear. Para ello, usaremos la sentencia <a href="https://mariadb.com/kb/en/drop-view/"><code>DROP VIEW nombre</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">drop</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">representante</span><span class="p">;</span>
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Vistas materializadas</p>
+<p>XXX</p>
+</div>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -927,7 +973,7 @@ Facilitan procesos de normalización/denormalización.</p>
 <p>Materiales sobre el módulo de BD:</p>
 <ul>
 <li><em>Consultes de selecció <a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u4/a2/continguts.html">complexes</a> i  <a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u6/a2/continguts.html">vistes</a> - Institut Obert de Catalunya</em>.</li>
-<li>Consultas <a href="https://josejuansanchez.org/bd/unidad-08/index.html">resumen</a> y <a href="https://josejuansanchez.org/bd/unidad-vistas-sql-teoria/index.html">vistas</a> de <em>José Juan Sánchez</em>.</li>
+<li>Consultas <a href="https://josejuansanchez.org/bd/unidad-08-teoria/index.html">resumen</a> y <a href="https://josejuansanchez.org/bd/unidad-vistas-sql-teoria/index.html">vistas</a> de <em>José Juan Sánchez</em>.</li>
 <li><a href="https://jorgesanchez.net/manuales/sql/select-totales-sql2016.html">Agrupaciones. Consultas de totales</a> de <em>Jorge Sánchez</em>.</li>
 <li><a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut4/recopila.html">Realización de consultas</a> de <em>Javier Gutiérrez</em>.</li>
 <li><a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema4/index.html">Consulta de bases de datos</a> de gestionbasesdatos.readthedocs.io</li>
@@ -941,29 +987,16 @@ Facilitan procesos de normalización/denormalización.</p>
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC701</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han identificado las herramientas y sentencias para realizar consultas.">CE3a</abbr>, <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr> // 3p) Sobre la base de datos <code>empresa</code>, realiza las siguientes consultas:</p>
 <ol>
-<li>Lista el nombre de todos los departamentos que hay en la tabla <code>departamento</code>.</li>
-<li>Lista los nombres y los presupuestos de todos los departamentos.</li>
-<li>Lista todas las columnas de la tabla <code>departamento</code>.</li>
-<li>Lista el nombre de los empleados junto con su salario.</li>
-<li>Recupera todas las posibilidades de número de hijos que tienen los empleados (debes recuperar 0, 1 y 2).</li>
-<li>Lista el nombre y el complemento familiar (= salario * nº hijos * 4 /100) de todos los empleados.</li>
-<li>Lista el nombre de los departamentos, el precio en euros y el precio en dólares estadounidenses (USD).</li>
-<li>A partir de la consulta anterior, utiliza los siguientes alias para las columnas: nombre de departamento, euros, dólares.</li>
+<li>Consultas agregadas simples, con count(columna con nulos) y count(distinct(columna))</li>
 </ol>
 </li>
 </ul>
 <p><a name="AC702"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC702</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han identificado las herramientas y sentencias para realizar consultas.">CE3a</abbr>, CE33b // 3p) Sobre la base de datos <code>empresa</code>, y haciendo uso de funciones, realiza las siguientes consultas:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC702</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han identificado las herramientas y sentencias para realizar consultas.">CE3a</abbr>, CE33b // 3p) Sobre la base de datos <code>empresa</code>, realiza las siguientes consultas:</p>
 <ol>
-<li>Lista los nombres y sus presupuestos de todos los departamentos de la tabla <code>departamento</code>, convirtiendo los nombres a mayúscula.</li>
-<li>Lista los nombres y los salarios de todos los empleados, convirtiendo los nombres a minúsculas.</li>
-<li>Lista el nombre de todos los empleados en una columna, y en otra columna recupera en mayúsculas los dos primeros caracteres del código del departamento.</li>
-<li>Lista el codigo del empleado y del departamentode todos los empleados, así como un código formado por los datos campos unidos.</li>
-<li>Lista el nombre de los empleados, así como un campo para su nombre y otro para sus apellidos (puedes utilizar las funciones <a href="https://mariadb.com/kb/en/locate/"><code>LOCATE(subcadena, cadena)</code></a> y <a href="https://mariadb.com/kb/en/substring/"><code>SUBSTRING(cadena, posición [,longitud])</code></a>)</li>
-<li>Lista los nombres, el salario y el salario incrementado un 12%, redondeando el salario incrementado.</li>
-<li>Lista los nombres, el salario y el salario incrementado un 12%, truncando el salario incrementado con un único decimal.</li>
+<li>Consultas con group by</li>
 </ol>
 </li>
 </ul>
