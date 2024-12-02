@@ -2034,11 +2034,6 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <p><code>π<sub>nombre</sub>(PRODUCTO ⨝<sub>PRODUCTO.categoria_id = CATEGORIA.id</sub> (𝜎<sub>nombre = "Electrodomésticos</sub>(CATEGORIA))</code></p>
 </li>
 </ol>
-<!--
-TODO: Poner ejemplos de 3 o 4 consultas que combinen operadores de AR - ChatGPT
-Autoevaluación
--->
-
 <p>Estas operaciones forman la base teórica de cómo las bases de datos relacionales manipulan los datos y son fundamentales para comprender el funcionamiento de lenguajes como SQL.</p>
 <h2 id="consultas-sql">Consultas SQL<a class="headerlink" href="#consultas-sql" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
@@ -3046,7 +3041,7 @@ Otra posibilidad es utilizar el operador <code>USING</code> cuando </p>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 9 rows in set (0.000 sec)</span>
 </code></pre></div>
 <h4 id="antijoin">Antijoin<a class="headerlink" href="#antijoin" title="Permanent link">&para;</a></h4>
-<p>Se conoce como <em>antijoin</em> los registros obtenidos de una tabla que no se combinan con otra. Es decir, son los registros que no se seleccionan al realizar un inner join.</p>
+<p>Se conoce como <em>antijoin</em> los registros obtenidos de una tabla que no se combinan con otra. Es decir, son los registros que no se seleccionan al realizar un <em>inner join</em>, y de ahí el prefijo <em>anti</em>.</p>
 <p>Volvamos al ejemplo anterior donde obteníamos los empleados que tienen habilidades:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
@@ -3063,11 +3058,8 @@ Otra posibilidad es utilizar el operador <code>USING</code> cuando </p>
 <span class="linenos" data-linenos="13 "></span><span class="c1">-- 6 rows in set (0.001 sec)</span>
 </code></pre></div>
 <p>¿Y si quiero obtener los empleados que no tienen habilidades?</p>
-<p>TODO: Completar - buscar un gráfico</p>
 <!--
-Join reflexivo
-
-Los anti-joins, también conocidos como anti-semi-joins, son exactamente lo contrario de los semi-joins. En Anti Join, las filas se recogen de la primera tabla con respecto a una condición (o un conjunto de condiciones) que no coincide en la segunda tabla.
+TODO: Completar - buscar un gráfico
 -->
 
 <h4 id="full-outer-join">Full Outer Join<a class="headerlink" href="#full-outer-join" title="Permanent link">&para;</a></h4>
