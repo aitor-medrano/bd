@@ -2010,6 +2010,30 @@ Cláusula LIMIT.
 </li>
 </ul>
 </div>
+<p>Una vez vistas las operaciones, lo más normal es combinarlas para extraer información de las tablas. A continuación se muestran algunos ejemplos:</p>
+<ol>
+<li>
+<p>Seleccionar todos los productos de la tabla PRODUCTO</p>
+<p><code>π<sub>id, nombre, precio, categoria_id</sub>(PRODUCTO)</code></p>
+</li>
+<li>
+<p>Seleccionar los productos cuyo precio sea menor o igual a 500</p>
+<p><code>𝜎<sub>precio ≤ 500</sub>(PRODUCTO)</code></p>
+</li>
+<li>
+<p>Nombre y precio de los productos cuyo precio sea inferior a 300.</p>
+<p><code>π<sub>nombre, precio</sub>(𝜎<sub>precio &gt; 300</sub>(PRODUCTO))</code></p>
+</li>
+<li>
+<p>Nombre de los productos de la la categoría <code>Electrodomésticos</code> (primero el <em>join</em> y luego selección)</p>
+<p><code>π<sub>nombre</sub>(PRODUCTO ⨝<sub>PRODUCTO.categoria_id = CATEGORIA.id ∧
+CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
+</li>
+<li>
+<p>Nombre de los productos de la la categoría <code>Electrodomésticos</code> (primero la selección y luego el <em>join</em>)</p>
+<p><code>π<sub>nombre</sub>(PRODUCTO ⨝<sub>PRODUCTO.categoria_id = CATEGORIA.id</sub> (𝜎<sub>nombre = "Electrodomésticos</sub>(CATEGORIA))</code></p>
+</li>
+</ol>
 <!--
 TODO: Poner ejemplos de 3 o 4 consultas que combinen operadores de AR - ChatGPT
 Autoevaluación
@@ -3049,7 +3073,7 @@ Los anti-joins, también conocidos como anti-semi-joins, son exactamente lo cont
 <h4 id="full-outer-join">Full Outer Join<a class="headerlink" href="#full-outer-join" title="Permanent link">&para;</a></h4>
 <p>Aunque no está soportado por <em>MariaDB</em>^, conviene conocer la combinación externa completa, aunque su uso es muy limitado (por la propia restricción de integridad referencial). Su resultado presenta los resultados de la tabla de la izquierda y de la tabla de la derecha aunque no tengan correspondencia en la otra tabla.</p>
 <p>Es decir, la tabla combinada contendrá entonces todos los registros de ambas tablas y presentará valores nulos para registros sin pareja.</p>
-<p>Si necesitamos dicho resultado, podemos simularlo haciendo una union entre un <em>left join</em> y un <em>right join</em>. De esta manera obtendríamo todos los registros de T1 y los valores de T2 relacionados o nulos en los que no, y en una segunda consulta, los valores de T1 relacionados o nulos en los que no, y todos los valores de T2:</p>
+<p>Si necesitamos dicho resultado, podemos simularlo haciendo una union entre un <em>left join</em> y un <em>right join</em>. De esta manera obtendríamos todos los registros de T1 y los valores de T2 relacionados o nulos en los que no, y en una segunda consulta, los valores de T1 relacionados o nulos en los que no, y todos los valores de T2:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t1</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">id</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">union</span>
