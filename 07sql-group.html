@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.35f28582.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -550,6 +550,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Group by">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agrupaciones-con-combinaciones-externas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agrupaciones con combinaciones externas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agrupaciones-compuestas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agrupaciones compuestas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-n-group-by-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      Select N - Group by N
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
@@ -558,6 +586,11 @@
       Rollup
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -593,6 +626,15 @@
   
     <nav class="md-nav" aria-label="Vistas">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#restricciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restricciones
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#gestionando" class="md-nav__link">
@@ -657,7 +699,7 @@
     
     
     
-      <a href="tags.html#ra3" class="md-tag">RA3</a>
+      <a href="tags.html#ra2" class="md-tag">RA2</a>
     
   
     
@@ -838,8 +880,8 @@
 <p>Mediante <a href="https://mariadb.com/kb/en/group-by/"><code>GROUP BY</code></a> podemos realizar cálculos en vertical, es decir, sobre el resultado de agrupar registros.</p>
 <p>Los pasos que vamos a realizar son:</p>
 <ol>
-<li><code>select</code>: Indicar las columnas a agrupadas</li>
-<li><code>select</code>: Indicar los cálculos mediante funciones agregadas (count, sum, max, min, avg…)</li>
+<li><code>select</code>: Indicar las columnas a agrupar.</li>
+<li><code>select</code>: Indicar los cálculos mediante funciones agregadas (<code>count</code>, <code>sum</code>, <code>max</code>, <code>min</code>, <code>avg</code>, ...)</li>
 <li><code>group by</code>: indicar las agrupaciones (deben coincidir al menos con las columnas a mostrar)</li>
 </ol>
 <p>Para demostrar su uso, nos vamos a centrar en los departamentos y su presupuesto anual. Veamos los datos que tenemos almacenados:</p>
@@ -856,20 +898,21 @@
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- +----------------------------+--------------+--------+</span>
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>Podemos observar que tenemos 6 departamentos repartidos en 3 centros. ¿Y si quiero saber el presupuesto anual asignado a cada centro? Para ello, necesito agrupar por el código del centro y sumar los presupuestos. En la parte de select indicamos los datos a mostrar, y en <code>group by</code> las columnas por las que debe agrupar:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodCen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CodCen</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------+--------------+</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | CodCen | sum(PreAnu)  |</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +--------+--------------+</span>
-<span class="hll"><span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | DIGE   |  51000000.00 |</span>
-</span><span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | FAZS   | 114200000.00 |</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | OFZS   |  27500000.00 |</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +--------+--------------+</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">-- 3 rows in set (0.002 sec)</span>
+<p>Podemos observar que tenemos 6 departamentos repartidos en 3 centros. ¿Y si quiero saber el presupuesto anual asignado a cada centro? Para ello, necesito agrupar por el código del centro y sumar los presupuestos. En la parte de <code>select</code> indicamos los datos a mostrar, y en <code>group by</code> las columnas por las que debe agrupar:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodCen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CodCen</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+--------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | CodCen | sum(PreAnu)  |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------+--------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | DIGE   |  51000000.00 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | FAZS   | 114200000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | OFZS   |  27500000.00 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- +--------+--------------+</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- 3 rows in set (0.002 sec)</span>
 </code></pre></div>
-<p>Es decir, el valor de <code>51000000.00</code> del centro <code>DIGE</code>  se obtiene de sumar las filas de la tabla anterior de dicho centro, es decir, <code>26000000.00</code> y <code>25000000.00</code> de los departamentos <code>Dirección General</code> e <code>Investigación y Diseño</code>.</p>
-<p>¿Y si quiero obtener el nombre del centro en vez de su código? Podemos pensar que si hago un join, y muestra su nombre y el presupuesto obtendré la misma información:</p>
+<p>Es decir, el valor de <code>51000000.00</code> del centro <code>DIGE</code> se obtiene de sumar las filas de la tabla anterior de dicho centro, es decir, <code>26000000.00</code> y <code>25000000.00</code> de los departamentos <code>Dirección General</code> e <code>Investigación y Diseño</code>. Dicho de otro modo, al realizar una agrupación, junto las filas que tienen el mismo valor en la columna agrupada, y realiza el cálculo indicado con dichas filas.</p>
+<p>¿Y si quiero obtener el nombre del centro en vez de su código? Podemos pensar que si hago un <em>join</em>, y muestro su nombre y el presupuesto obtendré la misma información:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------------------+--------------+</span>
@@ -887,7 +930,7 @@
 <p>Pero no. Obtengo el resultado de realizar la combinación de las dos tablas, no el cálculo agregado sobre dichos centros. Así pues, necesito agrupar el resultado del <em>join</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span><span class="p">)</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------------------+---------------+</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | NomCen             | sum(d.PreAnu) |</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------------------+---------------+</span>
@@ -897,34 +940,177 @@
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- +--------------------+---------------+</span>
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
 </code></pre></div>
-<h3 id="rollup">Rollup<a class="headerlink" href="#rollup" title="Permanent link">&para;</a></h3>
-<p><a href="https://mariadb.com/kb/en/select-with-rollup/">SELECT ... WITH ROLLUP</a></p>
+<h4 id="agrupaciones-con-combinaciones-externas">Agrupaciones con combinaciones externas<a class="headerlink" href="#agrupaciones-con-combinaciones-externas" title="Permanent link">&para;</a></h4>
+<p>En la sesión anterior obtuvimos las diferentes habilidades que tenían los empleados:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | NomEmp                      | CodHab | CodEmp | NivHab |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | GEREN  |      1 |     10 |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | RELPU  |      1 |      9 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán        | MARKE  |      3 |      9 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | GESCO  |      5 |      9 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | RELPU  |      5 |      8 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      8 | Mascullas Alto, Eloísa      | FONTA  |      8 |      7 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- 6 rows in set (0.001 sec)</span>
+</code></pre></div>
+<p>Si queremos calcular cuantas habilidades tiene un empleado haremos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +-----------------------------+------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | NomEmp                      | count(he.CodEmp) |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +-----------------------------+------------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | Alada Veraz, Juana          |                2 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | Mascullas Alto, Eloísa      |                1 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | Monforte Cid, Roldán        |                1 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | Saladino Mandamás, Augusto  |                2 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- +-----------------------------+------------------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- 4 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>El problema es que sólo aparecen los empleados que tienen habilidades, y realmente nos interesa que aparezcan todos los empleados, y si no tienen habilidades, que salga 0. Así pues, necesitamos hacer un <em>left join</em> para que salgan todos los empleados, independientemente de si tienen alguna habilidad:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +-----------------------------+------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | NomEmp                      | count(he.CodEmp) |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +-----------------------------+------------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | Alada Veraz, Juana          |                2 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | Forzado López, Galeote      |                0 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | Gozque Altanero, Cándido    |                0 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | Mando Correa, Rosa          |                0 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- | Manrique Bacterio, Luisa    |                0 |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | Mascullas Alto, Eloísa      |                1 |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | Monforte Cid, Roldán        |                1 |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- | Mosc Amuerta, Mario         |                0 |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- | Saladino Mandamás, Augusto  |                2 |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- | Topaz Illán, Carlos         |                0 |</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- +-----------------------------+------------------+</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
+</code></pre></div>
+<h4 id="agrupaciones-compuestas">Agrupaciones compuestas<a class="headerlink" href="#agrupaciones-compuestas" title="Permanent link">&para;</a></h4>
+<p>También es posible agrupar por más de una columna. Por ejemplo, podemos obtener el gasto en salario de empleados por centros y departamentos. Para elo, primero necesito combinar las tres tablas, y luego agrupar por el criterio deseado:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="p">)</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span>
+<span class="hll"><span class="linenos" data-linenos=" 4 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +--------------------+----------------------------+---------------+</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | NomCen             | NomDep                     | sum(e.SalEmp) |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- +--------------------+----------------------------+---------------+</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | Dirección General  | Dirección General          |    7200000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | Dirección General  | Investigación y Diseño     |    4500000.00 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | Fábrica Zona Sur   | Jefatura Fábrica Zona Sur  |    5000000.00 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- | Fábrica Zona Sur   | Producción Zona Sur        |    7600000.00 |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | Oficinas Zona Sur  | Administración Zona Sur    |    6200000.00 |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | Oficinas Zona Sur  | Ventas Zona Sur            |    8400000.00 |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- +--------------------+----------------------------+---------------+</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- 6 rows in set (0.001 sec)</span>
+</code></pre></div>
+<h4 id="select-n-group-by-n">Select N - Group by N<a class="headerlink" href="#select-n-group-by-n" title="Permanent link">&para;</a></h4>
+<p>Es importante destacar que al menos la cantidad y datos que utilizamos en la proyección (<code>select</code>) que agrupan, también hemos de utilizarlos dentro del <code>group by</code>. Dicho de otro modo, si en el <code>select</code> ponemos tres columnas y dos cálculos, en el group by deberemos poner las tres mismas columnas.</p>
+<p>Es decir, <strong>no debemos hacer esto</strong> (dos en <code>select</code>, uno en <code>group by</code>), ya que no estaría mostrando la información que queremos. Si repetimos el ejemplo anterior, obtenemos un resultado, pero lo que obtenemos no es correcto:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="p">)</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span>
+<span class="hll"><span class="linenos" data-linenos=" 4 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +--------------------+----------------------------+---------------+</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | NomCen             | NomDep                     | sum(e.SalEmp) |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- +--------------------+----------------------------+---------------+</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | Dirección General  | Dirección General          |   11700000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | Fábrica Zona Sur   | Jefatura Fábrica Zona Sur  |   12600000.00 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | Oficinas Zona Sur  | Administración Zona Sur    |   14600000.00 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------------------+----------------------------+---------------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>En cambio, sí que es correcto agrupar por más columnas de las que mostramos (aunque su uso es cuestionable):</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="p">)</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span>
+<span class="hll"><span class="linenos" data-linenos=" 4 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +----------------------------+---------------+</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | NomDep                     | sum(e.SalEmp) |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- +----------------------------+---------------+</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | Dirección General          |    7200000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | Investigación y Diseño     |    4500000.00 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | Jefatura Fábrica Zona Sur  |    5000000.00 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- | Producción Zona Sur        |    7600000.00 |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | Administración Zona Sur    |    6200000.00 |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | Ventas Zona Sur            |    8400000.00 |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- +----------------------------+---------------+</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
+</code></pre></div>
+<h4 id="rollup">Rollup<a class="headerlink" href="#rollup" title="Permanent link">&para;</a></h4>
+<p>Cuando hacemos una consulta con una agregación, podemos emplear la cláusula <a href="https://mariadb.com/kb/en/select-with-rollup/">SELECT ... WITH ROLLUP</a> para que añada filas extras con totales de la agregación.</p>
+<p>Si recuperamos la consulta que obteníamos el presupuesto anual de cada departamento, pero le añadimos <code>WITH ROLLUP</code> podemos observar como añade al resultado una nueva fila agrupada por <code>NULL</code> y que suma todos los otros valores:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodCen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CodCen</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="k">with</span><span class="w"> </span><span class="k">rollup</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+--------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | CodCen | sum(PreAnu)  |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------+--------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | DIGE   |  51000000.00 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | FAZS   | 114200000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | OFZS   |  27500000.00 |</span>
+<span class="hll"><span class="linenos" data-linenos="10 "></span><span class="c1">-- | NULL   | 192700000.00 |</span>
+</span><span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+--------------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- 4 rows in set (0.004 sec)</span>
+</code></pre></div>
+<p>En el caso de que la consulta agrupe por más de un valor, mostrará los diferentes subtotales:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span>
+<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="k">with</span><span class="w"> </span><span class="k">rollup</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------------------+----------------------------+---------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | NomCen             | NomDep                     | sum(e.SalEmp) |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- +--------------------+----------------------------+---------------+</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | Dirección General  | Dirección General          |    7200000.00 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | Dirección General  | Investigación y Diseño     |    4500000.00 |</span>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="c1">-- | Dirección General  | NULL                       |   11700000.00 |</span>
+</span><span class="linenos" data-linenos="12 "></span><span class="c1">-- | Fábrica Zona Sur   | Jefatura Fábrica Zona Sur  |    5000000.00 |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | Fábrica Zona Sur   | Producción Zona Sur        |    7600000.00 |</span>
+<span class="hll"><span class="linenos" data-linenos="14 "></span><span class="c1">-- | Fábrica Zona Sur   | NULL                       |   12600000.00 |</span>
+</span><span class="linenos" data-linenos="15 "></span><span class="c1">-- | Oficinas Zona Sur  | Administración Zona Sur    |    6200000.00 |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- | Oficinas Zona Sur  | Ventas Zona Sur            |    8400000.00 |</span>
+<span class="hll"><span class="linenos" data-linenos="17 "></span><span class="c1">-- | Oficinas Zona Sur  | NULL                       |   14600000.00 |</span>
+</span><span class="hll"><span class="linenos" data-linenos="18 "></span><span class="c1">-- | NULL               | NULL                       |   38900000.00 |</span>
+</span><span class="linenos" data-linenos="19 "></span><span class="c1">-- +--------------------+----------------------------+---------------+</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">-- 10 rows in set (0.001 sec)</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">PostgreSQL</p>
+<p>En el caso de <em>PostreSQL</em> no tiene soporte para <code>WITH ROLLUP</code>. En cambio, dispone de otras funciones similares como <code>GROUPING SETS</code>, <code>CUBE</code> y <code>ROLLUP</code>.</p>
+</div>
 <h3 id="having">Having<a class="headerlink" href="#having" title="Permanent link">&para;</a></h3>
-<p>Permite filtrar tras realizar los cálculos de agrupación.</p>
+<p>Permite filtrar tras realizar los cálculos de agrupación. Sería similar al <code>where</code> pero una vez realizados los datos agregados</p>
 <p>Orden de ejecución de las clausulas:</p>
 <ol>
-<li>where que filtra las filas según las condiciones que pongamos.</li>
-<li>group by que crea una tabla de grupos nueva.</li>
-<li>having filtra los grupos.</li>
-<li>order by que ordena o clasifica la salida.</li>
+<li><code>where</code> que filtra las filas según las condiciones que pongamos.</li>
+<li><code>group by</code> que crea una tabla de grupos nueva.</li>
+<li><code>having</code> filtra los grupos.</li>
+<li><code>order by</code> que ordena o clasifica la salida.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Centro y presupuesto anual de aquellos</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- centros con más de 100.000.000 de presupuesto</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">codcen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">codcen</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="k">having</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100000000</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- Centro y presupuesto anual de aquellos</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- centros con más de 100.000.000 de presupuesto</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- y que sus departamentos tengan un presupuesto anual</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">-- superior a 20.000.000</span>
-<span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span>
-<span class="linenos" data-linenos="12 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">codcen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">codcen</span>
-<span class="linenos" data-linenos="13 "></span><span class="k">where</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20000000</span>
-<span class="linenos" data-linenos="14 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">)</span>
-<span class="linenos" data-linenos="15 "></span><span class="k">having</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100000000</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Centro y presupuesto anual de aquellos</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">-- centros con más de 100.000.000 de presupuesto</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">codcen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">codcen</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">)</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">having</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100000000</span><span class="p">;</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Centro y presupuesto anual de aquellos</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">-- centros con más de 100.000.000 de presupuesto</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- y que sus departamentos tengan un presupuesto anual</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">-- superior a 20.000.000</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">codcen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">codcen</span>
+<span class="linenos" data-linenos="7 "></span><span class="k">where</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20000000</span>
+<span class="linenos" data-linenos="8 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">)</span>
+<span class="linenos" data-linenos="9 "></span><span class="k">having</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100000000</span><span class="p">;</span>
+</code></pre></div>
+<p>TODO: ¿Se pueden usar alias?</p>
 <h2 id="funciones-ventana">Funciones ventana<a class="headerlink" href="#funciones-ventana" title="Permanent link">&para;</a></h2>
+<p>FIXME: Completar</p>
 <h2 id="vistas">Vistas<a class="headerlink" href="#vistas" title="Permanent link">&para;</a></h2>
 <p>Si retomamos la <a href="01intro.html#arquitectura-de-3-niveles">arquitectura de tres niveles</a> que estudiamos en la primera unidad, un esquema externo, que es a lo que accede el usuario final, se compone de un conjunto de tablas y vistas que luego se transforman en formularios y/o informes.</p>
 <p>Dicho esto, una vista es un objeto que se define con una consulta y que se comporta como una tabla virtual. Cuando un usuario accede a una vista, aparentemente piensa que está accediendo a una tabla.</p>
@@ -933,32 +1119,156 @@
     <figcaption>Vistas - https://www.datacamp.com/tutorial/views-in-sql</figcaption>
 </figure>
 
-<p>Para ello, usaremos la sentencia <a href="https://mariadb.com/kb/en/create-view/"><code>CREATE [OR REPLACE] VIEW nombre AS SELECT</code></a></p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">create</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">representante</span><span class="w"> </span><span class="k">as</span>
-<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="k">distinct</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="o">*</span>
-<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">codigo_empleado_rep_ventas</span><span class="o">=</span><span class="n">e</span><span class="p">.</span><span class="n">codigo_empleado</span><span class="p">;</span>
+<p>Para ello, usaremos la sentencia <a href="https://mariadb.com/kb/en/create-view/"><code>CREATE [OR REPLACE] VIEW nombre AS SELECT...</code></a></p>
+<p><div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="w"> </span><span class="k">AS</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">NumHi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </code></pre></div>
-<p>Una vez creada, podemos hacer consultas sobre la vista.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">representante</span><span class="p">;</span>
+Una vez creada, podemos hacer consultas sobre la vista:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp                   | NumHi | SalEmp     |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- |      2 | IN&amp;DI  | 2233     | 1991-06-14 | 1970-06-08 | 21231347K | Manrique Bacterio, Luisa |     0 | 4500000.00 |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      4 | VENZS  | 3838     | 1990-08-09 | 1975-02-21 | 38293923L | Topaz Illán, Carlos      |     0 | 3200000.00 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      7 | PROZS  | NULL     | 1994-06-30 | 1975-08-07 | 47123132D | Forzado López, Galeote   |     0 | 1600000.00 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |     10 | PROZS  | NULL     | 1993-11-02 | 1975-01-07 | 32939393D | Mosc Amuerta, Mario      |     0 | 1300000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- 4 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>Cualquier sentencia que realicemos sobre la vista repercute directamente en la tabla (o tablas) de la que procede. Además, los vistas, como estructuras virtuales, son dinámicas, al reflejar los cambios que se producen en las tablas de origen.</p>
-<p>TODO: ejemplo probando a hacer un insert en representante</p>
+<p>Las vistas, como estructuras virtuales, son dinámicas, al reflejar los cambios que se producen en las tablas de origen. Así pues, si insertamos un nuevo registro en <code>empleado</code> con <code>NumHi=0</code>, si volvemos a consultar <code>empleadosSinHijos</code>, veremos dicho valor:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;PROZS&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;2024-11-30&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;1977-01-01&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;12345678A&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Casas García, Pedro&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1234567</span><span class="p">.</span><span class="mi">89</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp                   | NumHi | SalEmp     |</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      2 | IN&amp;DI  | 2233     | 1991-06-14 | 1970-06-08 | 21231347K | Manrique Bacterio, Luisa |     0 | 4500000.00 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      4 | VENZS  | 3838     | 1990-08-09 | 1975-02-21 | 38293923L | Topaz Illán, Carlos      |     0 | 3200000.00 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      7 | PROZS  | NULL     | 1994-06-30 | 1975-08-07 | 47123132D | Forzado López, Galeote   |     0 | 1600000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |     10 | PROZS  | NULL     | 1993-11-02 | 1975-01-07 | 32939393D | Mosc Amuerta, Mario      |     0 | 1300000.00 |</span>
+<span class="hll"><span class="linenos" data-linenos="10 "></span><span class="c1">-- |     33 | PROZS  | NULL     | 2024-11-30 | 1977-01-01 | 12345678A | Casas García, Pedro      |     0 | 1234567.89 |</span>
+</span><span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- 5 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>Claramente, dicho registro forma parte de la tabla <code>empleado</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+-----------------------------+-------+------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp                      | NumHi | SalEmp     |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+-----------------------------+-------+------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- |      1 | DIRGE  | 1111     | 1972-07-01 | 1961-08-07 | 21451451V | Saladino Mandamás, Augusto  |     1 | 7200000.00 |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      2 | IN&amp;DI  | 2233     | 1991-06-14 | 1970-06-08 | 21231347K | Manrique Bacterio, Luisa    |     0 | 4500000.00 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      3 | VENZS  | 2133     | 1984-06-08 | 1965-12-07 | 23823930D | Monforte Cid, Roldán        |     1 | 5200000.00 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      4 | VENZS  | 3838     | 1990-08-09 | 1975-02-21 | 38293923L | Topaz Illán, Carlos         |     0 | 3200000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      5 | ADMZS  | 1239     | 1976-08-07 | 1958-03-08 | 38223923T | Alada Veraz, Juana          |     1 | 6200000.00 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      6 | JEFZS  | 23838    | 1991-08-01 | 1969-06-03 | 26454122D | Gozque Altanero, Cándido    |     1 | 5000000.00 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- |      7 | PROZS  | NULL     | 1994-06-30 | 1975-08-07 | 47123132D | Forzado López, Galeote      |     0 | 1600000.00 |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- |      8 | PROZS  | NULL     | 1994-08-15 | 1976-06-15 | 32132154H | Mascullas Alto, Eloísa      |     1 | 1600000.00 |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- |      9 | PROZS  | 12124    | 1982-06-10 | 1968-07-19 | 11312121D | Mando Correa, Rosa          |     2 | 3100000.00 |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- |     10 | PROZS  | NULL     | 1993-11-02 | 1975-01-07 | 32939393D | Mosc Amuerta, Mario         |     0 | 1300000.00 |</span>
+<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="c1">-- |     33 | PROZS  | 6666     | 2024-11-30 | 1977-01-01 | 12345678A | Casas García, Pedro         |     0 | 2345678.90 |</span>
+</span><span class="linenos" data-linenos="16 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+-----------------------------+-------+------------+</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- 11 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>Además, en algunos casos, podemos utilizar una <a href="https://mariadb.com/kb/en/inserting-and-updating-with-views/">vista para insertar o modificar datos</a>, lo que repercute directamente en la tabla (o tablas) de la que procede:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">update</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="o">=</span><span class="mi">6666</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="o">=</span><span class="mi">2345678</span><span class="p">.</span><span class="mi">90</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodEmp</span><span class="o">=</span><span class="mi">33</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp                   | NumHi | SalEmp     |</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      2 | IN&amp;DI  | 2233     | 1991-06-14 | 1970-06-08 | 21231347K | Manrique Bacterio, Luisa |     0 | 4500000.00 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      4 | VENZS  | 3838     | 1990-08-09 | 1975-02-21 | 38293923L | Topaz Illán, Carlos      |     0 | 3200000.00 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      7 | PROZS  | NULL     | 1994-06-30 | 1975-08-07 | 47123132D | Forzado López, Galeote   |     0 | 1600000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |     10 | PROZS  | NULL     | 1993-11-02 | 1975-01-07 | 32939393D | Mosc Amuerta, Mario      |     0 | 1300000.00 |</span>
+<span class="hll"><span class="linenos" data-linenos="10 "></span><span class="c1">-- |     33 | PROZS  | 6666     | 2024-11-30 | 1977-01-01 | 12345678A | Casas García, Pedro      |     0 | 2345678.90 |</span>
+</span><span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- 5 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>¿Y si inserto un nuevo empleado en la vista pero que sí tienes hijos?</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">44</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;PROZS&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;2024-11-30&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;1977-01-01&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;87654321A&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Blasco Antón, Estefanía&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1234567</span><span class="p">.</span><span class="mi">89</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp                   | NumHi | SalEmp     |</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      2 | IN&amp;DI  | 2233     | 1991-06-14 | 1970-06-08 | 21231347K | Manrique Bacterio, Luisa |     0 | 4500000.00 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      4 | VENZS  | 3838     | 1990-08-09 | 1975-02-21 | 38293923L | Topaz Illán, Carlos      |     0 | 3200000.00 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      7 | PROZS  | NULL     | 1994-06-30 | 1975-08-07 | 47123132D | Forzado López, Galeote   |     0 | 1600000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |     10 | PROZS  | NULL     | 1993-11-02 | 1975-01-07 | 32939393D | Mosc Amuerta, Mario      |     0 | 1300000.00 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |     33 | PROZS  | 6666     | 2024-11-30 | 1977-01-01 | 12345678A | Casas García, Pedro      |     0 | 2345678.90 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- 5 rows in set (0.000 sec)</span>
+<span class="linenos" data-linenos="13 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+-----------------------------+-------+------------+</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- | CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp                      | NumHi | SalEmp     |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+-----------------------------+-------+------------+</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- |      1 | DIRGE  | 1111     | 1972-07-01 | 1961-08-07 | 21451451V | Saladino Mandamás, Augusto  |     1 | 7200000.00 |</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- |      2 | IN&amp;DI  | 2233     | 1991-06-14 | 1970-06-08 | 21231347K | Manrique Bacterio, Luisa    |     0 | 4500000.00 |</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">-- |      3 | VENZS  | 2133     | 1984-06-08 | 1965-12-07 | 23823930D | Monforte Cid, Roldán        |     1 | 5200000.00 |</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">-- |      4 | VENZS  | 3838     | 1990-08-09 | 1975-02-21 | 38293923L | Topaz Illán, Carlos         |     0 | 3200000.00 |</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">-- |      5 | ADMZS  | 1239     | 1976-08-07 | 1958-03-08 | 38223923T | Alada Veraz, Juana          |     1 | 6200000.00 |</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">-- |      6 | JEFZS  | 23838    | 1991-08-01 | 1969-06-03 | 26454122D | Gozque Altanero, Cándido    |     1 | 5000000.00 |</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">-- |      7 | PROZS  | NULL     | 1994-06-30 | 1975-08-07 | 47123132D | Forzado López, Galeote      |     0 | 1600000.00 |</span>
+<span class="linenos" data-linenos="24 "></span><span class="c1">-- |      8 | PROZS  | NULL     | 1994-08-15 | 1976-06-15 | 32132154H | Mascullas Alto, Eloísa      |     1 | 1600000.00 |</span>
+<span class="linenos" data-linenos="25 "></span><span class="c1">-- |      9 | PROZS  | 12124    | 1982-06-10 | 1968-07-19 | 11312121D | Mando Correa, Rosa          |     2 | 3100000.00 |</span>
+<span class="linenos" data-linenos="26 "></span><span class="c1">-- |     10 | PROZS  | NULL     | 1993-11-02 | 1975-01-07 | 32939393D | Mosc Amuerta, Mario         |     0 | 1300000.00 |</span>
+<span class="linenos" data-linenos="27 "></span><span class="c1">-- |     33 | PROZS  | 6666     | 2024-11-30 | 1977-01-01 | 12345678A | Casas García, Pedro         |     0 | 2345678.90 |</span>
+<span class="hll"><span class="linenos" data-linenos="28 "></span><span class="c1">-- |     44 | PROZS  | NULL     | 2024-11-30 | 1977-01-01 | 87654321A | Blasco Antón, Estefanía     |     1 | 1234567.89 |</span>
+</span><span class="linenos" data-linenos="29 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+-----------------------------+-------+------------+</span>
+<span class="linenos" data-linenos="30 "></span><span class="c1">-- 12 rows in set (0.000 sec)</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Autoevaluación</p>
+<p>Por supuesto, podemos utilizar las vistas creadas para realizar consultas con otras tablas/vistas. ¿Qué obtendremos con la siguiente consulta?:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="p">)</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="k">join</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">;</span>
+</code></pre></div>
+</div>
 <p>Entre las ventajas de su uso, cabe destacar que:</p>
 <ul>
 <li>Al ser consultas precompiladas, su rendimiento es algo mejor que hacer las consultas directamente.</li>
 <li>Permiten restringir el acceso a ciertas columnas (solo nombre, apellidos y teléfono de los clientes), incluso a nivel de fila (sólo los clientes de Alicante),de manera que podemos restringir que un cierto usuario sólo pueda acceder a una vista, ajustando aun más su esquema externo.</li>
 <li>Facilitan procesos de normalización/denormalización.</li>
 </ul>
-<p>FIXME: Revisar - https://www.datacamp.com/tutorial/views-in-sql</p>
+<!--
+FIXME: Revisar - https://www.datacamp.com/tutorial/views-in-sql
+-->
+
+<h3 id="restricciones">Restricciones<a class="headerlink" href="#restricciones" title="Permanent link">&para;</a></h3>
 <p>Dicho esto, también tienen ciertas restricciones:</p>
 <ul>
 <li>No se puede cuando la vista utiliza having / group by / distinct / union / union all / funciones agregadas (max, min, sum, count)…</li>
 <li>Todos los campos de la vista deben contener los campos no nulos de las tablas base que no tienen valores por defecto.</li>
 <li>Los campos de la vista son campos simples, sin derivados (cálculos, lowercase, …)</li>
 </ul>
+<!--
+A view definition is subject to the following restrictions:
+
+The SELECT statement cannot contain a subquery in the FROM clause.
+The SELECT statement cannot refer to system or user variables.
+Within a stored program, the definition cannot refer to program parameters or local variables.
+The SELECT statement cannot refer to prepared statement parameters.
+Any table or view referred to in the definition must exist. However, after a view has been created, it is possible to drop a table or view that the definition refers to. In this case, use of the view results in an error. To check a view definition for problems of this kind, use the CHECK TABLE statement.
+The definition cannot refer to a TEMPORARY table, and you cannot create a TEMPORARY view.
+Any tables named in the view definition must exist at definition time.
+You cannot associate a trigger with a view.
+-->
+
 <h3 id="gestionando">Gestionando<a class="headerlink" href="#gestionando" title="Permanent link">&para;</a></h3>
 <p>Las vistas no se pueden modificar. Si necesitamos cambiar su estado, necesitamos borrarla y volverla a crear. Para ello, usaremos la sentencia <a href="https://mariadb.com/kb/en/drop-view/"><code>DROP VIEW nombre</code></a>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">drop</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">representante</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">drop</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="p">;</span>
+</code></pre></div>
+<p>No hay una sentencia para recuperar las vistas de una base de datos, pero sí que podemos consultar los metadatos almacenados en <code>information_schema.VIEWS</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">TABLE_NAME</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">vistas</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">VIEWS</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">where</span><span class="w"> </span><span class="n">TABLE_SCHEMA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;empresa&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">-- +-------------------+</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- | vistas            |</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">-- +-------------------+</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">-- | empleadosSinHijos |</span>
+<span class="linenos" data-linenos="8 "></span><span class="c1">-- +-------------------+</span>
+<span class="linenos" data-linenos="9 "></span><span class="c1">-- 1 row in set (0.001 sec)</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Vistas materializadas</p>
@@ -996,7 +1306,7 @@
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC702</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han identificado las herramientas y sentencias para realizar consultas.">CE3a</abbr>, CE33b // 3p) Sobre la base de datos <code>empresa</code>, realiza las siguientes consultas:</p>
 <ol>
-<li>Consultas con group by</li>
+<li>Consultas con group by y rollup</li>
 </ol>
 </li>
 </ul>
@@ -1037,7 +1347,8 @@
 <li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR712</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
 </ul>
 <!--
-TODO:
+TODO:Continuar con HAVING
+Actividades
 -->
 
 
@@ -1244,10 +1555,10 @@ TODO:
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
   </body>
