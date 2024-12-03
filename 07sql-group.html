@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -1083,35 +1083,46 @@
 <p>En el caso de <em>PostreSQL</em> no tiene soporte para <code>WITH ROLLUP</code>. En cambio, dispone de otras funciones similares como <code>GROUPING SETS</code>, <code>CUBE</code> y <code>ROLLUP</code>.</p>
 </div>
 <h3 id="having">Having<a class="headerlink" href="#having" title="Permanent link">&para;</a></h3>
-<p>Permite filtrar tras realizar los cálculos de agrupación. Sería similar al <code>where</code> pero una vez realizados los datos agregados</p>
-<p>Orden de ejecución de las clausulas:</p>
+<p>La cláusula <code>having</code> permite filtrar tras realizar los cálculos de agrupación. Sería similar al <code>where</code> pero una vez realizados los datos agregados.</p>
+<p>El orden de ejecución de las clausulas dentro de una consulta es:</p>
 <ol>
 <li><code>where</code> que filtra las filas según las condiciones que pongamos.</li>
-<li><code>group by</code> que crea una tabla de grupos nueva.</li>
+<li><code>group by</code> que crea una tabla agregada a partir de las columnas que agrupa.</li>
 <li><code>having</code> filtra los grupos.</li>
 <li><code>order by</code> que ordena o clasifica la salida.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Centro y presupuesto anual de aquellos</span>
-<span class="linenos" data-linenos="2 "></span><span class="c1">-- centros con más de 100.000.000 de presupuesto</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">codcen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">codcen</span>
-<span class="linenos" data-linenos="5 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">)</span>
-<span class="linenos" data-linenos="6 "></span><span class="k">having</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100000000</span><span class="p">;</span>
+<p>Para estos ejemplo, nos vamos a centrar en el presupuesto anual de los centros. Para ello, agrupamos por el nombre del centro y sumamos los presupuestos anuales de cada departamento:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">PreCen</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">);</span>
+<span class="hll"><span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------------------+--------------+</span>
+</span><span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | NomCen             | PreCen       |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------------------+--------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | Dirección General  |  51000000.00 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | Fábrica Zona Sur   | 114200000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | Oficinas Zona Sur  |  27500000.00 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- +--------------------+--------------+</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- 3 rows in set (0.002 sec)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Centro y presupuesto anual de aquellos</span>
-<span class="linenos" data-linenos="2 "></span><span class="c1">-- centros con más de 100.000.000 de presupuesto</span>
-<span class="linenos" data-linenos="3 "></span><span class="c1">-- y que sus departamentos tengan un presupuesto anual</span>
-<span class="linenos" data-linenos="4 "></span><span class="c1">-- superior a 20.000.000</span>
-<span class="linenos" data-linenos="5 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span>
-<span class="linenos" data-linenos="6 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">codcen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">codcen</span>
-<span class="linenos" data-linenos="7 "></span><span class="k">where</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20000000</span>
-<span class="linenos" data-linenos="8 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">)</span>
-<span class="linenos" data-linenos="9 "></span><span class="k">having</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100000000</span><span class="p">;</span>
+<p>Si de este resultado quiero filtrar aquellos con más de 100.000.000 de presupuesto, necesito hacerlo mediante la cláusula <code>having</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">PreCen</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">)</span>
+<span class="hll"><span class="linenos" data-linenos=" 4 "></span><span class="k">having</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100000000</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +-------------------+--------------+</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | NomCen            | PreCen       |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- +-------------------+--------------+</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | Fábrica Zona Sur  | 114200000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +-------------------+--------------+</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- 1 row in set (0.007 sec)</span>
 </code></pre></div>
-<!--
-TODO: ¿Se pueden usar alias?
--->
-
+<p>Por supuesto, también podemos incluir un filtrado previo a la ejecución. Por ejemplo, para obtener el centro y presupuesto anual de aquellos centros con más de 100.000.000 de presupuesto y que sus departamentos tengan un presupuesto anual superior a 20.000.000, haríamos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">codcen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">codcen</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="k">where</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20000000</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">nomcen</span><span class="p">)</span>
+<span class="hll"><span class="linenos" data-linenos="5 "></span><span class="k">having</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100000000</span><span class="p">;</span>
+</span></code></pre></div>
 <h2 id="funciones-ventana">Funciones ventana<a class="headerlink" href="#funciones-ventana" title="Permanent link">&para;</a></h2>
 <!--
 FIXME: Completar
@@ -1564,10 +1575,10 @@ Actividades
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>
