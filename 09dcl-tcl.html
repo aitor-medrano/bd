@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://aitor-medrano.github.io/bd/08sql-subquerys.html">
+        <link rel="canonical" href="https://aitor-medrano.github.io/bd/09dcl-tcl.html">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>DCL - Subconsultas - Bases de datos</title>
+        <title>Control de usuarios y transacciones - DCL y TCL - Bases de datos</title>
       
     
     
@@ -67,11 +67,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="DCL - Subconsultas - Bases de datos" >
+        <meta  property="og:title"  content="Control de usuarios y transacciones - DCL y TCL - Bases de datos" >
       
         <meta  property="og:description"  content="Consultas agregadas sobre una o más tablas mediante GROUP BY. Uso de condiciones sobre el resultados de una agregación con HAVING." >
       
-        <meta  property="og:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/08sql-subquerys.png" >
+        <meta  property="og:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/09dcl-tcl.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -79,15 +79,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://aitor-medrano.github.io/bd/08sql-subquerys.html" >
+        <meta  property="og:url"  content="https://aitor-medrano.github.io/bd/09dcl-tcl.html" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="DCL - Subconsultas - Bases de datos" >
+        <meta  name="twitter:title"  content="Control de usuarios y transacciones - DCL y TCL - Bases de datos" >
       
         <meta  name="twitter:description"  content="Consultas agregadas sobre una o más tablas mediante GROUP BY. Uso de condiciones sobre el resultados de una agregación con HAVING." >
       
-        <meta  name="twitter:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/08sql-subquerys.png" >
+        <meta  name="twitter:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/09dcl-tcl.png" >
       
     
     
@@ -110,7 +110,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sql-subconsultas" class="md-skip">
+        <a href="#sql-control-de-usuarios" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -145,7 +145,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DCL - Subconsultas
+              Control de usuarios y transacciones - DCL y TCL
             
           </span>
         </div>
@@ -511,9 +511,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-11h" class="md-nav__link">
+  <a href="#programacion-de-aula-10h" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación de Aula (11h)
+      Programación de Aula (10h)
     </span>
   </a>
   
@@ -768,7 +768,13 @@
     
     
     
-      <a href="tags.html#sql-dml" class="md-tag">SQL - DML</a>
+      <a href="tags.html#sql-dcl" class="md-tag">SQL - DCL</a>
+    
+  
+    
+    
+    
+      <a href="tags.html#sql-tcl" class="md-tag">SQL - TCL</a>
     
   
     
@@ -787,14 +793,23 @@
 
 
 
-<h1 id="sql-subconsultas">SQL - Subconsultas<a class="headerlink" href="#sql-subconsultas" title="Permanent link">&para;</a></h1>
+<h1 id="sql-control-de-usuarios">SQL - Control de usuarios<a class="headerlink" href="#sql-control-de-usuarios" title="Permanent link">&para;</a></h1>
 <h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
-<p>En esta UT finalizaremos el RA3: <strong>Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos</strong>.</p>
+<p>En esta UT finalizaremos los RA2: <strong>Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional</strong> y RA4: <strong>Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos</strong>.</p>
 <h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong><abbr title="Se han realizado consultas con subconsultas.">CE3f</abbr></strong>: Se han realizado consultas con subconsultas. </li>
-<li><strong><abbr title="Se han realizado consultas que implican múltiples selecciones.">CE3g</abbr></strong>: Se han realizado consultas que implican múltiples selecciones.</li>
-<li><strong><abbr title="Se han aplicado criterios de optimización de consultas.">CE3h</abbr></strong>: Se han aplicado criterios de optimización de consultas.</li>
+<li><strong><abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr></strong>: Se han creado los usuarios y se les han asignado privilegios. </li>
+<li>
+<p><strong><abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr></strong>: Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.</p>
+</li>
+<li>
+<p><strong><abbr title="Se ha incluido en una tabla la información resultante de la ejecución de una consulta.">CE4c</abbr></strong>: Se ha incluido en una tabla la información resultante de la ejecución de una consulta. </p>
+</li>
+<li><strong><abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr></strong>: Se han diseñado guiones de sentencias para llevar a cabo tareas complejas. </li>
+<li><strong><abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr></strong>: Se ha reconocido el funcionamiento de las transacciones.</li>
+<li><strong><abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr></strong>: Se han anulado parcial o totalmente los cambios producidos por una transacción. </li>
+<li><strong><abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr></strong>: Se han identificado los efectos de las distintas políticas de bloqueo de registros. </li>
+<li><strong><abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr></strong>: Se han adoptado medidas para mantener la integridad y consistencia de la información.</li>
 </ul>
 <h3 id="contenidos">Contenidos<a class="headerlink" href="#contenidos" title="Permanent link">&para;</a></h3>
 <p>Realización de consultas:</p>
@@ -810,8 +825,8 @@
 <li>...</li>
 </ol>
 </div>
-<h3 id="programacion-de-aula-11h">Programación de Aula (11h)<a class="headerlink" href="#programacion-de-aula-11h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la quinta, siendo la primera del bloque de consultas, impartiéndose al principio de la segunda evaluación, a principios de diciembre, con una duración estimada de 11 sesiones lectivas:</p>
+<h3 id="programacion-de-aula-10h">Programación de Aula (10h)<a class="headerlink" href="#programacion-de-aula-10h" title="Permanent link">&para;</a></h3>
+<p>Esta unidad es la quinta, siendo la primera del bloque de consultas, impartiéndose al principio de la segunda evaluación, a principios de diciembre, con una duración estimada de 10 sesiones lectivas:</p>
 <p>Subconsultas
 Vistas
 Optimización - Índices</p>
@@ -827,68 +842,50 @@ Optimización - Índices</p>
 <tbody>
 <tr>
 <td>1</td>
-<td>Subconsultas</td>
+<td>Gestión de usuarios</td>
 <td><a href="#AC801">AC801</a></td>
 <td><abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
 </tr>
 <tr>
 <td>2</td>
-<td>All</td>
+<td>Gestión de permisos</td>
 <td><a href="#">AC702</a></td>
 <td><abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
 </tr>
 <tr>
 <td>3</td>
-<td>Any</td>
+<td>Creación de datos con consultas</td>
 <td><a href="#">AC703</a></td>
 <td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
 </tr>
 <tr>
 <td>4</td>
-<td>Exists</td>
+<td>Transacciones</td>
+<td><a href="#">AC703</a></td>
+<td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Uso de commit</td>
+<td><a href="#">AC703</a></td>
+<td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Deshaciendo transacciones</td>
 <td><a href="#">AC706</a></td>
 <td><abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
 </tr>
 <tr>
-<td>5</td>
-<td>Supuesto subconsultas</td>
-<td><a href="#">AC707</a></td>
-<td><abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
-</tr>
-<tr>
-<td>6</td>
-<td>Optimización de consultas</td>
-<td><a href="#">AC707</a></td>
-<td><abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
-</tr>
-<tr>
 <td>7</td>
-<td>Supuesto índices</td>
+<td><em>Checkpoints</em></td>
 <td><a href="#">AC707</a></td>
 <td><abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
 </tr>
 <tr>
 <td>8</td>
-<td>Simulacro examen</td>
+<td>Supuesto</td>
 <td><a href="#">AC712</a></td>
-<td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
-</tr>
-<tr>
-<td>9</td>
-<td>Reto</td>
-<td><a href="#">AC711</a></td>
-<td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
-</tr>
-<tr>
-<td>10</td>
-<td>Prueba escrita I</td>
-<td><a href="#">AC711</a></td>
-<td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
-</tr>
-<tr>
-<td>11</td>
-<td>Prueba escrita II</td>
-<td><a href="#">AC711</a></td>
 <td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
 </tr>
 </tbody>
