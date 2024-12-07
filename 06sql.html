@@ -2186,7 +2186,8 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="19 "></span><span class="c1">-- 10 rows in set (0.001 sec)</span>
 </code></pre></div>
 <h3 id="funciones">Funciones<a class="headerlink" href="#funciones" title="Permanent link">&para;</a></h3>
-<p>A la hora de recuperar o filtrar datos, es muy común utilizar <a href="https://mariadb.com/kb/en/built-in-functions/">funciones</a> que facilitan el trabajo con cadenas, cálculos numéricos, etc..</p>
+<p>A la hora de recuperar o filtrar datos, es muy común utilizar <a href="https://mariadb.com/kb/en/built-in-functions/">funciones</a> que facilitan el trabajo con cadenas, cálculos numéricos, etc.. Como ya has estudiado en el módulo profesional de <em>Programación</em>, las funciones reciben uno o más datos de entrada, también conocidos como parámetros (aunque existen algunas funciones que no reciben ninguno), y devuelven un resultado en base a los datos de entrada.</p>
+<p>Cabe destacar que las funciones no están completamente estandarizadas entre los diferentes SGBD, así pues conviene revisar la sintaxis exacta en el caso de migrar de un sistema a otro.</p>
 <h4 id="funciones-agregadas">Funciones agregadas<a class="headerlink" href="#funciones-agregadas" title="Permanent link">&para;</a></h4>
 <p>Se emplean para realizar cálculos sobre el total de elementos de la consulta (o agrupación). Tras el <code>select</code> indicaremos la función (o funciones) a realizar sobre el total de elementos devueltos por la consulta:</p>
 <p>Vamos a comenzar contando la cantidad de filas mediante la función <a href="https://mariadb.com/kb/en/count/"><code>COUNT(expr)</code></a>:</p>
@@ -2389,6 +2390,10 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="20 "></span><span class="c1">-- +--------+------------+---------+-------------+-----------+</span>
 <span class="linenos" data-linenos="21 "></span><span class="c1">-- 10 rows in set (0.001 sec)</span>
 </code></pre></div>
+<p>Finalmente, otra función muy importante a la hora de trabajar con fechas es la función <a href="https://mariadb.com/kb/en/cast/"><code>CAST(expr as tipo)</code></a> que realiza la conversión de tipos de datos.</p>
+<p>De esta manera podemos convertir una expresión de cadena en un tipo fecha:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="ss">&quot;2024-12-9&quot;</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">DATE</span><span class="p">);</span>
+</code></pre></div>
 <h4 id="otras">Otras<a class="headerlink" href="#otras" title="Permanent link">&para;</a></h4>
 <p>También tenemos funciones <a href="https://mariadb.com/kb/en/numeric-functions/">matemáticas</a> como:</p>
 <ul>
@@ -2494,7 +2499,7 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="20 "></span><span class="c1">-- 4 rows in set (0.000 sec)</span>
 </code></pre></div>
 <h3 id="seleccion">Selección<a class="headerlink" href="#seleccion" title="Permanent link">&para;</a></h3>
-<p>Para filtrar los datos y realizar una selección de tuplas, podemos emplear tanto <a href="https://mariadb.com/kb/en/function-and-operator-reference/">funciones como operadores</a> dentro del <code>WHERE</code>. Para realizar las comparaciones, se expresan mediante <code>expresion1 operador expresion2</code>, pudiendo utilizar los  operadores relacionales <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>!=</code>, etc..</p>
+<p>Para filtrar los datos y realizar una selección de tuplas, podemos emplear tanto <a href="https://mariadb.com/kb/en/function-and-operator-reference/">funciones como operadores</a> dentro del <code>WHERE</code>. Para realizar las comparaciones, se expresan mediante <code>expresion1 operador expresion2</code>, pudiendo utilizar los  operadores relacionales <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>!=</code>, así como los operadores lógicos como <code>and</code>, <code>or</code>, <code>not</code>, etc...</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">&#39;DIRGE&#39;</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+--------+------------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | CodDep | FecNaEmp   |</span>
@@ -2588,8 +2593,8 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="22 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
 </code></pre></div>
 <h4 id="patron-texto">Patrón texto<a class="headerlink" href="#patron-texto" title="Permanent link">&para;</a></h4>
-<p>Cuando tenemos campos de tipo texto, lo normal no es comparar por todo el valor exacto, sino por una subcadena existente. Para ello, usaremos el operador <a href="https://mariadb.com/kb/en/like/"><code>LIKE</code></a> acompañado de un patrón, siguiente la sintaxis <code>columna [NOT] LIKE patrón</code>.</p>
-<p>En el patrón de búsqueda, podemos emplear los comodines <code>_</code>para indicar que ocupa un carácter y <code>%</code> para cero o más caracteres</p>
+<p>Cuando tenemos campos de tipo texto, lo normal no es comparar por todo el valor exacto, sino por una subcadena existente. Para ello, usaremos el operador <a href="https://mariadb.com/kb/en/like/"><code>LIKE</code></a> acompañado de un patrón, siguiendo la sintaxis <code>columna [NOT] LIKE patrón</code>.</p>
+<p>En el patrón de búsqueda, podemos emplear los comodines <code>_</code> para indicar que ocupa un carácter y <code>%</code> para cero o más caracteres.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Centros que acaban en Sur</span>
 <span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomcen</span><span class="p">,</span><span class="w"> </span><span class="n">Pobcen</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Nomcen</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="s1">&#39;%Sur&#39;</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +-------------------+-----------+</span>
