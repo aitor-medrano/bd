@@ -714,7 +714,7 @@
 
 <h1 id="sql-agregaciones">SQL - Agregaciones<a class="headerlink" href="#sql-agregaciones" title="Permanent link">&para;</a></h1>
 <h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
-<p>En esta UT vamos a seguimos trabajando el RA3: <strong>Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos</strong> y el RA2: <strong>*Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional</strong>.</p>
+<p>En esta UT vamos a seguir trabajando el RA2: <strong>Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional</strong> y el RA3: <strong>Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos</strong>.</p>
 <h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
@@ -727,21 +727,22 @@
 <li><strong><abbr title="Se han realizado consultas resumen.">CE3e</abbr></strong>: Se han realizado consultas resumen.</li>
 </ul>
 <h3 id="contenidos">Contenidos<a class="headerlink" href="#contenidos" title="Permanent link">&para;</a></h3>
+<p>Bases de datos relacionales:</p>
+<ul>
+<li>Vistas.</li>
+</ul>
 <p>Realización de consultas:</p>
 <ul>
 <li>Consultas de resumen.</li>
 <li>Composiciones internas.</li>
 <li>Composiciones externas.</li>
 </ul>
-<p>Bases de datos relacionales:</p>
-<ul>
-<li>Vistas.</li>
-</ul>
 <div class="admonition question">
 <p class="admonition-title">Cuestionario inicial</p>
 <ol>
 <li>...</li>
 </ol>
+<p>TODO: Completar</p>
 </div>
 <h3 id="programacion-de-aula-8h">Programación de Aula (8h)<a class="headerlink" href="#programacion-de-aula-8h" title="Permanent link">&para;</a></h3>
 <p>Esta unidad es la séptima, siendo la segunda del bloque de consultas, impartiéndose al principio de la segunda evaluación, a principios de enero, con una duración estimada de 8 sesiones lectivas:</p>
@@ -787,7 +788,7 @@
 </tr>
 <tr>
 <td>6</td>
-<td><a href="#funciones-ventana">Funciones ventana </a></td>
+<td><a href="#funciones-ventana">Funciones ventana</a></td>
 <td><a href="#">AC708</a></td>
 <td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
 </tr>
@@ -1330,16 +1331,9 @@ TODO: Terminar
 <p><a name="AC703"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC703</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr> // 3p) Sobre la base de datos <code>empresa</code>, realiza las siguientes consultas:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC703</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr> // 3p) Sobre la base de datos <code>retail</code>, realiza las siguientes consultas:</p>
 <ol>
-<li>Lista, para cada empleado, además de su nombre, en campos separados, el día, el mes y el año de cuando nació.</li>
-<li>Listado de empleados, con su nombre, fecha de nacimiento y edad.</li>
-<li>Para cada empleado, necesitamos su nombre, fecha de incorporación y días de vacaciones extra (por cada 4 años en la empresa, tiene un día extra)</li>
-<li>Crea un listado con el nombre de los departamentos, así como un nuevo código formado por el código del departamento, un número aleatorio de dos cifras y el código del centro.</li>
-<li>Listado del tipo de director, código, nombre y presupuesto de los departamentos ordenado por tipo de director (orden alfabético) y dentro de este criterio por presupuesto anual en orden ascendente.</li>
-<li>Listado del nombre y salario de los empleados (con dos decimales y separadores de miles) ordenado por criterio descendente del salario.</li>
-<li>Lista los tres departamentos ordenados por presupuesto anual y por el código del centro con menor presupuesto.</li>
-<li>Recupera el empleado que más cobra.</li>
+<li>Supuesto con consultas</li>
 </ol>
 </li>
 </ul>
@@ -1366,6 +1360,77 @@ TODO: Terminar
 <!--
 TODO:Continuar con HAVING
 Actividades
+-->
+
+<!--
+Contenidos básicos:
+
+Almacenamiento de la información:
+− Ficheros (planos, indexados, acceso directo, entre otros).
+− Bases de datos. Conceptos, usos y tipos según el modelo de datos, la
+ubicación de la información.
+− Sistemas gestores de base de datos: Funciones, componentes y tipos.
+− Bases de datos centralizadas y bases de datos distribuidas. Técnicas de
+fragmentación.
+− Legislación sobre protección de datos.
+− Big Data: introducción, análisis de datos, inteligencia de negocios.
+
+Bases de datos relacionales:
+− Modelo de datos.
+− Terminología del modelo relacional.
+− Tipos de datos.
+− Claves primarias.
+− Restricciones de validación.
+− Índices. Características.
+− El valor NULL.
+− Claves ajenas.
+− Vistas.
+− Usuarios. Privilegios.
+− Lenguaje de descripción de datos (DDL).
+− Lenguaje de control de datos (DCL).
+
+Realización de consultas:
+− Proyección, selección y ordenación de registros.
+− Operadores. Operadores de comparación. Operadores lógicos.
+− Consultas de resumen.
+− Agrupamiento de registros.
+− Composiciones internas.
+− Composiciones externas.
+− Subconsultas
+− Combinación de múltiples selecciones.
+− Optimización de consultas.
+
+Tratamiento de datos:
+− Inserción, borrado y modificación de registros.
+− Integridad referencial.
+− Subconsultas y composiciones en órdenes de edición.
+− Transacciones.
+− Políticas de bloqueo. Concurrencia.
+
+Programación de bases de datos:
+− Introducción. Lenguaje de programación.
+− Variables del sistema y variables de usuario.
+− Funciones.
+− Estructuras de control de flujo.
+− Procedimientos almacenados. Funciones de usuario.
+− Eventos y disparadores.
+− Excepciones.
+− Cursores.
+
+Interpretación de Diagramas Entidad/Relación:
+− El modelo E/R. Entidades y relaciones. Cardinalidades. Debilidad.
+− El modelo E/R ampliado. Generalización y especialización. Agregación.
+− Paso del diagrama E/R al modelo relacional.
+− Restricciones semánticas del modelo relacional.
+− Normalización de modelos relacionales.
+
+Uso de bases de datos no relacionales:
+− Características de las bases de datos no relacionales.
+− Tipos de bases de datos no relacionales.
+− Elementos de las bases de datos no relacionales.
+− Sistemas gestores de bases de datos no relacionales.
+− Herramientas de los sistemas gestores de bases de datos no relacionales
+para la gestión de la información almacenada.
 -->
 
 
