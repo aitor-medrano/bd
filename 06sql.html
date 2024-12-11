@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.35f28582.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -1329,8 +1329,8 @@
 <li>¿Qué clausula utilizaremos para eliminar los elementos duplicados?</li>
 <li>¿Y cómo renombramos el nombre de una consulta en el resultado de una consulta?</li>
 <li>¿Podemos crear variables en un campo de una consulta para utilizarlas dentro de la misma consulta?</li>
-<li>¿Con qué función podemos obtener el total de elementos de un tabla?</li>
-<li>¿Qué función hay que emplear para saber que día será dentro de 3 meses?</li>
+<li>¿Con qué función podemos obtener el total de elementos de una tabla?</li>
+<li>¿Qué función hay que emplear para saber qué día será dentro de 3 meses?</li>
 <li>¿Qué función hay que emplear para redondear para debajo o para arriba?</li>
 <li>¿Qué tipos de combinaciones podemos hacer entre tablas?</li>
 <li>¿Qué diferencia hay entre un <code>inner join</code> y un <code>left join</code>?</li>
@@ -2067,7 +2067,7 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <p>A continuación, nos conectamos mediante el cliente que nos sintamos más cómodo. Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mariadb<span class="w"> </span>-u<span class="w"> </span>s8a<span class="w"> </span>-p<span class="w"> </span>empresa<span class="p">;</span>
 </code></pre></div>
-<p>Recuerda que si quieres saber la estructura de una tabla, podemos utilizar la sentencia <code>DESCRIBE</code>/ <code>DESC</code>:</p>
+<p>Recuerda que, si quieres saber la estructura de una tabla, podemos utilizar la sentencia <code>DESCRIBE</code>/ <code>DESC</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">DESCRIBE</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +----------+---------------+------+-----+---------+----------------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Field    | Type          | Null | Key | Default | Extra          |</span>
@@ -2130,7 +2130,7 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="9 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
 </code></pre></div>
 <h4 id="duplicados">Duplicados<a class="headerlink" href="#duplicados" title="Permanent link">&para;</a></h4>
-<p>Si realizamos la siguiente consulta sobre la tabla <code>empleado</code>, obtendremos todos los código de departamento de los empleados. Como podéis observar, aparecen repetidos, porque obtenemos una fila por empleado existente en la tabla:</p>
+<p>Si realizamos la siguiente consulta sobre la tabla <code>empleado</code>, obtendremos todos los códigos de departamento de los empleados. Como podéis observar, aparecen repetidos, porque obtenemos una fila por empleado existente en la tabla:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodDep |</span>
@@ -2210,7 +2210,7 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CASE</span><span class="w"> </span><span class="n">campo</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="p">[</span><span class="n">valor1</span><span class="p">]</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">[</span><span class="k">WHEN</span><span class="w"> </span><span class="p">[</span><span class="n">valor2</span><span class="p">]</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[</span><span class="k">ELSE</span><span class="w"> </span><span class="n">resultado</span><span class="p">]</span><span class="w"> </span><span class="k">END</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="p">[</span><span class="n">condición</span><span class="p">]</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">[</span><span class="k">WHEN</span><span class="w"> </span><span class="p">[</span><span class="n">condición</span><span class="p">]</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[</span><span class="k">ELSE</span><span class="w"> </span><span class="n">resultado</span><span class="p">]</span><span class="w"> </span><span class="k">END</span>
 </code></pre></div>
-<p>Por ejemplo, a la hora de mostrar los empleados, si queremos que cuando el número de télefono sea nulo muestre <code>0000</code> haríamos:</p>
+<p>Por ejemplo, a la hora de mostrar los empleados, si queremos que cuando el número de teléfono sea nulo muestre <code>0000</code> haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="ss">&quot;0000&quot;</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------+----------+</span>
@@ -2229,7 +2229,7 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- +--------+----------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 10 rows in set (0.001 sec)</span>
 </code></pre></div>
-<p>Veamos otro ejemplo. En el caso de los departamentos, la columan <code>TiDir</code> indica el tipo de director, con los valores <code>P</code> para indicar en propiedad y <code>F</code> para detallar que es un director en funciones. Si quisiéramos mostrar la frase <code>Definitivo</code> o <code>Interino</code> para estos casos haríamos:</p>
+<p>Veamos otro ejemplo. En el caso de los departamentos, la columna <code>TiDir</code> indica el tipo de director, con los valores <code>P</code> para indicar en propiedad y <code>F</code> para detallar que es un director en funciones. Si quisiéramos mostrar la frase <code>Definitivo</code> o <code>Interino</code> para estos casos haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">TiDir</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">       </span><span class="k">CASE</span><span class="w"> </span><span class="n">TiDir</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="ss">&quot;P&quot;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="ss">&quot;Definitivo&quot;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="ss">&quot;F&quot;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="ss">&quot;Interino&quot;</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">TipoDirector</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
@@ -2248,7 +2248,7 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 </div>
 <h3 id="funciones">Funciones<a class="headerlink" href="#funciones" title="Permanent link">&para;</a></h3>
 <p>A la hora de recuperar o filtrar datos, es muy común utilizar <a href="https://mariadb.com/kb/en/built-in-functions/">funciones</a> que facilitan el trabajo con cadenas, cálculos numéricos, etc.. Como ya has estudiado en el módulo profesional de <em>Programación</em>, las funciones reciben uno o más datos de entrada, también conocidos como parámetros (aunque existen algunas funciones que no reciben ninguno), y devuelven un resultado en base a los datos de entrada.</p>
-<p>Cabe destacar que las funciones no están completamente estandarizadas entre los diferentes SGBD, así pues conviene revisar la sintaxis exacta en el caso de migrar de un sistema a otro.</p>
+<p>Cabe destacar que las funciones no están completamente estandarizadas entre los diferentes SGBD, así pue, conviene revisar la sintaxis exacta en el caso de migrar de un sistema a otro.</p>
 <h4 id="funciones-agregadas">Funciones agregadas<a class="headerlink" href="#funciones-agregadas" title="Permanent link">&para;</a></h4>
 <p>Se emplean para realizar cálculos sobre el total de elementos de la consulta (o agrupación). Tras el <code>select</code> indicaremos la función (o funciones) a realizar sobre el total de elementos devueltos por la consulta:</p>
 <p>Vamos a comenzar contando la cantidad de filas mediante la función <a href="https://mariadb.com/kb/en/count/"><code>COUNT(expr)</code></a>:</p>
@@ -2322,7 +2322,7 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="34 "></span><span class="c1">-- +-------------+----------------+</span>
 <span class="linenos" data-linenos="35 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 </code></pre></div>
-<p>En la próxima unidad estudiaremos como podemos agregar datos por algún columnas y realizar cálculos sobre ella, lo que nos permitirá obtener información del tipo <em>"Cantidad de empleados de cada departamento"</em>, <em>"Salario medio por centro de los empleados"</em>, etc...</p>
+<p>En la próxima unidad estudiaremos como podemos agregar datos por algunas columnas y realizar cálculos sobre ellas, lo que nos permitirá obtener información del tipo <em>"Cantidad de empleados de cada departamento"</em>, <em>"Salario medio por centro de los empleados"</em>, etc...</p>
 <h4 id="cadenas">Cadenas<a class="headerlink" href="#cadenas" title="Permanent link">&para;</a></h4>
 <p>Mediante <a href="https://mariadb.com/kb/en/string-functions/">funciones de cadenas de texto</a> podemos realizar múltiples operaciones:</p>
 <ul>
@@ -2520,7 +2520,7 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <p>También podemos emplear funciones para <a href="https://mariadb.com/kb/en/encryption-hashing-and-compression-functions/">encriptar o comprimir</a>, así como para trabajar con <a href="https://mariadb.com/kb/en/geographic-functions/">coordenadas geográficas</a>.</p>
 <h3 id="ordenando-y-limitando">Ordenando y Limitando<a class="headerlink" href="#ordenando-y-limitando" title="Permanent link">&para;</a></h3>
 <p>Es muy común tener que ordenar el resultado de una consulta para darle más importancia a unos campos que otros, e incluso, reducir el número de tuplas recuperadas.</p>
-<p>Así pues, para ordenar mediante la clausula <a href="https://mariadb.com/kb/en/order-by/"><code>ORDER BY {campo | pos} [ASC|DESC]</code></a>, indicando los diferentes campos separados por coma. Por defecto, la ordenación se realiza de forma ascendente.</p>
+<p>Así pues, para ordenar mediante la cláusula <a href="https://mariadb.com/kb/en/order-by/"><code>ORDER BY {campo | pos} [ASC|DESC]</code></a>, indicando los diferentes campos separados por coma. Por defecto, la ordenación se realiza de forma ascendente.</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NifEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+-----------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | NifEmp    |</span>
@@ -2639,7 +2639,7 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="8 "></span><span class="c1">-- +-------------------------+------------+</span>
 <span class="linenos" data-linenos="9 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>También podemos negar la clausula o usarla con fechas:</p>
+<p>También podemos negar la cláusula o usarla con fechas:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
 </span><span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">between</span><span class="w"> </span><span class="mi">2000000</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="mi">6000000</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +-----------------------------+------------+</span>
@@ -2956,7 +2956,7 @@ Otra posibilidad es utilizar el operador <code>USING</code> cuando </p>
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+-----------+----------------------------+</span>
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>Así pues, si queremos recuperar todos los departamentos secundarios, así como el código y nombre de su departamento principal necesitamos referencias a la tabla <code>departamento</code> mediante un <em>join</em> consigo misma. Para ello, es imperativo utilizar un alias descriptivo para indentificar el rol de la tabla en cada caso (en nuestro caso, <code>sec</code> como departamento secundario y <code>prin</code> para los principales):</p>
+<p>Así pues, si queremos recuperar todos los departamentos secundarios, así como el código y nombre de su departamento principal necesitamos referencias a la tabla <code>departamento</code> mediante un <em>join</em> consigo misma. Para ello, es imperativo utilizar un alias descriptivo para identificar el rol de la tabla en cada caso (en nuestro caso, <code>sec</code> como departamento secundario y <code>prin</code> para los principales):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">sec</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">CodDepSec</span><span class="p">,</span><span class="w"> </span><span class="n">sec</span><span class="p">.</span><span class="n">NomDep</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NomDepSec</span><span class="p">,</span><span class="w"> </span><span class="n">prin</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">CodDepPrin</span><span class="p">,</span><span class="w"> </span><span class="n">prin</span><span class="p">.</span><span class="n">NomDep</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NomDepPrin</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">prin</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">sec</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">prin</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sec</span><span class="p">.</span><span class="n">CodDepDep</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +-----------+--------------------------+------------+----------------------------+</span>
@@ -2991,7 +2991,7 @@ Otra posibilidad es utilizar el operador <code>USING</code> cuando </p>
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
 <span class="linenos" data-linenos="13 "></span><span class="c1">-- 6 rows in set (0.001 sec)</span>
 </code></pre></div>
-<p>Si en cambio queremos recuperar todos los empleados, y si tienen habilidades, su información, haríamos un <em>left join</em>. Ahora se muestran todos los clientes, y además, aquellos que tienen habilidades, aparecerá tantas veces como habilidades tenga. En cambio, de los que no tienen habilidades aparecerá <code>NULL</code> en las columnas correspondientes:</p>
+<p>Si en cambio queremos recuperar todos los empleados, y si tienen habilidades, su información, haríamos un <em>left join</em>. Ahora se muestran todos los clientes y, además, aquellos que tienen habilidades, aparecerá tantas veces como habilidades tenga. En cambio, de los que no tienen habilidades aparecerá <code>NULL</code> en las columnas correspondientes:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
@@ -3081,7 +3081,7 @@ Otra posibilidad es utilizar el operador <code>USING</code> cuando </p>
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- 6 rows in set (0.001 sec)</span>
 </code></pre></div>
 <p>¿Qué ha pasado? ¿Por qué sólo 6 registros? Al realizar el segundo <em>join</em>, ha eliminado aquellos registros que tienen la habilidad nula.</p>
-<p>Pero, ¿cómo lo solucionamos? Primero vamos a unir los códigos y habilidades, y luego hacemos el <em>join</em> por la derecha con todos los empleados:</p>
+<p>Pero ¿cómo lo solucionamos? Primero vamos a unir los códigos y habilidades, y luego hacemos el <em>join</em> por la derecha con todos los empleados:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">right</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
@@ -3363,7 +3363,7 @@ Añadir alguna consulta que realice algún cálculo agregado
 <li>Listar el nombre de los trabajadores que no tienen extensión telefónica.</li>
 <li>Listar el nombre y presupuesto de los departamentos no ubicados en los centros con código <code>DIGE</code> o <code>FAZS</code>.</li>
 <li>Listar el nombre y salario de los trabajadores que ganen menos de 2 o más de 5 millones de euros.</li>
-<li>Listar el código y nombre de los empleados cuyo código sea distinto de <code>1</code>, 4<code>,</code>6<code>,</code>8<code>y de</code>10`.</li>
+<li>Listar el código y nombre de los empleados cuyo código sea distinto de <code>1</code>, <code>4</code>, <code>6</code>, <code>8</code> y de <code>10</code>.</li>
 <li>Listar el nombre y fecha de nacimiento de los hijos de empleado que tengan como parte de su nombre o apellidos la secuencia de letras <code>León</code>.</li>
 <li>Listar el nombre y salario anual de los empleados que ganan menos de 4 millones pero que ingresaron en la empresa antes de 1985.</li>
 <li>
@@ -3389,6 +3389,10 @@ b) Fueron contratados en 1994.</p>
 </code></pre></div>
 </li>
 </ul>
+<!--
+Poner una consulta con COALESCE
+-->
+
 <p><a name="AR608"></a></p>
 <ul>
 <li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR608</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr> // 3p) Realiza las consultas de la 20 a la 36 del apartado 1.1.3 de <em>Consultas sobre una tabla</em> de la base de datos de <em>Tienda de informática</em>, que podemos encontrar en las <a href="https://josejuansanchez.org/bd/ejercicios-consultas-sql/index.html">actividades propuestas</a> en los apuntes del docente <em>José Juan Sánchez</em>.</li>
@@ -3413,7 +3417,7 @@ b) Fueron contratados en 1994.</p>
 <ol>
 <li>el código de departamento para aquellos departamentos que tienen empleados.</li>
 <li>el código de departamento para aquellos departamentos que no tienen empleados.</li>
-<li>los empleados que no son directivos de ningún departamento(no aparecen en <code>departamento.CodEmpDir</code>).</li>
+<li>los empleados que no son directivos de ningún departamento (no aparecen en <code>departamento.CodEmpDir</code>).</li>
 <li>los empleados que no son directivos de ningún departamento ni de ningún centro</li>
 </ol>
 </li>
@@ -3458,17 +3462,17 @@ b) Fueron contratados en 1994.</p>
 <li>Obtén el diagrama EER mediante <em>DBeaver</em> (si quieres, puedes probar a utilizar <em>MySQL Workbench</em>).</li>
 <li>Define las claves ajenas en un script SQL y ejecútalo.</li>
 <li>Realiza las siguientes consultas:<ol>
-<li>¿Cuantas categorías hay en total?</li>
+<li>¿Cuántas categorías hay en total?</li>
 <li>Recupera todos los posibles estados que puede tener un pedido (revisa la columna <code>orders.order_status</code>).</li>
 <li>Recupera el nombre y el primer apellido de los clientes que viven en <code>Caguas</code>.</li>
-<li>¿Cual es el producto más caro? ¿Y el más barato?</li>
-<li>¿Cuantos pedidos han realizado clientes que viven en el <code>Bronx</code>?</li>
-<li>¿Cuantos productos han pedido clientes que viven en el <code>Bronx</code> y su nombre empieza por <code>M</code>?</li>
+<li>¿Cuál es el producto más caro? ¿Y el más barato?</li>
+<li>¿Cuántos pedidos han realizado clientes que viven en el <code>Bronx</code>?</li>
+<li>¿Cuántos productos han pedido clientes que viven en el <code>Bronx</code> y su nombre empieza por <code>M</code>?</li>
 <li>Recupera el nombre, email y ciudad de los clientes que tengan pedidos pendientes de pago.</li>
 <li>Recupera el nombre de los departamentos que tengan pedidos pendientes de pago.</li>
 <li>Recupera el nombre de los departamentos que han vendido algún producto a un cliente que vive en <code>Phoenix</code>.</li>
 <li>Recupera todos los productos cuya categoría contenga la palabra <code>Golf</code>.</li>
-<li>Para todas los elementos de pedido, comprueba si el valor del subtotal cuadra con el producto del precio por su cantidad.</li>
+<li>Para todos los elementos de pedido, comprueba si el valor del subtotal cuadra con el producto del precio por su cantidad.</li>
 <li>Recupera todos los clientes que no han hecho ningún pedido.</li>
 <li>Recupera todas las categorías que no tienen productos (usando combinaciones externas)</li>
 </ol>
@@ -3488,7 +3492,7 @@ b) Fueron contratados en 1994.</p>
 </ul>
 <p>Se utilizará una rúbrica para su evaluación en base a la siguiente lista de cotejo:</p>
 <ul>
-<li>Limpieza y calidad de los consultas.</li>
+<li>Limpieza y calidad de las consultas.</li>
 <li>Variedad de consultas, desde consultas sencilla a más complejas.</li>
 <li>Documentación de las consultas.</li>
 <li>El informe entregado no contiene faltas de ortografía.</li>
@@ -3814,10 +3818,10 @@ para la gestión de la información almacenada.
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
   </body>
