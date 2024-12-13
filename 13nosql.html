@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -544,13 +544,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#particionado" class="md-nav__link">
+  <a href="#fragmentacion" class="md-nav__link">
     <span class="md-ellipsis">
-      Particionado
+      Fragmentación
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Particionado">
+    <nav class="md-nav" aria-label="Fragmentación">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -583,54 +583,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Replicación">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#maestro-esclavo-primario-secundario" class="md-nav__link">
-    <span class="md-ellipsis">
-      Maestro-esclavo / Primario-secundario
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#par-a-par-peer-to-peer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Par-a-par (peer-to-peer)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#teorema-de-cap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Teorema de CAP
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Teorema de CAP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clasificacion-segun-cap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Clasificación según CAP
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -658,9 +610,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#analitica-de-datos" class="md-nav__link">
+  <a href="#inteligencia-de-negocio" class="md-nav__link">
     <span class="md-ellipsis">
-      Analítica de datos
+      Inteligencia de negocio
     </span>
   </a>
   
@@ -723,9 +675,42 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#teorema-de-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Teorema de CAP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Teorema de CAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clasificacion-segun-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clasificación según CAP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#redis" class="md-nav__link">
     <span class="md-ellipsis">
       Redis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
     </span>
   </a>
   
@@ -799,8 +784,7 @@
 <h3 id="contenidos">Contenidos<a class="headerlink" href="#contenidos" title="Permanent link">&para;</a></h3>
 <p>Almacenamiento de la información:</p>
 <ul>
-<li>Bases de datos centralizadas y bases de datos distribuidas. Técnicas de
-fragmentación.</li>
+<li>Bases de datos centralizadas y bases de datos distribuidas. Técnicas de fragmentación.</li>
 <li><em>Big Data</em>: introducción, análisis de datos, inteligencia de negocios.</li>
 </ul>
 <p>Bases de datos no relacionales:</p>
@@ -832,7 +816,7 @@ fragmentación.</li>
 </tr>
 <tr>
 <td style="text-align: center;">2</td>
-<td><a href="#big-data">Big Data</a> y Business Intelligence</td>
+<td><a href="#big-data">Big Data</a> y <em>Business Intelligence</em></td>
 <td>AC1302</td>
 <td><abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr></td>
 </tr>
@@ -882,7 +866,7 @@ fragmentación.</li>
 </table>
 <h2 id="almacenamiento-de-datos">Almacenamiento de datos<a class="headerlink" href="#almacenamiento-de-datos" title="Permanent link">&para;</a></h2>
 <p>Se puede decir que estamos en la <a href="https://en.wikipedia.org/wiki/Third_platform">tercera plataforma</a> del almacenamiento de datos. La primera llegó con los primeros computadores y se materializó en las bases de datos jerárquicas y en red, así como en el almacenamiento ISAM. La segunda vino de la mano de Internet y las arquitecturas cliente-servidor, lo que dio lugar a las bases de datos relacionales.</p>
-<p>La tercera se ve motivada por el <em>Big Data</em>, los dispositivos móviles, las arquitecturas cloud, las redes de IoT y las tecnologías/redes sociales. Es tal el volumen de datos que se genera que aparecen nuevos paradigmas como NoSQL, NewSQL y las plataformas de Big Data. En esta sesión nos vamos a centrar en NoSQL.</p>
+<p>La tercera se ve motivada por el <em>Big Data</em>, los dispositivos móviles, las arquitecturas <em>cloud</em>, las redes de IoT y las tecnologías/redes sociales. Es tal el volumen de datos que se genera que aparecen nuevos paradigmas como NoSQL, NewSQL y las plataformas de <em>Big Data</em>.</p>
 <p>NoSQL aparece como una necesidad debida al creciente volumen de datos sobre usuarios, objetos y productos que las empresas tienen que almacenar, así como la frecuencia con la que se accede a los datos. Los SGDB relacionales existentes no fueron diseñados teniendo en cuenta la escalabilidad ni la flexibilidad necesaria por las frecuentes modificaciones que necesitan las aplicaciones modernas; tampoco aprovechan que el almacenamiento a día de hoy es muy barato, ni el nivel de procesamiento que alcanzan las máquinas actuales.</p>
 <figure style="align: center;">
     <img src="images/13nosql.png" width="800px" alt="Evolución de los sistemas de almacenamiento">
@@ -892,6 +876,7 @@ fragmentación.</li>
 <p>La solución es el <ins>despliegue de las aplicaciones y sus datos en clústeres de servidores, distribuyendo el procesamiento en múltiples máquinas</ins>.</p>
 <h2 id="bases-de-datos-distribuidas">Bases de Datos Distribuidas<a class="headerlink" href="#bases-de-datos-distribuidas" title="Permanent link">&para;</a></h2>
 <p>En la primera unidad aprendimos cómo se almacena la información en sistemas gestores de datos, normalmente centralizados. Esto es, todos los datos residen en un servidor o nodo central que sigue un modelo cliente-servidor, siendo los clientes las diferentes aplicaciones y servicios que consumen los datos mediante conexiones remotas gracias a Internet.</p>
+<p>Por un lado, las bases de datos centralizas son sencillas de gestionar y mantener, y ofrecen una alta consistencia en los datos. Por contra, al centrar todos los datos en un único nodo, este se convierte en un SPOF (<em>Single Point of Failure</em>). Además, tienen una escalabilidad y rendimiento limitados a las características <em>hardware</em> de las máquinas donde corren.</p>
 <p>Si el sistema crece y la carga de usuario supera la capacidad del servidor, es necesario migrar a un modelo más potente (y normalmente más caro) como son las bases de datos distribuidas, donde los datos se reparten entre varias máquinas, particionando los datos o fragmentándolos dependiendo de las necesidades de las aplicaciones, incrementando la complejidad del sistema para dar soporte a la sincronización de los datos y la tolerancia a fallos.</p>
 <p>Así pues, una <strong>base de datos distribuida</strong> es aquella en la cual existen diversos servidores gestores de bases de datos conectados entre sí formando una única base de datos con un solo esquema lógico.</p>
 <p>Un <strong>sistema gestor de bases de datos distribuidas</strong> (SGBDD) se define como el sistema software que permite la gestión de bases de datos distribuidas y hace la distribución de datos transparente para los usuarios.</p>
@@ -900,36 +885,32 @@ fragmentación.</li>
     <figcaption>Bases de Datos Distribuidas</figcaption>
 </figure>
 
-<p>Los servidores de una base de datos distribuida suelen denominarse nodos y pueden estar físicamente cercanos (mismo edificio o grupo de edificios) y conectados a través de una red de área local, o pueden estar distribuidos geográficamente a
-grandes distancias y conectados a través de una red de larga distancia.</p>
-<h3 id="particionado">Particionado<a class="headerlink" href="#particionado" title="Permanent link">&para;</a></h3>
+<p>Los servidores de una base de datos distribuida suelen denominarse nodos y pueden estar físicamente cercanos (mismo edificio o grupo de edificios) y conectados a través de una red de área local, o pueden estar distribuidos geográficamente a grandes distancias y conectados a través de una red de larga distancia.</p>
+<p>En comparación con los sistemas centralizados, son más complejos en cuanto a su gestión, y la sincronización y consistencia de los datos es más difícil de garantizar.</p>
+<h3 id="fragmentacion">Fragmentación<a class="headerlink" href="#fragmentacion" title="Permanent link">&para;</a></h3>
 <p>Dado el modo en el que se estructuran las bases de datos relacionales, normalmente escalan verticalmente - un único servidor cada vez más potente (más RAM, mejor CPU y almacenamiento) que almacena toda la base de datos para asegurar la disponibilidad continua de los datos. Esto se traduce en costes que se incrementan rápidamente, con un límites definidos por el propio hardware, y en un pequeño número de puntos críticos de fallo dentro de la infraestructura de datos.</p>
-<p>La solución es escalar horizontalmente, añadiendo nuevos servidores en vez de concentrarse en incrementar la capacidad de un único servidor, lo que permite tratar con conjuntos de datos más grandes de lo que sería capaz cualquier máquina por sí sola. Este escalado horizontal se conoce como <strong><em>Sharding</em></strong> o Particionado.</p>
-<p>El particionado no es único de las bases de datos NoSQL. Las bases de datos relacionales también lo soportan. Si en un sistema relacional queremos particionar los datos, podemos distinguir entre particionado:</p>
+<p>La solución es escalar horizontalmente, añadiendo nuevos servidores en vez de concentrarse en incrementar la capacidad de un único servidor, lo que permite tratar con conjuntos de datos más grandes de lo que sería capaz cualquier máquina por sí sola. Este escalado horizontal se conoce como <strong><em>Sharding</em></strong>, fragmentación o particionado de los datos.</p>
+<p>Si en un sistema relacional queremos particionar los datos, podemos distinguir entre fragmentación:</p>
 <ul>
-<li><strong>Horizontal</strong>: diferentes filas en diferentes particiones.</li>
-<li><strong>Vertical</strong>: diferentes columnas en particiones distintas.</li>
+<li><strong>Horizontal</strong>: diferentes filas en diferentes particiones, por ejemplo, dividir a los clientes por región geográfica.</li>
+<li><strong>Vertical</strong>: diferentes columnas en particiones distintas, por ejemplo, separar los datos de contacto y financieros.</li>
 </ul>
 <figure style="align: center;">
     <img src="images/13sharding01.png" width="600px" alt="Particionado de los datos">
     <figcaption>Particionado de los datos - digitalocean.com</figcaption>
 </figure>
 
-<p>En el caso de las bases de datos NoSQL, el particionado depende del modelo de la base de datos:</p>
-<ul>
-<li>Los almacenes clave-valor y las bases de datos documentales normalmente se particionan horizontalmente.</li>
-<li>Las bases de datos basados en columnas se pueden particionar horizontal o verticalmente.</li>
-</ul>
-<p>Escalar horizontalmente una base de datos relacional entre muchas instancias de servidores se puede conseguir pero normalmente conlleva el uso de SANs (<em>Storage Area Networks</em>) y otras triquiñuelas para hacer que el hardware actúe como un único servidor.</p>
-<p>Como los sistemas SQL no ofrecen esta prestación de forma nativa, los equipos de desarrollo se las tienen que ingeniar para conseguir desplegar múltiples bases de datos relacionales en varias máquinas. Para ello:</p>
+<p>Escalar horizontalmente una base de datos relacional entre muchas instancias de servidores se puede conseguir pero normalmente conlleva el uso de SANs (<em>Storage Area Networks</em>) y otras triquiñuelas para hacer que el <em>hardware</em> actúe como un único servidor.</p>
+<p>Como los sistemas SQL no ofrecen esta prestación de forma nativa, bien los productos ofrecen complementos para permitirla, como <a href="https://www.mysql.com/products/cluster/">MySQL NDB Cluster</a> o <em>PostgreSQL</em> con <a href="https://www.citusdata.com/">Citus</a>, o bien los equipos de desarrollo se las tienen que ingeniar para conseguir desplegar múltiples bases de datos relacionales en varias máquinas, pudiendo utilizar una solución que actúe como intermediario (como <a href="https://proxysql.com/">ProxySQL</a>), o bien, desarrollando una solución propia, como puede ser:</p>
 <ul>
 <li>Los datos se almacenan en cada instancia de base de datos de manera autónoma</li>
 <li>El código de aplicación se desarrolla para distribuir los datos y las consultas y agregar los resultados de los datos a través de todas las instancias de bases de datos</li>
-<li>Se debe desarrollar código adicional para gestionar los fallos sobre los recursos, para realizar joins entre diferentes bases de datos, balancear los datos y/o replicarlos, etc…​</li>
+<li>Se debe desarrollar código adicional para gestionar los fallos sobre los recursos, para realizar <em>joins</em> entre diferentes bases de datos, balancear los datos y/o replicarlos, etc…​</li>
 </ul>
-<p>Además, muchos beneficios de las bases de datos como la integridad transaccional se ven comprometidos o incluso eliminados al emplear un escalado horizontal.</p>
+<p>Si no queremos complicarnos la vida administrando los sistemas y configurando todas las herramientas, siempre podemos optar por una solución <em>cloud</em> como <a href="https://aws.amazon.com/es/rds/">AWS RDS</a> o <a href="https://azure.microsoft.com/es-es/products/azure-sql/database">Azure SQL DB</a>, donde el tamaño de las instancias se puede modificar, así como configurar diferentes tipos de réplicas para mejorar la tolerancia a fallos.</p>
+<p>Dicho esto, con un planteamiento de una base de datos distribuida, muchos beneficios de las bases de datos como la integridad transaccional se ven comprometidos o incluso eliminados al emplear un escalado horizontal.</p>
 <h4 id="auto-sharding">Auto-sharding<a class="headerlink" href="#auto-sharding" title="Permanent link">&para;</a></h4>
-<p>Por contra, las bases de datos NoSQL normalmente soportan <strong><em>auto-sharding</em></strong>, lo que implica que de manera nativa y automáticamente se dividen los datos entre un número arbitrario de servidores, sin que la aplicación sea consciente de la composición del pool de servidores. Los datos y las consultas se balancean entre los servidores.</p>
+<p>Aunque las estudiaremos más adelante, conviene comentar que las bases de datos NoSQL normalmente soportan <strong><em>auto-sharding</em></strong>, lo que implica que de manera nativa y automáticamente se dividen los datos entre un número arbitrario de servidores, sin que la aplicación sea consciente de la composición del clúster de servidores. Los datos y las consultas se balancean entre los servidores.</p>
 <p>El particionado se realiza mediante un método consistente, como puede ser:</p>
 <ul>
 <li>
@@ -950,6 +931,7 @@ grandes distancias y conectados a través de una red de larga distancia.</p>
 </figure></p>
 </li>
 </ul>
+<p>Independientemente del método, el atributo o clave que se elige para decidir a qué partición va cada dato se conoce como <em>Shard key</em>, o clave de particionado.</p>
 <h4 id="cuando-particionar">Cuando particionar<a class="headerlink" href="#cuando-particionar" title="Permanent link">&para;</a></h4>
 <p>El motivo para particionar los datos se debe a:</p>
 <ul>
@@ -960,26 +942,31 @@ grandes distancias y conectados a través de una red de larga distancia.</p>
 <p>No particionaremos los datos cuando la cantidad sea pequeña, ya que el hecho de distribuir los datos conlleva unos costes que pueden no compensar con un volumen de datos insuficiente. Tampoco esperaremos a particionar cuando tengamos muchísimos datos, ya que el proceso de particionado puede provocar sobrecarga del sistema.</p>
 <p>La nube facilita de manera considerable este escalado, mediante proveedores como AWS o Azure los cuales ofrecen virtualmente una capacidad ilimitada bajo demanda, y despreocupándose de todas las tareas necesarias para la administración de la base de datos.</p>
 <p>Los desarrolladores ya no necesitamos construir plataformas complejas para nuestras aplicaciones, de modo que nos podemos centrar en escribir código de aplicación. Una granja de servidores con <em>commodity hardware</em> puede ofrecer el mismo procesamiento y capacidad de almacenamiento que un único servidor de alto rendimiento por mucho menos coste.</p>
-<!-- FIXME: Añadir ventajas https://www.mongodb.com/basics/sharding -->
-
 <h3 id="replicacion">Replicación<a class="headerlink" href="#replicacion" title="Permanent link">&para;</a></h3>
 <p>La replicación mantiene copias idénticas de los datos en múltiples servidores, lo que facilita que las aplicaciones siempre funcionen y los datos se mantengan seguros, incluso si alguno de los servidores sufre algún problema.</p>
-<p>La mayoría de las bases de datos NoSQL también soportan la replicación automática, lo que implica una alta disponibilidad y recuperación frente a desastres sin la necesidad de aplicaciones de terceros encargadas de ello. Desde el punto de vista del desarrollador, el entorno de almacenamiento es virtual y ajeno al código de aplicación.</p>
-<p>Existen dos formas de realiza la replicación:</p>
-<h4 id="maestro-esclavo-primario-secundario">Maestro-esclavo / Primario-secundario<a class="headerlink" href="#maestro-esclavo-primario-secundario" title="Permanent link">&para;</a></h4>
+<p>La mayoría de las bases de datos actuales también soportan la replicación automática, lo que implica una alta disponibilidad y recuperación frente a desastres sin la necesidad de aplicaciones de terceros encargadas de ello. Desde el punto de vista del desarrollador, el entorno de almacenamiento es virtual y ajeno al código de aplicación.</p>
+<p>Antes de ver los tipos, hemos de ser conscientes de cual va a ser la función de la máquina replicada. Si queremos tener una copia de los datos, la cual sólo vamos a utilizar para realizar operaciones de consulta (<strong>réplica de lectura</strong>) va a implicar una configuración diferente de si lo que queremos es replicar nodos donde queremos que se pueda escribir también (<strong>réplica de escritura</strong>).</p>
+<p>Dicho esto, las principales arquitecturas de replicación son:</p>
+<ul>
+<li>
+<p><strong>Maestro-esclavo</strong> / Primario-secundario</p>
 <p>Todas las escrituras se realizan en el nodo principal y después se replican a los nodos secundarios. El nodo primario es un SPOF (<em>single point of failure</em>).</p>
+</li>
+<li>
+<p><strong>Multi-maestro</strong> / Entre pares (<em>peer-to-peer</em>) </p>
+<p>Todos los nodos tienen el mismo nivel jerárquico, de manera que todos (o casi todo) admiten escrituras. Al poder haber escrituras simultáneas sobre el mismo datos en diferentes nodos, pueden darse inconsistencia en los datos.</p>
+</li>
+</ul>
 <figure style="align: center;">
-    <img src="images/13replication-master-slave.jpg" alt="Replicación primario-secundario" width="500px">
-    <figcaption>Replicación primario-secundario</figcaption>
+    <img src="images/13replication.svg" width="600px" alt="Tipos de replicación">
+    <figcaption>Tipos de replicación - https://berb.github.io/diploma-thesis</figcaption>
 </figure>
 
-<h4 id="par-a-par-peer-to-peer">Par-a-par (<em>peer-to-peer</em>)<a class="headerlink" href="#par-a-par-peer-to-peer" title="Permanent link">&para;</a></h4>
-<p>Todos los nodos tienen el mismo nivel jerárquico, de manera que todos admiten escrituras. Al poder haber escrituras simultáneas sobre el mismo datos en diferentes nodos, pueden darse inconsistencia en los datos.</p>
-<figure style="align: center;">
-    <img src="images/13replication-peer-to-peer.png" alt="Replicación Peer-to-peer" width="500px">
-    <figcaption>Replicación Peer-to-peer</figcaption>
-</figure>
-
+<p>Conviene aclarar que cada modelo conlleva que los datos tengan diferente tipo de consistencia:</p>
+<ul>
+<li><strong>Consistencia fuerte</strong>: Garantiza que todas las réplicas tienen los mismos datos antes de confirmar cualquier operación, esto es, que después de que una escritura se complete, todas las lecturas reflejan inmediatamente el valor actualizado. Por ejemplo, los sistemas bancarios y las bases de datos que soportan ACID.</li>
+<li><strong>Consistencia eventual</strong>: Permite cierto desfase temporal entre réplicas, aceptando que los datos se sincronizarán en algún momento, a costa de poder llegar a leer datos desactualizados. Usos típicos serían los <em>likes</em> o comentarios en redes sociales.</li>
+</ul>
 <p>La replicación de los datos se utiliza para alcanzar:</p>
 <ul>
 <li><strong>escalabilidad</strong>, incrementando el rendimiento al poder distribuir las consultas en diferentes nodos, y mejorar la redundancia al permitir que cada nodo tenga una copia de los datos.</li>
@@ -994,36 +981,6 @@ grandes distancias y conectados a través de una red de larga distancia.</p>
     <figcaption>Replicación y particionado - codingexplained.com</figcaption>
 </figure></p>
 </div>
-<h3 id="teorema-de-cap">Teorema de CAP<a class="headerlink" href="#teorema-de-cap" title="Permanent link">&para;</a></h3>
-<p>Propuesto por <em>Eric Brewer</em> en el año 2000, prueba que podemos crear una base de datos distribuida que elija dos de las siguientes tres características:</p>
-<ul>
-<li><strong>C</strong>onsistencia: las escrituras son atómicas y todas las peticiones posteriores obtienen el nuevo valor, independientemente del lugar de la petición.</li>
-<li>Disponibilidad (<em><strong>A</strong>vailable</em>): la base de datos devolverá siempre un valor. En la práctica significa que no hay <em>downtime</em>.</li>
-<li>Tolerancia a <strong>P</strong>articiones: el sistema funcionará incluso si la comunicación con un servidor se interrumpe de manera temporal (para ello, ha de dividir los datos entre diferentes nodos). Es decir, implica que se pueden recibir lecturas desde unos nodos que no contienen información escrita en otros.</li>
-</ul>
-<p>En otras palabras, podemos crear un sistema de base de datos que sea consistente y tolerante a particiones (CP), un sistema que sea disponible y tolerante a particiones (AP), o un sistema que sea consistente y disponible (CA). Pero no es posible crear una base de datos distribuida que sea consistente, disponible y tolerante a particiones al mismo tiempo.</p>
-<figure style="align: center;">
-    <img src="images/13teorema.png" alt="Teorema de CAP" width="400px">
-    <figcaption>Teorema de CAP</figcaption>
-</figure>
-
-<p>El teorema CAP es útil cuando consideramos el sistema de base de datos que necesitamos, ya que nos permite decidir cual de las tres características vamos a descartar. La elección realmente se centra entre la disponibilidad y la consistencia, ya que la tolerancia a particiones es una decisión de arquitectura (sea o no distribuida).</p>
-<p>Aunque el teorema dicte que si en un sistema distribuido elegimos disponibilidad no podemos tener consistencia, todavía podemos obtener consistencia eventual. Es decir, cada nodo siempre estará disponible para servir peticiones, aunque estos nodos no puedan asegurar que la información que contienen sea consistente (pero si bastante precisa), en algún momento lo será.</p>
-<p>Algunas bases de datos tolerantes a particiones se pueden ajustar para ser más o menos consistentes o disponible a nivel de petición. Por ejemplo, <em>Riak</em> trabaja de esta manera, permitiendo a los clientes decidir en tiempo de petición qué nivel de consistencia necesitan.</p>
-<h4 id="clasificacion-segun-cap">Clasificación según CAP<a class="headerlink" href="#clasificacion-segun-cap" title="Permanent link">&para;</a></h4>
-<p>El siguiente gráfico muestra cómo dependiendo de estos atributos podemos clasificar los sistemas NoSQL:</p>
-<figure style="align: center;">
-    <img src="images/13teoremaCAPam.png" alt="Clasificación según CAP" width="400px">
-    <figcaption>Clasificación según CAP</figcaption>
-</figure>
-
-<p>Así pues, las bases de datos NoSQL se clasifican en:</p>
-<ul>
-<li><strong>CP</strong>: Consistente y tolerantes a particiones. Tanto <em>MongoDB</em> como <em>HBase</em> son CP, ya que dentro de una partición pueden no estar disponibles para responder una determinada consulta (por ejemplo, evitando lecturas en los nodos secundarios), aunque son tolerantes a fallos porque cualquier nodo secundario se puede convertir en principal y asumir el rol del nodo caído.</li>
-<li><strong>AP</strong>: Disponibles y tolerantes a particiones. <em>DynamoDB</em> permite replicar los datos entre sus nodos aunque no garantiza la consistencia en ninguno de los sus servidores.</li>
-<li><strong>CA</strong>: Consistentes y disponible. Aquí es donde situaríamos a los SGDB relacionales. Por ejemplo, <em>PostreSQL</em> es CA (aunque ofrece un producto complementario para dar soporte al particionado, como PgCluster), ya que no distribuyen los datos y por tanto la partición no es una restricción.</li>
-</ul>
-<p>Lo bueno es que la gran mayoría de sistemas permiten configurarse para cambiar su tipo CAP, lo que permite que <em>MongoDB</em> pase de CP a AP, o <em>CouchDB</em> de AP a CP.</p>
 <h2 id="big-data">Big Data<a class="headerlink" href="#big-data" title="Permanent link">&para;</a></h2>
 <p>Aunque parece que todo el mundo debe trabajar con cuantos más datos mejor, no todo es <em>Big Data</em> en el mundo tecnológico.</p>
 <figure style="float: right;">
@@ -1031,21 +988,21 @@ grandes distancias y conectados a través de una red de larga distancia.</p>
     <figcaption>Datos y más datos</figcaption>
 </figure>
 
-<p>Esta claro que los datos son el petroleo del siglo XX, tal como dijo <em>Clive Humby</em> en el 2006,  y que se puede obtener mucho valor si almacenamos y sabemos extraer información precisa de "nuestros" datos. Sin embargo, ya en la década del 2020, los <a href="https://www.forbes.com/sites/nishatalagala/2022/03/02/data-as-the-new-oil-is-not-enough-four-principles-for-avoiding-data-fires">datos <em>per se</em> no son suficiente</a> si no que debemos conocerlos y cuidarlos.</p>
-<p>Pero el adjetivo <em>Big</em> implica cantidades ingentes, dicho de otro modo, cantidades de datos que una de nuestras máquinas no puede gestionar y necesita de la computación distribuida y plataformas como el cloud para su almacenamiento y gestión. Es probable que con soluciones de <em>Small Data</em> podamos cubrir gran parte de los problemas que requieren nuestra industria más cercana. Eso sí, muchas de las técnicas y destrezas asociadas a la ingeniería de datos no son únicas de grandes volúmenes de datos con arquitecturas distribuidas, sino que, podemos llevárnoslas a nuestros desarrollos a menor escala para automatizar y poner los datos por delante de nuestras empresas y aplicaciones.</p>
+<p>Esta claro que los datos son el petroleo del siglo XX, tal como dijo <em>Clive Humby</em> en el 2006, y que se puede obtener mucho valor si almacenamos y sabemos extraer información precisa de "nuestros" datos. Sin embargo, ya en la década del 2020, los <a href="https://www.forbes.com/sites/nishatalagala/2022/03/02/data-as-the-new-oil-is-not-enough-four-principles-for-avoiding-data-fires">datos <em>per se</em> no son suficiente</a> si no que debemos conocerlos y cuidarlos.</p>
+<p>Pero el adjetivo <em>Big</em> implica cantidades ingentes, dicho de otro modo, cantidades de datos que una de nuestras máquinas no puede gestionar y necesita de la computación distribuida y plataformas como el <em>cloud</em> para su almacenamiento y gestión. Es probable que con soluciones de <em>Small Data</em> podamos cubrir gran parte de los problemas que requieren nuestra industria más cercana. Eso sí, muchas de las técnicas y destrezas asociadas a la ingeniería de datos no son únicas de grandes volúmenes de datos con arquitecturas distribuidas, sino que, podemos llevárnoslas a nuestros desarrollos a menor escala para automatizar y poner los datos por delante de nuestras empresas y aplicaciones.</p>
 <p>Pero antes de entrar en harina, retrocedamos en el tiempo.</p>
 <h3 id="hablemos-de-v">Hablemos de V<a class="headerlink" href="#hablemos-de-v" title="Permanent link">&para;</a></h3>
-<p><a href="https://es.wikipedia.org/wiki/V_(serie_de_televisi%C3%B3n_de_1983)">V</a> fue un fenómeno en los 80 como serie de ciencia ficción, pero relacionado con el Big Data, dependiendo de la literatura, tenemos las 3V del Big Data, las 5V, las 7V...</p>
+<p><a href="https://es.wikipedia.org/wiki/V_(serie_de_televisi%C3%B3n_de_1983)">V</a> fue un fenómeno en los 80 como serie de ciencia ficción, pero relacionado con el <em>Big Data</em>, dependiendo de la literatura, tenemos las 3V del Big Data, las 5V, las 7V...</p>
 <p>En los inicios, para saber si hablábamos o no de <em>Big Data</em>, nos teníamos que preguntar si cumplían con las 3V:</p>
 <ul>
-<li><strong>Variedad</strong>: en relación a las fuentes, formas y tipos. Por ejemplo, pueden ser:estructurados, como tablas de una base de datos relacional o ficheros de texto o semiestructurados como los documentos JSON. Incluso almacenar datos no estructurados como correos electrónicos, imágenes o audios.</li>
+<li><strong>Variedad</strong>: en relación a las fuentes, formas y tipos. Por ejemplo, pueden ser: estructurados, como tablas de una base de datos relacional o ficheros de texto o semiestructurados como los documentos JSON. Incluso almacenar datos no estructurados como correos electrónicos, imágenes o audios.</li>
 <li><strong>Volumen</strong>: Entendida como la cantidad de datos procesados y almacenados. A día de hoy probablemente superior al orden de TB de datos y que para su procesamiento, superan la memoria RAM de nuestros sistemas.</li>
 <li><strong>Velocidad</strong>: el tratamiento que realizamos sobre los datos, en ocasiones cercano al tiempo real o con unos tiempos de recolección, procesamiento y almacenamiento finitos y claramente definidos.</li>
 </ul>
 <p>Luego se añadieron un par más, haciendo un total de 5V:</p>
 <ul>
 <li><strong>Valor</strong>: <em>"Lo que importa, son los datos importantes"</em>, los que aportan valor, transformando datos en información, y a su vez, en conocimiento que facilita la toma de decisiones.</li>
-<li><strong>Veracidad</strong>: Debemos asegurar que los datos que tenemos son reales y no contienen datos erróneos, es decir, que son fiables. Se dedica un esfuerzo importante en explorar y validar los datos para que la analítica realizada sen veraz.</li>
+<li><strong>Veracidad</strong>: Debemos asegurar que los datos que tenemos son reales y no contienen datos erróneos, es decir, que son fiables. Se dedica un esfuerzo importante en explorar y validar los datos para que la analítica realizada sea veraz.</li>
 </ul>
 <p>Y por último, otras dos hasta llegar a las 7V:</p>
 <ul>
@@ -1058,19 +1015,61 @@ grandes distancias y conectados a través de una red de larga distancia.</p>
 </figure>
 
 <p>Claramente, para los departamentos de <em>marketing</em>, <em>Big Data</em> se escribe con V.</p>
-<h3 id="analitica-de-datos">Analítica de datos<a class="headerlink" href="#analitica-de-datos" title="Permanent link">&para;</a></h3>
-<p>Mientras que las aplicaciones <em>Big Data</em> recogen información desde múltiples fuentes de entrada, el concepto de inteligencia de negocio (<em>business intelligence</em>) se centra en el uso que hace la empresa de dichos datos, es decir, coge los datos y los transforma en conocimiento para la ayuda en la toma de decisiones en base a los datos analizados.</p>
-<p>Las herramientas de <em>Business Intelligence</em> (BI) son aplicaciones de soporte de decisiones que permiten en tiempo real, acceso interactivo, análisis y manipulación de información crítica y así ser capaces de generar conocimiento mediante el análisis de la información ya almacenada, es decir, realizando <strong>analítica descriptiva</strong> (¿Qué sucedió?) y <strong>diagnóstica</strong> (¿Por qué sucedió?).</p>
-<p>Con la ayuda del <em>Big Data</em> y la IA, podemos afrontar analíticas más avanzadas, como son la analítica <strong>predictiva</strong> (¿Qué pasará?) y <strong>prescriptiva</strong> (¿Cómo podemos prevenir? ¿Qué debería suceder?) para establecer tendencias, averiguar por qué suceden las cosas y hacer una estimación de cómo se desarrollarán las cosas en el futuro.</p>
+<h3 id="inteligencia-de-negocio">Inteligencia de negocio<a class="headerlink" href="#inteligencia-de-negocio" title="Permanent link">&para;</a></h3>
+<p>Mientras que las aplicaciones <em>Big Data</em> recogen información desde múltiples fuentes de entrada, el concepto de inteligencia de negocio (<strong><em>business intelligence</em></strong>) se centra en el uso que hace la empresa de dichos datos, es decir, coge los datos y los transforma en conocimiento para la ayuda en la toma de decisiones en base a los datos analizados.</p>
+<p>El término de <strong>analítica de datos</strong> implica procesar, limpiar, organizar y extraer información útil de grandes volúmenes de datos. Para ello, las herramientas de <em>Business Intelligence</em> (BI) son aplicaciones de soporte de decisiones que permiten en tiempo real, acceso interactivo, análisis y manipulación de información crítica y así ser capaces de generar conocimiento mediante el análisis de la información ya almacenada, es decir, realizando <strong>analítica descriptiva</strong> (¿Qué sucedió?) y <strong>diagnóstica</strong> (¿Por qué sucedió?).</p>
+<p>Con la ayuda del <em>Big Data</em> y la IA, podemos afrontar analíticas más avanzadas, como son la analítica <strong>predictiva</strong> (¿Qué pasará en el futuro?) y <strong>prescriptiva</strong> (¿Cómo podemos prevenir? ¿Qué debería suceder?) para establecer tendencias, averiguar por qué suceden las cosas y hacer una estimación de cómo se desarrollarán las cosas en el futuro.</p>
+<p>FIXME: Completar </p>
+<p>Algunos componentes clave que forman parte del <em>BI</em> son:</p>
+<ul>
+<li>Almacenes de datos (<em>Data warehouse</em>)</li>
+<li>Procesos ETL</li>
+<li>Reporting</li>
+<li>Cuadros de mandos</li>
+<li>Minería de datos</li>
+</ul>
+<p>FIXME: Captura de un cuadro de mandos</p>
+<!--
+Data Warehousing (Almacenes de datos):
+Almacenes centralizados que recogen datos de diferentes fuentes para análisis. Un ejemplo es el data warehouse que organiza los datos de manera que puedan ser fácilmente consultados y analizados.
+
+ETL (Extract, Transform, Load):
+El proceso de extraer datos de diferentes fuentes, transformarlos para adaptarlos a las necesidades del negocio y cargarlos en el almacén de datos.
+
+Extract: Obtener datos desde diferentes orígenes.
+Transform: Limpiar y convertir los datos en un formato adecuado.
+Load: Cargar los datos transformados en un almacén de datos.
+Reporting:
+Herramientas que permiten crear informes detallados basados en los datos almacenados. Ejemplos: Power BI, Tableau, SAP BusinessObjects.
+
+Dashboarding:
+Paneles visuales interactivos que permiten monitorear KPIs (indicadores clave de rendimiento) y otros aspectos importantes del negocio en tiempo real.
+
+Análisis Predictivo:
+Utiliza modelos estadísticos y algoritmos para predecir tendencias futuras, como la demanda de productos, comportamiento del consumidor, etc.
+
+Minería de Datos (Data Mining):
+La minería de datos busca patrones ocultos en grandes volúmenes de datos que pueden tener valor para la toma de decisiones. Se utiliza para identificar patrones de comportamiento del cliente, fraudes, tendencias del mercado, etc.
+
+Analytics Advanced (Análisis Avanzado):
+Herramientas que permiten modelar escenarios más complejos y tomar decisiones estratégicas en áreas como marketing, finanzas, operaciones, etc.
+
+Beneficios de la Inteligencia de Negocios:
+Mejora de la toma de decisiones: Acceso a datos relevantes y análisis precisos para decisiones basadas en evidencia.
+Mayor eficiencia operativa: Optimización de procesos y recursos basados en el análisis de datos.
+Ventaja competitiva: Permite identificar oportunidades de negocio y mejorar el posicionamiento en el mercado.
+Personalización del servicio: Permite a las empresas personalizar ofertas basadas en el comportamiento del cliente.
+-->
+
 <h3 id="ciencia-de-datos">Ciencia de datos<a class="headerlink" href="#ciencia-de-datos" title="Permanent link">&para;</a></h3>
 <p>La ciencia de datos incluye una serie de métodos para analizar tanto pequeños conjuntos de datos como cantidades enormes. Aunque no exista una proceso claramente definidos, podemos identificar los siguientes pasos:</p>
 <ol>
 <li>Establecer el <strong>objetivo</strong> de la investigación: todas las partes interesadas entienden el qué, el cómo y el por qué del proyecto y se crea un <em>project charter</em> o acta de constitución del proyecto.</li>
-<li><strong>Recuperación</strong> de datos: búsqueda de los datos, ya sean internos o externos a la empresa. El resultado son datos en bruto que seguramente habrá que limpiar y transformar antes de poder utilizarlos.</li>
-<li><strong>Preparación</strong> de los datos: necesitamos transformar los datos para que sean utilizables por los modelos, detectando y corrigiendo los diferentes tipos de errores, combinando datos de diversas fuentes.</li>
-<li><strong>Exploración</strong> de datos, para obtener un conocimiento profundo de los datos, buscando patrones, correlaciones o desviaciones, normalmente, mediante técnicas visualizar y descriptivas</li>
+<li><strong>Recuperación</strong> de datos: búsqueda de los datos, ya sean internos o externos a la empresa. El resultado son datos en bruto que seguramente habrá que limpiar (eliminar o corregir datos incompletos o erróneos, como por ejemplo, edades en negativo, fechas mal formateadas, etc...) y transformar antes de poder utilizarlos.</li>
+<li><strong>Preparación</strong> de los datos: necesitamos transformar los datos para que sean utilizables por los modelos, detectando y corrigiendo los diferentes tipos de errores, combinando datos de diversas fuentes. Un paso muy frecuente consiste en normalizar los datos, proceso consistente en transformar los datos categóricos en numéricos.</li>
+<li><strong>Exploración</strong> de datos, para obtener un conocimiento profundo de los datos, buscando patrones, correlaciones o desviaciones, normalmente, mediante técnicas visuales y descriptivas.</li>
 <li><strong>Modelado</strong>: creación de modelos, en ocasiones basados en IA, para obtener la información o realizar las predicciones indicadas en el acta de constitución del proyecto.</li>
-<li><strong>Presentación</strong> y <strong>automatización</strong>: Con la presentación de los resultados obtenidos y su comprobación, es probable que se entre en un ciclo iterativo que provoque volver al paso 2 con datos nuevos y requiera automatizar todos el proceso.</li>
+<li><strong>Presentación</strong> y <strong>automatización</strong>: Con la presentación de los resultados obtenidos (por ejemplo, mediante herramientas como <em>PowerBI</em> o <em>Tableau</em>) y su comprobación, es probable que se entre en un ciclo iterativo que provoque volver al paso 2 con datos nuevos y requiera automatizar todos el proceso.</li>
 </ol>
 <h2 id="nosql">NoSQL<a class="headerlink" href="#nosql" title="Permanent link">&para;</a></h2>
 <p>Si definimos <strong>NoSQL</strong> formalmente, podemos decir que se trata de un conjunto de tecnologías que permiten el procesamiento rápido y eficiente de conjuntos de datos dando la <ins>mayor importancia al rendimiento, la fiabilidad y la agilidad</ins>.</p>
@@ -1123,7 +1122,41 @@ grandes distancias y conectados a través de una red de larga distancia.</p>
 <p>De este modo se consigue un desarrollo más rápido, integración de código más robusto y menos tiempo empleado en la administración de la base de datos.</p>
 <p>Aunque lo veremos en profundidad en las siguientes sesiones, los modelos de datos NoSQL priman la redundancia de los datos, denormalizando los datos para evitar el uso de <em>joins</em>. Por ello, es importante que la definición de los esquemas sea flexible para poder añadir campos conforme la aplicación evolucione.</p>
 <h3 id="modelos">Modelos<a class="headerlink" href="#modelos" title="Permanent link">&para;</a></h3>
+<h2 id="teorema-de-cap">Teorema de CAP<a class="headerlink" href="#teorema-de-cap" title="Permanent link">&para;</a></h2>
+<p>Propuesto por <em>Eric Brewer</em> en el año 2000, prueba que podemos crear una base de datos distribuida que elija dos de las siguientes tres características:</p>
+<ul>
+<li><strong>C</strong>onsistencia: las escrituras son atómicas y todas las peticiones posteriores obtienen el nuevo valor, independientemente del lugar de la petición.</li>
+<li>Disponibilidad (<em><strong>A</strong>vailable</em>): la base de datos devolverá siempre un valor. En la práctica significa que no hay <em>downtime</em>.</li>
+<li>Tolerancia a <strong>P</strong>articiones: el sistema funcionará incluso si la comunicación con un servidor se interrumpe de manera temporal (para ello, ha de dividir los datos entre diferentes nodos). Es decir, implica que se pueden recibir lecturas desde unos nodos que no contienen información escrita en otros.</li>
+</ul>
+<p>En otras palabras, podemos crear un sistema de base de datos que sea consistente y tolerante a particiones (CP), un sistema que sea disponible y tolerante a particiones (AP), o un sistema que sea consistente y disponible (CA). Pero no es posible crear una base de datos distribuida que sea consistente, disponible y tolerante a particiones al mismo tiempo.</p>
+<figure style="align: center;">
+    <img src="images/13teorema.png" alt="Teorema de CAP" width="400px">
+    <figcaption>Teorema de CAP</figcaption>
+</figure>
+
+<p>El teorema CAP es útil cuando consideramos el sistema de base de datos que necesitamos, ya que nos permite decidir cual de las tres características vamos a descartar. La elección realmente se centra entre la disponibilidad y la consistencia, ya que la tolerancia a particiones es una decisión de arquitectura (sea o no distribuida).</p>
+<p>Aunque el teorema dicte que si en un sistema distribuido elegimos disponibilidad no podemos tener consistencia, todavía podemos obtener consistencia eventual. Es decir, cada nodo siempre estará disponible para servir peticiones, aunque estos nodos no puedan asegurar que la información que contienen sea consistente (pero si bastante precisa), en algún momento lo será.</p>
+<p>Algunas bases de datos tolerantes a particiones se pueden ajustar para ser más o menos consistentes o disponible a nivel de petición. Por ejemplo, <em>Riak</em> trabaja de esta manera, permitiendo a los clientes decidir en tiempo de petición qué nivel de consistencia necesitan.</p>
+<h3 id="clasificacion-segun-cap">Clasificación según CAP<a class="headerlink" href="#clasificacion-segun-cap" title="Permanent link">&para;</a></h3>
+<p>El siguiente gráfico muestra cómo dependiendo de estos atributos podemos clasificar los sistemas NoSQL:</p>
+<figure style="align: center;">
+    <img src="images/13teoremaCAPam.png" alt="Clasificación según CAP" width="400px">
+    <figcaption>Clasificación según CAP</figcaption>
+</figure>
+
+<p>Así pues, las bases de datos NoSQL se clasifican en:</p>
+<ul>
+<li><strong>CP</strong>: Consistente y tolerantes a particiones. Tanto <em>MongoDB</em> como <em>HBase</em> son CP, ya que dentro de una partición pueden no estar disponibles para responder una determinada consulta (por ejemplo, evitando lecturas en los nodos secundarios), aunque son tolerantes a fallos porque cualquier nodo secundario se puede convertir en principal y asumir el rol del nodo caído.</li>
+<li><strong>AP</strong>: Disponibles y tolerantes a particiones. <em>DynamoDB</em> permite replicar los datos entre sus nodos aunque no garantiza la consistencia en ninguno de los sus servidores.</li>
+<li><strong>CA</strong>: Consistentes y disponible. Aquí es donde situaríamos a los SGDB relacionales. Por ejemplo, <em>PostreSQL</em> es CA (aunque ofrece un producto complementario para dar soporte al particionado, como PgCluster), ya que no distribuyen los datos y por tanto la partición no es una restricción.</li>
+</ul>
+<p>Lo bueno es que la gran mayoría de sistemas permiten configurarse para cambiar su tipo CAP, lo que permite que <em>MongoDB</em> pase de CP a AP, o <em>CouchDB</em> de AP a CP.</p>
 <h2 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h2>
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.digitalocean.com/community/tutorials/understanding-database-sharding">Understanding database sharding</a></li>
+</ul>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <p><a name="AC1301"></a></p>
 <ul>
@@ -1414,10 +1447,10 @@ para la gestión de la información almacenada.
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
       
     
   </body>
