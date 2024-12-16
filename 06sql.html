@@ -2716,8 +2716,21 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <div class="admonition info">
 <p class="admonition-title">Expresiones regulares</p>
 <p>Si la lógica a comprobar es más compleja, podemos hacer uso de expresiones regulares, mediante la cláusula <a href="https://mariadb.com/kb/en/regexp/"><code>REGEXP</code></a>. Algunos ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>
+<ul>
+<li>
+<p>Empleados cuyo nombre empieza por vocal (<code>^</code> comienza  y entre corchetes ponemos todos los posibles valores, es decir, por una vocal en mayúsculas o minúsculas)</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">where</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^[AEIOUaeiou]&#39;</span><span class="p">;</span>
 </code></pre></div>
+</li>
+<li>
+<p>Departamentos cuyo nombre contiene exactamente dos palabras (<code>^[^ ]+</code> una o más letras al inicio, y <code>[^ ]+$</code> una o más letras al final)</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">where</span><span class="w"> </span><span class="n">NomDep</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^[^ ]+ [^ ]+$&#39;</span><span class="p">;</span>
+</code></pre></div>
+</li>
+</ul>
 </div>
 <h4 id="valor-nulo">Valor nulo<a class="headerlink" href="#valor-nulo" title="Permanent link">&para;</a></h4>
 <p>Para comprobar si un campo contiene valores nulos (o si queremos saber si tiene algún valor, sea cual sea) usaremos el operador <a href="https://mariadb.com/kb/en/is-null/"><code>IS NULL</code></a> con la sintaxis <code>columna IS [NOT] NULL</code>:</p>
@@ -3285,6 +3298,14 @@ Otra posibilidad es utilizar el operador <code>USING</code> cuando </p>
 <ul>
 <li>
 <p>Sintaxis SQL oficial de <a href="https://www.postgresql.org/docs/current/sql-commands.html">PostgreSQL</a> y <a href="https://mariadb.com/kb/en/sql-statements/">MariaDB</a>.</p>
+</li>
+<li>
+<p><em>Cheatsheets</em> de <a href="https://learnsql.com/">https://learnsql.com/</a> sobre:</p>
+<ul>
+<li><a href="https://learnsql.com/blog/sql-basics-cheat-sheet/sql-basics-cheat-sheet-a4.pdf">SQL Básico</a></li>
+<li><a href="https://learnsql.com/blog/standard-sql-functions-cheat-sheet/standard-sql-functions-cheat-sheet-a4.pdf">Funciones SQL</a></li>
+<li><a href="https://learnsql.com/blog/sql-join-cheat-sheet/joins-cheat-sheet-a4.pdf"><em>Joins</em> SQL</a></li>
+</ul>
 </li>
 <li>
 <p>Materiales sobre el módulo de BD:</p>

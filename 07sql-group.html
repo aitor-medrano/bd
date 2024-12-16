@@ -746,6 +746,14 @@
 <p>En una consulta con <code>group by</code>, ¿podemos poner más campos en la proyección que en la agrupación?</p>
 </li>
 <li>
+<p>¿Para qué sirven las funciones ventana?</p>
+</li>
+<li>¿Qué tamaño tiene una partición en una función ventana?</li>
+<li>¿Qué funciones de clasificación conoces dentro de las funciones ventana?</li>
+<li>
+<p>¿Y funciones de valor?</p>
+</li>
+<li>
 <p>¿Puedo insertar datos en una vista? ¿Siempre?</p>
 </li>
 <li>¿Qué diferencia una tabla de una vista, de una vista materializada?</li>
@@ -884,6 +892,11 @@
 <p>Aquí podemos observar como de las 7 extensiones telefónicas que teníamos, ninguna se repite. Pero en cambio, sabemos que todos los empleados tiene la cantidad de hijos anotados y que tenemos 3 posibles valores (<code>0</code>, <code>1</code> y <code>2</code> hijos)</p>
 <h3 id="group-by">Group by<a class="headerlink" href="#group-by" title="Permanent link">&para;</a></h3>
 <p>Mediante <a href="https://mariadb.com/kb/en/group-by/"><code>GROUP BY</code></a> podemos realizar cálculos en vertical, es decir, sobre el resultado de agrupar registros.</p>
+<figure style="align: center;">
+    <img src="images/07group_by-sum.webp" width="800" title="Group by">
+    <figcaption>Group by - https://learnsql.es</figcaption>
+</figure>
+
 <p>Los pasos que vamos a realizar son:</p>
 <ol>
 <li><code>select</code>: Indicar las columnas a agrupar.</li>
@@ -1131,6 +1144,11 @@
 </span></code></pre></div>
 <h2 id="funciones-ventana">Funciones ventana<a class="headerlink" href="#funciones-ventana" title="Permanent link">&para;</a></h2>
 <p>Las <a href="https://mariadb.com/kb/en/window-functions-overview/">funciones ventana</a> son similares a las consultas <code>group by</code> en cuanto que permiten ejecutar funciones agregadas en varias filas. La diferencia es que permiten funciones de agregación incorporadas sin necesidad de agrupar cada campo en una sola fila.</p>
+<figure style="align: center;">
+    <img src="images/07aggregate-vs-window-functions.webp" width="800" title="Funciones Ventana">
+    <figcaption>Funciones Ventana - https://learnsql.com</figcaption>
+</figure>
+
 <p>Vamos a realizar un ejemplo para explicarlo mejor. Para ello, vamos a recuperar para cada empleado, cuantos empleados trabajan en su mismo departamento, es decir, cuantos compañeros tiene.</p>
 <p>Nuestra primera idea, para obtener cuantas personas trabajan en un departamento y agrupar por el código del departamento y contar cuantas personas trabajan.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CodDep</span><span class="p">;</span>
@@ -1452,8 +1470,14 @@ You cannot associate a trigger with a view.
 <p>Sintaxis SQL oficial de <a href="https://www.postgresql.org/docs/current/sql-commands.html">PostgreSQL</a> y <a href="https://mariadb.com/kb/en/sql-statements/">MariaDB</a>.</p>
 </li>
 <li>
-<p>Materiales sobre el módulo de BD:</p>
+<p><em>Cheatsheets</em> de <a href="https://learnsql.com/">https://learnsql.com/</a> sobre:</p>
+</li>
+</ul>
+<p>https://learnsql.com/blog/aggregate-functions-cheat-sheet/
+    * <a href="https://learnsql.com/blog/sql-basics-cheat-sheet/sql-basics-cheat-sheet-a4.pdf">SQL Básico</a>
+    * <a href="https://learnsql.com/blog/sql-window-functions-cheat-sheet/Window_Functions_Cheat_Sheet.pdf">Funciones ventana</a></p>
 <ul>
+<li>Materiales sobre el módulo de BD:<ul>
 <li><em>Consultes de selecció <a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u4/a2/continguts.html">complexes</a> i  <a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u6/a2/continguts.html">vistes</a> - Institut Obert de Catalunya</em>.</li>
 <li>Consultas <a href="https://josejuansanchez.org/bd/unidad-08-teoria/index.html">resumen</a> y <a href="https://josejuansanchez.org/bd/unidad-vistas-sql-teoria/index.html">vistas</a> de <em>José Juan Sánchez</em>.</li>
 <li><a href="https://jorgesanchez.net/manuales/sql/select-totales-sql2016.html">Agrupaciones. Consultas de totales</a> de <em>Jorge Sánchez</em>.</li>
@@ -1543,18 +1567,75 @@ You cannot associate a trigger with a view.
 <p><a name="AC708"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC708</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>empresa</code> realiza las siguientes consultas:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC708</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>empresa</code>, y utilizando funciones ventana, realiza las siguientes consultas:</p>
 <ol>
-<li>Funciones ventana</li>
+<li>Edad de cada empleado en comparación con la media del centro</li>
+<li>Empleados con salario mayor al promedio de su departamento</li>
+<li>Máximo y mínimo salario por tipo de dirección del departamento</li>
+<li>Diferencia entre salario de un empleado y el máximo de su departamento</li>
+<li>Ordenación jerárquica: antigüedad en el puesto por centro</li>
+<li>Comparación de fechas de incorporación: tiempo transcurrido entre empleados</li>
 </ol>
 </li>
 </ul>
+<!--
+SELECT 
+    CodCen,
+    NomEmp,
+    TIMESTAMPDIFF(YEAR, FecNaEmp, CURDATE()) AS Edad,
+    AVG(TIMESTAMPDIFF(YEAR, FecNaEmp, CURDATE())) OVER (PARTITION BY CodCen) AS MediaEdad
+FROM empleado
+JOIN departamento ON empleado.CodDep = departamento.CodDep;
+
+SELECT 
+    CodDep,
+    NomEmp,
+    SalEmp,
+    AVG(SalEmp) OVER (PARTITION BY CodDep) AS SalarioPromedio,
+    CASE 
+        WHEN SalEmp > AVG(SalEmp) OVER (PARTITION BY CodDep) THEN 'Por encima'
+        ELSE 'Por debajo'
+    END AS Comparativa
+FROM empleado;
+
+SELECT 
+    TiDir,
+    MAX(SalEmp) OVER (PARTITION BY TiDir) AS SalarioMaximo,
+    MIN(SalEmp) OVER (PARTITION BY TiDir) AS SalarioMinimo
+FROM empleado
+JOIN departamento ON empleado.CodDep = departamento.CodDep;
+
+SELECT 
+    CodDep,
+    NomEmp,
+    SalEmp,
+    MAX(SalEmp) OVER (PARTITION BY CodDep) - SalEmp AS DiferenciaMaximo
+FROM empleado;
+
+SELECT 
+    CodCen,
+    NomEmp,
+    FecInEmp,
+    DENSE_RANK() OVER (PARTITION BY CodCen ORDER BY FecInEmp ASC) AS Antiguedad
+FROM empleado
+JOIN departamento ON empleado.CodDep = departamento.CodDep;
+
+SELECT 
+    CodDep,
+    NomEmp,
+    FecInEmp,
+    LEAD(FecInEmp) OVER (PARTITION BY CodDep ORDER BY FecInEmp) AS FechaSiguiente,
+    DATEDIFF(LEAD(FecInEmp) OVER (PARTITION BY CodDep ORDER BY FecInEmp), FecInEmp) AS DiasHastaSiguiente
+FROM empleado;
+
+-->
+
 <p><a name="AC709"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC709</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>empresa</code> se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC709</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>empresa</code> se pide crear las siguientes vistas:</p>
 <ol>
-<li>Vistas</li>
+<li><code>empleado_anyos</code>: Para cada empleado, mostrar, además de su código y nombre, su edad y los años de antigüedad en la empresa.</li>
 </ol>
 </li>
 </ul>
