@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.35f28582.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -1130,10 +1130,155 @@
 <span class="hll"><span class="linenos" data-linenos="5 "></span><span class="k">having</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">preanu</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100000000</span><span class="p">;</span>
 </span></code></pre></div>
 <h2 id="funciones-ventana">Funciones ventana<a class="headerlink" href="#funciones-ventana" title="Permanent link">&para;</a></h2>
-<!--
-FIXME: Completar
--->
-
+<p>Las <a href="https://mariadb.com/kb/en/window-functions-overview/">funciones ventana</a> son similares a las consultas <code>group by</code> en cuanto que permiten ejecutar funciones agregadas en varias filas. La diferencia es que permiten funciones de agregación incorporadas sin necesidad de agrupar cada campo en una sola fila.</p>
+<p>Vamos a realizar un ejemplo para explicarlo mejor. Para ello, vamos a recuperar para cada empleado, cuantos empleados trabajan en su mismo departamento, es decir, cuantos compañeros tiene.</p>
+<p>Nuestra primera idea, para obtener cuantas personas trabajan en un departamento y agrupar por el código del departamento y contar cuantas personas trabajan.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CodDep</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+----------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodDep | count(*) |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+----------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | ADMZS  |        1 |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | DIRGE  |        1 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | IN&amp;DI  |        1 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | JEFZS  |        1 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | PROZS  |        4 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | VENZS  |        2 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+----------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>Pero realmente queremos saber para cada empleado, cuantas personas trabajan con él, y por lo tanto, necesitamos obtener, por ejemplo, su nombre. Si intentamos seleccionar la columna <code>NomEmp</code> sin agrupar por ella, recuperaremos unos datos que no son los esperados (o en algunos SGBD incluso un error), ya que nos muestra el primer empleado de cada departamento:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CodDep</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+--------+----------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | CodDep | count(*) |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +-----------------------------+--------+----------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | Alada Veraz, Juana          | ADMZS  |        1 |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | Saladino Mandamás, Augusto  | DIRGE  |        1 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | Manrique Bacterio, Luisa    | IN&amp;DI  |        1 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | Gozque Altanero, Cándido    | JEFZS  |        1 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | Forzado López, Galeote      | PROZS  |        4 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | Monforte Cid, Roldán        | VENZS  |        2 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- +-----------------------------+--------+----------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>Mientras que una cláusula <code>group by</code> devolverá un registro por cada valor de grupo coincidente,
+una función de ventana, la cual no contrae los resultados por grupo, puede devolver un registro distinto para cada fila.</p>
+<p>Así que si quisiéramos obtener el nombre de todos los empleados, y además, cuantos compañeros tiene, podemos realizar una partición por el código del empleado. Para ello, hemos de utilizar la cláusula <strong><code>over (partition by campo)</code></strong> precedida de la función ventana que queramos emplear; en este caso, contaremos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">companyeros</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+--------+-------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | CodDep | companyeros |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +-----------------------------+--------+-------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | Alada Veraz, Juana          | ADMZS  |           1 |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | Saladino Mandamás, Augusto  | DIRGE  |           1 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | Manrique Bacterio, Luisa    | IN&amp;DI  |           1 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | Gozque Altanero, Cándido    | JEFZS  |           1 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | Forzado López, Galeote      | PROZS  |           4 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | Mando Correa, Rosa          | PROZS  |           4 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- | Mascullas Alto, Eloísa      | PROZS  |           4 |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | Mosc Amuerta, Mario         | PROZS  |           4 |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | Topaz Illán, Carlos         | VENZS  |           2 |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- | Monforte Cid, Roldán        | VENZS  |           2 |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- +-----------------------------+--------+-------------+</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>Podemos pensar en <code>partition by</code> como algo parecido a <code>group by</code>, pero en lugar de agrupar
+los resultados fuera de la lista de atributos <code>select</code>, y por lo tanto, combinar los resultados en menos filas, devuelve los valores agrupados como cualquier otro campo (calculando sobre la variable agrupada pero, por lo demás, como un atributo más).</p>
+<p>Las funciones ventana se pueden dividir en tres tipos:</p>
+<ol>
+<li>Agregadas, con los operadores ya vistos, como <code>sum</code>, <code>count</code>, <code>avg</code>, etc...</li>
+<li><em>Ranking</em> o clasificación, como <a href="https://mariadb.com/kb/en/row_number/"><code>row_number()</code></a>, <a href="https://mariadb.com/kb/en/rank/"><code>rank()</code></a>, <a href="https://mariadb.com/kb/en/ntile/"><code>ntile()</code></a>, etc...</li>
+<li>De valor, como <a href="https://mariadb.com/kb/en/lag/"><code>lag()</code></a>, <a href="https://mariadb.com/kb/en/lead/"><code>lead()</code></a>, <a href="https://mariadb.com/kb/en/first_value/"><code>first_value()</code></a>, <a href="https://mariadb.com/kb/en/last_value/"><code>last_value()</code></a>, etc...</li>
+</ol>
+<p>Otros ejemplos de consultas con funciones ventana, utilizando operadores y funciones específicas, pueden ser:</p>
+<ul>
+<li>
+<p>Número de empleado en cada departamento (mediante <a href="https://mariadb.com/kb/en/row_number/"><code>row_number()</code></a>)</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">ROW_NUMBER</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NumEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+--------+-----------------------------+--------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NumEmp | CodEmp | NomEmp                      | CodDep |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+--------+-----------------------------+--------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- |      1 |      5 | Alada Veraz, Juana          | ADMZS  |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      1 |      1 | Saladino Mandamás, Augusto  | DIRGE  |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      1 |      2 | Manrique Bacterio, Luisa    | IN&amp;DI  |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      1 |      6 | Gozque Altanero, Cándido    | JEFZS  |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      1 |      7 | Forzado López, Galeote      | PROZS  |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      2 |      9 | Mando Correa, Rosa          | PROZS  |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- |      3 |      8 | Mascullas Alto, Eloísa      | PROZS  |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- |      4 |     10 | Mosc Amuerta, Mario         | PROZS  |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- |      1 |      4 | Topaz Illán, Carlos         | VENZS  |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- |      2 |      3 | Monforte Cid, Roldán        | VENZS  |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- +--------+--------+-----------------------------+--------+</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- 10 rows in set (0.001 sec)</span>
+</code></pre></div>
+</li>
+<li>
+<p><em>Ranking</em> de salarios de los empleados por departamento (mediante <a href="https://mariadb.com/kb/en/rank/"><code>rank()</code></a>, la cual en caso de empate, asigna el mismo número)</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">rank</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">RanEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+-----------------------------+--------+------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | RanEmp | NomEmp                      | CodDep | SalEmp     |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+-----------------------------+--------+------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- |      1 | Alada Veraz, Juana          | ADMZS  | 6200000.00 |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | DIRGE  | 7200000.00 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      1 | Manrique Bacterio, Luisa    | IN&amp;DI  | 4500000.00 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      1 | Gozque Altanero, Cándido    | JEFZS  | 5000000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      1 | Mando Correa, Rosa          | PROZS  | 3100000.00 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      2 | Forzado López, Galeote      | PROZS  | 1600000.00 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- |      2 | Mascullas Alto, Eloísa      | PROZS  | 1600000.00 |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- |      4 | Mosc Amuerta, Mario         | PROZS  | 1300000.00 |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- |      1 | Monforte Cid, Roldán        | VENZS  | 5200000.00 |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- |      2 | Topaz Illán, Carlos         | VENZS  | 3200000.00 |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- +--------+-----------------------------+--------+------------+</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- 10 rows in set (0.001 sec)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Porcentaje de salario de cada empleado respecto al acumulado por su departamento</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">sum</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">SalDep</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">round</span><span class="p">((</span><span class="n">SalEmp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">PorSal</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +-----------------------------+------------+--------+------------+--------+</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | NomEmp                      | SalEmp     | CodDep | SalDep     | PorSal |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- +-----------------------------+------------+--------+------------+--------+</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | Alada Veraz, Juana          | 6200000.00 | ADMZS  | 6200000.00 | 100.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | Saladino Mandamás, Augusto  | 7200000.00 | DIRGE  | 7200000.00 | 100.00 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | Manrique Bacterio, Luisa    | 4500000.00 | IN&amp;DI  | 4500000.00 | 100.00 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- | Gozque Altanero, Cándido    | 5000000.00 | JEFZS  | 5000000.00 | 100.00 |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | Mando Correa, Rosa          | 3100000.00 | PROZS  | 7600000.00 |  40.79 |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | Mascullas Alto, Eloísa      | 1600000.00 | PROZS  | 7600000.00 |  21.05 |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- | Forzado López, Galeote      | 1600000.00 | PROZS  | 7600000.00 |  21.05 |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- | Mosc Amuerta, Mario         | 1300000.00 | PROZS  | 7600000.00 |  17.11 |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- | Monforte Cid, Roldán        | 5200000.00 | VENZS  | 8400000.00 |  61.90 |</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- | Topaz Illán, Carlos         | 3200000.00 | VENZS  | 8400000.00 |  38.10 |</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- +-----------------------------+------------+--------+------------+--------+</span>
+</code></pre></div>
+</li>
+<li>
+<p>Para cada empleado, mostrar su salario y cuanto cobra de más y de menos respecto a sus compañeros más inmediatos del departamento (utilizando las funciones para obtener el anterior, con <a href="https://mariadb.com/kb/en/lag/"><code>lag</code></a> y el siguiente mediante <a href="https://mariadb.com/kb/en/lead/"><code>lead</code></a>).</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">Lag</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">SalAnt</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">Lead</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">SalSig</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Lag</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">DifAnt</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">Lead</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">DifSig</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- +-----------------------------+------------+--------+------------+------------+-------------+-------------+</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | NomEmp                      | SalEmp     | CodDep | SalAnt     | SalSig     | DifAnt      | DifSig      |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +-----------------------------+------------+--------+------------+------------+-------------+-------------+</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | Alada Veraz, Juana          | 6200000.00 | ADMZS  |       NULL |       NULL |        NULL |        NULL |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- | Saladino Mandamás, Augusto  | 7200000.00 | DIRGE  |       NULL |       NULL |        NULL |        NULL |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | Manrique Bacterio, Luisa    | 4500000.00 | IN&amp;DI  |       NULL |       NULL |        NULL |        NULL |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | Gozque Altanero, Cándido    | 5000000.00 | JEFZS  |       NULL |       NULL |        NULL |        NULL |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- | Mando Correa, Rosa          | 3100000.00 | PROZS  |       NULL | 1600000.00 |        NULL | -1500000.00 |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- | Mascullas Alto, Eloísa      | 1600000.00 | PROZS  | 3100000.00 | 1600000.00 | -1500000.00 |        0.00 |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- | Forzado López, Galeote      | 1600000.00 | PROZS  | 1600000.00 | 1300000.00 |        0.00 |  -300000.00 |</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- | Mosc Amuerta, Mario         | 1300000.00 | PROZS  | 1600000.00 |       NULL |  -300000.00 |        NULL |</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- | Monforte Cid, Roldán        | 5200000.00 | VENZS  |       NULL | 3200000.00 |        NULL | -2000000.00 |</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">-- | Topaz Illán, Carlos         | 3200000.00 | VENZS  | 5200000.00 |       NULL | -2000000.00 |        NULL |</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">-- +-----------------------------+------------+--------+------------+------------+-------------+-------------+</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">-- 10 rows in set (0.001 sec)</span>
+</code></pre></div>
+</li>
+</ul>
+<p>Las funciones ventana son un aspecto avanzado a la hora de realizar consultas. Si quieres profundizar más en su aprendizaje, te recomiendo comenzar por el siguiente artículo: <a href="https://hackernoon.com/lang/es/una-guia-para-principiantes-para-comprender-las-funciones-de-ventana-sql-y-sus-capacidades"><em>Una guía para principiantes para comprender las funciones de la ventana SQL y sus capacidades</em></a>, así como en modificar el <a href="https://mariadb.com/kb/en/window-frames/">tamaño de la ventana</a></p>
 <h2 id="vistas">Vistas<a class="headerlink" href="#vistas" title="Permanent link">&para;</a></h2>
 <p>Si retomamos la <a href="01intro.html#arquitectura-de-3-niveles">arquitectura de tres niveles</a> que estudiamos en la primera unidad, un esquema externo, que es a lo que accede el usuario final, se compone de un conjunto de tablas y vistas que luego se transforman en formularios y/o informes.</p>
 <p>Dicho esto, una vista es un objeto que se define con una consulta y que se comporta como una tabla virtual. Cuando un usuario accede a una vista, aparentemente piensa que está accediendo a una tabla.</p>
@@ -1345,7 +1490,7 @@ You cannot associate a trigger with a view.
 <li>Obtener, para cada centro (mostrando su código y nombre), la cantidad de habilidades que tienen sus empleados.</li>
 <li>Obtener, para cada departamento y centro (mostrando sus códigos y nombres), la cantidad de habilidades que tienen sus empleados, mostrando los datos acumulados.</li>
 <li>Listar el salario medio por centro para aquellos departamentos con más de 25 millones de presupuesto. Indicar el nombre del centro. Ordenar descendentemente por salario medio.</li>
-<li>Obtener para cada ciudad donde se situen los departamentos, el total de salario de sus empleados, mostrando también el total acumulado.</li>
+<li>Obtener para cada ciudad donde se sitúen los departamentos, el total de salario de sus empleados, mostrando también el total acumulado.</li>
 </ol>
 </li>
 </ul>
@@ -1727,10 +1872,10 @@ para la gestión de la información almacenada.
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
   </body>

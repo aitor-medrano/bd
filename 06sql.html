@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.35f28582.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -2095,7 +2095,7 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="p">[</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">col</span><span class="o">-</span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="n">pos</span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">-</span><span class="n">m</span><span class="o">|</span><span class="w"> </span><span class="n">pos</span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="n">DES</span><span class="p">]</span><span class="err">…</span><span class="p">]</span>
 <span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="p">[</span><span class="k">LIMIT</span><span class="w"> </span><span class="err">{</span><span class="p">[</span><span class="k">offset</span><span class="p">,]</span><span class="w"> </span><span class="k">row_count</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">row_count</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="k">offset</span><span class="err">}</span><span class="p">];</span>
 </code></pre></div>
-<p>Tras ejecutar una consulta obtendremos una tabla de datos, que puede tener una o varias columnas y ninguna, una o varias filas.</p>
+<p>En todo consulta siempre deberemos indicar qué datos queremos recuperar y de dónde lo haremos. Tras ejecutar una consulta obtendremos una tabla de datos, que puede tener una o varias columnas y ninguna, una o varias filas.</p>
 <h3 id="proyeccion">Proyección<a class="headerlink" href="#proyeccion" title="Permanent link">&para;</a></h3>
 <p>Para seleccionar campos utilizaremos bien <strong><code>*</code></strong> para indicar que queremos todas las columnas, o indicaremos de uno en uno el nombre de los campos que queremos recuperar;</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">centro</span><span class="p">;</span>
@@ -2713,6 +2713,12 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="20 "></span><span class="c1">-- +-----------------------------+--------+</span>
 <span class="linenos" data-linenos="21 "></span><span class="c1">-- 4 rows in set (0.000 sec)</span>
 </code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Expresiones regulares</p>
+<p>Si la lógica a comprobar es más compleja, podemos hacer uso de expresiones regulares, mediante la cláusula <a href="https://mariadb.com/kb/en/regexp/"><code>REGEXP</code></a>. Algunos ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>
+</code></pre></div>
+</div>
 <h4 id="valor-nulo">Valor nulo<a class="headerlink" href="#valor-nulo" title="Permanent link">&para;</a></h4>
 <p>Para comprobar si un campo contiene valores nulos (o si queremos saber si tiene algún valor, sea cual sea) usaremos el operador <a href="https://mariadb.com/kb/en/is-null/"><code>IS NULL</code></a> con la sintaxis <code>columna IS [NOT] NULL</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
@@ -3815,10 +3821,10 @@ para la gestión de la información almacenada.
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="assets/javascripts/bundle.56dfad97.min.js"></script>
       
     
   </body>
