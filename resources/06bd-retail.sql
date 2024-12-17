@@ -17,6 +17,8 @@
 
 CREATE DATABASE RETAIL;
 
+USE RETAIL;
+
 --
 -- Table structure for table `categories`
 --
