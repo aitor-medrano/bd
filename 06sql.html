@@ -1820,7 +1820,7 @@ Cláusula LIMIT.
 <li>
 <p>Diferencia <strong>−</strong></p>
 <hr />
-<p><code>PRODUCTO ∪ PRODUCTO_LUJO</code></p>
+<p><code>PRODUCTO − PRODUCTO_LUJO</code></p>
 <p>Devuelve los productos que están en <strong>PRODUCTO</strong> pero no en <strong>PRODUCTO_LUJO</strong>.</p>
 <table>
 <thead>
@@ -2043,12 +2043,12 @@ Cláusula LIMIT.
 <p><code>π<sub>nombre, precio</sub>(𝜎<sub>precio &gt; 300</sub>(PRODUCTO))</code></p>
 </li>
 <li>
-<p>Nombre de los productos de la la categoría <code>Electrodomésticos</code> (primero el <em>join</em> y luego selección)</p>
+<p>Nombre de los productos de la categoría <code>Electrodomésticos</code> (primero el <em>join</em> y luego selección)</p>
 <p><code>π<sub>nombre</sub>(PRODUCTO ⨝<sub>PRODUCTO.categoria_id = CATEGORIA.id ∧
 CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 </li>
 <li>
-<p>Nombre de los productos de la la categoría <code>Electrodomésticos</code> (primero la selección y luego el <em>join</em>)</p>
+<p>Nombre de los productos de la categoría <code>Electrodomésticos</code> (primero la selección y luego el <em>join</em>)</p>
 <p><code>π<sub>nombre</sub>(PRODUCTO ⨝<sub>PRODUCTO.categoria_id = CATEGORIA.id</sub> (𝜎<sub>nombre = "Electrodomésticos</sub>(CATEGORIA))</code></p>
 </li>
 </ol>
