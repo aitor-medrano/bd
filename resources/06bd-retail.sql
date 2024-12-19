@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.1.66, for redhat-linux-gnu (x86_64)
 --
--- Host: localhost    Database: RETAIL
+-- Host: localhost    Database: retail
 -- ------------------------------------------------------
 -- Server version	5.1.66
 
@@ -15,9 +15,9 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE DATABASE RETAIL;
+CREATE DATABASE retail;
 
-USE RETAIL;
+USE retail;
 
 --
 -- Table structure for table `categories`
@@ -96,7 +96,7 @@ CREATE TABLE `departments` (
 
 LOCK TABLES `departments` WRITE;
 /*!40000 ALTER TABLE `departments` DISABLE KEYS */;
-INSERT INTO `departments` VALUES (2,'Fitness'),(3,'Footwear'),(4,'Apparel'),(5,'Golf'),(6,'Outdoors'),(7,'Fan Shop');
+INSERT INTO `departments` VALUES (2,'Fitness'),(3,'Footwear'),(4,'Apparel'),(5,'Golf'),(6,'Outdoors'),(7,'Fan Shop'),(8,'Sports');
 /*!40000 ALTER TABLE `departments` ENABLE KEYS */;
 UNLOCK TABLES;
 

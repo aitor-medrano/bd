@@ -1,3 +1,5 @@
+USE retail;
+
 ALTER TABLE categories
 ADD CONSTRAINT fk_categories_departments
 FOREIGN KEY (category_department_id)
