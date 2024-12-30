@@ -2560,7 +2560,7 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <p>También podemos emplear funciones para <a href="https://mariadb.com/kb/en/encryption-hashing-and-compression-functions/">encriptar o comprimir</a>, así como para trabajar con <a href="https://mariadb.com/kb/en/geographic-functions/">coordenadas geográficas</a>.</p>
 <h3 id="ordenando-y-limitando">Ordenando y Limitando<a class="headerlink" href="#ordenando-y-limitando" title="Permanent link">&para;</a></h3>
 <p>Es muy común tener que ordenar el resultado de una consulta para darle más importancia a unos campos que otros, e incluso, reducir el número de tuplas recuperadas.</p>
-<p>Así pues, para ordenar mediante la cláusula <a href="https://mariadb.com/kb/en/order-by/"><code>ORDER BY {campo | pos} [ASC|DESC]</code></a>, indicando los diferentes campos separados por coma. Por defecto, la ordenación se realiza de forma ascendente.</p>
+<p>Así pues, para ordenar mediante la cláusula <a href="https://mariadb.com/kb/en/order-by/"><code>ORDER BY {campo | pos} [ASC|DESC]</code></a>, indicando los diferentes campos separados por coma.</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NifEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+-----------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | NifEmp    |</span>
@@ -2577,62 +2577,90 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- | Topaz Illán, Carlos         | 38293923L |</span>
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- +-----------------------------+-----------+</span>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- 10 rows in set (0.003 sec)</span>
-<span class="linenos" data-linenos="17 "></span>
-<span class="hll"><span class="linenos" data-linenos="18 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
-</span><span class="linenos" data-linenos="19 "></span><span class="c1">-- +--------+-----------------------------+</span>
-<span class="linenos" data-linenos="20 "></span><span class="c1">-- | CodDep | NomEmp                      |</span>
-<span class="linenos" data-linenos="21 "></span><span class="c1">-- +--------+-----------------------------+</span>
-<span class="linenos" data-linenos="22 "></span><span class="c1">-- | ADMZS  | Alada Veraz, Juana          |</span>
-<span class="linenos" data-linenos="23 "></span><span class="c1">-- | DIRGE  | Saladino Mandamás, Augusto  |</span>
-<span class="linenos" data-linenos="24 "></span><span class="c1">-- | IN&amp;DI  | Manrique Bacterio, Luisa    |</span>
-<span class="linenos" data-linenos="25 "></span><span class="c1">-- | JEFZS  | Gozque Altanero, Cándido    |</span>
-<span class="linenos" data-linenos="26 "></span><span class="c1">-- | PROZS  | Mosc Amuerta, Mario         |</span>
-<span class="linenos" data-linenos="27 "></span><span class="c1">-- | PROZS  | Mascullas Alto, Eloísa      |</span>
-<span class="linenos" data-linenos="28 "></span><span class="c1">-- | PROZS  | Mando Correa, Rosa          |</span>
-<span class="linenos" data-linenos="29 "></span><span class="c1">-- | PROZS  | Forzado López, Galeote      |</span>
-<span class="linenos" data-linenos="30 "></span><span class="c1">-- | VENZS  | Topaz Illán, Carlos         |</span>
-<span class="linenos" data-linenos="31 "></span><span class="c1">-- | VENZS  | Monforte Cid, Roldán        |</span>
-<span class="linenos" data-linenos="32 "></span><span class="c1">-- +--------+-----------------------------+</span>
-<span class="linenos" data-linenos="33 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
-<span class="linenos" data-linenos="34 "></span>
-<span class="hll"><span class="linenos" data-linenos="35 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-</span><span class="linenos" data-linenos="36 "></span><span class="c1">-- +-----------------------------+-----------+</span>
-<span class="linenos" data-linenos="37 "></span><span class="c1">-- | NomEmp                      | Nifemp    |</span>
-<span class="linenos" data-linenos="38 "></span><span class="c1">-- +-----------------------------+-----------+</span>
-<span class="linenos" data-linenos="39 "></span><span class="c1">-- | Alada Veraz, Juana          | 38223923T |</span>
-<span class="linenos" data-linenos="40 "></span><span class="c1">-- | Forzado López, Galeote      | 47123132D |</span>
-<span class="linenos" data-linenos="41 "></span><span class="c1">-- | Gozque Altanero, Cándido    | 26454122D |</span>
-<span class="linenos" data-linenos="42 "></span><span class="c1">-- | Mando Correa, Rosa          | 11312121D |</span>
-<span class="linenos" data-linenos="43 "></span><span class="c1">-- | Manrique Bacterio, Luisa    | 21231347K |</span>
-<span class="linenos" data-linenos="44 "></span><span class="c1">-- | Mascullas Alto, Eloísa      | 32132154H |</span>
-<span class="linenos" data-linenos="45 "></span><span class="c1">-- | Monforte Cid, Roldán        | 23823930D |</span>
-<span class="linenos" data-linenos="46 "></span><span class="c1">-- | Mosc Amuerta, Mario         | 32939393D |</span>
-<span class="linenos" data-linenos="47 "></span><span class="c1">-- | Saladino Mandamás, Augusto  | 21451451V |</span>
-<span class="linenos" data-linenos="48 "></span><span class="c1">-- | Topaz Illán, Carlos         | 38293923L |</span>
-<span class="linenos" data-linenos="49 "></span><span class="c1">-- +-----------------------------+-----------+</span>
-<span class="linenos" data-linenos="50 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>Además, si queremos restringir y limitar el número de resultados de la consulta usaremos <a href="https://mariadb.com/kb/en/limit/"><code>LIMIT [inicio,] cantidad</code></a> (cuando usemos <code>inicio</code>, hemos de tener en cuenta que hace referencia al desplazamiento, es decir, la cantidad de filas que se ignorarán)</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-</span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+-----------------------------+</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | NomEmp                      |</span>
+<p>Por defecto, la ordenación se realiza de forma ascendente. Por lo tanto, la consulta anterior y la siguiente son similares:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NifEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NifEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+</code></pre></div>
+<p>Algunos desarrolladores prefieren explicitar el orden de <code>ORDER BY</code> para evitar ambigüedades. Otros, en cambio, prefieren obviar la opción <code>ASC</code> para reducir el tamaño de las consultas.</p>
+<p>Por otro lado, tal como hemos comentado previamente, podemos ordenar por más de una columna, indicando para cada una de ellas diferentes tipos de ordenaciones:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">ASC</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+-----------------------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodDep | NomEmp                      |</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+-----------------------------+</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  |</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      2 | Manrique Bacterio, Luisa    |</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán        |</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- +--------+-----------------------------+</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
-<span class="linenos" data-linenos="10 "></span>
-<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">;</span>
-</span><span class="linenos" data-linenos="12 "></span><span class="c1">-- +--------+---------------------------+</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">-- | CodEmp | NomEmp                    |</span>
-<span class="linenos" data-linenos="14 "></span><span class="c1">-- +--------+---------------------------+</span>
-<span class="linenos" data-linenos="15 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán      |</span>
-<span class="linenos" data-linenos="16 "></span><span class="c1">-- |      4 | Topaz Illán, Carlos       |</span>
-<span class="linenos" data-linenos="17 "></span><span class="c1">-- |      5 | Alada Veraz, Juana        |</span>
-<span class="linenos" data-linenos="18 "></span><span class="c1">-- |      6 | Gozque Altanero, Cándido  |</span>
-<span class="linenos" data-linenos="19 "></span><span class="c1">-- +--------+---------------------------+</span>
-<span class="linenos" data-linenos="20 "></span><span class="c1">-- 4 rows in set (0.000 sec)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | ADMZS  | Alada Veraz, Juana          |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | DIRGE  | Saladino Mandamás, Augusto  |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | IN&amp;DI  | Manrique Bacterio, Luisa    |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | JEFZS  | Gozque Altanero, Cándido    |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | PROZS  | Mosc Amuerta, Mario         |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | PROZS  | Mascullas Alto, Eloísa      |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- | PROZS  | Mando Correa, Rosa          |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | PROZS  | Forzado López, Galeote      |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | VENZS  | Topaz Illán, Carlos         |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- | VENZS  | Monforte Cid, Roldán        |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- +--------+-----------------------------+</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Rendimiento</p>
+<p>Hay que tener en cuenta que ordenar los resultados de una consulta requiere colocar todos los datos en memoria, y dependiendo de la cantidad, puede ser una operación computacionalmente compleja.</p>
+</div>
+<p>Finalmente, a la hora de indicar el nombre de las columnas de ordenación, también podemos un número indicando la posición de la columna (en el siguiente ejemplo, 1 referencia a <code>NomEmp</code> y 2 a <code>NifEmp</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+-----------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | Nifemp    |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +-----------------------------+-----------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | Alada Veraz, Juana          | 38223923T |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | Forzado López, Galeote      | 47123132D |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | Gozque Altanero, Cándido    | 26454122D |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | Mando Correa, Rosa          | 11312121D |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | Manrique Bacterio, Luisa    | 21231347K |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | Mascullas Alto, Eloísa      | 32132154H |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- | Monforte Cid, Roldán        | 23823930D |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | Mosc Amuerta, Mario         | 32939393D |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | Saladino Mandamás, Augusto  | 21451451V |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- | Topaz Illán, Carlos         | 38293923L |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- +-----------------------------+-----------+</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>Además, si queremos restringir y limitar el número de resultados de la consulta usaremos <a href="https://mariadb.com/kb/en/limit/"><code>LIMIT cantidad</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1">-- +--------+-----------------------------+</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- | CodEmp | NomEmp                      |</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">-- +--------+-----------------------------+</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  |</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">-- |      2 | Manrique Bacterio, Luisa    |</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán        |</span>
+<span class="linenos" data-linenos="8 "></span><span class="c1">-- +--------+-----------------------------+</span>
+<span class="linenos" data-linenos="9 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Reduciendo el tráfico</p>
+<p>En ocasiones, cuando queremos obtener una muestra de los datos, en vez de hacer una consulta <code>select * from ...</code> para comprobar qué datos almacena una determinada tabla, es mucho mejor acostumbrarse a realizar un <code>select * from ... LIMIT 10</code>. De este modo, no sobrecargamos el servidor ni incrementamos el trafico de datos.</p>
+</div>
+<p>Si no queremos coger los primeros elementos, podemos hacer uso <a href="https://mariadb.com/kb/en/limit/"><code>LIMIT inicio, cantidad</code></a>, teniendo en cuenta que <code>inicio</code> referencia al desplazamiento, es decir, la cantidad de filas que se ignorarán.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+---------------------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | NomEmp                    |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+---------------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán      |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      4 | Topaz Illán, Carlos       |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      5 | Alada Veraz, Juana        |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      6 | Gozque Altanero, Cándido  |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +--------+---------------------------+</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- 4 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>Por último, podemos expresar lo mismo mediante <a href="https://mariadb.com/kb/en/limit/"><code>LIMIT cantidad OFFSET inicio</code></a>, sólo que cambiamos el orden de los parámetros:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+---------------------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | NomEmp                    |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+---------------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán      |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      4 | Topaz Illán, Carlos       |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      5 | Alada Veraz, Juana        |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      6 | Gozque Altanero, Cándido  |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +--------+---------------------------+</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- 4 rows in set (0.000 sec)</span>
 </code></pre></div>
 <h3 id="seleccion">Selección<a class="headerlink" href="#seleccion" title="Permanent link">&para;</a></h3>
 <p>La selección en SQL permite filtrar filas de una tabla en función de condiciones específicas. Esto se logra mediante la cláusula <code>WHERE</code>, que define los criterios de filtrado.</p>
