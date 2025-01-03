@@ -516,11 +516,11 @@
           <li class="md-nav__item">
   <a href="#group-by" class="md-nav__link">
     <span class="md-ellipsis">
-      Group by
+      GROUP BY
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Group by">
+    <nav class="md-nav" aria-label="GROUP BY">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -544,7 +544,7 @@
           <li class="md-nav__item">
   <a href="#select-n-group-by-n" class="md-nav__link">
     <span class="md-ellipsis">
-      Select N - Group by N
+      SELECT N - GROUP BY N
     </span>
   </a>
   
@@ -553,7 +553,7 @@
           <li class="md-nav__item">
   <a href="#rollup" class="md-nav__link">
     <span class="md-ellipsis">
-      Rollup
+      ROLLUP
     </span>
   </a>
   
@@ -567,7 +567,31 @@
           <li class="md-nav__item">
   <a href="#having" class="md-nav__link">
     <span class="md-ellipsis">
-      Having
+      HAVING
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orden-de-ejecucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Orden de ejecución
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Orden de ejecución">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#errores-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errores comunes
     </span>
   </a>
   
@@ -796,11 +820,11 @@
           <li class="md-nav__item">
   <a href="#group-by" class="md-nav__link">
     <span class="md-ellipsis">
-      Group by
+      GROUP BY
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Group by">
+    <nav class="md-nav" aria-label="GROUP BY">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -824,7 +848,7 @@
           <li class="md-nav__item">
   <a href="#select-n-group-by-n" class="md-nav__link">
     <span class="md-ellipsis">
-      Select N - Group by N
+      SELECT N - GROUP BY N
     </span>
   </a>
   
@@ -833,7 +857,7 @@
           <li class="md-nav__item">
   <a href="#rollup" class="md-nav__link">
     <span class="md-ellipsis">
-      Rollup
+      ROLLUP
     </span>
   </a>
   
@@ -847,7 +871,31 @@
           <li class="md-nav__item">
   <a href="#having" class="md-nav__link">
     <span class="md-ellipsis">
-      Having
+      HAVING
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orden-de-ejecucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Orden de ejecución
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Orden de ejecución">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#errores-comunes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errores comunes
     </span>
   </a>
   
@@ -1137,7 +1185,7 @@
 <span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 </code></pre></div>
 <p>Aquí podemos observar como de las 7 extensiones telefónicas que teníamos, ninguna se repite. Pero en cambio, sabemos que todos los empleados tiene la cantidad de hijos anotados y que tenemos 3 posibles valores (<code>0</code>, <code>1</code> y <code>2</code> hijos)</p>
-<h3 id="group-by">Group by<a class="headerlink" href="#group-by" title="Permanent link">&para;</a></h3>
+<h3 id="group-by"><code>GROUP BY</code><a class="headerlink" href="#group-by" title="Permanent link">&para;</a></h3>
 <p>La cláusula <a href="https://mariadb.com/kb/en/group-by/"><code>GROUP BY</code></a> se utiliza para agrupar filas que tienen valores iguales en una o más columnas. Esto permite aplicar funciones de agregación como <code>SUM</code>, <code>COUNT</code>, <code>AVG</code>, etc., a cada grupo, es decir, permite realizar cálculos en vertical, sobre el resultado de agrupar registros.</p>
 <figure style="align: center;">
     <img src="images/07group_by-sum.webp" width="800" title="Group by">
@@ -1274,8 +1322,8 @@
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- +--------------------+----------------------------+---------------+</span>
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- 6 rows in set (0.001 sec)</span>
 </code></pre></div>
-<h4 id="select-n-group-by-n">Select N - Group by N<a class="headerlink" href="#select-n-group-by-n" title="Permanent link">&para;</a></h4>
-<p>Es importante destacar que al menos la cantidad y datos que utilizamos en la proyección (<code>SELECT</code>) que agrupan, también hemos de utilizarlos dentro del <code>group by</code>. Dicho de otro modo, si en el <code>SELECT</code> ponemos tres columnas y dos cálculos, en el group by deberemos poner las tres mismas columnas.</p>
+<h4 id="select-n-group-by-n"><code>SELECT</code> N - <code>GROUP BY</code> N<a class="headerlink" href="#select-n-group-by-n" title="Permanent link">&para;</a></h4>
+<p>Es importante destacar que al menos la cantidad y datos que utilizamos en la proyección (<code>SELECT</code>) que agrupan, también hemos de utilizarlos dentro del <code>GROUP BY</code>. Dicho de otro modo, si en el <code>SELECT</code> ponemos tres columnas y dos cálculos, en el <code>GROUP BY</code> deberemos poner las tres mismas columnas.</p>
 <p>Es decir, <strong>no debemos hacer esto</strong> (dos en <code>SELECT</code>, uno en <code>GROUP BY</code>), ya que no estaría mostrando la información que queremos. Si repetimos el ejemplo anterior, obtenemos un resultado, pero lo que obtenemos no es correcto:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="p">)</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
@@ -1307,7 +1355,7 @@
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- +----------------------------+---------------+</span>
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
 </code></pre></div>
-<h4 id="rollup">Rollup<a class="headerlink" href="#rollup" title="Permanent link">&para;</a></h4>
+<h4 id="rollup"><code>ROLLUP</code><a class="headerlink" href="#rollup" title="Permanent link">&para;</a></h4>
 <p>Cuando hacemos una consulta con una agregación, podemos emplear la cláusula <a href="https://mariadb.com/kb/en/select-with-rollup/">SELECT ... WITH ROLLUP</a> para que añada filas extras con totales de la agregación.</p>
 <p>Si recuperamos la consulta que obteníamos el presupuesto anual de cada departamento, pero le añadimos <code>WITH ROLLUP</code> podemos observar como añade al resultado una nueva fila agrupada por <code>NULL</code> y que suma todos los otros valores:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodCen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span>
@@ -1349,7 +1397,7 @@
 <p class="admonition-title">PostgreSQL</p>
 <p>En el caso de <em>PostreSQL</em> cabe destacar que no tiene soporte para <code>WITH ROLLUP</code>. En cambio, dispone de otras funciones similares como <code>GROUPING SETS</code>, <code>CUBE</code> y <code>ROLLUP</code>.</p>
 </div>
-<h3 id="having">Having<a class="headerlink" href="#having" title="Permanent link">&para;</a></h3>
+<h3 id="having"><code>HAVING</code><a class="headerlink" href="#having" title="Permanent link">&para;</a></h3>
 <p>La cláusula <code>HAVING</code> permite filtrar tras realizar los cálculos de agrupación. Sería similar al <code>where</code> pero una vez realizados los datos agregados.</p>
 <p>El orden de ejecución de las clausulas dentro de una consulta es:</p>
 <ol>
@@ -1391,6 +1439,48 @@
 <span class="hll"><span class="linenos" data-linenos="5 "></span><span class="k">HAVING</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100000000</span><span class="p">;</span>
 </span></code></pre></div>
 <p>Recuerda que <code>WHERE</code> filtra las filas antes de aplicar la agrupación, mientras que <code>HAVING</code> filtra los grupos después de que se han calculado las funciones de agregación.</p>
+<h2 id="orden-de-ejecucion">Orden de ejecución<a class="headerlink" href="#orden-de-ejecucion" title="Permanent link">&para;</a></h2>
+<p>En este punto que ya hemos visto la mayoría de cláusulas dentro de una consulta SQL, es conveniente tener claro su orden de ejecución.</p>
+<p>Las etapas de ejecución de una consulta son:</p>
+<ol>
+<li><code>FROM</code> y <code>JOIN</code>: selección de tablas y su combinación, tanto internas como externas</li>
+<li><code>WHERE</code>: filtrado de los datos</li>
+<li><code>GROUP BY</code>: agrupación/agregación</li>
+<li><code>HAVING</code>: filtrado de la agrupación</li>
+<li><code>SELECT</code> y <code>DISTINCT</code>: proyección de los campos</li>
+<li><code>ORDER BY</code>: ordenación del resultado</li>
+<li><code>LIMIT</code>: filtrado del resultado</li>
+</ol>
+<p>A modo de ejemplo tendríamos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="w">                </span><span class="c1">-- 5.1 y 5.2</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w">                     </span><span class="c1">-- 1.1</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">JOIN</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span><span class="w">      </span><span class="c1">-- 1.2</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">WHERE</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20000000</span><span class="w">               </span><span class="c1">-- 2                         </span>
+<span class="linenos" data-linenos="5 "></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="w">                       </span><span class="c1">-- 3</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">HAVING</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100000000</span><span class="w">        </span><span class="c1">-- 4</span>
+<span class="linenos" data-linenos="7 "></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span><span class="w">                       </span><span class="c1">-- 6</span>
+<span class="linenos" data-linenos="8 "></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="mi">2</span><span class="w">                        </span><span class="c1">-- 7</span>
+</code></pre></div>
+<h3 id="errores-comunes">Errores comunes<a class="headerlink" href="#errores-comunes" title="Permanent link">&para;</a></h3>
+<p>FIXME: Revisar JJS + formatear</p>
+<p>De forma general, los errores más comunes a la hora de realizar consultas son:</p>
+<ul>
+<li>
+<p>Utilizar alias de columna en la cláusula WHERE: La cláusula WHERE se ejecuta antes que la cláusula SELECT, por lo que se producirá un error si utilizas un alias en la cláusula WHERE. Para evitar este error, utiliza siempre la expresión original en lugar de un alias en la cláusula WHERE.</p>
+</li>
+<li>
+<p>Uso de alias de columna en la cláusula WHERE: Como la cláusula WHERE se ejecuta antes que la cláusula SELECT, intentar utilizar un alias en WHERE dará lugar a un error. Comprender que SQL evalúa WHERE antes de la cláusula SELECT te enseña que debes repetir la expresión completa en lugar de confiar en un alias.</p>
+</li>
+<li>
+<p>Utilizar HAVING para filtrar filas en lugar de WHERE: La cláusula HAVING se ejecuta después de GROUP BY y está pensada para filtrar datos agregados. Si estás filtrando datos no agregados, pertenece a la cláusula WHERE. Conocer la diferencia en el orden de ejecución entre WHERE y HAVING te ayuda a determinar dónde debe colocarse cada condición.</p>
+</li>
+<li>
+<p>Uso incorrecto de agregados en SELECT sin GROUP BY: Puesto que GROUP BY se ejecuta antes que HAVING o SELECT, si no agrupas tus datos antes de aplicar una función de agregado, se producirán resultados incorrectos o errores. Comprender el orden de ejecución aclara por qué estas dos cláusulas deben ir juntas.</p>
+</li>
+<li>
+<p>No utilizar correctamente los alias en la cláusula ORDER BY: A diferencia de la cláusula WHERE, la cláusula ORDER BY se evalúa después de SELECT. Esto te permite utilizar los alias creados en SELECT para la clasificación, ayudándote a evitar confusiones al saber cuándo están disponibles los alias para su uso.</p>
+</li>
+</ul>
 <h2 id="funciones-ventana">Funciones ventana<a class="headerlink" href="#funciones-ventana" title="Permanent link">&para;</a></h2>
 <p>Las <a href="https://mariadb.com/kb/en/window-functions-overview/">funciones ventana</a> son similares a las consultas <code>group by</code> en cuanto que permiten ejecutar funciones agregadas en varias filas. La diferencia es que permiten funciones de agregación incorporadas sin necesidad de agrupar cada campo en una sola fila.</p>
 <figure style="align: center;">
