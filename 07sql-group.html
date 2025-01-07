@@ -481,9 +481,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-9h" class="md-nav__link">
+  <a href="#programacion-de-aula-10h" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación de Aula (9h)
+      Programación de Aula (10h)
     </span>
   </a>
   
@@ -785,9 +785,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-9h" class="md-nav__link">
+  <a href="#programacion-de-aula-10h" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación de Aula (9h)
+      Programación de Aula (10h)
     </span>
   </a>
   
@@ -1040,17 +1040,23 @@
 <li>¿Cómo puedo saber cuántos registros tiene una tabla?</li>
 <li>¿Y cuántos valores diferentes tiene un campo?</li>
 <li>¿Es posible averiguar cuántos campos nulos tiene un campo?</li>
-<li>En una consulta con <code>group by</code>, ¿podemos poner más campos en la proyección que en la agrupación?</li>
+<li>¿Qué operadores puedo utilizar a la hora de agrupar filas?</li>
+<li>En una consulta con <code>GROUP BY</code>, ¿podemos poner más campos en la proyección que en la agrupación?</li>
+<li>¿Para qué sirve la cláusula <code>WITH ROLLUP</code>?</li>
+<li>¿Cuando debo utilizar <code>HAVING</code> y cuándo <code>WHERE</code>? ¿Puedo utilizar ambas a la vez?</li>
 <li>¿Para qué sirven las funciones ventana?</li>
 <li>¿Qué tamaño tiene una partición en una función ventana?</li>
 <li>¿Qué funciones de clasificación conoces dentro de las funciones ventana?</li>
 <li>¿Y funciones de valor?</li>
+<li>¿Qué es una vista y cuándo es útil utilizarla?</li>
+<li>¿Podemos crear una vista basada en otra vista?</li>
 <li>¿Puedo insertar datos en una vista? ¿Siempre?</li>
+<li>¿Podemos seguir utilizando una vista si se elimina la tabla original?</li>
 <li>¿Qué diferencia una tabla de una vista y de una vista materializada?</li>
 </ol>
 </div>
-<h3 id="programacion-de-aula-9h">Programación de Aula (9h)<a class="headerlink" href="#programacion-de-aula-9h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la séptima, siendo la segunda del bloque de consultas, impartiéndose al principio de la segunda evaluación, a principios de enero, con una duración estimada de 9 sesiones lectivas:</p>
+<h3 id="programacion-de-aula-10h">Programación de Aula (10h)<a class="headerlink" href="#programacion-de-aula-10h" title="Permanent link">&para;</a></h3>
+<p>Esta unidad es la séptima, siendo la segunda del bloque de consultas, impartiéndose al principio de la segunda evaluación, a principios de enero, con una duración estimada de 10 sesiones lectivas:</p>
 <table>
 <thead>
 <tr>
@@ -1106,7 +1112,7 @@
 <tr>
 <td>8</td>
 <td>Supuesto</td>
-<td><a href="#PR711">PR710</a></td>
+<td><a href="#PR711">PR711</a></td>
 <td>CE2ef, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
 </tr>
 <tr>
@@ -1114,6 +1120,12 @@
 <td>Resolución Supuesto</td>
 <td></td>
 <td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Reto</td>
+<td><a href="#PY712">PY712</a></td>
+<td>CE2ef, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
 </tr>
 </tbody>
 </table>
@@ -1978,7 +1990,7 @@ You cannot associate a trigger with a view.
 </ul>
 <p><a name="AC710"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP710</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado vistas.">CE2f</abbr> // 3p)  Realiza todas las consultas del apartado 1.9.1 de vistas sobre la base de datos de <em>Jardinería</em>, que podemos encontrar en las <a href="https://josejuansanchez.org/bd/unidad-vistas-sql-teoria/index.html">actividades propuestas</a> en los apuntes del docente <em>José Juan Sánchez</em>.</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP710</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado vistas.">CE2f</abbr> // 3p) Realiza todas las consultas del apartado 1.9.1 de vistas sobre la base de datos de <em>Jardinería</em>, que podemos encontrar en las <a href="https://josejuansanchez.org/bd/unidad-vistas-sql-teoria/index.html">actividades propuestas</a> en los apuntes del docente <em>José Juan Sánchez</em>.</li>
 </ul>
 <p><a name="PR711"></a></p>
 <ul>
