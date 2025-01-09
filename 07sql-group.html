@@ -1043,7 +1043,7 @@
 <li>¿Qué operadores puedo utilizar a la hora de agrupar filas?</li>
 <li>En una consulta con <code>GROUP BY</code>, ¿podemos poner más campos en la proyección que en la agrupación?</li>
 <li>¿Para qué sirve la cláusula <code>WITH ROLLUP</code>?</li>
-<li>¿Cuando debo utilizar <code>HAVING</code> y cuándo <code>WHERE</code>? ¿Puedo utilizar ambas a la vez?</li>
+<li>¿Cuándo debo utilizar <code>HAVING</code> y cuándo <code>WHERE</code>? ¿Puedo utilizar ambas a la vez?</li>
 <li>¿Para qué sirven las funciones ventana?</li>
 <li>¿Qué tamaño tiene una partición en una función ventana?</li>
 <li>¿Qué funciones de clasificación conoces dentro de las funciones ventana?</li>
@@ -1138,6 +1138,7 @@
 -->
 
 <h2 id="consultas-agregadas_1">Consultas agregadas<a class="headerlink" href="#consultas-agregadas_1" title="Permanent link">&para;</a></h2>
+<p>Las consultas agregadas en SQL son herramientas esenciales para analizar grandes volúmenes de datos al resumir información clave, como totales, promedios o conteos. Estas operaciones son fundamentales para generar informes y tomar decisiones informadas en cualquier ámbito que requiera análisis de datos</p>
 <p>Si volvemos a revisar la sintaxis <a href="https://mariadb.com/kb/en/select/"><code>SELECT ... FROM</code></a> observamos las cláusulas <code>GROUP BY</code> y <code>HAVING</code> que no hemos utilizado hasta ahora:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="err">{</span><span class="o">*</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="k">DISTINCT</span><span class="p">]</span><span class="w"> </span><span class="err">{</span><span class="n">columna</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">expresión</span><span class="err">}</span><span class="w"> </span><span class="p">[[</span><span class="k">AS</span><span class="p">]</span><span class="w"> </span><span class="k">alias</span><span class="p">],</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="err">}</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">tabla</span>
@@ -1177,7 +1178,7 @@
 <span class="linenos" data-linenos="6 "></span><span class="c1">-- +-------------+</span>
 <span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.001 sec)</span>
 </code></pre></div>
-<p>En el caso de <code>COUNT(expr)</code> es muy común emplear <code>COUNT(*)</code> para indicar todos los elementos de la consulta resultante. Dicho esto, también podemos hacerlo sobre una determinada columnas, obteniendo cuantos de dichos elementos contienen valor. Si la columna contiene valores nulos, nos devolverá cuantos tienen valor.</p>
+<p>En el caso de <code>COUNT(expr)</code> es muy común emplear <code>COUNT(*)</code> para indicar todos los elementos de la consulta resultante. Dicho esto, también podemos hacerlo sobre una determinada columna, obteniendo cuantos de dichos elementos contienen valor. Si la columna contiene valores nulos, nos devolverá cuantos tienen valor.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">CodEmp</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1">-- +----------+---------------+-----------------+</span>
 <span class="linenos" data-linenos="3 "></span><span class="c1">-- | COUNT(*) | COUNT(CodEmp) | COUNT(ExTelEmp) |</span>
@@ -1186,7 +1187,7 @@
 <span class="linenos" data-linenos="6 "></span><span class="c1">-- +----------+---------------+-----------------+</span>
 <span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.001 sec)</span>
 </code></pre></div>
-<p>En este caso, obtenemos que tenemos diez registros, diez valores en código de empleado (que al ser clave primaria, debe coincidir con el total de registros), pero en cambio sólo tenemos 7 extensiones telefónicas.</p>
+<p>En este caso, obtenemos que tenemos diez registros, diez valores en código de empleado (que, al ser clave primaria, debe coincidir con el total de registros), pero en cambio sólo tenemos 7 extensiones telefónicas.</p>
 <p>Si lo que nos interesa es la cantidad de valores distintos que tenemos de una columna, podemos hacer un <code>COUNT(DISTINCT expr)</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="p">)),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">NumHi</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="p">(</span><span class="n">NumHi</span><span class="p">))</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1">-- +----------+-----------------+---------------------------+--------------+------------------------+</span>
@@ -1196,7 +1197,7 @@
 <span class="linenos" data-linenos="6 "></span><span class="c1">-- +----------+-----------------+---------------------------+--------------+------------------------+</span>
 <span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 </code></pre></div>
-<p>Aquí podemos observar como de las 7 extensiones telefónicas que teníamos, ninguna se repite. Pero en cambio, sabemos que todos los empleados tiene la cantidad de hijos anotados y que tenemos 3 posibles valores (<code>0</code>, <code>1</code> y <code>2</code> hijos)</p>
+<p>Aquí podemos observar cómo de las 7 extensiones telefónicas que teníamos, ninguna se repite. Pero en cambio, sabemos que todos los empleados tienen la cantidad de hijos anotados y que tenemos 3 posibles valores (<code>0</code>, <code>1</code> y <code>2</code> hijos)</p>
 <h3 id="group-by"><code>GROUP BY</code><a class="headerlink" href="#group-by" title="Permanent link">&para;</a></h3>
 <p>La cláusula <a href="https://mariadb.com/kb/en/group-by/"><code>GROUP BY</code></a> se utiliza para agrupar filas que tienen valores iguales en una o más columnas. Esto permite aplicar funciones de agregación como <code>SUM</code>, <code>COUNT</code>, <code>AVG</code>, etc., a cada grupo, es decir, permite realizar cálculos en vertical, sobre el resultado de agrupar registros.</p>
 <figure style="align: center;">
@@ -1238,7 +1239,7 @@
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- 3 rows in set (0.002 sec)</span>
 </code></pre></div>
 <p>Es decir, el valor de <code>51000000.00</code> del centro <code>DIGE</code> se obtiene de sumar las filas de la tabla anterior de dicho centro, es decir, <code>26000000.00</code> y <code>25000000.00</code> de los departamentos <code>Dirección General</code> e <code>Investigación y Diseño</code>. Dicho de otro modo, al realizar una agrupación, junto las filas que tienen el mismo valor en la columna agrupada, y realiza el cálculo indicado con dichas filas.</p>
-<p>¿Y si quiero obtener el nombre del centro en vez de su código? Podemos pensar que si hago un <em>join</em>, y muestro su nombre y el presupuesto obtendré la misma información:</p>
+<p>¿Y si quiero obtener el nombre del centro en vez de su código? Podemos pensar que, si hago un <em>join</em> y muestro su nombre y el presupuesto, obtendré la misma información:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------------------+--------------+</span>
@@ -1317,7 +1318,7 @@
 <span class="linenos" data-linenos="18 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
 </code></pre></div>
 <h4 id="agrupaciones-compuestas">Agrupaciones compuestas<a class="headerlink" href="#agrupaciones-compuestas" title="Permanent link">&para;</a></h4>
-<p>También es posible agrupar por más de una columna. Por ejemplo, podemos obtener el gasto en salario de empleados por centros y departamentos. Para elo, primero necesito combinar las tres tablas, y luego agrupar por el criterio deseado:</p>
+<p>También es posible agrupar por más de una columna. Por ejemplo, podemos obtener el gasto en salario de empleados por centros y departamentos. Para ello, primero necesito combinar las tres tablas, y luego agrupar por el criterio deseado:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="p">)</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span>
@@ -1369,7 +1370,7 @@
 </code></pre></div>
 <h4 id="rollup"><code>ROLLUP</code><a class="headerlink" href="#rollup" title="Permanent link">&para;</a></h4>
 <p>Cuando hacemos una consulta con una agregación, podemos emplear la cláusula <a href="https://mariadb.com/kb/en/select-with-rollup/">SELECT ... WITH ROLLUP</a> para que añada filas extras con totales de la agregación.</p>
-<p>Si recuperamos la consulta que obteníamos el presupuesto anual de cada departamento, pero le añadimos <code>WITH ROLLUP</code> podemos observar como añade al resultado una nueva fila agrupada por <code>NULL</code> y que suma todos los otros valores:</p>
+<p>Si recuperamos la consulta que obteníamos el presupuesto anual de cada departamento, pero le añadimos <code>WITH ROLLUP</code> podemos observar cómo añade al resultado una nueva fila agrupada por <code>NULL</code> y que suma todos los otros valores:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodCen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CodCen</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">ROLLUP</span><span class="p">;</span>
@@ -1410,15 +1411,15 @@
 <p>En el caso de <em>PostreSQL</em> cabe destacar que no tiene soporte para <code>WITH ROLLUP</code>. En cambio, dispone de otras funciones similares como <code>GROUPING SETS</code>, <code>CUBE</code> y <code>ROLLUP</code>.</p>
 </div>
 <h3 id="having"><code>HAVING</code><a class="headerlink" href="#having" title="Permanent link">&para;</a></h3>
-<p>La cláusula <code>HAVING</code> permite filtrar tras realizar los cálculos de agrupación. Sería similar al <code>where</code> pero una vez realizados los datos agregados.</p>
-<p>El orden de ejecución de las clausulas dentro de una consulta es:</p>
+<p>La cláusula <code>HAVING</code> permite filtrar tras realizar los cálculos de agrupación. Sería similar al <code>WHERE</code> pero una vez realizados los datos agregados.</p>
+<p>El orden de ejecución de las cláusulas dentro de una consulta es:</p>
 <ol>
-<li><code>where</code> que filtra las filas según las condiciones que pongamos.</li>
-<li><code>group by</code> que crea una tabla agregada a partir de las columnas que agrupa.</li>
-<li><code>having</code> filtra los grupos.</li>
-<li><code>order by</code> que ordena o clasifica la salida.</li>
+<li><code>WHERE</code> que filtra las filas según las condiciones que pongamos.</li>
+<li><code>GROUP BY</code> que crea una tabla agregada a partir de las columnas que agrupa.</li>
+<li><code>HAVING</code> filtra los grupos.</li>
+<li><code>ORDER BY</code> que ordena o clasifica la salida.</li>
 </ol>
-<p>Para estos ejemplo, nos vamos a centrar en el presupuesto anual de los centros. Para ello, agrupamos por el nombre del centro y sumamos los presupuestos anuales de cada departamento:</p>
+<p>Para estos ejemplos, nos vamos a centrar en el presupuesto anual de los centros. Para ello, agrupamos por el nombre del centro y sumamos los presupuestos anuales de cada departamento:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">PreCen</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="p">(</span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">);</span>
@@ -1452,7 +1453,7 @@
 </span></code></pre></div>
 <p>Recuerda que <code>WHERE</code> filtra las filas antes de aplicar la agrupación, mientras que <code>HAVING</code> filtra los grupos después de que se han calculado las funciones de agregación.</p>
 <h2 id="orden-de-ejecucion">Orden de ejecución<a class="headerlink" href="#orden-de-ejecucion" title="Permanent link">&para;</a></h2>
-<p>En este punto que ya hemos visto la mayoría de cláusulas dentro de una consulta SQL, es conveniente tener claro su orden de ejecución.</p>
+<p>En este punto que ya hemos visto la mayoría de las cláusulas dentro de una consulta SQL, es conveniente tener claro su orden de ejecución.</p>
 <p>Las etapas de ejecución de una consulta son:</p>
 <ol>
 <li><code>FROM</code> y <code>JOIN</code>: selección de tablas y su combinación, tanto internas como externas</li>
@@ -1474,7 +1475,10 @@
 <span class="linenos" data-linenos="8 "></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="mi">2</span><span class="w">                        </span><span class="c1">-- 7</span>
 </code></pre></div>
 <h3 id="errores-comunes">Errores comunes<a class="headerlink" href="#errores-comunes" title="Permanent link">&para;</a></h3>
-<p>FIXME: Revisar JJS + formatear</p>
+<!--
+FIXME: Revisar JJS + formatear
+-->
+
 <p>De forma general, los errores más comunes a la hora de realizar consultas son:</p>
 <ul>
 <li>
@@ -1532,7 +1536,7 @@
 </code></pre></div>
 <p>Mientras que una cláusula <code>group by</code> devolverá un registro por cada valor de grupo coincidente,
 una función de ventana, la cual no contrae los resultados por grupo, puede devolver un registro distinto para cada fila.</p>
-<p>Así que si quisiéramos obtener el nombre de todos los empleados, y además, cuantos compañeros tiene, podemos realizar una partición por el código del empleado. Para ello, hemos de utilizar la cláusula <strong><code>OVER (PARTITION BY campo)</code></strong> precedida de la función ventana que queramos emplear; en este caso, contaremos:</p>
+<p>Así que, si quisiéramos obtener el nombre de todos los empleados, y además, cuantos compañeros tiene, podemos realizar una partición por el código del empleado. Para ello, hemos de utilizar la cláusula <strong><code>OVER (PARTITION BY campo)</code></strong> precedida de la función ventana que queramos emplear; en este caso, contaremos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span>
 <span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">companyeros</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
@@ -1772,7 +1776,7 @@ Una vez creada, podemos hacer consultas sobre la vista:</p>
 <p>Entre las ventajas de su uso, cabe destacar que:</p>
 <ul>
 <li>Al ser consultas precompiladas, su rendimiento es algo mejor que hacer las consultas directamente.</li>
-<li>Permiten restringir el acceso a ciertas columnas (solo nombre, apellidos y teléfono de los clientes), incluso a nivel de fila (sólo los clientes de Alicante),de manera que podemos restringir que un cierto usuario sólo pueda acceder a una vista, ajustando aun más su esquema externo.</li>
+<li>Permiten restringir el acceso a ciertas columnas (solo nombre, apellidos y teléfono de los clientes), incluso a nivel de fila (sólo los clientes de Alicante), de manera que podemos restringir que un cierto usuario sólo pueda acceder a una vista, ajustando aún más su esquema externo.</li>
 <li>Facilitan procesos de normalización/denormalización.</li>
 </ul>
 <!--
@@ -1819,7 +1823,7 @@ You cannot associate a trigger with a view.
 <p>Aunque <em>MariaDB</em> no las soporte, muchos otros SGBD (como <em>PostgreSQL</em> u <em>Oracle</em>) permiten la creación de vistas materializadas.</p>
 <p>Una vista materializada, a diferencia de una vista estándar (o lógica), que genera sus resultados dinámicamente cada vez que se consulta, persiste los datos en disco, lo que puede mejorar significativamente el rendimiento en ciertos casos.</p>
 <p>A nivel conceptual, es similar a crear una tabla temporal que almacena los resultados de ejecución de la vista. </p>
-<p>Pueden tener una sincronización estática (los datos no se actualizan automáticamente), o dinámica (los datos se sincronizan bajo petición del usuarios o cuando se modifiquen los datos de origen).</p>
+<p>Pueden tener una sincronización estática (los datos no se actualizan automáticamente), o dinámica (los datos se sincronizan bajo petición del usuario o cuando se modifiquen los datos de origen).</p>
 <p>En la siguiente unidad simularemos las vistas materializadas mediante la creación de tablas a partir de consultas.</p>
 </div>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
@@ -1978,7 +1982,7 @@ You cannot associate a trigger with a view.
 <li><code>empleado_anyos</code>: Para cada empleado, mostrar, además de su código y nombre, su edad y los años de antigüedad en la empresa.</li>
 <li><code>centro_presupuesto</code>: Para cada centro, mostrar su presupuesto anual y el código y el nombre de su director.</li>
 <li><code>empleado_habilidades</code>: Para cada empleado, además de su código y nombre, muestre qué habilidades tiene.</li>
-<li><code>empleado_habilidades_total</code>: Para cada empleado, muestre qué habilidades tiene y una columna con el total de habilidades de dicho empleado (si no tiene habilidades, debe aparecer el empleado pero con dicho valor a 0).</li>
+<li><code>empleado_habilidades_total</code>: Para cada empleado, muestre qué habilidades tiene y una columna con el total de habilidades de dicho empleado (si no tiene habilidades, debe aparecer el empleado, pero con dicho valor a 0).</li>
 <li><code>departamento_jerarquia</code>: Para cada departamento, muestra el nombre de su departamento superior, si lo tienen (deben aparecer todos).</li>
 </ol>
 <p>Utilizando las vistas creadas, se pide:</p>
@@ -2034,7 +2038,7 @@ You cannot associate a trigger with a view.
 </ul>
 <p>Se utilizará una rúbrica para su evaluación en base a la siguiente lista de cotejo:</p>
 <ul>
-<li>Limpieza y calidad de los consultas.</li>
+<li>Limpieza y calidad de las consultas.</li>
 <li>Variedad de consultas, desde consultas sencilla a más complejas.</li>
 <li>Documentación de las consultas.</li>
 <li>El informe entregado no contiene faltas de ortografía.</li>

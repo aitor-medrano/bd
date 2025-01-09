@@ -2419,7 +2419,7 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <li><a href="https://mariadb.com/kb/en/now/"><code>NOW()</code> / <code>CURRENT_TIMESTAMP</code></a>: fecha y hora actual del sistema.</li>
 <li><a href="https://mariadb.com/kb/en/curdate/"><code>CURDATE()</code></a>: fecha actual en formato <code>yyyy-mm-dd</code> o <code>yyyymmdd</code>.</li>
 <li><a href="https://mariadb.com/kb/en/datediff/"><code>DATEDIFF(fecha1, fecha2)</code></a>: diferencia de días entre dos fechas.</li>
-<li><a href="https://mariadb.com/kb/en/timestampdiff/"><code>TIMESTAMPDIFF(unidad, fecha1, fecha2)</code></a>: diferencia medido en <code>unidad</code> entre dos fechas.</li>
+<li><a href="https://mariadb.com/kb/en/timestampdiff/"><code>TIMESTAMPDIFF(unidad, fecha1, fecha2)</code></a>: diferencia medida en <code>unidad</code> entre dos fechas.</li>
 <li><a href="https://mariadb.com/kb/en/date_add/"><code>DATE_ADD(fecha, INTERVAL expresión Tipo)</code></a> / <a href="https://mariadb.com/kb/en/date_sub/"><code>DATE_SUB</code></a>, pudiendo utilizar los siguientes <a href="https://mariadb.com/kb/en/date-and-time-units/">tipos</a>.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- fecha y hora actual (en el momento de crear los apuntes)</span>
@@ -2455,47 +2455,45 @@ CATEGORIA.nombre = "Electrodomésticos</sub> CATEGORIA)</code></p>
 <li><a href="https://mariadb.com/kb/en/month/"><code>MONTH(fecha)</code></a>: mes en formato <code>mm</code></li>
 <li>Otras funciones útiles son <code>SECOND</code>, <code>MINUTE</code>, <code>HOUR</code>, <code>DAY</code>, <code>WEEK</code>, <code>DAYOFWEEK</code> …</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- fecha y hora actual (en el momento de crear los apuntes)</span>
-<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="k">YEAR</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">anyoInc</span><span class="p">,</span><span class="w"> </span><span class="k">MONTH</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">mesInc</span><span class="p">,</span><span class="w"> </span><span class="n">DAYOFWEEK</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">diaSemana</span>
-</span><span class="linenos" data-linenos=" 3 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+------------+---------+--------+-----------+</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | CodEmp | FecInEmp   | anyoInc | mesInc | diaSemana |</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------+------------+---------+--------+-----------+</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      1 | 1972-07-01 |    1972 |      7 |         7 |</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      2 | 1991-06-14 |    1991 |      6 |         6 |</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      3 | 1984-06-08 |    1984 |      6 |         6 |</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      4 | 1990-08-09 |    1990 |      8 |         5 |</span>
-<span class="linenos" data-linenos="11 "></span><span class="c1">-- |      5 | 1976-08-07 |    1976 |      8 |         7 |</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1">-- |      6 | 1991-08-01 |    1991 |      8 |         5 |</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">-- |      7 | 1994-06-30 |    1994 |      6 |         5 |</span>
-<span class="linenos" data-linenos="14 "></span><span class="c1">-- |      8 | 1994-08-15 |    1994 |      8 |         2 |</span>
-<span class="linenos" data-linenos="15 "></span><span class="c1">-- |      9 | 1982-06-10 |    1982 |      6 |         5 |</span>
-<span class="linenos" data-linenos="16 "></span><span class="c1">-- |     10 | 1993-11-02 |    1993 |     11 |         3 |</span>
-<span class="linenos" data-linenos="17 "></span><span class="c1">-- +--------+------------+---------+--------+-----------+</span>
-<span class="linenos" data-linenos="18 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="k">YEAR</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">anyoInc</span><span class="p">,</span><span class="w"> </span><span class="k">MONTH</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">mesInc</span><span class="p">,</span><span class="w"> </span><span class="n">DAYOFWEEK</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">diaSemana</span>
+<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------+------------+---------+--------+-----------+</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | CodEmp | FecInEmp   | anyoInc | mesInc | diaSemana |</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +--------+------------+---------+--------+-----------+</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- |      1 | 1972-07-01 |    1972 |      7 |         7 |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      2 | 1991-06-14 |    1991 |      6 |         6 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      3 | 1984-06-08 |    1984 |      6 |         6 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      4 | 1990-08-09 |    1990 |      8 |         5 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      5 | 1976-08-07 |    1976 |      8 |         7 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- |      6 | 1991-08-01 |    1991 |      8 |         5 |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- |      7 | 1994-06-30 |    1994 |      6 |         5 |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- |      8 | 1994-08-15 |    1994 |      8 |         2 |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- |      9 | 1982-06-10 |    1982 |      6 |         5 |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- |     10 | 1993-11-02 |    1993 |     11 |         3 |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- +--------+------------+---------+--------+-----------+</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
 </code></pre></div>
 <p>Por último, para formatear un campo de tipo fecha y mostrarla conforme necesitemos, podemos hacer uso de <a href="https://mariadb.com/kb/en/date_format/"><code>DATE_FORMAT(fecha, formato)</code></a> para obtener información similar a la anterior (le podemos pasar un tercer parámetro con el <em>locale</em> para configurar el idioma de salida y sobrescribir el del sistema):</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- fecha y hora actual (en el momento de crear los apuntes)</span>
-<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecInEmp</span><span class="p">,</span>
-</span><span class="linenos" data-linenos=" 3 "></span><span class="w">       </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Y %y&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">anyoInc</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">       </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%M %m&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">mesInc</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">       </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%w&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">diaSemana</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- +--------+------------+---------+-------------+-----------+</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | CodEmp | FecInEmp   | anyoInc | mesInc      | diaSemana |</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +--------+------------+---------+-------------+-----------+</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      1 | 1972-07-01 | 1972 72 | July 07     |         7 |</span>
-<span class="linenos" data-linenos="11 "></span><span class="c1">-- |      2 | 1991-06-14 | 1991 91 | June 06     |         6 |</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1">-- |      3 | 1984-06-08 | 1984 84 | June 06     |         6 |</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">-- |      4 | 1990-08-09 | 1990 90 | August 08   |         5 |</span>
-<span class="linenos" data-linenos="14 "></span><span class="c1">-- |      5 | 1976-08-07 | 1976 76 | August 08   |         7 |</span>
-<span class="linenos" data-linenos="15 "></span><span class="c1">-- |      6 | 1991-08-01 | 1991 91 | August 08   |         5 |</span>
-<span class="linenos" data-linenos="16 "></span><span class="c1">-- |      7 | 1994-06-30 | 1994 94 | June 06     |         5 |</span>
-<span class="linenos" data-linenos="17 "></span><span class="c1">-- |      8 | 1994-08-15 | 1994 94 | August 08   |         2 |</span>
-<span class="linenos" data-linenos="18 "></span><span class="c1">-- |      9 | 1982-06-10 | 1982 82 | June 06     |         5 |</span>
-<span class="linenos" data-linenos="19 "></span><span class="c1">-- |     10 | 1993-11-02 | 1993 93 | November 11 |         3 |</span>
-<span class="linenos" data-linenos="20 "></span><span class="c1">-- +--------+------------+---------+-------------+-----------+</span>
-<span class="linenos" data-linenos="21 "></span><span class="c1">-- 10 rows in set (0.001 sec)</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecInEmp</span><span class="p">,</span>
+<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">       </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Y %y&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">anyoInc</span><span class="p">,</span>
+</span><span class="linenos" data-linenos=" 3 "></span><span class="w">       </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%M %m&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">mesInc</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">       </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%w&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">diaSemana</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------+------------+---------+-------------+-----------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | CodEmp | FecInEmp   | anyoInc | mesInc      | diaSemana |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- +--------+------------+---------+-------------+-----------+</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      1 | 1972-07-01 | 1972 72 | July 07     |         7 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      2 | 1991-06-14 | 1991 91 | June 06     |         6 |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- |      3 | 1984-06-08 | 1984 84 | June 06     |         6 |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- |      4 | 1990-08-09 | 1990 90 | August 08   |         5 |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- |      5 | 1976-08-07 | 1976 76 | August 08   |         7 |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- |      6 | 1991-08-01 | 1991 91 | August 08   |         5 |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- |      7 | 1994-06-30 | 1994 94 | June 06     |         5 |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- |      8 | 1994-08-15 | 1994 94 | August 08   |         2 |</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- |      9 | 1982-06-10 | 1982 82 | June 06     |         5 |</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- |     10 | 1993-11-02 | 1993 93 | November 11 |         3 |</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">-- +--------+------------+---------+-------------+-----------+</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">-- 10 rows in set (0.001 sec)</span>
 </code></pre></div>
 <p>Finalmente, otra función muy importante a la hora de trabajar con fechas es la función <a href="https://mariadb.com/kb/en/cast/"><code>CAST(expr as tipo)</code></a> que realiza la conversión de tipos de datos.</p>
 <p>De esta manera podemos convertir una expresión de cadena en un tipo fecha:</p>

@@ -857,7 +857,7 @@
 <h3 id="contenidos">Contenidos<a class="headerlink" href="#contenidos" title="Permanent link">&para;</a></h3>
 <p>Realización de consultas:</p>
 <ul>
-<li>Subconsultas</li>
+<li>Subconsultas.</li>
 <li>Combinación de múltiples selecciones.</li>
 <li>Optimización de consultas.</li>
 </ul>
@@ -881,9 +881,12 @@
 <li>¿Para qué sirve la sentencia <code>CREATE TABLE ... AS SELECT</code>? ¿Qué usos tiene?</li>
 <li>¿Para qué sirve la sentencia <code>INSERT SELECT</code>? ¿Qué usos tiene?</li>
 <li>¿Puedo utilizar una subconsulta dentro del <code>WHERE</code> en una operación de modificación o borrado? ¿Puedes poner un ejemplo?</li>
+<li>¿Qué es un índice?</li>
+<li>¿Cuando no es recomendable crear un índice? ¿En qué operaciones influye?</li>
+<li>¿Qué tipos de índices conoces?</li>
+<li>¿Cómo puedo saber si en una consulta determinada se está utilizando o no un índice?</li>
 </ol>
 </div>
-<p>FIXME: añadir preguntas de índices, plan de ejecución</p>
 <h3 id="programacion-de-aula-12h">Programación de Aula (12h)<a class="headerlink" href="#programacion-de-aula-12h" title="Permanent link">&para;</a></h3>
 <p>Esta unidad es la octava, siendo la última del bloque de consultas, impartiéndose al mediados de la segunda evaluación, a finales de enero, con una duración estimada de 12 sesiones lectivas:</p>
 <table>
@@ -1301,9 +1304,36 @@
 <span class="hll"><span class="linenos" data-linenos="7 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">maxSalarios</span><span class="w"> </span><span class="n">ms</span>
 </span><span class="linenos" data-linenos="8 "></span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ms</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ms</span><span class="p">.</span><span class="n">MaxSalEmp</span><span class="p">;</span>
 </code></pre></div>
-<div class="admonition info">
+<div class="admonition tip">
 <p class="admonition-title">CTE cíclicas</p>
-<p>FIXME: completar</p>
+<p>Cuando tenemos datos jerárquicos es muy útil crear CTE cíclicas o recursivas mediante <code>WITH RECURSIVE</code>.  Por ejemplo, si queremos calcular la jerarquía de los departamentos de la empresa podemos realizar:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">jerarquiaDepartamento</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="p">(</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="c1">-- Parte no recursiva: departamento raíz, que no depende de ningún otro</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="n">CodDepDep</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NivDep</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">CodDepDep</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="c1">-- Combina la parte no recursiva y la recursiva</span>
+<span class="hll"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+</span><span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="c1">-- Parte recursiva: selecciona los departamentos que dependen del anterior</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDepDep</span><span class="p">,</span><span class="w"> </span><span class="n">jd</span><span class="p">.</span><span class="n">NivDep</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NivDep</span>
+<span class="hll"><span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">jerarquiaDepartamento</span><span class="w"> </span><span class="n">jd</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDepDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jd</span><span class="p">.</span><span class="n">CodDep</span>
+</span><span class="linenos" data-linenos="13 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- Selecciona todos los empleados con su nivel jerárquico</span>
+<span class="linenos" data-linenos="15 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">jerarquiaDepartamento</span><span class="p">;</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- +--------+----------------------------+-----------+--------+</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- | CodDep | NomDep                     | CodDepDep | NivDep |</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- +--------+----------------------------+-----------+--------+</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">-- | ADMZS  | Administración Zona Sur    | NULL      |      1 |</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">-- | DIRGE  | Dirección General          | NULL      |      1 |</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">-- | JEFZS  | Jefatura Fábrica Zona Sur  | NULL      |      1 |</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">-- | IN&amp;DI  | Investigación y Diseño     | DIRGE     |      2 |</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">-- | PROZS  | Producción Zona Sur        | JEFZS     |      2 |</span>
+<span class="linenos" data-linenos="24 "></span><span class="c1">-- | VENZS  | Ventas Zona Sur            | ADMZS     |      2 |</span>
+<span class="linenos" data-linenos="25 "></span><span class="c1">-- +--------+----------------------------+-----------+--------+</span>
+<span class="linenos" data-linenos="26 "></span><span class="c1">-- 6 rows in set (0.002 sec)</span>
+</code></pre></div>
 </div>
 <h2 id="consultas-y-dlldml">Consultas y DLL/DML<a class="headerlink" href="#consultas-y-dlldml" title="Permanent link">&para;</a></h2>
 <p>Ahora que ya sabemos realizar consultas para obtener todo tipo de información, podemos emplearlas también para insertar, modificar o eliminar los datos que cumplen con los resultados obtenidos de una consulta.</p>
@@ -1782,7 +1812,10 @@ FIXME: Revisar y completar
 </ol>
 </li>
 </ul>
-<p>FIXME: Revisar 808 y 809</p>
+<!--
+FIXME: Revisar 808 y 809
+-->
+
 <p><a name="AR808"></a></p>
 <ul>
 <li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR808</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Realiza todas las consultas del apartado 1.1.7 y 1.1.9 de <em>Consultas resumen</em> de la base de datos de <em>Tienda de informática</em>, que podemos encontrar en las <a href="https://josejuansanchez.org/bd/ejercicios-consultas-sql/index.html">actividades propuestas</a> en los apuntes del docente <em>José Juan Sánchez</em>. Puedes comprobarlas en <a href="https://sql-playground.com/">https://sql-playground.com/</a>.</li>
@@ -1800,7 +1833,10 @@ FIXME: Revisar y completar
 </ol>
 </li>
 </ul>
-<p>FIXME: Revisar AR811 y AP812 - Índices y planes de ejecución</p>
+<!--
+FIXME: Revisar AR811 y AP812 - Índices y planes de ejecución
+-->
+
 <p><a name="AR811"></a></p>
 <ul>
 <li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR811</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Realiza todas las consultas del apartado 1.1.7 y 1.1.9 de <em>Consultas resumen</em> de la base de datos de <em>Tienda de informática</em>, que podemos encontrar en las <a href="https://josejuansanchez.org/bd/ejercicios-consultas-sql/index.html">actividades propuestas</a> en los apuntes del docente <em>José Juan Sánchez</em>. Puedes comprobarlas en <a href="https://sql-playground.com/">https://sql-playground.com/</a>.</li>
@@ -1829,7 +1865,7 @@ FIXME: Revisar y completar
 </ul>
 <p>Se utilizará una rúbrica para su evaluación en base a la siguiente lista de cotejo:</p>
 <ul>
-<li>Limpieza y calidad de los consultas.</li>
+<li>Limpieza y calidad de las consultas.</li>
 <li>Variedad de consultas, desde consultas sencilla a más complejas.</li>
 <li>Documentación de las consultas.</li>
 <li>El informe entregado no contiene faltas de ortografía.</li>
