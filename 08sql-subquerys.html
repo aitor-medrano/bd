@@ -1200,7 +1200,7 @@
 
 <h1 id="subconsultas-optimizacion">Subconsultas. Optimización.<a class="headerlink" href="#subconsultas-optimizacion" title="Permanent link">&para;</a></h1>
 <h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
-<p>En esta unidad finalizaremos el RA3: <strong>Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos</strong>, centrándonos en el uso de subconsultas y los conceptos relacionados con el rendimiento de las consultas, incluyendo el uso de índices, y seguiremos con el RA4 "<strong>Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos</strong>" para incluir en una tabla el resultado de una consulta.</p>
+<p>En esta unidad finalizaremos el RA3 "<strong>Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos</strong>", centrándonos en el uso de subconsultas y los conceptos relacionados con el rendimiento de las consultas, incluyendo el uso de índices, y seguiremos con el RA4 "<strong>Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos</strong>" para incluir en una tabla el resultado de una consulta.</p>
 <h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong><abbr title="Se han realizado consultas con subconsultas.">CE3f</abbr></strong>: Se han realizado consultas con subconsultas. </li>
@@ -1230,19 +1230,19 @@
 <li>¿Para qué sirve una subconsulta?</li>
 <li>¿Qué tipos de subconsulta existen?</li>
 <li>¿Qué operadores podemos utilizar en una subconsulta?</li>
-<li>¿Es mejor hacer un <em>join</em> o realizar una subconsulta?</li>
+<li>¿Es mejor hacer un <code>JOIN</code> o realizar una subconsulta?</li>
 <li>¿Qué diferencia una subconsulta anidada de una correlacionada?</li>
-<li>¿Una subconsulta puede ser anidada y correlacionada?</li>
+<li>¿Puede ser una subconsulta anidada y correlacionada?</li>
 <li>¿Qué es una CTE?</li>
 <li>¿En qué se diferencia una CTE de una vista?</li>
-<li>¿Podemos emplear CTE en operaciones DML?</li>
+<li>¿Podemos emplear CTEs en operaciones DML?</li>
 <li>¿Para qué sirve la sentencia <code>CREATE TABLE ... AS SELECT</code>? ¿Qué usos tiene?</li>
 <li>¿Para qué sirve la sentencia <code>INSERT SELECT</code>? ¿Qué usos tiene?</li>
-<li>¿Puedo utilizar una subconsulta dentro del <code>WHERE</code> en una operación de modificación o borrado? ¿Puedes poner un ejemplo?</li>
+<li>¿Puedo utilizar una subconsulta dentro de la cláusula <code>WHERE</code> en una operación de modificación o borrado? ¿Puedes proporcionar un ejemplo?</li>
 <li>¿Qué es un índice?</li>
-<li>¿Cuando no es recomendable crear un índice? ¿En qué operaciones influye?</li>
+<li>¿Cuándo no es recomendable crear un índice? ¿En qué operaciones influye?</li>
 <li>¿Qué tipos de índices conoces?</li>
-<li>¿Cómo puedo saber si en una consulta determinada se está utilizando o no un índice?</li>
+<li>¿Cómo puedo saber si en una consulta determinada se está utilizando un índice o no?</li>
 </ol>
 </div>
 <h3 id="programacion-de-aula-12h">Programación de Aula (12h)<a class="headerlink" href="#programacion-de-aula-12h" title="Permanent link">&para;</a></h3>
@@ -1265,13 +1265,13 @@
 </tr>
 <tr>
 <td>2</td>
-<td><a href="#in">IN</a></td>
+<td>Operador <a href="#in">IN</a></td>
 <td><a href="#AC801">AC801</a></td>
 <td><abbr title="Se han realizado consultas con subconsultas.">CE3f</abbr></td>
 </tr>
 <tr>
 <td>3</td>
-<td><a href="#all">ALL</a> / <a href="#any">ANY</a> / <a href="#exists">EXISTS</a></td>
+<td>Operadores <a href="#all">ALL</a> / <a href="#any">ANY</a> / <a href="#exists">EXISTS</a></td>
 <td><a href="#AC802">AC802</a></td>
 <td><abbr title="Se han realizado consultas con subconsultas.">CE3f</abbr></td>
 </tr>
@@ -1354,7 +1354,7 @@
 <li>Una subconsulta puede contener a otra subconsulta y ésta a otra y así N veces. El límite lo fija cada SGBD.</li>
 </ul>
 <h3 id="escalares">Escalares<a class="headerlink" href="#escalares" title="Permanent link">&para;</a></h3>
-<p>Las <a href="https://mariadb.com/kb/en/subqueries-scalar-subqueries/">subconsultas escalares</a> son aquellas que devuelven un único valor, lo que facilita su uso en aquellas ocasiones en las que comparamos con un valor.</p>
+<p>Las <a href="https://mariadb.com/kb/en/subqueries-scalar-subqueries/">subconsultas escalares</a> son aquellas que devuelven un único valor (una sola fila y una única columna), lo que facilita su uso en aquellas ocasiones en las que comparamos con un valor.</p>
 <p>Así pues, un ejemplo muy sencillo sería obtener el empleado con el salario más alto:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">--- Salario más alto</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
@@ -2181,7 +2181,12 @@ FIXME: Revisar y completar
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC807</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han identificado las herramientas y sentencias para realizar consultas.">CE3a</abbr>, <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr> // 3p) Sobre la base de datos <code>empresa</code>, realiza las siguientes operaciones DDL o DML:</p>
 <ol>
-<li>asdf</li>
+<li>Crea una tabla <code>empleadosConHijos</code> con aquellos empleados que tienen hijos, añadiendo un campo <code>TipEmp</code> para indicar el tipo de empleado. Todos estos empleados será del tipo <code>Ordinario</code>.</li>
+<li>Modifica el <code>TipEmp</code> de aquellos empleados de la tabla <code>empleadoConHijos</code> que sean directivos de un departamento con el valor <code>DirectorDepto</code>.</li>
+<li>Modifica el <code>TipEmp</code> de aquellos empleados de la tabla <code>empleadoConHijos</code> que sean directivos de un centro con el valor <code>DirectorCentro</code>.</li>
+<li>Añade tanto registros a <code>empleadosConHijos</code> como registros haya en la tabla <code>hijo</code>, y en el tipo asigna el valor <code>Becario</code>. Los hijos deben trabajar en el mismo departamento que sus padres, su salario será 0 y se incorporarán a la empresa el <code>1/1/25</code>.</li>
+<li>Asigna al becario más mayor el mismo salario que el empleado que menos cobre.</li>
+<li>Elimina a todos los empleados en <code>empleadosConHijos</code> que sean del tipo <code>Ordinario</code>.</li>
 </ol>
 </li>
 </ul>
@@ -2200,19 +2205,44 @@ FIXME: Revisar 808 y 809 - DDL / DML
 <p><a name="AC810"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC807</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han identificado las herramientas y sentencias para realizar consultas.">CE3a</abbr>, <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr> // 3p) Sobre la base de datos <code>empresa</code>, ejecuta las siguiente consultas analizando su plan de ejecución:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="p">...</span>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC807</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han identificado las herramientas y sentencias para realizar consultas.">CE3a</abbr>, <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr> // 3p) Sobre la base de datos <code>retail</code>, ejecuta las siguiente consultas analizando su plan de ejecución:</p>
+<ol>
+<li>
+<p>Productos de pedidos completados</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_price</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">order_items</span><span class="w"> </span><span class="n">oi</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oi</span><span class="p">.</span><span class="n">order_item_product_id</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">join</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">oi</span><span class="p">.</span><span class="n">order_item_order_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">where</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;COMPLETE&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>Mediante el plan de ejecución, averigua si utilizan índices, cuáles son y cuantos documentos recorren.</p>
+<p>A continuación crea un índice sobre la columna <code>order_status</code>. Vuelve a ejecutar la consulta y compara el resultado</p>
+</li>
+<li>
+<p>Productos de pedidos cancelados de clientes que viven en <code>Caguas</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_price</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">order_items</span><span class="w"> </span><span class="n">oi</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oi</span><span class="p">.</span><span class="n">order_item_product_id</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">join</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">oi</span><span class="p">.</span><span class="n">order_item_order_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">join</span><span class="w"> </span><span class="n">customers</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">where</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;CANCELED&quot;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Caguas&quot;</span><span class="p">;</span>
 </code></pre></div>
 <p>Averigua si utilizan índices, cuáles son y cuantos documentos recorren.</p>
-<p>A continuación crea un índice sobre la columna <code>.....</code>.  Vuelve a ejecutar la siguiente consulta y compara el resultado</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="p">...</span>
+<p>A continuación crea un índice sobre la columna <code>customer_city</code>. Vuelve a ejecutar la consulta y compara el resultado</p>
+</li>
+<li>
+<p>Categoría y cantidad económica de los productos de pedidos pendientes de clientes que viven en el estado de California (<code>CA</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">ca</span><span class="p">.</span><span class="n">category_name</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">product_price</span><span class="p">)</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">categories</span><span class="w"> </span><span class="n">ca</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">ca</span><span class="p">.</span><span class="n">category_department_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_category_id</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">join</span><span class="w"> </span><span class="n">order_items</span><span class="w"> </span><span class="n">oi</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oi</span><span class="p">.</span><span class="n">order_item_product_id</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">join</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">oi</span><span class="p">.</span><span class="n">order_item_order_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">join</span><span class="w"> </span><span class="n">customers</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_customer_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_id</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">where</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;PENDING&quot;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;CA&quot;</span>
+<span class="linenos" data-linenos="7 "></span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">ca</span><span class="p">.</span><span class="n">category_name</span><span class="p">;</span>
 </code></pre></div>
+<p>Analiza el plan de ejecución y compáralo con la consulta anterior. A continuación crea los índices que consideres oportunos para mejorar la consulta todo lo que se pueda. Vuelve a ejecutar la consulta y compara el resultado</p>
+</li>
+</ol>
 </li>
 </ul>
-<!--
-FIXME: Revisar AR811 y AP812 - Índices y planes de ejecución
--->
-
 <p><a name="AR811"></a></p>
 <ul>
 <li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR811</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Realiza las actividades de la 1 a la 4 del apartado 2.1 sobre la base de datos de <em>Jardinería</em>, que podemos encontrar en las <a href="https://josejuansanchez.org/bd/unidad-10-teoria/index.html">actividades propuestas</a> en los apuntes del docente <em>José Juan Sánchez</em>.</li>

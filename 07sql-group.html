@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Consultas agregadas sobre una o más tablas mediante GROUP BY. Uso de condiciones sobre el resultados de una agregación con HAVING. Funciones ventana y creación de vistas.">
+        <meta name="description" content="Consultas agregadas sobre una o más tablas mediante GROUP BY. Uso de condiciones sobre el resultado de una agregación con HAVING. Funciones ventana y creación de vistas.">
       
       
       
@@ -73,7 +73,7 @@
       
         <meta  property="og:title"  content="Consultas agregadas - Bases de datos" >
       
-        <meta  property="og:description"  content="Consultas agregadas sobre una o más tablas mediante GROUP BY. Uso de condiciones sobre el resultados de una agregación con HAVING. Funciones ventana y creación de vistas." >
+        <meta  property="og:description"  content="Consultas agregadas sobre una o más tablas mediante GROUP BY. Uso de condiciones sobre el resultado de una agregación con HAVING. Funciones ventana y creación de vistas." >
       
         <meta  property="og:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/07sql-group.png" >
       
@@ -89,7 +89,7 @@
       
         <meta  name="twitter:title"  content="Consultas agregadas - Bases de datos" >
       
-        <meta  name="twitter:description"  content="Consultas agregadas sobre una o más tablas mediante GROUP BY. Uso de condiciones sobre el resultados de una agregación con HAVING. Funciones ventana y creación de vistas." >
+        <meta  name="twitter:description"  content="Consultas agregadas sobre una o más tablas mediante GROUP BY. Uso de condiciones sobre el resultado de una agregación con HAVING. Funciones ventana y creación de vistas." >
       
         <meta  name="twitter:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/07sql-group.png" >
       
@@ -1515,10 +1515,12 @@ FIXME: Revisar JJS + formatear
 <li>
 <p>No comprobar la existencia de uno o más valores en las subconsultas. Si la subconsulta devuelve un único registro, podemos usar <code>=</code>. Si no, deberemos utilizar <code>IN</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">--- Incorrecto si la subconsulta retorna más de una fila</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">PreAnu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">Max</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="p">);</span>
-<span class="linenos" data-linenos="3 "></span>
-<span class="linenos" data-linenos="4 "></span><span class="c1">-- Mejor, ya que podemos tener dos departamento con el mismo presupuesto máximo</span>
-<span class="linenos" data-linenos="5 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">PreAnu</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">Max</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="p">);</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">where</span><span class="w"> </span><span class="n">PreAnu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">Max</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="p">);</span>
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- Mejor, ya que podemos tener dos departamento con el mismo presupuesto máximo</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span>
+<span class="linenos" data-linenos="7 "></span><span class="k">where</span><span class="w"> </span><span class="n">PreAnu</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">Max</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="p">);</span>
 </code></pre></div>
 </li>
 <li>
