@@ -16,7 +16,7 @@
         <link rel="prev" href="06sql.html">
       
       
-        <link rel="next" href="00entorno.html">
+        <link rel="next" href="08sql-subquerys.html">
       
       
       <link rel="icon" href="images/favicon.png">
@@ -666,6 +666,26 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08sql-subquerys.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.- Subconsultas. Optimización
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1482,19 +1502,42 @@ FIXME: Revisar JJS + formatear
 <p>De forma general, los errores más comunes a la hora de realizar consultas son:</p>
 <ul>
 <li>
-<p>Utilizar alias de columna en la cláusula WHERE: La cláusula WHERE se ejecuta antes que la cláusula SELECT, por lo que se producirá un error si utilizas un alias en la cláusula WHERE. Para evitar este error, utiliza siempre la expresión original en lugar de un alias en la cláusula WHERE.</p>
+<p>No usar <code>WHERE</code> en las modificaciones o eliminaciones. ¡No te olvide de poner el <code>WHERE</code> en el <code>DELETE FROM</code>!</p>
 </li>
 <li>
-<p>Uso de alias de columna en la cláusula WHERE: Como la cláusula WHERE se ejecuta antes que la cláusula SELECT, intentar utilizar un alias en WHERE dará lugar a un error. Comprender que SQL evalúa WHERE antes de la cláusula SELECT te enseña que debes repetir la expresión completa en lugar de confiar en un alias.</p>
+<p>Confundir la comparación de valores nulos, utilizando la asignación en vez del operador <code>IS NULL</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">--- Incorrecto</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NULL</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- Correcto</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">NULL</span>
+</code></pre></div>
 </li>
 <li>
-<p>Utilizar HAVING para filtrar filas en lugar de WHERE: La cláusula HAVING se ejecuta después de GROUP BY y está pensada para filtrar datos agregados. Si estás filtrando datos no agregados, pertenece a la cláusula WHERE. Conocer la diferencia en el orden de ejecución entre WHERE y HAVING te ayuda a determinar dónde debe colocarse cada condición.</p>
+<p>No comprobar la existencia de uno o más valores en las subconsultas. Si la subconsulta devuelve un único registro, podemos usar <code>=</code>. Si no, deberemos utilizar <code>IN</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">--- Incorrecto si la subconsulta retorna más de una fila</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">PreAnu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">Max</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="p">);</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">-- Mejor, ya que podemos tener dos departamento con el mismo presupuesto máximo</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">PreAnu</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">Max</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="p">);</span>
+</code></pre></div>
 </li>
 <li>
-<p>Uso incorrecto de agregados en SELECT sin GROUP BY: Puesto que GROUP BY se ejecuta antes que HAVING o SELECT, si no agrupas tus datos antes de aplicar una función de agregado, se producirán resultados incorrectos o errores. Comprender el orden de ejecución aclara por qué estas dos cláusulas deben ir juntas.</p>
+<p>Utilizar <code>HAVING</code> para filtrar filas en lugar de <code>WHERE</code>: La cláusula <code>HAVING</code> se ejecuta después de <code>GROUP BY</code> y está pensada para filtrar datos agregados. Si estás filtrando datos no agregados, pertenece a la cláusula <code>WHERE</code>. Conocer la diferencia en el orden de ejecución entre WHERE y HAVING te ayuda a determinar dónde debe colocarse cada condición.</p>
+<p>Si quiero obtener los departamentos que tiene más de 5 empleados:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Incorrecto</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">WHERE</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">departamento_id</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- Correcto</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CodDep</span>
+<span class="linenos" data-linenos="10 "></span><span class="k">HAVING</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</code></pre></div>
 </li>
 <li>
-<p>No utilizar correctamente los alias en la cláusula ORDER BY: A diferencia de la cláusula WHERE, la cláusula ORDER BY se evalúa después de SELECT. Esto te permite utilizar los alias creados en SELECT para la clasificación, ayudándote a evitar confusiones al saber cuándo están disponibles los alias para su uso.</p>
+<p>Uso incorrecto de agregaciones en <code>SELECT</code> sin <code>GROUP BY</code>: Puesto que <code>GROUP BY</code> se ejecuta antes que <code>HAVING</code> o <code>SELECT</code>, si no agrupas tus datos antes de aplicar una función de agregado, se producirán resultados incorrectos o errores. Comprender el orden de ejecución aclara por qué estas dos cláusulas deben ir juntas.</p>
 </li>
 </ul>
 <h2 id="funciones-ventana">Funciones ventana<a class="headerlink" href="#funciones-ventana" title="Permanent link">&para;</a></h2>
@@ -1950,7 +1993,7 @@ You cannot associate a trigger with a view.
 <p><a name="AC707"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC707</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>retail</code> realiza las siguientes consultas:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC707</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>retail</code> realiza las siguientes consultas, recuperando siempre el nombre de los/as:</p>
 <ol>
 <li>Categorías con más de 5 productos.</li>
 <li>Ciudades con más de 2 clientes.</li>
@@ -2218,13 +2261,13 @@ para la gestión de la información almacenada.
         
         
           
-          <a href="00entorno.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Entorno">
+          <a href="08sql-subquerys.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 8.- Subconsultas. Optimización">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Siguiente
               </span>
               <div class="md-ellipsis">
-                Entorno
+                8.- Subconsultas. Optimización
               </div>
             </div>
             <div class="md-footer__button md-icon">
