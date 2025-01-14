@@ -13,6 +13,10 @@
         <link rel="canonical" href="https://aitor-medrano.github.io/bd/09dcl-tcl.html">
       
       
+        <link rel="prev" href="08sql-subquerys.html">
+      
+      
+        <link rel="next" href="00entorno.html">
       
       
       <link rel="icon" href="images/favicon.png">
@@ -440,6 +444,177 @@
       
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    9.- Lenguaje SQL: DCL y TCL
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="09dcl-tcl.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    9.- Lenguaje SQL: DCL y TCL
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propuesta-didactica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Propuesta didáctica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Propuesta didáctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programacion-de-aula-8h" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programación de Aula (8h)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seguridad
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dcl" class="md-nav__link">
+    <span class="md-ellipsis">
+      DCL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DCL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usuarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permisos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transacciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transacciones
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     <li class="md-nav__item">
@@ -529,16 +704,7 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#en-esta-ut-finalizaremos-los-ra2-crea-bases-de-datos-definiendo-su-estructura-y-las-caracteristicas-de-sus-elementos-segun-el-modelo-relacional-y-ra4-modifica-la-informacion-almacenada-en-la-base-de-datos-utilizando-asistentes-herramientas-graficas-y-el-lenguaje-de-manipulacion-de-datos" class="md-nav__link">
-    <span class="md-ellipsis">
-      En esta UT finalizaremos los RA2: Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional y RA4: Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="En esta UT finalizaremos los RA2: Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional y RA4: Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">
+    <nav class="md-nav" aria-label="Propuesta didáctica">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -588,6 +754,30 @@
       DCL
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="DCL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usuarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usuarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permisos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permisos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -670,7 +860,7 @@
 
 <h1 id="sql-control-de-usuarios">SQL - Control de usuarios<a class="headerlink" href="#sql-control-de-usuarios" title="Permanent link">&para;</a></h1>
 <h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
-<h2 id="en-esta-ut-finalizaremos-los-ra2-crea-bases-de-datos-definiendo-su-estructura-y-las-caracteristicas-de-sus-elementos-segun-el-modelo-relacional-y-ra4-modifica-la-informacion-almacenada-en-la-base-de-datos-utilizando-asistentes-herramientas-graficas-y-el-lenguaje-de-manipulacion-de-datos">En esta UT finalizaremos los RA2: <strong>Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional</strong> y RA4: <strong>Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos</strong>.<a class="headerlink" href="#en-esta-ut-finalizaremos-los-ra2-crea-bases-de-datos-definiendo-su-estructura-y-las-caracteristicas-de-sus-elementos-segun-el-modelo-relacional-y-ra4-modifica-la-informacion-almacenada-en-la-base-de-datos-utilizando-asistentes-herramientas-graficas-y-el-lenguaje-de-manipulacion-de-datos" title="Permanent link">&para;</a></h2>
+<p>En esta UT finalizaremos los RA2: <strong>Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional</strong> y RA4: <strong>Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos</strong>.</p>
 <h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
 <p>Respecto al <abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>:</p>
 <ul>
@@ -679,7 +869,6 @@
 </ul>
 <p>Respecto al <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr>:</p>
 <ul>
-<li><strong><abbr title="Se ha incluido en una tabla la información resultante de la ejecución de una consulta.">CE4c</abbr></strong>: Se ha incluido en una tabla la información resultante de la ejecución de una consulta. </li>
 <li><strong><abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr></strong>: Se han diseñado guiones de sentencias para llevar a cabo tareas complejas. </li>
 <li><strong><abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr></strong>: Se ha reconocido el funcionamiento de las transacciones.</li>
 <li><strong><abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr></strong>: Se han anulado parcial o totalmente los cambios producidos por una transacción. </li>
@@ -704,7 +893,7 @@
 </ol>
 </div>
 <h3 id="programacion-de-aula-8h">Programación de Aula (8h)<a class="headerlink" href="#programacion-de-aula-8h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la quinta, siendo la primera del bloque de consultas, impartiéndose al principio de la segunda evaluación, a principios de diciembre, con una duración estimada de 8 sesiones lectivas:</p>
+<p>Esta unidad es la novena, impartiéndose a mitad de la segunda evaluación, a principios de febrero, con una duración estimada de 8 sesiones lectivas:</p>
 <table>
 <thead>
 <tr>
@@ -760,7 +949,70 @@
 </tbody>
 </table>
 <h2 id="seguridad">Seguridad<a class="headerlink" href="#seguridad" title="Permanent link">&para;</a></h2>
+<p>La seguridad en un Sistema de Gestión de Bases de Datos (SGBD) es fundamental para proteger la integridad, confidencialidad y disponibilidad de la información almacenada. Para ello, los SGBD implementan mecanismos de control de acceso mediante la gestión de usuarios y la asignación de privilegios. Este control permite definir qué operaciones puede realizar cada usuario o rol sobre los distintos objetos de la base de datos, limitando el acceso a información sensible y previniendo acciones no autorizadas. En SQL, el Lenguaje de Control de Datos (DCL) facilita esta gestión a través de sentencias como <code>GRANT</code> y <code>REVOKE</code>, que permiten otorgar o revocar permisos de acceso y modificación sobre los datos. De esta forma, se establece un entorno seguro donde cada usuario tiene acceso únicamente a los recursos necesarios para sus funciones.</p>
+<p>Además del control de acceso, la seguridad de un SGBD también se refuerza mediante el uso de transacciones y políticas de bloqueo y concurrencia. Las transacciones garantizan que las operaciones sobre la base de datos se ejecuten de manera atómica, consistente, aislada y duradera (propiedades ACID), lo que previene inconsistencias en caso de errores o fallos del sistema. Para manejar el acceso concurrente de múltiples usuarios, los SGBD implementan mecanismos de bloqueo que evitan conflictos y garantizan la integridad de los datos. Estos bloqueos, combinados con estrategias de control de concurrencia, aseguran que las transacciones se gestionen de forma ordenada y segura, minimizando riesgos como condiciones de carrera, lecturas sucias o actualizaciones perdidas. Todo esto contribuye a mantener la coherencia y fiabilidad de la base de datos frente a accesos simultáneos y posibles fallos.</p>
 <h2 id="dcl">DCL<a class="headerlink" href="#dcl" title="Permanent link">&para;</a></h2>
+<p>El <strong>Lenguaje de Control de Datos (DCL)</strong> es una de las principales categorías del lenguaje SQL, diseñado específicamente para gestionar los permisos y privilegios de acceso a los objetos dentro de una base de datos. Su objetivo es establecer políticas de seguridad que determinen qué usuarios o roles pueden interactuar con los datos y de qué manera. A través del DCL, los administradores de bases de datos pueden otorgar o revocar permisos, asegurando que cada usuario solo pueda realizar las acciones que le han sido expresamente autorizadas. Este control es esencial para proteger la información sensible, evitar accesos no autorizados y mantener la integridad de los datos.</p>
+<h3 id="usuarios">Usuarios<a class="headerlink" href="#usuarios" title="Permanent link">&para;</a></h3>
+<p>La gestión de usuarios en un SGBD es fundamental para controlar el acceso y garantizar la seguridad de la información. SQL proporciona comandos específicos para crear, modificar y eliminar usuarios, aunque la sintaxis puede variar ligeramente según el SGBD (como <em>MariaDB</em>, <em>PostgreSQL</em> u <em>Oracle</em>).</p>
+<p>Para <strong>crear</strong> un nuevo usuario se realiza con la sentencia <a href="https://mariadb.com/kb/en/create-user/">CREATE USER</a>, mediante la sintaxis</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">nombre_usuario</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;contraseña&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>En MySQL/MariaDB, podemos especificar el <em>host</em> desde donde se permite la conexión:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;nombre_usuario&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;contraseña&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>Si necesitamos <strong>cambiar</strong> la contraseña o actualizar las propiedades de un usuario existente, utilizaremos la instrucción <a href="https://mariadb.com/kb/en/alter-user/"><code>ALTER USER</code></a>, con la sintaxis:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">nombre_usuario</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;nueva_contraseña&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>También se pueden modificar atributos adicionales, como el límite de conexiones o configuraciones de autenticación.</p>
+<p>Finalmente, para <strong>eliminar</strong> usuarios utilizaremos la sentencia <a href="https://mariadb.com/kb/en/drop-user/"><code>DROP USER</code></a>, revocando todos sus privilegios y eliminando su acceso a la base de datos.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">nombre_usuario</span><span class="p">;</span>
+</code></pre></div>
+<p>Es recomendable revocar previamente los permisos asignados para asegurar una gestión ordenada.</p>
+<h3 id="permisos">Permisos<a class="headerlink" href="#permisos" title="Permanent link">&para;</a></h3>
+<p>Las principales sentencias del DCL son <strong><code>GRANT</code></strong> y <strong><code>REVOKE</code></strong>.</p>
+<p>La instrucción <code>GRANT</code> permite asignar permisos específicos a usuarios o roles, como la capacidad de consultar (<code>SELECT</code>), insertar (<code>INSERT</code>), actualizar (<code>UPDATE</code>) o eliminar (<code>DELETE</code>) datos en tablas o vistas. También se pueden otorgar privilegios sobre procedimientos almacenados o esquemas completos.</p>
+<p>Por otro lado, la sentencia <code>REVOKE</code> se utiliza para retirar esos permisos cuando ya no son necesarios o cuando se detecta un posible riesgo de seguridad.</p>
+<p>Además, algunos sistemas permiten incluir la opción <strong><code>WITH GRANT OPTION</code></strong>, que autoriza a un usuario a conceder los privilegios que ha recibido a otros usuarios. Esta gestión granular de permisos es clave para implementar políticas de seguridad robustas, evitando accesos indebidos y minimizando el riesgo de errores o ataques malintencionados.</p>
+<ol start="4">
+<li><strong>Asignar y revocar permisos:</strong><br />
+   Tras crear un usuario, es necesario asignar permisos mediante el DCL con <code>GRANT</code> y retirarlos con <code>REVOKE</code>.<br />
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">base_de_datos</span><span class="p">.</span><span class="n">tabla</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">nombre_usuario</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">REVOKE</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">base_de_datos</span><span class="p">.</span><span class="n">tabla</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">nombre_usuario</span><span class="p">;</span>
+</code></pre></div>
+   Para conceder permisos administrativos, se puede usar:<br />
+   <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">base_de_datos</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">nombre_usuario</span><span class="p">;</span>
+</code></pre></div></li>
+</ol>
+<p>Una gestión adecuada de usuarios implica también definir roles, agrupar permisos y establecer políticas de acceso según los principios de <em>mínimos privilegios</em>, donde cada usuario tiene solo los permisos estrictamente necesarios.</p>
+<p>Conceder privilegios sobre un objeto: <a href="https://mariadb.com/kb/en/grant/">GRANT</a></p>
+<p>GRANT privilegio ON objeto TO usuario [WITH GRANT OPTIONS]</p>
+<p>Revocar privilegios sobre un objeto: <a href="https://mariadb.com/kb/en/revoke/"><code>REVOKE</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">REVOKE</span><span class="w"> </span><span class="n">privilegio</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">objeto</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">usuario</span>
+</code></pre></div>
+<p><a href="https://mariadb.com/kb/en/show-privileges/"><code>SHOW PRIVILEGES</code></a>: muestra todos los privilegios posibles.</p>
+<ul>
+<li>USAGE: para usar un objeto específico de la base de datos.</li>
+<li>SELECT: para acceder a tablas o vistas.</li>
+<li>
+<p>INSERT[(nombre_columna)]: Si se especifica el nombre_columna, se otorga permiso para insertar en la columna especificada. Si se omite entonces se permite insertar valores en todas las columnas.</p>
+</li>
+<li>
+<p>UPDATE[(nombre_columna)]: Lo mismo que INSERT para modificar.</p>
+</li>
+<li>DELETE: para eliminar registros de una tabla o vista.</li>
+<li>REFERENCES[(nombre_columna)]: Si se especifica nombre_columna permite referirse a la
+columna indicada como vínculo de integridad, si se omite se aplica a todas las comunas y también a las que se añadan después.</li>
+<li><code>GRANT OPTION</code>: permite dar permisos a otro usuario.</li>
+<li><code>ALL</code>: otorga todos los permisos menos <code>GRANT OPTION</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;desarrollador&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;desarrollador&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="s1">&#39;desarrollador&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">oficina</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="s1">&#39;desarrollador&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">jardineria</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">SHOW</span><span class="w"> </span><span class="n">GRANTS</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">CURRENT_USER</span><span class="p">;</span>
+</code></pre></div>
 <h2 id="transacciones">Transacciones<a class="headerlink" href="#transacciones" title="Permanent link">&para;</a></h2>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
@@ -770,8 +1022,8 @@
 <li>
 <p>Materiales sobre el módulo de BD:</p>
 <ul>
-<li><em>Consultes de selecció <a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u4/a1/continguts.html">simple</a> i <a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u4/a2/continguts.html">complexes</a> - Institut Obert de Catalunya</em>.</li>
-<li>Consultas <a href="https://josejuansanchez.org/bd/unidad-05-teoria/index.html">sobre una tabla</a>, sobre <a href="https://josejuansanchez.org/bd/unidad-06-teoria/index.html">varias tablas con composición interna</a>, y con <a href="https://josejuansanchez.org/bd/unidad-07-teoria/index.html">varias tablas con composición externa</a> de <em>José Juan Sánchez</em>.</li>
+<li><em><a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u6/a1/continguts.html">Gestió d'usuaris i privilegis</a></em> i <em><a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u5/a3/continguts.html">Control de transaccions i concurrencia</a></em> - <em>Institut Obert de Catalunya</em>.</li>
+<li><a href="https://josejuansanchez.org/bd/unidad-dcl-sql-teoria/index.html">Lenguaje de control de datos (DCL)</a>  de <em>José Juan Sánchez</em>.</li>
 <li><a href="https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html">Introducción a SQL</a> de <em>Jorge Sánchez</em>.</li>
 <li><a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut4/recopila.html">Realización de consultas</a> de <em>Javier Gutiérrez</em>.</li>
 <li><a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema4/index.html">Consulta de bases de datos</a> de gestionbasesdatos.readthedocs.io</li>
@@ -944,6 +1196,44 @@ para la gestión de la información almacenada.
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="08sql-subquerys.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 8.- Subconsultas. Optimización">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                8.- Subconsultas. Optimización
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="00entorno.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Entorno">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Entorno
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
