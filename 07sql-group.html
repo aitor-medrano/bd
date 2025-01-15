@@ -2031,12 +2031,31 @@ You cannot associate a trigger with a view.
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC708</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>empresa</code>, y utilizando funciones ventana, realiza las siguientes consultas:</p>
 <ol>
-<li>Edad de cada empleado en comparación con la media del centro</li>
-<li>Empleados con salario mayor al promedio de su departamento</li>
-<li>Máximo y mínimo salario por tipo de dirección del departamento</li>
-<li>Diferencia entre salario de un empleado y el máximo de su departamento</li>
-<li>Ordenación jerárquica: antigüedad en el puesto por centro</li>
-<li>Comparación de fechas de incorporación: tiempo transcurrido entre empleados</li>
+<li>Para cada empleado, muestra su nombre, edad, y la edad media del centro donde trabaja.</li>
+<li>Muestra para cada empleado, su código de departamento, nombre, salario, el salario promedio de su departamento, y <code>Por encima</code> o <code>Por debajo</code> si el empleado cobra más que su departamento.</li>
+<li>Máximo y mínimo salario por tipo de director de departamento.</li>
+<li>Para cada empleado, además de su nombre y el nombre del departamento, su salario, el salario máximo y la diferencia entre ellos.</li>
+<li>Ranking de antigüedad de los empleados en la empresa por centro</li>
+<li>
+<p>Comparación de fechas de incorporación: tiempo transcurrido entre empleados del mismo departamento.</p>
+<p>El resultado a obtener debe ser similar a:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>+--------+-----------------------------+------------+----------------+--------------------+
+<span class="linenos" data-linenos=" 2 "></span>| CodDep | NomEmp                      | FecInEmp   | FechaSiguiente | DiasHastaSiguiente |
+<span class="linenos" data-linenos=" 3 "></span>+--------+-----------------------------+------------+----------------+--------------------+
+<span class="linenos" data-linenos=" 4 "></span>| ADMZS  | Alada Veraz, Juana          | 1976-08-07 | NULL           |               NULL |
+<span class="linenos" data-linenos=" 5 "></span>| DIRGE  | Saladino Mandamás, Augusto  | 1972-07-01 | NULL           |               NULL |
+<span class="linenos" data-linenos=" 6 "></span>| IN&amp;DI  | Manrique Bacterio, Luisa    | 1991-06-14 | NULL           |               NULL |
+<span class="linenos" data-linenos=" 7 "></span>| JEFZS  | Gozque Altanero, Cándido    | 1991-08-01 | NULL           |               NULL |
+<span class="linenos" data-linenos=" 8 "></span>| PROZS  | Mando Correa, Rosa          | 1982-06-10 | 1993-11-02     |               4163 |
+<span class="linenos" data-linenos=" 9 "></span>| PROZS  | Mosc Amuerta, Mario         | 1993-11-02 | 1994-06-30     |                240 |
+<span class="linenos" data-linenos="10 "></span>| PROZS  | Forzado López, Galeote      | 1994-06-30 | 1994-08-15     |                 46 |
+<span class="linenos" data-linenos="11 "></span>| PROZS  | Mascullas Alto, Eloísa      | 1994-08-15 | NULL           |               NULL |
+<span class="linenos" data-linenos="12 "></span>| VENZS  | Monforte Cid, Roldán        | 1984-06-08 | 1990-08-09     |               2253 |
+<span class="linenos" data-linenos="13 "></span>| VENZS  | Topaz Illán, Carlos         | 1990-08-09 | NULL           |               NULL |
+<span class="linenos" data-linenos="14 "></span>+--------+-----------------------------+------------+----------------+--------------------+
+<span class="linenos" data-linenos="15 "></span>10 rows in set (0.002 sec)
+</code></pre></div>
+</li>
 </ol>
 </li>
 </ul>
@@ -2046,19 +2065,19 @@ You cannot associate a trigger with a view.
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC709</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado vistas.">CE2f</abbr> // 3p) Sobre la base de datos <code>empresa</code> se pide crear las siguientes vistas:</p>
 <ol>
 <li><code>empleado_anyos</code>: Para cada empleado, mostrar, además de su código y nombre, su edad y los años de antigüedad en la empresa.</li>
-<li><code>centro_presupuesto</code>: Para cada centro, mostrar su presupuesto anual y el código y el nombre de su director.</li>
-<li><code>empleado_habilidades</code>: Para cada empleado, además de su código y nombre, muestre qué habilidades tiene.</li>
+<li><code>centro_presupuesto</code>: Para cada centro, además de su código y nombre, mostrar su presupuesto anual y el código, el nombre de su director y su tipo, mostrando <code>Definitivo</code> si es <code>P</code>, <code>Parcial</code> si es <code>F</code> o <code>Desconocido</code> en cualquier otro caso.</li>
+<li><code>empleado_habilidades</code>: Para cada empleado, además de su código y nombre, muestre qué habilidades tiene. Si un empleado tiene más de una habilidad, deberá aparecer más de una vez.</li>
 <li><code>empleado_habilidades_total</code>: Para cada empleado, muestre qué habilidades tiene y una columna con el total de habilidades de dicho empleado (si no tiene habilidades, debe aparecer el empleado, pero con dicho valor a 0).</li>
-<li><code>departamento_jerarquia</code>: Para cada departamento, muestra el nombre de su departamento superior, si lo tienen (deben aparecer todos).</li>
+<li><code>departamento_jerarquia</code>: Para cada departamento, muestra el nombre de su departamento superior, si lo tienen (deben aparecer todos los departamentos).</li>
 </ol>
 <p>Utilizando las vistas creadas, se pide:</p>
 <ol>
 <li>Muestra para cada centro, además del presupuesto, el nombre de su director, edad y años en la empresa.</li>
-<li>Muestra para cada empleado, su código, nombre, cuantas habilidades tiene, y el nombre del departamento en el que trabajar, y el nombre de su departamento superior.</li>
+<li>Muestra para cada empleado, su código, nombre, cuantas habilidades tiene, y el nombre del departamento en el que trabaja y el nombre de su departamento superior.</li>
 </ol>
 </li>
 </ul>
-<p><a name="AC710"></a></p>
+<p><a name="AP710"></a></p>
 <ul>
 <li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP710</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado vistas.">CE2f</abbr> // 3p) Realiza todas las consultas del apartado 1.9.1 de vistas sobre la base de datos de <em>Jardinería</em>, que podemos encontrar en las <a href="https://josejuansanchez.org/bd/unidad-vistas-sql-teoria/index.html">actividades propuestas</a> en los apuntes del docente <em>José Juan Sánchez</em>. Puedes comprobarlas en <a href="https://sql-playground.com/">https://sql-playground.com/</a>.</li>
 </ul>
@@ -2096,8 +2115,8 @@ You cannot associate a trigger with a view.
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg></span> <strong>PY712</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han creado vistas.">CE2f</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr> //  10p) Siguiendo el reto y la actividad de proyecto <a href="06sql.html#PY615">PY615</a>, en esta actividad nos vamos a centrar en añadir más consultas para explotar nuestra base de datos.</p>
 <p>Para ello, se pide un informe que detalle:</p>
 <ul>
-<li>Definición de 6 consultas agregadas que extraigan información, las cuales deben utilizar combinaciones de tablas (ya sean internas o externas) y/o filtrado.</li>
-<li>Creación de 2 consultas que utilicen funciones ventana.</li>
+<li>Definición de 7 consultas agregadas que extraigan información, las cuales deben utilizar combinaciones de tablas (ya sean internas o externas) y/o filtrado.</li>
+<li>Creación de 1 consulta que utilice funciones ventana.</li>
 <li>Creación de 2 vistas sobre alguna de las consultas ya definidas.</li>
 <li>Resolución mediante SQL de cada una de las consultas.</li>
 <li>Resultados de su ejecución sobre el modelo físico.</li>
