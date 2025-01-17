@@ -1797,7 +1797,7 @@ Una vez creada, podemos hacer consultas sobre la vista:</p>
 </span><span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- 5 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>¿Y si inserto un nuevo empleado en la vista pero que sí tienes hijos?</p>
+<p>¿Y si inserto un nuevo empleado en la vista pero que sí tiene hijos?</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">44</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;PROZS&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;2024-11-30&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;1977-01-01&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;87654321A&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Blasco Antón, Estefanía&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1234567</span><span class="p">.</span><span class="mi">89</span><span class="p">);</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
@@ -1849,9 +1849,9 @@ FIXME: Revisar - https://www.datacamp.com/tutorial/views-in-sql
 -->
 
 <h3 id="restricciones">Restricciones<a class="headerlink" href="#restricciones" title="Permanent link">&para;</a></h3>
-<p>Dicho esto, las vistas también tienen ciertas restricciones:</p>
+<p>Dicho esto, a la hora de modificar el contenido de una vista, tenemos ciertas restricciones:</p>
 <ul>
-<li>No se puede cuando la vista utiliza <code>having</code>, <code>group by</code>, <code>distinct</code>.  <code>union</code>.  <code>union all</code> o funciones agregadas (<code>max</code>, <code>min</code>, <code>sum</code>, <code>count</code>)…</li>
+<li>No se puede modificar el contenido cuando ésta utiliza <code>having</code>, <code>group by</code>, <code>distinct</code>,  <code>union</code>,  <code>union all</code> o funciones agregadas (<code>max</code>, <code>min</code>, <code>sum</code>, <code>count</code>)…</li>
 <li>Todos los campos de la vista deben contener los campos no nulos de las tablas base que no tienen valores por defecto.</li>
 <li>Los campos de la vista son campos simples, sin derivados (cálculos, lowercase, …)</li>
 </ul>
