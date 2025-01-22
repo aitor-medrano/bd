@@ -935,7 +935,6 @@
 </ul>
 <p>Respecto al <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr>:</p>
 <ul>
-<li><strong><abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr></strong>: Se han diseñado guiones de sentencias para llevar a cabo tareas complejas. </li>
 <li><strong><abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr></strong>: Se ha reconocido el funcionamiento de las transacciones.</li>
 <li><strong><abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr></strong>: Se han anulado parcial o totalmente los cambios producidos por una transacción. </li>
 <li><strong><abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr></strong>: Se han identificado los efectos de las distintas políticas de bloqueo de registros. </li>
@@ -957,7 +956,10 @@
 <ol>
 <li>¿Qué mecanismos de control de acceso implementan los SGBD?</li>
 <li>¿Qué sublenguaje de SQL se encarga de gestionar el control de acceso de los usuarios?</li>
-<li>¿Cómo puedo crear un usuario en MariaDB?</li>
+<li>¿Cómo puedo crear un usuario en <em>MariaDB</em>?</li>
+<li>A la hora de crear un usuario, ¿Puedo indicar desde qué <em>hosts</em> se puede conectar? ¿De qué manera?</li>
+<li>¿Qué tipo de permisos se le pueden dar a un usuario sobre un recurso?</li>
+<li>¿Qué cláusula es necesaria incluir a la hora de crear un usuario para que el nuevo usuario pueda dar permisos a otros usuarios?</li>
 </ol>
 </div>
 <h3 id="programacion-de-aula-8h">Programación de Aula (8h)<a class="headerlink" href="#programacion-de-aula-8h" title="Permanent link">&para;</a></h3>
@@ -974,13 +976,13 @@
 <tbody>
 <tr>
 <td>1</td>
-<td>Gestión de usuarios</td>
+<td>DCL. Gestión de <a href="#usuarios">usuarios</a></td>
 <td><a href="#AC901">AC901</a></td>
 <td><abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr></td>
 </tr>
 <tr>
 <td>2</td>
-<td>Gestión de permisos</td>
+<td>Gestión de <a href="#permisos">permisos</a></td>
 <td><a href="#">AC902</a></td>
 <td><abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr></td>
 </tr>
@@ -988,31 +990,31 @@
 <td>4</td>
 <td>Transacciones</td>
 <td><a href="#">AC903</a></td>
-<td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
+<td><abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr></td>
 </tr>
 <tr>
 <td>5</td>
 <td>Uso de commit</td>
 <td><a href="#">AC903</a></td>
-<td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
+<td><abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr></td>
 </tr>
 <tr>
 <td>6</td>
 <td>Deshaciendo transacciones</td>
 <td><a href="#">AC906</a></td>
-<td><abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
+<td><abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr></td>
 </tr>
 <tr>
 <td>7</td>
 <td><em>Checkpoints</em></td>
 <td><a href="#">AC907</a></td>
-<td><abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
+<td><abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr></td>
 </tr>
 <tr>
 <td>8</td>
 <td>Supuesto</td>
 <td><a href="#">AC912</a></td>
-<td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
+<td><abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr>, <abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr></td>
 </tr>
 </tbody>
 </table>
@@ -1036,7 +1038,7 @@
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;nombre_usuario&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;contraseña&#39;</span><span class="p">;</span>
 </code></pre></div>
 <p>Recuerda que cuando comenzamos a usar <em>MariaDB</em>, el usuario se creó desde <em>Docker</em>, pero podemos crear uno nuevo mediante:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">s8abd</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;s8a&#39;</span><span class="w"> </span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">s8abd</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;s8a&#39;</span><span class="p">;</span>
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Usuarios existentes</p>
@@ -1058,6 +1060,9 @@
 </code></pre></div>
 <p>La columna <code>host</code> indica desde dónde nos podemos conectar a la base de datos, de manera que mediante <code>root</code> sólo nos podemos conectar desde la propia máquina (<code>localhost</code>), mientras que los usuarios <code>s8a</code> y <code>s8abd</code> pueden conectarse desde cualquier lugar (<code>%</code> hace la función de comodín).</p>
 </div>
+<p>Si hubiéramos querido que nuestro usuario sólo pudiera conectarse desde <em>localhost</em> (o cualquier otro <em>host</em>), hemos de indicarlo indicando <code>nombre_usuario@host</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">s8abd</span><span class="o">@</span><span class="n">localhost</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;s8a&#39;</span><span class="p">;</span>
+</code></pre></div>
 <p>Si necesitamos <strong>cambiar</strong> la contraseña o actualizar las propiedades de un usuario existente, utilizaremos la instrucción <a href="https://mariadb.com/kb/en/alter-user/"><code>ALTER USER</code></a>, con la sintaxis:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">nombre_usuario</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;nueva_contraseña&#39;</span><span class="p">;</span>
 </code></pre></div>
@@ -1098,41 +1103,56 @@
 <p>Así pues, mediante la sentencia <a href="https://mariadb.com/kb/en/grant/">GRANT</a> daremos privilegios a un usuarios sobre uno o más objetos, mediante la siguiente sintaxis:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="n">privilegio</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">objeto</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="p">[</span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTIONS</span><span class="p">]</span>
 </code></pre></div>
-<p>Por ejemplo,</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">empresa</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">s8abd</span><span class="p">;</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">retail</span><span class="p">.</span><span class="n">customers</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">s8abd</span><span class="p">;</span>
-</code></pre></div>
-<p>Si queremos dar permisos de administración, podemos usar:  </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">base_de_datos</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">nombre_usuario</span><span class="p">;</span>
-</code></pre></div>
-<p>Una gestión adecuada de usuarios implica también definir roles, agrupar permisos y establecer políticas de acceso según los principios de <em>mínimos privilegios</em>, donde cada usuario tiene solo los permisos estrictamente necesarios.</p>
-<div class="admonition info">
-<p class="admonition-title">Permisos disponibles</p>
-<p><a href="https://mariadb.com/kb/en/show-privileges/"><code>SHOW PRIVILEGES</code></a>: muestra todos los privilegios posibles.</p>
+<p>Los posibles privilegios (los cuales podemos consultar con el comando <a href="https://mariadb.com/kb/en/show-privileges/"><code>SHOW PRIVILEGES</code></a>) más comunes son:</p>
 <ul>
 <li><code>USAGE</code>: para usar un objeto específico de la base de datos.</li>
 <li><code>SELECT</code>: para acceder a tablas o vistas.</li>
-<li><code>INSERT[(nombre_columna)]:</code> Si se especifica el nombre_columna, se otorga permiso para insertar en la columna especificada. Si se omite entonces se permite insertar valores en todas las columnas.</li>
+<li><code>INSERT[(nombre_columna)]:</code> Si se especifica el <code>nombre_columna</code>, se otorga permiso para insertar en la columna especificada. Si se omite entonces se permite insertar valores en todas las columnas.</li>
 <li><code>UPDATE[(nombre_columna)]</code>: Lo mismo que <code>INSERT</code> para modificar.</li>
 <li><code>DELETE</code>: para eliminar registros de una tabla o vista.</li>
-<li><code>REFERENCES[(nombre_columna)]</code>: Si se especifica nombre_columna permite referirse a la
-columna indicada como vínculo de integridad, si se omite se aplica a todas las comunas y también a las que se añadan después.</li>
 <li><code>GRANT OPTION</code>: permite dar permisos a otro usuario.</li>
 <li><code>ALL</code>: otorga todos los permisos menos <code>GRANT OPTION</code>.</li>
 </ul>
-</div>
+<p>Y para indicar el recurso se emplea la nomenclatura <code>bd.recurso</code>, siendo <em>recurso</em> una tabla, vista, etc...</p>
+<p>Por ejemplo, si nos conectamos con el usuario <code>s8a</code> el cual sí que tiene permisos para dar privilegios, podemos hacer:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">empresa</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">s8abd</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">retail</span><span class="p">.</span><span class="n">customers</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">s8abd</span><span class="p">;</span>
+</code></pre></div>
+<p>Si nos conectamos con ese nuevo usuario, y accedemos a la base de datos de <code>retail</code>, podemos ver que sólo puede ver la tabla <code>customers</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">use</span><span class="w"> </span><span class="n">retail</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">show</span><span class="w"> </span><span class="n">tables</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- +------------------+</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">-- | Tables_in_retail |</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- +------------------+</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">-- | customers        |</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">-- +------------------+</span>
+<span class="linenos" data-linenos="8 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
+</code></pre></div>
+<p>Finalmente, si queremos dar permisos de administración a un usuario haremos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">base_de_datos</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">nombre_usuario</span><span class="p">;</span>
+</code></pre></div>
+<p>Si queremos que los usuarios que creamos puedan dar permisos a futuros usuarios, necesitamos indicarlo con <code>WITH GRANT OPTION</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">base_de_datos</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">nombre_usuario</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span>
+</code></pre></div>
+<p>Así pues, si quisiéramos crear un nuevo usuario <code>administrador</code> que pueda hacer de todo, e incluso dar nuevos permisos, haríamos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">administrador</span><span class="o">@</span><span class="n">localhost</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">administrador</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span>
+</code></pre></div>
+<p>Una gestión adecuada de usuarios implica también definir roles, agrupar permisos y establecer políticas de acceso según los principios de <em>mínimos privilegios</em>, donde cada usuario tiene solo los permisos estrictamente necesarios.</p>
 <h4 id="quitando-permisos">Quitando permisos<a class="headerlink" href="#quitando-permisos" title="Permanent link">&para;</a></h4>
-<p>Revocar privilegios sobre un objeto: <a href="https://mariadb.com/kb/en/revoke/"><code>REVOKE</code></a></p>
+<p>Si en algún momento tenemos que quitarle permisos a un usuario, podemos revocar los privilegios sobre un objeto mediante el comando <a href="https://mariadb.com/kb/en/revoke/"><code>REVOKE</code></a>, con la siguiente sintaxis:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">REVOKE</span><span class="w"> </span><span class="n">privilegio</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">objeto</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">usuario</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;desarrollador&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;desarrollador&#39;</span><span class="p">;</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="s1">&#39;desarrollador&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">oficina</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="s1">&#39;desarrollador&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">;</span>
-<span class="linenos" data-linenos="5 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">jardineria</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span>
-<span class="linenos" data-linenos="6 "></span><span class="k">SHOW</span><span class="w"> </span><span class="n">GRANTS</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">CURRENT_USER</span><span class="p">;</span>
+<p>Así pues, si queremos quitarle el permiso de inserción que antes le habíamos dado al usuarios <code>s8abd</code> haríamos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">REVOKE</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">empresa</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;s8abd&#39;</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="phpmyadmin">PhpMyAdmin<a class="headerlink" href="#phpmyadmin" title="Permanent link">&para;</a></h3>
+<p>Si queremos comprobar los usuarios existentes mediante PhpMyAdmin, podemos entrar a la opción <em>Cuentas de usuario</em> y crear, modificar o eliminar los usuarios del sistema.</p>
+<figure style="align: center;">
+    <img src="images/09users-phpmyadmin.png" width="730" title="Cuentas de usuario en PhpMyAdmin">
+    <figcaption>Cuentas de usuario en PhpMyAdmin</figcaption>
+</figure>
+
 <h2 id="transacciones">Transacciones<a class="headerlink" href="#transacciones" title="Permanent link">&para;</a></h2>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1147,10 +1167,8 @@ columna indicada como vínculo de integridad, si se omite se aplica a todas las 
 <ul>
 <li><em><a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u6/a1/continguts.html">Gestió d'usuaris i privilegis</a></em> i <em><a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u5/a3/continguts.html">Control de transaccions i concurrencia</a></em> - <em>Institut Obert de Catalunya</em>.</li>
 <li><a href="https://josejuansanchez.org/bd/unidad-dcl-sql-teoria/index.html">Lenguaje de control de datos (DCL)</a>  de <em>José Juan Sánchez</em>.</li>
-<li><a href="https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html">Introducción a SQL</a> de <em>Jorge Sánchez</em>.</li>
-<li><a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut4/recopila.html">Realización de consultas</a> de <em>Javier Gutiérrez</em>.</li>
-<li><a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema4/index.html">Consulta de bases de datos</a> de gestionbasesdatos.readthedocs.io</li>
-<li><a href="https://www.cs.us.es/cursos/bd-2023/temas/BD-Tema-5.pdf">Introducción a SQL</a>, por <em>Luis Valencia</em> y <em>David Orellana</em>, de la <em>Universidad de Sevilla</em>.</li>
+<li><a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut3/recopila.html">Implementación de bases de datos relacionales / Apartado 12.- Lenguaje de control de datos (DCL).</a> de <em>Javier Gutiérrez</em>.</li>
+<li><a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema6/index.html">Seguridad de los datos. DCL</a> de gestionbasesdatos.readthedocs.io</li>
 </ul>
 </li>
 </ul>
@@ -1158,15 +1176,48 @@ columna indicada como vínculo de integridad, si se omite se aplica a todas las 
 <p><a name="AC901"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC901</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr> // 3p) Sobre la instalación que tienes de <em>MariaDB</em>, realiza las siguientes operaciones:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC901</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr> // 3p) Sobre la instalación de <em>MariaDB</em> que utilizas normalmente, realiza las siguientes operaciones, indicando los comandos necesarios y adjuntando capturas de pantalla de los resultados obtenidos:</p>
 <ol>
-<li>asdf</li>
+<li>Comprueba los usuarios existentes en nuestro SGBD.</li>
+<li>Crea un usuario <code>ac901local</code> con contraseña <code>s8a</code> que sólo pueda conectarse desde <code>localhost</code>. Comprueba que puedes acceder con el nuevo usuario.</li>
+<li>Crea un usuario <code>ac901remoto</code> con contraseña<code>s8a</code> que pueda conectarse desde cualquier lugar. Comprueba que puedes acceder con el nuevo usuario.</li>
+<li>Modifica la contraseña del usuario <code>ac901remoto</code> para que sea <code>severo</code>. Comprueba que puedes acceder con la nueva contraseña.</li>
+<li>Vuelve a comprobar los usuarios existentes en nuestro SGBD.</li>
+<li>Elimina el usuario <code>ac901remoto</code>.</li>
+</ol>
+</li>
+</ul>
+<p><a name="AC902"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC902</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr> // 3p) Sobre la instalación de <em>MariaDB</em> que utilizas normalmente, realiza las siguientes operaciones, indicando los comandos necesarios y adjuntando capturas de pantalla de los resultados obtenidos:</p>
+<ol>
+<li>
+<p>Comprueba los permisos del usuario <code>s8a</code>.</p>
+</li>
+<li>
+<p>Sobre el usuario <code>ac901local</code>:</p>
+<ol>
+<li>Comprueba sus permisos </li>
+<li>Asigna los permisos necesarios para que sólo pueda acceder a la tabla <code>habilidad</code>, pudiendo hacer consultas, inserciones y borrados, pero no modificaciones sobre los datos.</li>
+<li>Comprueba de nuevo los permisos.</li>
+<li>Insertar una nueva habilidad.</li>
+<li>Intenta modificar la nueva habilidad</li>
+<li>Elimina la habilidad insertada.</li>
+</ol>
+</li>
+<li>
+<p>Crea un nuevo usuario <code>ac902lectura</code> con contraseña <code>s8a</code> que únicamente pueda consultar todas las tablas de la base de datos <code>empresa</code>.</p>
+</li>
+<li>Crea un nuevo usuario <code>ac903todo</code> con contraseña <code>s8a</code> pueda hacer de todo en el sistema, a modo de administrador del sistema.</li>
+<li>Entra al sistema como el usuario <code>ac903todo</code>, y elimina los usuarios <code>ac901local</code> y <code>ac902lectura</code>.</li>
+<li>Recupera los usuarios existentes en el sistema.</li>
 </ol>
 </li>
 </ul>
 <p><a name="AR916"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR916</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR916</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>   , <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
 </ul>
 <!--
 TODO:
