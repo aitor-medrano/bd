@@ -632,13 +632,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#consultas-y-dlldml" class="md-nav__link">
+  <a href="#consultas-y-ddldml" class="md-nav__link">
     <span class="md-ellipsis">
-      Consultas y DLL/DML
+      Consultas y DDL/DML
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Consultas y DLL/DML">
+    <nav class="md-nav" aria-label="Consultas y DDL/DML">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1040,13 +1040,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#consultas-y-dlldml" class="md-nav__link">
+  <a href="#consultas-y-ddldml" class="md-nav__link">
     <span class="md-ellipsis">
-      Consultas y DLL/DML
+      Consultas y DDL/DML
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Consultas y DLL/DML">
+    <nav class="md-nav" aria-label="Consultas y DDL/DML">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1248,7 +1248,7 @@
 <p class="admonition-title">Cuestionario inicial</p>
 <ol>
 <li>¿Para qué sirve una subconsulta?</li>
-<li>¿Qué tipos de subconsulta existen?</li>
+<li>¿Qué tipos de subconsultas existen?</li>
 <li>¿Qué operadores podemos utilizar en una subconsulta?</li>
 <li>¿Es mejor hacer un <code>JOIN</code> o realizar una subconsulta?</li>
 <li>¿Qué diferencia una subconsulta anidada de una correlacionada?</li>
@@ -1496,8 +1496,8 @@
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- +-------------------------+--------+</span>
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- 4 rows in set (0.002 sec)</span>
 </code></pre></div>
-<p>Conviene destacar que estamos enlazando la consulta interna (la subconsulta) con la consulta externa para que muestre los empleados que tienen el mismo departamento.</p>
-<p>Si comparamos el resultado con todos los empleados, podemos ver que únicamente ha seleccionado a aquellos empleados que tienen algún compañero que cobran menos que ellos,descartando aquellos departamentos que sólo tienen un empleado:</p>
+<p>Cabe destacar que estamos enlazando la consulta interna (la subconsulta) con la consulta externa para que muestre los empleados que tienen el mismo departamento.</p>
+<p>Si comparamos el resultado con todos los empleados, podemos ver que únicamente ha seleccionado a aquellos empleados que tienen algún compañero que cobra menos que ellos,descartando aquellos departamentos que sólo tienen un empleado:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+--------+------------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | CodDep | SalEmp     |</span>
@@ -1528,7 +1528,7 @@
 <span class="linenos" data-linenos="8 "></span><span class="c1">-- +-----------------------------+------------+--------+</span>
 <span class="linenos" data-linenos="9 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 </code></pre></div>
-<p>Si quisiéramos obtener los mismos datos, pero del empleado de cada departamento que más cobra, necesitamos conectar la subconsulta con la consulta externa:</p>
+<p>Si quisiéramos obtener los mismos datos, pero del empleado que más cobra de cada departamento, necesitamos conectar la subconsulta con la consulta externa:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">where</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="p">);</span>
@@ -1623,7 +1623,7 @@
 <span class="linenos" data-linenos="9 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 </code></pre></div>
 <h3 id="de-tabla">De tabla<a class="headerlink" href="#de-tabla" title="Permanent link">&para;</a></h3>
-<p>Las <strong>tablas derivadas</strong>, también se conocen como subconsultas de tabla, se localizan dentro de la cláusula <code>FROM</code> de la consulta externa.</p>
+<p>Las <strong>tablas derivadas</strong>, también conocidas como subconsultas de tabla, se localizan dentro de la cláusula <code>FROM</code> de la consulta externa.</p>
 <p>Si retomamos la consulta que recuperan aquellos empleados que más ganan en cada departamento, la podemos definir mediante una subconsulta escalar:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">where</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
@@ -1682,7 +1682,7 @@
 <span class="hll"><span class="linenos" data-linenos="7 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">maxSalarios</span><span class="w"> </span><span class="n">ms</span>
 </span><span class="linenos" data-linenos="8 "></span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ms</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ms</span><span class="p">.</span><span class="n">MaxSalEmp</span><span class="p">;</span>
 </code></pre></div>
-<p>Veamos un caso más complejo. Si queremos recuperar información del mayor/mejor/menor/peor respecto a un campo que implique ordenar valores de un subconjunto de datos, podemos usar una función ventana en un CTE y luego recuperar únicamente los elementos que ocupan el primer elemento. Si por ejemplo, queremos recuperar el empleado que más cobra de cada departamento haremos:</p>
+<p>Veamos un caso más complejo. Si queremos recuperar información sobre valores máximos y mínimos (que quieran recuperar el mayor, mejor, menor, peor, etc...) respecto a un campo que implique ordenar valores de un subconjunto de datos, podemos usar una función ventana en un CTE y luego recuperar únicamente los elementos que ocupan el primer elemento. Si por ejemplo, queremos recuperar el empleado que más cobra de cada departamento haremos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="n">empSalRank</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span><span class="p">,</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="w">        </span><span class="n">RANK</span><span class="p">()</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="w"> </span><span class="k">DESC</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">rankingSalario</span>
@@ -1732,7 +1732,7 @@
 <span class="linenos" data-linenos="26 "></span><span class="c1">-- 6 rows in set (0.002 sec)</span>
 </code></pre></div>
 </div>
-<h2 id="consultas-y-dlldml">Consultas y DLL/DML<a class="headerlink" href="#consultas-y-dlldml" title="Permanent link">&para;</a></h2>
+<h2 id="consultas-y-ddldml">Consultas y DDL/DML<a class="headerlink" href="#consultas-y-ddldml" title="Permanent link">&para;</a></h2>
 <p>Ahora que ya sabemos realizar consultas para obtener todo tipo de información, podemos emplearlas también para insertar, modificar o eliminar los datos que cumplen con los resultados obtenidos de una consulta.</p>
 <h3 id="ddl">DDL<a class="headerlink" href="#ddl" title="Permanent link">&para;</a></h3>
 <p>Podemos crear tablas a partir del resultado de una consulta mediante <a href="https://mariadb.com/kb/en/create-table/#create-table-select"><code>CREATE TABLE .... AS SELECT</code></a>, almacenando en estático los datos obtenidos, con la misma estructura y tipos de datos de las tablas de origen.</p>
@@ -2221,8 +2221,8 @@ FIXME: Revisar y completar
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC807</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha incluido en una tabla la información resultante de la ejecución de una consulta.">CE4c</abbr> // 3p) Sobre la base de datos <code>empresa</code>, realiza las siguientes operaciones DDL o DML:</p>
 <ol>
 <li>Crea una tabla <code>empleadosConHijos</code> con aquellos empleados que tienen hijos, añadiendo un campo <code>TipEmp</code> para indicar el tipo de empleado. Todos estos empleados será del tipo <code>Ordinario</code>.</li>
-<li>Modifica el <code>TipEmp</code> de aquellos empleados de la tabla <code>empleadoConHijos</code> que sean directivos de un departamento con el valor <code>DirectorDepto</code>.</li>
-<li>Modifica el <code>TipEmp</code> de aquellos empleados de la tabla <code>empleadoConHijos</code> que sean directivos de un centro con el valor <code>DirectorCentro</code>.</li>
+<li>Modifica el <code>TipEmp</code> de aquellos empleados de la tabla <code>empleadoConHijos</code> que sean directivos de un departamento con el valor <code>DirDept</code>.</li>
+<li>Modifica el <code>TipEmp</code> de aquellos empleados de la tabla <code>empleadoConHijos</code> que sean directivos de un centro con el valor <code>DirCen</code>.</li>
 <li>Añade tanto registros a <code>empleadosConHijos</code> como registros haya en la tabla <code>hijo</code>, y en el tipo asigna el valor <code>Becario</code>. Los hijos deben trabajar en el mismo departamento que sus padres, su salario será 0 y se incorporarán a la empresa el <code>1/1/25</code>.</li>
 <li>Asigna al becario más mayor el mismo salario que el empleado que menos cobre.</li>
 <li>Elimina a todos los empleados en <code>empleadosConHijos</code> que sean del tipo <code>Ordinario</code>.</li>
