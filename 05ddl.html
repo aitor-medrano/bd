@@ -2674,7 +2674,7 @@ Respecto a las <em>keywords</em>, son <em>case insensitive</em>, pero al menos e
     <figcaption>Hice un delete...</figcaption>
 </figure></p>
 </div>
-<p>La sentencia para borrar datos es <code>DELETE ... FROM</code>, tanto en <a href="https://mariadb.com/kb/en/delete">MariaDB</a> como en <a href="https://www.postgresql.org/docs/current/sql-delete.html">PostgreSQL</a>:</p>
+<p>La sentencia para borrar datos es <code>DELETE FROM ...</code>, tanto en <a href="https://mariadb.com/kb/en/delete">MariaDB</a> como en <a href="https://www.postgresql.org/docs/current/sql-delete.html">PostgreSQL</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tabla</span><span class="p">;</span>
 </code></pre></div>
 <p>Si queremos decidir qué elementos eliminar, añadimos la expresión <code>WHERE</code>, ya que si no, eliminaremos todos los registros de la tabla, lo cual es muy peligroso:</p>
@@ -2687,7 +2687,7 @@ Respecto a las <em>keywords</em>, son <em>case insensitive</em>, pero al menos e
 <p>Finalmente, si se configuró con <code>NULL</code>, la tabla origen modificará el valor de su clave ajena se pondrá a nulo.</p>
 </div>
 <p>Conviene destacar que, si queremos eliminar todos los datos de una tabla, es mucho más eficiente utilizar el comando <code>TRUNCATE TABLE</code>, tanto en <a href="https://mariadb.com/kb/en/truncate-table/">MariaDB</a> como en <a href="https://www.postgresql.org/docs/current/sql-truncate.html">PostgreSQL</a></p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">TRUNCATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">dml8s</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">TRUNCATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">dml8a</span>
 </code></pre></div>
 <p>Por debajo, cuando truncamos una tabla, realmente está eliminando la tabla y volviéndola a crear, eliminando todos los ficheros de datos y reiniciando los campos autonuméricos.</p>
 <h2 id="reto-ii-creamos">Reto II - Creamos<a class="headerlink" href="#reto-ii-creamos" title="Permanent link">&para;</a></h2>

@@ -718,15 +718,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#politicas-de-bloqueo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Políticas de bloqueo
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       Referencias
@@ -1060,15 +1051,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#politicas-de-bloqueo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Políticas de bloqueo
-    </span>
-  </a>
   
 </li>
       
@@ -1415,7 +1397,7 @@ https://testingbaires.com/uso-de-bloqueos-en-base-de-datos/
 http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.pdf
 -->
 
-<p>Una transacción SQL es un conjunto de sentencias SQL que se ejecutan de forma indivisible (atómica), como si fueran una única operación.</p>
+<p>Una transacción SQL es un conjunto de sentencias SQL que se ejecutan de forma indivisible (atómica), como si fueran una única operación. El uso de las transacciones es esencial para mantener la integridad de los datos.</p>
 <p>Los pasos a la hora de realizar una transacción se resumen en:</p>
 <ol>
 <li>Iniciar la transacción</li>
@@ -1447,20 +1429,19 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <li><strong>D</strong>urabilidad: Los cambios que realiza una transacción sobre la base de datos son permanentes.</li>
 </ul>
 <h3 id="auto-commit">Auto Commit<a class="headerlink" href="#auto-commit" title="Permanent link">&para;</a></h3>
-<p>El SGDB define el parámetro <a href="https://mariadb.com/kb/en/server-system-variables/#autocommit"><code>autocommit</code></a> para indicar si se aceptan automáticamente todos los cambios realizados y no es posible deshacerlos. Por defecto está activada.</p>
+<p>Por defecto, los SGBD tienen activo el modo <a href="https://mariadb.com/kb/en/server-system-variables/#autocommit"><code>autocommit</code></a>, indicando que se aceptan automáticamente todos los cambios realizados y no es posible deshacerlos. De esta manera, cada operación individual se considera una transacción. </p>
 <p>Para consultar el nivel del <em>autocommit</em>, necesitamos realizar una consulta sobre la propiedad <code>@@AUTOCOMMIT</code></p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">@@</span><span class="n">AUTOCOMMIT</span><span class="p">;</span>
 </code></pre></div>
 <p>Para desactivarlo, le asignamos el valor 0:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SET</span><span class="w"> </span><span class="n">AUTOCOMMIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </code></pre></div>
-<p>Al desactivarlo tendremos una transacción abierta. Los cambios sólo se aplicarían ejecutando la
-sentencia <code>COMMIT</code> de forma explícita.</p>
-<p>Y para volver a activarlo, le asignamos el valor 1:</p>
+<p>Al desactivarlo tendremos una transacción abierta. Los cambios sólo se aplicarían ejecutando la sentencia <code>COMMIT</code> de forma explícita, o cancelaremos la transacción mediante <code>ROLLBACK</code>.</p>
+<p>Si necesitamos volver a activarlo, le asignamos el valor 1:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SET</span><span class="w"> </span><span class="n">AUTOCOMMIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="pasos">Pasos<a class="headerlink" href="#pasos" title="Permanent link">&para;</a></h3>
-<p>Para realizar una transacción, tal como hemos visto previamente, el primer paso es declararla y realizar una serie de pasos:</p>
+<p>Para realizar una <a href="https://mariadb.com/kb/es/start-transaction/">transacción</a>, tal como hemos visto previamente, el primer paso es declararla y realizar una serie de pasos:</p>
 <ol>
 <li>Indicar que vamos a realizar una transacción con la sentencia <code>START TRANSACTION</code>, <code>BEGIN</code> o <code>BEGIN WORK</code>.</li>
 <li>Realizar las operaciones de manipulación de datos sobre la base datos (insertar, actualizar o borrar filas).</li>
@@ -1470,34 +1451,25 @@ sentencia <code>COMMIT</code> de forma explícita.</p>
 </ol>
 </li>
 </ol>
-<p>La sintaxis de una <a href="https://mariadb.com/kb/es/start-transaction/">transacción</a> es similar a:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="w"> </span><span class="p">[</span><span class="n">caracteristicasTx</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">caracteristicasTx</span><span class="p">]</span><span class="w"> </span><span class="err">…</span><span class="p">]</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">COMMIT</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">ROLLBACK</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">SET</span><span class="w"> </span><span class="n">autocommit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="mi">0</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">1</span><span class="err">}</span>
-<span class="linenos" data-linenos="5 "></span>
-<span class="linenos" data-linenos="6 "></span><span class="n">caracteristicasTx</span><span class="p">:</span><span class="w"> </span><span class="err">{</span>
-<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="k">WITH</span><span class="w"> </span><span class="n">CONSISTENT</span><span class="w"> </span><span class="n">SNAPSHOT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">READ</span><span class="w"> </span><span class="k">WRITE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">READ</span><span class="w"> </span><span class="k">ONLY</span>
-<span class="linenos" data-linenos="8 "></span><span class="err">}</span>
-</code></pre></div>
-<p>Veamos un ejemplo donde creamos una base de datos <code>pruebas</code> y con una tabla <code>cliente</code>:</p>
+<p>Veamos un ejemplo donde creamos una base de datos <code>pruebas</code>, junto a una tabla <code>cliente</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">pruebas</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="p">;</span>
 <span class="linenos" data-linenos="3 "></span><span class="n">USE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
 <span class="linenos" data-linenos="4 "></span>
 <span class="linenos" data-linenos="5 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
-<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="w"> </span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
-<span class="linenos" data-linenos="8 "></span><span class="p">);</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="w"> </span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
+<span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="n">ciudad</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="w"> </span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+<span class="linenos" data-linenos="9 "></span><span class="p">);</span>
 </code></pre></div>
 <p>A continuación, podemos realizar diferentes operaciones dentro de una única transacción:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;José Manuel&#39;</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;José Manuel&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Marina&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos="4 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos="5 "></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">;</span>
-<span class="linenos" data-linenos="6 "></span><span class="k">COMMIT</span><span class="p">;</span>
-</code></pre></div>
+<span class="hll"><span class="linenos" data-linenos="6 "></span><span class="k">COMMIT</span><span class="p">;</span>
+</span></code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">Autoevaluación</p>
 <p>Si en cambio ejecutásemos el siguiente fragmento, tras haber acabado de crear la tabla:</p>
@@ -1510,8 +1482,8 @@ sentencia <code>COMMIT</code> de forma explícita.</p>
 <span class="linenos" data-linenos="7 "></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">;</span>
 </code></pre></div>
 <ol>
-<li>¿Qué contendría la tabla <code>cliente</code>?</li>
-<li>Y si tras hacer el borrado, ejecutamos <code>ROLLBACK</code> ¿Qué contendrá ahora la tabla?</li>
+<li>¿Qué contendría la tabla <code>cliente</code>? <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></li>
+<li>Y si tras hacer el borrado, ejecutamos <code>ROLLBACK</code> ¿Qué contendrá ahora la tabla? <sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
 </ol>
 </div>
 <p>Veamos otro ejemplo. Supongamos que tenemos una <code>tablaResumen</code> que agrupa ciertas estadísticas, y que queremos actualizar haciendo uso de una transacción (recuerda que mediante <code>@variable</code> podemos definir o referenciar a una variable, y asignarle un valor mediante <code>:=</code>):</p>
@@ -1535,28 +1507,60 @@ sentencia <code>COMMIT</code> de forma explícita.</p>
 <span class="linenos" data-linenos=" 8 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 9 "></span><span class="k">ROLLBACK</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">P1</span><span class="p">;</span><span class="w">         </span><span class="c1">-- Deshace los insert de Marina y Andreu</span>
 <span class="linenos" data-linenos="10 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="p">;</span><span class="w">  </span><span class="c1">-- Mostrará solo José Manuel</span>
-<span class="linenos" data-linenos="11 "></span><span class="k">ROLLBACK</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">P2</span><span class="p">;</span><span class="w">         </span><span class="c1">-- Dará error porque al haber hecho rollback a un punto de control anterior desaparece p2</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">ROLLBACK</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">P2</span><span class="p">;</span><span class="w">         </span><span class="c1">-- Dará error porque al haber hecho ROLLBACK a un punto de control anterior desaparece P2</span>
 <span class="linenos" data-linenos="12 "></span><span class="k">COMMIT</span><span class="p">;</span><span class="w">                 </span><span class="c1">-- Sólo quedará guardado José Manuel</span>
 </code></pre></div>
 <h2 id="concurrencia">Concurrencia<a class="headerlink" href="#concurrencia" title="Permanent link">&para;</a></h2>
 <p>En el contexto de bases de datos, el término concurrencia se refiere a la capacidad de un sistema de bases de datos para permitir que múltiples usuarios o procesos accedan y manipulen los datos al mismo tiempo, sin que esto afecte la integridad, consistencia o el rendimiento del sistema.</p>
 <p>Cuando se utilizan transacciones, pueden darse problemas de concurrencia en el acceso a los datos, es decir, problemas ocasionados por el acceso al mismo dato de dos transacciones distintas.</p>
 <p>Un caso de uso muy común es la compra de entradas para eventos (cine, teatro, conciertos,...) donde en un primer paso se selecciona el asiento y posteriormente se realiza la operación. Cuando un usuario selecciona un asiento, éste se bloquea para que ningún usuario pueda adquirirlo, pero ¿y si dos usuarios seleccionan el mismo asiento, pero uno es más rápido que el otro a la hora de confirmar la compra?</p>
-<p>Pensemos en otro ejemplo. Cuando realizamos un bizum o una transferencia bancaria entre dos usuarios, la cantidad se resta de la cuenta bancaria de origen y se suma en la de destino. Entre una operación y otra pueden pasar muchas cosas ¿Y si se va la luz? ¿Y si el usuario origen no tiene saldo? ¿Restamos y luego sumamos?</p>
+<p>Pensemos en otro ejemplo. Cuando realizamos un <em>bizum</em> o una transferencia bancaria entre dos usuarios, la cantidad se resta de la cuenta bancaria de origen y se suma en la de destino. Entre una operación y otra pueden pasar muchas cosas ¿Y si se va la luz? ¿Y si el usuario origen no tiene saldo? ¿Restamos y luego sumamos?</p>
 <p>La gestión de la concurrencia es un equilibrio entre garantizar la seguridad de los datos y maximizar el rendimiento del sistema.</p>
 <h3 id="tipos-de-problemas">Tipos de problemas<a class="headerlink" href="#tipos-de-problemas" title="Permanent link">&para;</a></h3>
-<p>Los tipos de problemas de concurrencia existentes son:</p>
+<p>Cuando no tenemos control de concurrencia, se pueden producir condiciones de carrera al perder información en una actualización:</p>
+<div class="grid cards">
+<ul>
+<li>
+<p><strong>Condición de carrera</strong> (<em>Lost Update</em>) : Se producen errores o inconsistencias cuando dos procesos intentan modificar los mismos datos simultáneamente.</p>
+<p>El usuario 1 comprueba los asientos disponibles, y también lo hace el usuario 2. Ambos ven que el asiento 33 está libre, y al mismo tiempo, inician una transacción para reservar el mismo asiento.</p>
+<p>La operación que llega al sistema primero se ejecuta, pero como no hay control de concurrencia, la segunda transacción también se ejecuta, sobrescribiendo el resultado de la primera, y de ahí la carrera.</p>
+<table>
+<thead>
+<tr>
+<th>Usuario 1</th>
+<th>Usuario 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">asientos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="p">;</span></code></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">asientos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="p">;</span></code></td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="k">UPDATE</span><span class="w"> </span><span class="n">asientos</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;ocupado&quot;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span></code><br /><code class="highlight"><span class="k">COMMIT</span><span class="p">;</span></code></td>
+<td><code class="highlight"><span class="k">UPDATE</span><span class="w"> </span><span class="n">asientos</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;ocupado&quot;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span></code><br /><code class="highlight"><span class="k">COMMIT</span><span class="p">;</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>La solución es introducir transacciones e incluir la lectura dentro de la transacción.</p>
+</li>
+</ul>
+</div>
+<p>Si introducimos transacciones para evitar las condiciones de carrera, aparecen otro tipo de problemas:</p>
 <ul>
 <li>Lectura no repetible</li>
 <li>Lectura sucia</li>
 <li>Lectura fantasma</li>
-<li>Condición de carrera</li>
 </ul>
 <div class="grid cards">
 <ul>
 <li>
 <p><strong>Lectura No Repetible</strong> (<em>Non-Repeatable Read</em>): Se produce cuando en una transacción se consulta el mismo dato dos veces, y la segunda vez encuentra que el valor del dato ha sido modificado por otra transacción.</p>
-<p>El usuario 1 consulta el estado de los asientos y comprueba que el asiento 33 está libre. Mientras tanto el usuario 2, reserva dicho asiento, y cuando el usuario vuelve a confirmar el asiento para realiza la reserva le aparece que está ocupado.</p>
+<p>El usuario 1 consulta el estado de los asientos y comprueba que el asiento 33 está libre. Mientras tanto el usuario 2, reserva dicho asiento, y cuando el usuario 1 vuelve a confirmar el asiento para realiza la reserva le aparece que está ocupado.</p>
 <table>
 <thead>
 <tr>
@@ -1615,7 +1619,7 @@ sentencia <code>COMMIT</code> de forma explícita.</p>
 <div class="grid cards">
 <ul>
 <li>
-<p><strong>Lectura fantasma</strong> (<em>Phantom Read</em>): Este error ocurre cuando una transacción ejecuta dos veces una consulta que devuelve un conjunto de filas y en la segunda ejecución de la consulta aparecen nuevas filas en el conjunto que no existían cuando se inició lo transacción.</p>
+<p><strong>Lectura fantasma</strong> (<em>Phantom Read</em>): Se trata de una variación de lecturas no repetibles. Este error ocurre cuando una transacción ejecuta dos veces una consulta que devuelve un conjunto de filas y en la segunda ejecución de la consulta aparecen nuevas filas en el conjunto que no existían cuando se inició lo transacción.</p>
 <p>El usuario 1 comprueba los asientos disponibles. A la vez, el usuario 2 elimina el asiento 33 ya que se ha roto y no debe aparecer entre los asientos existentes. Cuando el usuario 1 vuelve a comprobar los asientos existentes, comprueba su estado y el asiento no aparece, cuando antes sí (de ahí que sea una lectura fantasma).</p>
 <table>
 <thead>
@@ -1642,67 +1646,77 @@ sentencia <code>COMMIT</code> de forma explícita.</p>
 </li>
 </ul>
 </div>
-<div class="grid cards">
+<h3 id="mecanismos">Mecanismos<a class="headerlink" href="#mecanismos" title="Permanent link">&para;</a></h3>
+<p>Los sistemas gestores de bases de datos (SGBD) implementan diferentes técnicas para garantizar la consistencia y aislamiento de las transacciones:</p>
 <ul>
-<li>
-<p><strong>Condición de carrera</strong>  : Se producen errores o inconsistencias cuando dos procesos intentan modificar los mismos datos simultáneamente.</p>
-<p>El usuario 1 comprueba los asientos disponibles, y también lo hace el usuario 2. Ambos ven que el asiento 33 está libre, y al mismo tiempo, inician una transacción para reservar el mismo asiento.</p>
-<p>La transacción que llega al sistema primero se ejecuta, pero como no hay control de concurrencia, la segunda transacción también se ejecuta, sobrescribiendo el resultado de la primera.</p>
+<li>Control de concurrencia mediante <strong>bloqueos</strong> (<em>Locks</em>). Los bloqueos son mecanismos que previenen conflictos entre las transacciones que acceden a los mismos recursos, bien sea una, a estructuras de datos compartidas o a un registro del diccionario de datos. Estos pueden ser:<ul>
+<li>Bloqueos <strong>compartidos</strong> (<em>Shared</em>): Permiten que varios procesos lean los mismos datos, pero no los modifiquen. Múltiples usuarios leyendo datos pueden compartirlos, manteniendo bloqueos para prevenir accesos concurrente por una escritura.</li>
+<li>Bloqueos <strong>exclusivos</strong> (<em>Exclusive</em>): Restringen el acceso a los datos a un solo proceso para lecturas y escrituras. La primera transacción que bloquea el recurso es la única que puede alterarlo hasta liberar el bloqueo.</li>
+</ul>
+</li>
+<li><strong>Versionado de datos</strong> (MVCC, <em>Multi-Version Concurrency Control</em>): Permite que cada transacción trabaje con su propia copia de los datos, evitando bloqueos y mejorando el rendimiento en sistemas con alta concurrencia. Cuando hay una modificación de datos, en lugar de sobrescribir una fila en actualizaciones, se almacena una nueva versión de la fila mientras se mantiene la versión anterior hasta que ya no sea necesaria (las transacciones que la usan han finalizado). Las versiones anteriores de una fila se almacenan en el espacio de "deshacer" (undo space) para permitir transacciones y lecturas consistentes.</li>
+<li>Protocolos de <strong>serialización</strong>: Garantizan que las transacciones se ejecuten de manera que los resultados sean equivalentes a ejecutarlas en secuencia, evitando interferencias.</li>
+<li><strong>Niveles de aislamiento</strong>: Establecen reglas sobre cómo se gestionan las interacciones entre transacciones (<code>READ UNCOMMITTED</code>, <code>READ COMMITTED</code>, <code>REPEATABLE READ</code>, <code>SERIALIZABLE</code>) para dar solución a los problemas de concurrencia comentados anteriormente.</li>
+</ul>
+<h4 id="niveles-de-aislamiento">Niveles de aislamiento<a class="headerlink" href="#niveles-de-aislamiento" title="Permanent link">&para;</a></h4>
+<p>Cuando se trabaja con transacciones, el SGBD puede bloquear conjuntos de datos para evitar o permitir que sucedan estos problemas. Según el nivel de concurrencia que se desee, podemos utilizar cuatro niveles de aislamiento, definiendo cómo los cambios hechos por una transacción son visibles a otras transacciones:</p>
+<ul>
+<li><em>Read Uncommitted</em> (<code>READ UNCOMMITTED</code>). En este nivel no se realiza ningún bloqueo, por lo tanto, permite que sucedan los tres problemas. Todas las consultas se realizan sin bloqueos, de manera que los cambios hechos por una transacción pueden verlos las otras.</li>
+<li><em>Read Committed</em> (<code>READ COMMITTED</code>). En este caso los datos leídos por una transacción pueden ser modificados por otras transacciones, por lo tanto, se pueden dar los problemas <em>Non-Repeteable Read</em> y <em>Phantom Read</em>.</li>
+<li><em>Repeatable Read</em> (<code>REPEATABLE READ</code>). En este nivel ningún registro recuperado mediante   un <code>SELECT</code> puede modificarlo otra transacción, por lo tanto, sólo pueden ocurrir lecturas fantasmas. Es el nivel de aislamiento por defecto que utiliza <em>InnoDB</em>.</li>
+<li><em>Serializable</em> (<code>SERIALIZABLE</code>). En este caso las transacciones se ejecutan unas detrás de otras, sin que exista la posibilidad de concurrencia, a no ser que el SGBD pueda asegurar que no hay conflicto con el acceso a los datos.</li>
+</ul>
+<p>En resumen, los problemas que cubren los diferentes niveles de aislamiento, son:</p>
 <table>
 <thead>
 <tr>
-<th>Usuario 1</th>
-<th>Usuario 2</th>
+<th>Nivel de aislamiento</th>
+<th>Lectura fantasma</th>
+<th>Lectura no repetible</th>
+<th>Lectura sucia</th>
+<th>Condición de carrera</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">asientos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="p">;</span></code></td>
-<td></td>
+<td><code>READ_UNCOMMITTED</code></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
-<td></td>
-<td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">asientos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="p">;</span></code></td>
+<td><code>READ_COMMITTED</code></td>
+<td>-</td>
+<td>-</td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
-<td><code class="highlight"><span class="k">UPDATE</span><span class="w"> </span><span class="n">asientos</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;ocupado&quot;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span></code><br /><code class="highlight"><span class="k">COMMIT</span><span class="p">;</span></code></td>
-<td><code class="highlight"><span class="k">UPDATE</span><span class="w"> </span><span class="n">asientos</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;ocupado&quot;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span></code><br /><code class="highlight"><span class="k">COMMIT</span><span class="p">;</span></code></td>
+<td><code>REPEATABLE_READ</code></td>
+<td>-</td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+</tr>
+<tr>
+<td><code>SERIALIZABLE</code></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 </tbody>
 </table>
-<p>La solución es incluir la lectura dentro de la transacción.</p>
-</li>
-</ul>
-</div>
-<h3 id="mecanismos">Mecanismos<a class="headerlink" href="#mecanismos" title="Permanent link">&para;</a></h3>
-<p>Los sistemas gestores de bases de datos (SGBD) implementan diferentes técnicas para garantizar la consistencia y aislamiento de las transacciones:</p>
-<ul>
-<li>Control de concurrencia mediante bloqueos (<em>Locks</em>):<ul>
-<li>Bloqueos compartidos (<em>Shared</em>): Permiten que varios procesos lean los mismos datos, pero no los modifiquen.</li>
-<li>Bloqueos exclusivos (<em>Exclusive</em>): Restringen el acceso a los datos a un solo proceso para lecturas y escrituras.</li>
-</ul>
-</li>
-<li>Versionado de datos (MVCC, <em>Multi-Version Concurrency Control</em>): Permite que cada transacción trabaje con su propia copia de los datos, evitando bloqueos y mejorando el rendimiento en sistemas con alta concurrencia.</li>
-<li>Protocolos de serialización: Garantizan que las transacciones se ejecuten de manera que los resultados sean equivalentes a ejecutarlas en secuencia, evitando interferencias.</li>
-<li>Niveles de aislamiento: Establecen reglas sobre cómo se gestionan las interacciones entre transacciones (<code>READ UNCOMMITTED</code>, <code>READ COMMITTED</code>, <code>REPEATABLE READ</code>, <code>SERIALIZABLE</code>).</li>
-</ul>
-<h4 id="niveles-de-aislamiento">Niveles de aislamiento<a class="headerlink" href="#niveles-de-aislamiento" title="Permanent link">&para;</a></h4>
-<p>Cuando se trabaja con transacciones, el SGBD puede bloquear conjuntos de datos para evitar o permitir que sucedan estos problemas. Según el nivel de concurrencia que se desee, es posible solicitar al SGBD cuatro niveles de aislamiento, definiendo cómo los cambios hechos por una transacción son visibles a otras transacciones:</p>
-<ul>
-<li><em>Read Uncommitted</em>. En este nivel no se realiza ningún bloqueo, por lo tanto, permite que sucedan los tres problemas</li>
-<li><em>Read Committed</em>. En este caso los datos leídos por una transacción pueden ser modificados por otras transacciones, por lo tanto, se pueden dar los problemas <em>Non-Repeteable Read</em> y <em>Phantom Read</em>.</li>
-<li><em>Repeatable Read</em>. En este nivel ningún registro leído con un <code>SELECT</code> puede ser modificado en otra transacción, por lo tanto, sólo puede suceder el problema del <em>Phantom Read</em>.</li>
-<li><em>Serializable</em>. En este caso las transacciones se ejecutan unas detrás de otras, sin que exista la posibilidad de concurrencia.</li>
-</ul>
-<p>El nivel de aislamiento que utiliza <em>InnoDB</em> por defecto es <em>Repeatable Read</em>.</p>
-<h2 id="politicas-de-bloqueo">Políticas de bloqueo<a class="headerlink" href="#politicas-de-bloqueo" title="Permanent link">&para;</a></h2>
-<p>Los bloqueos son mecanismos que previenen conflictos entre las transacciones que acceden a los mismos recursos, bien sea una, a estructuras de datos compartidas o a un registro del diccionario de datos.</p>
-<p>El bloqueo del servidor es completamente automático y no requiere acción por parte del usuario; estos previenen la interacción destructiva entre transacciones concurrentes, es, además, un mecanismo automático que utiliza el nivel más bajo aplicable de restricción; por tanto, ofrece además un grado más alto de concurrencia y máxima integridad de datos. También permite al usuario bloqueos de datos manuales.</p>
-<p>El servidor de la base de datos permite hacer dos modos de bloqueo:</p>
-<ul>
-<li><strong>Exclusivo</strong>. Previene la compartición de un recurso. La primera transacción que bloquea el recurso es la única que puede alterarlo hasta liberar el bloqueo.</li>
-<li><strong>Compartido</strong>. Permite la compartición de un recurso. Múltiples usuarios leyendo datos pueden compartirlos, manteniendo bloqueos para prevenir accesos concurrente por una escritura.</li>
-</ul>
+<p>Para configurar uno u otro nivel, por ejemplo, en <em>MariaDB</em>, podemos cambiar el <a href="https://mariadb.com/kb/en/set-transaction/#isolation-levels">nivel de aislamiento</a> del SGBD en el fichero de configuración con la propiedad <code>transaction-isolation</code> (desde <em>MariaDB</em> 11.1.1):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>transaction-isolation = &#39;READ COMMITTED&#39;
+</code></pre></div>
+<p>También podemos hacerlo para la sesión activa:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SET</span><span class="w"> </span><span class="k">SESSION</span><span class="w"> </span><span class="k">transaction</span><span class="o">-</span><span class="k">isolation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;read-committed&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>O para una transacción concreta, al iniciar la transacción mediante <a href="https://mariadb.com/kb/en/set-transaction/"><code>SET TRANSACTION ISOLATION LEVEL</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SET</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="w"> </span><span class="k">ISOLATION</span><span class="w"> </span><span class="k">LEVEL</span><span class="w"> </span><span class="k">READ</span><span class="w"> </span><span class="k">COMMITTED</span><span class="p">;</span>
+</code></pre></div>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -1840,7 +1854,7 @@ sentencia <code>COMMIT</code> de forma explícita.</p>
 <a name="AR916"></a></p>
 </li>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR916</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>   , <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR916</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr>, <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr>, <abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</p>
 </li>
 </ul>
 <!--
@@ -1917,6 +1931,18 @@ Uso de bases de datos no relacionales:
 − Herramientas de los sistemas gestores de bases de datos no relacionales
 para la gestión de la información almacenada.
 -->
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Si estamos en la misma sesión, contendrá a <code>José Manuel</code> y a <code>Marina</code>. En cambio, si desde otra sesión comprobamos la tabla, sólo aparecerá <code>José Manuel</code>, ya que el resto de instrucciones no se han confirmado mediante <code>COMMIT</code>.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Ahora tanto el usuario local a la transacción como el resto de usuarios sólo verán a <code>José Manuel</code>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
