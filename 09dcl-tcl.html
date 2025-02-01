@@ -1159,6 +1159,16 @@
 <li>¿Qué tipo de permisos se le pueden dar a un usuario sobre un recurso?</li>
 <li>¿Qué cláusula es necesaria incluir a la hora de crear un usuario para que el nuevo usuario pueda dar permisos a otros usuarios?</li>
 <li>¿Qué sublenguaje de SQL se encarga de gestionar el control de las transacciones?</li>
+<li>¿Qué es una transacción en SQL y por qué es importante?  </li>
+<li>¿Cuáles son los pasos básicos en la ejecución de una transacción?  </li>
+<li>¿Qué diferencia hay entre los comandos <code>COMMIT</code> y <code>ROLLBACK</code>?  </li>
+<li>¿Cuáles son las propiedades ACID y qué garantiza cada una de ellas?  </li>
+<li>¿Qué efecto tiene activar o desactivar el <em>autocommit</em> en un SGBD?  </li>
+<li>Explica la utilidad de los puntos de control (<code>SAVEPOINT</code>) en una transacción.  </li>
+<li>¿Cuáles son los principales problemas de concurrencia que pueden surgir en un SGBD?  </li>
+<li>Explica la diferencia entre una lectura sucia y una lectura no repetible.  </li>
+<li>¿Qué es el control de concurrencia y qué mecanismos existen para gestionarlo?  </li>
+<li>¿Cuáles son los niveles de aislamiento de transacciones y qué problemas evitan? </li>
 </ol>
 </div>
 <h3 id="programacion-de-aula-7h">Programación de Aula (7h)<a class="headerlink" href="#programacion-de-aula-7h" title="Permanent link">&para;</a></h3>
@@ -1785,7 +1795,10 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <p><a name="AC904"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC904</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr> // 3p) A partir del siguiente fragmento de código que realiza transacciones, contesta a las preguntas que aparecen como comentarios dentro del código:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC904</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr> // 3p) A partir del siguiente fragmento de código que realiza transacciones, se pide:</p>
+<ol>
+<li>
+<p>Contesta a las preguntas que aparecen como comentarios dentro del código:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">saldo</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">saldo</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
@@ -1799,75 +1812,289 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <span class="linenos" data-linenos="11 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="linenos" data-linenos="12 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="linenos" data-linenos="13 "></span><span class="k">COMMIT</span><span class="p">;</span>
-<span class="linenos" data-linenos="14 "></span>
-<span class="linenos" data-linenos="15 "></span><span class="c1">-- ¿Qué contiene cuentas en este momento?</span>
-<span class="linenos" data-linenos="16 "></span>
-<span class="linenos" data-linenos="17 "></span><span class="c1">-- ¿Qué sucede cuando una cuenta no existe?</span>
-<span class="linenos" data-linenos="18 "></span>
-<span class="linenos" data-linenos="19 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-<span class="linenos" data-linenos="20 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9999</span><span class="p">;</span>
-<span class="linenos" data-linenos="21 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="linenos" data-linenos="22 "></span><span class="k">COMMIT</span><span class="p">;</span>
-<span class="linenos" data-linenos="23 "></span>
-<span class="linenos" data-linenos="24 "></span><span class="c1">-- ¿Y si una cuenta no tiene saldo?</span>
-<span class="linenos" data-linenos="25 "></span>
-<span class="linenos" data-linenos="26 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-<span class="linenos" data-linenos="27 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="linenos" data-linenos="28 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="linenos" data-linenos="29 "></span><span class="k">COMMIT</span><span class="p">;</span>
-</code></pre></div>
+<span class="hll"><span class="linenos" data-linenos="14 "></span><span class="c1">-- ¿Qué contiene cuentas en este momento?</span>
+</span><span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9999</span><span class="p">;</span>
+<span class="linenos" data-linenos="18 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="linenos" data-linenos="19 "></span><span class="k">COMMIT</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="20 "></span><span class="c1">-- ¿Qué sucede cuando una cuenta no existe?</span>
+</span><span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="linenos" data-linenos="23 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos" data-linenos="24 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="linenos" data-linenos="25 "></span><span class="k">COMMIT</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="26 "></span><span class="c1">-- ¿Y si una cuenta no tiene saldo?</span>
+</span></code></pre></div>
+</li>
+<li>
+<p>A continuación, indica las sentencias SQL necesarias para realizar las siguientes tareas dentro de una única operación:</p>
+<ol>
+<li>Inserta una nueva cuenta, la 4, con un saldo de 400€.</li>
+<li>Inserta la cuenta 5 con un saldo de 500€.</li>
+<li>Modifica la cuenta 3 para que su saldo sea 300€.</li>
+</ol>
+</li>
+<li>
+<p>Y en otra operación:</p>
+<ol>
+<li>Modifica las cuentas 4 y 5 y quítales 200€.</li>
+<li>Deshaz las dos últimas operaciones.</li>
+</ol>
+</li>
+</ol>
 </li>
 </ul>
 <p><a name="AC905"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC905</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr> // 3p) A partir del siguiente fragmento de código que realiza transacciones, contesta a las preguntas que aparecen como comentarios dentro del código:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">test</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="n">USE</span><span class="w"> </span><span class="n">test</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 4 "></span>
-<span class="linenos" data-linenos=" 5 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="n">precio</span><span class="w"> </span><span class="n">DOUBLE</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="p">);</span>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC905</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr> // 3p) A partir del siguiente fragmento de código que realiza transacciones, sin ejecutar el código, índica el resultado de las consultas realizadas en las líneas 11 y 20, justificando tu respuesta:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">precio</span><span class="w"> </span><span class="n">DOUBLE</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="p">);</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Primero&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Segundo&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Tercero&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos="10 "></span>
-<span class="linenos" data-linenos="11 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Primero&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="12 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Segundo&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="13 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Tercero&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="14 "></span>
-<span class="linenos" data-linenos="15 "></span><span class="c1">-- 1. Comprobamos las filas que existen en la tabla</span>
-<span class="linenos" data-linenos="16 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">producto</span><span class="p">;</span>
-<span class="linenos" data-linenos="17 "></span>
-<span class="linenos" data-linenos="18 "></span><span class="c1">-- 2. Ejecutamos una transacción que incluye un SAVEPOINT</span>
-<span class="linenos" data-linenos="19 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-<span class="linenos" data-linenos="20 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Cuarto&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="21 "></span><span class="n">SAVEPOINT</span><span class="w"> </span><span class="n">sp1</span><span class="p">;</span>
-<span class="linenos" data-linenos="22 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Cinco&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="23 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Seis&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="24 "></span><span class="k">ROLLBACK</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">sp1</span><span class="p">;</span>
-<span class="linenos" data-linenos="25 "></span>
-<span class="linenos" data-linenos="26 "></span><span class="c1">-- 3. ¿Qué devolverá esta consulta?</span>
-<span class="linenos" data-linenos="27 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
-<span class="linenos" data-linenos="28 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">producto</span><span class="p">;</span>
-</code></pre></div>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">producto</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Cuarto&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="15 "></span><span class="n">SAVEPOINT</span><span class="w"> </span><span class="n">sp1</span><span class="p">;</span>
+<span class="linenos" data-linenos="16 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Quinto&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="17 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sexto&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="18 "></span><span class="k">ROLLBACK</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">sp1</span><span class="p">;</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="hll"><span class="linenos" data-linenos="20 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">producto</span><span class="p">;</span>
+</span></code></pre></div>
+<p>A continuación, indica las sentencias SQL necesarias para realizar las siguientes tareas dentro de una única operación:</p>
+<ol>
+<li>Coloca un punto de guardado nombrado <code>SP1</code></li>
+<li>Inserta el producto 10 con nombre <code>Deu</code> y con 10€ de precio.</li>
+<li>Inserta el producto 10 con nombre <code>Onze</code> y con 100€ de precio.</li>
+<li>Coloca un punto de guardado nombrado <code>SP2</code></li>
+<li>Modifica el precio de <code>Onze</code> para que sea de 11€.</li>
+<li>Anula los productos que tengan precio.</li>
+</ol>
 </li>
 </ul>
 <p><a name="AR906"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR906</strong>.</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR906</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr> // 3p) Analiza el siguiente fragmento de código y piensa si funcionará correctamente, sabiendo que <code>CodDepDep</code> es una clave ajena que apunta a <code>CodDep</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="p">(</span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="n">CodDepDep</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="p">(</span><span class="ss">&quot;TX1&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;TX1 apuntará a TX2&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;TX2&quot;</span><span class="p">);</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="p">(</span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="n">CodDepDep</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="p">(</span><span class="ss">&quot;TX2&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;TX2 apunta a TX1&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;TX1&quot;</span><span class="p">);</span>
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>
+<p>¿Se ha insertado algún registro? ¿Ambos?</p>
+<p>Y si lo cambiamos por la siguiente transacción ¿Cambia algo?</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="p">(</span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="n">CodDepDep</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="p">(</span><span class="ss">&quot;TX1&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;TX1 apuntará a TX2&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="p">(</span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="n">CodDepDep</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="p">(</span><span class="ss">&quot;TX2&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;TX2 apunta a TX1&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;TX1&quot;</span><span class="p">);</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">CodDepDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;TX2&quot;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;TX1&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="7 "></span><span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>
+</li>
 </ul>
 <p><a name="AC907"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC907</strong>.</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC907</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr>, <abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p) Abre dos sesiones contra el SGBD con dos usuarios distintos (por ejemplos, <code>s8a</code> y <code>root</code>) en dos terminales. Con uno de ellos, ejecuta las siguiente sentencias:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">persona</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">    </span><span class="p">);</span>
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">persona</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Andreu&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">persona</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Marina&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="7 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">persona</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Guillem&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>A continuación, con el usuario indicado, realiza las siguientes tareas y contesta a las preguntas que se plantean:</p>
+<table>
+<thead>
+<tr>
+<th>Usuario 1</th>
+<th>Usuario 2</th>
+<th>Pregunta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Comienza una transacción</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Modifica el nombre de <code>Andreu</code> por <code>Andreu 4K</code>.<br />Consulta la tabla <code>persona</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>¿Qué datos aparecen y por qué?</td>
+</tr>
+<tr>
+<td></td>
+<td>Cambia el nivel de aislamiento a <em>Lectura no confirmada</em>.<br />(solo para la siguiente transacción)</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Comienza una transacción</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Consulta la tabla <code>persona</code></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>¿Qué datos aparecen y por qué?</td>
+</tr>
+<tr>
+<td>Anula la sentencia realizada</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Consulta la tabla <code>persona</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>¿Qué datos aparecen y por qué?</td>
+</tr>
+<tr>
+<td></td>
+<td>Consulta la tabla <code>persona</code></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>¿Qué datos aparecen y por qué?</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>¿Qué tipo de problema de acceso concurrente a los datos se ha producido con el <em>Usuario 2</em> al realizar la primera consulta?</li>
+<li>¿Cómo se podría solucionar? Ejecuta otra vez las sentencias anteriores solucionando el problema.</li>
+</ol>
+</li>
 </ul>
 <p><a name="AR908"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR908</strong>.</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR908</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr>, <abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p) Realiza los ejemplos de los apartados <a href="https://josejuansanchez.org/bd/unidad-11-teoria/index.html#niveles-de-aislamiento">6.7.1 al 6.7.4</a> de los apuntes del docente <em>José Juan Sánchez</em>, adjuntando capturas de las operaciones y contestando a las preguntas que plantea.</li>
 </ul>
 <p><a name="AP909"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP909</strong>. </li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP909</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr>, <abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p) Abre dos sesiones contra el SGBD con dos usuarios distintos (por ejemplos, <code>s8a</code> y <code>root</code>) en dos terminales. Con uno de ellos, ejecuta las siguiente sentencias:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="n">jefe</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">jefe</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Contabilidad&#39;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;J1&quot;</span><span class="p">);</span>
+<span class="linenos" data-linenos="7 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">jefe</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Marketing&#39;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;J1&quot;</span><span class="p">);</span>
+<span class="linenos" data-linenos="8 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">jefe</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;I+D&#39;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;J2&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>A continuación, con el usuario indicado, realiza las siguientes tareas y contesta a las preguntas que se plantean:</p>
+<table>
+<thead>
+<tr>
+<th>Usuario 1</th>
+<th>Usuario 2</th>
+<th>Pregunta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Comprueba el nivel de aislamiento</td>
+<td>Comprueba el nivel de aislamiento</td>
+<td></td>
+</tr>
+<tr>
+<td>Si no es <em>Lectura repetible</em>, cambiarlo</td>
+<td>Si no es <em>Lectura repetible</em>, cambiarlo</td>
+<td></td>
+</tr>
+<tr>
+<td>Comienza una transacción</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Modifica el jefe de <code>Contabilidad</code> a <code>J3</code>.<br />No confirma los datos<br />Consulta la tabla <code>departamento</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Comienza una transacción</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Consulta la tabla <code>departamento</code></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>¿Ve el cambio realizado por el usuario 1? ¿Por qué?</td>
+</tr>
+<tr>
+<td></td>
+<td>Modifica el jefe de <code>Marketing</code> a <code>J4</code>.<br />No confirma los datos</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>¿Ha podido realizar el cambio? ¿Por qué?</td>
+</tr>
+<tr>
+<td></td>
+<td>Modifica el jefe de <code>Contabilidad</code> a <code>J5</code>.<br />No confirma los datos</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>¿Ha podido realizar el cambio? ¿Por qué?</td>
+</tr>
+<tr>
+<td></td>
+<td>Cierra la sesión y vueve a entrar</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Consulta la tabla <code>departamento</code></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>¿Qué ocurre con los cambios realizados por el usuario 2? ¿Por qué?</td>
+</tr>
+</tbody>
+</table>
+</li>
 </ul>
 <p><a name="AR910"></a></p>
 <ul>
