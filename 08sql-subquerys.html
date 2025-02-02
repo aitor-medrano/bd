@@ -1808,19 +1808,21 @@
 <p>Proceso de optimización:</p>
 <ul>
 <li>Reescritura de la consulta: El sistema traduce la consulta en diferentes formas equivalentes y elige la más eficiente.</li>
-<li>Generación del plan de ejecución: Se analizan posibles estrategias para ejecutar la consulta.</li>
+<li>Generación del <strong>plan de ejecución</strong>: Se analizan posibles estrategias para ejecutar la consulta.</li>
 <li>Coste estimado: El SGBD calcula el coste de cada plan basándose en factores como el tamaño de las tablas, la selectividad de los índices y la cardinalidad de las columnas.</li>
 </ul>
 </li>
 <li>
 <p>Factores que afectan a la optimización:</p>
 <ul>
-<li>Selección de índices: Un índice es una estructura asociada a una o varias columnas y facilitan la búsqueda de un determinado valor, de forma similar al índice de un libro. Un uso adecuado de los índices puede acelerar enormemente las búsquedas y las combinaciones de tablas.</li>
+<li>Selección de <strong>índices</strong>: Un índice es una estructura asociada a una o varias columnas y facilitan la búsqueda de un determinado valor, de forma similar al índice de un libro. Un uso adecuado de los índices puede acelerar enormemente las búsquedas y las combinaciones de tablas.</li>
 <li>Orden de los <em>joins</em>: Elegir qué tabla unir primero puede reducir significativamente el número de filas procesadas.</li>
 <li>Filtrado anticipado: Aplicar condiciones <code>WHERE</code> lo antes posible evita procesar datos innecesarios.</li>
 </ul>
 </li>
 </ol>
+<p>Aunque más adelante vamos a estudiar en profundidad en qué consisten los índices, conviene aclarar que son una estructura que permite acelerar el acceso a los datos, a modo del índice de un libro. Por defecto, los SGBD crean un índica por cada clave primaria de las tablas que definimos, así como para las claves ajenas, tanto para optimizar el acceso a un elemento concreto, como para optimizar el <em>join</em> de las tablas. Así pues, su comprensión es clave a la hora de optimizar las consultas que utilizamos en nuestras aplicación.</p>
+<p>Y para saber si una consulta se está ejecutando de forma optima, recurriremos al plan de ejecución.</p>
 <!--
 JJS - Sesiones: 2
 
@@ -1829,7 +1831,6 @@ Crear, eliminar, actualizar y reordenar índices.
 Analizar el rendimiento de una consulta.
 Detectar consultas que necesitan ser optimizadas.
 Optimizar el tiempo de ejecución de una consulta.
-Desarrollar progresivamente actitudes profesionales como la importancia del trabajo en equipo, la sistematicidad, el orden, la búsqueda de soluciones eficientes y el uso de un lenguaje técnico cada vez más preciso.
 3 Contenidos
 Índices en MySQL (PRIMARY KEY, UNIQUE, INDEX, FULLTEX)
 Gestión de índices. Crear índices. Eliminar índices.
