@@ -619,6 +619,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#automatizacion-de-tareas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatización de tareas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Automatización de tareas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guiones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guiones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#lenguajes-de-programacion" class="md-nav__link">
     <span class="md-ellipsis">
       Lenguajes de programación
@@ -804,7 +828,11 @@
 <div class="admonition question">
 <p class="admonition-title">Cuestionario inicial</p>
 <ol>
-<li>aaa</li>
+<li>¿En qué consiste PL/SQL?</li>
+<li>¿Qué es un procedimiento almacenado? ¿En qué se diferencia de una función?</li>
+<li>En MariaDB, para que utilizamos el comando <code>DELIMITER</code>?</li>
+<li>¿Qué tipos de parámetros puede tener un procedimiento?</li>
+<li>¿Cuál es la estructura de un procedimiento almacenado?</li>
 </ol>
 </div>
 <h3 id="programacion-de-aula-7h">Programación de Aula (7h)<a class="headerlink" href="#programacion-de-aula-7h" title="Permanent link">&para;</a></h3>
@@ -821,51 +849,74 @@
 <tbody>
 <tr>
 <td>1</td>
-<td><a href="#lenguajes-de-programacion">Lenguajes de programación</a> en bases de datos</td>
+<td>Automatización de tareas</td>
 <td><a href="#AC1001">AC1001</a></td>
-<td><abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr></td>
+<td><abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr>, <abbr title="Se han reconocido los métodos de ejecución de guiones.">CE5b</abbr>, <abbr title="Se han identificado las herramientas disponibles para editar guiones.">CE5c</abbr>, <abbr title="Se han definido y utilizado guiones para automatizar tareas.">CE5d</abbr>, <abbr title="Se ha hecho uso de las funciones proporcionadas por el sistema gestor.">CE5e</abbr></td>
 </tr>
 <tr>
 <td>2</td>
-<td>Procedimientos</td>
-<td><a href="#AC1001">AC1001</a></td>
-<td><abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr></td>
+<td><a href="#lenguajes-de-programacion">Lenguajes de programación</a> en bases de datos</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>3</td>
-<td>Procedimientos</td>
-<td></td>
-<td><abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr></td>
+<td><a href="#procedimientos">Procedimientos</a></td>
+<td><a href="#AC1001">AC1002</a></td>
+<td><abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr></td>
 </tr>
 <tr>
 <td>4</td>
-<td>Estructuras de control</td>
-<td></td>
-<td><abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr></td>
+<td><a href="#tipos-de-parametros">Tipos de parámetros</a> y <a href="#variables-en-consultas">variables</a></td>
+<td><a href="#AC1002">AC1003</a></td>
+<td><abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr></td>
 </tr>
 <tr>
 <td>5</td>
-<td>Funciones</td>
+<td>Estructuras de control</td>
 <td></td>
-<td><abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr></td>
+<td><abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr></td>
 </tr>
 <tr>
 <td>6</td>
 <td>Funciones</td>
 <td></td>
-<td><abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr></td>
+<td><abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr></td>
 </tr>
 <tr>
 <td>7</td>
 <td>Supuesto</td>
 <td></td>
-<td><abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr></td>
+<td><abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr></td>
 </tr>
 </tbody>
 </table>
+<h2 id="automatizacion-de-tareas">Automatización de tareas<a class="headerlink" href="#automatizacion-de-tareas" title="Permanent link">&para;</a></h2>
+<p>La automatización de tareas en bases de datos relacionales es un aspecto fundamental para optimizar la gestión de la información, reducir errores humanos y mejorar el rendimiento del sistema. Existen diversas estrategias para automatizar procesos, desde mecanismos integrados en los sistemas gestores de bases de datos (SGBD) hasta herramientas externas que permiten programar y ejecutar acciones de manera periódica o en respuesta a eventos específicos.</p>
+<p>Entre las principales técnicas se encuentran el uso de <strong><em>triggers</em></strong>, que permiten ejecutar acciones automáticamente ante eventos como inserciones, modificaciones o eliminaciones de datos; los <strong>procedimientos almacenados</strong>, que encapsulan conjuntos de instrucciones SQL reutilizables; y los <em>event schedulers</em> o <strong><em>jobs</em></strong>, que permiten programar tareas como copias de seguridad, optimización de índices o limpieza de registros antiguos.</p>
+<p>Además de las funcionalidades propias de los SGBD, la automatización puede lograrse mediante <em>scripts</em> externos escritos en lenguajes como <em>Bash</em>, <em>Python</em> o <em>PowerShell</em>, los cuales interactúan con la base de datos a través de conectores específicos. </p>
+<div class="admonition info">
+<p class="admonition-title">Bases de datos y programación</p>
+<p>Aunque en el módulo de Programación trabajaréis el acceso a las bases de datos desde un lenguaje de programación como Java, existen diversas formas de acceder a los datos almacenados, tales como herramientas ETL como <a href="https://pentaho.com/products/pentaho-data-integration/">Pentaho</a> o <a href="https://aws.amazon.com/es/glue/">AWS Glue</a>, o herramientas de visualización como <a href="https://grafana.com/">Grafana</a> o <a href="https://www.microsoft.com/es-es/power-platform/products/power-bi">PowerBI</a>, que permiten realizar operaciones sobre los datos sin necesidad de, bien saber SQL, o tener la necesidad de programar un conjunto de acciones.</p>
+</div>
+<p>La elección del método de automatización dependerá de factores como la frecuencia de ejecución, la complejidad de la tarea y la infraestructura tecnológica disponible, garantizando así una administración eficiente y segura de los datos.</p>
+<h3 id="guiones">Guiones<a class="headerlink" href="#guiones" title="Permanent link">&para;</a></h3>
+<p>En el contexto de bases de datos, un <strong>guion</strong> (o <strong>script</strong>) es un conjunto de instrucciones escritas en un lenguaje específico, como SQL, que se ejecutan de manera secuencial para realizar una tarea determinada. Estos guiones pueden contener comandos para <strong>crear, modificar o consultar datos</strong> (tanto sentencias DDL, DML, DCL como TCL), así como instrucciones de control de flujo que permiten automatizar procesos dentro del SGBD.  </p>
+<p>Podemos ejecutar un guion de diversas formas:</p>
+<ul>
+<li><strong>manualmente</strong>, desde una consola o interfaz gráfica,</li>
+<li>o <strong>automáticamente</strong>, mediante herramientas de programación de tareas como <em>cron jobs</em> o herramientas de orquestación de procesos como <a href="https://airflow.apache.org/"><em>Airflow</em></a>. Su uso es esencial en la administración de bases de datos, ya que permite reproducir procesos de manera consistente, reducir errores humanos y optimizar el tiempo de ejecución de tareas repetitivas.</li>
+</ul>
+<p>Uno de los métodos más comunes es la ejecución directa desde <a href="https://mariadb.com/kb/en/mariadb-command-line-client/">líneas de comandos</a>, tal como vimos en el apartado <a href="05ddl.html#ejecutando-un-script"><em>Ejecutando un script</em></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">mariadb</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="n">nombre_de_base_de_datos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">archivo</span><span class="p">.</span><span class="k">sql</span>
+</code></pre></div>
+<p>O desde dentro del propio gestor mediante <code>source</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">source</span><span class="w"> </span><span class="n">archivo</span><span class="p">.</span><span class="k">sql</span>
+</code></pre></div>
+<p>Además de preparar <em>scripts</em> con un conjunto de instrucciones, para poder crear bloques de instrucciones que encapsulen un conjunto de operaciones, necesitamos de un lenguaje de programación que permita la creación de estos módulos, así como del soporte para la programación estructurada, mediante instrucciones condicionales y de repetición.</p>
 <h2 id="lenguajes-de-programacion">Lenguajes de programación<a class="headerlink" href="#lenguajes-de-programacion" title="Permanent link">&para;</a></h2>
-<p>PL/SQL (<em>Procedural Language/Structured Query Language</em>) es un lenguaje procedimental que extiende SQL, permitiendo una programación más avanzada y flexible en bases de datos.</p>
-<p>Existen diferentes variantes de PL/SQL que dependen del SGBD utilizado, como Oracle PL/SQL y PostgreSQL PL/pgSQL. Este lenguaje permite programar e interactuar con la base de datos mediante SQL, facilitando la manipulación de diferentes tipos de datos. Además, PL/SQL permite invocar funciones y procedimientos almacenados, lo que mejora la modularidad y reutilización del código.</p>
+<p>PL/SQL (<em>Procedural Language/Structured Query Language</em>) es un lenguaje procedimental que extiende SQL, permitiendo una programación más avanzada y flexible en bases de datos, mediante la creación de pequeños guiones para automatizar tareas.</p>
+<p>Existen diferentes variantes de PL/SQL que dependen del SGBD utilizado, como Oracle PL/SQL, PostgreSQL PL/pgSQL o MariaDB PL/SQL. Este lenguaje permite programar e interactuar con la base de datos mediante SQL, facilitando la manipulación de diferentes tipos de datos. Además, PL/SQL permite invocar funciones y procedimientos almacenados, lo que mejora la modularidad y reutilización del código.</p>
 <p>Una de las características más destacadas de PL/SQL es su capacidad para manejar errores de manera efectiva, proporcionando mecanismos robustos para capturar y gestionar excepciones, lo que contribuye a la creación de aplicaciones de bases de datos más fiables y manejables.</p>
 <p>Sus usos son:</p>
 <ul>
@@ -892,7 +943,11 @@
 </code></pre></div>
 <p>Y sustituyendo <code>parámetros</code> por un listado de parámetros, indicando si son de entrada, salida o entrada/salida, así como su nombre y tipo mediante <code>[ IN | OUT | INOUT ] nombreParametro tipo</code>.</p>
 <p>Los <a href="https://mariadb.com/kb/en/data-types/">tipos</a> de los parámetros y las variables declaradas en los bloques son los mismos empleados en el DDL, por ejemplo, <code>INT</code>, <code>VARCHAR</code>, etc...</p>
-<p>Antes de nuestro primer procedimiento, necesitamos indicarle al cliente de <em>MariaDB</em> no interprete los punto y coma como separador de instrucciones. Para ello, antes y después de la declaración, hay que indicar el delimitador mediante <a href="https://mariadb.com/kb/en/delimiters/">DELIMITER</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Cambiando el delimitador</p>
+<p>Antes de crear nuestro primer procedimiento, necesitamos indicarle al cliente de <em>MariaDB</em> que no interprete los punto y coma como separador de instrucciones, ya que como nuestro bloque va a contener varias instrucciones, si no lo cambiamos, sólo ejecutaría la primera y finalizaría el procedimiento.</p>
+<p>Para ello, antes y después de la declaración, hay que indicar el delimitador mediante <a href="https://mariadb.com/kb/en/delimiters/">DELIMITER</a>.</p>
+<p>Como convención vamos a utilizar la doble barra (<code>//</code>), y por lo tanto, tras el <code>END</code>, podremos siempre el nuevo delimitador. A continuación, volveremos a dejar el delimitador como estaba inicialmente para poder realizar otras operaciones, como invocar al propio procedimiento.</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">cantidadEmpleados</span><span class="p">()</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">BEGIN</span>
@@ -901,40 +956,48 @@
 <span class="linenos" data-linenos="6 "></span><span class="o">//</span>
 <span class="hll"><span class="linenos" data-linenos="7 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
 </span></code></pre></div>
+</div>
+<p>Una buena práctica es comentar el objetivo del procedimiento, mediante la sentencia <code>COMMENT</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">cantidadDepartamentos</span><span class="p">()</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">COMMENT</span><span class="w"> </span><span class="ss">&quot;Recupera la cantidad de departamentos&quot;</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">departamentos</span><span class="p">;</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">END</span>
+<span class="linenos" data-linenos="7 "></span><span class="o">//</span>
+<span class="linenos" data-linenos="8 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+</code></pre></div>
 <h3 id="invocando">Invocando<a class="headerlink" href="#invocando" title="Permanent link">&para;</a></h3>
 <p>Una vez hemos declarado un procedimiento, lo invocaremos mediante <a href="https://mariadb.com/kb/en/call/"><code>CALL</code></a> mediante la sintaxis <code>CALL nombreProcedimiento(parámetros)</code>.</p>
 <p>Así pues, para invocar al procedimiento anterior usaremos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">cantidadEmpleados</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">cantidadEmpleados</span><span class="p">();</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">-- +----------+</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- | count(*) |</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">-- +----------+</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- |       10 |</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">-- +----------+</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.003 sec)</span>
 </code></pre></div>
-<p>Si queremos consultar los procedimientos existentes y obtener tanto su nombre,  creador, fecha de creación, ... podemos emplear el comando <a href="https://mariadb.com/kb/en/show-procedure-status/"><code>SHOW PROCEDURE STATUS</code></a></p>
+<p>Si queremos consultar los procedimientos existentes y obtener tanto su nombre, creador, fecha de creación, ... podemos emplear el comando <a href="https://mariadb.com/kb/en/show-procedure-status/"><code>SHOW PROCEDURE STATUS</code></a></p>
 <p>Si queremos restringir a una base de datos en concreto, filtraremos mediante <code>db</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SHOW</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">STATUS</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">db</span><span class="o">=</span><span class="s1">&#39;empresa&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">-- +---------+-----------------------+-----------+---------------+---------------------+---------------------+---------------+---------------------------------------+- ... -+</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- | Db      | Name                  | Type      | Definer       | Modified            | Created             | Security_type | Comment                               |  ...  |</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">-- +---------+-----------------------+-----------+---------------+---------------------+---------------------+---------------+---------------------------------------+- ... -+</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- | empresa | cantidadDepartamentos | PROCEDURE | s8a@localhost | 2025-02-14 11:00:59 | 2025-02-14 11:00:59 | DEFINER       | Recupera la cantidad de departamentos |  ...  |</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">-- | empresa | cantidadEmpleados     | PROCEDURE | s8a@localhost | 2025-02-14 10:55:11 | 2025-02-14 10:55:11 | DEFINER       |                                       |  ...  |</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">-- +---------+-----------------------+-----------+---------------+---------------------+---------------------+---------------+---------------------------------------+- ... -+</span>
+<span class="linenos" data-linenos="8 "></span><span class="c1">-- 2 rows in set (0.001 sec)</span>
 </code></pre></div>
 <h3 id="tipos-de-parametros">Tipos de parámetros<a class="headerlink" href="#tipos-de-parametros" title="Permanent link">&para;</a></h3>
 <p>Tal como hemos comentado antes, los procedimientos pueden tener diferentes tipos de parámetros:</p>
 <ul>
 <li>
-<p>Parámetros de entrada (<code>IN</code>): son los parámetros por defecto, de manera que si no indicamos el tipo, siempre serán de entrada.</p>
+<p>Parámetros de <strong>entrada</strong> (<code>IN</code>): son los parámetros por defecto, de manera que si no indicamos el tipo, siempre serán de entrada.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">entrada</span><span class="p">(</span><span class="n">p1</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span><span class="w"> </span><span class="err">…</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">entrada</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 </code></pre></div>
-</li>
-<li>
-<p>Parámetros de salida (<code>OUT</code>)</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">salida</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="k">OUT</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span><span class="w"> </span><span class="err">…</span>
-</code></pre></div>
-<p>Para pasar un parámetro de salida, se antepone una @ a su nombre</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">salida</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">resultado</span><span class="p">);</span>
-</code></pre></div>
-</li>
-<li>
-<p>Parámetros de entrada/salida (<code>INOUT</code>): Se lee como dato de entrada, y desde el procedimiento se le asigna un resultado como salida</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">contar</span><span class="p">(</span><span class="k">INOUT</span><span class="w"> </span><span class="n">cuenta</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="n">incremento</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="err">…</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">contar</span><span class="p">(</span><span class="o">@</span><span class="n">cantidad</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
-</code></pre></div>
-</li>
-</ul>
-<p>Vamos a ver unos ejemplos reescribiendo el mismo fragmento de código pero empleando diferentes tipos de parámetros. Por ejemplo, creamos un procedimiento que recibe un parámetro de entrada, y al ejecutarlo es como si hubiéramos hecho una consulta:</p>
+<p>Por ejemplo, en el siguiente caso realizamos una consulta a partir de un parámetro de entrada:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">saluda</span><span class="p">(</span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">))</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">BEGIN</span>
@@ -944,7 +1007,15 @@
 <span class="linenos" data-linenos="7 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
 <span class="linenos" data-linenos="8 "></span><span class="k">call</span><span class="w"> </span><span class="n">saluda</span><span class="p">(</span><span class="ss">&quot;Aitor&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p>En cambio, también podemos obtener el resultado y almacenarlo como parámetro de salida, empleado la instrucción <a href="https://mariadb.com/kb/en/set-variable/"><code>SET variable = valor</code></a>.:</p>
+</li>
+<li>
+<p>Parámetros de <strong>salida</strong> (<code>OUT</code>)</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">salida</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="k">OUT</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span><span class="w"> </span><span class="err">…</span>
+</code></pre></div>
+<p>Para pasar un parámetro de salida, se antepone una @ a su nombre</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">salida</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">resultado</span><span class="p">);</span>
+</code></pre></div>
+<p>En este caso, creamos un procedimiento que recibe un parámetro de entrada, y a partir de él, cambia el contenido del parámetro de salida, empleando la instrucción <a href="https://mariadb.com/kb/en/set-variable/"><code>SET variable = valor</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">saludaOut</span><span class="p">(</span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span><span class="w"> </span><span class="k">OUT</span><span class="w"> </span><span class="n">saludo</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">))</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">BEGIN</span>
@@ -953,32 +1024,100 @@
 <span class="linenos" data-linenos="6 "></span><span class="o">//</span>
 <span class="linenos" data-linenos="7 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
-<p>Para poder guardar el resultado, necesitamos podemos definir y utilizar variables.</p>
+</li>
+<li>
+<p>Parámetros de <strong>entrada/salida</strong> (<code>INOUT</code>): Se lee como dato de entrada, y desde el procedimiento se le asigna un resultado como salida</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">contar</span><span class="p">(</span><span class="k">INOUT</span><span class="w"> </span><span class="n">cuenta</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="n">incremento</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span><span class="w"> </span><span class="err">…</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">contar</span><span class="p">(</span><span class="o">@</span><span class="n">cantidad</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+</code></pre></div>
+</li>
+</ul>
+<p>Por ejemplo, sobre la base de datos <code>empresa</code>, podemos recuperar los empleados de un determinado departamento:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">delimiter</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">empleadosDepartamento</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">codigoDepartamento</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">comment</span><span class="w"> </span><span class="ss">&quot;recuperar los empleados de un determinado departamento&quot;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">begin</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codigoDepartamento</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">end</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="o">//</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">delimiter</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span><span class="k">call</span><span class="w"> </span><span class="n">empleadosDepartamento</span><span class="p">(</span><span class="ss">&quot;VENZS&quot;</span><span class="p">);</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+-----------------------+-------+------------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp                | NumHi | SalEmp     |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+-----------------------+-------+------------+</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- |      3 | VENZS  | 2133     | 1984-06-08 | 1965-12-07 | 23823930D | Monforte Cid, Roldán  |     1 | 5200000.00 |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- |      4 | VENZS  | 3838     | 1990-08-09 | 1975-02-21 | 38293923L | Topaz Illán, Carlos   |     0 | 3200000.00 |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+-----------------------+-------+------------+</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- 2 rows in set (0.001 sec)</span>
+</code></pre></div>
 <h3 id="uso-de-variables">Uso de variables<a class="headerlink" href="#uso-de-variables" title="Permanent link">&para;</a></h3>
 <p>Dentro de nuestros bloques de código, podemos declarar y utilizar variables, las cuales se consideran locales al bloque. Éstas se declaran  tras abrir un bloque mediante <a href="https://mariadb.com/kb/en/declare-variable/"><code>DECLARE variable tipo</code></a>. </p>
 <p>Si queremos utilizar <a href="https://mariadb.com/kb/en/user-defined-variables/">variables de usuario</a> que existen durante la sesión del mismo, y las cuales se pueden compartir entre varias consultas y procedimientos almacenados, le antepondremos la arroba, por ejemplo <code>@variableUsuario</code>.</p>
 <p>Para asignar un valor a una variable o parámetros usaremos <a href="https://mariadb.com/kb/en/set-variable/"><code>SET variable = valor</code></a>.</p>
 <p>Si retomamos el ejemplo anterior, ahora definimos una variable de entrada/salida, además de otra de entrada y una tercera de salida:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">saludaInOut</span><span class="p">(</span><span class="k">INOUT</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span><span class="w"> </span><span class="n">apellido</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span><span class="w"> </span><span class="k">OUT</span><span class="w"> </span><span class="n">saludo</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">))</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">BEGIN</span>
-<span class="hll"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
-</span><span class="linenos" data-linenos=" 5 "></span>
-<span class="hll"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">concat</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">apellido</span><span class="p">);</span>
-</span><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="n">saludo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">concat</span><span class="p">(</span><span class="ss">&quot;Hola &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="p">);</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="k">END</span><span class="p">;</span>
-<span class="linenos" data-linenos="10 "></span><span class="o">//</span>
-<span class="linenos" data-linenos="11 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">delimiter</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">saludaInOut</span><span class="p">(</span><span class="k">INOUT</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">                             </span><span class="k">IN</span><span class="w"> </span><span class="n">apellido</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">                             </span><span class="k">OUT</span><span class="w"> </span><span class="n">saludo</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">))</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">begin</span>
+<span class="hll"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">declare</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
+</span><span class="linenos" data-linenos=" 7 "></span>
+<span class="hll"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">concat</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">apellido</span><span class="p">);</span>
+</span><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="n">saludo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">concat</span><span class="p">(</span><span class="ss">&quot;hola &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="p">);</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">end</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="o">//</span>
+<span class="linenos" data-linenos="13 "></span><span class="k">delimiter</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
 <p>Para invocar al procedimiento, primero le asignamos un valor a la variable de usuario <code>@nombre</code>, la cual se utilizará coma parámetro de entrada y salida, y además, al invocar a <code>saludaInOut</code>, le pasamos otra variable de usuario para almacenar el resultado del parámetro de salida <code>out</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">set</span><span class="w"> </span><span class="o">@</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Aitor&quot;</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">call</span><span class="w"> </span><span class="n">saludaInOut</span><span class="p">(</span><span class="o">@</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">saludo</span><span class="p">);</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">saludo</span><span class="p">;</span>
 </code></pre></div>
+<p>Si volvemos a nuestra base de datos de <code>empresa</code> podemos contar cuantos empleados tiene un departamento, pero devolviendo el resultado:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">delimiter</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">cantidadEmpleadosDepartamento</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">codigoDepartamento</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="w">                                               </span><span class="k">OUT</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">comment</span><span class="w"> </span><span class="ss">&quot;Recupera los empleados de un determinado departamento&quot;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">begin</span>
+<span class="hll"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codigoDepartamento</span><span class="p">);</span>
+</span><span class="linenos" data-linenos=" 7 "></span><span class="k">end</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="o">//</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="k">delimiter</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">call</span><span class="w"> </span><span class="n">cantidadEmpleadosDepartamento</span><span class="p">(</span><span class="ss">&quot;VENZS&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">cantidad</span><span class="p">);</span>
+<span class="linenos" data-linenos="12 "></span><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">cantidad</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- +-----------+</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- | @cantidad |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- +-----------+</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- |         2 |</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- +-----------+</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
+</code></pre></div>
 <h4 id="variables-en-consultas">Variables en consultas<a class="headerlink" href="#variables-en-consultas" title="Permanent link">&para;</a></h4>
-<p>Si queremos almacenar el resultado de una consulta en variables, haremos uso de la sentencia <a href="https://mariadb.com/kb/en/selectinto/">SELECT INTO</a>.</p>
-<p>Podemos utilizarla dentro de un procedimiento con variables locales, o fuera con variables de usuario:</p>
+<p>Si queremos almacenar el resultado de una consulta en variables, es mejor hacer uso de la sentencia <a href="https://mariadb.com/kb/en/selectinto/">SELECT INTO</a>.</p>
+<p>Si reescribimos la consulta anterior, tendríamos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">delimiter</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">create</span><span class="w"> </span><span class="k">procedure</span><span class="w"> </span><span class="n">cantidadEmpleadosDepartamentoSI</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">codigoDepartamento</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="w">                                                 </span><span class="k">OUT</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">comment</span><span class="w"> </span><span class="ss">&quot;Recupera los empleados de un determinado departamento&quot;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">begin</span>
+<span class="hll"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codigoDepartamento</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 7 "></span><span class="k">end</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="o">//</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="k">delimiter</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">call</span><span class="w"> </span><span class="n">cantidadEmpleadosDepartamentoSI</span><span class="p">(</span><span class="ss">&quot;VENZS&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">cantidad</span><span class="p">);</span>
+<span class="linenos" data-linenos="12 "></span><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">cantidad</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- +-----------+</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- | @cantidad |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- +-----------+</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- |         2 |</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- +-----------+</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
+</code></pre></div>
+<p>Por supuesto, podemos utilizarla dentro de un procedimiento con variables locales, o fuera con variables de usuario:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">),</span><span class="w"> </span><span class="k">min</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="o">@</span><span class="n">mayor</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">menor</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </code></pre></div>
@@ -1213,8 +1352,46 @@
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <p><a name="AC1001"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1001</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr> // 3p) asdfs</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1001</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr>, <abbr title="Se han reconocido los métodos de ejecución de guiones.">CE5b</abbr>, <abbr title="Se han identificado las herramientas disponibles para editar guiones.">CE5c</abbr>, <abbr title="Se han definido y utilizado guiones para automatizar tareas.">CE5d</abbr>, <abbr title="Se ha hecho uso de las funciones proporcionadas por el sistema gestor.">CE5e</abbr> // 3p) En la base de datos <code>empresa</code> y en un archivo nombrado <code>ac1001empleados.sql</code> se pide:</p>
+<ol>
+<li>Crea una tabla <code>dashboard_dpto</code> que muestre para cada departamento, además de su código y nombre y presupuesto anual, cuantos empleados y su gasto en salarios.</li>
+<li>Crea una tabla <code>dashboard_centro</code> que muestre para cada centro, además de su código y nombre, cuantos departamentos contiene y el presupuesto anual (entendido como la suma de los presupuestos de sus departamentos).</li>
+<li>Ejecuta el <em>script</em> <code>ac1001empleados.sql</code> para que ejecute ambas operaciones (cada vez que lo ejecutes, debe borrar las tablas y volver a crearlas)</li>
+<li>Averigua cómo puedes automatizar la ejecución del script mediante <code>crontab</code> para que se ejecute cada 5 minutos.</li>
+</ol>
+</li>
 </ul>
+<p><a name="AC1002"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1002</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr> // 3p) En la base de datos <code>empresa</code>, crea:</p>
+<ol>
+<li>El procedimiento <code>ac1002listEmpleadosConHijos</code> que muestre los empleados que tienen hijos. </li>
+<li>El procedimiento <code>ac1002contarEmpleados</code> que muestre la cantidad de empleados.</li>
+<li>El procedimiento <code>ac1002updSalarioEmpleados</code> que incremente el salario de los empleados un 10%.</li>
+<li>Recupera los procedimientos existentes.</li>
+<li>Elimina el procedimiento <code>ac10021updSalarioEmpleados</code>.</li>
+</ol>
+</li>
+</ul>
+<p><a name="AC1003"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1003</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr> // 3p) En la base de datos <code>empresa</code>, crea:</p>
+<ol>
+<li>El procedimiento <code>ac1003updSalarioEmpleadosParam</code> que incremente el salario a partir de un parámetro de entrada.</li>
+</ol>
+</li>
+</ul>
+<!--
+4. Crea otro procedimiento de nombre sueldo_empleados1, que calcule el sueldo máximo, mínimo y la media de los
+empleados de cierto departamento utilizando la instrucción SET. Indica cómo se invocaría al procedimiento.
+5. Crea un nuevo procedimiento de nombre sueldo_empleados2, que calcule el sueldo máximo, mínimo y la media de
+los empleados de cierto departamento utilizando la instrucción SELECT … INTO. Indica cómo se invocaría al
+procedimiento.
+-->
+
 <!--
 Contenidos básicos:
 
