@@ -712,6 +712,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#bloqueos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloqueos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bloqueos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bloqueos-explicito-de-filas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloqueos explícito de filas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloqueos-explicito-de-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloqueos explícito de tablas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1049,6 +1082,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#bloqueos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloqueos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bloqueos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bloqueos-explicito-de-filas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloqueos explícito de filas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloqueos-explicito-de-tablas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bloqueos explícito de tablas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1203,7 +1269,7 @@
 </tr>
 <tr>
 <td>4</td>
-<td><a href="#pasos">Uso</a> de <strong>commit</strong> y <em>rollback</em></td>
+<td><a href="#pasos">Uso</a> de <em>commit</em> y <em>rollback</em></td>
 <td><a href="#AC904">AC904</a></td>
 <td><abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr></td>
 </tr>
@@ -1453,21 +1519,37 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <h3 id="pasos">Pasos<a class="headerlink" href="#pasos" title="Permanent link">&para;</a></h3>
 <p>Para realizar una <a href="https://mariadb.com/kb/es/start-transaction/">transacción</a>, tal como hemos visto previamente, el primer paso es declararla y realizar una serie de pasos:</p>
 <ol>
-<li>Indicar que vamos a realizar una transacción con la sentencia <code>START TRANSACTION</code>, <code>BEGIN</code> o <code>BEGIN WORK</code>.</li>
+<li>Indicar que vamos a realizar una transacción con la sentencia <code>START TRANSACTION</code>, <code>BEGIN</code> o <code>BEGIN WORK</code>. Al iniciar la transacción, el <code>AUTOCOMMIT</code> se deshabilita automáticamente.</li>
 <li>Realizar las operaciones de manipulación de datos sobre la base datos (insertar, actualizar o borrar filas).</li>
-<li>Dos posibilidades:<ol>
-<li>Si las operaciones se han completado y queremos que los cambios se apliquen de forma permanente → <code>COMMIT</code>.</li>
-<li>Si durante las operaciones ocurre algún error y no queremos aplicar los cambios realizados, podemos deshacerlos → <code>ROLLBACK</code>. Al hacer <em>rollback</em> se abandona la transacción y se cancela todos los cambios realizados previamente por la transacción.</li>
+<li>
+<p>Dos posibilidades:</p>
+<ol>
+<li>
+<p>Si las operaciones se han completado y queremos que los cambios se apliquen de forma permanente → <code>COMMIT</code></p>
+<pre class="mermaid"><code>---
+config:
+look: handDrawn
+---
+flowchart LR
+    A([Estado inicial]) --&gt; B[BEGIN]
+    B --&gt; C{{Sentencia SQL 1}}
+    C --&gt; D{{Sentencia SQL 2}}
+    D --&gt; E[COMMIT]
+    E --&gt; F([Estado final])</code></pre>
+</li>
+<li>
+<p>Si durante las operaciones ocurre algún error y no queremos aplicar los cambios realizados, podemos deshacerlos → <code>ROLLBACK</code>. Al hacer <em>rollback</em> se abandona la transacción y se cancela todos los cambios realizados previamente por la transacción, volviendo al estado inicial previo al inicio de la transacción.</p>
+<pre class="mermaid"><code>%%{config: {"look": "handDrawn"}} }%%
+flowchart LR
+    A([Estado inicial]) --&gt; B[BEGIN]
+    B --&gt; C{{Sentencia SQL 1}}
+    C --&gt; D{{Sentencia SQL 2}}
+    D --&gt; E[ROLLBACK]
+    E --&gt; A</code></pre>
+</li>
 </ol>
 </li>
 </ol>
-<pre class="mermaid"><code>graph TD
-    Estado inicial
-    BEGIN
-    Sentencia SQL 1
-    Sentencia SQL 2
-    Sentencia SQL 3
-    COMMIT</code></pre>
 <p>Veamos un ejemplo donde creamos una base de datos <code>pruebas</code>, junto a una tabla <code>cliente</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">pruebas</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">utf8mb4</span><span class="p">;</span>
@@ -1481,12 +1563,49 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 </code></pre></div>
 <p>A continuación, podemos realizar diferentes operaciones dentro de una única transacción:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;José Manuel&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Marina&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">);</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;José Manuel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Marina&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos="5 "></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">;</span>
 <span class="hll"><span class="linenos" data-linenos="6 "></span><span class="k">COMMIT</span><span class="p">;</span>
 </span></code></pre></div>
+<p>De esta manera, las tres inserciones y el borrado se ejecutan como una única operación. Si abrimos dos terminales y entramos con dos sesiones diferentes, y ejecutamos el siguiente flujo, obtendremos:</p>
+<table>
+<thead>
+<tr>
+<th>Usuario 1</th>
+<th>Resultado 1</th>
+<th>Usuario 2</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="highlight"><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span></code><br ><code class="highlight"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;José Manuel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span></code><br ><code class="highlight"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Marina&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span></code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">CLIENTE</span><span class="p">;</span></code></td>
+<td><code>1, José Manuel, Elche</code><br><code>2, Marina, Elche</code></td>
+<td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">CLIENTE</span><span class="p">;</span></code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span></code><br ><code class="highlight"><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">;</span></code><br ><code class="highlight"><span class="k">COMMIT</span><span class="p">;</span></code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">CLIENTE</span><span class="p">;</span></code></td>
+<td><code>1, José Manuel, Elche</code><br><code>2, Marina, Elche</code></td>
+<td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">CLIENTE</span><span class="p">;</span></code></td>
+<td><code>1, José Manuel, Elche</code><br><code>2, Marina, Elche</code></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition question">
 <p class="admonition-title">Autoevaluación</p>
 <p>Si en cambio ejecutásemos el siguiente fragmento, tras haber acabado de crear la tabla:</p>
@@ -1534,6 +1653,7 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <p>Pensemos en otro ejemplo. Cuando realizamos un <em>bizum</em> o una transferencia bancaria entre dos usuarios, la cantidad se resta de la cuenta bancaria de origen y se suma en la de destino. Entre una operación y otra pueden pasar muchas cosas ¿Y si se va la luz? ¿Y si el usuario origen no tiene saldo? ¿Restamos y luego sumamos?</p>
 <p>La gestión de la concurrencia es un equilibrio entre garantizar la seguridad de los datos y maximizar el rendimiento del sistema.</p>
 <h3 id="tipos-de-problemas">Tipos de problemas<a class="headerlink" href="#tipos-de-problemas" title="Permanent link">&para;</a></h3>
+<p>Cuando consultamos una base de datos, cada transacción ve una instantánea de los datos, es decir, una versión de la base de datos, sin tener en cuenta el estado actual de los datos que hay por debajo. Así se evita que la transacción vea datos inconsistentes producidos por la actualización de otra transacción concurrente, proporcionando aislamiento transaccional para cada sesión de la base de datos.</p>
 <p>Cuando no tenemos control de concurrencia, se pueden producir condiciones de carrera al perder información en una actualización:</p>
 <div class="grid cards">
 <ul>
@@ -1636,7 +1756,7 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <div class="grid cards">
 <ul>
 <li>
-<p><strong>Lectura fantasma</strong> (<em>Phantom Read</em>): Se trata de una variación de lecturas no repetibles. Este error ocurre cuando una transacción ejecuta dos veces una consulta que devuelve un conjunto de filas y en la segunda ejecución de la consulta aparecen nuevas filas en el conjunto que no existían cuando se inició lo transacción.</p>
+<p><strong>Lectura fantasma</strong> (<em>Phantom Read</em>): Se trata de una variación de lecturas no repetibles. Este error ocurre cuando una transacción ejecuta dos veces una consulta que devuelve un conjunto de filas y en la segunda ejecución de la consulta aparecen/desaparecen nuevas filas en el conjunto que no existían cuando se inició lo transacción.</p>
 <p>El usuario 1 comprueba los asientos disponibles. A la vez, el usuario 2 elimina el asiento 33 ya que se ha roto y no debe aparecer entre los asientos existentes. Cuando el usuario 1 vuelve a comprobar los asientos existentes, comprueba su estado y el asiento no aparece, cuando antes sí (de ahí que sea una lectura fantasma).</p>
 <table>
 <thead>
@@ -1666,11 +1786,7 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <h3 id="mecanismos">Mecanismos<a class="headerlink" href="#mecanismos" title="Permanent link">&para;</a></h3>
 <p>Los sistemas gestores de bases de datos (SGBD) implementan diferentes técnicas para garantizar la consistencia y aislamiento de las transacciones:</p>
 <ul>
-<li>Control de concurrencia mediante <strong>bloqueos</strong> (<em>Locks</em>). Los bloqueos son mecanismos que previenen conflictos entre las transacciones que acceden a los mismos recursos, bien sea una, a estructuras de datos compartidas o a un registro del diccionario de datos. Estos pueden ser:<ul>
-<li>Bloqueos <strong>compartidos</strong> (<em>Shared</em>): Permiten que varios procesos lean los mismos datos, pero no los modifiquen. Múltiples usuarios leyendo datos pueden compartirlos, manteniendo bloqueos para prevenir accesos concurrente por una escritura.</li>
-<li>Bloqueos <strong>exclusivos</strong> (<em>Exclusive</em>): Restringen el acceso a los datos a un solo proceso para lecturas y escrituras. La primera transacción que bloquea el recurso es la única que puede alterarlo hasta liberar el bloqueo.</li>
-</ul>
-</li>
+<li>Control de concurrencia mediante <strong>bloqueos</strong> (<em>Locks</em>). Los bloqueos son mecanismos que previenen conflictos entre las transacciones que acceden a los mismos recursos, bien sea a estructuras de datos compartidas o a un registro del diccionario de datos.</li>
 <li><strong>Versionado de datos</strong> (MVCC, <em>Multi-Version Concurrency Control</em>): Permite que cada transacción trabaje con su propia copia de los datos, evitando bloqueos y mejorando el rendimiento en sistemas con alta concurrencia. Cuando hay una modificación de datos, en lugar de sobrescribir una fila en actualizaciones, se almacena una nueva versión de la fila mientras se mantiene la versión anterior hasta que ya no sea necesaria (las transacciones que la usan han finalizado). Las versiones anteriores de una fila se almacenan en el espacio de "deshacer" (undo space) para permitir transacciones y lecturas consistentes.</li>
 <li>Protocolos de <strong>serialización</strong>: Garantizan que las transacciones se ejecuten de manera que los resultados sean equivalentes a ejecutarlas en secuencia, evitando interferencias.</li>
 <li><strong>Niveles de aislamiento</strong>: Establecen reglas sobre cómo se gestionan las interacciones entre transacciones (<code>READ UNCOMMITTED</code>, <code>READ COMMITTED</code>, <code>REPEATABLE READ</code>, <code>SERIALIZABLE</code>) para dar solución a los problemas de concurrencia comentados anteriormente.</li>
@@ -1678,10 +1794,10 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <h4 id="niveles-de-aislamiento">Niveles de aislamiento<a class="headerlink" href="#niveles-de-aislamiento" title="Permanent link">&para;</a></h4>
 <p>Cuando se trabaja con transacciones, el SGBD puede bloquear conjuntos de datos para evitar o permitir que sucedan estos problemas. Según el nivel de concurrencia que se desee, podemos utilizar cuatro niveles de aislamiento, definiendo cómo los cambios hechos por una transacción son visibles a otras transacciones:</p>
 <ul>
-<li><em>Read Uncommitted</em> (<code>READ UNCOMMITTED</code>). En este nivel no se realiza ningún bloqueo, por lo tanto, permite que sucedan los tres problemas. Todas las consultas se realizan sin bloqueos, de manera que los cambios hechos por una transacción pueden verlos las otras.</li>
-<li><em>Read Committed</em> (<code>READ COMMITTED</code>). En este caso los datos leídos por una transacción pueden ser modificados por otras transacciones, por lo tanto, se pueden dar los problemas <em>Non-Repeteable Read</em> y <em>Phantom Read</em>.</li>
-<li><em>Repeatable Read</em> (<code>REPEATABLE READ</code>). En este nivel ningún registro recuperado mediante   un <code>SELECT</code> puede modificarlo otra transacción, por lo tanto, sólo pueden ocurrir lecturas fantasmas. Es el nivel de aislamiento por defecto que utiliza <em>InnoDB</em>.</li>
-<li><em>Serializable</em> (<code>SERIALIZABLE</code>). En este caso las transacciones se ejecutan unas detrás de otras, sin que exista la posibilidad de concurrencia, a no ser que el SGBD pueda asegurar que no hay conflicto con el acceso a los datos.</li>
+<li><strong><em>Read Uncommitted</em></strong> (<code>READ UNCOMMITTED</code>). En este nivel no se realiza ningún bloqueo, por lo tanto, permite que sucedan los tres problemas. Todas las consultas se realizan sin bloqueos, de manera que los cambios hechos por una transacción pueden verlos las otras.</li>
+<li><strong><em>Read Committed</em></strong> (<code>READ COMMITTED</code>). En este caso los datos leídos por una transacción pueden ser modificados por otras transacciones, por lo tanto, se pueden darse tanto la lectura no repetible como las lecturas fantasmas.</li>
+<li><strong><em>Repeatable Read</em></strong> (<code>REPEATABLE READ</code>). En este nivel ningún registro recuperado mediante   un <code>SELECT</code> puede modificarlo otra transacción, por lo tanto, sólo pueden ocurrir lecturas fantasmas. Es el nivel de aislamiento por defecto que utiliza <em>InnoDB</em>.</li>
+<li><strong><em>Serializable</em></strong> (<code>SERIALIZABLE</code>). En este caso las transacciones se ejecutan unas detrás de otras, sin que exista la posibilidad de concurrencia, a no ser que el SGBD pueda asegurar que no hay conflicto con el acceso a los datos.</li>
 </ul>
 <p>En resumen, los problemas que cubren los diferentes niveles de aislamiento, son:</p>
 <table>
@@ -1728,11 +1844,61 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <p>Para configurar uno u otro nivel, por ejemplo, en <em>MariaDB</em>, podemos cambiar el <a href="https://mariadb.com/kb/en/set-transaction/#isolation-levels">nivel de aislamiento</a> del SGBD en el fichero de configuración con la propiedad <code>transaction-isolation</code> (desde <em>MariaDB</em> 11.1.1):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>transaction-isolation = &#39;READ COMMITTED&#39;
 </code></pre></div>
-<p>También podemos hacerlo para la sesión activa:</p>
+<p>También podemos hacerlo para la sesión activa desde el cliente de <em>MariaDB</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SET</span><span class="w"> </span><span class="k">SESSION</span><span class="w"> </span><span class="k">transaction</span><span class="o">-</span><span class="k">isolation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;read-committed&#39;</span><span class="p">;</span>
 </code></pre></div>
-<p>O para una transacción concreta, al iniciar la transacción mediante <a href="https://mariadb.com/kb/en/set-transaction/"><code>SET TRANSACTION ISOLATION LEVEL</code></a>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SET</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="w"> </span><span class="k">ISOLATION</span><span class="w"> </span><span class="k">LEVEL</span><span class="w"> </span><span class="k">READ</span><span class="w"> </span><span class="k">COMMITTED</span><span class="p">;</span>
+<p>O para una transacción concreta, al iniciar la transacción mediante <a href="https://mariadb.com/kb/en/set-transaction/"><code>SET TRANSACTION ISOLATION LEVEL</code></a> con la sintaxis:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SET</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="w"> </span><span class="k">ISOLATION</span><span class="w"> </span><span class="k">LEVEL</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="err">{</span><span class="k">READ</span><span class="w"> </span><span class="n">UNCOMMITED</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">READ</span><span class="w"> </span><span class="k">COMMITTED</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">REPEATABLE</span><span class="w"> </span><span class="k">READ</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">SERIALIZABLE</span><span class="err">}</span>
+</code></pre></div>
+<p>Por ejemplo, podríamos hacer una transacción serializable del siguiente modo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">SET</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="w"> </span><span class="k">ISOLATION</span><span class="w"> </span><span class="k">LEVEL</span><span class="w"> </span><span class="k">SERIALIZABLE</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodEmp</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">jefazo</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;DIRGE&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jefazo</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">COMMIT</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="bloqueos">Bloqueos<a class="headerlink" href="#bloqueos" title="Permanent link">&para;</a></h3>
+<p>Cuando un SGBD aísla las transacciones de usuario, utiliza los bloqueos para restringir el acceso de otros usuarios a dichos datos.</p>
+<p>Los bloqueos pueden ser:</p>
+<ul>
+<li><strong>Compartidos</strong> (<em>Shared</em>): Permiten que varios procesos lean los mismos datos, pero no los modifiquen. Múltiples usuarios leyendo datos pueden compartirlos, manteniendo bloqueos para prevenir accesos concurrente por una escritura.</li>
+<li><strong>Exclusivos</strong> (<em>Exclusive</em>): Restringen el acceso a los datos a un solo proceso para lecturas y escrituras. La primera transacción que bloquea el recurso es la única que puede alterarlo hasta liberar el bloqueo.</li>
+</ul>
+<p>Cuando se produce una condición de carrera, dependiendo del nivel de aislamiento, el SGBD actuará de una manera u otra, lo que impacta directamente en el rendimiento y la cantidad de bloqueos necesarios.</p>
+<p>A medida que ajustamos el comportamiento del SDBG como el idóneo para nuestro negocio, podremos llegar a un estado donde el número de bloqueos necesario aumenta, y por lo tanto, disminuye la concurrencia entre los diferentes usuarios, implicando una caída del rendimiento general.</p>
+<h4 id="bloqueos-explicito-de-filas">Bloqueos explícito de filas<a class="headerlink" href="#bloqueos-explicito-de-filas" title="Permanent link">&para;</a></h4>
+<p>Este tipo de bloqueos se produce cuando modificamos campos de una fila (o se borran o marcan para ser modificados). El caso de uso más común es cuando necesitamos bloqueos un número de filas antes de hacer cambios (como ciertas entradas o asientos). De esta manera, podemos prevenir el conjunto de filas que puedes ser modificadas y asegurarnos que no habrá ningún conflicto con otras transacciones.</p>
+<p>Para ello, usaremos la sentencia <a href="https://mariadb.com/kb/en/for-update/"><code>SELECT ... FOR UPDATE</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">BEGIN</span><span class="w"> </span><span class="k">TRANSACTION</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodEmp</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NumHi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">UPDATE</span><span class="p">;</span>
+</code></pre></div>
+<p>De este modo, se bloquearán todos los empleados sin hijos, y desde otras sesiones no si intentan modificar cualquier de ellos, la transacción se quedará bloqueada hasta que esta termine.</p>
+<p>Los bloqueos a nivel de fila no afectan a los datos consultados, únicamente se utilizan para bloquear la escrituras en la misma fila.</p>
+<h4 id="bloqueos-explicito-de-tablas">Bloqueos explícito de tablas<a class="headerlink" href="#bloqueos-explicito-de-tablas" title="Permanent link">&para;</a></h4>
+<p>Cuando el bloqueo automático no es suficiente, y necesitamos tener un mayor control con acceso exclusivo a ciertas tablas y vistas en sesiones paralelas (o concurrentes), es posible bloquear el acceso a las tablas.</p>
+<p>El bloqueo de tablas (<a href="https://mariadb.com/kb/en/lock-tables/"><code>LOCK TABLE</code></a>) protege contra accesos inapropiados de lecturas o escrituras de otras sesiones, impidiendo que otros accesos puedan
+cambiar simultáneamente los datos.</p>
+<p>La sintaxis es:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">LOCK</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="o">&lt;</span><span class="n">nombre_tabla</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[[</span><span class="k">as</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="k">alias</span><span class="o">&gt;</span><span class="p">]</span><span class="w"> </span><span class="k">READ</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">WRITE</span>
+<span class="linenos" data-linenos="2 "></span><span class="p">[,</span><span class="w"> </span><span class="o">&lt;</span><span class="n">nombre_tabla</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[[</span><span class="k">as</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="k">alias</span><span class="o">&gt;</span><span class="p">]</span><span class="w"> </span><span class="k">READ</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">WRITE</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">...</span>
+</code></pre></div>
+<p>Si indicamos la opción <code>READ</code>, va a permitir leer sobre la tablas, pero no escribir. En cambio, la opción <code>WRITE</code> permite que la sesión que ejecuta el bloqueo pueda escribir sobre la tabla, pero el
+resto de sesiones solo la puedan leer, hasta que acabe el bloqueo.</p>
+<p>Por ejemplo, si bloqueamos una tabla, para poder acceder a ella, deberemos hacerlo por su nombre conjuntamente con el alias:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">LOCK</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">empLocked</span><span class="w"> </span><span class="k">READ</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- ERROR 1100 (HY000): Table &#39;empleado&#39; was not locked with LOCK TABLES</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">empLocked</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- Muestra el listado de empleados</span>
+</code></pre></div>
+<p>Cuando se ejecuta <code>LOCK TABLES</code> se hace un <code>COMMIT</code> implícito, por lo tanto, si había alguna transacción abierta, esta acaba. Si acaba la conexión (normalmente o anormalmente) antes de desbloquear las tablas, automáticamente se desbloquean las tablas.</p>
+<p>Otro caso de uso muy común es bloquear todas las tablas de todas las bases de datos
+del SGBD, para hacer, por ejemplo, copias de seguridad, mediante un <a href="https://mariadb.com/kb/en/flush/"><code>FLUSH</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">FLUSH</span><span class="w"> </span><span class="n">TABLES</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">READ</span><span class="w"> </span><span class="k">LOCK</span><span class="p">;</span>
+</code></pre></div>
+<p>Para desbloquear las tablas (todas las que estuvieran bloqueadas), haremos un <a href="https://mariadb.com/kb/en/transactions-unlock-tables/"><code>UNLOCK</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">UNLOCK</span><span class="w"> </span><span class="n">TABLES</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1828,8 +1994,8 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <span class="hll"><span class="linenos" data-linenos="20 "></span><span class="c1">-- ¿Qué sucede cuando una cuenta no existe?</span>
 </span><span class="linenos" data-linenos="21 "></span>
 <span class="linenos" data-linenos="22 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-<span class="linenos" data-linenos="23 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="linenos" data-linenos="24 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="linenos" data-linenos="23 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="linenos" data-linenos="24 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="linenos" data-linenos="25 "></span><span class="k">COMMIT</span><span class="p">;</span>
 <span class="hll"><span class="linenos" data-linenos="26 "></span><span class="c1">-- ¿Y si una cuenta no tiene saldo?</span>
 </span></code></pre></div>
