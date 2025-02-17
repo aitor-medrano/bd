@@ -1145,7 +1145,9 @@
 <li>En MariaDB, ¿para qué utilizamos el comando <code>DELIMITER</code>?</li>
 <li>¿Qué tipos de parámetros puede tener un procedimiento?</li>
 <li>¿Cuál es la estructura de un procedimiento almacenado?</li>
-<li>...</li>
+<li>¿Qué sucede si no le pasamos ningún argumento a un procedimiento que espera algún parámetro?</li>
+<li>¿Un procedimiento puede invocar a otro procedimiento?</li>
+<li>¿Cómo se define una variable dentro de un procedimiento?</li>
 </ol>
 </div>
 <h3 id="programacion-de-aula-10h">Programación de Aula (10h)<a class="headerlink" href="#programacion-de-aula-10h" title="Permanent link">&para;</a></h3>
@@ -1192,8 +1194,8 @@
 </tr>
 <tr>
 <td>6</td>
-<td>Supuesto</td>
-<td></td>
+<td>Supuesto condicionales</td>
+<td><a href="#AC1005">AC1005</a></td>
 <td><abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr></td>
 </tr>
 <tr>
@@ -1204,20 +1206,20 @@
 </tr>
 <tr>
 <td>8</td>
-<td>Supuesto</td>
-<td></td>
+<td>Supuesto bucles</td>
+<td><a href="#AC1006">AC1006</a></td>
 <td><abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr></td>
 </tr>
 <tr>
 <td>9</td>
 <td><a href="#funciones">Funciones</a></td>
 <td></td>
-<td><abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr></td>
+<td></td>
 </tr>
 <tr>
 <td>10</td>
-<td>Supuesto</td>
-<td></td>
+<td>Supuesto funciones</td>
+<td><a href="#AC1009">AC1009</a></td>
 <td><abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr></td>
 </tr>
 </tbody>
@@ -1744,6 +1746,7 @@
 </ul>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <p><a name="AC1001"></a></p>
+<!-- Automatización -->
 <ul>
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1001</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr>, <abbr title="Se han reconocido los métodos de ejecución de guiones.">CE5b</abbr>, <abbr title="Se han identificado las herramientas disponibles para editar guiones.">CE5c</abbr>, <abbr title="Se han definido y utilizado guiones para automatizar tareas.">CE5d</abbr>, <abbr title="Se ha hecho uso de las funciones proporcionadas por el sistema gestor.">CE5e</abbr> // 3p) Utilizando la base de datos <code>empresa</code> y en un archivo nombrado como <code>ac1001empleados.sql</code>, se pide:</p>
@@ -1756,6 +1759,7 @@
 </li>
 </ul>
 <p><a name="AC1002"></a></p>
+<!-- Procedimientos -->
 <ul>
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1002</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr> // 3p) En la base de datos <code>empresa</code>, crea:</p>
@@ -1769,22 +1773,58 @@
 </li>
 </ul>
 <p><a name="AC1003"></a></p>
+<!-- Tipos de parámetros / variables -->
 <ul>
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1003</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr> // 3p) En la base de datos <code>empresa</code>, crea:</p>
 <ol>
-<li>El procedimiento <code>ac1003updSalarioEmpleadosParam</code> que incremente el salario a partir de un parámetro de entrada.</li>
-<li>...</li>
+<li>El procedimiento <code>ac1003listDepartamentos</code> que liste los departamentos de una determinada oficina.</li>
+<li>El procedimiento <code>ac1003listDepartamentosPlus</code> que liste los departamentos de una determinada oficina, y en el caso de recibir como argumento un valor nulo, devuelva todos los departamentos.</li>
+<li>El procedimiento <code>ac1003updSalarioEmpleadosParam</code> que incremente el salario de los empleados una determinada cantidad a partir de un parámetro de entrada.</li>
+<li>El procedimiento <code>ac1003contarEmpleados</code> que devuelva la cantidad de empleados en un parámetro de salida.</li>
+<li>El procedimiento <code>ac1003contarEmpleadosDpto</code> que devuelva la cantidad de empleados de un determinado departamento (introducido vía un parámetro de entrada) en un parámetro de salida.</li>
+<li>El procedimiento <code>ac1003sueldosSet</code> que devuelva el sueldo menor, el mayor y el promedio de todos los empleados (usando <code>SET</code>).</li>
+<li>El procedimiento <code>ac1003sueldosSelectInto</code> que devuelva el sueldo menor, el mayor y el promedio de todos los empleados (usando <code>SELECT INTO</code>).</li>
 </ol>
+<p>Para todos los casos, debes indicar cómo se invocaría al procedimiento, y adjuntar una captura de su ejecución.</p>
 </li>
 </ul>
+<p><a name="AR1004"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1004</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr> // 3p) Realiza las actividades 1, 2 y 3 del <a href="https://josejuansanchez.org/bd/unidad-12-teoria/index.html#procedimientos-con-sentencias-sql">apartado 1.8.2</a> sobre <em>Procedimientos con sentencias SQL</em> de los apuntes del docente <em>José Juan Sánchez</em>, adjuntando capturas de las operaciones y contestando a las preguntas que plantea.</li>
+</ul>
+<p><a name="AC1005"></a></p>
+<!-- Condicionales -->
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1005</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr> // 3p) </li>
+</ul>
+<p><a name="AC1006"></a></p>
+<!-- Bucles -->
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1006</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr> // 3p) </li>
+</ul>
+<p><a name="AR1007"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1007</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr> // 3p) Realiza las actividades 4, 5 y 6 del <a href="https://josejuansanchez.org/bd/unidad-12-teoria/index.html#procedimientos-con-sentencias-sql">apartado 1.8.2</a> sobre <em>Procedimientos con sentencias SQL</em> de los apuntes del docente <em>José Juan Sánchez</em>, adjuntando capturas de las operaciones y contestando a las preguntas que plantea.</li>
+</ul>
+<p><a name="AP1008"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1008</strong>.(<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr> // 3p) Realiza las actividades 10, 11 y 12 del <a href="https://josejuansanchez.org/bd/unidad-12-teoria/index.html#procedimientos-con-sentencias-sql">apartado 1.8.2</a> sobre <em>Procedimientos con sentencias SQL</em> de los apuntes del docente <em>José Juan Sánchez</em>, adjuntando capturas de las operaciones y contestando a las preguntas que plantea.</li>
+</ul>
+<p><a name="AC1009"></a></p>
+<!-- Funciones -->
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1009</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>,<abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr> // 3p) </li>
+</ul>
+<p><a name="AR1010"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1010</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr> // 3p) Realiza las actividades del <a href="https://josejuansanchez.org/bd/unidad-12-teoria/index.html#procedimientos-con-sentencias-sql">apartado 1.8.4</a> sobre <em>Funciones con sentencias SQL</em> de los apuntes del docente <em>José Juan Sánchez</em>, adjuntando capturas de las operaciones y contestando a las preguntas que plantea.</li>
+</ul>
+<p><a name="AR1011"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1011</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr>, <abbr title="Se han reconocido los métodos de ejecución de guiones.">CE5b</abbr>, <abbr title="Se han identificado las herramientas disponibles para editar guiones.">CE5c</abbr>, <abbr title="Se han definido y utilizado guiones para automatizar tareas.">CE5d</abbr>, <abbr title="Se ha hecho uso de las funciones proporcionadas por el sistema gestor.">CE5e</abbr>, <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
+</ul>
 <!--
-4. Crea otro procedimiento de nombre sueldo_empleados1, que calcule el sueldo máximo, mínimo y la media de los
-empleados de cierto departamento utilizando la instrucción SET. Indica cómo se invocaría al procedimiento.
-5. Crea un nuevo procedimiento de nombre sueldo_empleados2, que calcule el sueldo máximo, mínimo y la media de
-los empleados de cierto departamento utilizando la instrucción SELECT … INTO. Indica cómo se invocaría al
-procedimiento.
-
 https://www.w3resource.com/plsql-exercises/fundamentals/index.php
 -->
 
