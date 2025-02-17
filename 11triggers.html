@@ -494,6 +494,30 @@
   
   
     <li class="md-nav__item">
+      <a href="10plsql.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10.- Programación SQL
+    
+      <br>
+      <small>Procedimientos y funciones</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="00entorno.html" class="md-nav__link">
         
   
@@ -605,9 +629,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-8h" class="md-nav__link">
+  <a href="#programacion-de-aula-13h" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación de Aula (8h)
+      Programación de Aula (13h)
     </span>
   </a>
   
@@ -615,6 +639,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triggers
+    </span>
+  </a>
   
 </li>
       
@@ -729,8 +762,8 @@
 <li>aaa</li>
 </ol>
 </div>
-<h3 id="programacion-de-aula-8h">Programación de Aula (8h)<a class="headerlink" href="#programacion-de-aula-8h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la novena, impartiéndose a mitad de la segunda evaluación, a principios de febrero, con una duración estimada de 7 sesiones lectivas:</p>
+<h3 id="programacion-de-aula-13h">Programación de Aula (13h)<a class="headerlink" href="#programacion-de-aula-13h" title="Permanent link">&para;</a></h3>
+<p>Esta unidad es la onceava, impartiéndose a principios de la tercera evaluación, a mitad de marzo, con una duración estimada de 13 sesiones lectivas:</p>
 <table>
 <thead>
 <tr>
@@ -749,36 +782,55 @@
 </tr>
 <tr>
 <td>2</td>
-<td>Procedimientos</td>
+<td>Triggers</td>
 <td></td>
-<td><abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr></td>
+<td><abbr title="Se han definido eventos y disparadores.">CE5h</abbr></td>
 </tr>
 <tr>
 <td>3</td>
-<td>Estructuras de control</td>
+<td>Gestión de errores</td>
 <td></td>
-<td><abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr></td>
+<td><abbr title="Se han utilizado excepciones.">CE5j</abbr></td>
 </tr>
 <tr>
 <td>4</td>
-<td>Funciones</td>
+<td>Transacciones en PL/SQL</td>
 <td></td>
-<td><abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr></td>
+<td><abbr title="Se han utilizado excepciones.">CE5j</abbr></td>
 </tr>
 <tr>
 <td>5</td>
-<td>Funciones</td>
+<td>Cursores</td>
 <td></td>
-<td><abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr></td>
+<td><abbr title="Se han utilizado cursores.">CE5i</abbr></td>
 </tr>
 <tr>
 <td>6</td>
 <td>Supuesto</td>
 <td></td>
-<td><abbr title="Se han identificado las diversas formas de automatizar tareas.">CE5a</abbr></td>
+<td><abbr title="Se han utilizado cursores.">CE5i</abbr></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Prueba escrita I</td>
+<td><a href="#">PO1114</a></td>
+<td><abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Prueba escrita II</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Revisión prueba escrita</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<h2 id="triggers">Triggers<a class="headerlink" href="#triggers" title="Permanent link">&para;</a></h2>
 <h2 id="gestion-de-errores">Gestión de Errores<a class="headerlink" href="#gestion-de-errores" title="Permanent link">&para;</a></h2>
 <p>¿Qué sucede cuando un procedimiento tiene un error?
 No encuentra una tabla, accedemos erróneamente a un campo que no existe, etc..</p>
@@ -828,49 +880,52 @@ los datos, lo que provoca una condición NO DATA con
 SQLSTATE igual a 02000
  SQLEXCEPTION : valores de SQLSTATE que
 empiezan por 00, 01 o 02.</p>
-<p>DROP DATABASE IF EXISTS pruebas;
-CREATE DATABASE pruebas;
-USE pruebas;</p>
-<p>CREATE TABLE pruebas.t (s1 INT, PRIMARY KEY (s1));</p>
-<p>DELIMITER //
-CREATE PROCEDURE ejemploM()
-BEGIN
-  -- El código 23000 se lanza al violar la restricción de integridad
-  DECLARE CONTINUE HANDLER FOR SQLSTATE '23000' SET @x = 1;
-  SET @x = 1;
-  INSERT INTO pruebas.t VALUES (1);
-  SET @x = 2;
-  INSERT INTO pruebas.t VALUES (1);
-  SET @x = 3;
-END
-//
-DELIMITER ;</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="n">USE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="p">));</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploM</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="c1">-- El código 23000 se lanza al violar la restricción de integridad</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;23000&#39;</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">  </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">  </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span><span class="k">END</span>
+<span class="linenos" data-linenos="18 "></span><span class="o">//</span>
+<span class="linenos" data-linenos="19 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+</code></pre></div>
 <h2 id="transacciones-en-plsql">Transacciones en PL/SQL<a class="headerlink" href="#transacciones-en-plsql" title="Permanent link">&para;</a></h2>
-<p>Se utiliza un manejador para hacer ROLLBACK
-CREATE PROCEDURE transaccionEnMariaDB()
-BEGIN
-DECLARE EXIT HANDLER FOR SQLEXCEPTION, SQLWARNING
-BEGIN
--- ERROR, WARNING
-ROLLBACK;
-END;
-START TRANSACTION;
--- Sentencias SQL
-COMMIT;
-END</p>
+<p>Se utiliza un manejador para hacer ROLLBACK</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">transaccionEnMariaDB</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span><span class="p">,</span><span class="w"> </span><span class="n">SQLWARNING</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- ERROR, WARNING</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">ROLLBACK</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- Sentencias SQL</span>
+<span class="linenos" data-linenos="10 "></span><span class="k">COMMIT</span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">END</span>
+</code></pre></div>
 <h2 id="cursores">Cursores<a class="headerlink" href="#cursores" title="Permanent link">&para;</a></h2>
-<p>Almacenan una conjunto de filas de una tabla en
-una estructura de datos que podemos ir
-recorriendo de forma secuencial.
- Sólo se pueden utilizar con sentencias SELECT.
- Propiedades:
- Sólo lectura: No permiten actualizar los datos.
- Nonscrollable: sólo pueden ser recorridos en una
-dirección y no podemos saltarnos filas.</p>
-<p>https://mariadb.com/kb/en/declare-cursor/
- Ejemplo:
-declare curClientes cursor for select
-codigo_cliente, nombre_cliente from cliente</p>
+<p>Almacenan una conjunto de filas de una tabla en una estructura de datos que podemos ir recorriendo de forma secuencial.</p>
+<ul>
+<li>Sólo se pueden utilizar con sentencias SELECT.</li>
+</ul>
+<p>Propiedades:
+* Sólo lectura: No permiten actualizar los datos.
+* <em>Nonscrollable</em>: sólo pueden ser recorridos en una dirección y no podemos saltarnos filas.</p>
+<p>El primer paso es declarar el cursor mediante <a href="https://mariadb.com/kb/en/declare-cursor/"><code>DECLARE CURSOR</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">curClientes</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">FOR</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="p">,</span><span class="w"> </span><span class="n">nombre_cliente</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">cliente</span>
+</code></pre></div>
 <p>OPEN y FETCH
  Una vez declarado, el cursor se abre y se recorre
 fila a fila hasta llegar al final.
@@ -908,42 +963,42 @@ DECLARE HANDLER FOR NOT FOUND</p>
 <span class="linenos" data-linenos="23 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
 <span class="linenos" data-linenos="24 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
 <span class="linenos" data-linenos="25 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploCursores</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">FALSE</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="nb">INT</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">cur1</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">datos</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t1</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">cur2</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t2</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">FOUND</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">TRUE</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="k">OPEN</span><span class="w"> </span><span class="n">cur1</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="k">OPEN</span><span class="w"> </span><span class="n">cur2</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="n">WHILE</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">FALSE</span><span class="w"> </span><span class="k">DO</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">cur1</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">cur2</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">c</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">FALSE</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t3</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="k">ELSE</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t3</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="k">c</span><span class="p">);</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">WHILE</span><span class="p">;</span>
 <span class="linenos" data-linenos="26 "></span>
-<span class="linenos" data-linenos="27 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos="28 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploCursores</span><span class="p">()</span>
-<span class="linenos" data-linenos="29 "></span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos="30 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">FALSE</span><span class="p">;</span>
-<span class="linenos" data-linenos="31 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
-<span class="linenos" data-linenos="32 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="nb">INT</span><span class="p">;</span>
-<span class="linenos" data-linenos="33 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">cur1</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">datos</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t1</span><span class="p">;</span>
-<span class="linenos" data-linenos="34 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">cur2</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t2</span><span class="p">;</span>
-<span class="linenos" data-linenos="35 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">FOUND</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">TRUE</span><span class="p">;</span>
-<span class="linenos" data-linenos="36 "></span>
-<span class="linenos" data-linenos="37 "></span><span class="w">  </span><span class="k">OPEN</span><span class="w"> </span><span class="n">cur1</span><span class="p">;</span>
-<span class="linenos" data-linenos="38 "></span><span class="w">  </span><span class="k">OPEN</span><span class="w"> </span><span class="n">cur2</span><span class="p">;</span>
-<span class="linenos" data-linenos="39 "></span>
-<span class="linenos" data-linenos="40 "></span><span class="w">  </span><span class="n">WHILE</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">FALSE</span><span class="w"> </span><span class="k">DO</span>
-<span class="linenos" data-linenos="41 "></span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">cur1</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
-<span class="linenos" data-linenos="42 "></span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">cur2</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">c</span><span class="p">;</span>
-<span class="linenos" data-linenos="43 "></span>
-<span class="linenos" data-linenos="44 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">FALSE</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="45 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="46 "></span><span class="w">      </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t3</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
-<span class="linenos" data-linenos="47 "></span><span class="w">    </span><span class="k">ELSE</span>
-<span class="linenos" data-linenos="48 "></span><span class="w">      </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t3</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="k">c</span><span class="p">);</span>
-<span class="linenos" data-linenos="49 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos" data-linenos="50 "></span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos" data-linenos="51 "></span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">WHILE</span><span class="p">;</span>
-<span class="linenos" data-linenos="52 "></span>
-<span class="linenos" data-linenos="53 "></span><span class="w">  </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">cur1</span><span class="p">;</span>
-<span class="linenos" data-linenos="54 "></span><span class="w">  </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">cur2</span><span class="p">;</span>
-<span class="linenos" data-linenos="55 "></span><span class="k">END</span><span class="p">;</span>
-<span class="linenos" data-linenos="56 "></span><span class="o">//</span><span class="w"> </span>
-<span class="linenos" data-linenos="57 "></span>
-<span class="linenos" data-linenos="58 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
-<span class="linenos" data-linenos="59 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">ejemploCursores</span><span class="p">();</span>
-<span class="linenos" data-linenos="60 "></span>
-<span class="linenos" data-linenos="61 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t3</span><span class="p">;</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">  </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">cur1</span><span class="p">;</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">  </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">cur2</span><span class="p">;</span>
+<span class="linenos" data-linenos="29 "></span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="30 "></span><span class="o">//</span><span class="w"> </span>
+<span class="linenos" data-linenos="31 "></span>
+<span class="linenos" data-linenos="32 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="33 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">ejemploCursores</span><span class="p">();</span>
+<span class="linenos" data-linenos="34 "></span>
+<span class="linenos" data-linenos="35 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t3</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
