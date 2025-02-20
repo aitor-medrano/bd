@@ -1172,7 +1172,7 @@
 <li>¿Cómo puedo ejecutar un <em>script</em> en MariaDB?</li>
 <li>¿En qué consiste PL/SQL?</li>
 <li>¿Qué es un procedimiento almacenado? ¿En qué se diferencia de una función?</li>
-<li>En MariaDB, ¿para qué utilizamos el comando <code>DELIMITER</code>?</li>
+<li>En <em>MariaDB</em>, ¿para qué utilizamos el comando <code>DELIMITER</code>?</li>
 <li>¿Qué tipos de parámetros puede tener un procedimiento?</li>
 <li>¿Cuál es la estructura de un procedimiento almacenado?</li>
 <li>¿Qué sucede si no le pasamos ningún argumento a un procedimiento que espera algún parámetro?</li>
@@ -1288,7 +1288,7 @@
 <p>Una de las características más destacadas de PL/SQL es su capacidad para manejar errores de manera efectiva, proporcionando mecanismos robustos para capturar y gestionar excepciones, lo que contribuye a la creación de aplicaciones de bases de datos más fiables y manejables.</p>
 <p>Sus usos son:</p>
 <ul>
-<li>Facilita las tareas administrativas (copias de seguridad, control de usuarios, ….)</li>
+<li>Facilita las tareas administrativas (copias de seguridad, control de usuarios, etc…)</li>
 <li>Validación y verificación de usuarios</li>
 <li>Consultas muy avanzadas</li>
 <li>Centralizar operaciones de negocio/datos.</li>
@@ -1370,7 +1370,7 @@
 <p>Tal como hemos comentado antes, los procedimientos pueden tener diferentes tipos de parámetros:</p>
 <ul>
 <li>
-<p>Parámetros de <strong>entrada</strong> (<code>IN</code>): son los parámetros por defecto, de manera que si no indicamos el tipo, siempre serán de entrada.</p>
+<p>Parámetros de <strong>entrada</strong> (<code>IN</code>): son los parámetros por defecto, de manera que si, no indicamos el tipo, siempre serán de entrada.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">entrada</span><span class="p">(</span><span class="n">p1</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span><span class="w"> </span><span class="err">…</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">entrada</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
 </code></pre></div>
@@ -1475,7 +1475,7 @@
 </code></pre></div>
 <h3 id="uso-de-variables">Uso de variables<a class="headerlink" href="#uso-de-variables" title="Permanent link">&para;</a></h3>
 <p>Dentro de nuestros bloques de código, podemos declarar y utilizar variables, las cuales se consideran locales al bloque. Éstas se declaran  tras abrir un bloque mediante <a href="https://mariadb.com/kb/en/declare-variable/"><code>DECLARE variable tipo</code></a>. </p>
-<p>Si queremos utilizar <a href="https://mariadb.com/kb/en/user-defined-variables/">variables de usuario</a> que existen durante la sesión del mismo, y las cuales se pueden compartir entre varias consultas y procedimientos almacenados, le antepondremos la arroba, por ejemplo <code>@variableUsuario</code>.</p>
+<p>Si queremos utilizar <a href="https://mariadb.com/kb/en/user-defined-variables/">variables de usuario</a> que existen durante la sesión del mismo usuario, y las cuales se pueden compartir entre varias consultas y procedimientos almacenados, le antepondremos la arroba, por ejemplo <code>@variableUsuario</code>.</p>
 <p>Para asignar un valor a una variable o parámetros usaremos <a href="https://mariadb.com/kb/en/set-variable/"><code>SET variable = valor</code></a>.</p>
 <p>Si retomamos el ejemplo anterior, ahora definimos una variable de entrada/salida, además de otra de entrada y una tercera de salida:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">delimiter</span><span class="w"> </span><span class="o">//</span>
@@ -1492,7 +1492,7 @@
 <span class="linenos" data-linenos="12 "></span><span class="o">//</span>
 <span class="linenos" data-linenos="13 "></span><span class="k">delimiter</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
-<p>Para invocar al procedimiento, primero le asignamos un valor a la variable de usuario <code>@nombre</code>, la cual se utilizará coma parámetro de entrada y salida, y además, al invocar a <code>saludaInOut</code>, le pasamos otra variable de usuario para almacenar el resultado del parámetro de salida <code>out</code>:</p>
+<p>Para invocar al procedimiento, primero le asignamos un valor a la variable de usuario <code>@nombre</code>, la cual se utilizará como parámetro de entrada y salida y, además, al invocar a <code>saludaInOut</code>, le pasamos otra variable de usuario para almacenar el resultado del parámetro de salida <code>out</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">set</span><span class="w"> </span><span class="o">@</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Aitor&quot;</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">call</span><span class="w"> </span><span class="n">saludaInOut</span><span class="p">(</span><span class="o">@</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">saludo</span><span class="p">);</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">saludo</span><span class="p">;</span>
@@ -1550,7 +1550,7 @@
 <li>Es recomendable seguir algún tipo de convención de código a la hora de nombrar tanto los procedimientos como las funciones, así como los parámetros (algunos autores anteponen <code>_</code> delante de los parámetros para diferenciarlos de las variables).</li>
 <li>Si nuestros procedimientos utilizan parámetros, hemos de asegurarnos que los tipos de datos de los parámetros concuerdan con los tipos de las columnas que van a evaluar.</li>
 <li>Igualmente, si definimos variables, sus tipos deben ser semejantes a los parámetros y a los campos que van a evaluar.</li>
-<li>Como los procedimiento, normalmente, van a contener diversas consultas y el código de puede complicar, es muy recomendable incluir comentarios claros y descriptivos que faciliten su comprensión y mantenimiento.</li>
+<li>Como los procedimientos, normalmente, van a contener diversas consultas y el código de puede complicar, es muy recomendable incluir comentarios claros y descriptivos que faciliten su comprensión y mantenimiento.</li>
 </ul>
 <h2 id="estructuras-de-control">Estructuras de control<a class="headerlink" href="#estructuras-de-control" title="Permanent link">&para;</a></h2>
 <p>Para cambiar el flujo de un procedimiento y añadir lógica, haremos uso de instrucciones condicionales.</p>
@@ -2022,7 +2022,7 @@
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1006</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr> // 3p) En la base de datos <code>empresa</code>, crea:</p>
 <ol>
-<li>El procedimiento <code>ac1006habilidad</code> que reciba como entrada un codigo de habilidad y una descripción, y la inserte en la tabla <code>habilidad</code></li>
+<li>El procedimiento <code>ac1006habilidad</code> que reciba como entrada un código de habilidad y una descripción, y la inserte en la tabla <code>habilidad</code></li>
 <li>
 <p>El procedimiento <code>ac1006habilidades</code> que reciba como entrada un entero con una cantidad, he inserte tantas habilidades como el parámetro recibido, asignando como código <code>BD-NNN</code> y descripción <code>Habilidad NNN</code>, sustituyendo <code>NNN</code> por un número entero secuencial.</p>
 <p>Si el parámetro es <code>3</code>, insertará las habilidades <code>BD-1</code>, <code>BD-2</code> y <code>BD-3</code> y las descripciones <code>Habilidad 1</code>, <code>Habilidad 2</code> y <code>Habilidad 3</code>.</p>
@@ -2050,11 +2050,11 @@
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1009</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>,<abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr> // 3p)  En la base de datos <code>empresa</code>, crea:</p>
 <ol>
 <li>Las funciones <code>ac1009contarEmpleados</code> y <code>ac1009contarEmpleadosDpto</code> reescribiendo los procedimientos <code>ac1003contarEmpleados</code> y <code>ac1003contarEmpleadosDpto</code> de la actividad <a href="#AC1003">AC1003</a>. </li>
-<li>La función <code>ac1009presupuestoCentro</code> que a partir del código de un centro devuelva su presupuesto (calculado como la suma de los presupuestos de sus departamentos).</li>
-<li>La función <code>ac1009totalHabilidadesEmpleado</code> que a partir de un código de un empleado, devuelva cuantas habilidades tiene.</li>
-<li>La función <code>ac1009totalEmpleadosHabilidad</code> que a partir de un código de una habilidad, devuelva cuantos empleados la tienen.</li>
-<li>La función <code>ac1009directorCentro</code> que a partir del código de un centro, devuelva el nombre de su director.</li>
-<li>La función <code>ac1009emailEmpleado</code> que a partir de un código de empleado, devuelva su email con la siguiente nomenclatura: <code>CodEmp@CodDep.CodCen.com</code></li>
+<li>La función <code>ac1009presupuestoCentro</code> que, a partir del código de un centro, devuelva su presupuesto (calculado como la suma de los presupuestos de sus departamentos).</li>
+<li>La función <code>ac1009totalHabilidadesEmpleado</code> que, a partir de un código de un empleado, devuelva cuantas habilidades tiene.</li>
+<li>La función <code>ac1009totalEmpleadosHabilidad</code> que, a partir de un código de una habilidad, devuelva cuantos empleados la tienen.</li>
+<li>La función <code>ac1009directorCentro</code> que, a partir del código de un centro, devuelva el nombre de su director.</li>
+<li>La función <code>ac1009emailEmpleado</code> que, a partir de un código de empleado, devuelva su email con la siguiente nomenclatura: <code>CodEmp@CodDep.CodCen.com</code></li>
 <li>La función <code>ac1009validaHijosEmpleados</code> que a partir de un código de un empleado, compruebe si la cantidad de hijos de la tabla <code>empleado</code> coinciden con los de la tabla <code>hijo</code>.</li>
 <li>Comprueba las funciones existentes en la base de datos <code>empresa</code>.</li>
 </ol>
