@@ -651,6 +651,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Gestión de Errores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alias-de-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alias de error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -883,6 +898,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Gestión de Errores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alias-de-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alias de error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1029,7 +1059,7 @@
 <tr>
 <td>3</td>
 <td><a href="#gestion-de-errores">Gestión de errores</a></td>
-<td></td>
+<td><a href="#AC1103">AC1103</a></td>
 <td><abbr title="Se han utilizado excepciones.">CE5j</abbr></td>
 </tr>
 <tr>
@@ -1220,26 +1250,24 @@
 </li>
 </ul>
 <h2 id="gestion-de-errores">Gestión de Errores<a class="headerlink" href="#gestion-de-errores" title="Permanent link">&para;</a></h2>
-<p>¿Qué sucede cuando un procedimiento tiene un error?
-No encuentra una tabla, accedemos erróneamente a un campo que no existe, etc..</p>
-<p>MariaDB devolverá un <a href="https://mariadb.com/kb/en/mariadb-error-codes/">error con un código</a>:</p>
+<p>Hasta ahora hemos supuesto que nuestros fragmentos de código nunca falla. Pero, ¿qué sucede cuando un procedimiento tiene un error? Ya sea porque no encuentra una tabla, accedemos erróneamente a un campo que no existe, etc..</p>
+<p>Cuando sucede algún tipo de fallo, <em>MariaDB</em> devolverá un <a href="https://mariadb.com/kb/en/mariadb-error-codes/">error con un código</a>. Por ejemplo:</p>
 <ul>
-<li>1046 bd no seleccionada</li>
-<li>1146 tabla no existente</li>
+<li><code>1046</code> bd no seleccionada</li>
+<li><code>1146</code> tabla no existente</li>
 </ul>
-<p>Para añadirle un comportamiento a la gestión de errores, necesitamos declarar un manejador de errores en nuestro código, mediante <a href="https://mariadb.com/kb/en/declare-handler/"><code>DECLARE HANDLER</code></a></p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">accionManejador</span><span class="w"> </span><span class="k">HANDLER</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">FOR</span><span class="w"> </span><span class="n">valorCondicion</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">valorCondicion</span><span class="p">]</span><span class="w"> </span><span class="p">...</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="n">sentencia</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="n">accionManejador</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="k">CONTINUE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">EXIT</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="n">valorCondicion</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="n">mariadb_error_code</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="o">|</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span><span class="w"> </span><span class="n">sqlstate_value</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="o">|</span><span class="w"> </span><span class="n">condition_name</span>
-<span class="linenos" data-linenos="10 "></span><span class="o">|</span><span class="w"> </span><span class="n">SQLWARNING</span>
-<span class="linenos" data-linenos="11 "></span><span class="o">|</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">FOUND</span>
-<span class="linenos" data-linenos="12 "></span><span class="o">|</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
+<p>Para añadirle un comportamiento a la gestión de errores, necesitamos declarar un manejador de errores en nuestro código, mediante <a href="https://mariadb.com/kb/en/declare-handler/"><code>DECLARE HANDLER</code></a>, sentencia que tiene la siguiente sintaxis:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">accionManejador</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">valorCondicion</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">valorCondicion</span><span class="p">]</span><span class="w"> </span><span class="p">...</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="n">sentencia</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="n">accionManejador</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">CONTINUE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">EXIT</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="n">valorCondicion</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">mariadb_error_code</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span><span class="w"> </span><span class="n">sqlstate_value</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">condition_name</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">SQLWARNING</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">FOUND</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
 </code></pre></div>
 <p>A tener en cuenta:</p>
 <ul>
@@ -1247,32 +1275,31 @@ No encuentra una tabla, accedemos erróneamente a un campo que no existe, etc..<
 <li>Al lanzarse, se puede ejecutar un única instrucción (por ejemplo <code>set x=5;</code>) o un bloque de instrucciones.</li>
 <li>Los manejadores se deben declarar después de las variables locales.</li>
 </ul>
-<p>Ejemplos manejadores
-DECLARE CONTINUE HANDLER FOR 1051
-BEGIN
--- cuerpo del manejador
-END;
--- Intenta acceder a una tabla que no existe
-DECLARE CONTINUE HANDLER FOR SQLSTATE '42S02'
-BEGIN
-- cuerpo del manejador
-END;
--- Intenta acceder a una tabla que no existe</p>
-<p>Alias de error
- SQLWARNING : valores de SQLSTATE que
-empiezan por 01.
- NOT FOUND : valores de SQLSTATE que
-empiezan por 02.
- Se utiliza con cursores cuando se ha llegado al final de
-los datos, lo que provoca una condición NO DATA con
-SQLSTATE igual a 02000
- SQLEXCEPTION : valores de SQLSTATE que
-empiezan por 00, 01 o 02.</p>
+<p>Por ejemplo, podemos crear manejadores para códigos de error o estados de SQL:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">1051</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- cuerpo del manejador</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- Intenta acceder a una tabla que no existe</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;42S02&#39;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="o">-</span><span class="w"> </span><span class="n">cuerpo</span><span class="w"> </span><span class="n">del</span><span class="w"> </span><span class="n">manejador</span>
+<span class="linenos" data-linenos="10 "></span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- Intenta acceder a una tabla que no existe</span>
+</code></pre></div>
+<h3 id="alias-de-error">Alias de error<a class="headerlink" href="#alias-de-error" title="Permanent link">&para;</a></h3>
+<p>Algunos errores son tan comunes que existen unos alias para referenciar tanto un código concreto como a un conjunto de ellos. Por ejemplo:</p>
+<ul>
+<li><code>SQLWARNING</code>: valores de <code>SQLSTATE</code> que empiezan por <code>01</code>.</li>
+<li><code>NOT FOUND</code>: valores de <code>SQLSTATE</code> que empiezan por <code>02</code>. Se utiliza con cursores cuando se ha llegado al final de los datos, lo que provoca una condición <code>NO DATA</code> con <code>SQLSTATE</code> igual a <code>02000</code>.</li>
+<li><code>SQLEXCEPTION</code>: valores de <code>SQLSTATE</code> que empiezan por <code>00</code>, <code>01</code> o <code>02</code>.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="n">USE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 4 "></span>
-<span class="linenos" data-linenos=" 5 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="p">));</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="p">));</span>
 <span class="linenos" data-linenos=" 6 "></span>
 <span class="linenos" data-linenos=" 7 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploM</span><span class="p">()</span>
@@ -1289,19 +1316,21 @@ empiezan por 00, 01 o 02.</p>
 <span class="linenos" data-linenos="19 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
 <h2 id="transacciones-en-plsql">Transacciones en PL/SQL<a class="headerlink" href="#transacciones-en-plsql" title="Permanent link">&para;</a></h2>
-<p>Se utiliza un manejador para hacer ROLLBACK</p>
+<p>Se utiliza un manejador de tipo <code>EXIT</code> para hacer <code>ROLLBACK</code> y deshacer la transacción. Si no se produce ningún error, se realizará el <code>COMMIT</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">transaccionEnMariaDB</span><span class="p">()</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span><span class="p">,</span><span class="w"> </span><span class="n">SQLWARNING</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- ERROR, WARNING</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="k">ROLLBACK</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="k">END</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- Sentencias SQL</span>
-<span class="linenos" data-linenos="10 "></span><span class="k">COMMIT</span><span class="p">;</span>
-<span class="linenos" data-linenos="11 "></span><span class="k">END</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span><span class="p">,</span><span class="w"> </span><span class="n">SQLWARNING</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">        </span><span class="c1">-- ERROR, WARNING</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="k">ROLLBACK</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="c1">-- Sentencias SQL</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">COMMIT</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="k">END</span>
 </code></pre></div>
+<p>Por ejemplo, ...</p>
 <h2 id="cursores">Cursores<a class="headerlink" href="#cursores" title="Permanent link">&para;</a></h2>
 <p>Los <a href="https://mariadb.com/kb/en/cursor-overview/">cursores</a> nos permite evaluar un conjunto de datos fila a fila. Dicho con otras palabras, un cursor almacena un conjunto de filas de una tabla en una estructura de datos que podemos ir recorriendo de forma secuencial.</p>
 <p>Al utilizarse sobre un conjunto de datos, sólo se pueden utilizar con sentencias <code>SELECT</code>.</p>
@@ -1559,8 +1588,7 @@ email, inserte un nuevo registro en la tabla <code>logCambiosEmail</code>, cuyos
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1102</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr> // 3p) Utilizando la tabla, funciones y procedimiento de las actividades anteriores, se pide:</p>
 <ol>
 <li>
-<p>Crea un trigger (<code>triggerGuardarAlumnosAfterDelete</code>) sobre la tabla <code>alumnado</code>, para que cada vez que se elimine un
-alumno, inserte un nuevo registro en la tabla <code>logAlumnosEliminados</code>, cuyos campos son:</p>
+<p>Crea un trigger (<code>triggerGuardarAlumnosAfterDelete</code>) sobre la tabla <code>alumnado</code>, para que cada vez que se elimine un alumno, inserte un nuevo registro en la tabla <code>logAlumnosEliminados</code>, cuyos campos son:</p>
 <ul>
 <li><code>id</code>: clave primaria (entero autonumérico)</li>
 <li><code>idAlumno</code> (entero)</li>
@@ -1573,67 +1601,53 @@ alumno, inserte un nuevo registro en la tabla <code>logAlumnosEliminados</code>,
 </ol>
 </li>
 </ul>
-<p>2) Crea un procedimiento llamado insertarAlumno que reciba
-los cuatro datos como parámetros de entrada y los inserte en
-la tabla
- El procedimiento devolverá como salida un parámetro
-llamado error que tendrá un valor igual a 0 si la operación
-se ha podido realizar con éxito o 1 en caso contrario.
- Deberá manejar los errores que puedan ocurrir cuando se
-intenta insertar una fila que contiene una clave primaria
-repetida.</p>
-<p>2
-A partir de la base de datos de jardineria:
-1)Escribe un procedimiento (nombreClienteIf) que
-muestre el nombre de un cliente dado su código. En
-caso de que no se encuentre, devolverá "Cliente
-no encontrado".
-1) Utiliza if para contar si ha encontrado al cliente
-2) Vuelve a hacer el ejercicio anterior
-(nombreClienteHandler) pero ahora utiliza un
-manejador de errores (sin usar if)
-1) Debes comprobar el error NOT FOUND
-2) La consulta debe guardar el resultado en una variable
-mediante SELECT … INTO</p>
-<!-- SQLException -->
-<p>Escribe un procedimiento (crearOficina)
-que cree una oficina a partir de un código,
-ciudad, país, código postal, teléfono y
-dirección.
- Si el código de la oficina ya existe, modificará
-los datos de dicha oficina con los recibidos
-como parámetros</p>
-<!-- Procedimiento transaccional -->
-<p>Crea la base de datos cine con las siguientes tablas:
- Tabla cuentas:
- idCuenta: entero sin signo (pk).
- saldo: real sin signo.
- Tabla entradas:
- idButaca: entero sin signo (pk).
- nif: cadena de 9 caracteres.
- Crear un procedimiento llamado comprarEntrada que
-recibe 3 parámetros de entrada (nif, idCuenta,
-idButaca) y devolverá como salida un parámetro
-llamado error que tendrá un valor igual a 0 si la
-operación se ha podido realizar con éxito o 1 en caso
-contrario. Continúa</p>
-<p>Pasos del procedimiento de compra:
-1) Inicia una transacción.
-2) Actualiza cuentas.saldo cobrando 5 euros a la cuenta con
-el idCuenta adecuado.
-3) Inserta una fila en la tabla entradas indicando la butaca
-(idButaca) que acaba de comprar el usuario (nif).
-4) Comprueba si ha ocurrido algún error en las operaciones
-anteriores. Si todo va bien aplica un COMMIT a la transacción y
-si ha ocurrido algún error haz ROLLBACK.
- Debe manejar los errores ERROR 1264 (Out of range value) y
-ERROR 1062 (Duplicate entry for PRIMARY KEY).
- ¿Qué ocurre si se compra una entrada y le pasamos como
-parámetro un número de cuenta inexistente? ¿Ocurre algún error
-o podemos comprar la entrada? En caso de que exista algún
-error, ¿cómo podríamos resolverlo?.</p>
-<!-- cursores -->
-<p>Crea la base de datos cursores con una tabla
+<p><a name="AC1103"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1103</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Siguiendo con la tabla <code>alumnado</code>, se pide:</p>
+<ol>
+<li>Crea un procedimiento llamado <code>insertarAlumno</code> que reciba los cuatro datos como parámetros de entrada y los inserte en la tabla. El procedimiento devolverá como salida un parámetro llamado error que tendrá un valor igual a 0 si la operación se ha podido realizar con éxito o 1 en caso contrario. Deberá manejar los errores que puedan ocurrir cuando se intenta insertar una fila que contiene una clave primaria repetida.</li>
+<li>Escribe un procedimiento (<code>nombreAlumnoIf</code>) que muestre el nombre de un alumno dado su código. En caso de que no se encuentre, devolverá "Alumn@ no encontrado".<ol>
+<li>Utiliza <code>IF</code> para contar si ha encontrado al alumno.</li>
+<li>Crea un nuevo procedimiento (<code>nombreAlumnoHandler</code>) pero ahora utiliza un manejador de errores (sin usar <code>IF</code>)</li>
+<li>Debes comprobar el error <code>NOT FOUND</code>.</li>
+<li>La consulta debe guardar el resultado en una variable mediante <code>SELECT … INTO</code>.</li>
+</ol>
+</li>
+<li>Crea un procedimiento llamado <code>upsertAlumno</code> a partir de <code>insertarAlumno</code>, pero en el caso de que el alumno ya exista, y gestionando la captura de <code>SQLException</code>, modificará los datos de dicho alumno con los datos recibidos como parámetros.</li>
+</ol>
+</li>
+</ul>
+<p><a name="AC1104"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1104</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Crea la base de datos cine con las siguientes tablas:</p>
+<ul>
+<li>Tabla <code>cuentas</code>:<ul>
+<li><code>idCuenta</code>: entero sin signo (PK).</li>
+<li><code>saldo</code>: real sin signo.</li>
+</ul>
+</li>
+<li>Tabla <code>entradas</code>:<ul>
+<li><code>idButaca</code>: entero sin signo (PK).</li>
+<li><code>nif</code>: cadena de 9 caracteres.</li>
+</ul>
+</li>
+</ul>
+<p>Crear un procedimiento llamado <code>comprarEntrada</code> que reciba 3 parámetros de entrada (<code>nif</code>, <code>idCuenta</code>, <code>idButaca</code>) y devuelva como salida un parámetro llamado <code>error</code> que tendrá un valor igual a <code>0</code> si la operación se ha podido realizar con éxito o <code>1</code> en caso contrario.</p>
+<p>Pasos del procedimiento de compra:</p>
+<ol>
+<li>Inicia una transacción.</li>
+<li>Actualiza <code>cuentas.saldo</code> cobrando <code>5</code> euros a la cuenta con el <code>idCuenta</code> adecuado.</li>
+<li>Inserta una fila en la tabla <code>entradas</code> indicando la butaca (<code>idButaca</code>) que acaba de comprar el usuario (<code>nif</code>).</li>
+<li>Comprueba si ha ocurrido algún error en las operaciones anteriores. Si todo va bien aplica un <code>COMMIT</code> a la transacción y si ha ocurrido algún error haz <code>ROLLBACK</code>.</li>
+</ol>
+<p>Debe manejar los errores <code>ERROR 1264</code> (<em>Out of range value</em>) y <code>ERROR 1062</code> (<em>Duplicate entry for PRIMARY KEY</em>).</p>
+<p>¿Qué ocurre si se compra una entrada y le pasamos como parámetro un número de cuenta inexistente? ¿Ocurre algún error o podemos comprar la entrada? En caso de que exista algún error, ¿cómo podríamos resolverlo?.</p>
+</li>
+</ul>
+<!-- cursores 
+Crea la base de datos cursores con una tabla
 llamada alumnos y 4 sentencias de inserción para
 inicializar la tabla que contiene las siguientes
 columnas:
@@ -1645,8 +1659,9 @@ columnas:
  Tras crear la tabla se decide añadir una nueva
 columna llamada edad. Escribe la sentencia SQL
 necesaria para modificar la tabla y añadir la nueva
-columna.</p>
-<p>Escribe una función llamada calcularEdad que
+columna.
+
+Escribe una función llamada calcularEdad que
 reciba una fecha y devuelva el número de años que
 han pasado desde la fecha actual hasta la fecha
 pasada como parámetro.
@@ -1656,7 +1671,9 @@ de todos los alumnos que ya existen en la tabla.
  Utiliza un cursor para recorrer la tabla y modificar cada
 alumno.
  Este procedimiento deberá utilizar la función
-calcularEdad.</p>
+calcularEdad.
+-->
+
 <p><a name="PY1113"></a></p>
 <ul>
 <li>
