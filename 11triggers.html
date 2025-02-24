@@ -13,10 +13,14 @@
         <link rel="canonical" href="https://aitor-medrano.github.io/bd/11triggers.html">
       
       
+        <link rel="prev" href="10plsql.html">
+      
+      
+        <link rel="next" href="00entorno.html">
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -24,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.6f8fc17f.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -268,6 +272,7 @@
   
   <span class="md-ellipsis">
     Inicio
+    
   </span>
   
 
@@ -288,6 +293,7 @@
   
   <span class="md-ellipsis">
     1.- Sistemas de almacenamiento
+    
   </span>
   
 
@@ -308,6 +314,10 @@
   
   <span class="md-ellipsis">
     2.- Diseño conceptual: Modelo Entidad/Relación
+    
+      <br>
+      <small>EER Extendido</small>
+    
   </span>
   
 
@@ -328,6 +338,10 @@
   
   <span class="md-ellipsis">
     3.- Diseño lógico: Modelo Relacional
+    
+      <br>
+      <small>Normalización</small>
+    
   </span>
   
 
@@ -348,6 +362,10 @@
   
   <span class="md-ellipsis">
     4.- Diseño lógico: Transformación
+    
+      <br>
+      <small>De ER a MR</small>
+    
   </span>
   
 
@@ -368,6 +386,7 @@
   
   <span class="md-ellipsis">
     5.- Diseño físico: DDL y DML
+    
   </span>
   
 
@@ -388,6 +407,10 @@
   
   <span class="md-ellipsis">
     6.- Consultas sencillas
+    
+      <br>
+      <small>Funciones. Joins</small>
+    
   </span>
   
 
@@ -408,6 +431,10 @@
   
   <span class="md-ellipsis">
     7.- Consultas agregadas
+    
+      <br>
+      <small>Funciones ventana. Vistas</small>
+    
   </span>
   
 
@@ -428,6 +455,10 @@
   
   <span class="md-ellipsis">
     8.- Subconsultas. Optimización
+    
+      <br>
+      <small>CTE. Índices</small>
+    
   </span>
   
 
@@ -448,6 +479,10 @@
   
   <span class="md-ellipsis">
     9.- DCL y TCL
+    
+      <br>
+      <small>Usuarios, permisos y transacciones</small>
+    
   </span>
   
 
@@ -468,10 +503,211 @@
   
   <span class="md-ellipsis">
     10.- Programación SQL
+    
+      <br>
+      <small>Procedimientos y funciones</small>
+    
   </span>
   
 
       </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    11.- Disparadores y Cursores
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="11triggers.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    11.- Disparadores y Cursores
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propuesta-didactica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Propuesta didáctica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Propuesta didáctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programacion-de-aula-11h" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programación de Aula (11h)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triggers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Triggers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestión
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestión de Errores
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transacciones-en-plsql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transacciones en PL/SQL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cursores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cursores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cursores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uso-de-parametros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso de parámetros
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -488,6 +724,7 @@
   
   <span class="md-ellipsis">
     Entorno
+    
   </span>
   
 
@@ -508,6 +745,7 @@
   
   <span class="md-ellipsis">
     <em>Vocabulari</em>
+    
   </span>
   
 
@@ -528,6 +766,7 @@
   
   <span class="md-ellipsis">
     Tags
+    
   </span>
   
 
@@ -591,9 +830,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-13h" class="md-nav__link">
+  <a href="#programacion-de-aula-11h" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación de Aula (13h)
+      Programación de Aula (11h)
     </span>
   </a>
   
@@ -610,6 +849,30 @@
       Triggers
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Triggers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestión
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -638,14 +901,20 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#triggers_1" class="md-nav__link">
+    <nav class="md-nav" aria-label="Cursores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uso-de-parametros" class="md-nav__link">
     <span class="md-ellipsis">
-      Triggers
+      Uso de parámetros
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -680,34 +949,34 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
-<nav class="md-tags" >
-  
+
+  <nav class="md-tags" >
     
+      
+      
+      
+        <a href="tags.html#tag:plsql" class="md-tag">PL/SQL</a>
+      
     
+      
+      
+      
+        <a href="tags.html#tag:ra5" class="md-tag">RA5</a>
+      
     
-      <span class="md-tag">RA5</span>
+      
+      
+      
+        <a href="tags.html#tag:sql" class="md-tag">SQL</a>
+      
     
-  
+      
+      
+      
+        <a href="tags.html#tag:sql---tcl" class="md-tag">SQL - TCL</a>
+      
     
-    
-    
-      <span class="md-tag">PL/SQL</span>
-    
-  
-    
-    
-    
-      <span class="md-tag">SQL</span>
-    
-  
-    
-    
-    
-      <span class="md-tag">SQL - TCL</span>
-    
-  
-</nav>
+  </nav>
 
 
 
@@ -733,8 +1002,8 @@
 <li>aaa</li>
 </ol>
 </div>
-<h3 id="programacion-de-aula-13h">Programación de Aula (13h)<a class="headerlink" href="#programacion-de-aula-13h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la onceava, impartiéndose a principios de la tercera evaluación, a mitad de marzo, con una duración estimada de 13 sesiones lectivas:</p>
+<h3 id="programacion-de-aula-11h">Programación de Aula (11h)<a class="headerlink" href="#programacion-de-aula-11h" title="Permanent link">&para;</a></h3>
+<p>Esta unidad es la onceava, impartiéndose a principios de la tercera evaluación, a mitad de marzo, con una duración estimada de 11 sesiones lectivas:</p>
 <table>
 <thead>
 <tr>
@@ -747,19 +1016,19 @@
 <tbody>
 <tr>
 <td>1</td>
-<td>Eventos y disparadores</td>
+<td><a href="#triggers">Eventos y disparadores</a></td>
 <td><a href="#AC1101">AC1101</a></td>
 <td><abbr title="Se han definido eventos y disparadores.">CE5h</abbr></td>
 </tr>
 <tr>
 <td>2</td>
-<td>Triggers</td>
-<td></td>
+<td>Supuesto auditoria</td>
+<td><a href="#AC1102">AC1102</a></td>
 <td><abbr title="Se han definido eventos y disparadores.">CE5h</abbr></td>
 </tr>
 <tr>
 <td>3</td>
-<td>Gestión de errores</td>
+<td><a href="#gestion-de-errores">Gestión de errores</a></td>
 <td></td>
 <td><abbr title="Se han utilizado excepciones.">CE5j</abbr></td>
 </tr>
@@ -776,25 +1045,37 @@
 <td><abbr title="Se han utilizado cursores.">CE5i</abbr></td>
 </tr>
 <tr>
-<td>6</td>
+<td>5</td>
+<td>Cursores con parámetros</td>
+<td></td>
+<td><abbr title="Se han utilizado cursores.">CE5i</abbr></td>
+</tr>
+<tr>
+<td>7</td>
 <td>Supuesto</td>
 <td></td>
 <td><abbr title="Se han utilizado cursores.">CE5i</abbr></td>
 </tr>
 <tr>
-<td>10</td>
-<td>Prueba escrita I</td>
-<td><a href="#">PO1114</a></td>
+<td>8</td>
+<td>Reto PL/SQL</td>
+<td><a href="#PY1113">PY1113</a></td>
 <td><abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr></td>
 </tr>
 <tr>
-<td>11</td>
+<td>9</td>
+<td>Prueba escrita I</td>
+<td><a href="#PO1114">PO1114</a></td>
+<td><abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr></td>
+</tr>
+<tr>
+<td>10</td>
 <td>Prueba escrita II</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td>12</td>
+<td>11</td>
 <td>Revisión prueba escrita</td>
 <td></td>
 <td></td>
@@ -802,6 +1083,142 @@
 </tbody>
 </table>
 <h2 id="triggers">Triggers<a class="headerlink" href="#triggers" title="Permanent link">&para;</a></h2>
+<p>Un <strong>evento</strong> en <em>MariaDB</em> es una tarea programada que se ejecuta de forma automática en momentos específicos o de manera periódica. Funciona de forma similar a un <em>cron job</em> en sistemas Linux, permitiendo definir instrucciones SQL que se ejecutarán sin intervención manual.</p>
+<p>Se utilizan para realizar acciones planificadas, como la actualización de datos, la eliminación de registros obsoletos o la generación de informes en momentos predeterminados. Además,  facilitan la automatización del mantenimiento y la administración de la base de datos, ya que centralizan tareas repetitivas en un único punto. Pueden configurarse para ejecutarse una sola vez o en intervalos regulares, brindando flexibilidad para adaptarse a las necesidades específicas del sistema y asegurando que las operaciones críticas se realicen de forma oportuna y consistente.</p>
+<p>Directamente relacionados con los eventos, tenemos los <strong>disparadores</strong> (<strong><em>triggers</em></strong>) que son procedimientos almacenados que se activan automáticamente en respuesta a operaciones específicas sobre las tablas, tales como inserciones, actualizaciones o eliminaciones. Estos mecanismos permiten insertar lógica personalizada que se ejecuta antes o después de que se realice una acción, lo que es fundamental para garantizar la integridad de los datos, validar condiciones de negocio y llevar a cabo auditorías automáticas. Por ejemplo, un disparador puede registrar cada cambio en una tabla de auditoría o prevenir modificaciones que no cumplan con ciertos criterios, asegurando así la consistencia y confiabilidad de la información almacenada.</p>
+<p>Los posibles eventos que podemos asociar a un disparador son:</p>
+<ul>
+<li><code>INSERT</code>: El trigger se activa cuando se inserta una nueva fila sobre la tabla asociada.</li>
+<li><code>UPDATE</code>: Se activa cuando se actualiza una fila.</li>
+<li><code>DELETE</code>: Se activa cuando se elimina una fila.</li>
+</ul>
+<h3 id="creacion">Creación<a class="headerlink" href="#creacion" title="Permanent link">&para;</a></h3>
+<p>Para crear un disparador usaremos la sentencia <a href="https://mariadb.com/kb/en/create-trigger/"><code>CREATE TRIGGER</code></a> con la siguiente sintaxis:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="p">[</span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="p">]</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">nombreTrigger</span><span class="w"> </span><span class="n">cuandoTrigger</span><span class="w"> </span><span class="n">eventoTrigger</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="p">[</span><span class="n">ordenTrigger</span><span class="p">]</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="n">cuerpo</span>
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span><span class="n">cuandoTrigger</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="k">BEFORE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">AFTER</span><span class="w"> </span><span class="err">}</span>
+<span class="linenos" data-linenos="7 "></span><span class="n">eventoTrigger</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="err">}</span>
+<span class="linenos" data-linenos="8 "></span><span class="n">ordenTrigger</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w"> </span><span class="n">FOLLOWS</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PRECEDES</span><span class="w"> </span><span class="err">}</span><span class="w"> </span><span class="n">otroNombreTrigger</span>
+</code></pre></div>
+<p>Dentro del cuerpo del disparador, <code>NEW</code> referencia al nuevo registro, y <code>OLD</code> al antiguo.</p>
+<p>Veamos un ejemplo donde almacenamos las notas del alumnado, y queremos comprobar si al insertar los valores son correctos, y si no lo son, ajustarlos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="n">unsigned</span><span class="w"> </span><span class="n">auto_increment</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">apellido1</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">nota</span><span class="w"> </span><span class="nb">float</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="p">);</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeInsert</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="k">BEFORE</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">begin</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="c1">-- NEW referencia al nuevo registro</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="n">elseif</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span><span class="k">end</span>
+<span class="linenos" data-linenos="18 "></span><span class="o">//</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Andreu&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Medrano&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos" data-linenos="23 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;José Manuel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pérez&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span>
+<span class="linenos" data-linenos="24 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Casas&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">.</span><span class="mi">5</span><span class="p">);</span>
+<span class="linenos" data-linenos="25 "></span>
+<span class="linenos" data-linenos="26 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">alumnado</span><span class="p">;</span>
+<span class="linenos" data-linenos="27 "></span><span class="c1">-- +----+--------------+-----------+------+</span>
+<span class="linenos" data-linenos="28 "></span><span class="c1">-- | id | nombre       | apellido1 | nota |</span>
+<span class="linenos" data-linenos="29 "></span><span class="c1">-- +----+--------------+-----------+------+</span>
+<span class="linenos" data-linenos="30 "></span><span class="c1">-- |  1 | Andreu       | Medrano   |    0 |</span>
+<span class="linenos" data-linenos="31 "></span><span class="c1">-- |  2 | José Manuel  | Pérez     |   10 |</span>
+<span class="linenos" data-linenos="32 "></span><span class="c1">-- |  3 | Pedro        | Casas     |  8.5 |</span>
+<span class="linenos" data-linenos="33 "></span><span class="c1">-- +----+--------------+-----------+------+</span>
+<span class="linenos" data-linenos="34 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>Podemos comprobar como dentro del cuerpo del disparador hemos usado <code>NEW</code> para referenciar el registro que vamos a insertar. Además, hemos configurado el disparador para que se ejecute antes de la inserción.</p>
+<p>De la misma manera, podemos crear un disparador para las operaciones de modificación:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeUpdate</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="k">BEFORE</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="c1">-- NEW referencia al nuevo registro</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">elseif</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="k">then</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">end</span>
+<span class="linenos" data-linenos="12 "></span><span class="o">//</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span><span class="k">update</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">4</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span><span class="k">update</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos" data-linenos="18 "></span><span class="k">update</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">.</span><span class="mi">5</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">alumnado</span><span class="p">;</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">-- +----+--------------+-----------+------+</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">-- | id | nombre       | apellido1 | nota |</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">-- +----+--------------+-----------+------+</span>
+<span class="linenos" data-linenos="24 "></span><span class="c1">-- |  1 | Andreu       | Medrano   |    0 |</span>
+<span class="linenos" data-linenos="25 "></span><span class="c1">-- |  2 | José Manuel  | Pérez     |   10 |</span>
+<span class="linenos" data-linenos="26 "></span><span class="c1">-- |  3 | Pedro        | Casas     |  9.5 |</span>
+<span class="linenos" data-linenos="27 "></span><span class="c1">-- +----+--------------+-----------+------+</span>
+<span class="linenos" data-linenos="28 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
+</code></pre></div>
+<h3 id="gestion">Gestión<a class="headerlink" href="#gestion" title="Permanent link">&para;</a></h3>
+<p>Los comandos que podemos utilizar para gestionar los disparadores son:</p>
+<ul>
+<li><a href="https://mariadb.com/kb/en/drop-trigger/">DROP TRIGGER nombreTrigger</a>: permite eliminar un disparador</li>
+<li>
+<p><a href="https://mariadb.com/kb/en/show-triggers/">SHOW TRIGGERS</a>: muestra los disparadores existentes</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">show</span><span class="w"> </span><span class="n">triggers</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="o">+</span><span class="c1">------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+--------+------------------------+-------------------------------------------------------------------------------------------+---------------+----------------------+----------------------+-----------------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="o">|</span><span class="w"> </span><span class="k">Trigger</span><span class="w">                      </span><span class="o">|</span><span class="w"> </span><span class="n">Event</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="k">Table</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="k">Statement</span><span class="w">                                                                                                              </span><span class="o">|</span><span class="w"> </span><span class="n">Timing</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Created</span><span class="w">                </span><span class="o">|</span><span class="w"> </span><span class="n">sql_mode</span><span class="w">                                                                                  </span><span class="o">|</span><span class="w"> </span><span class="k">Definer</span><span class="w">       </span><span class="o">|</span><span class="w"> </span><span class="n">character_set_client</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">collation_connection</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">Database</span><span class="w"> </span><span class="k">Collation</span><span class="w">    </span><span class="o">|</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="o">+</span><span class="c1">------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+--------+------------------------+-------------------------------------------------------------------------------------------+---------------+----------------------+----------------------+-----------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="o">|</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeInsert</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">IF</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="n">ELSEIF</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="k">END</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">BEFORE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2025</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="mi">18</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">28</span><span class="p">.</span><span class="mi">15</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">STRICT_TRANS_TABLES</span><span class="p">,</span><span class="n">ERROR_FOR_DIVISION_BY_ZERO</span><span class="p">,</span><span class="n">NO_AUTO_CREATE_USER</span><span class="p">,</span><span class="n">NO_ENGINE_SUBSTITUTION</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">s8a</span><span class="o">@</span><span class="n">localhost</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">utf8mb3</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="n">utf8mb3_general_ci</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">utf8mb4_uca1400_ai_ci</span><span class="w"> </span><span class="o">|</span>
+<span class="linenos" data-linenos="13 "></span><span class="o">|</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeUpdate</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos="14 "></span><span class="k">IF</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos="16 "></span><span class="n">ELSEIF</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos" data-linenos="18 "></span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="19 "></span><span class="k">END</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="k">BEFORE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2025</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="mi">18</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">51</span><span class="p">.</span><span class="mi">74</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">STRICT_TRANS_TABLES</span><span class="p">,</span><span class="n">ERROR_FOR_DIVISION_BY_ZERO</span><span class="p">,</span><span class="n">NO_AUTO_CREATE_USER</span><span class="p">,</span><span class="n">NO_ENGINE_SUBSTITUTION</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">s8a</span><span class="o">@</span><span class="n">localhost</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">utf8mb3</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="n">utf8mb3_general_ci</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">utf8mb4_uca1400_ai_ci</span><span class="w"> </span><span class="o">|</span>
+<span class="linenos" data-linenos="20 "></span><span class="o">+</span><span class="c1">------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+--------+------------------------+-------------------------------------------------------------------------------------------+---------------+----------------------+----------------------+-----------------------+</span>
+<span class="linenos" data-linenos="21 "></span><span class="mi">2</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">003</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span>
+</code></pre></div>
+</li>
+<li>
+<p><a href="https://mariadb.com/kb/en/show-create-trigger/">SHOW CREATE TRIGGER nombreTrigger</a>: muestra el código fuente de un determinado disparador</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">show</span><span class="w"> </span><span class="k">create</span><span class="w"> </span><span class="k">trigger</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeUpdate</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="o">+</span><span class="c1">------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+-----------------------+------------------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="o">|</span><span class="w"> </span><span class="k">Trigger</span><span class="w">                      </span><span class="o">|</span><span class="w"> </span><span class="n">sql_mode</span><span class="w">                                                                                  </span><span class="o">|</span><span class="w"> </span><span class="k">SQL</span><span class="w"> </span><span class="n">Original</span><span class="w"> </span><span class="k">Statement</span><span class="w">                                                                                                                                                                                                             </span><span class="o">|</span><span class="w"> </span><span class="n">character_set_client</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">collation_connection</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">Database</span><span class="w"> </span><span class="k">Collation</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Created</span><span class="w">                </span><span class="o">|</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="o">+</span><span class="c1">------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+-----------------------+------------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="o">|</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeUpdate</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">STRICT_TRANS_TABLES</span><span class="p">,</span><span class="n">ERROR_FOR_DIVISION_BY_ZERO</span><span class="p">,</span><span class="n">NO_AUTO_CREATE_USER</span><span class="p">,</span><span class="n">NO_ENGINE_SUBSTITUTION</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">DEFINER</span><span class="o">=`</span><span class="n">s8a</span><span class="o">`@`</span><span class="n">localhost</span><span class="o">`</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeUpdate</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">BEFORE</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">IF</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span><span class="n">ELSEIF</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span><span class="k">END</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">utf8mb3</span><span class="w">              </span><span class="o">|</span><span class="w"> </span><span class="n">utf8mb3_general_ci</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">utf8mb4_uca1400_ai_ci</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mi">2025</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">23</span><span class="w"> </span><span class="mi">18</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">51</span><span class="p">.</span><span class="mi">74</span><span class="w"> </span><span class="o">|</span>
+<span class="linenos" data-linenos="14 "></span><span class="o">+</span><span class="c1">------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+-----------------------+------------------------+</span>
+</code></pre></div>
+</li>
+</ul>
 <h2 id="gestion-de-errores">Gestión de Errores<a class="headerlink" href="#gestion-de-errores" title="Permanent link">&para;</a></h2>
 <p>¿Qué sucede cuando un procedimiento tiene un error?
 No encuentra una tabla, accedemos erróneamente a un campo que no existe, etc..</p>
@@ -905,15 +1322,15 @@ empiezan por 00, 01 o 02.</p>
 </ol>
 <pre class="mermaid"><code>---
 config:
-look: handDrawn
+  look: handDrawn
 ---
 flowchart TD
-    A([DECLARE CURSOR]) --&gt; B[OPEN CURSOR]
-    B --&gt; C{WHILE}
-    C -- Siguiente registro     --&gt; D[FETCH]
-    D --&gt; E{{Operaciones con los datos}}
-    E --&gt; C
-    C -- No quedan registros --&gt; F[CLOSE]</code></pre>
+  A([DECLARE CURSOR]) --&gt; B[OPEN CURSOR]
+  B --&gt; C{WHILE}
+  C -- Siguiente registro     --&gt; D[FETCH]
+  D --&gt; E{{Operaciones con los datos}}
+  E --&gt; C
+  C -- No quedan registros ----&gt; F[CLOSE]</code></pre>
 <p>Veamos mediante un ejemplo un caso completo. Supongamos que tenemos dos tablas con la misma cantidad de registros, y queremos rellenar una tercera a partir de los datos de estas dos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
@@ -956,16 +1373,16 @@ flowchart TD
 </span><span class="hll"><span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="k">OPEN</span><span class="w"> </span><span class="n">cur2</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="13 "></span>
 <span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="n">WHILE</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">FALSE</span><span class="w"> </span><span class="k">DO</span><span class="w"> </span><span class="c1">-- (5)!</span>
-<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">cur1</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="c1">-- (6)!</span>
-</span><span class="hll"><span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">cur2</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">c</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="k">FETCH</span><span class="w"> </span><span class="n">cur1</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="c1">-- (6)!</span>
+</span><span class="hll"><span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="k">FETCH</span><span class="w"> </span><span class="n">cur2</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">c</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="17 "></span>
-<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">FALSE</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t3</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
-<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="k">ELSE</span>
-<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t3</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="k">c</span><span class="p">);</span>
-<span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos" data-linenos="24 "></span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">FALSE</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">            </span><span class="k">IF</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">                </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t3</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">);</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">            </span><span class="k">ELSE</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">                </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t3</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="k">c</span><span class="p">);</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">            </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">        </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
 <span class="linenos" data-linenos="25 "></span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">WHILE</span><span class="p">;</span>
 <span class="linenos" data-linenos="26 "></span>
 <span class="hll"><span class="linenos" data-linenos="27 "></span><span class="w">  </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">cur1</span><span class="p">;</span><span class="w"> </span><span class="c1">-- (7)!</span>
@@ -997,158 +1414,79 @@ flowchart TD
 <p>TODO: Explicar líneas</p>
 <div class="admonition tip">
 <p class="admonition-title">Pensando en conjuntos</p>
+<p>Desde el principio del bloque de consultas, hemos aprendido a trabajar con datos pensando en conjuntos de datos completos, ya que le decimos al SGBD lo que queremos recuperar o evaluar, y el motor de consultas averigua la mejor manera de completar la consulta.</p>
+<p>Cuando en la unidad anterior empezamos a utilizar las estructuras de control dentro de los procedimientos almacenados, empleamos un enfoque imperativo, ya que le estamos indicando al SGBD cómo realizar las operaciones.</p>
+<p>El motivo por el que lo cursores se siguen utilizando es que en ocasiones es necesario indicarle al SGBD los pasos que queremos realizar. Dicho esto, este enfoque imperativo normalmente supone un peor rendimiento al realizar un bloqueo excesivo y hacer un mayor consumo de los recursos del motor de base de datos que si hiciéramos un enfoque basado en conjuntos.</p>
+<p>Dicho esto, siempre que sea posible, tendrá mejor rendimiento una o más consultas que el uso de cursores, aunque en contadas ocasiones necesitarás evaluar cada fida de un conjunto de forma individual y necesitarás el uso de cursores.</p>
 </div>
-<!--
-  Starting with our first query, everything we’ve seen in this book up to the last part
-  of chapter 21 involves set-based programming. Set-based programming tells the RDBMS
-  what data set or data sets we want to evaluate; from there, we let the RDBMS figure out
-  the best way to complete the query.
-  We used set-based programming with our SQL queries over and over until we started
-  working with the IF, THEN, and ELSE keywords, along with cursors and WHILE loops. That
-  type of programming is called procedural programming, which gives the RDBMS specific
-  instructions about what to do and how to do it. Procedural programming is quite common
-  for programming languages other than SQL.
-  One reason why cursors are so long and wordy is that we need to tell the RDBMS
-  every step to take to get a cursor to evaluate data. Unfortunately, because we’re telling
-  the RDBMS what to do, taking a procedural approach in SQL often results in slow performance,
-  extensive blocking, and the consumption of more server resources than a
-  query with a set-based approach would use.
-
-  Empezando por nuestra primera consulta, todo lo que hemos visto en este libro hasta la última parte
-  del capítulo 21 involucra programación basada en conjuntos. La programación basada en conjuntos le dice al RDBMS
-  qué conjunto o conjuntos de datos queremos evaluar; a partir de ahí, dejamos que el RDBMS decida
-  la mejor manera de completar la consulta.
-  Utilizamos la programación basada en conjuntos con nuestras consultas SQL una y otra vez hasta que empezamos a
-  a trabajar con las palabras clave IF, THEN y ELSE, junto con cursores y bucles WHILE. Ese tipo de programación
-  tipo de programación se llama programación procedimental, que da al RDBMS instrucciones
-  específicas sobre qué hacer y cómo hacerlo. La programación procedimental es bastante común
-  para lenguajes de programación distintos de SQL.
-  Una razón por la que los cursores son tan largos y prolijos es que necesitamos decirle al RDBMS
-  cada paso a dar para que un cursor evalúe los datos. Desafortunadamente, debido a que le estamos diciendo
-  al RDBMS qué hacer, adoptar un enfoque procedimental en SQL a menudo resulta en un rendimiento lento,
-  y el consumo de más recursos del servidor de los que necesitaría un
-  consulta con un enfoque basado en conjuntos.
-
--->
-
-<!--
-
-I don’t mean to say that you should never use cursors, although it’s possible to solve
-nearly every query request without using them. But as you near the final chapters of
-this book, I want to encourage you to use your total knowledge of SQL and look at cursors
-with a bit of skepticism.
-Knowing how to construct a cursor can be useful when you have a request with no
-other solution than to evaluate each row in a set individually. But those cases are rare, so
-even when you think you need to use a cursor, take a moment to ask whether a set-based
-solution exists.
-In terms of evaluating existing code, look at any cursor you encounter as a potential
-opportunity to improve performance by replacing it with set-based programming. You’ll
-likely encounter cursors frequently in existing stored procedures, as many folks with
-experience doing procedural programming in other languages often lean on cursors in
-SQL instead of the set-based methods you’ve learned throughout this book. Use your
-knowledge not only to reduce the complexity involved in cursors but also to improve the
-performance of stored procedures and reduce the resources they require from the server.
-
-No quiero decir que nunca debas usar cursores, aunque es posible resolver
-casi todas las consultas sin usarlos. Pero a medida que te acercas a los últimos capítulos de
-este libro, quiero animarte a que uses todo tu conocimiento de SQL y mires a los cursores
-con un poco de escepticismo.
-Saber cómo construir un cursor puede ser útil cuando se tiene una petición sin
-otra solución que evaluar cada fila de un conjunto individualmente. Pero esos casos son raros, así que
-incluso cuando crea que necesita utilizar un cursor, tómese un momento para preguntarse si existe una solución basada en conjuntos.
-basada en conjuntos.
-En cuanto a la evaluación del código existente, considere cualquier cursor que encuentre como una posible
-oportunidad de mejorar el rendimiento sustituyéndolo por programación basada en conjuntos. Es
-Es probable que encuentre cursores con frecuencia en los procedimientos almacenados existentes, ya que muchas personas con
-con experiencia en programación procedimental en otros lenguajes suelen recurrir a cursores en
-SQL en lugar de los métodos basados en conjuntos que ha aprendido a lo largo de este libro. Utilice sus
-conocimientos no sólo para reducir la complejidad de los cursores, sino también para mejorar el rendimiento de los procedimientos almacenados.
-rendimiento de los procedimientos almacenados y reducir los recursos que requieren del servidor.
--->
-
-<!-- ejemplo
-Evaluate every CustomerID in the customer table to see whether the customer
-placed an order in the past year. If a customer placed such an order, execute
-a stored procedure named CreateThankYouMessage. This stored procedure,
-which contains a single CustomerID parameter, creates a message to be sent to
-the customer.
--->
-
-<h2 id="triggers_1">Triggers<a class="headerlink" href="#triggers_1" title="Permanent link">&para;</a></h2>
-<p>Objeto de la base de datos que está asociado con
-una tabla y que se activa cuando ocurre un evento
-sobre la tabla.
- Posibles eventos:
- INSERT: El trigger se activa cuando se inserta una nueva
-fila sobre la tabla asociada.
- UPDATE: Se activa cuando se actualiza una fila.
- DELETE: Se activa cuando se elimina una fila.
- Dentro del disparador, NEW referencia al nuevo
-registro, y OLD al antiguo.</p>
-<p>CREATE TRIGGER
- https://mariadb.com/kb/en/create-trigger/
-CREATE [OR REPLACE] TRIGGER nombreTrigger
-cuandoTrigger eventoTrigger
-ON nombreTabla FOR EACH ROW
-[ordenTrigger]
-cuerpo
-cuandoTrigger: { BEFORE | AFTER }
-eventoTrigger: { INSERT | UPDATE | DELETE }
-ordenTrigger: { FOLLOWS | PRECEDES } otroNombreTrigger</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">alumnos</span><span class="w"> </span><span class="p">(</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">apellido1</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">apellido2</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span><span class="w"> </span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">nota</span><span class="w"> </span><span class="nb">FLOAT</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="p">);</span>
-<span class="linenos" data-linenos=" 8 "></span>
-<span class="linenos" data-linenos=" 9 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos="10 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeInsert</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos="11 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeInsert</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="k">BEFORE</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">alumnos</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
-<span class="linenos" data-linenos="13 "></span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="c1">-- NEW referencia al nuevo registro</span>
-<span class="linenos" data-linenos="15 "></span><span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">  </span><span class="n">ELSEIF</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-<span class="linenos" data-linenos="19 "></span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos" data-linenos="20 "></span><span class="k">END</span>
-<span class="linenos" data-linenos="21 "></span><span class="o">//</span>
-<span class="linenos" data-linenos="22 "></span>
-<span class="linenos" data-linenos="23 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeUpdate</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos="24 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeUpdate</span>
-<span class="linenos" data-linenos="25 "></span><span class="w">  </span><span class="k">BEFORE</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">alumnos</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
-<span class="linenos" data-linenos="26 "></span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos="27 "></span><span class="w">  </span><span class="k">IF</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="linenos" data-linenos="29 "></span><span class="w">  </span><span class="n">ELSEIF</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-<span class="linenos" data-linenos="31 "></span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos" data-linenos="32 "></span><span class="k">END</span>
-<span class="linenos" data-linenos="33 "></span><span class="o">//</span>
-<span class="linenos" data-linenos="34 "></span>
-<span class="linenos" data-linenos="35 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
-<span class="linenos" data-linenos="36 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">alumnos</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ana&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sánchez&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pérez&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="linenos" data-linenos="37 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">alumnos</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Bruno&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;García&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Morales&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span>
-<span class="linenos" data-linenos="38 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">alumnos</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Carlos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Serrano&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;López&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">.</span><span class="mi">5</span><span class="p">);</span>
-<span class="linenos" data-linenos="39 "></span>
-<span class="linenos" data-linenos="40 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">alumnos</span><span class="p">;</span>
-<span class="linenos" data-linenos="41 "></span>
-<span class="linenos" data-linenos="42 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">alumnos</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">4</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="linenos" data-linenos="43 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">alumnos</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="linenos" data-linenos="44 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">alumnos</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">.</span><span class="mi">5</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="linenos" data-linenos="45 "></span>
-<span class="linenos" data-linenos="46 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">alumnos</span><span class="p">;</span>
+<p>Una vez que ya sabemos como se crean, veamos un ejemplo sobre nuestra base de datos empresa. La empresa se está planteando ampliar la cantidad de departamentos para fomentar la conciliación familiar. De esta manera, aquellos departamentos que tengan más de 2 trabajadores con hijos se dividirán en dos, y sus empleados se repartirán entre ellos. Para ello, en una nueva tabla <code>departamentoFamiliar</code> almacenaremos una copia de los departamentos, junto a las nuevas versiones familiares.</p>
+<p>Así, tras crear una tabla con la misma estructura, haciendo uso de <a href="https://mariadb.com/kb/en/create-table/#create-table-like"><code>CREATE TABLE ... LIKE</code></a>, como queremos recuperar todos los atributos de un departamento, en vez de declarar una variable por cada columna, podemos declarar una variable mediante <a href="https://mariadb.com/kb/en/declare-variable/#type-of-row-type-of"><code>DECLARE ... ROW TYPE OF</code></a> de manera que accederemos a sus campos mediante la notación <code>.</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="n">USE</span><span class="w"> </span><span class="n">empresa</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">departamentoFamiliar</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">dividirDepartamentos</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">BEGIN</span>
+<span class="hll"><span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">rowDep</span><span class="w"> </span><span class="k">ROW</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span><span class="w"> </span><span class="c1">-- colocamos toda la fila en una variable</span>
+</span><span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">newCodDep</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">newNomDep</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">);</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">newPreAnu</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">FALSE</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">                         </span><span class="k">where</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NumHi</span><span class="o">&gt;</span><span class="mi">0</span><span class="w"> </span><span class="k">having</span><span class="w"> </span><span class="p">(</span><span class="k">count</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">));</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">FOUND</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">TRUE</span><span class="p">;</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="w">  </span><span class="k">OPEN</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span><span class="w">  </span><span class="n">WHILE</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">FALSE</span><span class="w"> </span><span class="k">DO</span>
+<span class="hll"><span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">rowDep</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">FALSE</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">newPreAnu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">PreAnu</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">-- dividimos el presupuesto entre 2</span>
+<span class="linenos" data-linenos="24 "></span>
+<span class="linenos" data-linenos="25 "></span><span class="w">        </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">departamentoFamiliar</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodDep</span><span class="p">;</span>
+<span class="linenos" data-linenos="26 "></span>
+<span class="linenos" data-linenos="27 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">newNomDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot; Familiar&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="c1">-- añadimos Familiar al nombre segundo departamento</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">newCodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="w"> </span><span class="k">SUBSTRING</span><span class="p">(</span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="ss">&quot;2&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">-- cambiamos el código del nuevo departamento</span>
+<span class="linenos" data-linenos="29 "></span>
+<span class="hll"><span class="linenos" data-linenos="30 "></span><span class="w">        </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">departamentoFamiliar</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">newCodDep</span><span class="p">,</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodEmpDir</span><span class="p">,</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodCen</span><span class="p">,</span><span class="w"> </span><span class="n">newNomDep</span><span class="p">,</span><span class="w"> </span><span class="n">newPreAnu</span><span class="p">,</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">TiDir</span><span class="p">);</span>
+</span><span class="linenos" data-linenos="31 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="32 "></span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">WHILE</span><span class="p">;</span>
+<span class="linenos" data-linenos="33 "></span>
+<span class="linenos" data-linenos="34 "></span><span class="w">  </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span>
+<span class="linenos" data-linenos="35 "></span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="36 "></span><span class="o">//</span><span class="w"> </span>
+<span class="linenos" data-linenos="37 "></span>
+<span class="linenos" data-linenos="38 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="39 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">dividirDepartamentos</span><span class="p">();</span>
+<span class="linenos" data-linenos="40 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">departamentoFamiliar</span><span class="p">;</span>
+<span class="linenos" data-linenos="41 "></span><span class="c1">-- +--------+-----------+-----------+--------+-----------------------------+-------------+-------+</span>
+<span class="linenos" data-linenos="42 "></span><span class="c1">-- | CodDep | CodEmpDir | CodDepDep | CodCen | NomDep                      | PreAnu      | TiDir |</span>
+<span class="linenos" data-linenos="43 "></span><span class="c1">-- +--------+-----------+-----------+--------+-----------------------------+-------------+-------+</span>
+<span class="linenos" data-linenos="44 "></span><span class="c1">-- | DIRG2  |         1 | DIRGE     | DIGE   | Dirección General Familiar  | 13000000.00 | P     |</span>
+<span class="linenos" data-linenos="45 "></span><span class="c1">-- | DIRGE  |         1 | NULL      | DIGE   | Dirección General           | 13000000.00 | P     |</span>
+<span class="linenos" data-linenos="46 "></span><span class="c1">-- +--------+-----------+-----------+--------+-----------------------------+-------------+-------+</span>
+<span class="linenos" data-linenos="47 "></span><span class="c1">-- 2 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>Comandos
- DROP TRIGGER nombreTrigger
- https://mariadb.com/kb/en/drop-trigger/
- SHOW TRIGGERS
- https://mariadb.com/kb/en/show-triggers/
- SHOW CREATE TRIGGER
- https://mariadb.com/kb/en/show-create-trigger/</p>
+<h3 id="uso-de-parametros">Uso de parámetros<a class="headerlink" href="#uso-de-parametros" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">p1</span><span class="p">(</span><span class="k">min</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="k">max</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">done</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">FALSE</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">va</span><span class="w"> </span><span class="nb">INT</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="k">CURSOR</span><span class="p">(</span><span class="n">pmin</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="n">pmax</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="n">pmin</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">pmax</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">FOUND</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">done</span><span class="o">=</span><span class="k">TRUE</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="k">OPEN</span><span class="w"> </span><span class="n">cur</span><span class="p">(</span><span class="k">min</span><span class="p">,</span><span class="k">max</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="n">read_loop</span><span class="p">:</span><span class="w"> </span><span class="n">LOOP</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">va</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">done</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="n">LEAVE</span><span class="w"> </span><span class="n">read_loop</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">va</span><span class="p">,</span><span class="s1">&#39;new&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">LOOP</span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">  </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span><span class="w"> </span>
+<span class="linenos" data-linenos="16 "></span><span class="k">END</span><span class="p">;</span>
+</code></pre></div>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -1165,9 +1503,202 @@ ordenTrigger: { FOLLOWS | PRECEDES } otroNombreTrigger</p>
 </li>
 </ul>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Bases de datos empleadas</p>
+<p>Recuerda que estas actividades se basan en las siguientes bases de datos</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">empresa</label><label for="__tabbed_1_2">retail</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>DDL y DML: <a href="resources/06bd-empresa.sql"><code>bd-empresa.sql</code></a></li>
+</ul>
+<p><figure style="align: center;">
+    <img src="images/06bd-empresa.png" width="882" title="Modelo físico de la BD empresa">
+    <figcaption>Modelo físico de la BD empresa</figcaption>
+</figure></p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>DDL y DML: <a href="resources/06bd-retail.sql"><code>bd-retail.sql</code></a></li>
+<li>Claves ajenas: <a href="resources/06bd-retail-fk.sql"><code>bd-retail-fk.sql</code></a> </li>
+</ul>
+<p><figure style="align: center;">
+    <img src="images/06bd-retail.png" width="1088" title="Modelo físico de la BD retail">
+    <figcaption>Modelo físico de la BD retail</figcaption>
+</figure></p>
+</div>
+</div>
+</div>
+</div>
 <p><a name="AC1101"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1101</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr> // 3p) asdfs</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1101</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr> // 3p) Utilizando la tabla <code>alumnado</code> y las funciones y procedimientos creados en la actividad <a href="10plsql.html#AC1010">AC1010</a> de la unidad anterior, se pide:</p>
+<ol>
+<li>
+<p>Crea un trigger (<code>triggerCrearEmailBeforeInsert</code>) sobre la tabla <code>alumnado</code>, para que si el email a insertar es
+nulo le asigne uno automáticamente. Debes utilizar la función <code>crearEmail</code> con el dominio <code>noemail.com</code>.</p>
+</li>
+<li>
+<p>Crea un trigger (<code>triggerGuardarEmailAfterUpdate</code>) sobre la tabla <code>alumnado</code>, para que cada vez que se modifica el
+email, inserte un nuevo registro en la tabla <code>logCambiosEmail</code>, cuyos campos son:</p>
+<ul>
+<li><code>id</code>: clave primaria (entero autonumérico)</li>
+<li><code>idAlumno</code>: id del alumno (entero)</li>
+<li><code>fechaHora</code>: marca de tiempo con el instante del cambio (fecha y hora)</li>
+<li><code>oldEmail</code>: valor anterior del email (cadena de caracteres)</li>
+<li><code>newEmail</code>: nuevo valor con el que se ha actualizado</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p><a name="AC1102"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1102</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr> // 3p) Utilizando la tabla, funciones y procedimiento de las actividades anteriores, se pide:</p>
+<ol>
+<li>
+<p>Crea un trigger (<code>triggerGuardarAlumnosAfterDelete</code>) sobre la tabla <code>alumnado</code>, para que cada vez que se elimine un
+alumno, inserte un nuevo registro en la tabla <code>logAlumnosEliminados</code>, cuyos campos son:</p>
+<ul>
+<li><code>id</code>: clave primaria (entero autonumérico)</li>
+<li><code>idAlumno</code> (entero)</li>
+<li><code>fechaHora</code>: marca de tiempo</li>
+<li><code>nombre</code>: nombre del alumno (cadena de caracteres)</li>
+<li><code>apellido</code> (cadena de caracteres)</li>
+<li><code>email</code> (cadena de caracteres)</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>2) Crea un procedimiento llamado insertarAlumno que reciba
+los cuatro datos como parámetros de entrada y los inserte en
+la tabla
+ El procedimiento devolverá como salida un parámetro
+llamado error que tendrá un valor igual a 0 si la operación
+se ha podido realizar con éxito o 1 en caso contrario.
+ Deberá manejar los errores que puedan ocurrir cuando se
+intenta insertar una fila que contiene una clave primaria
+repetida.</p>
+<p>2
+A partir de la base de datos de jardineria:
+1)Escribe un procedimiento (nombreClienteIf) que
+muestre el nombre de un cliente dado su código. En
+caso de que no se encuentre, devolverá "Cliente
+no encontrado".
+1) Utiliza if para contar si ha encontrado al cliente
+2) Vuelve a hacer el ejercicio anterior
+(nombreClienteHandler) pero ahora utiliza un
+manejador de errores (sin usar if)
+1) Debes comprobar el error NOT FOUND
+2) La consulta debe guardar el resultado en una variable
+mediante SELECT … INTO</p>
+<!-- SQLException -->
+<p>Escribe un procedimiento (crearOficina)
+que cree una oficina a partir de un código,
+ciudad, país, código postal, teléfono y
+dirección.
+ Si el código de la oficina ya existe, modificará
+los datos de dicha oficina con los recibidos
+como parámetros</p>
+<!-- Procedimiento transaccional -->
+<p>Crea la base de datos cine con las siguientes tablas:
+ Tabla cuentas:
+ idCuenta: entero sin signo (pk).
+ saldo: real sin signo.
+ Tabla entradas:
+ idButaca: entero sin signo (pk).
+ nif: cadena de 9 caracteres.
+ Crear un procedimiento llamado comprarEntrada que
+recibe 3 parámetros de entrada (nif, idCuenta,
+idButaca) y devolverá como salida un parámetro
+llamado error que tendrá un valor igual a 0 si la
+operación se ha podido realizar con éxito o 1 en caso
+contrario. Continúa</p>
+<p>Pasos del procedimiento de compra:
+1) Inicia una transacción.
+2) Actualiza cuentas.saldo cobrando 5 euros a la cuenta con
+el idCuenta adecuado.
+3) Inserta una fila en la tabla entradas indicando la butaca
+(idButaca) que acaba de comprar el usuario (nif).
+4) Comprueba si ha ocurrido algún error en las operaciones
+anteriores. Si todo va bien aplica un COMMIT a la transacción y
+si ha ocurrido algún error haz ROLLBACK.
+ Debe manejar los errores ERROR 1264 (Out of range value) y
+ERROR 1062 (Duplicate entry for PRIMARY KEY).
+ ¿Qué ocurre si se compra una entrada y le pasamos como
+parámetro un número de cuenta inexistente? ¿Ocurre algún error
+o podemos comprar la entrada? En caso de que exista algún
+error, ¿cómo podríamos resolverlo?.</p>
+<!-- cursores -->
+<p>Crea la base de datos cursores con una tabla
+llamada alumnos y 4 sentencias de inserción para
+inicializar la tabla que contiene las siguientes
+columnas:
+ id (entero sin signo y clave primaria)
+ nombre (cadena de caracteres)
+ apellido1 (cadena de caracteres)
+ apellido2 (cadena de caracteres)
+ fechaNacimiento (fecha)
+ Tras crear la tabla se decide añadir una nueva
+columna llamada edad. Escribe la sentencia SQL
+necesaria para modificar la tabla y añadir la nueva
+columna.</p>
+<p>Escribe una función llamada calcularEdad que
+reciba una fecha y devuelva el número de años que
+han pasado desde la fecha actual hasta la fecha
+pasada como parámetro.
+ Escribe un procedimiento
+(actualizarColumnaEdad) que actualice la edad
+de todos los alumnos que ya existen en la tabla.
+ Utiliza un cursor para recorrer la tabla y modificar cada
+alumno.
+ Este procedimiento deberá utilizar la función
+calcularEdad.</p>
+<p><a name="PY1113"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg></span> <strong>PY1113</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // todos los CE // 10p)   Siguiendo el reto y la actividad de proyecto <a href="08sql-subquerys.html#PY813">PY813</a>, en esta actividad nos vamos a centrar en añadir más consultas para explotar nuestra base de datos.</p>
+<p>Para ello, se pide un informe que detalle:</p>
+<ul>
+<li>Definición de 5 consultas que utilicen subconsultas, tanto escalares, como fila y de tabla.</li>
+<li>Definición de 2 consultas que utilicen CTE</li>
+<li>Creación de una tabla a partir del resultado de una consulta <em>compleja</em>.</li>
+<li>Definición de dos índices que mejoren el rendimiento de las consultas ya definidas</li>
+<li>Planes de ejecución, antes y después de la creación de los índices, comprobando su uso</li>
+<li>Resolución mediante SQL de cada una de las consultas.</li>
+<li>Resultados de su ejecución sobre el modelo físico.</li>
+</ul>
+<p>Se utilizará una rúbrica para su evaluación en base a la siguiente lista de cotejo:</p>
+<ul>
+<li>Limpieza y calidad de las consultas.</li>
+<li>Variedad de consultas, desde consultas sencilla a más complejas.</li>
+<li>Documentación de las consultas.</li>
+<li>El informe entregado no contiene faltas de ortografía.</li>
+<li>El informe entregado tiene un formato adecuado (portada, apartados, autores, etc...).</li>
+<li>El informe debe indicar cómo se han repartido las tareas y qué ha realizado cada alumno/a.</li>
+</ul>
+</li>
+</ul>
+<p><a name="PO1114"></a></p>
+<!-- prueba objetiva -->
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> <strong>PO1114</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // todos los CE // 60p) La prueba objetiva que agrupa los resultados de aprendizaje asociados al DDL (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>), DML (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr>) y a las consultas (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr>), es decir, todo lo trabajado desde la unidad 5 a la unidad 8, consistiendo en:</p>
+<ul>
+<li>(10p) Crear y/o modificar una estructura de una base de datos</li>
+<li>(10p) Insertar/modificar/eliminar datos de una base de datos</li>
+<li>(40p) Sobre un base de datos ya cargada previamente con datos:<ul>
+<li>Realizar consultas sencillas</li>
+<li>Realizar consultas con varias tablas</li>
+<li>Realizar consultas agregadas</li>
+<li>Realizar subconsultas</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <!--
 Contenidos básicos:
@@ -1315,6 +1846,44 @@ para la gestión de la información almacenada.
         <footer class="md-footer">
   
     
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="10plsql.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 10.- Programación SQL">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                10.- Programación SQL
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="00entorno.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Entorno">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Entorno
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1353,7 +1922,7 @@ para la gestión de la información almacenada.
       
     
     <a href="https://bsky.app/profile/aitormedrano.bsky.social" target="_blank" rel="noopener" title="bsky.app" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M111.8 62.2C170.2 105.9 233 194.7 256 242.4c23-47.6 85.8-136.4 144.2-180.2 42.1-31.6 110.3-56 110.3 21.8 0 15.5-8.9 130.5-14.1 149.2-18.2 64.8-84.4 81.4-143.3 71.3C456 322 482.2 380 425.6 438c-107.4 110.2-154.3-27.6-166.3-62.9-1.7-4.9-2.6-7.8-3.3-7.8s-1.6 3-3.3 7.8c-12 35.3-59 173.1-166.3 62.9-56.5-58-30.4-116 72.5-133.5C100 314.6 33.8 298 15.7 233.1 10.4 214.4 1.5 99.4 1.5 83.9c0-77.8 68.2-53.4 110.3-21.8z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M111.8 62.2C170.2 105.9 233 194.7 256 242.4c23-47.6 85.8-136.4 144.2-180.2 42.1-31.6 110.3-56 110.3 21.8 0 15.5-8.9 130.5-14.1 149.2-18.2 64.8-84.4 81.4-143.3 71.3C456 322 482.2 380 425.6 438c-107.4 110.2-154.3-27.6-166.3-62.9-1.7-4.9-2.6-7.8-3.3-7.8s-1.6 3-3.3 7.8c-12 35.3-59 173.1-166.3 62.9-56.5-58-30.4-116 72.5-133.5C100 314.6 33.8 298 15.7 233.1 10.4 214.4 1.5 99.4 1.5 83.9c0-77.8 68.2-53.4 110.3-21.8z"/></svg>
     </a>
   
     
@@ -1364,7 +1933,7 @@ para la gestión de la información almacenada.
       
     
     <a href="https://x.com/aitormedrano" target="_blank" rel="noopener" title="x.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z"/></svg>
     </a>
   
     
@@ -1372,7 +1941,7 @@ para la gestión de la información almacenada.
     
     
     <a href="mailto:<a.medrano@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
     </a>
   
 </div>
@@ -1444,10 +2013,10 @@ para la gestión de la información almacenada.
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
       
     
   </body>
