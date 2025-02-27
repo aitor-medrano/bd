@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -795,7 +795,10 @@
         
   
   <span class="md-ellipsis">
-    11.- Disparadores y Cursores
+    11.- PL/SQL Avanzado
+    
+      <br>
+      <small>Eventos, disparadores y cursores</small>
     
   </span>
   
@@ -2037,8 +2040,8 @@
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1005</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr> // 3p) En la base de datos <code>empresa</code>, crea:</p>
 <ol>
-<li>El procedimiento <code>ac1005semanaIf</code> que reciba como entrada un entero que represente un día de la semana y que devuelva una cadena con el nombre del día de la semana correspondiente (utilizando IF). Por ejemplo, para la entrada <code>1</code> debería devolver <code>Lunes</code>.</li>
-<li>El procedimiento <code>ac1005semanaCase</code> que reciba como entrada un entero que represente un día de la semana y que devuelva una cadena con el nombre del día de la semana correspondiente (utilizando CASE)</li>
+<li>El procedimiento <code>ac1005semanaIf</code> que reciba como entrada un entero que represente un día de la semana y que devuelva una cadena con el nombre del día de la semana correspondiente (utilizando <code>IF</code>). Por ejemplo, para la entrada <code>1</code> debería devolver <code>Lunes</code>.</li>
+<li>El procedimiento <code>ac1005semanaCase</code> que reciba como entrada un entero que represente un día de la semana y que devuelva una cadena con el nombre del día de la semana correspondiente (utilizando <code>CASE</code>)</li>
 <li>El procedimiento <code>ac1005semanaCasVal</code> que reciba como entrada un entero que represente un día de la semana y una cadena con el idioma (los posibles valores son <code>CAS</code> o <code>VAL</code>) y que devuelva una cadena con el nombre del día de la semana correspondiente en el idioma indicado (puedes utilizar las sentencias condicionales que consideres).  Por ejemplo, para <code>1</code> y <code>CAS</code>, devolverá <code>Lunes</code>, pero si es <code>VAL</code> devolverá <code>Dilluns</code>.</li>
 </ol>
 <p>Debes pensar y argumentar qué sucede si cualquiera de los parámetros recibidos como entrada no contienen alguno de los valores esperados.</p>
@@ -2099,7 +2102,7 @@
 <p><a name="AC1010"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1010</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> //  <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr> // 3p) Crea la tabla <code>alumnado</code> con las siguientes columnas:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1010</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> //  <abbr title="Se han definido procedimientos y funciones de usuario.">CE5f</abbr>, <abbr title="Se han utilizado estructuras de control de flujo.">CE5g</abbr> // 3p) En la base de datos <code>pruebas</code>, crea la tabla <code>alumnado</code> con las siguientes columnas:</p>
 <ul>
 <li><code>id</code>: entero sin signo (clave primaria).</li>
 <li><code>nombre</code>: cadena de 50 caracteres.</li>
@@ -2121,10 +2124,10 @@
 <p>Por ejemplo, si invocamos a la función con <code>crearEmail('Aitor', 'Medrano', 'BD')</code> devolvería <code>amedra8@bd.s8a.es</code>.</p>
 </li>
 <li>
-<p>Añade una columna <code>email</code> a la tabla <code>alumnado</code>. A continuación, crea un procedimiento (<code>actualizarColumnaEmail</code>) que permita crear un email para todo el alumnado que ya existe en la tabla <code>alumnado</code>, utilizando la función <code>crearEmail</code>.</p>
+<p>Añade una columna <code>email</code> a la tabla <code>alumnado</code>. A continuación, crea un procedimiento (<code>ac1010actualizarColumnaEmail</code>) que permita crear un email para todo el alumnado que ya existe en la tabla <code>alumnado</code>, utilizando la función <code>crearEmail</code>.</p>
 </li>
 <li>
-<p>Crea un procedimiento (<code>crearListaEmailsAlumnos</code>) que devuelva la lista de emails de la tabla alumnado separados por un punto y coma.</p>
+<p>Crea un procedimiento (<code>ac1010crearListaEmailsAlumnos</code>) que devuelva la lista de emails de la tabla alumnado separados por un punto y coma.</p>
 <p>Por ejemplo, al ejecutar el procedimiento devolverá una cadena similar a <code>amedra8@bd.s8a.es;pcasas10@bd.s8a.es;mvidal9@prg.s8a.es</code>.</p>
 </li>
 </ol>
@@ -2309,13 +2312,13 @@ para la gestión de la información almacenada.
         
         
           
-          <a href="11triggers.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 11.- Disparadores y Cursores">
+          <a href="11triggers.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 11.- PL/SQL Avanzado">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Siguiente
               </span>
               <div class="md-ellipsis">
-                11.- Disparadores y Cursores
+                11.- PL/SQL Avanzado
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2458,7 +2461,7 @@ para la gestión de la información almacenada.
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
       
     
   </body>
