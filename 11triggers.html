@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -1641,30 +1641,78 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 </li>
 </ul>
 <h2 id="gestion-de-errores">Gestión de Errores<a class="headerlink" href="#gestion-de-errores" title="Permanent link">&para;</a></h2>
-<p>Hasta ahora hemos supuesto que nuestros fragmentos de código nunca falla. Pero, ¿qué sucede cuando un procedimiento tiene un error? Ya sea porque no encuentra una tabla, accedemos erróneamente a un campo que no existe, etc..</p>
+<p>Hasta ahora hemos supuesto que nuestros fragmentos de código nunca falla. Pero, ¿qué sucede cuando un procedimiento o un evento tienen un error? Ya sea porque no encuentra una tabla, accedemos erróneamente a un campo que no existe, etc..</p>
 <p>A la hora de programar desde el punto de vista del gestor, por medio de procedimientos/funciones, podemos realizar dos aproximaciones diferentes a la gestión de errores (incluso una combinación de las dos):</p>
 <ul>
 <li>Capturar las excepciones que se puedan dar y mandar un mensaje al programa cliente (por medio de un parámetro de salida o un valor concreto devuelto con un <code>SELECT</code>). En este caso, el tratamiento del error lo gestionaremos dentro del procedimiento/función del gestor y programaremos la consecuencia que provoca dicho error.</li>
 <li>No capturar excepciones y que sea el programa cliente el que gestione las mismas. En este caso, incluso, podemos ser nosotros mismos los que provoquemos una excepción dentro del código del procedimiento/función (por ejemplo, el cliente envía un nif de un artista que no existe).</li>
 </ul>
+<p>Para ello, <em>MariaDB</em> ofrece varios mecanismos para la gestión de errores, que incluyen señales, manejadores, códigos de error y excepciones.</p>
 <h3 id="declarando-excepciones">Declarando excepciones<a class="headerlink" href="#declarando-excepciones" title="Permanent link">&para;</a></h3>
 <p>Cuando trabajamos con errores y excepciones, podemos capturar:</p>
 <ul>
 <li>Error y excepciones definidas por el SGBD (por ejemplo, <code>DUPLICATE ENTRY FOR KEY</code>, que se produce cuando intentamos añadir dos filas con la misma clave primaria)</li>
 <li>Excepciones creadas por el usuario. Por ejemplo, puedo lanzar una excepción cuando intente añadir un animal con una altura negativa.</li>
 </ul>
-<p>En cualquiera de los dos casos, cada excepción va a estar asociada a un número ya predefinido por el gestor.</p>
+<p>En cualquiera de los dos casos, cada excepción va a estar asociada a un número ya predefinido por el sistema gestor.</p>
 <div class="admonition info">
 <p class="admonition-title">Códigos de error</p>
-<p>Cuando sucede algún tipo de fallo, <em>MariaDB</em> devolverá un <a href="https://mariadb.com/kb/en/mariadb-error-codes/">error con un código</a>. Por ejemplo:</p>
-<ul>
-<li><code>1046</code>: base de datos no seleccionada</li>
-<li><code>1146</code>: tabla no existente</li>
-</ul>
+<p>Cuando sucede algún tipo de fallo, <em>MariaDB</em> devolverá un <a href="https://mariadb.com/kb/en/mariadb-error-codes/">error con un código</a>. Cada código tiene un mensaje asociado y un estado <code>SQLSTATE</code> correspondiente. Algunos códigos son:</p>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Mensaje</th>
+<th><code>SQLSTATE</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1007</td>
+<td>No se puede crear la base de datos</td>
+<td>42S01</td>
+</tr>
+<tr>
+<td>1045</td>
+<td>Acceso denegado para el usuario</td>
+<td>28000</td>
+</tr>
+<tr>
+<td>1050</td>
+<td>La tabla ya existe</td>
+<td>42S01</td>
+</tr>
+<tr>
+<td>1062</td>
+<td>Entrada duplicada</td>
+<td>23000</td>
+</tr>
+<tr>
+<td>1064</td>
+<td>Error de sintaxis SQL</td>
+<td>42000</td>
+</tr>
+<tr>
+<td>1146</td>
+<td>La tabla no existe</td>
+<td>42502</td>
+</tr>
+</tbody>
+</table>
 <p>Por ejemplo, si intento hacer una consulta sobre una tabla que no existe recibo un mensaje de error con su código:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">tablamala</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1">-- ERROR 1146 (42S02): Table &#39;empresa.tablamala&#39; doesn&#39;t exist</span>
 </code></pre></div>
+<p>Tras ejecutar una consulta que ha devuelto un error, puedo recuperar el error mediante <code>SHOW ERRORS</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SHOW</span><span class="w"> </span><span class="n">ERRORS</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">-- +-------+------+-----------------------------------------+</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- | Level | Code | Message                                 |</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">-- +-------+------+-----------------------------------------+</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- | Error | 1146 | Table &#39;pruebas.tablamala&#39; doesn&#39;t exist |</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">-- +-------+------+-----------------------------------------+</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
+</code></pre></div>
+<p>Los códigos de error del 1900 hacía arriba son específicos de <em>MariaDB</em>, mientras que los comprendidos entre 1000 y 1800 son los mismos que <em>MySQL</em>.</p>
 </div>
 <p>Para hacer mas legible el manejo de excepciones, puedo asociar dicho número a un nombre de excepción y después controlar la captura por dicho nombre y no por el número asociado.</p>
 <p>Dentro de un procedimiento voy a poder capturar esta excepción, pero en vez de capturarla (veremos la instrucción SQL a continuación) por su número (1051) puedo hacerlo por un nombre de la forma mediante <a href="https://mariadb.com/kb/en/declare-condition/"><code>DECLARE CONDITION</code></a>:</p>
@@ -2506,7 +2554,7 @@ para la gestión de la información almacenada.
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
+      <script src="assets/javascripts/bundle.f1b6f286.min.js"></script>
       
     
   </body>
