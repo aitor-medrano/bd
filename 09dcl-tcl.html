@@ -2114,9 +2114,9 @@ del SGBD, para hacer, por ejemplo, copias de seguridad, mediante un <a href="htt
 <span class="linenos" data-linenos="16 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Quinto&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos="17 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sexto&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos="18 "></span><span class="k">ROLLBACK</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">sp1</span><span class="p">;</span>
-<span class="linenos" data-linenos="19 "></span>
-<span class="hll"><span class="linenos" data-linenos="20 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">producto</span><span class="p">;</span>
-</span><span class="linenos" data-linenos="21 "></span><span class="k">COMMIT</span><span class="p">;</span>
+<span class="linenos" data-linenos="19 "></span><span class="k">COMMIT</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="20 "></span>
+</span><span class="linenos" data-linenos="21 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">producto</span><span class="p">;</span>
 </code></pre></div>
 <p>A continuación, indica las sentencias SQL necesarias para realizar las siguientes tareas dentro de una única operación:</p>
 <ol>
@@ -2125,7 +2125,8 @@ del SGBD, para hacer, por ejemplo, copias de seguridad, mediante un <a href="htt
 <li>Inserta el producto 11 con nombre <code>Onze</code> y con 100€ de precio.</li>
 <li>Coloca un punto de guardado nombrado <code>SP3</code></li>
 <li>Modifica el precio de <code>Onze</code> para que sea de 11€.</li>
-<li>Cancela las operaciones posteriores a <code>SP3</code> y muestra el resultado de la tabla <code>producto</code>.</li>
+<li>Cancela las operaciones posteriores a <code>SP3</code>b y confirma la transacción.</li>
+<li>Muestra el resultado de la tabla <code>producto</code> y justifica los registros que aparecen.</li>
 </ol>
 </li>
 </ul>
@@ -2203,7 +2204,7 @@ del SGBD, para hacer, por ejemplo, copias de seguridad, mediante un <a href="htt
 </table>
 </li>
 <li>
-<p>¿Qué cambiaría si hubiéramos hecho bloqueado la tabla con accesos de lectura?</p>
+<p>¿Qué cambiaría si hubiéramos bloqueado la tabla con accesos de lectura?</p>
 <table>
 <thead>
 <tr>
@@ -2220,8 +2221,13 @@ del SGBD, para hacer, por ejemplo, copias de seguridad, mediante un <a href="htt
 </tr>
 <tr>
 <td>Modifica el jefe de <em>Marketing</em> para que sea <code>J2</code> (utilizando el bloqueo)</td>
-<td>¿Qué sucede?</td>
 <td></td>
+<td>¿Qué sucede?</td>
+</tr>
+<tr>
+<td></td>
+<td>Consulta la tabla <code>departamento</code></td>
+<td>¿Qué sucede?</td>
 </tr>
 <tr>
 <td>Desbloquea la tabla <code>departamento</code></td>
@@ -2249,7 +2255,17 @@ del SGBD, para hacer, por ejemplo, copias de seguridad, mediante un <a href="htt
 </tr>
 <tr>
 <td>Modifica el jefe de <em>Marketing</em> para que sea <code>J2</code> (utilizando el bloqueo)</td>
+<td></td>
 <td>¿Qué sucede?</td>
+</tr>
+<tr>
+<td></td>
+<td>Consulta la tabla <code>departamento</code></td>
+<td>¿Qué sucede?</td>
+</tr>
+<tr>
+<td>Desbloquea la tabla <code>departamento</code></td>
+<td></td>
 <td></td>
 </tr>
 </tbody>

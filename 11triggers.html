@@ -2431,14 +2431,14 @@ flowchart TD
 <p><a name="AP1104"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1104</strong>.(<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Sobre la base de datos <code>empresa</code>, crea una tabla que se llame <code>notificaciones</code> que tenga las siguientes columnas:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1104</strong>.(<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Sobre la base de datos <code>empresa</code>, crea una tabla que se llame <code>salarios</code> que tenga las siguientes columnas:</p>
 <ul>
 <li><code>id</code> (entero sin signo, autoincremento y clave primaria)</li>
-<li><code>fecha_hora</code>: marca de tiempo con el instante del pago (fecha y hora)</li>
-<li><code>total</code>: el valor del pago (real)</li>
-<li><code>codigo_cliente</code>: código del cliente que realiza el pago (entero)</li>
+<li><code>fecha_hora</code>: marca de tiempo con el instante del cambio (fecha y hora)</li>
+<li><code>salario</code>: el valor del pago (real)</li>
+<li><code>codigo_empleado</code>: código del empleado al que se le ha cambiado el salario(entero)</li>
 </ul>
-<p>Escribe el trigger <code>triggerNotificaPago</code> que nos permita llevar un control de los pagos que van realizando los clientes. Los detalles de implementación son los siguientes:</p>
+<p>Escribe el trigger <code>triggerSalariosEmpleado</code> que nos permita llevar un control de las modificaciones en los salarios de los empleados. os detalles de implementación son los siguientes:</p>
 <p>Se ejecuta sobre la tabla pago.
 Se ejecuta después de hacer la inserción de un pago.
 Cada vez que un cliente realice un pago (es decir, se hace una inserción en la tabla pago), el trigger deberá insertar un nuevo registro en una tabla llamada notificaciones.
