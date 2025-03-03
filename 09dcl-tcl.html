@@ -2064,13 +2064,13 @@ del SGBD, para hacer, por ejemplo, copias de seguridad, mediante un <a href="htt
 <span class="linenos" data-linenos="17 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9999</span><span class="p">;</span>
 <span class="linenos" data-linenos="18 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="linenos" data-linenos="19 "></span><span class="k">COMMIT</span><span class="p">;</span>
-<span class="hll"><span class="linenos" data-linenos="20 "></span><span class="c1">-- ¿Qué sucede cuando una cuenta no existe?</span>
+<span class="hll"><span class="linenos" data-linenos="20 "></span><span class="c1">-- ¿Qué sucede cuando una cuenta no existe? ¿Se ha modificado el saldo de la cuenta 2?</span>
 </span><span class="linenos" data-linenos="21 "></span>
 <span class="linenos" data-linenos="22 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
 <span class="linenos" data-linenos="23 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="linenos" data-linenos="24 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="linenos" data-linenos="25 "></span><span class="k">COMMIT</span><span class="p">;</span>
-<span class="hll"><span class="linenos" data-linenos="26 "></span><span class="c1">-- ¿Y si una cuenta no tiene saldo?</span>
+<span class="hll"><span class="linenos" data-linenos="26 "></span><span class="c1">-- ¿Y si una cuenta no tiene saldo? ¿Se han ambos los saldos?</span>
 </span></code></pre></div>
 </li>
 <li>
@@ -2084,7 +2084,8 @@ del SGBD, para hacer, por ejemplo, copias de seguridad, mediante un <a href="htt
 <li>
 <p>Y en otra operación:</p>
 <ol>
-<li>Modifica las cuentas 4 y 5 y quítales 200€.</li>
+<li>Inserta la cuenta 6 con un saldo de 600€.</li>
+<li>Modifica las cuentas 4 y 5 y quítales 200€ (en una única operación).</li>
 <li>Deshaz las dos últimas operaciones.</li>
 </ol>
 </li>

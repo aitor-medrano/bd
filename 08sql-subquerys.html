@@ -2152,10 +2152,10 @@ EXPLAIN.
 <p>Se usa para determinar el orden que el servidor seguirá para combinar tablas en un JOIN y qué índices se usarán en una consulta.</p>
 </li>
 <li>
-<p>Defragmentar una tabla, mediante <a href="https://mariadb.com/kb/en/optimize-table/"><code>OPTIMIZE TABLE nombreTabla</code></a>:</p>
+<p>Desfragmentar una tabla, mediante <a href="https://mariadb.com/kb/en/optimize-table/"><code>OPTIMIZE TABLE nombreTabla</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">OPTIMIZE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
 </code></pre></div>
-<p>Además de degramentar los datos, actualiza y reordenar los índices, pero sólo para algunos motores de ejecución (las versiones actuales de <em>InnoDB</em> realizan un ajuste automático del espacio minimizando la fragmentación, y por lo tanto, por defecto esta sentencia no realiza nada).</p>
+<p>Además de reorganizar los datos, actualiza y reordenar los índices, pero sólo para algunos motores de ejecución (las versiones actuales de <em>InnoDB</em> realizan un ajuste automático del espacio minimizando la fragmentación, y por lo tanto, por defecto esta sentencia no realiza nada).</p>
 </li>
 </ul>
 <h3 id="buenas-practicas">Buenas prácticas<a class="headerlink" href="#buenas-practicas" title="Permanent link">&para;</a></h3>

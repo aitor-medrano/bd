@@ -1942,6 +1942,57 @@
 </code></pre></div>
 </li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">PL/SQL en Oracle</p>
+<p>En <em>MariaDB</em>, a partir de la versión 10.3, se introdujo la <a href="https://mariadb.com/kb/en/sql_modeoracle/">compatibilidad con PL/SQL de <em>Oracle</em></a>, permitiendo a los desarrolladores escribir procedimientos almacenados y funciones con una sintaxis similar a la de <em>Oracle PL/SQL</em>.</p>
+<p>Sin embargo, existen diferencias clave. Por ejemplo, en <em>Oracle</em>, la salida de mensajes de depuración se realiza con <code>DBMS_OUTPUT.PUT_LINE</code>, mientras que en <em>MariaDB</em> no existe esta funcionalidad de forma nativa y se deben emplear alternativas como <code>SELECT</code>, <code>SIGNAL</code> o el uso de tablas temporales para almacenar mensajes de depuración.</p>
+<p>Otra diferencia importante es el uso del atributo <code>%TYPE</code>, que en <em>Oracle</em> permite definir variables basadas en el tipo de una columna de tabla.</p>
+<p>Para escribir PL/SQL en <em>MariaDB</em> con sintaxis de <em>Oracle</em>, se debe habilitar el modo de compatibilidad con <strong><code>sql_mode=ORACLE</code></strong>, lo que permite una mayor interoperabilidad, aunque algunas funciones y paquetes no estén totalmente soportados.</p>
+<p>Por ejemplo, ambos procedimientos son <em>compatibles</em>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">MariaDB</label><label for="__tabbed_1_2">Modo Oracle</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">empleados</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">debug_log</span><span class="w"> </span><span class="p">(</span><span class="n">mensaje</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">));</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploMariaDB</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">v_nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w">  </span><span class="c1">-- No podemos usar %TYPE en MariaDB puro</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">v_nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Aitor Medrano&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">debug_log</span><span class="w"> </span><span class="p">(</span><span class="n">mensaje</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;Empleado: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">v_nombre</span><span class="p">));</span>
+<span class="linenos" data-linenos="12 "></span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span><span class="o">//</span>
+<span class="linenos" data-linenos="14 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">ejemploMariaDB</span><span class="p">();</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">debug_log</span><span class="p">;</span><span class="w">  </span><span class="c1">-- Ver el mensaje</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">sql_mode</span><span class="o">=</span><span class="s1">&#39;ORACLE&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">empleados</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploOracle</span><span class="w"> </span><span class="k">IS</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="n">v_nombre</span><span class="w"> </span><span class="n">empleados</span><span class="p">.</span><span class="n">nombre</span><span class="o">%</span><span class="k">TYPE</span><span class="p">;</span><span class="w">  </span><span class="c1">-- Usa el tipo de la columna &quot;nombre&quot;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">v_nombre</span><span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Aitor Medrano&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="n">dbms_output</span><span class="p">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;Empleado: &#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">v_nombre</span><span class="p">);</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="o">//</span>
+<span class="linenos" data-linenos="13 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">ejemploOracle</span><span class="p">();</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -1961,7 +2012,7 @@
 <div class="admonition tip">
 <p class="admonition-title">Bases de datos empleadas</p>
 <p>Recuerda que estas actividades se basan en las siguientes bases de datos</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">empresa</label><label for="__tabbed_1_2">retail</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">empresa</label><label for="__tabbed_2_2">retail</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ul>
@@ -2062,7 +2113,7 @@
 <ol>
 <li>El procedimiento <code>ac1006habilidad</code> que reciba como entrada un código de habilidad y una descripción, y la inserte en la tabla <code>habilidad</code></li>
 <li>
-<p>El procedimiento <code>ac1006habilidades</code> que reciba como entrada un entero con una cantidad, he inserte tantas habilidades como el parámetro recibido, asignando como código <code>BD-NNN</code> y descripción <code>Habilidad NNN</code>, sustituyendo <code>NNN</code> por un número entero secuencial.</p>
+<p>El procedimiento <code>ac1006habilidades</code> que reciba como entrada un entero con una cantidad, e inserte tantas habilidades como el parámetro recibido, asignando como código <code>BD-NNN</code> y descripción <code>Habilidad NNN</code>, sustituyendo <code>NNN</code> por un número entero secuencial.</p>
 <p>Si el parámetro es <code>3</code>, insertará las habilidades <code>BD-1</code>, <code>BD-2</code> y <code>BD-3</code> y las descripciones <code>Habilidad 1</code>, <code>Habilidad 2</code> y <code>Habilidad 3</code>.</p>
 </li>
 <li>
