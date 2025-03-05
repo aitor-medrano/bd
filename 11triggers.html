@@ -746,27 +746,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#alias-de-error" class="md-nav__link">
+  <a href="#manejadores-y-senales" class="md-nav__link">
     <span class="md-ellipsis">
-      Alias de error
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manejando-senales" class="md-nav__link">
-    <span class="md-ellipsis">
-      Manejando señales
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#propagando-senales" class="md-nav__link">
-    <span class="md-ellipsis">
-      Propagando señales
+      Manejadores y Señales
     </span>
   </a>
   
@@ -1110,27 +1092,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#alias-de-error" class="md-nav__link">
+  <a href="#manejadores-y-senales" class="md-nav__link">
     <span class="md-ellipsis">
-      Alias de error
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manejando-senales" class="md-nav__link">
-    <span class="md-ellipsis">
-      Manejando señales
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#propagando-senales" class="md-nav__link">
-    <span class="md-ellipsis">
-      Propagando señales
+      Manejadores y Señales
     </span>
   </a>
   
@@ -1792,8 +1756,17 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <p>Los códigos de error del 1900 hacía arriba son específicos de <em>MariaDB</em>, mientras que los comprendidos entre 1000 y 1800 son los mismos que <em>MySQL</em>.</p>
 </div>
 <p>Para hacer mas legible el manejo de excepciones, puedo asociar dicho número a un nombre de excepción y después controlar la captura por dicho nombre y no por el número asociado.</p>
+<div class="admonition tip">
+<p class="admonition-title">Alias de error</p>
+<p>Algunos errores son tan comunes que existen unos alias para referenciar tanto a un código concreto como a un conjunto de ellos. Son tres:</p>
+<ul>
+<li><code>SQLWARNING</code>: valores de <code>SQLSTATE</code> que empiezan por <code>01</code>.</li>
+<li><code>NOT FOUND</code>: valores de <code>SQLSTATE</code> que empiezan por <code>02</code>. Se utiliza con cursores cuando se ha llegado al final de los datos, lo que provoca una condición <code>NO DATA</code> con <code>SQLSTATE</code> igual a <code>02000</code>.</li>
+<li><code>SQLEXCEPTION</code>: valores de <code>SQLSTATE</code> que empiezan por <code>00</code>, <code>01</code> o <code>02</code>.</li>
+</ul>
+</div>
 <h3 id="mejorando-la-legibilidad">Mejorando la legibilidad<a class="headerlink" href="#mejorando-la-legibilidad" title="Permanent link">&para;</a></h3>
-<p>Dentro de un procedimiento voy a poder capturar los errores, pero en vez de capturarlos por su número (<code>1051</code>) puedo hacerlo por un nombre más específico que mejore la legibilidad del código, mediante <a href="https://mariadb.com/kb/en/declare-condition/"><code>DECLARE CONDITION</code></a>:</p>
+<p>Dentro de un procedimiento voy a poder capturar los errores, pero si no quiero hacerlo por su código (<code>1050</code>), estado (<code>42S01</code>) o alias genérico (<code>SQLEXCEPTION</code>), puedo hacerlo por un nombre más específico que mejore la legibilidad del código, mediante <a href="https://mariadb.com/kb/en/declare-condition/"><code>DECLARE CONDITION</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">no_existe_tabla</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">1051</span><span class="p">;</span>
 </code></pre></div>
 <p>Ya hemos visto que en la <a href="https://mariadb.com/kb/en/mariadb-error-code-reference/">lista de mensajes de error</a> aparecen dos tipos de errores asociados a cada mensaje:</p>
@@ -1801,7 +1774,7 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <li><em>Error Code</em>: Son números específicos de <em>MariaDB</em>/<em>MySQL</em> que no valen para otros gestores.</li>
 <li><em>SQLState Code</em>: Cadena de 5 dígitos basado en ANSI SQL y ODBC y por lo tanto sus códigos son 'estandarizados'.</li>
 </ul>
-<p>Emplear uno u otro va a depender de nuestro programa cliente. Si este va a ser empleado en sistemas gestores diferentes (por ejemplo <em>ORACLE</em> o S<em>QL Server</em>) podría ser mejor emplear los SQLState Code. En caso contrario, mejor los específicos de cada gestor.</p>
+<p>Emplear uno u otro va a depender de nuestro programa cliente. Si este va a ser empleado en sistemas gestores diferentes (por ejemplo <em>ORACLE</em> o <em>SQL Server</em>) podría ser mejor emplear los código de estado SQL. En caso contrario, es recomendable utilizar mejor los específicos de cada gestor.</p>
 <p>En el caso de querer dar un nombre a la excepción empleando el <em>SQLState</em> la sintaxis cambia:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">no_existe_tabla</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;42S02&#39;</span><span class="p">;</span>
 </code></pre></div>
@@ -1839,9 +1812,9 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <span class="linenos" data-linenos=" 3 "></span><span class="n">accionManejador</span><span class="p">:</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">CONTINUE</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">EXIT</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="n">valorCondicion</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">mariadb_error_code</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span><span class="w"> </span><span class="n">sqlstate_value</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">condition_name</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">codigoErrorMariaDB</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="p">[</span><span class="n">VALUE</span><span class="p">]</span><span class="w"> </span><span class="n">valorDeSQLState</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">nombreCondicion</span>
 <span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">SQLWARNING</span>
 <span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">FOUND</span>
 <span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
@@ -1849,10 +1822,12 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <p>A tener en cuenta:</p>
 <ul>
 <li>El manejador se lanzará para una o más condiciones.</li>
-<li>Al lanzarse, se puede ejecutar un única instrucción (por ejemplo <code>set x=5;</code>) o un bloque de instrucciones.</li>
+<li>Las acciones pueden ser <code>CONTINUE</code> para continuar con la ejecución normal, o <code>EXIT</code> que ejecutar el manejador y finaliza el bloque <code>BEGIN-END</code> actual.</li>
+<li>Al lanzarse, se puede ejecutar un única instrucción (por ejemplo <code>set x=5;</code>) o un bloque de instrucciones (entre <code>BEGIN</code> y <code>END</code>).</li>
 <li>Los manejadores se deben declarar después de las variables locales.</li>
 </ul>
-<p>Por ejemplo, podemos crear manejadores para códigos de error o estados de SQL:</p>
+<p>Los manejadores se asocian mediante <code>FOR</code> a códigos de error, estados de SQL, las condiciones predefinidas a cualquier condición que hayamos creado anteriormente:</p>
+<p>Por ejemplo, podemos definir un par que manejadores del siguiente modo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">1051</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">BEGIN</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- cuerpo del manejador</span>
@@ -1861,38 +1836,154 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- Intenta acceder a una tabla que no existe</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;42S02&#39;</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="o">-</span><span class="w"> </span><span class="n">cuerpo</span><span class="w"> </span><span class="n">del</span><span class="w"> </span><span class="n">manejador</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- cuerpo del manejador</span>
 <span class="linenos" data-linenos="10 "></span><span class="k">END</span><span class="p">;</span>
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- Intenta acceder a una tabla que no existe</span>
 </code></pre></div>
-<h4 id="alias-de-error">Alias de error<a class="headerlink" href="#alias-de-error" title="Permanent link">&para;</a></h4>
-<p>Algunos errores son tan comunes que existen unos alias para referenciar tanto un código concreto como a un conjunto de ellos. Por ejemplo:</p>
+<p>Por ejemplo, si queremos realizar una inserción en la tabla <code>habilidad</code> con gestión de errores, podríamos hacer:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">insertarHabilidad</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">codigo</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="n">descripcion</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">1062</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Error: Valor duplicado&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Error SQL general&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="p">(</span><span class="n">CodHab</span><span class="p">,</span><span class="w"> </span><span class="n">NomHab</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">descripcion</span><span class="p">);</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Inserción exitosa&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Autoevaluación</p>
+<p>A partir del siguiente fragmento de código:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">t11</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="p">));</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploManejadores</span><span class="p">(</span><span class="k">out</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="nb">int</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="c1">-- El código 23000 se lanza al violar la restricción de integridad</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;23000&#39;</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t11</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">t11</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span><span class="k">END</span>
+<span class="linenos" data-linenos="14 "></span><span class="o">//</span>
+<span class="linenos" data-linenos="15 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="k">call</span><span class="w"> </span><span class="n">ejemploManejadores</span><span class="p">(</span><span class="o">@</span><span class="n">salida</span><span class="p">);</span>
+<span class="linenos" data-linenos="18 "></span><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">salida</span><span class="p">;</span>
+</code></pre></div>
 <ul>
-<li><code>SQLWARNING</code>: valores de <code>SQLSTATE</code> que empiezan por <code>01</code>.</li>
-<li><code>NOT FOUND</code>: valores de <code>SQLSTATE</code> que empiezan por <code>02</code>. Se utiliza con cursores cuando se ha llegado al final de los datos, lo que provoca una condición <code>NO DATA</code> con <code>SQLSTATE</code> igual a <code>02000</code>.</li>
-<li><code>SQLEXCEPTION</code>: valores de <code>SQLSTATE</code> que empiezan por <code>00</code>, <code>01</code> o <code>02</code>.</li>
+<li>¿Cuanto valdrá <code>@salida</code> en la línea 18? <!-- 3 --></li>
+<li>Si cambiamos el manejador de <code>CONTINUE</code> a <code>EXIT</code>, ¿Cuánto valdría <code>resultado</code>? <!-- 1 --></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="n">USE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 4 "></span>
-<span class="linenos" data-linenos=" 5 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">s1</span><span class="p">));</span>
+</div>
+<h4 id="manejadores-y-senales">Manejadores y Señales<a class="headerlink" href="#manejadores-y-senales" title="Permanent link">&para;</a></h4>
+<p>Ahora que ya sabemos definir manejadores, condiciones y señales, vamos a ver como podemos utilizarlos de manera conjunta para hacer nuestro código más robusto.</p>
+<p>Por ejemplo, podemos definir una condición, y luego usarla en un manejador. Más adelante, lanzarla mediante una señal, de manera que se propague al código que invoque el procedimiento: </p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploManejadoresSeñales</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">errorFondosInsuficientes</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;45000&#39;</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 6 "></span>
-<span class="linenos" data-linenos=" 7 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploM</span><span class="p">()</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="c1">-- El código 23000 se lanza al violar la restricción de integridad</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;23000&#39;</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">pruebas</span><span class="p">.</span><span class="n">t</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="linenos" data-linenos="17 "></span><span class="k">END</span>
-<span class="linenos" data-linenos="18 "></span><span class="o">//</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">errorFondosInsuficientes</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;No hay fondos suficientes para la operación&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="c1">-- Bloque SQL donde recuperamos los fondos</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">fondos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="n">SIGNAL</span><span class="w"> </span><span class="n">errorFondosInsuficientes</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Fondos insuficientes&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">            </span><span class="n">MYSQL_ERRNO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30002</span><span class="p">;</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos="18 "></span>
 <span class="linenos" data-linenos="19 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
-<h4 id="manejando-senales">Manejando señales<a class="headerlink" href="#manejando-senales" title="Permanent link">&para;</a></h4>
+<div class="admonition tip">
+<p class="admonition-title">Propagando señales</p>
+<p>Mediante <a href="https://mariadb.com/kb/en/resignal/"><code>RESIGNAL</code></a> podemos modificar o propagar un error capturado por un manejador. Debemos tener en cuenta que sólo podemos propagar una señal dentro de un manejador:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">procesarDatos</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">idCliente</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="k">GET</span><span class="w"> </span><span class="k">DIAGNOSTICS</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="mi">1</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">            </span><span class="o">@</span><span class="k">sqlstate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">RETURNED_SQLSTATE</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">            </span><span class="o">@</span><span class="n">errno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MYSQL_ERRNO</span><span class="p">,</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">            </span><span class="o">@</span><span class="nb">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="c1">-- Personalizar el mensaje de error antes de re-lanzarlo</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">nuevoMensaje</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;Error al procesar cliente &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">idCliente</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;: &#39;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="nb">text</span><span class="p">);</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="n">RESIGNAL</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="o">@</span><span class="k">sqlstate</span>
+</span><span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">nuevoMensaje</span><span class="p">,</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">            </span><span class="n">MYSQL_ERRNO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">errno</span><span class="p">;</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="c1">-- Código que podría generar excepciones</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="c1">-- ...</span>
+<span class="linenos" data-linenos="22 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+</code></pre></div>
+<p>Nos plantearemos propagar una señal cuando:</p>
+<ul>
+<li>queramos capturar un error, realizar alguna acción (como registrar en logs) y luego volver a lanzarlo.</li>
+<li>modificar el mensaje de error antes de propagarlo.</li>
+<li>necesitamos controlar errores en un nivel superior, por ejemplo, si un procedimiento llama a otro y queremos gestionar la excepción en el procedimiento principal.</li>
+</ul>
+</div>
+<!-- TODO Sentencias preparadas https://wiki.cifprodolfoucha.es/index.php?title=BD_UD7_Sentencias_Prepared
+
+TODO: gestión de errores en eventos y triggers
+ -->
+
+<h3 id="transacciones-en-plsql">Transacciones en PL/SQL<a class="headerlink" href="#transacciones-en-plsql" title="Permanent link">&para;</a></h3>
+<p>Cuando trabajamos con transacciones, necesitamos poder controlar cuando sucede un error para deshacer las operaicones. Para ello, se utiliza un manejador de tipo <code>EXIT</code> para hacer <code>ROLLBACK</code> y deshacer la transacción. Si no se produce ningún error, se realizará el <code>COMMIT</code>.</p>
+<p>A nivel de código, se traduce en el siguiente esquema de código:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">transaccionEnMariaDB</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span><span class="p">,</span><span class="w"> </span><span class="n">SQLWARNING</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">        </span><span class="c1">-- ERROR, WARNING</span>
+<span class="hll"><span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="k">ROLLBACK</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="c1">-- Sentencias SQL</span>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">COMMIT</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="12 "></span><span class="k">END</span>
+</code></pre></div>
+<p>Por ejemplo, a partir de este esqueleto, definimos un ejemplo concreto, donde declaramos un manejador para gestionar un error y deshacer la transacción, o realizar un <code>COMMIT</code> si llega al final de la operación:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">procesoPransaccional</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">id_pedido</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">        </span><span class="k">ROLLBACK</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Error en la transacción. Se ha revertido.&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="c1">-- Operaciones que podrían fallar</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">pedidos</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;procesado&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id_pedido</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">inventario</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pedidos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id_pedido</span><span class="p">);</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">COMMIT</span><span class="p">;</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Transacción completada con éxito&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
+<span class="linenos" data-linenos="18 "></span><span class="k">END</span>
+</code></pre></div>
+<p>El siguiente paso es ver un ejemplo completo del uso de manejador con transacciones y señales, simulando una transferencia entre dos cuentas bancarias:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
 <span class="linenos" data-linenos=" 2 "></span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">transferir_fondos</span><span class="p">(</span>
@@ -1903,131 +1994,32 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <span class="linenos" data-linenos=" 8 "></span><span class="k">BEGIN</span>
 <span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">saldo_actual</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span>
 <span class="linenos" data-linenos="10 "></span>
-<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="c1">-- Manejador para errores de transacción</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="k">ROLLBACK</span><span class="p">;</span>
-<span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Transacción cancelada por error&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
-<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
-<span class="linenos" data-linenos="17 "></span>
-<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="c1">-- Iniciar transacción</span>
-<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-<span class="linenos" data-linenos="20 "></span>
-<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="c1">-- Obtener saldo actual</span>
-<span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">saldo_actual</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuenta_origen</span><span class="p">;</span>
-<span class="linenos" data-linenos="23 "></span>
-<span class="linenos" data-linenos="24 "></span><span class="w">    </span><span class="c1">-- Verificar fondos suficientes</span>
-<span class="linenos" data-linenos="25 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">saldo_actual</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">monto</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="26 "></span><span class="w">        </span><span class="n">SIGNAL</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;45000&#39;</span>
-<span class="linenos" data-linenos="27 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Fondos insuficientes para realizar la transferencia&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="28 "></span><span class="w">            </span><span class="n">MYSQL_ERRNO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30002</span><span class="p">;</span>
-<span class="linenos" data-linenos="29 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos" data-linenos="30 "></span>
-<span class="linenos" data-linenos="31 "></span><span class="w">    </span><span class="c1">-- Actualizar cuentas</span>
-<span class="linenos" data-linenos="32 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">monto</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuenta_origen</span><span class="p">;</span>
-<span class="linenos" data-linenos="33 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">monto</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuenta_destino</span><span class="p">;</span>
-<span class="linenos" data-linenos="34 "></span>
-<span class="linenos" data-linenos="35 "></span><span class="w">    </span><span class="k">COMMIT</span><span class="p">;</span>
-<span class="linenos" data-linenos="36 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Transferencia realizada con éxito&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
-<span class="linenos" data-linenos="37 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos="38 "></span>
-<span class="linenos" data-linenos="39 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
-</code></pre></div>
-<p>Usando condiciones y manejadores </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos=" 2 "></span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">usar_condicion_personalizada</span><span class="p">()</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="c1">-- Declarar condición personalizada</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">error_fondos_insuficientes</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;45000&#39;</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 7 "></span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="c1">-- Declarar manejador usando la condición personalizada</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">error_fondos_insuficientes</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;No hay fondos suficientes para la operación&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
-<span class="linenos" data-linenos="11 "></span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="c1">-- Lanzar error usando la condición personalizada</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">SIGNAL</span><span class="w"> </span><span class="n">error_fondos_insuficientes</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Fondos insuficientes&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="n">MYSQL_ERRNO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30002</span><span class="p">;</span>
-<span class="linenos" data-linenos="16 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos="17 "></span>
-<span class="linenos" data-linenos="18 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
-</code></pre></div>
-<h4 id="propagando-senales">Propagando señales<a class="headerlink" href="#propagando-senales" title="Permanent link">&para;</a></h4>
-<p>Mediante <a href="https://mariadb.com/kb/en/resignal/"><code>RESIGNAL</code></a> podemos modificar o propagar un error capturado por un manejador.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos=" 2 "></span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">procesar_datos</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">id_cliente</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="k">GET</span><span class="w"> </span><span class="k">DIAGNOSTICS</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="mi">1</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">            </span><span class="o">@</span><span class="k">sqlstate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">RETURNED_SQLSTATE</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">            </span><span class="o">@</span><span class="n">errno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MYSQL_ERRNO</span><span class="p">,</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">            </span><span class="o">@</span><span class="nb">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="p">;</span>
-<span class="linenos" data-linenos="11 "></span>
-<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="c1">-- Personalizar el mensaje de error antes de re-lanzarlo</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">nuevo_mensaje</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;Error al procesar cliente &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">id_cliente</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;: &#39;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="nb">text</span><span class="p">);</span>
-<span class="linenos" data-linenos="14 "></span>
-<span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="n">RESIGNAL</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="o">@</span><span class="k">sqlstate</span>
-<span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">nuevo_mensaje</span><span class="p">,</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">            </span><span class="n">MYSQL_ERRNO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">errno</span><span class="p">;</span>
-<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
-<span class="linenos" data-linenos="19 "></span>
-<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="c1">-- Código que podría generar excepciones</span>
-<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="c1">-- ...</span>
-<span class="linenos" data-linenos="22 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos="23 "></span>
-<span class="linenos" data-linenos="24 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
-</code></pre></div>
-<!-- TODO Sentencias preparadas https://wiki.cifprodolfoucha.es/index.php?title=BD_UD7_Sentencias_Prepared
-
-TODO: gestión de errores en eventos y triggers
- -->
-
-<h3 id="transacciones-en-plsql">Transacciones en PL/SQL<a class="headerlink" href="#transacciones-en-plsql" title="Permanent link">&para;</a></h3>
-<p>Se utiliza un manejador de tipo <code>EXIT</code> para hacer <code>ROLLBACK</code> y deshacer la transacción. Si no se produce ningún error, se realizará el <code>COMMIT</code>.</p>
-<p>La gestión de errores es especialmente importante en transacciones para mantener la integridad de los datos.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos=" 2 "></span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">proceso_transaccional</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">id_pedido</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="c1">-- Manejador para errores que hará rollback automático</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="k">ROLLBACK</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Error en la transacción. Se ha revertido.&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
-<span class="linenos" data-linenos="11 "></span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="c1">-- Iniciar transacción</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-<span class="linenos" data-linenos="14 "></span>
-<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="c1">-- Operaciones que podrían fallar</span>
-<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">pedidos</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;procesado&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id_pedido</span><span class="p">;</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">inventario</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pedidos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id_pedido</span><span class="p">);</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="k">ROLLBACK</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Transacción cancelada por error&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
 <span class="linenos" data-linenos="18 "></span>
-<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="c1">-- Si todo va bien, confirmar cambios</span>
-<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="k">COMMIT</span><span class="p">;</span>
-<span class="linenos" data-linenos="21 "></span>
-<span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Transacción completada con éxito&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
-<span class="linenos" data-linenos="23 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos="24 "></span>
-<span class="linenos" data-linenos="25 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">saldo_actual</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuenta_origen</span><span class="p">;</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="c1">-- Verificamos si hay fondos suficientes</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">saldo_actual</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">monto</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">        </span><span class="n">SIGNAL</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;45000&#39;</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Fondos insuficientes para realizar la transferencia&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">            </span><span class="n">MYSQL_ERRNO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30002</span><span class="p">;</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">monto</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuenta_origen</span><span class="p">;</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">monto</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuenta_destino</span><span class="p">;</span>
+<span class="linenos" data-linenos="30 "></span>
+<span class="linenos" data-linenos="31 "></span><span class="w">    </span><span class="k">COMMIT</span><span class="p">;</span>
+<span class="linenos" data-linenos="32 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Transferencia realizada con éxito&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
+<span class="linenos" data-linenos="33 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos="34 "></span>
+<span class="linenos" data-linenos="35 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">transaccionEnMariaDB</span><span class="p">()</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span><span class="p">,</span><span class="w"> </span><span class="n">SQLWARNING</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">        </span><span class="c1">-- ERROR, WARNING</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="k">ROLLBACK</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 8 "></span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="c1">-- Sentencias SQL</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">COMMIT</span><span class="p">;</span>
-<span class="linenos" data-linenos="12 "></span><span class="k">END</span>
-</code></pre></div>
-<p>Por ejemplo, ...</p>
 <h3 id="recomendaciones">Recomendaciones<a class="headerlink" href="#recomendaciones" title="Permanent link">&para;</a></h3>
 <ol>
 <li>
