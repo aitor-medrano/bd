@@ -1964,7 +1964,7 @@ TODO: gestión de errores en eventos y triggers
 </span><span class="linenos" data-linenos="12 "></span><span class="k">END</span>
 </code></pre></div>
 <p>Por ejemplo, a partir de este esqueleto, definimos un ejemplo concreto, donde declaramos un manejador para gestionar un error y deshacer la transacción, o realizar un <code>COMMIT</code> si llega al final de la operación:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">procesoPransaccional</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">id_pedido</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">procesoTransaccional</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">id_pedido</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">BEGIN</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">BEGIN</span>
@@ -2504,6 +2504,15 @@ de todos los alumnos que ya existen en la tabla.
 alumno.
  Este procedimiento deberá utilizar la función
 calcularEdad.
+-->
+
+<!--
+
+Cursores sobre la actividad AC1010
+
+    3. Crea un procedimiento (`ac1010crearListaEmailsAlumnos`) que devuelva la lista de emails de la tabla alumnado separados por un punto y coma.
+
+        Por ejemplo, al ejecutar el procedimiento devolverá una cadena similar a `amedra8@bd.s8a.es;pcasas10@bd.s8a.es;mvidal9@prg.s8a.es`.
 -->
 
 <p><a name="PY1113"></a></p>
