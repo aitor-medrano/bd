@@ -2342,10 +2342,10 @@ flowchart TD
 <p>Sobre estas tabla, se pide:</p>
 <ol>
 <li>Crea un evento (<code>ac1101evento3min</code>) que se ejecute dentro de tres minutos y que inserte en <code>contador</code> un registro con todos los valores a 0.</li>
-<li>Crea un evento (<code>ac1101evento5min</code>) que se ejecute cada 5 minutos y que inserte en <code>estadisticas</code> un registro con los datos actualizados. Además, modificará la tabla <code>contador</code> incrementando en uno los valores de <code>total</code> y <code>mensual</code>.</li>
-<li>Crea un evento (<code>ac1101eventoDiarioLunes</code>) que se ejecute de forma diaria, comenzando su ejecución el Lunes a las 8:00, insertando un nuevo registro en <code>estadisticas</code>. Además, modificará la tabla <code>contador</code> incrementando en uno los valores de <code>total</code> y <code>mensual</code>. </li>
-<li>Crea un evento (<code>ac1101eventoMensual</code>) que se ejecute cada mes a partir del momento de su lanzamiento, eliminando las estadísticas que tienen más de un año y poniendo el valor del contador mensual a 0.</li>
-<li>Deshabilita el evento <code>ac1101eventoDiarioLunes</code></li>
+<li>Crea un evento (<code>ac1101evento5min</code>) que se ejecute cada 5 minutos y que, haciendo uso de un procedimiento almacenado, inserte en <code>estadisticas</code> un registro con los datos actualizados. Además, modificará la tabla <code>contador</code> incrementando en uno los valores de <code>total</code> y <code>mensual</code>.</li>
+<li>Crea un evento (<code>ac1101eventoDiarioLunes</code>) que se ejecute de forma diaria, comenzando su ejecución el Lunes a las 8:00, y que, haciendo uso de un procedimiento almacenado,  inserte un nuevo registro en <code>estadisticas</code>. Además, modificará la tabla <code>contador</code> incrementando en uno los valores de <code>total</code> y <code>mensual</code>. </li>
+<li>Crea un evento (<code>ac1101eventoMensual</code>) que se ejecute cada mes a partir del momento de su lanzamiento y que, haciendo uso de un procedimiento almacenado, elimine las estadísticas que tienen más de un año y ponga el valor del contador mensual a 0.</li>
+<li>Deshabilita el evento <code>ac1101eventoDiarioLunes</code>.</li>
 </ol>
 <p>Además del código fuente de las sentencias, tras haberlos creado y lanzado, se pide comprobar qué eventos están pendientes de ejecutar. ¡No olvides habilitar el programador de eventos!</p>
 </li>
