@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -746,6 +746,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#manejadores-en-eventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manejadores en eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#manejadores-y-senales" class="md-nav__link">
     <span class="md-ellipsis">
       Manejadores y Señales
@@ -1090,6 +1099,15 @@
   
     <nav class="md-nav" aria-label="Manejadores de errores">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manejadores-en-eventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manejadores en eventos
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#manejadores-y-senales" class="md-nav__link">
@@ -1630,9 +1648,41 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <div class="admonition info">
 <p class="admonition-title">Triggers encadenados</p>
 <p>Es posible tener más de un <em>trigger</em> sobre la misma tabla y con el mismo evento.</p>
-<p>En estos casos, la ejecución se hará uno después de otro en el orden en que fueron creados. Si queremos modificar dicho orden, a la hora de crear el trigger tendremos que utilizar la opción <code>ordenTrigger: { FOLLOWS | PRECEDES } otroNombreTrigger</code></p>
-<p>De tal forma que el trigger que se está creando se ejecute antes (<code>PRECEDES</code>) o después (<code>FOLLOWS</code>) que el trigger que ya existe (<code>otroNombreTrigger</code>)</p>
-<!-- FIXME: Poner un ejemplo -->
+<p>En estos casos, la ejecución se hará uno después de otro en el orden en que fueron creados. Si queremos modificar dicho orden, a la hora de crear el trigger tendremos que utilizar la opción <code>ordenTrigger: { FOLLOWS | PRECEDES } otroNombreTrigger</code>. De tal forma que el trigger que se está creando se ejecute antes (<code>PRECEDES</code>) o después (<code>FOLLOWS</code>) que el trigger que ya existe (<code>otroNombreTrigger</code>).</p>
+<p>Es importante destacar que solo puedes encadenar triggers del mismo evento (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) y tiempo (<code>BEFORE</code>, <code>AFTER</code>).</p>
+<p>Supongamos el siguiente ejemplo donde definimos tres disparadores que actúan sobre la misma tabla de <code>ventas</code>: el primero que inserta en el log, el segundo que modifica el inventario y por último, el tercero que inserta en la tabla de estadísticas, y que queremos que se realice antes de insertar en el log:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Primer trigger</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">after_insert_ventas_1</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">AFTER</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ventas</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">log_ventas</span><span class="w"> </span><span class="p">(</span><span class="n">venta_id</span><span class="p">,</span><span class="w"> </span><span class="n">accion</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="k">NEW</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Nueva venta registrada&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- Segundo trigger que debe ejecutarse DESPUÉS del primero</span>
+<span class="linenos" data-linenos="10 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">after_insert_ventas_2</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">AFTER</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ventas</span>
+<span class="linenos" data-linenos="12 "></span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
+<span class="hll"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">FOLLOWS</span><span class="w"> </span><span class="n">after_insert_ventas_1</span>
+</span><span class="linenos" data-linenos="14 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">inventario</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">cantidad</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">producto_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">producto_id</span><span class="p">;</span>
+<span class="linenos" data-linenos="16 "></span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- Tercer trigger que debe ejecutarse ANTES del primero</span>
+<span class="linenos" data-linenos="19 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">after_insert_ventas_3</span>
+<span class="linenos" data-linenos="20 "></span><span class="k">AFTER</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ventas</span>
+<span class="linenos" data-linenos="21 "></span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
+<span class="hll"><span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="n">PRECEDES</span><span class="w"> </span><span class="n">after_insert_ventas_1</span>
+</span><span class="linenos" data-linenos="23 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">estadisticas_ventas</span><span class="w"> </span><span class="p">(</span><span class="n">fecha</span><span class="p">,</span><span class="w"> </span><span class="n">monto</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">monto</span><span class="p">);</span>
+<span class="linenos" data-linenos="25 "></span><span class="k">END</span><span class="p">;</span>
+</code></pre></div>
+<p>Si comprobamos bien las cláusulas <code>PRECEDES</code> y <code>FOLLOWS</code>, tenemos que el orden de ejecución sería:</p>
+<ol>
+<li><code>after_insert_ventas_3</code> (porque <code>PRECEDES</code> <code>after_insert_ventas_1</code>)</li>
+<li><code>after_insert_ventas_1</code></li>
+<li><code>after_insert_ventas_2</code> (porque <code>FOLLOWS</code> <code>after_insert_ventas_1</code>)</li>
+</ol>
 </div>
 <h3 id="gestion-de-disparadores">Gestión de disparadores<a class="headerlink" href="#gestion-de-disparadores" title="Permanent link">&para;</a></h3>
 <p>Los comandos que podemos utilizar para gestionar los disparadores son:</p>
@@ -1884,6 +1934,24 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <li>Si cambiamos el manejador de <code>CONTINUE</code> a <code>EXIT</code>, ¿Cuánto valdría <code>resultado</code>? <!-- 1 --></li>
 </ul>
 </div>
+<h4 id="manejadores-en-eventos">Manejadores en eventos<a class="headerlink" href="#manejadores-en-eventos" title="Permanent link">&para;</a></h4>
+<p>TODO: Completar</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="n">EVENT</span><span class="w"> </span><span class="n">evento_con_manejo_errores</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">ON</span><span class="w"> </span><span class="n">SCHEDULE</span><span class="w"> </span><span class="k">EVERY</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="n">HOUR</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">DO</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">      </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">errores_eventos</span><span class="w"> </span><span class="p">(</span><span class="n">evento</span><span class="p">,</span><span class="w"> </span><span class="n">fecha</span><span class="p">,</span><span class="w"> </span><span class="n">mensaje</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">      </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;evento_con_manejo_errores&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;Error durante la ejecución&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="c1">-- Código principal</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">inventario</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">reservas</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">reservas</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">registro_eventos</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">fecha</span><span class="p">,</span><span class="w"> </span><span class="n">estado</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;evento_con_manejo_errores&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;Completado&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
+</code></pre></div>
 <h4 id="manejadores-y-senales">Manejadores y Señales<a class="headerlink" href="#manejadores-y-senales" title="Permanent link">&para;</a></h4>
 <p>Ahora que ya sabemos definir manejadores, condiciones y señales, vamos a ver como podemos utilizarlos de manera conjunta para hacer nuestro código más robusto.</p>
 <p>Por ejemplo, podemos definir una condición, y luego usarla en un manejador. Más adelante, lanzarla mediante una señal, de manera que se propague al código que invoque el procedimiento: </p>
@@ -2868,7 +2936,7 @@ para la gestión de la información almacenada.
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
       
     
   </body>
