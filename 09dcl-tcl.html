@@ -1413,7 +1413,7 @@
 </div>
 <p>Tras crear un usuario, es necesario asignar permisos mediante el DCL con <code>GRANT</code> y retirarlos con <code>REVOKE</code>.  </p>
 <h4 id="otorgando-permisos">Otorgando permisos<a class="headerlink" href="#otorgando-permisos" title="Permanent link">&para;</a></h4>
-<p>Así pues, mediante la sentencia <a href="https://mariadb.com/kb/en/grant/">GRANT</a> daremos privilegios a un usuarios sobre uno o más objetos, mediante la siguiente sintaxis:</p>
+<p>Así pues, mediante la sentencia <a href="https://mariadb.com/kb/en/grant/">GRANT</a> daremos privilegios a un usuario sobre uno o más objetos, mediante la siguiente sintaxis:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="n">privilegio</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">objeto</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="p">[</span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTIONS</span><span class="p">]</span>
 </code></pre></div>
 <p>Los posibles privilegios (los cuales podemos consultar con el comando <a href="https://mariadb.com/kb/en/show-privileges/"><code>SHOW PRIVILEGES</code></a>) más comunes son:</p>
@@ -1459,7 +1459,7 @@
 <p>Si en algún momento tenemos que quitarle permisos a un usuario, podemos revocar los privilegios sobre un objeto mediante el comando <a href="https://mariadb.com/kb/en/revoke/"><code>REVOKE</code></a>, con la siguiente sintaxis:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">REVOKE</span><span class="w"> </span><span class="n">privilegio</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">objeto</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">usuario</span>
 </code></pre></div>
-<p>Así pues, si queremos quitarle el permiso de inserción que antes le habíamos dado al usuarios <code>s8abd</code> haríamos:</p>
+<p>Así pues, si queremos quitarle el permiso de inserción que antes le habíamos dado al usuario <code>s8abd</code> haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">REVOKE</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">empresa</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;s8abd&#39;</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="roles">Roles<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h3>

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Eventos, disparadores y cursores">
+        <meta name="description" content="Uso de eventos sencillos y recurrentes, disparadores y cursores, con una gestión de errores mediante el uso de manejadores, señales y condiciones en MariaDB.">
       
       
       
@@ -73,7 +73,7 @@
       
         <meta  property="og:title"  content="PL/SQL Avanzado - Bases de datos" >
       
-        <meta  property="og:description"  content="Eventos, disparadores y cursores" >
+        <meta  property="og:description"  content="Uso de eventos sencillos y recurrentes, disparadores y cursores, con una gestión de errores mediante el uso de manejadores, señales y condiciones en MariaDB." >
       
         <meta  property="og:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/11triggers.png" >
       
@@ -89,7 +89,7 @@
       
         <meta  name="twitter:title"  content="PL/SQL Avanzado - Bases de datos" >
       
-        <meta  name="twitter:description"  content="Eventos, disparadores y cursores" >
+        <meta  name="twitter:description"  content="Uso de eventos sencillos y recurrentes, disparadores y cursores, con una gestión de errores mediante el uso de manejadores, señales y condiciones en MariaDB." >
       
         <meta  name="twitter:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/11triggers.png" >
       
@@ -1295,31 +1295,31 @@
 <tr>
 <td>3</td>
 <td><a href="#triggers">Disparadores</a></td>
-<td><a href="#AC1102">AC1102</a></td>
+<td><a href="#AC1103">AC1103</a></td>
 <td><abbr title="Se han definido eventos y disparadores.">CE5h</abbr></td>
 </tr>
 <tr>
 <td>4</td>
 <td>Supuesto disparadores</td>
-<td><a href="#AC1103">AC1103</a></td>
+<td><a href="#AC1104">AC1104</a></td>
 <td><abbr title="Se han definido eventos y disparadores.">CE5h</abbr></td>
 </tr>
 <tr>
 <td>5</td>
 <td><a href="#gestion-de-errores">Gestión de errores</a></td>
-<td><a href="#AC1105">AC1105</a></td>
+<td><a href="#AC1107">AC1107</a></td>
 <td><abbr title="Se han utilizado excepciones.">CE5j</abbr></td>
 </tr>
 <tr>
 <td>6</td>
 <td><a href="#uso-de-senales">Señales</a></td>
-<td><a href="#AC1106">AC1106</a></td>
+<td><a href="#AC1108">AC1108</a></td>
 <td><abbr title="Se han utilizado excepciones.">CE5j</abbr></td>
 </tr>
 <tr>
 <td>7</td>
 <td><a href="#transacciones-en-plsql">Transacciones</a> en PL/SQL</td>
-<td><a href="#AC1107">AC1107</a></td>
+<td><a href="#AC1109">AC1109</a></td>
 <td><abbr title="Se han utilizado excepciones.">CE5j</abbr></td>
 </tr>
 <tr>
@@ -1525,7 +1525,7 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <p>Finalmente, siempre deberemos controlar los tiempos de ejecución, para evitar operación muy largas, así como evitar solapamientos entre diferentes eventos que sobrescriban la misma información.</p>
 </div>
 <h2 id="triggers">Triggers<a class="headerlink" href="#triggers" title="Permanent link">&para;</a></h2>
-<p>Directamente relacionados con los eventos, tenemos los <strong>disparadores</strong> (<strong><em>triggers</em></strong>) que son procedimientos almacenados que se activan automáticamente en respuesta a operaciones específicas sobre las tablas, tales como inserciones, actualizaciones o eliminaciones.</p>
+<p>Directamente relacionados con los eventos, tenemos los <strong>disparadores</strong> (<strong><em>triggers</em></strong>) que son fragmentos de código que se activan automáticamente en respuesta a operaciones específicas sobre las tablas, tales como inserciones, actualizaciones o eliminaciones.</p>
 <p>Estos mecanismos permiten insertar lógica personalizada que se ejecuta antes (<em>before</em>) o después (<em>after</em>) de que se realice la orden SQL que provoca su ejecución, lo que es fundamental para garantizar la integridad de los datos, validar condiciones de negocio y llevar a cabo auditorías automáticas. Por ejemplo, un disparador puede registrar cada cambio en una tabla de auditoría o prevenir modificaciones que no cumplan con ciertos criterios, asegurando así la consistencia y confiabilidad de la información almacenada.</p>
 <p>Los posibles eventos que podemos asociar a un disparador son:</p>
 <ul>
@@ -1578,17 +1578,17 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 </tr>
 </tbody>
 </table>
-<p>Veamos un ejemplo donde almacenamos las notas del alumnado, y queremos comprobar si al insertar los valores son correctos, y si no lo son, ajustarlos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="p">(</span>
+<p>Veamos un ejemplo donde almacenamos las notas de los estudiantes de un curso, y queremos comprobar si al insertar los valores son correctos, y si no lo son, ajustarlos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">create</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">replace</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">estudiantes</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="n">unsigned</span><span class="w"> </span><span class="n">auto_increment</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">apellido1</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">apellidos</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">nota</span><span class="w"> </span><span class="nb">float</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="p">);</span>
 <span class="linenos" data-linenos=" 7 "></span>
 <span class="linenos" data-linenos=" 8 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
 <span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeInsert</span>
-</span><span class="hll"><span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="k">BEFORE</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
+</span><span class="hll"><span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="k">BEFORE</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">estudiantes</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
 </span><span class="linenos" data-linenos="11 "></span><span class="k">begin</span>
 <span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="c1">-- NEW referencia al nuevo registro</span>
 <span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -1600,13 +1600,13 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <span class="linenos" data-linenos="19 "></span>
 <span class="linenos" data-linenos="20 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
 <span class="linenos" data-linenos="21 "></span>
-<span class="linenos" data-linenos="22 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Andreu&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Medrano&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="linenos" data-linenos="23 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;José Manuel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pérez&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span>
-<span class="linenos" data-linenos="24 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Casas&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">.</span><span class="mi">5</span><span class="p">);</span>
+<span class="linenos" data-linenos="22 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">estudiantes</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Andreu&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Medrano&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos" data-linenos="23 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">estudiantes</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;José Manuel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pérez&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">);</span>
+<span class="linenos" data-linenos="24 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">estudiantes</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Casas&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">.</span><span class="mi">5</span><span class="p">);</span>
 <span class="linenos" data-linenos="25 "></span>
-<span class="linenos" data-linenos="26 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">alumnado</span><span class="p">;</span>
+<span class="linenos" data-linenos="26 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">estudiantes</span><span class="p">;</span>
 <span class="linenos" data-linenos="27 "></span><span class="c1">-- +----+--------------+-----------+------+</span>
-<span class="linenos" data-linenos="28 "></span><span class="c1">-- | id | nombre       | apellido1 | nota |</span>
+<span class="linenos" data-linenos="28 "></span><span class="c1">-- | id | nombre       | apellidos | nota |</span>
 <span class="linenos" data-linenos="29 "></span><span class="c1">-- +----+--------------+-----------+------+</span>
 <span class="linenos" data-linenos="30 "></span><span class="c1">-- |  1 | Andreu       | Medrano   |    0 |</span>
 <span class="linenos" data-linenos="31 "></span><span class="c1">-- |  2 | José Manuel  | Pérez     |   10 |</span>
@@ -1618,9 +1618,9 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <p>De la misma manera, podemos crear un disparador para las operaciones de modificación:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
 <span class="linenos" data-linenos=" 2 "></span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeUpdate</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="k">BEFORE</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="k">BEGIN</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">triggerCheckNotaBeforeUpdate</span>
+</span><span class="hll"><span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="k">BEFORE</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">estudiantes</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
+</span><span class="linenos" data-linenos=" 5 "></span><span class="k">BEGIN</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="c1">-- NEW referencia al nuevo registro</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="k">set</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">elseif</span><span class="w"> </span><span class="k">NEW</span><span class="p">.</span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="k">then</span>
@@ -1631,13 +1631,13 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <span class="linenos" data-linenos="13 "></span>
 <span class="linenos" data-linenos="14 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
 <span class="linenos" data-linenos="15 "></span>
-<span class="linenos" data-linenos="16 "></span><span class="k">update</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">4</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="linenos" data-linenos="17 "></span><span class="k">update</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
-<span class="linenos" data-linenos="18 "></span><span class="k">update</span><span class="w"> </span><span class="n">alumnado</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">.</span><span class="mi">5</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos" data-linenos="16 "></span><span class="k">update</span><span class="w"> </span><span class="n">estudiantes</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">4</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span><span class="k">update</span><span class="w"> </span><span class="n">estudiantes</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="linenos" data-linenos="18 "></span><span class="k">update</span><span class="w"> </span><span class="n">estudiantes</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="p">.</span><span class="mi">5</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="linenos" data-linenos="19 "></span>
-<span class="linenos" data-linenos="20 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">alumnado</span><span class="p">;</span>
+<span class="linenos" data-linenos="20 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">estudiantes</span><span class="p">;</span>
 <span class="linenos" data-linenos="21 "></span><span class="c1">-- +----+--------------+-----------+------+</span>
-<span class="linenos" data-linenos="22 "></span><span class="c1">-- | id | nombre       | apellido1 | nota |</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">-- | id | nombre       | apellidos | nota |</span>
 <span class="linenos" data-linenos="23 "></span><span class="c1">-- +----+--------------+-----------+------+</span>
 <span class="linenos" data-linenos="24 "></span><span class="c1">-- |  1 | Andreu       | Medrano   |    0 |</span>
 <span class="linenos" data-linenos="25 "></span><span class="c1">-- |  2 | José Manuel  | Pérez     |   10 |</span>
@@ -1647,8 +1647,8 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 </code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Triggers encadenados</p>
-<p>Es posible tener más de un <em>trigger</em> sobre la misma tabla y con el mismo evento.</p>
-<p>En estos casos, la ejecución se hará uno después de otro en el orden en que fueron creados. Si queremos modificar dicho orden, a la hora de crear el trigger tendremos que utilizar la opción <code>ordenTrigger: { FOLLOWS | PRECEDES } otroNombreTrigger</code>. De tal forma que el trigger que se está creando se ejecute antes (<code>PRECEDES</code>) o después (<code>FOLLOWS</code>) que el trigger que ya existe (<code>otroNombreTrigger</code>).</p>
+<p>Es posible tener más de un <em>trigger</em> sobre la misma tabla y con el mismo evento. En estos casos, la ejecución se hará uno después de otro en el orden en que fueron creados.</p>
+<p>Si queremos modificar dicho orden, a la hora de crear el trigger tendremos que utilizar la opción <code>ordenTrigger: { FOLLOWS | PRECEDES } otroNombreTrigger</code>. De tal forma que el trigger que se está creando se ejecute antes (<code>PRECEDES</code>) o después (<code>FOLLOWS</code>) que el trigger que ya existe (<code>otroNombreTrigger</code>).</p>
 <p>Es importante destacar que solo puedes encadenar triggers del mismo evento (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) y tiempo (<code>BEFORE</code>, <code>AFTER</code>).</p>
 <p>Supongamos el siguiente ejemplo donde definimos tres disparadores que actúan sobre la misma tabla de <code>ventas</code>: el primero que inserta en el log, el segundo que modifica el inventario y por último, el tercero que inserta en la tabla de estadísticas, y que queremos que se realice antes de insertar en el log:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Primer trigger</span>
@@ -1691,24 +1691,24 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <li>
 <p><a href="https://mariadb.com/kb/en/show-triggers/">SHOW TRIGGERS</a>: muestra los disparadores existentes</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">SHOW</span><span class="w"> </span><span class="n">TRIGGERS</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+--------+------------------------+-------------------------------------------------------------------------------------------+---------------+----------------------+----------------------+-----------------------+</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Trigger                      | Event  | Table    | Statement                                                                                                              | Timing | Created                | sql_mode                                                                                  | Definer       | character_set_client | collation_connection | Database Collation    |</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+--------+------------------------+-------------------------------------------------------------------------------------------+---------------+----------------------+----------------------+-----------------------+</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | triggerCheckNotaBeforeInsert | INSERT | alumnado | BEGIN</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +------------------------------+--------+-------------+------------------------------------------------------------------------------------------------------------------------+--------+------------------------+-------------------------------------------------------------------------------------------+---------------+----------------------+----------------------+-----------------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Trigger                      | Event  | Table       | Statement                                                                                                              | Timing | Created                | sql_mode                                                                                  | Definer       | character_set_client | collation_connection | Database Collation    |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +------------------------------+--------+-------------+------------------------------------------------------------------------------------------------------------------------+--------+------------------------+-------------------------------------------------------------------------------------------+---------------+----------------------+----------------------+-----------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | triggerCheckNotaBeforeInsert | INSERT | estudiantes | BEGIN</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- IF NEW.nota &lt; 0 THEN</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1">--     set NEW.nota = 0;</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="c1">-- ELSEIF NEW.nota &gt; 10 THEN</span>
 <span class="linenos" data-linenos=" 9 "></span><span class="c1">--     set NEW.nota = 10;</span>
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- END IF;</span>
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- END | BEFORE | 2025-02-23 18:32:28.15 | STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | s8a@localhost | utf8mb3              | utf8mb3_general_ci   | utf8mb4_uca1400_ai_ci |</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1">-- | triggerCheckNotaBeforeUpdate | UPDATE | alumnado | BEGIN</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | triggerCheckNotaBeforeUpdate | UPDATE | estudiantes | BEGIN</span>
 <span class="linenos" data-linenos="13 "></span><span class="c1">-- IF NEW.nota &lt; 0 THEN</span>
 <span class="linenos" data-linenos="14 "></span><span class="c1">--     set NEW.nota = 0;</span>
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- ELSEIF NEW.nota &gt; 10 THEN</span>
 <span class="linenos" data-linenos="16 "></span><span class="c1">--     set NEW.nota = 10;</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- END IF;</span>
 <span class="linenos" data-linenos="18 "></span><span class="c1">-- END    | BEFORE | 2025-02-23 18:36:51.74 | STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | s8a@localhost | utf8mb3              | utf8mb3_general_ci   | utf8mb4_uca1400_ai_ci |</span>
-<span class="linenos" data-linenos="19 "></span><span class="c1">-- +------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+--------+------------------------+-------------------------------------------------------------------------------------------+---------------+----------------------+----------------------+-----------------------+</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">-- +------------------------------+--------+-------------+------------------------------------------------------------------------------------------------------------------------+--------+------------------------+-------------------------------------------------------------------------------------------+---------------+----------------------+----------------------+-----------------------+</span>
 <span class="linenos" data-linenos="20 "></span><span class="c1">-- 2 rows in set (0.003 sec)</span>
 </code></pre></div>
 </li>
@@ -1719,7 +1719,7 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Trigger                      | sql_mode                                                                                  | SQL Original Statement                                                                                                                                                                                                             | character_set_client | collation_connection | Database Collation    | Created                |</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+-----------------------+------------------------+</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | triggerCheckNotaBeforeUpdate | STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION | CREATE DEFINER=`s8a`@`localhost` TRIGGER triggerCheckNotaBeforeUpdate</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- BEFORE UPDATE ON alumnado FOR EACH ROW</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- BEFORE UPDATE ON estudiantes FOR EACH ROW</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1">-- BEGIN</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="c1">-- IF NEW.nota &lt; 0 THEN</span>
 <span class="linenos" data-linenos=" 9 "></span><span class="c1">--     set NEW.nota = 0;</span>
@@ -1935,22 +1935,22 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 </ul>
 </div>
 <h4 id="manejadores-en-eventos">Manejadores en eventos<a class="headerlink" href="#manejadores-en-eventos" title="Permanent link">&para;</a></h4>
-<p>TODO: Completar</p>
+<p>Anteriormente estudiamos como podíamos crear <a href="#eventos">eventos</a> para ejecutar ciertas acciones en un instante determinado o bien de forma recurrente. Pero, ¿Qué sucede cuando se produce un error dentro de un evento? Una práctica muy común es utilizar una tabla de <em>log</em> donde almacenamos el error producido, y así poder monitorizarlos.</p>
+<p>Así pues, necesitamos declarar un manejador que inserte en dicha tabla:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="n">EVENT</span><span class="w"> </span><span class="n">evento_con_manejo_errores</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">ON</span><span class="w"> </span><span class="n">SCHEDULE</span><span class="w"> </span><span class="k">EVERY</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="n">HOUR</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">SCHEDULE</span><span class="w"> </span><span class="k">EVERY</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="n">HOUR</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">DO</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">      </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">errores_eventos</span><span class="w"> </span><span class="p">(</span><span class="n">evento</span><span class="p">,</span><span class="w"> </span><span class="n">fecha</span><span class="p">,</span><span class="w"> </span><span class="n">mensaje</span><span class="p">)</span><span class="w"> </span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">      </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;evento_con_manejo_errores&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;Error durante la ejecución&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">errores_eventos</span><span class="w"> </span><span class="p">(</span><span class="n">evento</span><span class="p">,</span><span class="w"> </span><span class="n">fecha</span><span class="p">,</span><span class="w"> </span><span class="n">mensaje</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;evento_con_manejo_errores&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;Error durante la ejecución&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
 <span class="linenos" data-linenos="10 "></span>
-<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="c1">-- Código principal</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">inventario</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">reservas</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">reservas</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">registro_eventos</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">fecha</span><span class="p">,</span><span class="w"> </span><span class="n">estado</span><span class="p">)</span><span class="w"> </span>
-<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;evento_con_manejo_errores&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;Completado&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="15 "></span><span class="w">  </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">inventario</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">reservas</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">reservas</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">registro_eventos</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">fecha</span><span class="p">,</span><span class="w"> </span><span class="n">estado</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;evento_con_manejo_errores&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;Completado&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="14 "></span><span class="k">END</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="manejadores-y-senales">Manejadores y Señales<a class="headerlink" href="#manejadores-y-senales" title="Permanent link">&para;</a></h4>
 <p>Ahora que ya sabemos definir manejadores, condiciones y señales, vamos a ver como podemos utilizarlos de manera conjunta para hacer nuestro código más robusto.</p>
@@ -2418,17 +2418,30 @@ flowchart TD
 <p>Además del código fuente de las sentencias, tras haberlos creado y lanzado, se pide comprobar qué eventos están pendientes de ejecutar. ¡No olvides habilitar el programador de eventos!</p>
 </li>
 </ul>
-<p><a name="AC1102"></a></p>
-<!-- Triggers -->
+<p><a name="AR1102"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1102</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr> // 3p) Utilizando la tabla <code>alumnado</code> y las funciones y procedimientos creados en la actividad <a href="10plsql.html#AC1010">AC1010</a> de la unidad anterior, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1102</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr> // 3p) Sobre la base de datos <code>empresa</code>, haciendo uso de eventos, se pide:</p>
+<ol>
+<li>Haz que el día 1 de Mayo del 2025 a las 23:15 se guarde una copia de los datos de la tabla <code>departamento</code> en una nueva tabla llamada <code>dept_copia_temp</code>.</li>
+<li>Modifica el evento para que se ejecute desde hoy hasta dentro de un año y que lo haga cada mes.</li>
+<li>Ejecuta la orden que muestre el momento en que se va a ejecutar.</li>
+<li>Haz que el día 1 de Enero de cada año se incrementan los salarios de los directivos de cada departamento un 5%. Esta actualización se debe producir durante 5 años a partir del actual.</li>
+</ol>
+</li>
+</ul>
+<p><a name="AC1103"></a></p>
+<!-- Triggers -->
+
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1103</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr> // 3p) Utilizando la tabla <code>alumnado</code> y las funciones y procedimientos creados en la actividad <a href="10plsql.html#AC1010">AC1010</a> de la unidad anterior, se pide:</p>
 <ol>
 <li>
-<p>Crea un <em>trigger</em> (<code>ac1102triggerCrearEmailBeforeInsert</code>) sobre la tabla <code>alumnado</code>, para que si el email a insertar es nulo, le asigne uno automáticamente. Debes utilizar la función <code>crearEmail</code> con el dominio <code>noemail.com</code>.</p>
+<p>Crea un <em>trigger</em> (<code>ac1103triggerCrearEmailBeforeInsert</code>) sobre la tabla <code>alumnado</code>, para que si el email a insertar es nulo, le asigne uno automáticamente. Debes utilizar la función <code>crearEmail</code> con el dominio <code>noemail.com</code>.</p>
 </li>
 <li>
-<p>Crea un <em>trigger</em> (<code>ac1102triggerGuardarEmailAfterUpdate</code>) sobre la tabla <code>alumnado</code>, para que cada vez que se modifica el email, inserte un nuevo registro en la tabla <code>logCambiosEmail</code>, cuyos campos son:</p>
+<p>Crea un <em>trigger</em> (<code>ac1103triggerGuardarEmailAfterUpdate</code>) sobre la tabla <code>alumnado</code>, para que cada vez que se modifica el email, inserte un nuevo registro en la tabla <code>logCambiosEmail</code>, cuyos campos son:</p>
 <ul>
 <li><code>id</code>: clave primaria (entero autonumérico)</li>
 <li><code>idAlumno</code>: id del alumno (entero)</li>
@@ -2441,13 +2454,13 @@ flowchart TD
 <p>Además de código de los disparadores, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente, mostrando el contenido de las tablas antes y después de las operaciones.</p>
 </li>
 </ul>
-<p><a name="AC1103"></a></p>
+<p><a name="AC1104"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1103</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr> // 3p) Utilizando la tabla, funciones y procedimiento de las actividades anteriores, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1104</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr> // 3p) Utilizando la tabla, funciones y procedimiento de las actividades anteriores, se pide:</p>
 <ol>
 <li>
-<p>Crea un <em>trigger</em> (<code>ac1103triggerGuardarAlumnosAfterDelete</code>) sobre la tabla <code>alumnado</code>, para que cada vez que se elimine un alumno, inserte un nuevo registro en la tabla <code>logAlumnosEliminados</code>, cuyos campos son:</p>
+<p>Crea un <em>trigger</em> (<code>ac1104triggerGuardarAlumnosAfterDelete</code>) sobre la tabla <code>alumnado</code>, para que cada vez que se elimine un alumno, inserte un nuevo registro en la tabla <code>logAlumnosEliminados</code>, cuyos campos son:</p>
 <ul>
 <li><code>id</code>: clave primaria (entero autonumérico)</li>
 <li><code>idAlumno</code> (entero)</li>
@@ -2458,68 +2471,78 @@ flowchart TD
 </ul>
 </li>
 <li>
-<p>Crea un <em>trigger</em> (<code>ac1103triggeMensajeAfterDelete</code>) sobre la tabla <code>alumnado</code> y que se ejecute tras <code>ac1103triggerGuardarAlumnosAfterDelete</code>, para que cada vez que se elimine un alumno, muestre por pantalla información del alumno eliminado, con un mensaje similar a "<em>Se ha eliminado al alumno XXX con email YYY a las ZZ:ZZ</em>", a partir de la información almacenada en la tabla <code>logAlumnosEliminados</code>.</p>
+<p>Crea un <em>trigger</em> (<code>ac1104triggeMensajeAfterDelete</code>) sobre la tabla <code>alumnado</code> y que se ejecute tras <code>ac1104triggerGuardarAlumnosAfterDelete</code>, para que cada vez que se elimine un alumno, muestre por pantalla información del alumno eliminado, con un mensaje similar a "<em>Se ha eliminado al alumno XXX con email YYY a las ZZ:ZZ</em>", a partir de la información almacenada en la tabla <code>logAlumnosEliminados</code>.</p>
 </li>
 </ol>
 <p>Además de código de los disparadores, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente, mostrando el contenido de las tablas antes y después de las operaciones.</p>
 </li>
 </ul>
-<p><a name="AP1104"></a></p>
+<p><a name="AR1105"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1104</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Sobre la base de datos <code>empresa</code>, crea una tabla que se llame <code>salarios</code> que tenga las siguientes columnas:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1105</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Sobre la base de datos <code>empresa</code>, crea una tabla que se llame <code>salarios</code> que tenga las siguientes columnas:</p>
 <ul>
 <li><code>id</code> (entero sin signo, autoincremento y clave primaria)</li>
 <li><code>fecha_hora</code>: marca de tiempo con el instante del cambio (fecha y hora)</li>
 <li><code>salario</code>: el valor del pago (real)</li>
 <li><code>codigo_empleado</code>: código del empleado al que se le ha cambiado el salario(entero)</li>
 </ul>
-<p>Escribe el trigger <code>ap1104triggerSalariosEmpleado</code> que nos permita llevar un control de las modificaciones en los salarios de los empleados. El disparador se ejecutara después de cada inserción o modificación, insertando un registro en la tabla <code>salarios</code>.</p>
+<p>Escribe el trigger <code>ap1106triggerSalariosEmpleado</code> que nos permita llevar un control de las modificaciones en los salarios de los empleados. El disparador se ejecutara después de cada inserción o modificación, insertando un registro en la tabla <code>salarios</code>.</p>
 <p>Además de código de los disparadores, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente, mostrando el contenido de las tablas antes y después de las operaciones.</p>
 </li>
 </ul>
-<p><a name="AC1105"></a></p>
+<p><a name="AP1106"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1106</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Sobre la base de datos <code>empresa</code>, se pide:</p>
+<ol>
+<li>Crea el trigger <code>ap1106triggerHolaHijo</code> de manera que al insertar un nuevo hijo en la tabla <code>hijo</code>, automáticamente incremente el atributo <code>NumHi</code> de la tabla <code>empleado</code> del empleado correspondiente.</li>
+<li>Crea el trigger homónimo <code>ap1106triggerAdiosHijo</code> por si se diera el caso que falleciera el hijo de un empleado/a.</li>
+</ol>
+</li>
+</ul>
+<p><a name="AC1107"></a></p>
 <!-- Gestión de errores -->
 
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1105</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Siguiendo con la tabla <code>alumnado</code>, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1107</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Siguiendo con la tabla <code>alumnado</code>, se pide:</p>
 <ol>
 <li>
-<p>Crea un procedimiento llamado <code>ac1105insertarAlumno</code> que reciba los cuatro datos como parámetros de entrada y los inserte en la tabla. El procedimiento devolverá como salida un parámetro llamado <code>error</code> que tendrá un valor igual a 0 si la operación se ha podido realizar con éxito o 1 en caso contrario. Deberá manejar los errores que puedan ocurrir cuando se intenta insertar una fila que contiene una clave primaria repetida.</p>
+<p>Crea un procedimiento llamado <code>ac1107insertarAlumno</code> que reciba los cuatro datos como parámetros de entrada y los inserte en la tabla. El procedimiento devolverá como salida un parámetro llamado <code>error</code> que tendrá un valor igual a 0 si la operación se ha podido realizar con éxito o 1 en caso contrario. Deberá manejar los errores que puedan ocurrir cuando se intenta insertar una fila que contiene una clave primaria repetida.</p>
 </li>
 <li>
-<p>Escribe un procedimiento (<code>ac1105nombreAlumnoIf</code>) que muestre el nombre de un alumno dado su código. En caso de que no se encuentre, devolverá "Alumn@ no encontrado".</p>
+<p>Escribe un procedimiento (<code>ac1107nombreAlumnoIf</code>) que muestre el nombre de un alumno dado su código. En caso de que no se encuentre, devolverá "Alumn@ no encontrado".</p>
 <ol>
 <li>Utiliza <code>IF</code> para contar si ha encontrado al alumno.</li>
-<li>Crea un nuevo procedimiento (<code>ac1105nombreAlumnoHandler</code>) pero ahora utiliza un manejador de errores (sin usar <code>IF</code>)</li>
+<li>Crea un nuevo procedimiento (<code>ac1106nombreAlumnoHandler</code>) pero ahora utiliza un manejador de errores (sin usar <code>IF</code>)</li>
 <li>Debes comprobar el error <code>NOT FOUND</code>.</li>
 <li>La consulta debe guardar el resultado en una variable mediante <code>SELECT … INTO</code>.</li>
 </ol>
 </li>
 <li>
-<p>Crea un procedimiento llamado <code>ac1105upsertAlumno</code> a partir de <code>ac1104insertarAlumno</code>, pero en el caso de que el alumno ya exista, y gestionando la captura de <code>SQLException</code>, modificará los datos de dicho alumno con los datos recibidos como parámetros.</p>
+<p>Crea un procedimiento llamado <code>ac1107upsertAlumno</code> a partir de <code>ac1107insertarAlumno</code>, pero en el caso de que el alumno ya exista, y gestionando la captura de <code>SQLException</code>, modificará los datos de dicho alumno con los datos recibidos como parámetros.</p>
 </li>
 </ol>
 </li>
 </ul>
-<p><a name="AC1106"></a></p>
+<p><a name="AC1108"></a></p>
 <!-- Señales -->
 
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1106</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Sobre la base de datos <code>empresa</code> y haciendo uso de señales, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1108</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Sobre la base de datos <code>empresa</code> y haciendo uso de señales, se pide:</p>
 <ol>
-<li>El procedimiento <code>ac1106salariosHabilidad</code> que reciba como argumento el nombre de un habilidad y muestre el total de los salarios de los empleados que tienen dicha habilidad. Si no hubiera ningún empleado, mostrará el mensaje "Para la habilidad XXXX no hay ningún empleado existente". Si la habilidad no existe, el mensaje será "La habilidad XXX no existe".</li>
+<li>El procedimiento <code>ac1108salariosHabilidad</code> que reciba como argumento el nombre de un habilidad y muestre el total de los salarios de los empleados que tienen dicha habilidad. Si no hubiera ningún empleado, mostrará el mensaje "Para la habilidad XXXX no hay ningún empleado existente". Si la habilidad no existe, el mensaje será "La habilidad XXX no existe".</li>
 </ol>
 </li>
 </ul>
-<p><a name="AC1107"></a></p>
+<p><a name="AC1109"></a></p>
 <!-- TX -->
 
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1107</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Crea la base de datos <code>cine</code> con las siguientes tablas:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1109</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Crea la base de datos <code>cine</code> con las siguientes tablas:</p>
 <ul>
 <li>Tabla <code>cuentas</code>:<ul>
 <li><code>idCuenta</code>: entero sin signo (PK).</li>
@@ -2532,7 +2555,7 @@ flowchart TD
 </ul>
 </li>
 </ul>
-<p>Crear un procedimiento llamado <code>ac1107comprarEntrada</code> que reciba 3 parámetros de entrada (<code>nif</code>, <code>idCuenta</code>, <code>idButaca</code>) y devuelva como salida un parámetro llamado <code>error</code> que tendrá un valor igual a <code>0</code> si la operación se ha podido realizar con éxito o <code>1</code> en caso contrario.</p>
+<p>Crear un procedimiento llamado <code>ac1109comprarEntrada</code> que reciba 3 parámetros de entrada (<code>nif</code>, <code>idCuenta</code>, <code>idButaca</code>) y devuelva como salida un parámetro llamado <code>error</code> que tendrá un valor igual a <code>0</code> si la operación se ha podido realizar con éxito o <code>1</code> en caso contrario.</p>
 <p>Pasos del procedimiento de compra:</p>
 <ol>
 <li>Inicia una transacción.</li>
