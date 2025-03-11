@@ -2543,7 +2543,13 @@ flowchart TD
 </ul>
 </li>
 <li>
-<p>Crea un <em>trigger</em> (<code>ac1104triggerMensajeAfterDelete</code>) sobre la tabla <code>alumnado</code> y que se ejecute tras <code>ac1104triggerGuardarAlumnosAfterDelete</code>, para que cada vez que se elimine un alumno, muestre por pantalla información del alumno eliminado, con un mensaje similar a "<em>Se ha eliminado al alumno XXX con email YYY a las ZZ:ZZ</em>", a partir de la información almacenada en la tabla <code>logAlumnosEliminados</code>.</p>
+<p>Crea un <em>trigger</em> (<code>ac1104triggerMensajeAfterDelete</code>) sobre la tabla <code>alumnado</code> y que se ejecute tras <code>ac1104triggerGuardarAlumnosAfterDelete</code>, para que cada vez que se elimine un alumno, almacene en una tabla un <code>mensaje</code> similar a "<em>Se ha eliminado al alumno XXX con email YYY a las ZZ:ZZ</em>", a partir de la información almacenada en la tabla <code>logAlumnosEliminados</code>.</p>
+<p>La estructura de la tabla <code>mensajes</code> es:</p>
+<ul>
+<li><code>id</code>: clave primaria (entero autonumérico)</li>
+<li><code>fechaHora</code>: marca de tiempo</li>
+<li><code>texto</code> (cadena de caracteres)</li>
+</ul>
 </li>
 </ol>
 <p>Además del código de los disparadores, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente, mostrando el contenido de las tablas antes y después de las operaciones.</p>
