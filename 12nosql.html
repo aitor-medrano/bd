@@ -727,6 +727,39 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#teorema-de-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Teorema de CAP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Teorema de CAP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clasificacion-segun-cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clasificación según CAP
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base" class="md-nav__link">
+    <span class="md-ellipsis">
+      BASE
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -806,30 +839,6 @@
   <a href="#modelos" class="md-nav__link">
     <span class="md-ellipsis">
       Modelos
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#teorema-de-cap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Teorema de CAP
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Teorema de CAP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clasificacion-segun-cap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Clasificación según CAP
     </span>
   </a>
   
@@ -929,6 +938,15 @@
 <li>Sistemas gestores de bases de datos no relacionales.  </li>
 <li>Herramientas de los sistemas gestores de bases de datos no relacionales para la gestión de la información almacenada. </li>
 </ul>
+<div class="admonition question">
+<p class="admonition-title">Cuestionario inicial</p>
+<ol>
+<li>¿Qué es una base de datos distribuida?</li>
+<li>¿En qué consiste el escalado vertical? ¿Y el horizontal?</li>
+<li>Una base de datos distribuida, ¿qué escalado utiliza?</li>
+<li>¿Qué relación existe entre el <em>cloud</em> y las bases de datos distribuidas?</li>
+</ol>
+</div>
 <h3 id="programacion-de-aula-9h">Programación de Aula (9h)<a class="headerlink" href="#programacion-de-aula-9h" title="Permanent link">&para;</a></h3>
 <p>Esta unidad es la primera del bloque de soluciones <em>NoSQL</em>, la cual se imparte a final de curso, con una duración estimada de 9 horas, aportando 1 hora extra al proyecto formativo dual en la empresa:</p>
 <table>
@@ -944,7 +962,7 @@
 <tr>
 <td style="text-align: center;">1</td>
 <td><a href="#bases-de-datos-distribuidas">Bases de datos distribuidas</a></td>
-<td>AC1201</td>
+<td><a href="#AC1201">AC1201</a></td>
 <td><abbr title="Se ha reconocido la utilidad de las bases de datos distribuidas.">CE1g</abbr>, <abbr title="Se han analizado las políticas de fragmentación de la información.">CE1h</abbr></td>
 </tr>
 <tr>
@@ -1006,10 +1024,10 @@
     <figcaption>Evolución de los sistemas de almacenamientoL</figcaption>
 </figure>
 
-<p>La solución es el <ins>despliegue de las aplicaciones y sus datos en clústeres de servidores, distribuyendo el procesamiento en múltiples máquinas</ins>.</p>
+<p>La solución es el despliegue de las aplicaciones y sus datos en clústeres de servidores, distribuyendo el procesamiento en múltiples máquinas.</p>
 <h2 id="bases-de-datos-distribuidas">Bases de Datos Distribuidas<a class="headerlink" href="#bases-de-datos-distribuidas" title="Permanent link">&para;</a></h2>
 <p>En la primera unidad aprendimos cómo se almacena la información en sistemas gestores de datos, normalmente centralizados. Esto es, todos los datos residen en un servidor o nodo central que sigue un modelo cliente-servidor, siendo los clientes las diferentes aplicaciones y servicios que consumen los datos mediante conexiones remotas gracias a Internet.</p>
-<p>Por un lado, las bases de datos centralizas son sencillas de gestionar y mantener, y ofrecen una alta consistencia en los datos. Por contra, al centrar todos los datos en un único nodo, este se convierte en un SPOF (<em>Single Point of Failure</em>). Además, tienen una escalabilidad y rendimiento limitados a las características <em>hardware</em> de las máquinas donde corren.</p>
+<p>Por un lado, las bases de datos centralizadas son sencillas de gestionar y mantener, y ofrecen una alta consistencia en los datos. Por contra, al centrar todos los datos en un único nodo, este se convierte en un SPOF (<em>Single Point of Failure</em>). Además, tienen una escalabilidad y rendimiento limitados a las características <em>hardware</em> de las máquinas donde corren.</p>
 <p>Si el sistema crece y la carga de usuario supera la capacidad del servidor, es necesario migrar a un modelo más potente (y normalmente más caro) como son las bases de datos distribuidas, donde los datos se reparten entre varias máquinas, particionando los datos o fragmentándolos dependiendo de las necesidades de las aplicaciones, incrementando la complejidad del sistema para dar soporte a la sincronización de los datos y la tolerancia a fallos.</p>
 <p>Así pues, una <strong>base de datos distribuida</strong> es aquella en la cual existen diversos servidores gestores de bases de datos conectados entre sí formando una única base de datos con un solo esquema lógico.</p>
 <p>Un <strong>sistema gestor de bases de datos distribuidas</strong> (SGBDD) se define como el sistema software que permite la gestión de bases de datos distribuidas y hace la distribución de datos transparente para los usuarios.</p>
@@ -1020,9 +1038,13 @@
 
 <p>Los servidores de una base de datos distribuida suelen denominarse nodos y pueden estar físicamente cercanos (mismo edificio o grupo de edificios) y conectados a través de una red de área local, o pueden estar distribuidos geográficamente a grandes distancias y conectados a través de una red de larga distancia.</p>
 <p>En comparación con los sistemas centralizados, son más complejos en cuanto a su gestión, y la sincronización y consistencia de los datos es más difícil de garantizar.</p>
+<div class="admonition info">
+<p class="admonition-title">Cloud</p>
+<p>Las soluciones en la nube como AWS o Azure han propiciado la proliferación de soluciones distribuidas, al facilitar el despliegue automático de este tipo de soluciones, permitiendo una configuración elástica de la arquitectura.</p>
+</div>
 <h3 id="fragmentacion">Fragmentación<a class="headerlink" href="#fragmentacion" title="Permanent link">&para;</a></h3>
-<p>Dado el modo en el que se estructuran las bases de datos relacionales, normalmente escalan verticalmente - un único servidor cada vez más potente (más RAM, mejor CPU y almacenamiento) que almacena toda la base de datos para asegurar la disponibilidad continua de los datos. Esto se traduce en costes que se incrementan rápidamente, con un límites definidos por el propio hardware, y en un pequeño número de puntos críticos de fallo dentro de la infraestructura de datos.</p>
-<p>La solución es escalar horizontalmente, añadiendo nuevos servidores en vez de concentrarse en incrementar la capacidad de un único servidor, lo que permite tratar con conjuntos de datos más grandes de lo que sería capaz cualquier máquina por sí sola. Este escalado horizontal se conoce como <strong><em>Sharding</em></strong>, fragmentación o particionado de los datos.</p>
+<p>Dado el modo en el que se estructuran las bases de datos relacionales, normalmente escalan verticalmente, esto es, un único servidor cada vez más potente (más RAM, mejor CPU y almacenamiento) que almacena toda la base de datos para asegurar la disponibilidad continua de los datos. Esto se traduce en costes que se incrementan rápidamente, con un límites definidos por el propio hardware, y en un pequeño número de puntos críticos de fallo dentro de la infraestructura de datos.</p>
+<p>La solución es <strong>escalar horizontalmente</strong>, añadiendo nuevos servidores en vez de concentrarse en incrementar la capacidad de un único servidor, lo que permite tratar con conjuntos de datos más grandes de lo que sería capaz cualquier máquina por sí sola. Este escalado horizontal se conoce como <strong><em>Sharding</em></strong>, fragmentación o particionado de los datos.</p>
 <p>Si en un sistema relacional queremos particionar los datos, podemos distinguir entre fragmentación:</p>
 <ul>
 <li><strong>Horizontal</strong>: diferentes filas en diferentes particiones, por ejemplo, dividir a los clientes por región geográfica.</li>
@@ -1114,6 +1136,44 @@
     <figcaption>Replicación y particionado - codingexplained.com</figcaption>
 </figure></p>
 </div>
+<h3 id="teorema-de-cap">Teorema de CAP<a class="headerlink" href="#teorema-de-cap" title="Permanent link">&para;</a></h3>
+<p>Propuesto por <em>Eric Brewer</em> en el año 2000, plantea que podemos crear una base de datos distribuida que elija dos de las siguientes tres características:</p>
+<ul>
+<li><strong>C</strong>onsistencia: las escrituras son atómicas y todas las peticiones posteriores obtienen el nuevo valor, independientemente del lugar de la petición.</li>
+<li>Disponibilidad (<em><strong>A</strong>vailable</em>): la base de datos devolverá siempre un valor. En la práctica significa que no hay <em>downtime</em>.</li>
+<li>Tolerancia a <strong>P</strong>articiones: el sistema funcionará incluso si la comunicación con un servidor se interrumpe de manera temporal (para ello, ha de dividir los datos entre diferentes nodos). Es decir, implica que se pueden recibir lecturas desde unos nodos que no contienen información escrita en otros.</li>
+</ul>
+<p>En otras palabras, podemos crear un sistema de base de datos que sea consistente y tolerante a particiones (CP), un sistema que sea disponible y tolerante a particiones (AP), o un sistema que sea consistente y disponible (CA). Pero no es posible crear una base de datos distribuida que sea consistente, disponible y tolerante a particiones al mismo tiempo.</p>
+<figure style="align: center;">
+    <img src="images/13teorema.png" alt="Teorema de CAP" width="400px">
+    <figcaption>Teorema de CAP</figcaption>
+</figure>
+
+<p>El teorema CAP es útil cuando consideramos el sistema de base de datos que necesitamos, ya que nos permite decidir cual de las tres características vamos a descartar. La elección realmente se centra entre la disponibilidad y la consistencia, ya que la tolerancia a particiones es una decisión de arquitectura (sea o no distribuida).</p>
+<p>Aunque el teorema dicte que si en un sistema distribuido elegimos disponibilidad no podemos tener consistencia, todavía podemos obtener consistencia eventual. Es decir, cada nodo siempre estará disponible para servir peticiones, aunque estos nodos no puedan asegurar que la información que contienen sea consistente (pero si bastante precisa), en algún momento lo será.</p>
+<p>Algunas bases de datos tolerantes a particiones se pueden ajustar para ser más o menos consistentes o disponible a nivel de petición. Por ejemplo, <em>Riak</em> trabaja de esta manera, permitiendo a los clientes decidir en tiempo de petición qué nivel de consistencia necesitan.</p>
+<h4 id="clasificacion-segun-cap">Clasificación según CAP<a class="headerlink" href="#clasificacion-segun-cap" title="Permanent link">&para;</a></h4>
+<p>El siguiente gráfico muestra cómo dependiendo de estos atributos podemos clasificar los sistemas NoSQL:</p>
+<figure style="align: center;">
+    <img src="images/13teoremaCAPam.png" alt="Clasificación según CAP" width="400px">
+    <figcaption>Clasificación según CAP</figcaption>
+</figure>
+
+<p>Así pues, las bases de datos NoSQL se clasifican en:</p>
+<ul>
+<li><strong>CP</strong>: Consistente y tolerante a particiones. Tanto <em>MongoDB</em> como <em>HBase</em> son CP, ya que dentro de una partición pueden no estar disponibles para responder una determinada consulta (por ejemplo, evitando lecturas en los nodos secundarios), aunque son tolerantes a fallos porque cualquier nodo secundario se puede convertir en principal y asumir el rol del nodo caído.</li>
+<li><strong>AP</strong>: Disponible y tolerante a particiones. <em>DynamoDB</em> permite replicar los datos entre sus nodos aunque no garantiza la consistencia en ninguno de los sus servidores.</li>
+<li><strong>CA</strong>: Consistente y disponible. Aquí es donde situaríamos a los SGDB relacionales. Por ejemplo, <em>PostreSQL</em> es CA (aunque ofrece un producto complementario para dar soporte al particionado, como <em>PgCluster</em>), ya que no distribuyen los datos y por tanto la partición no es una restricción.</li>
+</ul>
+<p>Lo bueno es que la gran mayoría de sistemas permiten configurarse para cambiar su tipo CAP, lo que permite que <em>MongoDB</em> pase de CP a AP, o <em>CouchDB</em> de AP a CP.</p>
+<h3 id="base">BASE<a class="headerlink" href="#base" title="Permanent link">&para;</a></h3>
+<p>De forma análoga al modelo transaccional <a href="09dcl-tcl.html#acid">ACID</a> para las bases de datos relacionales que dan soporte a la transaccionalidad ofreciendo en todo momento un sistema consistente, las bases de datos distribuidas siguen el modelo transaccional BASE, el cual se centra en la alta disponibilidad y significa:</p>
+<ul>
+<li>Básicamente disponible (<strong><em>B</em></strong><em>asically</em> <strong><em>A</em></strong><em>vailable</em>): la base de datos siempre responde a las solicitudes recibidas, ya sea con una respuesta exitosa o con un error, aún en el caso de que el sistema soporte la tolerancia a particiones (de manera que caiga algún nodo o no esté accesible por problemas de la red). Esto puedo implicar lecturas desde nodos que no han recibido la última escritura, por lo que el resultado puede no ser consistente.</li>
+<li>Estado blando (<strong><em>S</em></strong><em>oft State</em>): la base de datos puede encontrarse en un estado inconsistente cuando se produce una lectura, de modo que es posible realizar dos veces la misma lectura y obtener dos resultados distintos a pesar de que no haya habido ninguna escritura entre ambas operaciones, sino que la escritura se había realizado antes en el tiempo y no se había persistido hasta dicho momento.</li>
+<li>Consistencia eventual (<strong><em>E</em></strong><em>ventual consistency</em>): tras cada escritura, la consistencia de la base de datos sólo se alcanza una vez el cambio ha sido propagado a todos los nodos. Durante el tiempo que tarda en producirse la consistencia, observamos un estado blando de la base de datos.</li>
+</ul>
+<p>Una base de datos que sigue el modelo transaccional BASE prefiere la disponibilidad antes que la consistencia (es decir, desde el punto de vista del Teorema CAP es AP).</p>
 <h2 id="big-data">Big Data<a class="headerlink" href="#big-data" title="Permanent link">&para;</a></h2>
 <p>Aunque parece que todo el mundo debe trabajar con cuantos más datos mejor, no todo es <em>Big Data</em> en el mundo tecnológico.</p>
 <figure style="float: right;">
@@ -1214,17 +1274,6 @@ Personalización del servicio: Permite a las empresas personalizar ofertas basad
 <p>Si definimos <strong>NoSQL</strong> formalmente, podemos decir que se trata de un conjunto de tecnologías que permiten el procesamiento rápido y eficiente de conjuntos de datos dando la <ins>mayor importancia al rendimiento, la fiabilidad y la agilidad</ins>.</p>
 <p>Si nos basamos en el acrónimo, el término da la sensación que se refiere a cualquier almacén de datos que no sigue un modelo relacional, los datos no son relacionales y por tanto no utilizan SQL como lenguaje de consulta. Realmente implica que el <em>No</em> hace referencia a <em>not only</em>, es decir, que los sistemas NoSQL se centran en sistemas complementarios a los SGBD relacionales, que fijan sus prioridades en la escalabilidad y la disponibilidad en contra de la atomicidad y consistencia de los datos.</p>
 <p>Así pues, la revolución NoSQL se basa en comprender que hay más de una manera de resolver los problemas. Hay vida más allá de los sistemas de bases de datos relacionales, y NoSQL permite elegir la mejor herramienta para cada situación, que en algunas ocasiones será una base de datos relacional, pero en otras no. Por lo tanto, más que sustitutos de los sistemas relacionales, las soluciones NoSQL se plantean como alternativas y complementarias a los sistemas gestores de bases de datos relacionales.</p>
-<p><a name="acid"></a></p>
-<div class="admonition info">
-<p class="admonition-title">ACID</p>
-<p>Las bases de datos relacionales cumplen las características ACID para ofrecer transaccionalidad sobre los datos:</p>
-<ul>
-<li><strong>A</strong>tomicidad: las transacciones implican que se realizan todas las operaciones o no se realiza ninguna.</li>
-<li><strong>C</strong>onsistencia: la base de datos asegura que los datos pasan de un estado válido o otro también.</li>
-<li><strong>I</strong>solation (Aislamiento): Una transacción no afecta a otras transacciones, de manera que la modificación de un registro / documento no es visible por otras lecturas hasta que ha finalizado la transacción. Esto implica que ninguna transacción obtiene una versión intermedia de los datos.</li>
-<li><strong>D</strong>urabilidad: La escritura de los datos asegura que una vez finalizada una operación, los datos no se perderán.</li>
-</ul>
-</div>
 <p>Los diferentes tipos de bases de datos NoSQL existentes se pueden agrupar en cuatro categorías:</p>
 <ul>
 <li>
@@ -1249,7 +1298,7 @@ Personalización del servicio: Permite a las empresas personalizar ofertas basad
 <p>Si nos centramos en sus beneficios y los comparamos con las base de datos relacionales, las bases de datos NoSQL son más escalables, ofrecen un rendimiento mayor y sus modelos de datos resuelven varios problemas que no se plantearon al definir el modelo relacional:</p>
 <ul>
 <li>Grandes volúmenes de datos estructurados, semi-estructurados y sin estructurar. Casi todas las implementaciones NoSQL ofrecen algún tipo de representación para datos sin esquema, lo que permite comenzar con una estructura y con el paso del tiempo, añadir nuevos campos, ya sean sencillos o anidados a datos ya existentes.</li>
-<li>Sprints ágiles, iteraciones rápidas y frecuentes <em>commits</em>/<em>pushes</em> de código, al emplear una sintaxis sencilla para la realización de consultas y la posibilidad de tener un modelo que vaya creciendo al mismo ritmo que el desarrollo.</li>
+<li><em>Sprints</em> ágiles, iteraciones rápidas y frecuentes <em>commits</em>/<em>pushes</em> de código, al emplear una sintaxis sencilla para la realización de consultas y la posibilidad de tener un modelo que vaya creciendo al mismo ritmo que el desarrollo.</li>
 <li>Arquitectura eficiente y escalable diseñada para trabajar con clusters en vez de una arquitectura monolítica y costosa. Las soluciones NoSQL soportan la escalabilidad de un modo transparente para el desarrollador y ofrecen una solución cloud.</li>
 </ul>
 <p>Una característica adicional que comparten los sistemas NoSQL es que ofrecen un mecanismo de caché de datos integrado (en los sistemas relacionales se pueden configurar de manera externa), pudiendo configurar los sistemas para que los datos se mantengan en memoria y se persistan de manera periódica. El uso de una caché conlleva que la consistencia de los datos no sea completa y podamos tener una consistencia eventual.</p>
@@ -1259,38 +1308,8 @@ Personalización del servicio: Permite a las empresas personalizar ofertas basad
 <p>Si la base de datos es grande, conlleva un proceso lento que implica parar el sistema durante un tiempo considerable. Si frecuentemente cambiamos los datos que la aplicación almacena (al usar un desarrollo iterativo), también tendremos períodos frecuentes de inactividad del sistema, a no ser que utilicemos un <a href="https://medium.com/devopslatam/introducci%C3%B3n-a-los-despliegues-azul-verde-bb4055811279">despliegue azul/verde</a> y tengamos redundancia de nuestro sistema de almacenamiento. Así pues, no hay un modo efectivo mediante una base de datos relacional de almacenar los datos que están desestructurados o que no se conocen de antemano.</p>
 <p>Las bases de datos NoSQL se construyen para permitir la inserción de datos sin un esquema predefinido. Esto facilita la modificación de la aplicación en tiempo real, sin preocuparse por interrupciones de servicio. Aunque no tengamos un esquema al guardar la información, sí que podemos definir esquemas de lectura (<em>schema-on-read</em>) para comprobar que la información almacenada tiene el formato que espera cargar cada aplicación.</p>
 <p>De este modo se consigue un desarrollo más rápido, integración de código más robusto y menos tiempo empleado en la administración de la base de datos.</p>
-<p>Aunque lo veremos en profundidad en las siguientes sesiones, los modelos de datos NoSQL priman la redundancia de los datos, denormalizando los datos para evitar el uso de <em>joins</em>. Por ello, es importante que la definición de los esquemas sea flexible para poder añadir campos conforme la aplicación evolucione.</p>
+<p>Cabe destacar que los modelos de datos NoSQL priman la redundancia de los datos, denormalizando los datos para evitar el uso de <em>joins</em>. Por ello, es importante que la definición de los esquemas sea flexible para poder añadir campos conforme la aplicación evolucione.</p>
 <h3 id="modelos">Modelos<a class="headerlink" href="#modelos" title="Permanent link">&para;</a></h3>
-<h2 id="teorema-de-cap">Teorema de CAP<a class="headerlink" href="#teorema-de-cap" title="Permanent link">&para;</a></h2>
-<p>Propuesto por <em>Eric Brewer</em> en el año 2000, prueba que podemos crear una base de datos distribuida que elija dos de las siguientes tres características:</p>
-<ul>
-<li><strong>C</strong>onsistencia: las escrituras son atómicas y todas las peticiones posteriores obtienen el nuevo valor, independientemente del lugar de la petición.</li>
-<li>Disponibilidad (<em><strong>A</strong>vailable</em>): la base de datos devolverá siempre un valor. En la práctica significa que no hay <em>downtime</em>.</li>
-<li>Tolerancia a <strong>P</strong>articiones: el sistema funcionará incluso si la comunicación con un servidor se interrumpe de manera temporal (para ello, ha de dividir los datos entre diferentes nodos). Es decir, implica que se pueden recibir lecturas desde unos nodos que no contienen información escrita en otros.</li>
-</ul>
-<p>En otras palabras, podemos crear un sistema de base de datos que sea consistente y tolerante a particiones (CP), un sistema que sea disponible y tolerante a particiones (AP), o un sistema que sea consistente y disponible (CA). Pero no es posible crear una base de datos distribuida que sea consistente, disponible y tolerante a particiones al mismo tiempo.</p>
-<figure style="align: center;">
-    <img src="images/13teorema.png" alt="Teorema de CAP" width="400px">
-    <figcaption>Teorema de CAP</figcaption>
-</figure>
-
-<p>El teorema CAP es útil cuando consideramos el sistema de base de datos que necesitamos, ya que nos permite decidir cual de las tres características vamos a descartar. La elección realmente se centra entre la disponibilidad y la consistencia, ya que la tolerancia a particiones es una decisión de arquitectura (sea o no distribuida).</p>
-<p>Aunque el teorema dicte que si en un sistema distribuido elegimos disponibilidad no podemos tener consistencia, todavía podemos obtener consistencia eventual. Es decir, cada nodo siempre estará disponible para servir peticiones, aunque estos nodos no puedan asegurar que la información que contienen sea consistente (pero si bastante precisa), en algún momento lo será.</p>
-<p>Algunas bases de datos tolerantes a particiones se pueden ajustar para ser más o menos consistentes o disponible a nivel de petición. Por ejemplo, <em>Riak</em> trabaja de esta manera, permitiendo a los clientes decidir en tiempo de petición qué nivel de consistencia necesitan.</p>
-<h3 id="clasificacion-segun-cap">Clasificación según CAP<a class="headerlink" href="#clasificacion-segun-cap" title="Permanent link">&para;</a></h3>
-<p>El siguiente gráfico muestra cómo dependiendo de estos atributos podemos clasificar los sistemas NoSQL:</p>
-<figure style="align: center;">
-    <img src="images/13teoremaCAPam.png" alt="Clasificación según CAP" width="400px">
-    <figcaption>Clasificación según CAP</figcaption>
-</figure>
-
-<p>Así pues, las bases de datos NoSQL se clasifican en:</p>
-<ul>
-<li><strong>CP</strong>: Consistente y tolerantes a particiones. Tanto <em>MongoDB</em> como <em>HBase</em> son CP, ya que dentro de una partición pueden no estar disponibles para responder una determinada consulta (por ejemplo, evitando lecturas en los nodos secundarios), aunque son tolerantes a fallos porque cualquier nodo secundario se puede convertir en principal y asumir el rol del nodo caído.</li>
-<li><strong>AP</strong>: Disponibles y tolerantes a particiones. <em>DynamoDB</em> permite replicar los datos entre sus nodos aunque no garantiza la consistencia en ninguno de los sus servidores.</li>
-<li><strong>CA</strong>: Consistentes y disponible. Aquí es donde situaríamos a los SGDB relacionales. Por ejemplo, <em>PostreSQL</em> es CA (aunque ofrece un producto complementario para dar soporte al particionado, como PgCluster), ya que no distribuyen los datos y por tanto la partición no es una restricción.</li>
-</ul>
-<p>Lo bueno es que la gran mayoría de sistemas permiten configurarse para cambiar su tipo CAP, lo que permite que <em>MongoDB</em> pase de CP a AP, o <em>CouchDB</em> de AP a CP.</p>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.digitalocean.com/community/tutorials/understanding-database-sharding">Understanding database sharding</a></li>

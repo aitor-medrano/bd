@@ -1638,6 +1638,39 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <span class="linenos" data-linenos="34 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
 </code></pre></div>
 <p>Podemos comprobar como dentro del cuerpo del disparador hemos usado <code>NEW</code> para referenciar el registro que vamos a insertar. Además, hemos configurado el disparador para que se ejecute antes de la inserción.</p>
+<div class="admonition info">
+<p class="admonition-title">Nomenclatura</p>
+<p>En <em>MariaDB</em>, no hay una nomenclatura obligatoria para nombrar los <em>triggers</em>, pero se recomienda seguir una convención clara y estructurada para facilitar su identificación y mantenimiento.</p>
+<p>Algunas recomendaciones:</p>
+<ol>
+<li>Usar un prefijo indicativo, como por ejemplo <code>trg_</code> o <code>trigger_</code>, ya sea usando como separador <code>_</code> o una notación <em>camelCase</em>.</li>
+<li>Incluir el nombre de la tabla afectada</li>
+<li>Especificar el evento que lo dispara, ya sea <code>BEFORE</code> o <code>AFTER</code> y la operación <code>INSERT</code>, <code>UPDATE</code> o <code>DELETE</code></li>
+</ol>
+<p>Algunos ejemplos podrían ser:</p>
+<table>
+<thead>
+<tr>
+<th>Nombre del Trigger</th>
+<th>Explicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>trg_usuarios_before_insert</code></td>
+<td>Se ejecuta antes de una inserción en <code>usuarios</code>.</td>
+</tr>
+<tr>
+<td><code>triggerPedidosAfterUpdate</code></td>
+<td>Se activa después de actualizar <code>pedidos</code>, posiblemente para registrar cambios.</td>
+</tr>
+<tr>
+<td><code>trgProductosBeforeDeleteCascade</code></td>
+<td>Antes de eliminar en <code>productos</code>, quizás para eliminar dependencias.</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>De la misma manera, podemos crear un disparador para las operaciones de modificación:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
 <span class="linenos" data-linenos=" 2 "></span>
@@ -1760,12 +1793,12 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <p>A la hora de programar desde el punto de vista del gestor, por medio de procedimientos/funciones, podemos realizar dos aproximaciones diferentes a la gestión de errores (incluso una combinación de las dos):</p>
 <ul>
 <li>Capturar las excepciones que se puedan dar y mandar un mensaje al programa cliente (por medio de un parámetro de salida o un valor concreto devuelto con un <code>SELECT</code>). En este caso, el tratamiento del error lo gestionaremos dentro del procedimiento/función del gestor y programaremos la consecuencia que provoca dicho error.</li>
-<li>No capturar excepciones y que sea el programa cliente el que gestione las mismas. En este caso, incluso, podemos ser nosotros mismos los que provoquemos una excepción dentro del código del procedimiento/función (por ejemplo, el cliente envía un nif de un artista que no existe).</li>
+<li>No capturar excepciones y que sea el programa cliente el que gestione las mismas. En este caso, incluso, podemos ser nosotros mismos los que provoquemos una excepción dentro del código del procedimiento/función (por ejemplo, el cliente envía un NIF de un artista que no existe).</li>
 </ul>
 <p>Para ello, <em>MariaDB</em> ofrece varios mecanismos para la gestión de errores, que incluyen señales, manejadores, códigos de error y excepciones.</p>
 <p>Cuando trabajamos con errores y excepciones, podemos capturar:</p>
 <ul>
-<li>Error y excepciones definidas por el SGBD (por ejemplo, <code>DUPLICATE ENTRY FOR KEY</code>, que se produce cuando intentamos añadir dos filas con la misma clave primaria)</li>
+<li>Error y excepciones definidas por el SGBD (por ejemplo, <code>DUPLICATE ENTRY FOR KEY</code>, que se produce cuando intentamos añadir dos filas con la misma clave primaria).</li>
 <li>Excepciones creadas por el usuario. Por ejemplo, puedo lanzar una excepción cuando intente añadir un animal con una altura negativa.</li>
 </ul>
 <p>En cualquiera de los dos casos, cada excepción va a estar asociada a un número ya predefinido por el sistema gestor.</p>
@@ -2055,7 +2088,7 @@ TODO: gestión de errores en eventos y triggers
  -->
 
 <h3 id="transacciones-en-plsql">Transacciones en PL/SQL<a class="headerlink" href="#transacciones-en-plsql" title="Permanent link">&para;</a></h3>
-<p>Cuando trabajamos con transacciones, necesitamos poder controlar cuando sucede un error para deshacer las operaicones. Para ello, se utiliza un manejador de tipo <code>EXIT</code> para hacer <code>ROLLBACK</code> y deshacer la transacción. Si no se produce ningún error, se realizará el <code>COMMIT</code>.</p>
+<p>Cuando trabajamos con transacciones, necesitamos poder controlar cuando sucede un error para deshacer las operaciones. Para ello, se utiliza un manejador de tipo <code>EXIT</code> para hacer <code>ROLLBACK</code> y deshacer la transacción. Si no se produce ningún error, se realizará el <code>COMMIT</code>.</p>
 <p>A nivel de código, se traduce en el siguiente esquema de código:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">transaccionEnMariaDB</span><span class="p">()</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">BEGIN</span>
@@ -2075,8 +2108,8 @@ TODO: gestión de errores en eventos y triggers
 <span class="linenos" data-linenos=" 2 "></span><span class="k">BEGIN</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">        </span><span class="k">ROLLBACK</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Error en la transacción. Se ha revertido.&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="w">        </span><span class="k">ROLLBACK</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Error en la transacción. Se ha revertido.&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 8 "></span>
 <span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
@@ -2085,8 +2118,8 @@ TODO: gestión de errores en eventos y triggers
 <span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">pedidos</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;procesado&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id_pedido</span><span class="p">;</span>
 <span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">inventario</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">pedidos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id_pedido</span><span class="p">);</span>
 <span class="linenos" data-linenos="14 "></span>
-<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">COMMIT</span><span class="p">;</span>
-<span class="linenos" data-linenos="16 "></span>
+<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">COMMIT</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="16 "></span>
 <span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Transacción completada con éxito&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
 <span class="linenos" data-linenos="18 "></span><span class="k">END</span>
 </code></pre></div>
@@ -2510,7 +2543,7 @@ flowchart TD
 </ul>
 </li>
 <li>
-<p>Crea un <em>trigger</em> (<code>ac1104triggeMensajeAfterDelete</code>) sobre la tabla <code>alumnado</code> y que se ejecute tras <code>ac1104triggerGuardarAlumnosAfterDelete</code>, para que cada vez que se elimine un alumno, muestre por pantalla información del alumno eliminado, con un mensaje similar a "<em>Se ha eliminado al alumno XXX con email YYY a las ZZ:ZZ</em>", a partir de la información almacenada en la tabla <code>logAlumnosEliminados</code>.</p>
+<p>Crea un <em>trigger</em> (<code>ac1104triggerMensajeAfterDelete</code>) sobre la tabla <code>alumnado</code> y que se ejecute tras <code>ac1104triggerGuardarAlumnosAfterDelete</code>, para que cada vez que se elimine un alumno, muestre por pantalla información del alumno eliminado, con un mensaje similar a "<em>Se ha eliminado al alumno XXX con email YYY a las ZZ:ZZ</em>", a partir de la información almacenada en la tabla <code>logAlumnosEliminados</code>.</p>
 </li>
 </ol>
 <p>Además del código de los disparadores, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente, mostrando el contenido de las tablas antes y después de las operaciones.</p>
@@ -2521,12 +2554,12 @@ flowchart TD
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1105</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Sobre la base de datos <code>empresa</code>, crea una tabla que se llame <code>salarios</code> que tenga las siguientes columnas:</p>
 <ul>
-<li><code>id</code> (entero sin signo, autoincremento y clave primaria)</li>
+<li><code>id</code> (entero sin signo, autoincremental y clave primaria)</li>
 <li><code>fecha_hora</code>: marca de tiempo con el instante del cambio (fecha y hora)</li>
 <li><code>salario</code>: el valor del pago (real)</li>
-<li><code>codigo_empleado</code>: código del empleado al que se le ha cambiado el salario(entero)</li>
+<li><code>codigo_empleado</code>: código del empleado al que se le ha cambiado el salario (entero)</li>
 </ul>
-<p>Escribe el trigger <code>ap1106triggerSalariosEmpleado</code> que nos permita llevar un control de las modificaciones en los salarios de los empleados. El disparador se ejecutara después de cada inserción o modificación, insertando un registro en la tabla <code>salarios</code>.</p>
+<p>Escribe los triggers <code>ap1106triggerSalariosEmpleadoAfterInsert</code> y <code>ap1106triggerSalariosEmpleadoAfterUpdate</code> que nos permita llevar un control de las modificaciones en los salarios de los empleados. Los disparadores se ejecutarán después de cada inserción o modificación, insertando un registro en la tabla <code>salarios</code>.</p>
 <p>Además del código de los disparadores, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente, mostrando el contenido de las tablas antes y después de las operaciones.</p>
 </li>
 </ul>
@@ -2548,10 +2581,10 @@ flowchart TD
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1107</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Siguiendo con la tabla <code>alumnado</code>, se pide:</p>
 <ol>
 <li>
-<p>Crea un procedimiento llamado <code>ac1107insertarAlumno</code> que reciba los cuatro datos como parámetros de entrada y los inserte en la tabla. El procedimiento devolverá como salida un parámetro llamado <code>error</code> que tendrá un valor igual a 0 si la operación se ha podido realizar con éxito o 1 en caso contrario. Deberá manejar los errores que puedan ocurrir cuando se intenta insertar una fila que contiene una clave primaria repetida.</p>
+<p>Crea un procedimiento llamado <code>ac1107insertarAlumno</code> que reciba los cuatro datos como parámetros de entrada y los inserte en la tabla. El procedimiento devolverá como salida un parámetro llamado <code>error</code> que tendrá un valor igual a <code>0</code> si la operación se ha podido realizar con éxito o <code>1</code> en caso contrario. Deberá manejar los errores que puedan ocurrir cuando se intenta insertar una fila que contiene una clave primaria repetida.</p>
 </li>
 <li>
-<p>Escribe un procedimiento (<code>ac1107nombreAlumnoIf</code>) que muestre el nombre de un alumno dado su código. En caso de que no se encuentre, devolverá "Alumn@ no encontrado".</p>
+<p>Escribe un procedimiento (<code>ac1107nombreAlumnoIf</code>) que muestre el nombre de un alumno dado su código. En caso de que no se encuentre, devolverá <code>Alumn@ no encontrado</code>.</p>
 <ol>
 <li>Utiliza <code>IF</code> para contar si ha encontrado al alumno.</li>
 <li>Crea un nuevo procedimiento (<code>ac1106nombreAlumnoHandler</code>) pero ahora utiliza un manejador de errores (sin usar <code>IF</code>)</li>
@@ -2572,7 +2605,12 @@ flowchart TD
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1108</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Sobre la base de datos <code>empresa</code> y haciendo uso de señales, se pide:</p>
 <ol>
-<li>El procedimiento <code>ac1108salariosHabilidad</code> que reciba como argumento el nombre de un habilidad y muestre el total de los salarios de los empleados que tienen dicha habilidad. Si no hubiera ningún empleado, mostrará el mensaje "Para la habilidad XXXX no hay ningún empleado existente". Si la habilidad no existe, el mensaje será "La habilidad XXX no existe".</li>
+<li>
+<p>El procedimiento <code>ac1108salariosHabilidad</code> que reciba como argumento el nombre de un habilidad y muestre el total de los salarios de los empleados que tienen dicha habilidad. Si no hubiera ningún empleado, lanzará una señal con el mensaje "Para la habilidad XXXX no hay ningún empleado existente". Si la habilidad no existe, el mensaje será "La habilidad XXX no existe".</p>
+</li>
+<li>
+<p>El trigger <code>ac1108triggerHijoAfterInsert</code> que tras insertar un hijo, compruebe que si el número de hijo es el mayor (de entre sus herman@s), tenga una fecha de nacimiento menor a la de sus herman@s. Si no fuera así, lanzará una señal con el mensaje "El hijo XXX debe ser menor que su hermano YYY".</p>
+</li>
 </ol>
 </li>
 </ul>
