@@ -2543,7 +2543,7 @@ flowchart TD
 </ul>
 </li>
 <li>
-<p>Crea un <em>trigger</em> (<code>ac1104triggerMensajeAfterDelete</code>) sobre la tabla <code>alumnado</code> y que se ejecute tras <code>ac1104triggerGuardarAlumnosAfterDelete</code>, para que cada vez que se elimine un alumno, almacene en una tabla un <code>mensaje</code> similar a "<em>Se ha eliminado al alumno XXX con email YYY a las ZZ:ZZ</em>", a partir de la información almacenada en la tabla <code>logAlumnosEliminados</code>.</p>
+<p>Crea un <em>trigger</em> (<code>ac1104triggerMensajeAfterDelete</code>) sobre la tabla <code>alumnado</code> y que se ejecute tras <code>ac1104triggerGuardarAlumnosAfterDelete</code>, para que cada vez que se elimine un alumno, almacene en la tabla <code>mensajes</code> un texto similar a "<em>Se ha eliminado al alumno XXX con email YYY a las ZZ:ZZ</em>", a partir de la información almacenada en la tabla <code>logAlumnosEliminados</code>.</p>
 <p>La estructura de la tabla <code>mensajes</code> es:</p>
 <ul>
 <li><code>id</code>: clave primaria (entero autonumérico)</li>
