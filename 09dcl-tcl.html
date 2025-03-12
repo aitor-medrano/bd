@@ -1525,14 +1525,14 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
     BD--&gt;&gt;Usuario: Realiza operaciones
     Usuario-&gt;&gt;BD: Finaliza TX
     BD--&gt;&gt;Usuario: Confirma</code></pre>
-<p>Para finalizar la transacciones, podemos hacerlo mediante:</p>
+<p>Para finalizar las transacciones, podemos hacerlo mediante:</p>
 <ul>
 <li><a href="https://mariadb.com/kb/en/commit/"><code>COMMIT</code></a>: aceptamos todos los cambios</li>
 <li><a href="https://mariadb.com/kb/en/rollback/"><code>ROLLBACK</code></a>: deshacemos las operaciones</li>
 <li>Un comando DDL, DCL, al finalizar una sesión de trabajo o al producirse un fallo o caída del sistema.</li>
 </ul>
 <p>La gestión de transacciones forma parte del sublenguaje TCL (<em>Transaction Control Language</em>), el cual incluye los comandos <code>COMMIT</code>, <code>ROLLBACK</code> y <a href="https://mariadb.com/kb/en/savepoint/"><code>SAVEPOINT</code></a>.</p>
-<p>En cuanto a los SGBD, la gran mayoría de los sistemas existente en el mercado ofrece soporte transaccional, con diferentes políticas de bloqueo. Por ejemplo, <em>MariaDB</em> sólo permite realizar transacciones con el motor de almacenamiento <em>InnoDB</em>.</p>
+<p>En cuanto a los SGBD, la gran mayoría de los sistemas existentes en el mercado ofrece soporte transaccional, con diferentes políticas de bloqueo. Por ejemplo, <em>MariaDB</em> sólo permite realizar transacciones con el motor de almacenamiento <em>InnoDB</em>.</p>
 <p>Pese a realizar las operaciones de forma segura, el uso de TCL implica un procesamiento extra que penaliza el rendimiento.</p>
 <h3 id="acid">ACID<a class="headerlink" href="#acid" title="Permanent link">&para;</a></h3>
 <p>Todo SGBD que se considera transaccional debe cumplir con las propiedades ACID:</p>
