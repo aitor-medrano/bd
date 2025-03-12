@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -949,6 +949,9 @@
 <li>¿Para qué sirve la clave de particionado?</li>
 <li>¿En qué consiste la replicación?</li>
 <li>¿Una base de datos puede estar particionada y replicada a la vez?</li>
+<li>¿Qué es <em>Big Data</em>? ¿Y <em>Small Data</em>?</li>
+<li>¿Conoces las 3V del Big Data? ¿Hay más?</li>
+<li>¿Qué tipos de analítica de datos existen? ¿En qué consisten?</li>
 </ol>
 </div>
 <h3 id="programacion-de-aula-9h">Programación de Aula (9h)<a class="headerlink" href="#programacion-de-aula-9h" title="Permanent link">&para;</a></h3>
@@ -972,20 +975,20 @@
 <tr>
 <td style="text-align: center;">2</td>
 <td><a href="#big-data">Big Data</a> y <em>Business Intelligence</em></td>
-<td>AC1202</td>
+<td><a href="#AC1202">AC1202</a></td>
 <td><abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr></td>
 </tr>
 <tr>
 <td style="text-align: center;">3</td>
 <td><a href="#nosql">NoSQL</a></td>
-<td>AC1203</td>
-<td><abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td style="text-align: center;">4</td>
 <td>Tipos</td>
-<td></td>
-<td></td>
+<td>AC1203</td>
+<td><abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr></td>
 </tr>
 <tr>
 <td style="text-align: center;">5</td>
@@ -1216,6 +1219,24 @@
 <p>Mientras que las aplicaciones <em>Big Data</em> recogen información desde múltiples fuentes de entrada, el concepto de inteligencia de negocio (<strong><em>business intelligence</em></strong>) se centra en el uso que hace la empresa de dichos datos, es decir, coge los datos y los transforma en conocimiento para la ayuda en la toma de decisiones en base a los datos analizados.</p>
 <p>El término de <strong>analítica de datos</strong> implica procesar, limpiar, organizar y extraer información útil de grandes volúmenes de datos. Para ello, las herramientas de <em>Business Intelligence</em> (BI) son aplicaciones de soporte de decisiones que permiten en tiempo real, acceso interactivo, análisis y manipulación de información crítica y así ser capaces de generar conocimiento mediante el análisis de la información ya almacenada, es decir, realizando <strong>analítica descriptiva</strong> (¿Qué sucedió?) y <strong>diagnóstica</strong> (¿Por qué sucedió?).</p>
 <p>Con la ayuda del <em>Big Data</em> y la IA, podemos afrontar analíticas más avanzadas, como son la analítica <strong>predictiva</strong> (¿Qué pasará en el futuro?) y <strong>prescriptiva</strong> (¿Cómo podemos prevenir? ¿Qué debería suceder?) para establecer tendencias, averiguar por qué suceden las cosas y hacer una estimación de cómo se desarrollarán las cosas en el futuro.</p>
+<div class="admonition info">
+<p class="admonition-title">Un caso práctico</p>
+<p>Supongamos que nos centramos en una clínica médica que dispone de información médica sobre sus pacientes. Si realizamos un estudio de aplicar las diferentes analíticas, tendríamos:</p>
+<ul>
+<li>
+<p>Descriptiva (¿Qué sucedió?): La clínica analiza los historiales médicos y registros de citas del último año para identificar las enfermedades más comunes tratadas en sus instalaciones. Descubre que el 40% de las consultas fueron por problemas respiratorios, el 30% por afecciones musculoesqueléticas y el 30% restante por otras patologías.</p>
+</li>
+<li>
+<p>Diagnóstica (¿Por qué sucedió?): Al analizar en profundidad los datos de los pacientes con enfermedades respiratorias, la clínica detecta que la mayoría de los casos se concentran en los meses de invierno y en personas con antecedentes de alergias o tabaquismo. Esto sugiere una correlación con factores estacionales y hábitos de vida.</p>
+</li>
+<li>
+<p>Predictiva (¿Qué pasará en el futuro?): Utilizando modelos de <em>machine learning</em>, la clínica predice que, en función de las tendencias anteriores y las condiciones climáticas esperadas, habrá un aumento del 20% en consultas por gripe y enfermedades respiratorias en los próximos tres meses.</p>
+</li>
+<li>
+<p>Prescriptiva (¿Cómo podemos prevenirlo? ¿Qué debería suceder?): Con base en la predicción anterior, la clínica decide lanzar una campaña de vacunación contra la gripe y reforzar las consultas preventivas para pacientes de riesgo. Además, optimiza la agenda de los médicos y aumenta la compra de medicamentos específicos para estar preparados ante el incremento de la demanda.</p>
+</li>
+</ul>
+</div>
 <!--
 FIXME: Completar 
 -->
@@ -1274,6 +1295,8 @@ Personalización del servicio: Permite a las empresas personalizar ofertas basad
 <li><strong>Modelado</strong>: creación de modelos, en ocasiones basados en IA, para obtener la información o realizar las predicciones indicadas en el acta de constitución del proyecto.</li>
 <li><strong>Presentación</strong> y <strong>automatización</strong>: Con la presentación de los resultados obtenidos (por ejemplo, mediante herramientas como <em>PowerBI</em> o <em>Tableau</em>) y su comprobación, es probable que se entre en un ciclo iterativo que provoque volver al paso 2 con datos nuevos y requiera automatizar todos el proceso.</li>
 </ol>
+<!--  Hacer un gráfico circular -->
+
 <h2 id="nosql">NoSQL<a class="headerlink" href="#nosql" title="Permanent link">&para;</a></h2>
 <p>Si definimos <strong>NoSQL</strong> formalmente, podemos decir que se trata de un conjunto de tecnologías que permiten el procesamiento rápido y eficiente de conjuntos de datos dando la <ins>mayor importancia al rendimiento, la fiabilidad y la agilidad</ins>.</p>
 <p>Si nos basamos en el acrónimo, el término da la sensación que se refiere a cualquier almacén de datos que no sigue un modelo relacional, los datos no son relacionales y por tanto no utilizan SQL como lenguaje de consulta. Realmente implica que el <em>No</em> hace referencia a <em>not only</em>, es decir, que los sistemas NoSQL se centran en sistemas complementarios a los SGBD relacionales, que fijan sus prioridades en la escalabilidad y la disponibilidad en contra de la atomicidad y consistencia de los datos.</p>
@@ -1321,17 +1344,15 @@ Personalización del servicio: Permite a las empresas personalizar ofertas basad
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <p><a name="AC1201"></a></p>
 <ul>
-<li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1201</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se ha reconocido la utilidad de las bases de datos distribuidas.">CE1g</abbr>, <abbr title="Se han analizado las políticas de fragmentación de la información.">CE1h</abbr> // 3p) Ejercicio sobre BD distribuidas y fragmentación.</p>
-<p>Realizar una infografía sobre los sistemas NoSQL, destacando su enfoque distribuido, el particionado de los datos, su relación con el Big Data.</p>
-</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1201</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se ha reconocido la utilidad de las bases de datos distribuidas.">CE1g</abbr>, <abbr title="Se han analizado las políticas de fragmentación de la información.">CE1h</abbr> // 3p) A partir de la información relativa a las <a href="#bases-de-datos-distribuidas">Bases de datos distribuidas</a>, realiza una infografía sobre aquellos conceptos que las diferencian de las bases de datos centralizadas, destacando las políticas de fragmentación de la información.</li>
 </ul>
 <p><a name="AC1202"></a></p>
 <ul>
-<li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1202</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr> // 3p) Ejercicio sobre los conceptos de Big Data y de la inteligencia de negocios.</p>
-<p>A partir de la infografía anterior, en una nueva infografía, destaca las semejanzas y diferencias entre un sistema relacional y uno no relacional</p>
-</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1202</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr> // 3p) A partir del proyecto intermodular que has ido desarrollando a lo largo del curso, seguro que se puede realizar una analítica de datos que aporten valor al negocio. Para cada una de las analíticas vistas (descriptivas, diagnóstica, predictiva y prescriptiva), piensa en algún tipo de solución tecnológica, indicando además de la analítica que cubre, qué datos serían necesarios y cuál sería el objetivo de su aplicación.</li>
+</ul>
+<p><a name="AP1203"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AP1203</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr> // 3p) Investiga en qué consiste el concepto de lago de datos (<em>data lake</em>) y qué relación tiene con un <em>data warehouse</em> y un <em>data lakehouse</em>. Finalmente, explica en qué consite la arquitectura Medallion, y cómo se relaciona con los tres elementos anteriores.</li>
 </ul>
 <!--
 Contenidos básicos:
@@ -1611,7 +1632,7 @@ para la gestión de la información almacenada.
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
+      <script src="assets/javascripts/bundle.f1b6f286.min.js"></script>
       
     
   </body>

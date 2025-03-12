@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -1277,7 +1277,7 @@
 <li>¿Qué es un disparador/<em>trigger</em>?</li>
 <li>¿A qué posibles eventos responde un <em>trigger</em>?</li>
 <li>¿Puedo lanzar un <em>trigger</em> después de otro? ¿Cómo?</li>
-<li>¿Cuál es la sintaxis básica para crear un disparador en MariaDB?</li>
+<li>¿Cuál es la sintaxis básica para crear un disparador en <em>MariaDB</em>?</li>
 <li>¿Qué es la gestión de errores en PL/SQL y por qué es importante?</li>
 <li>¿Qué palabra clave se utiliza en PL/SQL para manejar excepciones?</li>
 <li>Hablando de gestión de errores, ¿Para qué sirven las señales?</li>
@@ -1547,15 +1547,15 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <div class="admonition tip">
 <p class="admonition-title">Consideraciones</p>
 <p>Cuando un desarrollador se adentra en el mundo de los eventos en <em>MariaDB</em>, debe tener en cuenta varias consideraciones importantes para asegurar que estos procesos automatizados funcionen de manera óptima. Ante todo, es fundamental verificar que el <em>Event Scheduler</em> esté activado en el sistema. Si se reinicia el servidor, dependiendo de la configuración, puede ser que el programador de eventos esté deshabilitado.</p>
-<p>Otro aspecto crucial es el manejo de los errores (lo estudiaremos más adelante en esta unidad) capturando excepciones y registrando la información relevante en tablas de <em>logs</em>, ofreciendo mecanismos para monitorizar los eventos en ejecución y cual ha sido su estado de ejecución, mediante alguna tabla específica que registre información detallada sobre la ejecución de cada evento (incluyendo tiempos, resultados y cualquier anomalía), lo que nos proporcionará una ayuda invaluable cuando surjan los problemas (que tarde o temprano, sucederán).</p>
-<p>Finalmente, siempre deberemos controlar los tiempos de ejecución, para evitar operación muy largas, así como evitar solapamientos entre diferentes eventos que sobrescriban la misma información.</p>
+<p>Otro aspecto crucial es el manejo de los errores (lo estudiaremos más adelante en esta unidad) capturando excepciones y registrando la información relevante en tablas de <em>logs</em>, ofreciendo mecanismos para monitorizar los eventos en ejecución y cuál ha sido su estado de ejecución, mediante alguna tabla específica que registre información detallada sobre la ejecución de cada evento (incluyendo tiempos, resultados y cualquier anomalía), lo que nos proporcionará una ayuda invaluable cuando surjan los problemas (que tarde o temprano, sucederán).</p>
+<p>Finalmente, siempre deberemos controlar los tiempos de ejecución, para evitar operaciones muy largas, así como evitar solapamientos entre diferentes eventos que sobrescriban la misma información.</p>
 </div>
 <h2 id="triggers">Triggers<a class="headerlink" href="#triggers" title="Permanent link">&para;</a></h2>
 <p>Directamente relacionados con los eventos, tenemos los <strong>disparadores</strong> (<strong><em>triggers</em></strong>) que son fragmentos de código que se activan automáticamente en respuesta a operaciones específicas sobre las tablas, tales como inserciones, actualizaciones o eliminaciones.</p>
 <p>Estos mecanismos permiten insertar lógica personalizada que se ejecuta antes (<em>before</em>) o después (<em>after</em>) de que se realice la orden SQL que provoca su ejecución, lo que es fundamental para garantizar la integridad de los datos, validar condiciones de negocio y llevar a cabo auditorías automáticas. Por ejemplo, un disparador puede registrar cada cambio en una tabla de auditoría o prevenir modificaciones que no cumplan con ciertos criterios, asegurando así la consistencia y confiabilidad de la información almacenada.</p>
 <p>Los posibles eventos que podemos asociar a un disparador son:</p>
 <ul>
-<li><code>INSERT</code>: El trigger se activa cuando se inserta una nueva fila sobre la tabla asociada.</li>
+<li><code>INSERT</code>: El <em>trigger</em> se activa cuando se inserta una nueva fila sobre la tabla asociada.</li>
 <li><code>UPDATE</code>: Se activa cuando se actualiza una fila.</li>
 <li><code>DELETE</code>: Se activa cuando se elimina una fila.</li>
 </ul>
@@ -1798,7 +1798,7 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 </li>
 </ul>
 <h2 id="gestion-de-errores">Gestión de Errores<a class="headerlink" href="#gestion-de-errores" title="Permanent link">&para;</a></h2>
-<p>Hasta ahora hemos supuesto que nuestros fragmentos de código nunca fallan. Pero, ¿qué sucede cuando un procedimiento o un evento tienen un error? Ya sea porque no encuentra una tabla, accedemos erróneamente a un campo que no existe, etc..</p>
+<p>Hasta ahora hemos supuesto que nuestros fragmentos de código nunca fallan. Pero ¿qué sucede cuando un procedimiento o un evento tienen un error? Ya sea porque no encuentra una tabla, accedemos erróneamente a un campo que no existe, etc..</p>
 <p>A la hora de programar desde el punto de vista del gestor, por medio de procedimientos/funciones, podemos realizar dos aproximaciones diferentes a la gestión de errores (incluso una combinación de las dos):</p>
 <ul>
 <li>Capturar las excepciones que se puedan dar y mandar un mensaje al programa cliente (por medio de un parámetro de salida o un valor concreto devuelto con un <code>SELECT</code>). En este caso, el tratamiento del error lo gestionaremos dentro del procedimiento/función del gestor y programaremos la consecuencia que provoca dicho error.</li>
@@ -1889,7 +1889,7 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <li><em>Error Code</em>: Son números específicos de <em>MariaDB</em>/<em>MySQL</em> que no valen para otros gestores.</li>
 <li><em>SQLState Code</em>: Cadena de 5 dígitos basado en ANSI SQL y ODBC y por lo tanto sus códigos son 'estandarizados'.</li>
 </ul>
-<p>Emplear uno u otro va a depender de nuestro programa cliente. Si este va a ser empleado en sistemas gestores diferentes (por ejemplo <em>ORACLE</em> o <em>SQL Server</em>) podría ser mejor emplear los código de estado SQL. En caso contrario, es recomendable utilizar mejor los específicos de cada gestor.</p>
+<p>Emplear uno u otro va a depender de nuestro programa cliente. Si este va a ser empleado en sistemas gestores diferentes (por ejemplo, <em>Oracle</em> o <em>SQL Server</em>) podría ser mejor emplear los código de estado SQL. En caso contrario, es recomendable utilizar mejor los específicos de cada gestor.</p>
 <p>En el caso de querer dar un nombre a la excepción empleando el <em>SQLState</em> la sintaxis cambia:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">no_existe_tabla</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;42S02&#39;</span><span class="p">;</span>
 </code></pre></div>
@@ -1938,7 +1938,7 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <ul>
 <li>El manejador se lanzará para una o más condiciones.</li>
 <li>Las acciones pueden ser <code>CONTINUE</code> para continuar con la ejecución normal, o <code>EXIT</code> que ejecutar el manejador y finaliza el bloque <code>BEGIN-END</code> actual.</li>
-<li>Al lanzarse, se puede ejecutar un única instrucción (por ejemplo <code>set x=5;</code>) o un bloque de instrucciones (entre <code>BEGIN</code> y <code>END</code>).</li>
+<li>Al lanzarse, se puede ejecutar una única instrucción (por ejemplo <code>set x=5;</code>) o un bloque de instrucciones (entre <code>BEGIN</code> y <code>END</code>).</li>
 <li>Los manejadores se deben declarar después de las variables locales.</li>
 </ul>
 <p>Los manejadores se asocian mediante <code>FOR</code> a códigos de error, estados de SQL, las condiciones predefinidas a cualquier condición que hayamos creado anteriormente:</p>
@@ -1995,12 +1995,12 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <span class="linenos" data-linenos="18 "></span><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">salida</span><span class="p">;</span>
 </code></pre></div>
 <ul>
-<li>¿Cuanto valdrá <code>@salida</code> en la línea 18? <!-- 3 --></li>
+<li>¿Cuánto valdrá <code>@salida</code> en la línea 18? <!-- 3 --></li>
 <li>Si cambiamos el manejador de <code>CONTINUE</code> a <code>EXIT</code>, ¿Cuánto valdría <code>resultado</code>? <!-- 1 --></li>
 </ul>
 </div>
 <h4 id="manejadores-en-eventos">Manejadores en Eventos<a class="headerlink" href="#manejadores-en-eventos" title="Permanent link">&para;</a></h4>
-<p>Anteriormente estudiamos como podíamos crear <a href="#eventos">eventos</a> para ejecutar ciertas acciones en un instante determinado o bien de forma recurrente. Pero, ¿Qué sucede cuando se produce un error dentro de un evento? Una práctica muy común es utilizar una tabla de <em>log</em> donde almacenamos el error producido, y así poder monitorizarlos.</p>
+<p>Anteriormente estudiamos como podíamos crear <a href="#eventos">eventos</a> para ejecutar ciertas acciones en un instante determinado o bien de forma recurrente. Pero ¿Qué sucede cuando se produce un error dentro de un evento? Una práctica muy común es utilizar una tabla de <em>log</em> donde almacenamos el error producido, y así poder monitorizarlos.</p>
 <p>Así pues, necesitamos declarar un manejador que inserte en dicha tabla:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="n">EVENT</span><span class="w"> </span><span class="n">evento_con_manejo_errores</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">ON</span><span class="w"> </span><span class="n">SCHEDULE</span><span class="w"> </span><span class="k">EVERY</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="n">HOUR</span>
@@ -2355,7 +2355,7 @@ flowchart TD
 <p>El motivo por el que lo cursores se siguen utilizando es que en ocasiones es necesario indicarle al SGBD los pasos que queremos realizar. Dicho esto, este enfoque imperativo normalmente supone un peor rendimiento al realizar un bloqueo excesivo y hacer un mayor consumo de los recursos del motor de base de datos que si hiciéramos un enfoque basado en conjuntos.</p>
 <p>Dicho esto, siempre que sea posible, tendrá mejor rendimiento una o más consultas que el uso de cursores, aunque en contadas ocasiones necesitarás evaluar cada fida de un conjunto de forma individual y necesitarás el uso de cursores.</p>
 </div>
-<p>Una vez que ya sabemos como se crean, veamos un ejemplo sobre nuestra base de datos empresa. La empresa se está planteando ampliar la cantidad de departamentos para fomentar la conciliación familiar. De esta manera, aquellos departamentos que tengan más de 2 trabajadores con hijos se dividirán en dos, y sus empleados se repartirán entre ellos. Para ello, en una nueva tabla <code>departamentoFamiliar</code> almacenaremos una copia de los departamentos, junto a las nuevas versiones familiares.</p>
+<p>Una vez que ya sabemos cómo se crean, veamos un ejemplo sobre nuestra base de datos <code>empresa</code>. La empresa se está planteando ampliar la cantidad de departamentos para fomentar la conciliación familiar. De esta manera, aquellos departamentos que tengan más de 2 trabajadores con hijos se dividirán en dos, y sus empleados se repartirán entre ellos. Para ello, en una nueva tabla <code>departamentoFamiliar</code> almacenaremos una copia de los departamentos, junto a las nuevas versiones familiares.</p>
 <p>Así, tras crear una tabla con la misma estructura, haciendo uso de <a href="https://mariadb.com/kb/en/create-table/#create-table-like"><code>CREATE TABLE ... LIKE</code></a>, como queremos recuperar todos los atributos de un departamento, en vez de declarar una variable por cada columna, podemos declarar una variable mediante <a href="https://mariadb.com/kb/en/declare-variable/#type-of-row-type-of"><code>DECLARE ... ROW TYPE OF</code></a> de manera que accederemos a sus campos mediante la notación <code>.</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="n">USE</span><span class="w"> </span><span class="n">empresa</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span>
@@ -2507,7 +2507,7 @@ flowchart TD
 <li>Haz que el día 1 de Mayo del 2025 a las 23:15 se guarde una copia de los datos de la tabla <code>departamento</code> en una nueva tabla llamada <code>dept_copia_temp</code>.</li>
 <li>Modifica el evento para que se ejecute desde hoy hasta dentro de un año y que lo haga cada mes.</li>
 <li>Ejecuta la orden que muestre el momento en que se va a ejecutar.</li>
-<li>Haz que el día 1 de Enero de cada año se incrementan los salarios de los directivos de cada departamento un 5%. Esta actualización se debe producir durante 5 años a partir del actual.</li>
+<li>Haz que el día 1 de enero de cada año se incrementan los salarios de los directivos de cada departamento un 5%. Esta actualización se debe producir durante 5 años a partir del actual.</li>
 </ol>
 </li>
 </ul>
@@ -2628,7 +2628,7 @@ flowchart TD
 
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1108</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Sobre la base de datos <code>empresa</code> y haciendo uso de señales, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1108</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr>, <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Sobre la base de datos <code>empresa</code> y haciendo uso de señales, se pide:</p>
 <ol>
 <li>
 <p>El procedimiento <code>ac1108salariosHabilidad</code> que reciba como argumento el nombre de un habilidad y muestre el total de los salarios de los empleados que tienen dicha habilidad. Si no hubiera ningún empleado, lanzará una señal con el mensaje "<em>Para la habilidad XXXX no hay ningún empleado existente</em>". Si la habilidad no existe, el mensaje será "<em>La habilidad XXX no existe</em>".</p>
@@ -2672,7 +2672,7 @@ flowchart TD
 <p><a name="AP1110"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AP1110</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr> // 3p) En la actividad <a href="#AP1105">AP1105</a> se planteaba actualizar la cantidad de hijos de un empleado mediante un disparador asociado a la inserción de un nuevo registro en la tabla <code>hijo</code>. Realmente, es mejor que ambas operaciones formen parte de una transacción y que se gestionen dentro de un procedimiento almacenado. Dicho esto, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AP1110</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr>, <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) En la actividad <a href="#AP1105">AP1105</a> se planteaba actualizar la cantidad de hijos de un empleado mediante un disparador asociado a la inserción de un nuevo registro en la tabla <code>hijo</code>. Realmente, es mejor que ambas operaciones formen parte de una transacción y que se gestionen dentro de un procedimiento almacenado. Dicho esto, se pide:</p>
 <ol>
 <li>
 <p>Crea la función <code>ap1110funcCompruebaHijo</code> que valide que la cantidad de hijos almacenados en la tabla <code>hijo</code> concuerda con el atributo <code>NumHi</code> de la tabla <code>empleado</code>. En caso contrario, debe lanzar una señal con un mensaje adecuado.</p>
@@ -2688,13 +2688,20 @@ flowchart TD
 <!-- Cursores -->
 
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1111</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p)</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1111</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr>, <abbr title="Se han utilizado cursores.">CE5i</abbr>, <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Haciendo uso de cursores y la base de datos <code>empresa</code>, se pide:</p>
+<ol>
+<li>Crea la tabla <code>empleado_plus</code> con los mismos datos que la tabla <code>empleado</code> (mediante <code>CREATE TABLE .... AS SELECT</code>)</li>
+<li>Sobre la nueva tabla <code>empleado_plus</code>, añade la columna <code>HijMayor</code> que permita almacenar el nombre del hijo mayor de cada empleado. Para ello, crea el procedimiento almacenado <code>ac1111procHijos</code>, y mediante un cursor, sobre los hijos mayores de cada empleado, modifique el campo del empleado y almacene su nombre.</li>
+<li>Sobre la nueva tabla <code>empleado_plus</code>, añade la columna <code>DescHabs</code> que permita almacenar los codigos de las habilidades de dicho empleado separadas por comas. Es decir, para el empleado <code>1</code> deberá almacenar <code>GEREN,RELPU</code>. Si no tuviera ninguna habilidad, debe dejar el campo nulo. Crea el procedimiento almacenado <code>ac1111procHabilidadesEmpleados</code> que complete dicha columna. </li>
+</ol>
+</li>
 </ul>
 <p><a name="AC1112"></a></p>
 <!-- Cursores con parámetros -->
 
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1112</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p)</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1112</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr>, <abbr title="Se han utilizado cursores.">CE5i</abbr>, <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p)</li>
 </ul>
 <!-- cursores 
 Crea la base de datos cursores con una tabla
@@ -3088,7 +3095,7 @@ para la gestión de la información almacenada.
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
+      <script src="assets/javascripts/bundle.f1b6f286.min.js"></script>
       
     
   </body>
