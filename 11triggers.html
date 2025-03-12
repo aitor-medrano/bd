@@ -811,6 +811,24 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#declaracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probando-los-cursores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probando los cursores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#uso-de-parametros" class="md-nav__link">
     <span class="md-ellipsis">
       Uso de parámetros
@@ -1173,6 +1191,24 @@
   
     <nav class="md-nav" aria-label="Cursores">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declaracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaración
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#probando-los-cursores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Probando los cursores
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#uso-de-parametros" class="md-nav__link">
@@ -2246,6 +2282,7 @@ TODO: gestión de errores en eventos y triggers
 <li>Sólo lectura: No permiten actualizar los datos.</li>
 <li><em>Nonscrollable</em>: sólo pueden ser recorridos en una dirección y no podemos saltarnos filas.</li>
 </ul>
+<h3 id="declaracion">Declaración<a class="headerlink" href="#declaracion" title="Permanent link">&para;</a></h3>
 <p>El primer paso es declarar el cursor mediante <a href="https://mariadb.com/kb/en/declare-cursor/"><code>DECLARE CURSOR</code></a>, del mismo modo que antes declarábamos una variable, crearemos nuestro cursor mediante una consulta <code>SELECT</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">curClientes</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">FOR</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="p">,</span><span class="w"> </span><span class="n">nombre_cliente</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">cliente</span>
@@ -2267,6 +2304,7 @@ flowchart TD
   D --&gt; E{{Operaciones con los datos}}
   E --&gt; C
   C -- No quedan registros ----&gt; F[CLOSE]</code></pre>
+<h3 id="probando-los-cursores">Probando los cursores<a class="headerlink" href="#probando-los-cursores" title="Permanent link">&para;</a></h3>
 <p>Veamos mediante un ejemplo un caso completo. Supongamos que tenemos dos tablas con la misma cantidad de registros, y queremos rellenar una tercera a partir de los datos de estas dos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
@@ -2325,29 +2363,29 @@ flowchart TD
 </span><span class="hll"><span class="linenos" data-linenos="28 "></span><span class="w">  </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">cur2</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="29 "></span><span class="k">END</span><span class="p">;</span>
 <span class="linenos" data-linenos="30 "></span><span class="o">//</span><span class="w"> </span>
-<span class="linenos" data-linenos="31 "></span>
-<span class="linenos" data-linenos="32 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
-<span class="linenos" data-linenos="33 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">ejemploCursores</span><span class="p">();</span>
-<span class="linenos" data-linenos="34 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t3</span><span class="p">;</span>
-<span class="linenos" data-linenos="35 "></span><span class="c1">-- +-------+------+</span>
-<span class="linenos" data-linenos="36 "></span><span class="c1">-- | datos | id   |</span>
-<span class="linenos" data-linenos="37 "></span><span class="c1">-- +-------+------+</span>
-<span class="linenos" data-linenos="38 "></span><span class="c1">-- | A     |    1 |</span>
-<span class="linenos" data-linenos="39 "></span><span class="c1">-- | B     |    2 |</span>
-<span class="linenos" data-linenos="40 "></span><span class="c1">-- | C     |    3 |</span>
-<span class="linenos" data-linenos="41 "></span><span class="c1">-- +-------+------+</span>
-<span class="linenos" data-linenos="42 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
 </code></pre></div>
 <ol>
-<li>asdf</li>
-<li>asdf</li>
-<li>asdf</li>
-<li>asdf</li>
-<li>asdf</li>
-<li>asdf</li>
-<li>asdf</li>
+<li>Declaramos una variable <code>fin</code> a modo de <em>flag</em> para controlar el final del cursor</li>
+<li>Declaramos dos cursores, uno por cada tabla a recorrer</li>
+<li>Declaramos el manejador de errores</li>
+<li>Abrimos los cursores</li>
+<li>Creamos el bucle para recorrer el cursor</li>
+<li>Recuperamos los registros</li>
+<li>Cerramos los cursores</li>
 </ol>
-<p>TODO: Explicar líneas</p>
+<p>Si invocamos al procedimiento, obtendremos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">ejemploCursores</span><span class="p">();</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t3</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +-------+------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | datos | id   |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +-------+------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | A     |    1 |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | B     |    2 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | C     |    3 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- +-------+------+</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Pensando en conjuntos</p>
 <p>Desde el principio del bloque de consultas, hemos aprendido a trabajar con datos pensando en conjuntos de datos completos, ya que le decimos al SGBD lo que queremos recuperar o evaluar, y el motor de consultas averigua la mejor manera de completar la consulta.</p>
