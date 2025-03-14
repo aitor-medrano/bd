@@ -1537,7 +1537,7 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <h3 id="acid">ACID<a class="headerlink" href="#acid" title="Permanent link">&para;</a></h3>
 <p>Todo SGBD que se considera transaccional debe cumplir con las propiedades ACID:</p>
 <ul>
-<li><strong>A</strong>tomicidad: La transacción es indivisible. Esto quiere decir, que o se ejecutan todas la sentencias o no lo hará ninguna.</li>
+<li><strong>A</strong>tomicidad: La transacción es indivisible. Esto quiere decir, que o se ejecutan todas las sentencias o no lo hará ninguna.</li>
 <li><strong>C</strong>onsistencia: Después de una transacción, la base de datos estará en un estado válido y consistente.</li>
 <li>Aislamiento (<em><strong>I</strong>solation</em>): Cada transacción está aislada del resto de transacciones y el acceso a los datos se hace de forma exclusiva. Si una transacción quiere acceder de forma concurrente a los datos que están siendo utilizados por otra transacción, no podrá hacerlo hasta que la primera haya terminado.</li>
 <li><strong>D</strong>urabilidad: Los cambios que realiza una transacción sobre la base de datos son permanentes.</li>
@@ -2069,7 +2069,7 @@ del SGBD, para hacer, por ejemplo, copias de seguridad, mediante un <a href="htt
 <span class="linenos" data-linenos="23 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="linenos" data-linenos="24 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="linenos" data-linenos="25 "></span><span class="k">COMMIT</span><span class="p">;</span>
-<span class="hll"><span class="linenos" data-linenos="26 "></span><span class="c1">-- ¿Y si una cuenta no tiene saldo? ¿Se han ambos los saldos?</span>
+<span class="hll"><span class="linenos" data-linenos="26 "></span><span class="c1">-- ¿Y si una cuenta no tiene saldo? ¿Se han modificado ambos los saldos?</span>
 </span></code></pre></div>
 </li>
 <li>

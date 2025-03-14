@@ -1849,7 +1849,7 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <p>En cualquiera de los dos casos, cada excepción va a estar asociada a un número ya predefinido por el sistema gestor.</p>
 <div class="admonition info">
 <p class="admonition-title">Códigos de error</p>
-<p>Cuando sucede algún tipo de fallo, <em>MariaDB</em> devolverá un <a href="https://mariadb.com/kb/en/mariadb-error-codes/">error con un código</a>. Cada código tiene un mensaje asociado y un estado <code>SQLSTATE</code> correspondiente. Algunos códigos son:</p>
+<p>Cuando sucede algún tipo de fallo, <em>MariaDB</em> devolverá un <a href="https://mariadb.com/kb/en/mariadb-error-codes/">error con un código</a>. Cada código tiene un mensaje asociado y un estado <code>SQLSTATE</code> correspondiente (los códigos son números enteros, mientras que los estados SQL con cadenas y por tanto irán entre comilla). Algunos códigos son:</p>
 <table>
 <thead>
 <tr>
@@ -1977,7 +1977,7 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <li>Al lanzarse, se puede ejecutar una única instrucción (por ejemplo <code>set x=5;</code>) o un bloque de instrucciones (entre <code>BEGIN</code> y <code>END</code>).</li>
 <li>Los manejadores se deben declarar después de las variables locales.</li>
 </ul>
-<p>Los manejadores se asocian mediante <code>FOR</code> a códigos de error, estados de SQL, las condiciones predefinidas a cualquier condición que hayamos creado anteriormente:</p>
+<p>Los manejadores se asocian mediante <code>FOR</code> a códigos de error, estados de SQL (los cuales son cadenas y por tanto van entre comillas), las condiciones predefinidas a cualquier condición que hayamos creado anteriormente:</p>
 <p>Por ejemplo, podemos definir un par que manejadores del siguiente modo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">1051</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">BEGIN</span>
@@ -2648,15 +2648,15 @@ flowchart TD
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1106</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Siguiendo con la tabla <code>alumnado</code>, se pide:</p>
 <ol>
 <li>
-<p>Crea un procedimiento llamado <code>ac1106insertarAlumno</code> que reciba los cuatro datos como parámetros de entrada y los inserte en la tabla. El procedimiento devolverá como salida un parámetro llamado <code>error</code> que tendrá un valor igual a <code>0</code> si la operación se ha podido realizar con éxito o <code>1</code> en caso contrario. Deberá manejar los errores que puedan ocurrir cuando se intenta insertar una fila que contiene una clave primaria repetida.</p>
+<p>Crea un procedimiento llamado <code>ac1106insertarAlumno</code> que reciba como entrada los cuatro datos de un alumno (<code>id</code>, <code>nombre</code>, <code>apellidos</code>, <code>curso</code>) como parámetros de entrada y los inserte en la tabla. El procedimiento devolverá como salida un parámetro llamado <code>error</code> que tendrá un valor igual a <code>0</code> si la operación se ha podido realizar con éxito o <code>1</code> en caso contrario. Deberá manejar los errores que puedan ocurrir cuando se intenta insertar una fila que contiene una clave primaria repetida.</p>
 </li>
 <li>
-<p>Escribe un procedimiento (<code>ac1106nombreAlumnoIf</code>) que muestre el nombre de un alumno dado su código. En caso de que no se encuentre, devolverá <code>Alumn@ no encontrado</code>.</p>
+<p>Escribe un procedimiento (<code>ac1106nombreAlumnoIf</code>) que muestre el nombre de un alumno dado su código. En caso de que no se encuentre, devolverá <code>Alumn@ no encontrado</code> en un parámetro de salida.</p>
 <ol>
 <li>Utiliza <code>IF</code> para contar si ha encontrado al alumno.</li>
 <li>Crea un nuevo procedimiento (<code>ac1106nombreAlumnoHandler</code>) pero ahora utiliza un manejador de errores (sin usar <code>IF</code>)</li>
 <li>Debes comprobar el error <code>NOT FOUND</code>.</li>
-<li>La consulta debe guardar el resultado en una variable mediante <code>SELECT … INTO</code>.</li>
+<li>La consulta debe guardar el resultado en la variable de salida mediante <code>SELECT … INTO</code>.</li>
 </ol>
 </li>
 <li>
