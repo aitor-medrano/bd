@@ -2651,7 +2651,7 @@ flowchart TD
 <p>Crea un procedimiento llamado <code>ac1106insertarAlumno</code> que reciba como entrada los cuatro datos de un alumno (<code>id</code>, <code>nombre</code>, <code>apellidos</code>, <code>curso</code>) como parámetros de entrada y los inserte en la tabla. El procedimiento devolverá como salida un parámetro llamado <code>error</code> que tendrá un valor igual a <code>0</code> si la operación se ha podido realizar con éxito o <code>1</code> en caso contrario. Deberá manejar los errores que puedan ocurrir cuando se intenta insertar una fila que contiene una clave primaria repetida.</p>
 </li>
 <li>
-<p>Escribe un procedimiento (<code>ac1106nombreAlumnoIf</code>) que muestre el nombre de un alumno dado su código. En caso de que no se encuentre, devolverá <code>Alumn@ no encontrado</code> en un parámetro de salida.</p>
+<p>Escribe un procedimiento (<code>ac1106nombreAlumnoIfCount</code>) que muestre el nombre de un alumno dado su código. En caso de que no se encuentre, devolverá <code>Alumn@ no encontrado</code> en un parámetro de salida.</p>
 <ol>
 <li>Utiliza <code>IF</code> para contar si ha encontrado al alumno.</li>
 <li>Crea un nuevo procedimiento (<code>ac1106nombreAlumnoHandler</code>) pero ahora utiliza un manejador de errores (sin usar <code>IF</code>)</li>
@@ -2660,10 +2660,13 @@ flowchart TD
 </ol>
 </li>
 <li>
+<p>Con la misma idea que el anterior, escribe un procedimiento (<code>ac1106nombreAlumnoIfNombre</code>) el cual directamente recupere el nombre del alumno (sin contar previamente), y dependiendo de si lo encuentra o no, rellene el parámetro de salida con el valor adecuado.</p>
+</li>
+<li>
 <p>Crea un procedimiento llamado <code>ac1106upsertAlumno</code> a partir de <code>ac1106insertarAlumno</code>, pero en el caso de que el alumno ya exista, y gestionando la captura de <code>SQLException</code>, modificará los datos de dicho alumno con los datos recibidos como parámetros.</p>
 </li>
 <li>
-<p>Crea un procedimiento llamado <code>ac1106upsertAlumnoCallInsert</code> que invoque a <code>ac1106insertarAlumno</code> y que realice la actualización a partir del error devuelto por el procedimiento de inserción.</p>
+<p>Con la misma idea que el anterior, crea un procedimiento llamado <code>ac1106upsertAlumnoCallInsert</code> que invoque a <code>ac1106insertarAlumno</code> y que realice la actualización a partir del error devuelto por el procedimiento de inserción.</p>
 </li>
 </ol>
 </li>
