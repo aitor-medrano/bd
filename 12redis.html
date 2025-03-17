@@ -1,0 +1,1655 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Conceptos y actividades sobre Redis, la base de datos clave-valor NoSQL de referencia.">
+      
+      
+      
+        <link rel="canonical" href="https://aitor-medrano.github.io/bd/12redis.html">
+      
+      
+      
+      
+      <link rel="icon" href="images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+    
+    
+      
+        <title>Redis - una base de datos clave-valor - Bases de datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="css/extra.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-QK8SL29WX3"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-QK8SL29WX3",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-QK8SL29WX3",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Redis - una base de datos clave-valor - Bases de datos" >
+      
+        <meta  property="og:description"  content="Conceptos y actividades sobre Redis, la base de datos clave-valor NoSQL de referencia." >
+      
+        <meta  property="og:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/12redis.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://aitor-medrano.github.io/bd/12redis.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Redis - una base de datos clave-valor - Bases de datos" >
+      
+        <meta  name="twitter:description"  content="Conceptos y actividades sobre Redis, la base de datos clave-valor NoSQL de referencia." >
+      
+        <meta  name="twitter:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/12redis.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#propuesta-didactica" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Bases de datos" class="md-header__button md-logo" aria-label="Bases de datos" data-md-component="logo">
+      
+  <img src="images/bd.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Bases de datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Redis - una base de datos clave-valor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo noche"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo noche" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="deep-orange"  aria-label="Cambiar a modo día"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo día" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Bases de datos" class="md-nav__button md-logo" aria-label="Bases de datos" data-md-component="logo">
+      
+  <img src="images/bd.png" alt="logo">
+
+    </a>
+    Bases de datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1.- Sistemas de almacenamiento
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02er.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2.- Diseño conceptual: Modelo Entidad/Relación
+    
+      <br>
+      <small>EER Extendido</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03mr.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.- Diseño lógico: Modelo Relacional
+    
+      <br>
+      <small>Normalización</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04mr-eer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.- Diseño lógico: Transformación
+    
+      <br>
+      <small>De ER a MR</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05ddl.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.- Diseño físico: DDL y DML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06sql.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.- Consultas sencillas
+    
+      <br>
+      <small>Funciones. Joins</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07sql-group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7.- Consultas agregadas
+    
+      <br>
+      <small>Funciones ventana. Vistas</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08sql-subquerys.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8.- Subconsultas. Optimización
+    
+      <br>
+      <small>CTE. Índices</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09dcl-tcl.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9.- DCL y TCL
+    
+      <br>
+      <small>Usuarios, permisos y transacciones</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10plsql.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10.- Programación SQL
+    
+      <br>
+      <small>Procedimientos y funciones</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11triggers.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11.- PL/SQL Avanzado
+    
+      <br>
+      <small>Eventos, disparadores y cursores</small>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00entorno.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Entorno
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="vocabulari.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    <em>Vocabulari</em>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tags.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#propuesta-didactica" class="md-nav__link">
+    <span class="md-ellipsis">
+      Propuesta didáctica
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Propuesta didáctica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#criterios-de-evaluacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Criterios de evaluación
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contenidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contenidos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programacion-de-aula-5h" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programación de Aula (5h)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caracteristicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Características
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#puesta-en-marcha" class="md-nav__link">
+    <span class="md-ellipsis">
+      Puesta en marcha
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Puesta en marcha">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redis-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis-cli
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crud" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRUD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CRUD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transacciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transacciones
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructuras-de-datos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructuras de datos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Estructuras de datos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lista" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lista
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conjunto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conjunto
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conjunto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conjuntos-ordenados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conjuntos ordenados
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#casos-de-uso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Casos de Uso
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      Referencias
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#actividades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actividades
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="tags.html#tag:nosql" class="md-tag">NoSQL</a>
+      
+    
+      
+      
+      
+        <a href="tags.html#tag:ra7" class="md-tag">RA7</a>
+      
+    
+  </nav>
+
+
+
+  <h1>Redis - una base de datos clave-valor</h1>
+
+<h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
+<p>En esta UT vamos a trabajar los siguientes resultados de aprendizaje (RA):</p>
+<ul>
+<li>RA7: <strong>Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor</strong>.</li>
+</ul>
+<h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
+<ul>
+<li><abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>: Se han identificado los elementos utilizados en estas bases de datos.</li>
+<li><abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>: Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.  </li>
+<li><abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr>: Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada. </li>
+</ul>
+<h3 id="contenidos">Contenidos<a class="headerlink" href="#contenidos" title="Permanent link">&para;</a></h3>
+<p>Bases de datos no relacionales:</p>
+<ul>
+<li>Elementos de las bases de datos no relacionales.  </li>
+<li>Sistemas gestores de bases de datos no relacionales.  </li>
+<li>Herramientas de los sistemas gestores de bases de datos no relacionales para la gestión de la información almacenada. </li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Cuestionario inicial</p>
+<ol>
+<li>¿En qué consiste una base de datos clave-valor?</li>
+</ol>
+</div>
+<h3 id="programacion-de-aula-5h">Programación de Aula (5h)<a class="headerlink" href="#programacion-de-aula-5h" title="Permanent link">&para;</a></h3>
+<p>Seguimos con la unidad 12, y tras haber introducido los conceptos y elementos de los sistemas NoSQL, vamos a profundizar en el manejo de Redis, con una duración estimada de 5 horas:</p>
+<table>
+<thead>
+<tr>
+<th>Sesión</th>
+<th>Contenidos</th>
+<th>Actividades</th>
+<th>Criterios trabajados</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>Redis. CRUD</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Tipos de datos</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Mensajería</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Proyecto I</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Proyecto II</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h2>
+<figure style="float: right;">
+    <img src="images/12redis-logo.png" alt="Logo de Redis" width="200px">
+    <figcaption>Logo de Redis</figcaption>
+</figure>
+
+<p><a href="https://redis.io/es/">Redis</a> es una base de datos NoSQL <em>open source</em> en memoria, con un modelo de datos de clave-valor, que permite el cacheo de los datos y funcionar como un <em>broker</em> de mensajería. Soporta estructuras de datos como cadenas, <em>hash</em>, listas, conjuntos, conjuntos ordenador con consultas por rango, así como otras estructuras más específicas como mapas de bit, consultas <em>radius</em>, índices geospaciales, etc...</p>
+<p>El nombre <em>Redis</em> proviene de las iniciales de <strong><em>Remote Dictionary Server</em></strong> (servidor de diccionario remoto), un tipo de servidor apto como memoria rápida para datos, permitiendo su uso como una base de datos en memoria y como de clave-valor.</p>
+<h2 id="caracteristicas">Características<a class="headerlink" href="#caracteristicas" title="Permanent link">&para;</a></h2>
+<p><em>Redis</em> almacena los datos como pares clave-valor, donde:</p>
+<ul>
+<li>Cada <strong>clave</strong> (<em>key</em>) es un identificador único (similar a una clave primaria en SQL)</li>
+<li>Cada <strong>valor</strong> (<em>value</em>) puede ser de diferentes tipos (cadena, lista, <em>hash</em>, etc...)</li>
+</ul>
+<p>Este modelo es fundamentalmente diferente del modelo relacional:</p>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Redis (clave-valor)</th>
+<th>SQL (relacional)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estructura</td>
+<td>Plana, no relacional</td>
+<td>Tabular, relaciones entre entidades</td>
+</tr>
+<tr>
+<td>Esquema</td>
+<td>Flexible, sin esquema fijo</td>
+<td>Rígido, esquema predefinido</td>
+</tr>
+<tr>
+<td>Consultas</td>
+<td>Basadas en claves</td>
+<td>Basadas en conjuntos (SELECT)</td>
+</tr>
+<tr>
+<td>Transacciones</td>
+<td>Soporte básico con comandos MULTI/EXEC</td>
+<td>Completo soporte ACID</td>
+</tr>
+</tbody>
+</table>
+<p>Cuando decimos que <em>Redis</em> es una base de datos en memoria, estamos indicando que el servidor almacena todos los datos en la memoria principal (RAM), ya que es la manera más rápida para almacenar y recuperar datos.  Esto permite que <em>Redis</em> funcione como memoria caché y también como unidad de memoria principal, con independencia de si los datos permanecen en la base de datos por mucho o poco tiempo. Así pues, en un servidor <em>Redis</em> con su uso principal, los datos no se guardan en el disco duro, sino en la memoria principal.</p>
+<p>Gracias a ser un almacén clave-valor, ofrece un alto rendimiento y puede escalarse fácilmente. Para cada entrada se crea una clave mediante la que se puede volver a solicitar la información en cuestión. Esto implica que las entradas no necesitan estar relacionadas entre sí ni tampoco consultarse con varias tablas diferentes, sino que la información está disponible de manera directa.</p>
+<p>¿Y si falla el servidor o se va la luz? ¿Corremos el riesgo de perder todos los datos? Para evitar que eso ocurra, <em>Redis</em> puede, o bien hacer regularmente un duplicado de todos los datos en un disco duro secundario (persistencia RDB - <em>???</em>), o bien guardar en un archivo de registro todas las órdenes necesarias para llevar a cabo una reconstrucción (persistencia AOF - <em>Append Only File</em>).</p>
+<p>Finalmente, respecto a la escalabilidad, como solución NoSQL, si toda la información no cabe es un único nodo, el sistema puede escalar horizontalmente añadiendo más nodos. Si cada nodo puede almacenar 64GB RAM, y tenemos 4 servidores, podríamos almacenar hasta 256GB de datos en nuestro servidor <em>Redis</em>.</p>
+<div class="admonition info">
+<p class="admonition-title">Hablemos de tamaños</p>
+<p>Un millón de cadenas almacenadas en <em>Redis</em> ocupan aproximadamente 85MB de almacenamiento.<br />
+Una instancia vacía de <em>Redis</em> utiliza 3 MB de RAM.<br />
+Los valores en <em>Redis</em> son de 64 bits.<br />
+En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <em>Redis</em>. En la práctica, hay servidores de una única instancia con 250 millones de claves.</p>
+</div>
+<h2 id="puesta-en-marcha">Puesta en marcha<a class="headerlink" href="#puesta-en-marcha" title="Permanent link">&para;</a></h2>
+<p>Aunque podemos instalar <em>Redis</em> en cualquier sistema operativo, en nuestro caso, vamos a centrarnos en hacerlo mediante un contenedor <em>Docker</em>.</p>
+<p>La primera posibilidad es instalar la imagen <code>redis/redis-stack-server</code> mediante el comando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>redis-stack-server<span class="w"> </span>-p<span class="w"> </span><span class="m">6379</span>:6379<span class="w"> </span>redis/redis-stack-server:latest
+</code></pre></div>
+<p>Si en cambio, queremos utilizar el <em>stack</em> de <em>Redis</em> que también incluye la herramienta gráfica <a href="https://redis.io/insight/"><em>Redis Insight</em></a> en el puerto <code>8001</code> para administrar el sistema, usaremos la imagen <code>redis/redis-stack</code> mediante el comando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>redis-stack<span class="w"> </span>-p<span class="w"> </span><span class="m">6379</span>:6379<span class="w"> </span>-p<span class="w"> </span><span class="m">8001</span>:8001<span class="w"> </span>redis/redis-stack:latest
+</code></pre></div>
+<p>Si accedemos a <a href="http://localhost:8001/">http://localhost:8001/</a> accederemos a la página de inicio:</p>
+<figure style="align: center;">
+    <img src="images/12redis-insight.png" width="1024px">
+    <figcaption>Redis Insight</figcaption>
+</figure>
+
+<h3 id="redis-cli">Redis-cli<a class="headerlink" href="#redis-cli" title="Permanent link">&para;</a></h3>
+<p>Pero de momento vamos a centrarnos en el uso mediante la consola y acceder al cliente interactivo mediante <a href="https://redis.io/docs/latest/develop/tools/cli/"><code>redis-cli</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>redis-cli
+<span class="linenos" data-linenos="2 "></span><span class="c1"># 127.0.0.1:6379&gt;</span>
+</code></pre></div>
+<p>Al ejecutar un comando, siempre recibiremos una respuesta en la línea inferior. Por ejemplo, vamos a comprobar la conectividad haciendo <code>PING</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="m">127</span>.0.0.1:6379&gt;<span class="w"> </span>PING
+<span class="linenos" data-linenos="2 "></span><span class="c1"># PONG</span>
+</code></pre></div>
+<p>Si no hubiéramos podido conectarnos, habríamos recibido un mensaje de error. Mediante <code>help</code> aparecerá, además de la versión instalada, una lista de opciones de ayuda, así como la posibilidad de obtener más información de un comando concreto:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="m">127</span>.0.0.1:6379&gt;<span class="w"> </span><span class="nb">help</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># redis-cli 7.2.5</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># To get help about Redis commands type:</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">#       &quot;help @&lt;group&gt;&quot; to get a list of commands in &lt;group&gt;</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">#       &quot;help &lt;command&gt;&quot; for help on &lt;command&gt;</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">#       &quot;help &lt;tab&gt;&quot; to get a list of possible help topics</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">#       &quot;quit&quot; to exit</span>
+</code></pre></div>
+<h2 id="crud">CRUD<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h2>
+<p>En este apartado vamos a simular que queremos crear un acortador de URLs, del tipo <a href="https://bitly.com/">bit.ly</a>, de manera que cuando un usuario pone una URL corta, accederíamos a la URL larga, lo que también nos permite llevar un contador de las visitas a cada dirección.</p>
+<p>Usaremos los comandos <a href="https://redis.io/docs/latest/commands/set/"><code>SET</code></a> y <a href="https://redis.io/docs/latest/commands/get/"><code>GET</code></a> para asignar y recuperar un valor de una clave. <code>SET</code> siempre requiere dos parámetros, la clave y el valor, mientras que <code>GET</code> sólo permite recuperar por la clave:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span>127.0.0.1:6379&gt; SET aitor-bd aitor-medrano.github.io/bd
+</span><span class="linenos" data-linenos="2 "></span>OK
+<span class="hll"><span class="linenos" data-linenos="3 "></span>127.0.0.1:6379&gt; GET aitor-bd
+</span><span class="linenos" data-linenos="4 "></span>&quot;aitor-medrano.github.io/bd&quot;
+</code></pre></div>
+<p>Si queremos hacer más de una entrada de una sola vez usaremos <a href="https://redis.io/docs/latest/commands/mset/"><code>MSET</code></a> y <a href="https://redis.io/docs/latest/commands/mget/"><code>MGET</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span>127.0.0.1:6379&gt; MSET aitor-iabd aitor-medrano.github.io/iabd aitor-blog aitor-medrano.github.io/iabd/blog
+</span><span class="linenos" data-linenos="2 "></span>OK
+<span class="hll"><span class="linenos" data-linenos="3 "></span>127.0.0.1:6379&gt; MGET aitor-bd aitor-iabd aitor-blog
+</span><span class="linenos" data-linenos="4 "></span>1) &quot;aitor-medrano.github.io/bd&quot;
+<span class="linenos" data-linenos="5 "></span>2) &quot;aitor-medrano.github.io/iabd&quot;
+<span class="linenos" data-linenos="6 "></span>3) &quot;aitor-medrano.github.io/iabd/blog&quot;
+</code></pre></div>
+<p>Aunque <em>Redis</em> almacene cadenas, también permite almacenar números enteros y realizar ciertas operaciones sobre ellos, como <a href="https://redis.io/docs/latest/commands/incr/">INCR</a> para incrementar de uno en uno <a href="https://redis.io/docs/latest/commands/incrby/">INCRBY</a> para indicar la cantidad, y sus contrarios <a href="https://redis.io/docs/latest/commands/decr/">DECR</a> y <a href="https://redis.io/docs/latest/commands/decrby/">DECRBY</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span>127.0.0.1:6379&gt; SET contador 2
+</span><span class="linenos" data-linenos=" 2 "></span>OK
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span>127.0.0.1:6379&gt; INCR contador
+</span><span class="linenos" data-linenos=" 4 "></span>(integer) 3
+<span class="hll"><span class="linenos" data-linenos=" 5 "></span>127.0.0.1:6379&gt; GET contador
+</span><span class="linenos" data-linenos=" 6 "></span>&quot;3&quot;
+<span class="hll"><span class="linenos" data-linenos=" 7 "></span>127.0.0.1:6379&gt; INCRBY contador 2
+</span><span class="linenos" data-linenos=" 8 "></span>(integer) 5
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span>127.0.0.1:6379&gt; DECR contador
+</span><span class="linenos" data-linenos="10 "></span>(integer) 4
+</code></pre></div>
+<h3 id="transacciones">Transacciones<a class="headerlink" href="#transacciones" title="Permanent link">&para;</a></h3>
+<p>De la misma forma que hemos visto en <em>MariaDB</em>, necesitamos de alguna manera poder agrupar dos o más operaciones como si fuera una operación atómica. Para ello, usaremos el comando <a href="https://redis.io/docs/latest/commands/multi/"><code>MULTI</code></a> para inicial el bloque de instrucciones, y <a href="https://redis.io/docs/latest/commands/exec/"><code>EXEC</code></a> para confirmar la transacción. En el caso de querer hacer un <em>rollback</em>, usaremos el comando <a href="https://redis.io/docs/latest/commands/discard/"><code>DISCARD</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span>127.0.0.1:6379&gt; MULTI
+</span><span class="linenos" data-linenos="2 "></span>OK
+<span class="hll"><span class="linenos" data-linenos="3 "></span>127.0.0.1:6379(TX)&gt; SET aitor-dwes aitor-medrano.github.io/dwes2122
+</span><span class="linenos" data-linenos="4 "></span>QUEUED
+<span class="hll"><span class="linenos" data-linenos="5 "></span>127.0.0.1:6379(TX)&gt; INCR contador
+</span><span class="linenos" data-linenos="6 "></span>QUEUED
+<span class="hll"><span class="linenos" data-linenos="7 "></span>127.0.0.1:6379(TX)&gt; EXEC
+</span><span class="linenos" data-linenos="8 "></span>1) OK
+<span class="linenos" data-linenos="9 "></span>2) (integer) 5
+</code></pre></div>
+<h2 id="estructuras-de-datos">Estructuras de datos<a class="headerlink" href="#estructuras-de-datos" title="Permanent link">&para;</a></h2>
+<p>La estructura de datos típica de <em>Redis</em> está formada por las llamadas <strong><em>Strings</em></strong>, es decir, <strong>cadenas</strong> simples de caracteres.</p>
+<p>El uso de <em>Strings</em> permite almacenar datos de forma genérica, como por ejemplo, serializando cualquier dato en una cadena o utilizando documentos JSON. Conviene destacar que el tamaño máximo es de 512 MB.</p>
+<p>Como convención de código, se utilizan los dos puntos (<code>:</code>) como separador de las palabras o niveles en las claves:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span>127.0.0.1:6379&gt; MSET usuario:aitor:nombre &quot;Aitor Medrano&quot; usuario:aitor:pwd &quot;123456&quot; 
+</span><span class="linenos" data-linenos="2 "></span>OK
+<span class="hll"><span class="linenos" data-linenos="3 "></span>127.0.0.1:6379&gt; MGET usuario:aitor:nombre usuario:aitor:pwd
+</span><span class="linenos" data-linenos="4 "></span>1) &quot;Aitor Medrano&quot;
+<span class="linenos" data-linenos="5 "></span>2) &quot;123456&quot; 
+</code></pre></div>
+<p>El sistema, sin embargo, es también compatible con otras estructuras de datos. Veamos las más destacadas</p>
+<h3 id="hash">Hash<a class="headerlink" href="#hash" title="Permanent link">&para;</a></h3>
+<div class="grid cards">
+<ul>
+<li>
+<p><strong>Estructura</strong></p>
+<p>Un mapa o <a href="https://redis.io/docs/latest/develop/data-types/hashes/"><em>hash</em></a> en <em>Redis</em> es similar a un documento JSON, donde se mapea una clave con un valor.</p>
+<p><figure style="align: center;">
+    <img src="images/12redis-hash.jpg" alt="Hashes en Redis" width="400px">
+    <figcaption>Hashes en Redis</figcaption>
+</figure></p>
+<p>Se utiliza para almacenar objetos ligeros, como las sesiones de usuario, los propios datos del usuario, visitantes, etc...</p>
+<p>Destacar que sus valores siempre serán cadenas, es decir, no puede anidar otros mapas o conjuntos.</p>
+</li>
+<li>
+<p><strong>Comandos</strong></p>
+<p>Para interactuar con un <em>Hash</em> utilizaremos los comandos <a href="https://redis.io/docs/latest/commands/hset/"><code>HSET</code></a> para asignar valores, <a href="https://redis.io/docs/latest/commands/hkeys/"><code>HKEYS</code></a> para recuperar todas las claves y <a href="https://redis.io/docs/latest/commands/hvals/"><code>HVALS</code></a> para recuperar todos los valores, o <a href="https://redis.io/docs/latest/commands/hget/"><code>HGET</code></a> para recuperar una clave concreta:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span>127.0.0.1:6379&gt; HSET usuario:aitor nombre &quot;Aitor Medrano&quot; pwd &quot;123456&quot;
+</span><span class="linenos" data-linenos=" 2 "></span>OK
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span>127.0.0.1:6379&gt; HVALS usuario:aitor
+</span><span class="linenos" data-linenos=" 4 "></span>1) &quot;Aitor Medrano&quot;
+<span class="linenos" data-linenos=" 5 "></span>2) &quot;123456&quot;
+<span class="hll"><span class="linenos" data-linenos=" 6 "></span>127.0.0.1:6379&gt; HKEYS usuario:aitor
+</span><span class="linenos" data-linenos=" 7 "></span>1) &quot;nombre&quot;
+<span class="linenos" data-linenos=" 8 "></span>2) &quot;pwd&quot;
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span>127.0.0.1:6379&gt; HGET usuario:aitor nombre
+</span><span class="linenos" data-linenos="10 "></span>&quot;Aitor Medrano&quot;
+</code></pre></div>
+<p>Otros comandos más específicos son <a href="https://redis.io/docs/latest/commands/hdel/"><code>HDEL</code></a> para elimina campos, <a href="https://redis.io/docs/latest/commands/hincrby/"><code>HINCRBY</code></a> para incrementar un campo cierta cantidad, <a href="https://redis.io/docs/latest/commands/hlen/"><code>HLEN</code></a> para obtener la cantidad de campos, <a href="https://redis.io/docs/latest/commands/hgetall/"><code>HGETALL</code></a> para recuperar todas las claves y valores y <a href="https://redis.io/docs/latest/commands/hsetnx/"><code>HSETNX</code></a> para asignar una valor sólo si la clave no existe (ya que si existe, mediante <code>HSET</code> siempre la sustituye).</p>
+</li>
+</ul>
+</div>
+<h3 id="lista">Lista<a class="headerlink" href="#lista" title="Permanent link">&para;</a></h3>
+<div class="grid cards">
+<ul>
+<li>
+<p><strong>Estructura</strong></p>
+<p>Las <a href="https://redis.io/docs/latest/develop/data-types/lists/">listas</a> en Redis son como un array de cadenas, teniendo en cuenta que los elementos se ordenan por orden de inserción. Pueden funcionar como colas FIFO (<em>first in, first out</em>) o como pilas LIFO (<em>last in, first out</em>).</p>
+<p>Se implementan mediante listas enlazadas, lo que provoca que las operaciones en la cabeza y en la cola ocurran con complejidad constante, independientemente del tamaño de la lista. En cambio, acceder a un elemento determinado, supone recorrer la lista elemento por elemento. En este caso, es mejor utilizar conjuntos ordenados.</p>
+<p>En Redis, la cabeza (<em>head</em>) es el extremo izquierda y la cola (<em>tail</em>) el derecho.</p>
+<p><figure style="align: center;">
+    <img src="images/12redis-list.jpg" alt="Listas en Redis" width="400px">
+    <figcaption>Listas en Redis</figcaption>
+</figure></p>
+<p>Casos de uso:</p>
+<ul>
+<li>Implementar colas como estructuras de datos</li>
+<li>Cronogramas de mensajes (<em>feed</em> de una red social, logs recientes, etc...)</li>
+<li>Listado de tareas, para su procesamiento en el orden de adicción.</li>
+</ul>
+</li>
+<li>
+<p><strong>Comandos</strong></p>
+<p>Para interactuar con un lista utilizaremos los comandos <a href="https://redis.io/docs/latest/commands/lpush/"><code>LPUSH</code></a> para insertar valores por la izquierda y <a href="https://redis.io/docs/latest/commands/lpop/"><code>LPOP</code></a> para sacarlos, y sus homónimos <a href="https://redis.io/docs/latest/commands/rpush/"><code>RPUSH</code></a> y <a href="https://redis.io/docs/latest/commands/rpop/"><code>RPOP</code></a> para hacerlo por la derecha. Si queremos recuperar una cantidad de elementos, usaremos <a href="https://redis.io/docs/latest/commands/lrange/"><code>LRANGE</code></a>, mientras que para averiguar la longitud de la lista usaremos <a href="https://redis.io/docs/latest/commands/rpush/"><code>LLEN</code></a>.</p>
+<p>Supongamos que queremos asignarles a nuestros usuarios una lista de URL favoritas. Para ello, podríamos hacer:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span>127.0.0.1:6379&gt; RPUSH aitor:enlaces aitor-bd aitor-iabd aitor-blog
+</span><span class="linenos" data-linenos="2 "></span>(integer) 3
+<span class="hll"><span class="linenos" data-linenos="3 "></span>127.0.0.1:6379&gt; LLEN aitor:enlaces
+</span><span class="linenos" data-linenos="4 "></span>(integer) 3
+<span class="hll"><span class="linenos" data-linenos="5 "></span>127.0.0.1:6379&gt; LRANGE aitor:enlaces 0 -1
+</span><span class="linenos" data-linenos="6 "></span>1) &quot;aitor-bd&quot;
+<span class="linenos" data-linenos="7 "></span>2) &quot;aitor-iabd&quot;
+<span class="linenos" data-linenos="8 "></span>3) &quot;aitor-blog&quot;
+</code></pre></div>
+</li>
+</ul>
+<!--
+Using the list range command LRANGE, we can retrieve any part of the list by
+specifying the first and last positions. All list operations in Redis use a zerobased
+index. A negative position means the number of steps from the end
+
+LREM removes from the given key some matching values. It also requires a
+number to know how many matches to remove. Setting the count to 0 as we
+do here just removes them all:
+redis 127.0.0.1:6379> LREM eric:wishlist 0 gog
+Setting the count greater than 0 will remove only that number of matches,
+and setting the count to a negative number will remove that number of
+matches but scan the list from the end (right side).
+To remove and retrieve each value in the order we added them (like a queue),
+we can pop them off from the left (head) of the list.
+redis 127.0.0.1:6379> LPOP eric:wishlist
+"7wks"
+To act as a stack, after you RPUSH the values, you would RPOP from the end of
+the list. All of these operations are performed in constant time (meaning that
+the size of the list shouldn’t impact performance).
+On the previous combination of commands, you can use LPUSH and RPOP to
+similar effect (a queue) or LPUSH and LPOP to be a stack.
+Suppose we wanted to remove values from our wishlist and move them to
+another list of visited sites. To execute this move atomically, we might try
+wrapping pop and push actions within a multiblock. In Ruby, these steps
+might look something like this (you can’t use the CLI here because you must
+save the popped value, so we’ll use the redis-rb gem):
+redis.multi do
+site = redis.rpop('eric:wishlist')
+redis.lpush('eric:visited', site)
+end
+Because the multi block queues requests, the above won’t work. This is really
+a feature of lists, not a bug because it prevents concurrent access to list
+members. Fortunately, Redis provides a single command for popping values
+from the tail of one list and pushing to the head of another. It’s called RPOPLPUSH
+(right pop, left push).
+redis 127.0.0.1:6379> RPOPLPUSH eric:wishlist eric:visited
+"prag"
+If you find the range of the wishlist, prag will be gone; it now lives under visited.
+This is a useful mechanism for queuing commands.
+
+If you looked through the Redis docs to find RPOPRPUSH, LPOPLPUSH, and LPOPRPUSH
+commands, you may be dismayed to learn they don’t exist. RPOPLPUSH is your
+only option, and you must build your list accordingly.
+
+    Otros comandos más específicos son [`HDEL`](https://redis.io/docs/latest/commands/hdel/) para elimina campos, [`HINCRBY`](https://redis.io/docs/latest/commands/hincrby/) para incrementar un campo cierta cantidad, [`HLEN`](https://redis.io/docs/latest/commands/hlen/) para obtener la cantidad de campos, [`HGETALL`](https://redis.io/docs/latest/commands/hgetall/) para recuperar todas las claves y valores y [`HSETNX`](https://redis.io/docs/latest/commands/hsetnx/) para asignar una valor sólo si la clave no existe (ya que si existe, mediante `HSET` siempre la sustituye).
+
+-->
+</div>
+<h3 id="conjunto">Conjunto<a class="headerlink" href="#conjunto" title="Permanent link">&para;</a></h3>
+<div class="grid cards">
+<ul>
+<li>
+<p><strong>Estructura</strong></p>
+<p>Se parecen a las listas en que almacenan una colección de cadenas, pero los elementos no están ordenados, y los conjuntos sólo almacenan elementos únicos.</p>
+<p>Por lo tanto, no podemos y elementos. En cambio, podemos añadir y eliminar elementos de un conjunto. Aparte de añadir y eliminar, podemos realizar varias operaciones en conjuntos, como la unión, la intersección, etcétera. Se realizan del lado del servidor en Redis, por lo que son muy rápidas.  ¿Cuándo debemos considerar el uso de Redis Sets?  Se recomienda considerar el uso de Redis Sets en los siguientes casos:   Siempre que no estés considerando la cardinalidad o no te importe cuántos elementos están presentes para un mismo tipo. En esos casos, almacene los datos en Redissets.  Los Redissets son una buena manera de tener entidades únicas registradas y almacenadas. La sobrecarga de mantener una búsqueda para, si el elemento existe o no se toma el cuidado de.  Usted puede pensar en el uso de conjuntos Redis para almacenar la lista de usuarios únicos que visitaron su sitio web."</p>
+</li>
+<li>
+<p><strong>Comandos</strong></p>
+<p>Para interactuar con un <em>Hash</em> utilizaremos los comandos <a href="https://redis.io/docs/latest/commands/hset/"><code>HSET</code></a> para asignar valores, <a href="https://redis.io/docs/latest/commands/hkeys/"><code>HKEYS</code></a> para recuperar todas las claves y <a href="https://redis.io/docs/latest/commands/hvals/"><code>HVALS</code></a> para recuperar todos los valores, o <a href="https://redis.io/docs/latest/commands/hget/"><code>HGET</code></a> para recuperar una clave concreta:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span>127.0.0.1:6379&gt; HSET usuario:aitor nombre &quot;Aitor Medrano&quot; pwd &quot;123456&quot;
+</span><span class="linenos" data-linenos=" 2 "></span>OK
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span>127.0.0.1:6379&gt; HVALS usuario:aitor
+</span><span class="linenos" data-linenos=" 4 "></span>1) &quot;Aitor Medrano&quot;
+<span class="linenos" data-linenos=" 5 "></span>2) &quot;123456&quot;
+<span class="hll"><span class="linenos" data-linenos=" 6 "></span>127.0.0.1:6379&gt; HKEYS usuario:aitor
+</span><span class="linenos" data-linenos=" 7 "></span>1) &quot;nombre&quot;
+<span class="linenos" data-linenos=" 8 "></span>2) &quot;pwd&quot;
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span>127.0.0.1:6379&gt; HGET usuario:aitor nombre
+</span><span class="linenos" data-linenos="10 "></span>&quot;Aitor Medrano&quot;
+</code></pre></div>
+<p>Otros comandos más específicos son <a href="https://redis.io/docs/latest/commands/hdel/"><code>HDEL</code></a> para elimina campos, <a href="https://redis.io/docs/latest/commands/hincrby/"><code>HINCRBY</code></a> para incrementar un campo cierta cantidad, <a href="https://redis.io/docs/latest/commands/hlen/"><code>HLEN</code></a> para obtener la cantidad de campos, <a href="https://redis.io/docs/latest/commands/hgetall/"><code>HGETALL</code></a> para recuperar todas las claves y valores y <a href="https://redis.io/docs/latest/commands/hsetnx/"><code>HSETNX</code></a> para asignar una valor sólo si la clave no existe (ya que si existe, mediante <code>HSET</code> siempre la sustituye).</p>
+</li>
+</ul>
+</div>
+<h4 id="conjuntos-ordenados">Conjuntos ordenados<a class="headerlink" href="#conjuntos-ordenados" title="Permanent link">&para;</a></h4>
+<p>Como conjunto, el conjunto ordenado también es una colección de cadenas únicas. A diferencia de un conjunto normal, los valores de un conjunto ordenado están ordenados. ¿Cómo se realiza la ordenación?</p>
+<figure style="align: center;">
+    <img src="images/12redis-set.jpg" alt="Sets ordenados en Redis" width="400px">
+    <figcaption>Sets ordenados en Redis</figcaption>
+</figure>
+
+<p>La ordenación se basa en las puntuaciones y el orden léxico (orden alfabético) de las cadenas. Así, cada cadena es única, aunque cada puntuación puede ser igual.  ¿Cómo se realiza la puntuación de estos valores?  <em>Redis</em> no se encarga de dar una puntuación a un valor, ya que puede haber múltiples formas de asignar una puntuación. En su lugar, se proporcionan operaciones para que los usuarios puedan manipular una puntuación para un elemento del conjunto.  Así, además de la estructura de datos de lista, los conjuntos ordenados son la única estructura de datos ordenada disponible. Los conjuntos ordenados son preferibles a las listas cuando el acceso rápido a un miembro concreto es más importante que la rapidez de inserción/eliminación. La complejidad temporal de la inserción/eliminación en un conjunto ordenado es O(N), donde N es el número de elementos del conjunto.  ¿Cuándo debemos considerar el uso de <em>Redis</em> Sorted Sets?   Cuando se desea mantener el orden, se opta por un conjunto ordenado en lugar de un conjunto normal.</p>
+<p>"Para utilizar un conjunto ordenado, deberíamos definir un "sistema de puntuación".  Los conjuntos ordenados de <em>Redis</em> son ideales para casos de uso como los usuarios más comprometidos, etc.  Los casos de uso comunes que utilizan conjuntos ordenados <em>Redis</em> son los siguientes:"</p>
+<p>"Leaderboards": Almacena los nombres de los máximos goleadores ordenados por sus puntuaciones.  Listas de preguntas y respuestas: Muchas plataformas de preguntas y respuestas, como Stack Overflow, utilizan conjuntos ordenados para almacenar preguntas basadas en las mejores puntuaciones y votos."</p>
+<hr />
+<p>Otras estructuras de datos menos comunes son:</p>
+<ul>
+<li><strong><em>Bitmaps</em></strong>: estructura compacta que permite operaciones a nivel de bit.</li>
+<li><strong><em>HyperLogLog</em></strong>: estimación según valores unívocos</li>
+<li><strong><em>Stream</em></strong>: lista de strings o pares complejos de key-value</li>
+</ul>
+<p>Puesto que <em>Redis</em> es un sistema de código abierto, hay muchos desarrolladores trabajando para ampliar el sistema. Los llamados módulos o ampliaciones aumentan el rango de funciones de la base de datos, que por lo demás es bastante sencilla, y adaptan el software a ámbitos de uso específicos.</p>
+<h2 id="casos-de-uso">Casos de Uso<a class="headerlink" href="#casos-de-uso" title="Permanent link">&para;</a></h2>
+<p>Redis es de código abierto y cualquiera puede usarlo de forma gratuita. Está patrocinado principalmente por la empresa Redis Labs, que ofrece versiones en la nube, de pago, de este programa.</p>
+<p>¿Para qué ámbitos de aplicación es más adecuado?
+Un escenario estándar de Redis es el almacenamiento en caché, para lo cual también Twitter utiliza esta base de datos, por ejemplo: la propia timeline en el servicio de mensajería es posible gracias a una caché de Redis. La timeline se compone principalmente de una lista que, gracias a Redis, puede solicitarse fácilmente y ampliarse de forma incremental.</p>
+<p>No obstante, Redis también se utiliza para otros fines. Gracias a su velocidad de respuesta, por ejemplo, esta base de datos es perfecta para servicios de mensajería o chat rooms. El sistema puede mostrar las nuevas entradas en tiempo real y actualiza regularmente las listas.</p>
+<p>https://www.ionos.es/digitalguide/hosting/cuestiones-tecnicas/redis-tutorial-paso-a-paso/</p>
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li>El libro <a href="https://bpbonline.com/products/redis%C2%AE-deep-dive">Redis Deep Dive</a>, de <em>Suyog Dilip Kale</em> y <em>Chinmay Kulkarni</em>.</li>
+</ul>
+<!--
+Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
+
+-->
+
+<h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<p><a name="AC1206"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1206</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Una vez puesto en marcha <em>Redis</em>, se pide:</li>
+</ul>
+<!--
+
+1. Insertar en la BD REDIS 5 títulos de películas:
+SET pelicula1 "Maléfica"
+SET pelicula2 "Frozen"
+MSET pelicula3 "Aladdin" pelicula4 "El regreso de Mary Poppins" pelicula5 "Dumbo" 
+
+EXISTS pelicula1
+SETNX pelicula2 "Frozen II"
+-- Devolverá 0, porque existe y no lo puede establecer la clave
+
+GET pelicula2
+SETNX pelicula6 "Toy Story 4"
+-- Devolverá 1, porque no existe la clave pelicula6
+
+GET pelicula6
+
+KEYS *
+MGET pelicula1 pelicula2 pelicula7
+-- Si no existe una clave (como pelicula7) se devolverá nil
+
+KEYS pelicula[1-3]*
+KEYS pelicula[^6]
+
+DEL pelicula3
+-- Borrado de una pelicula
+EXISTS pelicula3
+-- Si no existe se borrará
+
+SET pelicula7 "Pan."
+
+TTL pelicula7
+-- Devolverá -1 porque no se ha establecido un tiempo de expiración
+EXPIRE pelicula7 15
+-- Se establecen 15 segundos de tiempo de expiración
+
+GET pelicula7
+TTL pelicula7
+-- Devolverá los segundos restantes
+-- Cuando haya expirado la clave, devolverá -2
+
+
+2. Cree una lista de cantantes L_Cantantes e inserte 5 elementos. 
+
+LPUSH cantantes "Amaral"
+LPUSH cantantes "India Martínez"
+LPUSH cantantes "Melendi"
+RPUSH cantantes "Alejandro Sanz"
+RPUSH cantantes "Freddie Mercury"
+
+-- Devolviendo el número de elementos que tiene la lista.
+
+LLEN cantantes 
+LRANGE cantantes 0 -1
+LINDEX cantantes 0
+LINDEX cantantes 1
+LINDEX cantantes 2
+LINDEX cantantes -2
+LINDEX cantantes -1
+
+RPOP cantantes
+-- Se borrará a Freddie Mercury
+LRANGE cantantes 0 -1
+-- La lista tendrá un elemento menos
+
+3. Cree un hash para 5 Libros, incluyendo su título, su ISBN, la editorial y el año.
+
+HSET libro1 "titulo" "Loba Negra"
+HMSET libro1 "isbn" "8466666494" "editorial" "Ediciones B" "año" "2019"
+
+HGETALL libro1
+
+HMSET libro2 "titulo" "Reina Roja" "isbn" "8466664416" "editorial" "Ediciones B" "año" "2018"
+
+HKEYS libro2
+
+HMSET libro3 "titulo" "La verdad del caso de Harry Quebert" "isbn" "9788466332286" "editorial" "DEBOLSILLO" "año" "2016"
+
+HGETALL libro3
+
+HMSET libro4 "titulo" "El libro de los Baltimore" "isbn" "8466343113" "editorial" "DEBOLSILLO" "año" "2018"
+
+HGETALL libro4
+
+HMSET libro5 "titulo" "La chica del tren" "isbn" "9788466332286" "editorial" "Planeta" "año" "2019"
+
+HVALS libro5
+
+4. Cree un conjunto de productos de BD NoSQL y otro de BD Relacionales.
+
+SADD BD_NoSQL "REDIS" "MongoDB" "Neo4J" "Cassandra"
+SADD BD_Relacionales "Oracle" "MySQL" "Microsoft SQL Server" "PostgreSQL"
+SMEMBERS BD_NoSQL
+SMEMBERS BD_Relacionales
+
+SUNION BD_NoSQL BD_Relacionales
+SINTER BD_NoSQL BD_Relacionales
+-- Devolverá una lista vacia, ya que no hay elementos comunes
+
+SDIFF BD_NoSQL BD_Relacionales
+SDIFF BD_Relacionales BD_NoSQL
+
+SRANDMEMBER BD_NoSQL 2
+-- 2 elementos aleatorios sin repetidos
+
+SRANDMEMBER BD_Relacionales -3 
+-- 3 elementos aleatorios con repetidos
+
+SISMEMBER BD_NoSQL "Oracle"
+-- Devuelve 0 porque "Oracle" no pertenece al conjunto de BD_NoSQL
+
+5. Cree un conjunto ordenado de productos de BD NoSQL incluyendo una puntuación de popularidad.
+
+zadd productosNoSQL 100 mongodb 75 redis 50 cassandra 40 neo4j
+-- Devuelve el número de elementos del conjunto ordenado
+zcount productosNoSQL 50 100
+-- Devuelve 3, ya que son los elementos que tienen una puntuación comprendida entre 50 y 100
+
+ZRANGE productosNoSQL 0 -1
+-- Devuelve todos los elementos (menos a más: neo4j, cassandra, redis y mongodb) 
+
+ZREVRANGE productosNoSQL 0 -1  
+-- Devuelve todos los elementos (más a menos: mongodb, redis, cassandra y neo4j) 
+
+ZREM productosNoSQL "redis"
+-- Devuelve 1 si existe el elemento y lo borra
+
+ZRANGEBYSCORE productosNoSQL 1 (50
+-- Devuelve los que tenga una puntuacion del 1 al 50 (exincluido el 50): neo4j 
+
+ZRANGEBYSCORE productosNoSQL 1 50 
+-- Devuelve los que tenga una puntuacion del 1 al 50 (extremos incluidos): neo4j y cassandra
+
+ZRANGEBYSCORE productosNoSQL -inf +inf WITHSCORES
+-- Devuelve los elementos con las puntuaciones asociadas
+-->
+
+<!--
+Contenidos básicos:
+
+Almacenamiento de la información:
+− Ficheros (planos, indexados, acceso directo, entre otros).
+− Bases de datos. Conceptos, usos y tipos según el modelo de datos, la
+ubicación de la información.
+− Sistemas gestores de base de datos: Funciones, componentes y tipos.
+− Bases de datos centralizadas y bases de datos distribuidas. Técnicas de
+fragmentación.
+− Legislación sobre protección de datos.
+− Big Data: introducción, análisis de datos, inteligencia de negocios.
+
+Bases de datos relacionales:
+− Modelo de datos.
+− Terminología del modelo relacional.
+− Tipos de datos.
+− Claves primarias.
+− Restricciones de validación.
+− Índices. Características.
+− El valor NULL.
+− Claves ajenas.
+− Vistas.
+− Usuarios. Privilegios.
+− Lenguaje de descripción de datos (DDL).
+− Lenguaje de control de datos (DCL).
+
+Realización de consultas:
+− Proyección, selección y ordenación de registros.
+− Operadores. Operadores de comparación. Operadores lógicos.
+− Consultas de resumen.
+− Agrupamiento de registros.
+− Composiciones internas.
+− Composiciones externas.
+− Subconsultas
+− Combinación de múltiples selecciones.
+− Optimización de consultas.
+
+Tratamiento de datos:
+− Inserción, borrado y modificación de registros.
+− Integridad referencial.
+− Subconsultas y composiciones en órdenes de edición.
+− Transacciones.
+− Políticas de bloqueo. Concurrencia.
+
+Programación de bases de datos:
+− Introducción. Lenguaje de programación.
+− Variables del sistema y variables de usuario.
+− Funciones.
+− Estructuras de control de flujo.
+− Procedimientos almacenados. Funciones de usuario.
+− Eventos y disparadores.
+− Excepciones.
+− Cursores.
+
+Interpretación de Diagramas Entidad/Relación:
+− El modelo E/R. Entidades y relaciones. Cardinalidades. Debilidad.
+− El modelo E/R ampliado. Generalización y especialización. Agregación.
+− Paso del diagrama E/R al modelo relacional.
+− Restricciones semánticas del modelo relacional.
+− Normalización de modelos relacionales.
+
+Uso de bases de datos no relacionales:
+− Características de las bases de datos no relacionales.
+− Tipos de bases de datos no relacionales.
+− Elementos de las bases de datos no relacionales.
+− Sistemas gestores de bases de datos no relacionales.
+− Herramientas de los sistemas gestores de bases de datos no relacionales
+para la gestión de la información almacenada.
+-->
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        <a href='https://ko-fi.com/T6T8GWT9N' title='Invítame a un café en ko-fi.com' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Invítame a un café en ko-fi.com' /></a>
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="Me encantan estos apuntes" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="Los apuntes son mejorables" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Gracias por tu tiempo. Si quieres me puedes <a href='https://ko-fi.com/T6T8GWT9N'>invitar a un café en ko-fi</a>.
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              ¡Gracias por tu colaboración! Ayúdame a mejorar los apuntes enviándome un mail a <a href="mailto:a.medrano@edu.gva.es">a.medrano@edu.gva.es</a> con tus comentarios.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      2024-2025 Aitor Medrano - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://aitor-medrano.github.io/" target="_blank" rel="noopener" title="aitor-medrano.github.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.36 14c.08-.66.14-1.32.14-2s-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2s.06-1.35.16-2h4.68c.09.65.16 1.32.16 2s-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.92 7.92 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8 8 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2s.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.7 15.7 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://bsky.app/profile/aitormedrano.bsky.social" target="_blank" rel="noopener" title="bsky.app" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M111.8 62.2C170.2 105.9 233 194.7 256 242.4c23-47.6 85.8-136.4 144.2-180.2 42.1-31.6 110.3-56 110.3 21.8 0 15.5-8.9 130.5-14.1 149.2-18.2 64.8-84.4 81.4-143.3 71.3C456 322 482.2 380 425.6 438c-107.4 110.2-154.3-27.6-166.3-62.9-1.7-4.9-2.6-7.8-3.3-7.8s-1.6 3-3.3 7.8c-12 35.3-59 173.1-166.3 62.9-56.5-58-30.4-116 72.5-133.5C100 314.6 33.8 298 15.7 233.1 10.4 214.4 1.5 99.4 1.5 83.9c0-77.8 68.2-53.4 110.3-21.8z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://x.com/aitormedrano" target="_blank" rel="noopener" title="x.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:<a.medrano@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentimiento de cookie</h4>
+<p>Esta página de apuntes utiliza cookies para reconocer las visitas, medir la efectividad de la documentación y averiguar si encuentras aquello que buscas o cómo has llegado a estos apuntes. Con tu consentimiento, me ayudas a mejorar estos materiales.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestionar cookies</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

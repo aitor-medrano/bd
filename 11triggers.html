@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
@@ -1835,16 +1835,22 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 </ul>
 <h2 id="gestion-de-errores">Gestión de Errores<a class="headerlink" href="#gestion-de-errores" title="Permanent link">&para;</a></h2>
 <p>Hasta ahora hemos supuesto que nuestros fragmentos de código nunca fallan. Pero ¿qué sucede cuando un procedimiento o un evento tienen un error? Ya sea porque no encuentra una tabla, accedemos erróneamente a un campo que no existe, etc..</p>
+<p>Una gestión de errores efectiva en <em>MariaDB</em> mejora significativamente la robustez y mantenibilidad de las aplicaciones. Para ello, <em>MariaDB</em> ofrece varios mecanismos para la gestión de errores, que incluyen señales, manejadores, códigos de error y excepciones, que permiten:</p>
+<ul>
+<li>Controlar el flujo de ejecución ante situaciones excepcionales.</li>
+<li>Proporcionar retroalimentación clara a los usuarios y desarrolladores.</li>
+<li>Mantener la integridad de los datos mediante transacciones.</li>
+<li>Implementar reglas de negocio complejas.</li>
+</ul>
 <p>A la hora de programar desde el punto de vista del gestor, por medio de procedimientos/funciones, podemos realizar dos aproximaciones diferentes a la gestión de errores (incluso una combinación de las dos):</p>
 <ul>
 <li>Capturar las excepciones que se puedan dar y mandar un mensaje al programa cliente (por medio de un parámetro de salida o un valor concreto devuelto con un <code>SELECT</code>). En este caso, el tratamiento del error lo gestionaremos dentro del procedimiento/función del gestor y programaremos la consecuencia que provoca dicho error.</li>
 <li>No capturar excepciones y que sea el programa cliente el que gestione las mismas. En este caso, incluso, podemos ser nosotros mismos los que provoquemos una excepción dentro del código del procedimiento/función (por ejemplo, el cliente envía un NIF de un artista que no existe).</li>
 </ul>
-<p>Para ello, <em>MariaDB</em> ofrece varios mecanismos para la gestión de errores, que incluyen señales, manejadores, códigos de error y excepciones.</p>
 <p>Cuando trabajamos con errores y excepciones, podemos capturar:</p>
 <ul>
 <li>Error y excepciones definidas por el SGBD (por ejemplo, <code>DUPLICATE ENTRY FOR KEY</code>, que se produce cuando intentamos añadir dos filas con la misma clave primaria).</li>
-<li>Excepciones creadas por el usuario. Por ejemplo, puedo lanzar una excepción cuando intente añadir un animal con una altura negativa.</li>
+<li>Excepciones creadas por el usuario. Por ejemplo, puedo lanzar una excepción cuando intente añadir una persona con una altura negativa.</li>
 </ul>
 <p>En cualquiera de los dos casos, cada excepción va a estar asociada a un número ya predefinido por el sistema gestor.</p>
 <div class="admonition info">
@@ -1906,7 +1912,6 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 </code></pre></div>
 <p>Los códigos de error del 1900 hacía arriba son específicos de <em>MariaDB</em>, mientras que los comprendidos entre 1000 y 1800 son los mismos que <em>MySQL</em>.</p>
 </div>
-<p>Para hacer más legible el manejo de excepciones, puedo asociar dicho número a un nombre de excepción y después controlar la captura por el nombre asignado y no por el número asociado.</p>
 <div class="admonition tip">
 <p class="admonition-title">Alias de error</p>
 <p>Algunos errores son tan comunes que existen unos alias para referenciar tanto a un código concreto como a un conjunto de ellos. Son tres:</p>
@@ -1920,10 +1925,11 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <p>Dentro de un procedimiento voy a poder capturar los errores, pero si no quiero hacerlo por su código (<code>1050</code>), estado (<code>42S01</code>) o alias genérico (<code>SQLEXCEPTION</code>), puedo hacerlo por un nombre más específico que mejore la legibilidad del código, mediante <a href="https://mariadb.com/kb/en/declare-condition/"><code>DECLARE CONDITION</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">no_existe_tabla</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">1051</span><span class="p">;</span>
 </code></pre></div>
+<p>De esta manera, después podré controlar la captura por el nombre asignado y no por el número asociado.</p>
 <p>Ya hemos visto que en la <a href="https://mariadb.com/kb/en/mariadb-error-code-reference/">lista de mensajes de error</a> aparecen dos tipos de errores asociados a cada mensaje:</p>
 <ul>
 <li><em>Error Code</em>: Son números específicos de <em>MariaDB</em>/<em>MySQL</em> que no valen para otros gestores.</li>
-<li><em>SQLState Code</em>: Cadena de 5 dígitos basado en ANSI SQL y ODBC y por lo tanto sus códigos son 'estandarizados'.</li>
+<li><em>SQLState Code</em>: Cadena de 5 dígitos basado en ANSI SQL y ODBC y por lo tanto sus códigos están <em>estandarizados</em> entre todos los SGBD.</li>
 </ul>
 <p>Emplear uno u otro va a depender de nuestro programa cliente. Si este va a ser empleado en sistemas gestores diferentes (por ejemplo, <em>Oracle</em> o <em>SQL Server</em>) podría ser mejor emplear los código de estado SQL. En caso contrario, es recomendable utilizar mejor los específicos de cada gestor.</p>
 <p>En el caso de querer dar un nombre a la excepción empleando el <em>SQLState</em> la sintaxis cambia:</p>
@@ -1933,8 +1939,7 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <p>La instrucción <a href="https://mariadb.com/kb/en/signal/"><code>SIGNAL</code></a> permite generar errores personalizados, lo que es útil para validaciones de negocio, es decir, operaciones que tienen sentido para nuestra base de datos, por ejemplo, una regla podría ser que "<em>todo empleado debe tener al menos dos habilidades</em>".</p>
 <p>Su sintaxis es :</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">SIGNAL</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;valor_sqlstate&#39;</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;mensaje_de_error&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">MYSQL_ERRNO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codigo_error</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;mensaje_de_error&#39;</span><span class="w"> </span><span class="p">[,</span><span class="n">MYSQL_ERRNO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codigo_error</span><span class="p">];</span>
 </code></pre></div>
 <p>Si retomamos el mismo ejemplo, podríamos hacer:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
@@ -1947,15 +1952,15 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <span class="linenos" data-linenos=" 8 "></span>
 <span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">cantHab</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">THEN</span>
 <span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="n">SIGNAL</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;45000&#39;</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Todo empleado debe tener mínimo 2 habilidades&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">            </span><span class="n">MYSQL_ERRNO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30001</span><span class="p">;</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">ELSE</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Usuario verificado correctamente&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
-<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos" data-linenos="16 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos="17 "></span>
-<span class="linenos" data-linenos="18 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">            </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Todo empleado debe tener mínimo 2 habilidades&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">ELSE</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Usuario verificado correctamente&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>
 </code></pre></div>
+<p>Se recomienda que los código de <code>SQLSTATE</code> asociados a reglas de negocio vayan desde 45000 a 45999.</p>
 <h3 id="manejadores-de-errores">Manejadores de errores<a class="headerlink" href="#manejadores-de-errores" title="Permanent link">&para;</a></h3>
 <p>Para añadirle un comportamiento a la gestión de errores, necesitamos declarar un manejador de errores en nuestro código, mediante <a href="https://mariadb.com/kb/en/declare-handler/"><code>DECLARE HANDLER</code></a>, sentencia que tiene la siguiente sintaxis:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">accionManejador</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">valorCondicion</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">valorCondicion</span><span class="p">]</span><span class="w"> </span><span class="p">...</span>
@@ -1976,6 +1981,7 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <li>Las acciones pueden ser <code>CONTINUE</code> para continuar con la ejecución normal, o <code>EXIT</code> que ejecutar el manejador y finaliza el bloque <code>BEGIN-END</code> actual.</li>
 <li>Al lanzarse, se puede ejecutar una única instrucción (por ejemplo <code>set x=5;</code>) o un bloque de instrucciones (entre <code>BEGIN</code> y <code>END</code>).</li>
 <li>Los manejadores se deben declarar después de las variables locales.</li>
+<li>Dentro de un manejador no podemos declarar variables. Sí que podemos usar variables de usuario (comienzan por <code>@</code>), o utilizar las variables declaradas antes de los manejadores.</li>
 </ul>
 <p>Los manejadores se asocian mediante <code>FOR</code> a códigos de error, estados de SQL (los cuales son cadenas y por tanto van entre comillas), las condiciones predefinidas a cualquier condición que hayamos creado anteriormente:</p>
 <p>Por ejemplo, podemos definir un par que manejadores del siguiente modo:</p>
@@ -2070,55 +2076,91 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 </code></pre></div>
 <p>Dicho esto, <em>MariaDB</em> maneja automáticamente las transacciones para los <em>triggers</em>. Es decir, si un <em>trigger</em> falla, la operación que lo activó (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) se deshace completamente. Si un <em>trigger</em> encuentra un error y no lo maneja internamente, el error se propaga a la consulta que activó el trigger.</p>
 <h4 id="manejadores-y-senales">Manejadores y Señales<a class="headerlink" href="#manejadores-y-senales" title="Permanent link">&para;</a></h4>
-<p>Ahora que ya sabemos definir manejadores, condiciones y señales, vamos a ver como podemos utilizarlos de manera conjunta para hacer nuestro código más robusto.</p>
-<p>Por ejemplo, podemos definir una condición, y luego usarla en un manejador. Más adelante, lanzarla mediante una señal, de manera que se propague al código que invoque el procedimiento: </p>
+<p>Ahora que ya sabemos definir manejadores, condiciones y señales, vamos a ver cómo podemos utilizarlos de manera conjunta para hacer nuestro código más robusto.</p>
+<p>Por ejemplo, podemos lanzar una señal con un mensaje más específico asociado a una regla de negocio:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
 <span class="linenos" data-linenos=" 2 "></span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploManejadoresSeñales</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">validaFondos</span><span class="p">(</span><span class="n">codOp</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="n">fondos</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">errorFondosInsuficientes</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;45000&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">mensaje</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">);</span>
 <span class="linenos" data-linenos=" 6 "></span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">errorFondosInsuficientes</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;No hay fondos suficientes para la operación&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 9 "></span>
-<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="c1">-- Bloque SQL donde recuperamos los fondos</span>
-<span class="linenos" data-linenos="11 "></span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">fondos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="n">SIGNAL</span><span class="w"> </span><span class="n">errorFondosInsuficientes</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Fondos insuficientes&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="15 "></span><span class="w">            </span><span class="n">MYSQL_ERRNO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30002</span><span class="p">;</span>
-<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos" data-linenos="17 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos="18 "></span>
-<span class="linenos" data-linenos="19 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">fondos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">mensaje</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;Fondos insuficientes (&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">fondos</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;) para la operación &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">codOp</span><span class="p">);</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="n">SIGNAL</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;45000&#39;</span>
+</span><span class="hll"><span class="linenos" data-linenos="10 "></span><span class="w">            </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="k">END</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="linenos" data-linenos="14 "></span><span class="o">//</span>
+</code></pre></div>
+<p>Y a continuación, en otro procedimiento, capturar dicha señal y mostrar el mensaje recibido. Para ello, usaremos <a href="https://mariadb.com/kb/en/get-diagnostics/"><code>GET DIAGNOSTICS</code></a> indicando que queremos recuperar la primera condición, y de ella, su mensaje de error:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">gestionaFondos</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;45000&#39;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="c1">-- Recuperamos el mensaje del error</span>
+<span class="hll"><span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="k">GET</span><span class="w"> </span><span class="k">DIAGNOSTICS</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">@</span><span class="n">error_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="c1">-- Lo mostramos por pantalla con un mensaje personalizado </span>
+<span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Error en la gestión de Fondos&#39;</span><span class="w"> </span><span class="k">as</span><span class="w">  </span><span class="n">mensaje_padre</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">error_msg</span><span class="w">  </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje_senyal</span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">call</span><span class="w"> </span><span class="n">validaFondos</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">call</span><span class="w"> </span><span class="n">validaFondos</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="c1">-- +--------------------------------+--------------------------------------------------+</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="c1">-- | mensaje_padre                  | mensaje_senyal                                   |</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="c1">-- +--------------------------------+--------------------------------------------------+</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="c1">-- | Error en la gestión de Fondos  | Fondos insuficientes (-100) para la operación 2  |</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="c1">-- +--------------------------------+--------------------------------------------------+</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="c1">-- 1 row in set (0.001 sec)</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="k">call</span><span class="w"> </span><span class="n">validaFondos</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<span class="linenos" data-linenos="22 "></span><span class="k">END</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="o">//</span>
+<span class="linenos" data-linenos="25 "></span>
+<span class="linenos" data-linenos="26 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="27 "></span><span class="k">call</span><span class="w"> </span><span class="n">gestionaFondos</span><span class="p">();</span>
+</code></pre></div>
+<p>Si queremos mejorar la legibilidad, recuerda que podemos definir una condición para poner un nombre a un código de error o estado SQL:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">gestionaFondos</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">errorFondosInsuficientes</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;45000&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="n">errorFondosInsuficientes</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;No hay fondos suficientes para la operación&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">call</span><span class="w"> </span><span class="n">validaFondos</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">call</span><span class="w"> </span><span class="n">validaFondos</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">100</span><span class="p">);</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">call</span><span class="w"> </span><span class="n">validaFondos</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<span class="linenos" data-linenos="11 "></span><span class="k">END</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Propagando señales</p>
 <p>Mediante <a href="https://mariadb.com/kb/en/resignal/"><code>RESIGNAL</code></a> podemos modificar o propagar un error capturado por un manejador. Debemos tener en cuenta que sólo podemos propagar una señal dentro de un manejador:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
 <span class="linenos" data-linenos=" 2 "></span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">procesarDatos</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">idCliente</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">procesarDatos</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">_CodEmp</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="k">GET</span><span class="w"> </span><span class="k">DIAGNOSTICS</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="mi">1</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">            </span><span class="o">@</span><span class="k">sqlstate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">RETURNED_SQLSTATE</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">            </span><span class="o">@</span><span class="n">errno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MYSQL_ERRNO</span><span class="p">,</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">            </span><span class="o">@</span><span class="nb">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="p">;</span>
-<span class="linenos" data-linenos="11 "></span>
-<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="c1">-- Personalizar el mensaje de error antes de re-lanzarlo</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">nuevoMensaje</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;Error al procesar cliente &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">idCliente</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;: &#39;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="nb">text</span><span class="p">);</span>
-<span class="linenos" data-linenos="14 "></span>
-<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="n">RESIGNAL</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="o">@</span><span class="k">sqlstate</span>
-</span><span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">nuevoMensaje</span><span class="p">,</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">            </span><span class="n">MYSQL_ERRNO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">errno</span><span class="p">;</span>
-<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="c1">-- Recuperamos el mensaje de texto de la excepción capturada</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="k">GET</span><span class="w"> </span><span class="k">DIAGNOSTICS</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="mi">1</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">            </span><span class="o">@</span><span class="n">error_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="p">;</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">        </span><span class="c1">-- Personalizar el mensaje de error antes de re-lanzarlo</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">nuevoMensaje</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;Error al procesar empleado &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">_CodEmp</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;: &#39;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">error_msg</span><span class="p">);</span>
+<span class="linenos" data-linenos="13 "></span>
+<span class="hll"><span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="n">RESIGNAL</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">nuevoMensaje</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;NOEXISTE&quot;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_CodEmp</span><span class="p">;</span>
+<span class="linenos" data-linenos="18 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
 <span class="linenos" data-linenos="19 "></span>
-<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="c1">-- Código que podría generar excepciones</span>
-<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="c1">-- ...</span>
-<span class="linenos" data-linenos="22 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos="23 "></span>
-<span class="linenos" data-linenos="24 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="20 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="k">call</span><span class="w"> </span><span class="n">procesarDatos</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">-- ERROR 1406 (22001): Error al procesar empleado 5: Data too long for column &#39;CodDep&#39; at row 1</span>
 </code></pre></div>
 <p>Nos plantearemos propagar una señal cuando:</p>
 <ul>
@@ -2168,6 +2210,28 @@ TODO: gestión de errores en eventos y triggers
 <span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Transacción completada con éxito&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
 <span class="linenos" data-linenos="18 "></span><span class="k">END</span>
 </code></pre></div>
+<p>Veamos un ejemplo sobre nuestra base de datos de <code>empresa</code>. Supongamos que queremos dar de alta a la vez a un empleado y a su hijo. Al insertar un empleado, se le generará automáticamente un código de empleado, el cual recuperaremos y lo usaremos a la hora de crear su primer hijo. Para recuperar el valor de un campo autoincrementable usaremos la función <a href="https://mariadb.com/kb/en/last_insert_id/"><code>LAST_INSERT_ID()</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">insertEmpleadoHijo</span><span class="p">(</span><span class="n">_NomEmp</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span><span class="w"> </span><span class="n">_FecNaEmp</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span><span class="w"> </span><span class="n">_NifEmp</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">_SalEmp</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">_CodDep</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">_NomHi</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span><span class="w"> </span><span class="n">_FecNaHi</span><span class="w"> </span><span class="nb">DATE</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">newCodEmp</span><span class="w"> </span><span class="nb">INT</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">BEGIN</span>
+<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="k">ROLLBACK</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="hll"><span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="p">(</span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NifEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NumHi</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="p">)</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">_CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">now</span><span class="p">(),</span><span class="w"> </span><span class="n">_FecNaEmp</span><span class="p">,</span><span class="w"> </span><span class="n">_NifEmp</span><span class="p">,</span><span class="w"> </span><span class="n">_NomEmp</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">_SalEmp</span><span class="p">);</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">newCodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LAST_INSERT_ID</span><span class="p">();</span><span class="w"> </span><span class="c1">-- Recuperamos el código generado</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">hijo</span><span class="w"> </span><span class="p">(</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NumHij</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaHi</span><span class="p">,</span><span class="w"> </span><span class="n">NomHi</span><span class="p">)</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">newCodEmo</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">_FecNaHi</span><span class="p">,</span><span class="w"> </span><span class="n">_NomHi</span><span class="p">);</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="hll"><span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="k">COMMIT</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="k">END</span><span class="p">;</span>
+</code></pre></div>
 <p>El siguiente paso es ver un ejemplo completo del uso de manejador con transacciones y señales, simulando una transferencia entre dos cuentas bancarias:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
 <span class="linenos" data-linenos=" 2 "></span>
@@ -2185,39 +2249,31 @@ TODO: gestión de errores en eventos y triggers
 <span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Transacción cancelada por error&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
 <span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">END</span><span class="p">;</span>
 <span class="linenos" data-linenos="16 "></span>
-<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-<span class="linenos" data-linenos="18 "></span>
+<span class="hll"><span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="18 "></span>
 <span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">saldo_actual</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuenta_origen</span><span class="p">;</span>
 <span class="linenos" data-linenos="20 "></span>
 <span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="c1">-- Verificamos si hay fondos suficientes</span>
 <span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">saldo_actual</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">monto</span><span class="w"> </span><span class="k">THEN</span>
 <span class="linenos" data-linenos="23 "></span><span class="w">        </span><span class="n">SIGNAL</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;45000&#39;</span>
-<span class="linenos" data-linenos="24 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Fondos insuficientes para realizar la transferencia&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="25 "></span><span class="w">            </span><span class="n">MYSQL_ERRNO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30002</span><span class="p">;</span>
-<span class="linenos" data-linenos="26 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos" data-linenos="27 "></span>
-<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">monto</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuenta_origen</span><span class="p">;</span>
-<span class="linenos" data-linenos="29 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">monto</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuenta_destino</span><span class="p">;</span>
-<span class="linenos" data-linenos="30 "></span>
-<span class="linenos" data-linenos="31 "></span><span class="w">    </span><span class="k">COMMIT</span><span class="p">;</span>
-<span class="linenos" data-linenos="32 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Transferencia realizada con éxito&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
-<span class="linenos" data-linenos="33 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos="34 "></span>
-<span class="linenos" data-linenos="35 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">            </span><span class="k">SET</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Fondos insuficientes para realizar la transferencia&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="26 "></span>
+<span class="linenos" data-linenos="27 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">monto</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuenta_origen</span><span class="p">;</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">monto</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cuenta_destino</span><span class="p">;</span>
+<span class="linenos" data-linenos="29 "></span>
+<span class="hll"><span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="k">COMMIT</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="31 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Transferencia realizada con éxito&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">resultado</span><span class="p">;</span>
+<span class="linenos" data-linenos="32 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos="33 "></span>
+<span class="linenos" data-linenos="34 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
 <h3 id="recomendaciones">Recomendaciones<a class="headerlink" href="#recomendaciones" title="Permanent link">&para;</a></h3>
 <p>Algunas consideraciones y consejos que debemos tener en mente a la hora de diseñar procedimiento y gestionar los errores son:</p>
-<ol start="2">
+<ul>
+<li>Categorizar errores: Establece diferentes manejadores según la categoría del error, ya sean errores de datos (duplicados, restricciones), errores de sintaxis o permisos o errores de lógica de negocio.</li>
 <li>
-<p><strong>Categorizar errores</strong>: Establece diferentes manejadores según la categoría del error:
-   - Errores de datos (duplicados, restricciones)
-   - Errores de sintaxis o permisos
-   - Errores de lógica de negocio</p>
-</li>
-<li>
-<p><strong>Registrar errores</strong>: Implementa un sistema de logging para registrar errores importantes.</p>
-</li>
-</ol>
+<p>Registrar los errores en un sistema de <em>logging</em> para registrar los errores importantes:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">error_log</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">fecha</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
@@ -2226,23 +2282,20 @@ TODO: gestión de errores en eventos y triggers
 <span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">mensaje</span><span class="w"> </span><span class="nb">TEXT</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="p">);</span>
 <span class="linenos" data-linenos=" 8 "></span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- Ejemplo de uso en un manejador</span>
-<span class="linenos" data-linenos="10 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
-<span class="linenos" data-linenos="11 "></span><span class="k">BEGIN</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">GET</span><span class="w"> </span><span class="k">DIAGNOSTICS</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="mi">1</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="o">@</span><span class="n">errno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MYSQL_ERRNO</span><span class="p">,</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="o">@</span><span class="nb">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="p">;</span>
-<span class="linenos" data-linenos="15 "></span>
-<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">error_log</span><span class="w"> </span><span class="p">(</span><span class="n">procedimiento</span><span class="p">,</span><span class="w"> </span><span class="n">codigo_error</span><span class="p">,</span><span class="w"> </span><span class="n">mensaje</span><span class="p">)</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;nombre_procedimiento&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">errno</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="nb">text</span><span class="p">);</span>
-<span class="linenos" data-linenos="18 "></span>
-<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="c1">-- Informar al usuario</span>
-<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Ha ocurrido un error. Contacte al administrador.&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
-<span class="linenos" data-linenos="21 "></span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
+<span class="linenos" data-linenos="10 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">GET</span><span class="w"> </span><span class="k">DIAGNOSTICS</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="mi">1</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="o">@</span><span class="n">errno</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MYSQL_ERRNO</span><span class="p">,</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="o">@</span><span class="nb">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">error_log</span><span class="w"> </span><span class="p">(</span><span class="n">procedimiento</span><span class="p">,</span><span class="w"> </span><span class="n">codigo_error</span><span class="p">,</span><span class="w"> </span><span class="n">mensaje</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;nombre_procedimiento&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">errno</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="nb">text</span><span class="p">);</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Ha ocurrido un error. Contacte al administrador.&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
+<span class="linenos" data-linenos="18 "></span><span class="k">END</span><span class="p">;</span>
 </code></pre></div>
-<ol start="4">
-<li><strong>Errores específicos antes que generales</strong>: Declara primero los manejadores para errores específicos y luego los generales.</li>
-</ol>
+</li>
+<li>
+<p>Cuando definimos varios gestores de error, primero declararem los manejadores para errores específicos y luego los generales.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Manejador específico</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">1062</span><span class="w"> </span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Error: Entrada duplicada&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
@@ -2251,26 +2304,13 @@ TODO: gestión de errores en eventos y triggers
 <span class="linenos" data-linenos="6 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
 <span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Error SQL general&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
 </code></pre></div>
-<ol start="5">
-<li>
-<p><strong>Mensajes de error claros</strong>: Proporciona mensajes de error informativos que ayuden a diagnosticar el problema.</p>
 </li>
 <li>
-<p><strong>Usa condiciones personalizadas</strong>: Mejora la legibilidad del código utilizando nombres significativos para las condiciones.</p>
+<p>Proporciona mensajes de error claros e informativos que ayuden a diagnosticar el problema.</p>
 </li>
-<li>
-<p><strong>Validaciones preventivas</strong>: Implementa validaciones antes de realizar operaciones críticas para evitar errores.</p>
-</li>
-<li>
-<p><strong>Documentación</strong>: Documenta los posibles errores que puede generar cada procedimiento y cómo manejarlos.</p>
-</li>
-</ol>
-<p>En resumen, una gestión de errores efectiva en <em>MariaDB</em> mejora significativamente la robustez y mantenibilidad de las aplicaciones. Los manejadores, señales y condiciones permiten:</p>
-<ul>
-<li>Controlar el flujo de ejecución ante situaciones excepcionales</li>
-<li>Proporcionar retroalimentación clara a los usuarios y desarrolladores</li>
-<li>Mantener la integridad de los datos mediante transacciones</li>
-<li>Implementar reglas de negocio complejas</li>
+<li>Utilizar condiciones con nombres significativos para mejora la legibilidad del código.</li>
+<li>Realizar validaciones preventivas, es decir, antes de realizar operaciones críticas para evitar errores.</li>
+<li>Documentar los posibles errores que puede generar cada procedimiento y cómo manejarlos.</li>
 </ul>
 <h2 id="cursores">Cursores<a class="headerlink" href="#cursores" title="Permanent link">&para;</a></h2>
 <!-- https://wiki.cifprodolfoucha.es/index.php?title=BD_UD7_Cursores#Manejo_de_cursores -->
@@ -2674,13 +2714,14 @@ flowchart TD
 <p><a name="AC1107"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1107</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Sobre la base de datos <code>empresa</code>, crea una tabla que se llame <code>salarios</code> que contenga las siguientes columnas:</p>
-<ul>
-<li><code>id</code> (entero sin signo, autoincremental y clave primaria)</li>
-<li><code>fecha_hora</code>: marca de tiempo con el instante del cambio (fecha y hora)</li>
-<li><code>salario</code>: el valor del pago (real)</li>
-<li><code>codigo_empleado</code>: código del empleado al que se le ha cambiado el salario (entero).</li>
-</ul>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1107</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Sobre la base de datos <code>empresa</code>, crea una tabla que se llame <code>salarios</code> a partir del siguiente DDL:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">salarios</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">fecha</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="n">salario</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">check</span><span class="w"> </span><span class="p">(</span><span class="n">salario</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="n">codigo_empleado</span><span class="w"> </span><span class="nb">INT</span>
+<span class="linenos" data-linenos="6 "></span><span class="p">);</span>
+</code></pre></div>
 <p>Además, crea una tabla <code>log_errores</code> a partir del siguiente DDL:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">log_errores</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
@@ -2691,7 +2732,7 @@ flowchart TD
 <span class="linenos" data-linenos="7 "></span><span class="p">);</span>
 </code></pre></div>
 <p>Escribe los triggers <code>ac1107triggerSalariosEmpleadoAfterInsert</code> y <code>ac1107triggerSalariosEmpleadoAfterUpdate</code> que nos permita llevar un control de las modificaciones en los salarios de los empleados. Los disparadores se ejecutarán después de cada inserción o modificación, insertando un registro en la tabla <code>salarios</code>.</p>
-<p>Los <em>triggers</em> deben realizar una gestión correcta de los errores de manera que, si sucede algo inesperado, se inserte un registro en <code>log_errores</code>. La columna <code>origen</code> almacenará el nombre del <em>trigger</em> que ha lanzado el error. </p>
+<p>Los <em>triggers</em> deben realizar una gestión correcta de los errores de manera que, si sucede algo inesperado, se inserte un registro en <code>log_errores</code>. Para recuperar el código y el mensaje de error debes ejecutar <code>GET DIAGNOSTICS CONDITION 1 @error_msg = MESSAGE_TEXT, @error_code = MYSQL_ERRNO;</code>. Finalmente, la columna <code>origen</code> almacenará el nombre del <em>trigger</em> que ha lanzado el error. </p>
 <p>Además del código de los disparadores, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente, mostrando el contenido de las tablas antes y después de las operaciones.</p>
 </li>
 </ul>
@@ -2750,7 +2791,7 @@ flowchart TD
 <p>Crea la función <code>ap1110funcCompruebaHijo</code> que valide que la cantidad de hijos almacenados en la tabla <code>hijo</code> concuerda con el atributo <code>NumHi</code> de la tabla <code>empleado</code>. En caso contrario, debe lanzar una señal con un mensaje adecuado.</p>
 </li>
 <li>
-<p>Crea el procedimiento almacenado <code>ap1110procInsertaHijo</code>, que haciendo un buen uso de las transacciones y la gestiones de errores, y tras validar que los datos que existen previamente, inserte los datos tanto en la tabla <code>hijo</code> como modifique la columna <code>NumHi</code> de la tabla <code>empleado</code>. En caso de error, debe lanzar una señal con un mensaje adecuado (o relanzar la existente, si fuera el caso).</p>
+<p>Crea el procedimiento almacenado <code>ap1110procInsertaHijo</code>, que haciendo un buen uso de las transacciones y la gestiones de errores, y tras validar que los datos que existen previamente, tanto inserte los datos en la tabla <code>hijo</code> como modifique la columna <code>NumHi</code> de la tabla <code>empleado</code>. En caso de error, debe lanzar una señal con un mensaje adecuado (o relanzar la existente, si fuera el caso).</p>
 </li>
 </ol>
 <p>Además del código de los programas, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente, mostrando el contenido de las tablas antes y después de las operaciones.</p>
@@ -2777,7 +2818,7 @@ flowchart TD
 <ol>
 <li>Crea la tabla <code>empleado_plus</code> con los mismos datos que la tabla <code>empleado</code> (mediante <code>CREATE TABLE .... AS SELECT ...</code>)</li>
 <li>Sobre la nueva tabla <code>empleado_plus</code>, añade la columna <code>HijMayor</code> que permita almacenar el nombre del hijo mayor de cada empleado. Para ello, crea el procedimiento almacenado <code>ac1112procHijos</code>, y mediante un cursor, sobre los hijos mayores de cada empleado, modifique el campo del empleado y almacene su nombre.</li>
-<li>Sobre la nueva tabla <code>empleado_plus</code>, añade la columna <code>DescHabs</code> que permita almacenar los codigos de las habilidades de dicho empleado separadas por comas. Es decir, para el empleado <code>1</code> deberá almacenar <code>GEREN,RELPU</code>. Si no tuviera ninguna habilidad, debe dejar el campo nulo. Crea el procedimiento almacenado <code>ac1112procHabilidadesEmpleados</code> que complete dicha columna. </li>
+<li>Sobre la nueva tabla <code>empleado_plus</code>, añade la columna <code>DescHabs</code> que permita almacenar los códigos de las habilidades de dicho empleado separadas por comas. Es decir, para el empleado <code>1</code> deberá almacenar <code>GEREN,RELPU</code>. Si no tuviera ninguna habilidad, debe dejar el campo nulo. Crea el procedimiento almacenado <code>ac1112procHabilidadesEmpleados</code> que complete dicha columna. </li>
 </ol>
 </li>
 </ul>
@@ -2790,12 +2831,25 @@ Cursores sobre la actividad AC1010
         Por ejemplo, al ejecutar el procedimiento devolverá una cadena similar a `amedra8@bd.s8a.es;pcasas10@bd.s8a.es;mvidal9@prg.s8a.es`.
 -->
 
-<p><a name="AC1112"></a></p>
+<p><a name="AC1113"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1112</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr>, <abbr title="Se han utilizado cursores.">CE5i</abbr>, <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Haciendo uso de la base de datos <code>retail</code>, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1113</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr>, <abbr title="Se han utilizado cursores.">CE5i</abbr>, <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Haciendo uso de la base de datos <code>retail</code>, se pide:</p>
 <ul>
-<li>TODO: Terminar</li>
+<li>Crea un procedimiento llamado <code>ac1113insertaCategoriaDepartamento</code> que inserte una categoría y su departamento dentro de una transacción a partir del nombre de una categoría y de su departamento. Dentro del procedimiento hemos de comprobar previamente si existen tanto la categoría como el departamento, y actuar en consecuencia.</li>
+<li>
+<p>Crea un procedimiento llamado <code>ac1113desnormalizarCategorias</code> que, utilizando cursores, rellene la tabla <code>categorias_desnorm</code> con la información proveniente de las tablas de categorías y departamentos. Podemos crear la tabla <code>categorias_desnorm</code> mediante el siguiente DDL:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">categorias_desnorm</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">category_id</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">category_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">45</span><span class="p">),</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="n">department_id</span><span class="w"> </span><span class="nb">INT</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="n">department_name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+<span class="linenos" data-linenos="6 "></span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Crea el evento <code>ac1113evento</code> que se ejecute cada día a las 12 de la noche, que elimine la tabla desnormalizada, la vuelva a crear y la rellene con los datos.</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -2827,7 +2881,7 @@ Cursores sobre la actividad AC1010
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> <strong>PO1115</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // todos los CE // 60p) La prueba objetiva, que cubre todo el <abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> asociada a la programación mediante SQL, consiste en:</p>
 <ul>
-<li>(10p) Crer y gestionar disparadores (<em>triggers</em>)</li>
+<li>(10p) Crear y gestionar disparadores (<em>triggers</em>)</li>
 <li>(10p) Crear y gestionar eventos</li>
 <li>(20p) Desarrollar procedimientos almacenados y/o funciones que hagan uso de transacciones, realizando una buena gestión del manejo de errores mediante señales y/o excepciones.</li>
 <li>(20p) Desarrollar procedimientos almacenados y/o funciones que hagan uso de cursores, realizando una buena gestión del manejo de errores mediante señales y/o excepciones.</li>
@@ -3154,7 +3208,7 @@ para la gestión de la información almacenada.
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>
