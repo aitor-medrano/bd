@@ -1569,7 +1569,7 @@ config:
     look: handDrawn
 ---
 flowchart LR
-    A([Estado inicial]) --&gt; B[BEGIN]
+    A([Estado inicial]) --&gt; B[START TRANSACTION]
     B --&gt; C{{Sentencia SQL 1}}
     C --&gt; D{{Sentencia SQL 2}}
     D --&gt; E[COMMIT]
@@ -1582,7 +1582,7 @@ config:
     look: handDrawn
 ---
 flowchart LR
-    A([Estado inicial]) --&gt; B[BEGIN]
+    A([Estado inicial]) --&gt; B[START TRANSACTION]
     B --&gt; C{{Sentencia SQL 1}}
     C --&gt; D{{Sentencia SQL 2}}
     D --&gt; E[ROLLBACK]

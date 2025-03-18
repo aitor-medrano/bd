@@ -858,6 +858,57 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Actividades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eventos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triggers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-de-errores_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestión de errores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cursores_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cursores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proyecto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1239,6 +1290,57 @@
       Actividades
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Actividades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#eventos_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eventos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggers_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triggers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-de-errores_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gestión de errores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cursores_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cursores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proyecto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2323,7 +2425,14 @@ TODO: gestión de errores en eventos y triggers
 <li><em>Nonscrollable</em>: sólo pueden ser recorridos en una dirección y no podemos saltarnos filas.</li>
 </ul>
 <h3 id="declaracion">Declaración<a class="headerlink" href="#declaracion" title="Permanent link">&para;</a></h3>
-<p>El primer paso es declarar el cursor mediante <a href="https://mariadb.com/kb/en/declare-cursor/"><code>DECLARE CURSOR</code></a>, del mismo modo que antes declarábamos una variable, crearemos nuestro cursor mediante una consulta <code>SELECT</code>.</p>
+<p>El primer paso es declarar el cursor mediante <a href="https://mariadb.com/kb/en/declare-cursor/"><code>DECLARE CURSOR</code></a>, del mismo modo que antes declarábamos una variable, crearemos nuestro cursor mediante una consulta <code>SELECT</code> con la siguiente sintaxis:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">nombreCursor</span><span class="w"> </span><span class="p">[(</span><span class="n">parámetros</span><span class="p">)]</span><span class="w"> </span><span class="k">CURSOR</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">FOR</span><span class="w"> </span><span class="n">consultaSQL</span>
+<span class="linenos" data-linenos="3 "></span>
+<span class="linenos" data-linenos="4 "></span><span class="n">parámetros</span><span class="p">:</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">   </span><span class="n">nombreParametro</span><span class="w"> </span><span class="n">tipo</span>
+</code></pre></div>
+<p>Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">curClientes</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">FOR</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="k">select</span><span class="w"> </span><span class="n">codigo_cliente</span><span class="p">,</span><span class="w"> </span><span class="n">nombre_cliente</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">cliente</span>
 </code></pre></div>
@@ -2338,9 +2447,9 @@ config:
   look: handDrawn
 ---
 flowchart TD
-  A([DECLARE CURSOR]) --&gt; B[OPEN CURSOR]
+  A([DECLARE nombreCursor CURSOR FOR sql]) --&gt; B[OPEN nombreCursor]
   B --&gt; C{WHILE}
-  C -- Siguiente registro     --&gt; D[FETCH]
+  C -- Siguiente registro     --&gt; D[FETCH nombreCursor INTO variables]
   D --&gt; E{{Operaciones con los datos}}
   E --&gt; C
   C -- No quedan registros ----&gt; F[CLOSE]</code></pre>
@@ -2572,6 +2681,7 @@ flowchart TD
 </div>
 </div>
 </div>
+<h3 id="eventos_1">Eventos<a class="headerlink" href="#eventos_1" title="Permanent link">&para;</a></h3>
 <p><a name="AC1101"></a></p>
 <!-- Eventos -->
 <ul>
@@ -2617,6 +2727,7 @@ flowchart TD
 </ol>
 </li>
 </ul>
+<h3 id="triggers_1">Triggers<a class="headerlink" href="#triggers_1" title="Permanent link">&para;</a></h3>
 <p><a name="AC1103"></a></p>
 <!-- Triggers -->
 
@@ -2680,6 +2791,7 @@ flowchart TD
 </ol>
 </li>
 </ul>
+<h3 id="gestion-de-errores_1">Gestión de errores<a class="headerlink" href="#gestion-de-errores_1" title="Permanent link">&para;</a></h3>
 <p><a name="AC1106"></a></p>
 <!-- Gestión de errores -->
 
@@ -2797,6 +2909,7 @@ flowchart TD
 <p>Además del código de los programas, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente, mostrando el contenido de las tablas antes y después de las operaciones.</p>
 </li>
 </ul>
+<h3 id="cursores_1">Cursores<a class="headerlink" href="#cursores_1" title="Permanent link">&para;</a></h3>
 <p><a name="AC1111"></a></p>
 <!-- Cursores -->
 
@@ -2853,6 +2966,7 @@ Cursores sobre la actividad AC1010
 </ul>
 </li>
 </ul>
+<h3 id="proyecto">Proyecto<a class="headerlink" href="#proyecto" title="Permanent link">&para;</a></h3>
 <p><a name="PY1114"></a></p>
 <ul>
 <li>

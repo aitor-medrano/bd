@@ -1331,7 +1331,12 @@
 <h3 id="definiendo">Definiendo<a class="headerlink" href="#definiendo" title="Permanent link">&para;</a></h3>
 <p>Para definir un procedimiento realizaremos un <a href="https://mariadb.com/kb/en/create-procedure/"><code>CREATE PROCEDURE</code></a> con la siguiente sintaxis:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="p">[</span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="p">]</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="p">(</span><span class="n">parámetros</span><span class="p">)</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">bloque</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="c1">-- cuerpo</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">END</span>
+<span class="linenos" data-linenos="5 "></span>
+<span class="linenos" data-linenos="6 "></span><span class="n">parámetros</span><span class="p">:</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">   </span><span class="p">[</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">OUT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">INOUT</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="n">nombreParametro</span><span class="w"> </span><span class="n">tipo</span>
 </code></pre></div>
 <p>Y sustituyendo <code>parámetros</code> por un listado de parámetros, indicando si son de entrada, salida o entrada/salida, así como su nombre y tipo mediante <code>[ IN | OUT | INOUT ] nombreParametro tipo</code>.</p>
 <p>Los <a href="https://mariadb.com/kb/en/data-types/">tipos</a> de los parámetros y las variables declaradas en los bloques son los mismos empleados en el DDL, por ejemplo, <code>INT</code>, <code>VARCHAR</code>, etc...</p>
