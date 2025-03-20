@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -2315,13 +2315,17 @@ TODO: gestión de errores en eventos y triggers
 <h2 id="cursores">Cursores<a class="headerlink" href="#cursores" title="Permanent link">&para;</a></h2>
 <!-- https://wiki.cifprodolfoucha.es/index.php?title=BD_UD7_Cursores#Manejo_de_cursores -->
 
-<p>Los <a href="https://mariadb.com/kb/en/cursor-overview/">cursores</a> nos permite evaluar un conjunto de datos fila a fila. Dicho con otras palabras, un cursor almacena un conjunto de filas de una tabla en una estructura de datos que podemos ir recorriendo de forma secuencial.</p>
+<p>Los <a href="https://mariadb.com/kb/en/cursor-overview/">cursores</a> nos permiten evaluar un conjunto de datos fila a fila. Dicho con otras palabras, un cursor almacena un conjunto de filas de una tabla en una estructura de datos que podemos ir recorriendo de forma secuencial.</p>
 <p>Al utilizarse sobre un conjunto de datos, sólo se pueden utilizar con sentencias <code>SELECT</code>.</p>
 <p>Propiedades:</p>
 <ul>
 <li>Sólo lectura: No permiten actualizar los datos.</li>
 <li><em>Nonscrollable</em>: sólo pueden ser recorridos en una dirección y no podemos saltarnos filas.</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Cursores en otros lenguajes</p>
+<p>En el módulo de <em>Programación</em> accederás a una base de datos desde Java, en principio, utilizando JDBC. Al realizar una consulta, recuperarás un <em>ResultSet</em> que no es más que un cursor al resultado de la sentencia SQL ejecutada. De ahí que el concepto que vamos a trabajar en este apartado sea extrapolable a otros módulos profesionales. </p>
+</div>
 <h3 id="declaracion">Declaración<a class="headerlink" href="#declaracion" title="Permanent link">&para;</a></h3>
 <p>El primer paso es declarar el cursor mediante <a href="https://mariadb.com/kb/en/declare-cursor/"><code>DECLARE CURSOR</code></a>, del mismo modo que antes declarábamos una variable, crearemos nuestro cursor mediante una consulta <code>SELECT</code> con la siguiente sintaxis:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">nombreCursor</span><span class="w"> </span><span class="p">[(</span><span class="n">parámetros</span><span class="p">)]</span><span class="w"> </span><span class="k">CURSOR</span>
@@ -3215,7 +3219,7 @@ para la gestión de la información almacenada.
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
       
     
   </body>
