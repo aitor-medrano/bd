@@ -839,15 +839,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#esquema-dinamicos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Esquema dinámicos
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1195,15 +1186,6 @@
   <a href="#caracteristicas" class="md-nav__link">
     <span class="md-ellipsis">
       Características
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#esquema-dinamicos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Esquema dinámicos
     </span>
   </a>
   
@@ -1629,47 +1611,32 @@
 </figure>
 
 <h3 id="caracteristicas">Características<a class="headerlink" href="#caracteristicas" title="Permanent link">&para;</a></h3>
-<!-- TODO: Revisar -->
-
-<p>Si nos centramos en sus beneficios y los comparamos con las base de datos relacionales, las bases de datos NoSQL son más escalables, ofrecen un rendimiento mayor y sus modelos de datos resuelven varios problemas que no se plantearon al definir el modelo relacional:</p>
-<ul>
-<li>Grandes volúmenes de datos estructurados, semi-estructurados y sin estructurar. Casi todas las implementaciones NoSQL ofrecen algún tipo de representación para datos sin esquema, lo que permite comenzar con una estructura y con el paso del tiempo, añadir nuevos campos, ya sean sencillos o anidados a datos ya existentes.</li>
-<li><em>Sprints</em> ágiles, iteraciones rápidas y frecuentes <em>commits</em>/<em>pushes</em> de código, al emplear una sintaxis sencilla para la realización de consultas y la posibilidad de tener un modelo que vaya creciendo al mismo ritmo que el desarrollo.</li>
-<li>Arquitectura eficiente y escalable diseñada para trabajar con clusters en vez de una arquitectura monolítica y costosa. Las soluciones NoSQL soportan la escalabilidad de un modo transparente para el desarrollador y ofrecen una solución cloud.</li>
-</ul>
-<p>Una característica adicional que comparten los sistemas NoSQL es que ofrecen un mecanismo de caché de datos integrado (en los sistemas relacionales se pueden configurar de manera externa), pudiendo configurar los sistemas para que los datos se mantengan en memoria y se persistan de manera periódica. El uso de una caché conlleva que la consistencia de los datos no sea completa y podamos tener una consistencia eventual.</p>
-<!--
-
-Las bases de datos no relacionales (NoSQL) presentan características que las diferencian de las bases de datos relacionales. Sus principales características son:
-
-1. **Flexibilidad en el esquema**: No requieren un esquema fijo, lo que permite almacenar datos con estructuras variadas y evolucionar sin grandes modificaciones.
-
-2. **Escalabilidad horizontal**: Diseñadas para distribuir datos en múltiples servidores (sharding), facilitando el crecimiento sin comprometer el rendimiento.
-
-3. **Modelos de datos diversos**: Pueden organizarse en diferentes tipos de almacenamiento, como:
-   - **Clave-valor** (ej. Redis)
-   - **Documentos** (ej. MongoDB)
-   - **Columnas anchas** (ej. Cassandra)
-   - **Grafos** (ej. Neo4j)
-
-4. **Alta disponibilidad y tolerancia a fallos**: Usan replicación y distribución de datos para garantizar que el sistema siga funcionando ante fallos de hardware o red.
-
-5. **Optimización para lectura/escritura masiva**: Diseñadas para manejar grandes volúmenes de datos y consultas rápidas, especialmente en entornos de Big Data.
-
-6. **Consistencia eventual**: En lugar de garantizar consistencia inmediata (ACID), muchas priorizan la disponibilidad y la partición tolerancia (según el teorema CAP), permitiendo que los datos se sincronicen con el tiempo.
-
-7. **Almacenamiento distribuido**: Pueden operar en entornos de computación en la nube y escalar dinámicamente según la demanda.
-
-Estas características hacen que las bases de datos NoSQL sean ideales para aplicaciones modernas como redes sociales, IoT, análisis de datos y sistemas en tiempo real.
--->
-
-<h3 id="esquema-dinamicos">Esquema dinámicos<a class="headerlink" href="#esquema-dinamicos" title="Permanent link">&para;</a></h3>
-<p>Las bases de datos relacionales requieren definir los esquemas antes de añadir los datos. Una base de datos SQL necesita saber de antemano los datos que vamos a almacenar; por ejemplo, si nos centramos en los datos de un cliente, serían el nombre, apellidos, número de teléfono, etc…​</p>
-<p>Esto casa bastante mal con los enfoques de desarrollo ágil, ya que cada vez que añadimos nuevas funcionalidades, el esquema de la base de datos suele cambiar. De modo que si a mitad de desarrollo decidimos almacenar los productos favoritos de un cliente del cual guardábamos su dirección y números de teléfono, tendríamos que añadir una nueva columna a la base de datos y migrar la base de datos entera a un nuevo esquema.</p>
-<p>Si la base de datos es grande, conlleva un proceso lento que implica parar el sistema durante un tiempo considerable. Si frecuentemente cambiamos los datos que la aplicación almacena (al usar un desarrollo iterativo), también tendremos períodos frecuentes de inactividad del sistema, a no ser que utilicemos un <a href="https://medium.com/devopslatam/introducci%C3%B3n-a-los-despliegues-azul-verde-bb4055811279">despliegue azul/verde</a> y tengamos redundancia de nuestro sistema de almacenamiento. Así pues, no hay un modo efectivo mediante una base de datos relacional de almacenar los datos que están desestructurados o que no se conocen de antemano.</p>
-<p>Las bases de datos NoSQL se construyen para permitir la inserción de datos sin un esquema predefinido. Esto facilita la modificación de la aplicación en tiempo real, sin preocuparse por interrupciones de servicio. Aunque no tengamos un esquema al guardar la información, sí que podemos definir esquemas de lectura (<em>schema-on-read</em>) para comprobar que la información almacenada tiene el formato que espera cargar cada aplicación.</p>
-<p>De este modo se consigue un desarrollo más rápido, integración de código más robusto y menos tiempo empleado en la administración de la base de datos.</p>
-<p>Cabe destacar que los modelos de datos NoSQL priman la redundancia de los datos, denormalizando los datos para evitar el uso de <em>joins</em>. Por ello, es importante que la definición de los esquemas sea flexible para poder añadir campos conforme la aplicación evolucione.</p>
+<p>Las bases de datos no relacionales (<em>NoSQL</em>) presentan características que las diferencian de las bases de datos relacionales. Sus principales características son:</p>
+<ol>
+<li>
+<p>Flexibilidad en el esquema: No requieren un esquema fijo, lo que permite almacenar datos con estructuras variadas y evolucionar sin grandes modificaciones. Es decir, son capaces de trabajar 
+con datos estructurados, semi-estructurados y sin estructurar. Casi todas las implementaciones NoSQL ofrecen algún tipo de representación para datos sin esquema, lo que permite comenzar con una estructura y con el paso del tiempo, añadir nuevos campos, ya sean sencillos o anidados a datos ya existentes.</p>
+</li>
+<li>
+<p>Escalabilidad horizontal: Están diseñadas para distribuir datos en múltiples servidores mediante técnicas como el <em>sharding</em> o particionado, lo que permite aumentar la capacidad del sistema simplemente añadiendo más nodos. A diferencia de las bases de datos relacionales, que suelen escalar verticalmente (aumentando la capacidad de un solo servidor), las bases de datos NoSQL pueden crecer de forma distribuida sin afectar el rendimiento, de un modo transparente para el desarrollador.</p>
+</li>
+<li>
+<p>Modelos de datos diversos: Pueden organizarse en diferentes tipos de almacenamiento, que resuelven varios problemas que no se plantearon al definir el modelo relacional, como los modelos vlave-valor (<em>Redis</em>), documental (<em>MongoDB</em>), columnar (<em>Cassandra</em>) o basada en grafos (<em>Neo4j</em>).</p>
+</li>
+<li>
+<p>Alta disponibilidad y tolerancia a fallos: Utilizan replicación y distribución de datos en múltiples nodos para garantizar que el sistema continúe funcionando ante fallos de hardware o red. Algunos sistemas NoSQL implementan modelos de replicación maestro-esclavo o replicación distribuida para asegurar la continuidad del servicio.</p>
+</li>
+<li>
+<p>Optimización para lectura/escritura masiva: Estas bases de datos están diseñadas para gestionar grandes volúmenes de datos y transacciones de alta velocidad. Son ideales para aplicaciones con una carga intensa de escritura, como redes sociales, registros de sensores IoT o análisis de grandes volúmenes de datos en tiempo real.</p>
+</li>
+<li>
+<p>Consistencia eventual: En lugar de seguir el estricto modelo ACID de las bases de datos relacionales, muchas bases de datos NoSQL priorizan la disponibilidad y la tolerancia a particiones, según el teorema CAP. Esto significa que, en algunos casos, los datos pueden no estar sincronizados en todos los nodos de manera inmediata, pero eventualmente alcanzan la consistencia. Este enfoque es útil para aplicaciones distribuidas donde la latencia es más crítica que la consistencia inmediata.</p>
+</li>
+<li>
+<p>Almacenamiento distribuido: Pueden operar en entornos de computación en la nube y escalar dinámicamente según la demanda. Gracias a su arquitectura distribuida, son altamente eficientes para manejar datos en infraestructuras descentralizadas y en plataformas de servicios en la nube como AWS, Google Cloud o Azure.</p>
+</li>
+</ol>
+<p>Estas características hacen que las bases de datos NoSQL sean ideales para aplicaciones modernas como redes sociales, IoT, análisis de datos y sistemas en tiempo real.</p>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.digitalocean.com/community/tutorials/understanding-database-sharding">Understanding database sharding</a></li>
