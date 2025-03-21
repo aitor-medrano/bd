@@ -1650,6 +1650,33 @@
 <li><a href="https://www.digitalocean.com/community/tutorials/understanding-database-sharding">Understanding database sharding</a></li>
 </ul>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Bases de datos empleadas</p>
+<p>Recuerda que estas actividades se basan en las siguientes bases de datos</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">empresa</label><label for="__tabbed_1_2">retail</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>DDL y DML: <a href="resources/06bd-empresa.sql"><code>bd-empresa.sql</code></a></li>
+</ul>
+<p><figure style="align: center;">
+    <img src="images/06bd-empresa.png" width="882" title="Modelo físico de la BD empresa">
+    <figcaption>Modelo físico de la BD empresa</figcaption>
+</figure></p>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>DDL y DML: <a href="resources/06bd-retail.sql"><code>bd-retail.sql</code></a></li>
+<li>Claves ajenas: <a href="resources/06bd-retail-fk.sql"><code>bd-retail-fk.sql</code></a> </li>
+</ul>
+<p><figure style="align: center;">
+    <img src="images/06bd-retail.png" width="1088" title="Modelo físico de la BD retail">
+    <figcaption>Modelo físico de la BD retail</figcaption>
+</figure></p>
+</div>
+</div>
+</div>
+</div>
 <p><a name="AC1201"></a></p>
 <ul>
 <li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1201</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se ha reconocido la utilidad de las bases de datos distribuidas.">CE1g</abbr>, <abbr title="Se han analizado las políticas de fragmentación de la información.">CE1h</abbr> // 3p) A partir de la información relativa a las <a href="#bases-de-datos-distribuidas">Bases de datos distribuidas</a>, realiza una infografía sobre aquellos conceptos que las diferencian de las bases de datos centralizadas, destacando las políticas de fragmentación de la información.</li>
@@ -1661,6 +1688,62 @@
 <p><a name="AP1203"></a></p>
 <ul>
 <li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AP1203</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr> // 3p) Investiga en qué consiste el concepto de lago de datos (<em>data lake</em>) y qué relación tiene con un <em>data warehouse</em> y un <em>data lakehouse</em>. Finalmente, explica en qué consiste la arquitectura <em>Medallion</em>, y cómo se relaciona con los tres elementos anteriores.</li>
+</ul>
+<p><a name="AP1204"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AP1204</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr> // 3p) Una herramienta <em>open source</em> que se emplea actualmente para realizar cuadros de mandos en entornos web es <a href="https://grafana.com/">Grafana</a>. Para una primera de contacto, se pide cargar el siguiente contenedor, el cual hemos llamado <a href="resources/docker-compose-grafana.yml"><code>docker-compose-grafana.yml</code></a>), donde además de la definición de los contenedores previos, hemos configurado en el puerto 3000:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>services:
+<span class="linenos" data-linenos=" 2 "></span>mariadb:
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span>image:<span class="w"> </span>mariadb:latest
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span>container_name:<span class="w"> </span>mdb
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span>ports:
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span>-<span class="w"> </span><span class="m">3306</span>:3306
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span>environment:
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span>-<span class="w"> </span><span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>root
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span>-<span class="w"> </span><span class="nv">MYSQL_DATABASE</span><span class="o">=</span>pruebas
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span>-<span class="w"> </span><span class="nv">MYSQL_USER</span><span class="o">=</span>s8a
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span>-<span class="w"> </span><span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>s8a
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span>volumes:
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span>-<span class="w"> </span>mariabd_data:/var/lib/mysql
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span>phpmyadmin:
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span>image:<span class="w"> </span>phpmyadmin
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span>container_name:<span class="w"> </span>phpma
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span>ports:
+<span class="linenos" data-linenos="19 "></span><span class="w">    </span>-<span class="w"> </span><span class="m">8080</span>:80
+<span class="linenos" data-linenos="20 "></span><span class="w">    </span>environment:
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span>-<span class="w"> </span><span class="nv">PMA_HOST</span><span class="o">=</span>mariadb
+<span class="linenos" data-linenos="22 "></span><span class="w">    </span>depends_on:
+<span class="linenos" data-linenos="23 "></span><span class="w">    </span>-<span class="w"> </span>mariadb
+<span class="linenos" data-linenos="24 "></span>
+<span class="linenos" data-linenos="25 "></span>grafana:
+<span class="linenos" data-linenos="26 "></span><span class="w">    </span>image:<span class="w"> </span>grafana/grafana-oss
+<span class="linenos" data-linenos="27 "></span><span class="w">    </span>container_name:<span class="w"> </span>grafana
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span>ports:
+<span class="linenos" data-linenos="29 "></span><span class="w">    </span>-<span class="w"> </span><span class="s2">&quot;3000:3000&quot;</span>
+<span class="linenos" data-linenos="30 "></span><span class="w">    </span>volumes:
+<span class="linenos" data-linenos="31 "></span><span class="w">    </span>-<span class="w"> </span>grafana_data:/var/lib/grafana
+<span class="linenos" data-linenos="32 "></span>
+<span class="linenos" data-linenos="33 "></span>volumes:
+<span class="linenos" data-linenos="34 "></span>mariabd_data:
+<span class="linenos" data-linenos="35 "></span>grafana_data:
+</code></pre></div>
+<p>Una vez creado el archivo, lanzamos el contenedor mediante:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>-p<span class="w"> </span>mariadb-s8a<span class="w"> </span>-f<span class="w"> </span>docker-compose-grafana.yml<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>
+</code></pre></div>
+<p>Y ya podremos acceder a la página de login con el usuario <code>admin</code> y contraseña <code>admin</code>, donde nos pedirá cambiar la contraseña.</p>
+<p>Como primera toma de contacto con un cuadro de mandos, y utilizando la base de datos <code>retail</code>, se pide:</p>
+<ol>
+<li>Añadir una fuente de datos (<em>data source</em>) de tipo <em>MySQL</em>. Ten en cuenta que en nombre del <em>host</em> debes configurar el nombre del contenedor: <code>mdb:3306</code></li>
+<li>Accede a la opción <em>Explore</em> y realiza un par de consultas con agregaciones y comprueba que aparecen las tablas y columnas de la base de datos seleccionada.</li>
+<li>Crea un nuevo cuadro de mandos (<em>dashboard</em>) con un par de gráficos, algún KPI y una tabla con datos importantes.</li>
+</ol>
+</li>
+</ul>
+<p><a name="AC1205"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1205</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr>, <abbr title="Se han evaluado los principales tipos de bases de datos no relacionales.">CE7b</abbr> // 3p) NoSQL</li>
 </ul>
 <!--
 Poner un ejemplo de tabla con muchas filas y columnas, y que piensen en la fragmentación y la replciación...
