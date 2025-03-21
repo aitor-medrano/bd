@@ -1319,7 +1319,7 @@
 </ol>
 </div>
 <h3 id="programacion-de-aula-4h">Programación de Aula (4h)<a class="headerlink" href="#programacion-de-aula-4h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la primera del bloque de soluciones <em>NoSQL</em>, la cual se imparte a final de curso, con una duración estimada de 9 horas, repartidas en 4 horas para el bloque introductorio a NoSQL y 5 horas más para trabajar con Redis:</p>
+<p>Esta unidad es la primera del bloque de soluciones <em>NoSQL</em>, la cual se imparte a final de curso, con una duración estimada de 9 horas, repartidas en 4 horas para el bloque introductorio a <em>NoSQL</em> y 5 horas más para trabajar con <em>Redis</em>:</p>
 <table>
 <thead>
 <tr>
@@ -1358,8 +1358,8 @@
 </table>
 <h2 id="almacenamiento-de-datos">Almacenamiento de datos<a class="headerlink" href="#almacenamiento-de-datos" title="Permanent link">&para;</a></h2>
 <p>Se puede decir que estamos en la <a href="https://en.wikipedia.org/wiki/Third_platform">tercera plataforma</a> del almacenamiento de datos. La primera llegó con los primeros computadores y se materializó en las bases de datos jerárquicas y en red, así como en el almacenamiento ISAM. La segunda vino de la mano de Internet y las arquitecturas cliente-servidor, lo que dio lugar a las bases de datos relacionales.</p>
-<p>La tercera se ve motivada por el <em>Big Data</em>, los dispositivos móviles, las arquitecturas <em>cloud</em>, las redes de IoT y las tecnologías/redes sociales. Es tal el volumen de datos que se genera que aparecen nuevos paradigmas como NoSQL, NewSQL y las plataformas de <em>Big Data</em>.</p>
-<p>NoSQL aparece como una necesidad debida al creciente volumen de datos sobre usuarios, objetos y productos que las empresas tienen que almacenar, así como la frecuencia con la que se accede a los datos. Los SGDB relacionales existentes no fueron diseñados teniendo en cuenta la escalabilidad ni la flexibilidad necesaria por las frecuentes modificaciones que necesitan las aplicaciones modernas; tampoco aprovechan que el almacenamiento a día de hoy es muy barato, ni el nivel de procesamiento que alcanzan las máquinas actuales.</p>
+<p>La tercera se ve motivada por el <em>Big Data</em>, los dispositivos móviles, las arquitecturas <em>cloud</em>, las redes de IoT y las tecnologías/redes sociales. Es tal el volumen de datos que se genera que aparecen nuevos paradigmas como <em>NoSQL</em>, <em>NewSQL</em> y las plataformas de <em>Big Data</em>.</p>
+<p><em>NoSQL</em> aparece como una necesidad debida al creciente volumen de datos sobre usuarios, objetos y productos que las empresas tienen que almacenar, así como la frecuencia con la que se accede a los datos. Los SGDB relacionales existentes no fueron diseñados teniendo en cuenta la escalabilidad ni la flexibilidad necesaria por las frecuentes modificaciones que necesitan las aplicaciones modernas; tampoco aprovechan que el almacenamiento a día de hoy es muy barato, ni el nivel de procesamiento que alcanzan las máquinas actuales.</p>
 <figure style="align: center;">
     <img src="images/12nosql.png" width="800px" alt="Evolución de los sistemas de almacenamiento">
     <figcaption>Evolución de los sistemas de almacenamientoL</figcaption>
@@ -1638,6 +1638,31 @@
 <li>Arquitectura eficiente y escalable diseñada para trabajar con clusters en vez de una arquitectura monolítica y costosa. Las soluciones NoSQL soportan la escalabilidad de un modo transparente para el desarrollador y ofrecen una solución cloud.</li>
 </ul>
 <p>Una característica adicional que comparten los sistemas NoSQL es que ofrecen un mecanismo de caché de datos integrado (en los sistemas relacionales se pueden configurar de manera externa), pudiendo configurar los sistemas para que los datos se mantengan en memoria y se persistan de manera periódica. El uso de una caché conlleva que la consistencia de los datos no sea completa y podamos tener una consistencia eventual.</p>
+<!--
+
+Las bases de datos no relacionales (NoSQL) presentan características que las diferencian de las bases de datos relacionales. Sus principales características son:
+
+1. **Flexibilidad en el esquema**: No requieren un esquema fijo, lo que permite almacenar datos con estructuras variadas y evolucionar sin grandes modificaciones.
+
+2. **Escalabilidad horizontal**: Diseñadas para distribuir datos en múltiples servidores (sharding), facilitando el crecimiento sin comprometer el rendimiento.
+
+3. **Modelos de datos diversos**: Pueden organizarse en diferentes tipos de almacenamiento, como:
+   - **Clave-valor** (ej. Redis)
+   - **Documentos** (ej. MongoDB)
+   - **Columnas anchas** (ej. Cassandra)
+   - **Grafos** (ej. Neo4j)
+
+4. **Alta disponibilidad y tolerancia a fallos**: Usan replicación y distribución de datos para garantizar que el sistema siga funcionando ante fallos de hardware o red.
+
+5. **Optimización para lectura/escritura masiva**: Diseñadas para manejar grandes volúmenes de datos y consultas rápidas, especialmente en entornos de Big Data.
+
+6. **Consistencia eventual**: En lugar de garantizar consistencia inmediata (ACID), muchas priorizan la disponibilidad y la partición tolerancia (según el teorema CAP), permitiendo que los datos se sincronicen con el tiempo.
+
+7. **Almacenamiento distribuido**: Pueden operar en entornos de computación en la nube y escalar dinámicamente según la demanda.
+
+Estas características hacen que las bases de datos NoSQL sean ideales para aplicaciones modernas como redes sociales, IoT, análisis de datos y sistemas en tiempo real.
+-->
+
 <h3 id="esquema-dinamicos">Esquema dinámicos<a class="headerlink" href="#esquema-dinamicos" title="Permanent link">&para;</a></h3>
 <p>Las bases de datos relacionales requieren definir los esquemas antes de añadir los datos. Una base de datos SQL necesita saber de antemano los datos que vamos a almacenar; por ejemplo, si nos centramos en los datos de un cliente, serían el nombre, apellidos, número de teléfono, etc…​</p>
 <p>Esto casa bastante mal con los enfoques de desarrollo ágil, ya que cada vez que añadimos nuevas funcionalidades, el esquema de la base de datos suele cambiar. De modo que si a mitad de desarrollo decidimos almacenar los productos favoritos de un cliente del cual guardábamos su dirección y números de teléfono, tendríamos que añadir una nueva columna a la base de datos y migrar la base de datos entera a un nuevo esquema.</p>
