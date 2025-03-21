@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -1362,14 +1362,14 @@
 <p><em>NoSQL</em> aparece como una necesidad debida al creciente volumen de datos sobre usuarios, objetos y productos que las empresas tienen que almacenar, así como la frecuencia con la que se accede a los datos. Los SGDB relacionales existentes no fueron diseñados teniendo en cuenta la escalabilidad ni la flexibilidad necesaria por las frecuentes modificaciones que necesitan las aplicaciones modernas; tampoco aprovechan que el almacenamiento a día de hoy es muy barato, ni el nivel de procesamiento que alcanzan las máquinas actuales.</p>
 <figure style="align: center;">
     <img src="images/12nosql.png" width="800px" alt="Evolución de los sistemas de almacenamiento">
-    <figcaption>Evolución de los sistemas de almacenamientoL</figcaption>
+    <figcaption>Evolución de los sistemas de almacenamiento</figcaption>
 </figure>
 
 <p>La solución es el despliegue de las aplicaciones y sus datos en clústeres de servidores, distribuyendo el procesamiento en múltiples máquinas.</p>
 <h2 id="bases-de-datos-distribuidas">Bases de Datos Distribuidas<a class="headerlink" href="#bases-de-datos-distribuidas" title="Permanent link">&para;</a></h2>
 <p>En la primera unidad aprendimos cómo se almacena la información en sistemas gestores de datos, normalmente centralizados. Esto es, todos los datos residen en un servidor o nodo central que sigue un modelo cliente-servidor, siendo los clientes las diferentes aplicaciones y servicios que consumen los datos mediante conexiones remotas gracias a Internet.</p>
 <p>Por un lado, las bases de datos centralizadas son sencillas de gestionar y mantener, y ofrecen una alta consistencia en los datos. Por contra, al centrar todos los datos en un único nodo, este se convierte en un SPOF (<em>Single Point of Failure</em>). Además, tienen una escalabilidad y rendimiento limitados a las características <em>hardware</em> de las máquinas donde corren.</p>
-<p>Si el sistema crece y la carga de usuario supera la capacidad del servidor, es necesario migrar a un modelo más potente (y normalmente más caro) como son las bases de datos distribuidas, donde los datos se reparten entre varias máquinas, particionando los datos o fragmentándolos dependiendo de las necesidades de las aplicaciones, incrementando la complejidad del sistema para dar soporte a la sincronización de los datos y la tolerancia a fallos.</p>
+<p>Si el sistema crece y la carga de usuario supera la capacidad del servidor, es necesario migrar a un modelo más potente (y normalmente más caro) como son las bases de datos distribuidas, donde los datos se reparten entre varias máquinas, particionando los datos o fragmentándolos, dependiendo de las necesidades de las aplicaciones, incrementando la complejidad del sistema para dar soporte a la sincronización de los datos y la tolerancia a fallos.</p>
 <p>Así pues, una <strong>base de datos distribuida</strong> es aquella en la cual existen diversos servidores gestores de bases de datos conectados entre sí formando una única base de datos con un solo esquema lógico.</p>
 <p>Un <strong>sistema gestor de bases de datos distribuidas</strong> (SGBDD) se define como el sistema software que permite la gestión de bases de datos distribuidas y hace la distribución de datos transparente para los usuarios.</p>
 <figure style="align: center;">
@@ -1396,7 +1396,7 @@
     <figcaption>Particionado de los datos - digitalocean.com</figcaption>
 </figure>
 
-<p>Escalar horizontalmente una base de datos relacional entre muchas instancias de servidores se puede conseguir pero normalmente conlleva el uso de SANs (<em>Storage Area Networks</em>) y otras triquiñuelas para hacer que el <em>hardware</em> actúe como un único servidor.</p>
+<p>Escalar horizontalmente una base de datos relacional entre muchas instancias de servidores se puede conseguir, pero normalmente conlleva el uso de SANs (<em>Storage Area Networks</em>) y otras triquiñuelas para hacer que el <em>hardware</em> actúe como un único servidor.</p>
 <p>Como los sistemas SQL no ofrecen esta prestación de forma nativa, bien los productos ofrecen complementos para permitirla, como <a href="https://www.mysql.com/products/cluster/">MySQL NDB Cluster</a> o <em>PostgreSQL</em> con <a href="https://www.citusdata.com/">Citus</a>, o bien los equipos de desarrollo se las tienen que ingeniar para conseguir desplegar múltiples bases de datos relacionales en varias máquinas, pudiendo utilizar una solución que actúe como intermediario (como <a href="https://proxysql.com/">ProxySQL</a>), o bien, desarrollando una solución propia, como puede ser:</p>
 <ul>
 <li>Los datos se almacenan en cada instancia de base de datos de manera autónoma</li>
@@ -1433,7 +1433,7 @@
 <ul>
 <li>limitaciones de almacenamiento: los datos no caben en un único servidor, tanto a nivel de disco como de memoria RAM.</li>
 <li>rendimiento: al balancear la carga entre particiones las escrituras serán más rápidas que al centrarlas en un único servidor.</li>
-<li>disponibilidad: si un servidor esta ocupado, otro servidor puede devolver los datos. La carga de los servidores se reduce.</li>
+<li>disponibilidad: si un servidor está ocupado, otro servidor puede devolver los datos. La carga de los servidores se reduce.</li>
 </ul>
 <p>No particionaremos los datos cuando la cantidad sea pequeña, ya que el hecho de distribuir los datos conlleva unos costes que pueden no compensar con un volumen de datos insuficiente. Tampoco esperaremos a particionar cuando tengamos muchísimos datos, ya que el proceso de particionado puede provocar sobrecarga del sistema.</p>
 <p>La nube facilita de manera considerable este escalado, mediante proveedores como AWS o Azure los cuales ofrecen virtualmente una capacidad ilimitada bajo demanda, y despreocupándose de todas las tareas necesarias para la administración de la base de datos.</p>
@@ -1467,7 +1467,7 @@
 <ul>
 <li><strong>escalabilidad</strong>, incrementando el rendimiento al poder distribuir las consultas en diferentes nodos, y mejorar la redundancia al permitir que cada nodo tenga una copia de los datos.</li>
 <li><strong>disponibilidad</strong>, ofreciendo tolerancia a fallos de hardware o corrupción de la base de datos. Al replicar los datos vamos a poder tener una copia de la base de datos, dar soporte a un servidor de datos agregados, o tener nodos a modo de copias de seguridad que pueden tomar el control en caso de fallo.</li>
-<li><strong>aislamiento</strong> (la i en ACID - <em>isolation</em>), entendido como la propiedad que define cuando y cómo al realizar cambios en un nodo se propagan al resto de nodos. Si replicamos los datos podemos crear copias sincronizadas para separar procesos de la base de datos de producción, pudiendo ejecutar informes, analítica de datos o copias de seguridad en nodos secundarios de modo que no tenga un impacto negativo en el nodo principal, así como ofrecer un sistema sencillo para separar el entorno de producción del de preproducción.</li>
+<li><strong>aislamiento</strong> (la i en ACID - <em>isolation</em>), entendido como la propiedad que define cuándo y cómo al realizar cambios en un nodo se propagan al resto de nodos. Si replicamos los datos podemos crear copias sincronizadas para separar procesos de la base de datos de producción, pudiendo ejecutar informes, analítica de datos o copias de seguridad en nodos secundarios de modo que no tenga un impacto negativo en el nodo principal, así como ofrecer un sistema sencillo para separar el entorno de producción del de preproducción.</li>
 </ul>
 <div class="admonition caution">
 <p class="admonition-title">Replicación vs particionado</p>
@@ -1490,7 +1490,7 @@
     <figcaption>Teorema de CAP</figcaption>
 </figure>
 
-<p>El teorema CAP es útil cuando consideramos el sistema de base de datos que necesitamos, ya que nos permite decidir cual de las tres características vamos a descartar. La elección realmente se centra entre la disponibilidad y la consistencia, ya que la tolerancia a particiones es una decisión de arquitectura (sea o no distribuida).</p>
+<p>El teorema CAP es útil cuando consideramos el sistema de base de datos que necesitamos, ya que nos permite decidir cuál de las tres características vamos a descartar. La elección realmente se centra entre la disponibilidad y la consistencia, ya que la tolerancia a particiones es una decisión de arquitectura (sea o no distribuida).</p>
 <p>Aunque el teorema dicte que si en un sistema distribuido elegimos disponibilidad no podemos tener consistencia, todavía podemos obtener consistencia eventual. Es decir, cada nodo siempre estará disponible para servir peticiones, aunque estos nodos no puedan asegurar que la información que contienen sea consistente (pero si bastante precisa), en algún momento lo será.</p>
 <p>Algunas bases de datos tolerantes a particiones se pueden ajustar para ser más o menos consistentes o disponible a nivel de petición. Por ejemplo, <em>Riak</em> trabaja de esta manera, permitiendo a los clientes decidir en tiempo de petición qué nivel de consistencia necesitan.</p>
 <h4 id="clasificacion-segun-cap">Clasificación según CAP<a class="headerlink" href="#clasificacion-segun-cap" title="Permanent link">&para;</a></h4>
@@ -1503,7 +1503,7 @@
 <p>Así pues, las bases de datos NoSQL se clasifican en:</p>
 <ul>
 <li><strong>CP</strong>: Consistente y tolerante a particiones. Tanto <em>MongoDB</em> como <em>HBase</em> son CP, ya que dentro de una partición pueden no estar disponibles para responder una determinada consulta (por ejemplo, evitando lecturas en los nodos secundarios), aunque son tolerantes a fallos porque cualquier nodo secundario se puede convertir en principal y asumir el rol del nodo caído.</li>
-<li><strong>AP</strong>: Disponible y tolerante a particiones. <em>DynamoDB</em> permite replicar los datos entre sus nodos aunque no garantiza la consistencia en ninguno de los sus servidores.</li>
+<li><strong>AP</strong>: Disponible y tolerante a particiones. <em>DynamoDB</em> permite replicar los datos entre sus nodos, aunque no garantiza la consistencia en ninguno de los sus servidores.</li>
 <li><strong>CA</strong>: Consistente y disponible. Aquí es donde situaríamos a los SGDB relacionales. Por ejemplo, <em>PostreSQL</em> es CA (aunque ofrece un producto complementario para dar soporte al particionado, como <em>PgCluster</em>), ya que no distribuyen los datos y por tanto la partición no es una restricción.</li>
 </ul>
 <p>Lo bueno es que la gran mayoría de sistemas permiten configurarse para cambiar su tipo CAP, lo que permite que <em>MongoDB</em> pase de CP a AP, o <em>CouchDB</em> de AP a CP.</p>
@@ -1530,7 +1530,7 @@
 <p>En los inicios, para saber si hablábamos o no de <em>Big Data</em>, nos teníamos que preguntar si cumplían con las 3V:</p>
 <ul>
 <li><strong>Variedad</strong>: en relación a las fuentes, formas y tipos. Por ejemplo, pueden ser: estructurados, como tablas de una base de datos relacional o ficheros de texto o semiestructurados como los documentos JSON. Incluso almacenar datos no estructurados como correos electrónicos, imágenes o audios.</li>
-<li><strong>Volumen</strong>: Entendida como la cantidad de datos procesados y almacenados. A día de hoy probablemente superior al orden de TB de datos y que para su procesamiento, superan la memoria RAM de nuestros sistemas.</li>
+<li><strong>Volumen</strong>: Entendida como la cantidad de datos procesados y almacenados. A día de hoy probablemente superior al orden de TB de datos y que, para su procesamiento, superan la memoria RAM de nuestros sistemas.</li>
 <li><strong>Velocidad</strong>: el tratamiento que realizamos sobre los datos, en ocasiones cercano al tiempo real o con unos tiempos de recolección, procesamiento y almacenamiento finitos y claramente definidos.</li>
 </ul>
 <p>Luego se añadieron un par más, haciendo un total de 5V:</p>
@@ -1585,7 +1585,7 @@
     <figcaption>Ejemplo de cuadro de mandos</figcaption>
 </figure>
 
-<p>Con todo esto, la inteligencia de negocios, aporta:</p>
+<p>Con todo esto, la inteligencia de negocios aporta:</p>
 <ul>
 <li>Mejora de la toma de decisiones: Acceso a datos relevantes y análisis precisos para decisiones basadas en evidencia.</li>
 <li>Mayor eficiencia operativa: Optimización de procesos y recursos basados en el análisis de datos.</li>
@@ -1595,7 +1595,7 @@
 <h3 id="ciencia-de-datos">Ciencia de datos<a class="headerlink" href="#ciencia-de-datos" title="Permanent link">&para;</a></h3>
 <p>La ciencia de datos incluye una serie de métodos para analizar tanto pequeños conjuntos de datos como cantidades enormes. Aunque no exista una proceso claramente definidos, podemos identificar los siguientes pasos:</p>
 <ol>
-<li>Establecer el <strong>objetivo</strong> de la investigación: todas las partes interesadas entienden el qué, el cómo y el por qué del proyecto y se crea un <em>project charter</em> o acta de constitución del proyecto.</li>
+<li>Establecer el <strong>objetivo</strong> de la investigación: todas las partes interesadas entienden el qué, el cómo y el porqué del proyecto y se crea un <em>project charter</em> o acta de constitución del proyecto.</li>
 <li><strong>Recuperación</strong> de datos: búsqueda de los datos, ya sean internos o externos a la empresa. El resultado son datos en bruto que seguramente habrá que limpiar (eliminar o corregir datos incompletos o erróneos, como por ejemplo, edades en negativo, fechas mal formateadas, etc...) y transformar antes de poder utilizarlos.</li>
 <li><strong>Preparación</strong> de los datos: necesitamos transformar los datos para que sean utilizables por los modelos, detectando y corrigiendo los diferentes tipos de errores, combinando datos de diversas fuentes. Un paso muy frecuente consiste en normalizar los datos, proceso consistente en transformar los datos categóricos en numéricos.</li>
 <li><strong>Exploración</strong> de datos, para obtener un conocimiento profundo de los datos, buscando patrones, correlaciones o desviaciones, normalmente, mediante técnicas visuales y descriptivas.</li>
@@ -1606,7 +1606,7 @@
 
 <h2 id="nosql">NoSQL<a class="headerlink" href="#nosql" title="Permanent link">&para;</a></h2>
 <p>Si definimos <strong>NoSQL</strong> formalmente, podemos decir que se trata de un conjunto de tecnologías que permiten el procesamiento rápido y eficiente de conjuntos de datos dando la <ins>mayor importancia al rendimiento, la fiabilidad y la agilidad</ins>.</p>
-<p>Si nos basamos en el acrónimo, el término da la sensación que se refiere a cualquier almacén de datos que no sigue un modelo relacional, los datos no son relacionales y por tanto no utilizan SQL como lenguaje de consulta. Realmente implica que el <em>No</em> hace referencia a <em>not only</em>, es decir, que los sistemas NoSQL se centran en sistemas complementarios a los SGBD relacionales, que fijan sus prioridades en la escalabilidad y la disponibilidad en contra de la atomicidad y consistencia de los datos.</p>
+<p>Si nos basamos en el acrónimo, el término da la sensación de que se refiere a cualquier almacén de datos que no sigue un modelo relacional, los datos no son relacionales y por tanto no utilizan SQL como lenguaje de consulta. Realmente implica que el <em>No</em> hace referencia a <em>not only</em>, es decir, que los sistemas NoSQL se centran en sistemas complementarios a los SGBD relacionales, que fijan sus prioridades en la escalabilidad y la disponibilidad en contra de la atomicidad y consistencia de los datos.</p>
 <p>Así pues, la revolución NoSQL se basa en comprender que hay más de una manera de resolver los problemas. Hay vida más allá de los sistemas de bases de datos relacionales, y NoSQL permite elegir la mejor herramienta para cada situación, que en algunas ocasiones será una base de datos relacional, pero en otras no. Por lo tanto, más que sustitutos de los sistemas relacionales, las soluciones NoSQL se plantean como alternativas y complementarias a los sistemas gestores de bases de datos relacionales.</p>
 <p>Los diferentes tipos de bases de datos NoSQL existentes se pueden agrupar en cuatro categorías:</p>
 <ul>
@@ -2056,7 +2056,7 @@ para la gestión de la información almacenada.
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
+      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

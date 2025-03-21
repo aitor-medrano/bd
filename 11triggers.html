@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -1603,7 +1603,7 @@
 </div>
 </div>
 <h4 id="evento-recurrente">Evento recurrente<a class="headerlink" href="#evento-recurrente" title="Permanent link">&para;</a></h4>
-<p>Pero la potencia de los eventos es que se ejecuten de forma periódica. Para ello, en el horario usaremos la clausula <code>EVERY</code> para indicar la repetición</p>
+<p>Pero la potencia de los eventos es que se ejecuten de forma periódica. Para ello, en el horario usaremos la cláusula <code>EVERY</code> para indicar la repetición</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="n">EVENT</span><span class="w"> </span><span class="n">evento_recurrente</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">ON</span><span class="w"> </span><span class="n">SCHEDULE</span><span class="w"> </span><span class="k">EVERY</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">DAY</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">STARTS</span><span class="w"> </span><span class="s1">&#39;2025-03-01 00:00:00&#39;</span><span class="w"> </span><span class="n">ENDS</span><span class="w"> </span><span class="s1">&#39;2025-03-31 23:59:59&#39;</span>
@@ -2851,7 +2851,7 @@ flowchart TD
 <p>El procedimiento <code>ac1108salariosHabilidad</code> que reciba como argumento el nombre de un habilidad y muestre el total de los salarios de los empleados que tienen dicha habilidad. Si no hubiera ningún empleado, lanzará una señal con el mensaje "<em>Para la habilidad XXXX no hay ningún empleado existente</em>". Si la habilidad no existe, el mensaje será "<em>La habilidad XXX no existe</em>".</p>
 </li>
 <li>
-<p>El trigger <code>ac1108triggerHijoAfterInsert</code> que tras insertar un hijo, compruebe que si el número de hijo es el mayor (de entre sus herman@s), tenga una fecha de nacimiento menor a la de sus herman@s. Si no fuera así, lanzará una señal con el mensaje "<em>El hijo XXX debe ser menor que su hermano YYY</em>".</p>
+<p>El trigger <code>ac1108triggerHijoAfterInsert</code> que, tras insertar un hijo, compruebe que si el número de hijo es el mayor (de entre sus herman@s), tenga una fecha de nacimiento menor a la de sus herman@s. Si no fuera así, lanzará una señal con el mensaje "<em>El hijo XXX debe ser menor que su hermano YYY</em>".</p>
 </li>
 </ol>
 </li>
@@ -2883,7 +2883,7 @@ flowchart TD
 <li>Comprueba si ha ocurrido algún error en las operaciones anteriores. Si todo va bien aplica un <code>COMMIT</code> a la transacción y si ha ocurrido algún error haz <code>ROLLBACK</code>.</li>
 </ol>
 <p>Debe manejar los errores <code>ERROR 1264</code> (<em>Out of range value</em>) y <code>ERROR 1062</code> (<em>Duplicate entry for PRIMARY KEY</em>).</p>
-<p>¿Qué ocurre si se compra una entrada y le pasamos como parámetro un número de cuenta inexistente? ¿Ocurre algún error o podemos comprar la entrada? En caso de que exista algún error, ¿cómo podríamos resolverlo?.</p>
+<p>¿Qué ocurre si se compra una entrada y le pasamos como parámetro un número de cuenta inexistente? ¿Ocurre algún error o podemos comprar la entrada? En caso de que exista algún error, ¿Cómo podríamos resolverlo?</p>
 </li>
 </ul>
 <p><a name="AP1110"></a></p>
@@ -2892,7 +2892,10 @@ flowchart TD
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AP1110</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han definido eventos y disparadores.">CE5h</abbr>, <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) En la actividad <a href="#AP1105">AP1105</a> se planteaba actualizar la cantidad de hijos de un empleado mediante un disparador asociado a la inserción de un nuevo registro en la tabla <code>hijo</code>. Realmente, es mejor que ambas operaciones formen parte de una transacción y que se gestionen dentro de un procedimiento almacenado. Dicho esto, se pide:</p>
 <ol>
 <li>
-<p>Crea la función <code>ap1110funcCompruebaHijo</code> que valide que la cantidad de hijos almacenados en la tabla <code>hijo</code> concuerda con el atributo <code>NumHi</code> de la tabla <code>empleado</code>. En caso contrario, debe lanzar una señal con un mensaje adecuado.</p>
+<p>Elimina el trigger <code>ap1105triggerHolaHijo</code>.</p>
+</li>
+<li>
+<p>Crea la función <code>ap1110funcCompruebaHijo</code> que valide, para un empleado, que la cantidad de hijos almacenados en la tabla <code>hijo</code> concuerda con el atributo <code>NumHi</code> de la tabla <code>empleado</code>. En caso contrario, debe lanzar una señal con un mensaje adecuado.</p>
 </li>
 <li>
 <p>Crea el procedimiento almacenado <code>ap1110procInsertaHijo</code>, que haciendo un buen uso de las transacciones y la gestiones de errores, y tras validar que los datos existen previamente, tanto inserte los datos en la tabla <code>hijo</code> como modifique la columna <code>NumHi</code> de la tabla <code>empleado</code>. En caso de error, debe lanzar una señal con un mensaje adecuado (o relanzar la existente, si fuera el caso).</p>
@@ -3312,7 +3315,7 @@ para la gestión de la información almacenada.
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
+      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>
