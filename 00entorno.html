@@ -721,6 +721,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#grafana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grafana
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -881,6 +890,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#grafana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grafana
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -957,6 +975,7 @@
 <li><a href="https://www.pgadmin.org/">PgAdmin</a>: herramienta gráfica de gestión de <em>PostgreSQL</em></li>
 </ul>
 </li>
+<li><a href="https://grafana.com/">Grafana</a>: herramienta de observabilidad y visualización de datos.</li>
 <li><a href="https://code.visualstudio.com/">Visual Studio Code</a>: editor de texto/código</li>
 </ul>
 <div class="admonition info">
@@ -1047,6 +1066,54 @@
 <p class="admonition-title">Aprendiendo <em>PhpMyAdmin</em></p>
 <p>Aunque en la red existen multitud de recursos con artículos y tutoriales sobre <em>PhpMyAdmin</em>, a lo largo del curso iremos utilizando la herramienta y viendo las posibilidades que ofrece conforme las vayamos necesitando.</p>
 </div>
+<h3 id="grafana">Grafana<a class="headerlink" href="#grafana" title="Permanent link">&para;</a></h3>
+<p><a href="https://grafana.com/">Grafana</a> es una plataforma de código abierto para la observabilidad y el análisis de datos en tiempo real. Permite visualizar métricas provenientes de diversas fuentes, como bases de datos SQL y NoSQL, sistemas de monitoreo como Prometheus o InfluxDB, y plataformas en la nube. Su interfaz intuitiva facilita la creación de paneles interactivos y gráficos personalizados, lo que lo convierte en una herramienta esencial para la monitorización de infraestructuras, aplicaciones y servicios. Además, Grafana soporta alertas y consultas avanzadas, permitiendo a los usuarios tomar decisiones basadas en datos de manera eficiente.</p>
+<p>Para lanzar <em>Grafana</em> sobre los contenedores que ya tenemos, crearemos un nuevo archivo, el cual hemos llamado <a href="resources/docker-compose-grafana.yml"><code>docker-compose-grafana.yml</code></a>, donde además de la definición de los contenedores previos, hemos configurado <em>Grafana</em> en el puerto 3000:</p>
+<div class="highlight"><span class="filename">docker-compose-grafana.yml</span><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">services</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">mariadb</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mariadb:latest</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mdb</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3306:3306</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MYSQL_ROOT_PASSWORD=root</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MYSQL_DATABASE=pruebas</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MYSQL_USER=s8a</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MYSQL_PASSWORD=s8a</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mariabd_data:/var/lib/mysql</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="w">  </span><span class="nt">phpmyadmin</span><span class="p">:</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phpmyadmin</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">phpma</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080:80</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PMA_HOST=mariadb</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mariadb</span>
+<span class="linenos" data-linenos="24 "></span>
+<span class="linenos" data-linenos="25 "></span><span class="w">  </span><span class="nt">grafana</span><span class="p">:</span>
+<span class="hll"><span class="linenos" data-linenos="26 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana/grafana-oss</span>
+</span><span class="linenos" data-linenos="27 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3000:3000&quot;</span>
+<span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="31 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana_data:/var/lib/grafana</span>
+<span class="linenos" data-linenos="32 "></span>
+<span class="linenos" data-linenos="33 "></span><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="34 "></span><span class="w">    </span><span class="nt">mariabd_data</span><span class="p">:</span>
+<span class="hll"><span class="linenos" data-linenos="35 "></span><span class="w">    </span><span class="nt">grafana_data</span><span class="p">:</span>
+</span></code></pre></div>
+<p>Una vez creado el archivo, lanzamos el contenedor mediante:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>-p<span class="w"> </span>mariadb-s8a<span class="w"> </span>-f<span class="w"> </span>docker-compose-grafana.yml<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>
+</code></pre></div>
+<p>Y ya podremos acceder a la página de login (<a href="http://localhost:3000/">http://localhost:3000/</a>) con el usuario <code>admin</code> y contraseña <code>admin</code>, donde nos pedirá cambiar la contraseña. Una vez dentro, uno de los primeros pasos es añadir una fuente de datos (<em>data source</em>) de tipo <em>MySQL</em>. Ten en cuenta que en nombre del <em>host</em> debes configurar el nombre del contenedor: <code>mdb:3306</code>:</p>
+<figure style="align: center;">
+    <img src="images/00grafana-mysql.png">
+    <figcaption>Configurando la fuente de datos en Grafana</figcaption>
+</figure>
+
 <h2 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">&para;</a></h2>
 <p><em>PostgreSQL</em> es un SGBD relacional que sigue un modelo cliente-servidor, soportando accesos concurrentes de múltiples usuarios. </p>
 <p>Por ello, necesitamos lanzar un contenedor con el servidor al cual nos conectaremos desde el cliente por línea de comandos <code>psql</code> o desde el cliente gráfico <em>PgAdmin</em>. Por ello, en el fichero de configuración <a href="resources/docker-compose-postgres.yml"><code>docker-compose-postgres.yml</code></a> de <em>Docker Compose</em> tenemos dos servicios:</p>
