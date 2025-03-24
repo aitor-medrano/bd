@@ -1295,9 +1295,16 @@
 <li>¿Para qué sirve la clave de particionado?</li>
 <li>¿En qué consiste la replicación?</li>
 <li>¿Una base de datos puede estar particionada y replicada a la vez?</li>
+<li>¿En qué consiste el Teorema de CAP?</li>
+<li>¿Qué significa el acrónimo BASE? ¿En qué ámbito se emplea?</li>
 <li>¿Qué es <em>Big Data</em>? ¿Y <em>Small Data</em>?</li>
 <li>¿Conoces las 3V del Big Data? ¿Hay más?</li>
 <li>¿Qué tipos de analítica de datos existen? ¿En qué consisten?</li>
+<li>¿Qué es un <em>dashboard</em> y para qué se utiliza?</li>
+<li>¿En qué consiste la ciencia de datos?</li>
+<li>¿Que significa el acrónimo NoSQL?</li>
+<li>¿Por qué aparecieron las soluciones NoSQL?</li>
+<li>¿Qué tipos de modelos NoSQL existen? ¿Puedes nombrar una solución <em>software</em> para cada uno de ellos?</li>
 </ol>
 </div>
 <h3 id="programacion-de-aula-4h">Programación de Aula (4h)<a class="headerlink" href="#programacion-de-aula-4h" title="Permanent link">&para;</a></h3>
@@ -1332,9 +1339,9 @@
 </tr>
 <tr>
 <td style="text-align: center;">4</td>
-<td>Tipos</td>
-<td>AC1203</td>
-<td><abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr></td>
+<td>Investigación NoSQL</td>
+<td><a href="#AC1205">AC1205</a></td>
+<td><abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr>, <abbr title="Se han evaluado los principales tipos de bases de datos no relacionales.">CE7b</abbr>, <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr></td>
 </tr>
 </tbody>
 </table>
@@ -1695,7 +1702,11 @@ con datos estructurados, semi-estructurados y sin estructurar. Casi todas las im
 </ul>
 <p><a name="AC1205"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1205</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr>, <abbr title="Se han evaluado los principales tipos de bases de datos no relacionales.">CE7b</abbr> // 3p) Para cada uno de los cuadro modelos de datos NoSQL, explica en un párrafo en qué consiste, elige uno de los productos más representativos de dicho, y además del enlace, averigua el comando <em>Docker</em> para lanzar el servicio y cómo insertar un dato.</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1205</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr>, <abbr title="Se han evaluado los principales tipos de bases de datos no relacionales.">CE7b</abbr>, <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr> // 3p) Para cada uno de los cuadro modelos de datos NoSQL, explica en un párrafo en qué consiste, elige uno de los productos más representativos de dicho, y además del enlace, averigua el comando <em>Docker</em> para lanzar el servicio y cómo insertar un dato.</li>
+</ul>
+<p><a name="AR1206"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1206</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr>, <abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se ha reconocido la utilidad de las bases de datos distribuidas.">CE1g</abbr>, <abbr title="Se han analizado las políticas de fragmentación de la información.">CE1h</abbr>, <abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr>, <abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr>, <abbr title="Se han evaluado los principales tipos de bases de datos no relacionales.">CE7b</abbr>, <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
 </ul>
 <!--
 Poner un ejemplo de tabla con muchas filas y columnas, y que piensen en la fragmentación y la replicación...
