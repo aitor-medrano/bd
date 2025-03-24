@@ -2449,7 +2449,49 @@ flowchart TD
   E --&gt; C
   C -- No quedan registros ----&gt; F[CLOSE]</code></pre>
 <h3 id="probando-los-cursores">Probando los cursores<a class="headerlink" href="#probando-los-cursores" title="Permanent link">&para;</a></h3>
-<p>Veamos mediante un ejemplo un caso completo. Supongamos que tenemos dos tablas con la misma cantidad de registros, y queremos rellenar una tercera a partir de los datos de estas dos:</p>
+<p>Comencemos con un ejemplo muy sencillo donde únicamente vamos a copiar el codigo y el nombre de un empleado en una nueva tabla. Para ello, creamos la tabla <code>empleado_copia</code> mediante:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">empleado_copia</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">CodEmp</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">NomEmp</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="linenos" data-linenos="4 "></span><span class="p">)</span>
+</code></pre></div>
+<p>A continuación, vamos a recorrer la tabla <code>empleado</code> para recuperar cada empleado y copiar únicamente el código y el nombre e insertarlos en la tabla copia que acabamos de crear (este ejemplo no tienen ninguna utilidad más allá de demostrar cómo se emplean los cursores, ya que esta misma operación se podría realizar mediante un <code>INSERT ... SELECT</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploCursorEmpleado</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">BEGIN</span>
+<span class="hll"><span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">FALSE</span><span class="p">;</span><span class="w"> </span><span class="c1">-- (1)!</span>
+</span><span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">cod</span><span class="w"> </span><span class="nb">INT</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">);</span>
+<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="k">CURSOR</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span><span class="w">  </span><span class="c1">-- (2)!</span>
+</span><span class="hll"><span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="k">CONTINUE</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">FOUND</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">TRUE</span><span class="p">;</span><span class="w">  </span><span class="c1">-- (3)!</span>
+</span><span class="linenos" data-linenos=" 9 "></span>
+<span class="hll"><span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="k">OPEN</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span><span class="w"> </span><span class="c1">-- (4)!</span>
+</span><span class="linenos" data-linenos="11 "></span>
+<span class="hll"><span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="n">WHILE</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">FALSE</span><span class="w"> </span><span class="k">DO</span><span class="w"> </span><span class="c1">-- (5)!</span>
+</span><span class="hll"><span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="k">FETCH</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cod</span><span class="p">,</span><span class="w"> </span><span class="n">nom</span><span class="p">;</span><span class="w"> </span><span class="c1">-- (6)!</span>
+</span><span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">FALSE</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">            </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">empleado_copia</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">cod</span><span class="p">,</span><span class="w"> </span><span class="n">nom</span><span class="p">);</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">        </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">WHILE</span><span class="p">;</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="hll"><span class="linenos" data-linenos="20 "></span><span class="w">  </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span><span class="w"> </span><span class="c1">-- (7)!</span>
+</span><span class="linenos" data-linenos="21 "></span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="22 "></span><span class="o">//</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+</code></pre></div>
+<ol>
+<li>Declaramos una variable <code>fin</code> a modo de <em>flag</em> para controlar el final del cursor</li>
+<li>Declaramos un cursor para recorrer la tabla empleado</li>
+<li>Declaramos el manejador de errores</li>
+<li>Abrimos el cursor</li>
+<li>Creamos el bucle para recorrer el cursor</li>
+<li>Recuperamos las columnas del registro al que apunta el cursor</li>
+<li>Cerramos el cursor</li>
+</ol>
+<p>Cabe destacar la necesidad de comprobar el valor de la variable <em>flag</em> dentro del bucle, ya que el gestor de errores se ejecutará tras la operación <code>FETCH</code>, y por lo tanto, necesitamos en la línea 15 comprobar el valor de la variable <code>fin</code> antes de realizar nuestra operación de negocio.</p>
+<p>Sigamos con un caso más completo. Supongamos que tenemos dos tablas con la misma cantidad de registros, y queremos rellenar una tercera a partir de los datos de estas dos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="n">USE</span><span class="w"> </span><span class="n">pruebas</span><span class="p">;</span>
@@ -2478,7 +2520,7 @@ flowchart TD
 </code></pre></div>
 <p>En este caso, vamos a rellenar la tercera tabla con el menor identificador, y los datos de la primera:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploCursores</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploDosCursores</span><span class="p">()</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">BEGIN</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">fin</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">FALSE</span><span class="p">;</span><span class="w"> </span><span class="c1">-- (1)!</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">16</span><span class="p">);</span>
@@ -2519,7 +2561,7 @@ flowchart TD
 </ol>
 <p>Si invocamos al procedimiento, obtendremos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">ejemploCursores</span><span class="p">();</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">ejemploDosCursores</span><span class="p">();</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">t3</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +-------+------+</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | datos | id   |</span>
@@ -2530,15 +2572,23 @@ flowchart TD
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- +-------+------+</span>
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
 </code></pre></div>
-<div class="admonition tip">
+<div class="admonition info">
 <p class="admonition-title">Pensando en conjuntos</p>
 <p>Desde el principio del bloque de consultas, hemos aprendido a trabajar con datos pensando en conjuntos de datos completos, ya que le decimos al SGBD lo que queremos recuperar o evaluar, y el motor de consultas averigua la mejor manera de completar la consulta.</p>
 <p>Cuando en la unidad anterior empezamos a utilizar las estructuras de control dentro de los procedimientos almacenados, empleamos un enfoque imperativo, al indicarle al SGBD cómo realizar las operaciones.</p>
 <p>El motivo por el que lo cursores se siguen utilizando es que en ocasiones es necesario indicarle al SGBD los pasos que queremos realizar. Dicho esto, este enfoque imperativo normalmente supone un peor rendimiento al realizar un bloqueo excesivo y hacer un mayor consumo de los recursos del motor de base de datos que si hiciéramos un enfoque basado en conjuntos.</p>
 <p>Dicho esto, siempre que sea posible, tendrá mejor rendimiento una o más consultas que el uso de cursores, aunque en contadas ocasiones necesitarás evaluar cada fila de un conjunto de forma individual y necesitarás el uso de cursores.</p>
 </div>
-<p>Una vez que ya sabemos cómo se crean, veamos un ejemplo sobre nuestra base de datos <code>empresa</code>. La empresa se está planteando ampliar la cantidad de departamentos para fomentar la conciliación familiar. De esta manera, aquellos departamentos que tengan más de 2 trabajadores con hijos se dividirán en dos, y sus empleados se repartirán entre ellos. Para ello, en una nueva tabla <code>departamentoFamiliar</code> almacenaremos una copia de los departamentos, junto a las nuevas versiones familiares.</p>
-<p>Así, tras crear una tabla con la misma estructura, haciendo uso de <a href="https://mariadb.com/kb/en/create-table/#create-table-like"><code>CREATE TABLE ... LIKE</code></a>, como queremos recuperar todos los atributos de un departamento, en vez de declarar una variable por cada columna, podemos declarar una variable mediante <a href="https://mariadb.com/kb/en/declare-variable/#type-of-row-type-of"><code>DECLARE ... ROW TYPE OF</code></a> de manera que accederemos a sus campos mediante la notación <code>.</code>.</p>
+<p>Una vez que ya sabemos cómo se crean, veamos un ejemplo sobre nuestra base de datos <code>empresa</code>. La empresa se está planteando ampliar la cantidad de departamentos para fomentar la conciliación familiar. De esta manera, aquellos departamentos que tengan más de 2 trabajadores con hijos se dividirán en dos, y sus empleados se repartirán entre ellos. Para ello, en una nueva tabla <code>departamentoFamiliar</code> almacenaremos una copia de los departamentos, junto a las nuevas versiones familiares. Para crear una tabla con la misma estructura, haciendo uso de <a href="https://mariadb.com/kb/en/create-table/#create-table-like"><code>CREATE TABLE ... LIKE</code></a> podemos crear una tabla que copia la estructura de otra:</p>
+<div class="admonition tip">
+<p class="admonition-title">ROW TYPE OF</p>
+<p>Cuando queremos recuperar todos los campos de un registro, en vez de definir una variable por cada campo, podemos declarar una variable cuyo tipo será un registro de una tabla. Para ello, declararemos una variable mediante <a href="https://mariadb.com/kb/en/declare-variable/#type-of-row-type-of"><code>DECLARE ... ROW TYPE OF</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">rowDep</span><span class="w"> </span><span class="k">ROW</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
+</code></pre></div>
+<p>Y posteriormente accederemos a los campos mediante la notación <code>.</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SET</span><span class="w"> </span><span class="n">newPreAnu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">PreAnu</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+</code></pre></div>
+</div>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="n">USE</span><span class="w"> </span><span class="n">empresa</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">departamentoFamiliar</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
