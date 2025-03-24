@@ -1221,7 +1221,15 @@
 <div class="admonition question">
 <p class="admonition-title">Cuestionario inicial</p>
 <ol>
-<li>¿En qué consiste una base de datos clave-valor?</li>
+<li>¿Qué es Redis y cuáles son sus principales características como base de datos NoSQL?</li>
+<li>¿Cuáles son las ventajas y desventajas de utilizar Redis como sistema de almacenamiento en memoria frente a otros sistemas de almacenamiento persistente?</li>
+<li>¿Cómo se diferencian las bases de datos clave-valor de las bases de datos relacionales tradicionales?</li>
+<li>¿Qué estructuras de datos admite Redis y cómo se utilizan en la gestión de información?</li>
+<li>¿Cómo se implementan las operaciones CRUD?</li>
+<li>¿Qué son los espacios de nombres y cuál es su propósito en la organización de claves?</li>
+<li>¿Cómo se maneja la expiración de claves y qué comandos se utilizan para ello?</li>
+<li>¿Cómo se implementan para garantizar la atomicidad de las operaciones?</li>
+<li>¿Cómo se pueden representar y manipular estructuras de datos complejas, como JSON, dentro de Redis?</li>
 </ol>
 </div>
 <h3 id="programacion-de-aula-5h">Programación de Aula (5h)<a class="headerlink" href="#programacion-de-aula-5h" title="Permanent link">&para;</a></h3>
@@ -1806,9 +1814,44 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 </ol>
 </li>
 </ul>
-<p><a name="AC1208"></a></p>
+<p><a name="AR1208"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1208</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizan las listas en <em>Redis</em>, se pide:</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1208</strong>. Utilizando las <em>hashes</em> en <em>Redis</em> con el prefijo <code>ar1208pelis:</code>, se pide:</p>
+<ol>
+<li>Crea un <em>hash</em> para añadir a la película <code>ar1208pelis:1</code> la propiedad <code>titulo</code>.</li>
+<li>Para la misma película, mediante una única operación, añade las propiedades <code>anyo</code> y <code>plataforma</code> (plataforma de <em>streaming</em> donde hemos visto la película, o bien <code>cine</code> o <code>tv</code> dependiendo del caso).</li>
+<li>Recupera el año de la película.</li>
+<li>Recupera toda la información de la película.</li>
+<li>En una nueva clave, añade una nueva película con todas sus propiedades.</li>
+<li>Recupera todas las claves de la última película.</li>
+<li>Recupera todos los valores de la última película.</li>
+<li>En nuevas claves, añade dos películas más.</li>
+<li>Recupera los valores de la última película.</li>
+<li>Recupera todas las <em>hashes</em> existentes.</li>
+<li>Elimina el año de la última película.</li>
+<li>Averigua cuantos campos tiene la última película.</li>
+<li>Elimina la última película.</li>
+<li>Vuelve a recuperar todas las <em>hashes</em> existentes para comprobar que ya no existe.</li>
+</ol>
+</li>
+</ul>
+<p><a name="AC1209"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1209</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando las listas en <em>Redis</em>, se pide:</p>
+<ol>
+<li>Crea una lista que permita almacenar las series que marca un usuario como <code>ac1209watchlist</code>.</li>
+<li>Añade 3 títulos de series a la lista por la izquierda.</li>
+<li>Añade 2 series a la lista por la derecha.</li>
+<li>Recupera el tamaño de la lista.</li>
+<li>Recupera todos las series.</li>
+<li>Recupera la primera y la última.</li>
+<li>Saca el último elemento insertado por la derecha.</li>
+<li>Comprueba si la lista tiene un elemento menos.
+W</li>
+</ol>
+</li>
 </ul>
 <!--
 TODO: base de datos, select - comando scan https://redis.io/docs/latest/commands/scan/
