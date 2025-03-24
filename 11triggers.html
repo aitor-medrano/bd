@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -2564,28 +2564,29 @@ flowchart TD
 <span class="linenos" data-linenos="23 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">newPreAnu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">PreAnu</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">-- dividimos el presupuesto entre 2</span>
 <span class="linenos" data-linenos="24 "></span>
 <span class="linenos" data-linenos="25 "></span><span class="w">        </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">departamentoFamiliar</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodDep</span><span class="p">;</span>
-<span class="linenos" data-linenos="26 "></span>
-<span class="linenos" data-linenos="27 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">newNomDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot; Familiar&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="c1">-- añadimos Familiar al nombre segundo departamento</span>
-<span class="linenos" data-linenos="28 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">newCodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="w"> </span><span class="k">SUBSTRING</span><span class="p">(</span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="ss">&quot;2&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">-- cambiamos el código del nuevo departamento</span>
-<span class="linenos" data-linenos="29 "></span>
-<span class="hll"><span class="linenos" data-linenos="30 "></span><span class="w">        </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">departamentoFamiliar</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">newCodDep</span><span class="p">,</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodEmpDir</span><span class="p">,</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodCen</span><span class="p">,</span><span class="w"> </span><span class="n">newNomDep</span><span class="p">,</span><span class="w"> </span><span class="n">newPreAnu</span><span class="p">,</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">TiDir</span><span class="p">);</span>
-</span><span class="linenos" data-linenos="31 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
-<span class="linenos" data-linenos="32 "></span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">WHILE</span><span class="p">;</span>
-<span class="linenos" data-linenos="33 "></span>
-<span class="linenos" data-linenos="34 "></span><span class="w">  </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span>
-<span class="linenos" data-linenos="35 "></span><span class="k">END</span><span class="p">;</span>
-<span class="linenos" data-linenos="36 "></span><span class="o">//</span><span class="w"> </span>
-<span class="linenos" data-linenos="37 "></span>
-<span class="linenos" data-linenos="38 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
-<span class="linenos" data-linenos="39 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">dividirDepartamentos</span><span class="p">();</span>
-<span class="linenos" data-linenos="40 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">departamentoFamiliar</span><span class="p">;</span>
-<span class="linenos" data-linenos="41 "></span><span class="c1">-- +--------+-----------+-----------+--------+-----------------------------+-------------+-------+</span>
-<span class="linenos" data-linenos="42 "></span><span class="c1">-- | CodDep | CodEmpDir | CodDepDep | CodCen | NomDep                      | PreAnu      | TiDir |</span>
-<span class="linenos" data-linenos="43 "></span><span class="c1">-- +--------+-----------+-----------+--------+-----------------------------+-------------+-------+</span>
-<span class="linenos" data-linenos="44 "></span><span class="c1">-- | DIRG2  |         1 | DIRGE     | DIGE   | Dirección General Familiar  | 13000000.00 | P     |</span>
-<span class="linenos" data-linenos="45 "></span><span class="c1">-- | DIRGE  |         1 | NULL      | DIGE   | Dirección General           | 13000000.00 | P     |</span>
-<span class="linenos" data-linenos="46 "></span><span class="c1">-- +--------+-----------+-----------+--------+-----------------------------+-------------+-------+</span>
-<span class="linenos" data-linenos="47 "></span><span class="c1">-- 2 rows in set (0.000 sec)</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">        </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">departamentoFamiliar</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">PreAnu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PreAnu</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodDep</span><span class="p">;</span>
+<span class="linenos" data-linenos="27 "></span>
+<span class="linenos" data-linenos="28 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">newNomDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot; Familiar&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="c1">-- añadimos Familiar al nombre segundo departamento</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">newCodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="w"> </span><span class="k">SUBSTRING</span><span class="p">(</span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="ss">&quot;2&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">-- cambiamos el código del nuevo departamento</span>
+<span class="hll"><span class="linenos" data-linenos="30 "></span>
+</span><span class="linenos" data-linenos="31 "></span><span class="w">        </span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">departamentoFamiliar</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">newCodDep</span><span class="p">,</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodEmpDir</span><span class="p">,</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">CodCen</span><span class="p">,</span><span class="w"> </span><span class="n">newNomDep</span><span class="p">,</span><span class="w"> </span><span class="n">newPreAnu</span><span class="p">,</span><span class="w"> </span><span class="n">rowDep</span><span class="p">.</span><span class="n">TiDir</span><span class="p">);</span>
+<span class="linenos" data-linenos="32 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="33 "></span><span class="w">  </span><span class="k">END</span><span class="w"> </span><span class="n">WHILE</span><span class="p">;</span>
+<span class="linenos" data-linenos="34 "></span>
+<span class="linenos" data-linenos="35 "></span><span class="w">  </span><span class="k">CLOSE</span><span class="w"> </span><span class="n">cur</span><span class="p">;</span>
+<span class="linenos" data-linenos="36 "></span><span class="k">END</span><span class="p">;</span>
+<span class="linenos" data-linenos="37 "></span><span class="o">//</span><span class="w"> </span>
+<span class="linenos" data-linenos="38 "></span>
+<span class="linenos" data-linenos="39 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="40 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">dividirDepartamentos</span><span class="p">();</span>
+<span class="linenos" data-linenos="41 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">departamentoFamiliar</span><span class="p">;</span>
+<span class="linenos" data-linenos="42 "></span><span class="c1">-- +--------+-----------+-----------+--------+-----------------------------+-------------+-------+</span>
+<span class="linenos" data-linenos="43 "></span><span class="c1">-- | CodDep | CodEmpDir | CodDepDep | CodCen | NomDep                      | PreAnu      | TiDir |</span>
+<span class="linenos" data-linenos="44 "></span><span class="c1">-- +--------+-----------+-----------+--------+-----------------------------+-------------+-------+</span>
+<span class="linenos" data-linenos="45 "></span><span class="c1">-- | DIRG2  |         1 | DIRGE     | DIGE   | Dirección General Familiar  | 13000000.00 | P     |</span>
+<span class="linenos" data-linenos="46 "></span><span class="c1">-- | DIRGE  |         1 | NULL      | DIGE   | Dirección General           | 13000000.00 | P     |</span>
+<span class="linenos" data-linenos="47 "></span><span class="c1">-- +--------+-----------+-----------+--------+-----------------------------+-------------+-------+</span>
+<span class="linenos" data-linenos="48 "></span><span class="c1">-- 2 rows in set (0.000 sec)</span>
 </code></pre></div>
 <h3 id="uso-de-parametros">Uso de parámetros<a class="headerlink" href="#uso-de-parametros" title="Permanent link">&para;</a></h3>
 <p>Los cursores pueden utilizarse junto con parámetros de entrada y salida en procedimientos almacenados.</p>
@@ -3315,7 +3316,7 @@ para la gestión de la información almacenada.
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
+      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>
