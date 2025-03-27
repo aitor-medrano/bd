@@ -1535,6 +1535,8 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </span><span class="linenos" data-linenos="4 "></span><span class="c1"># (integer) 1</span>
 <span class="hll"><span class="linenos" data-linenos="5 "></span><span class="n">EXISTS</span> <span class="n">aitor</span><span class="o">-</span><span class="n">iabd</span>
 </span><span class="linenos" data-linenos="6 "></span><span class="c1"># (integer) o</span>
+<span class="linenos" data-linenos="7 "></span><span class="n">GET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
+<span class="linenos" data-linenos="8 "></span><span class="c1"># (nil)</span>
 </code></pre></div>
 <h3 id="cadenas">Cadenas<a class="headerlink" href="#cadenas" title="Permanent link">&para;</a></h3>
 <p>Si nuestros valores son cadenas, podemos emplear una serie de operaciones para trabajar con ellos, como <a href="https://redis.io/docs/latest/commands/strlen/"><code>STRLEN</code></a> para recuperar el tamaño de un valor, <a href="https://redis.io/docs/latest/commands/getrange/"><code>GETRANGE clave inicio fin</code></a> para obtener una subcadena o <a href="https://redis.io/docs/latest/commands/append/"><code>APPEND</code></a> para añadir contenido al final</p>
@@ -1564,6 +1566,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">DECR</span> <span class="n">contador</span>
 </span><span class="linenos" data-linenos="10 "></span><span class="c1"># (integer) 4</span>
 </code></pre></div>
+<p>Casos de uso muy comunes de almacenamiento de número enteros pueden ser contar el número de clics que se realiza sobre un enlace, o controlar la cantidad de entradas disponibles de un evento/concierto/partido/festival, etc...</p>
 <h3 id="espacios-de-nombres">Espacios de nombres<a class="headerlink" href="#espacios-de-nombres" title="Permanent link">&para;</a></h3>
 <p><em>Redis</em> utiliza un concepto diferente al de las bases de datos tradicionales. En lugar de tener múltiples bases de datos separadas, proporciona bases de datos lógicas numeradas dentro de una única instancia. Por defecto, <em>Redis</em> cuenta con 16 bases de datos numeradas de 0 a 15, aunque este número se puede configurar en el archivo <code>redis.conf</code> mediante la directiva <code>databases</code>.</p>
 <p>Podemos recuperar las bases de datos que tenemos mediante <code>CONFIG GET DATABASES</code>:</p>
@@ -1818,7 +1821,14 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="linenos" data-linenos="6 "></span><span class="c1"># 3) &quot;xataka.com&quot;</span>
 <span class="linenos" data-linenos="7 "></span><span class="c1"># 4) &quot;eurogamer.es&quot;</span>
 </code></pre></div>
-<p>Igual que usamops <code>LMOVE</code> para mover elementos entre listas, podemos emplear <a href="https://redis.io/docs/latest/commands/smove/"><code>SMOVE</code></a> para mover valores entre conjuntos. Otras operaciones que son utiles son <a href="https://redis.io/docs/latest/commands/scard/"><code>SCARD</code></a> para averiguar su tamaño (cardinalidad), <a href="https://redis.io/docs/latest/commands/spop/"><code>SPOP</code></a> para sacar un elemento cualquiera (al no estar ordenados) o <a href="https://redis.io/docs/latest/commands/srem/"><code>SREM</code></a> clave valor si queremos eliminar un valor concreto.</p>
+<p>Igual que usamops <code>LMOVE</code> para mover elementos entre listas, podemos emplear <a href="https://redis.io/docs/latest/commands/smove/"><code>SMOVE</code></a> para mover valores entre conjuntos. Otras operaciones que muy útiles son <a href="https://redis.io/docs/latest/commands/scard/"><code>SCARD clave</code></a> para averiguar su tamaño (cardinalidad), <a href="https://redis.io/docs/latest/commands/spop/"><code>SPOP</code></a> para sacar un elemento cualquiera (al no estar ordenados) o <a href="https://redis.io/docs/latest/commands/srem/"><code>SREM clave valor</code></a> si queremos eliminar un valor concreto.</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SCARD</span> <span class="n">sitiosweb</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># (integer) 4</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">SREM</span> <span class="n">sitiosweb</span> <span class="n">eldiario</span><span class="o">.</span><span class="n">es</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="c1"># (integer) 1</span>
+<span class="linenos" data-linenos="5 "></span><span class="n">SCARD</span> <span class="n">sitiosweb</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># (integer) 3</span>
+</code></pre></div>
 </li>
 </ul>
 </div>
@@ -1923,11 +1933,11 @@ https://www.ionos.es/digitalguide/hosting/cuestiones-tecnicas/redis-tutorial-pas
 <h2 id="persistencia">Persistencia<a class="headerlink" href="#persistencia" title="Permanent link">&para;</a></h2>
 <p>Por defecto, la gestión de la <a href="https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/">persistencia</a> en <em>Redis</em> implica que los datos no se almacenan instantáneamente en disco, sino que se realiza de forma periódica o a petición del cliente. </p>
 <p>Por defecto, en <code>redis.conf</code> se especifica el número de cambios ocurridos antes de almacenar una instantánea de los datos en disco, lo que se conoce como la persistencia <strong><em>RDB</em></strong> (<em>Redis DataBase</em>). Los valores predeterminados son:</p>
-<div class="highlight"><span class="filename">redis.conf</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span>save 900 1    # Guarda cada 15 minutos si al menos 1 clave cambió
-<span class="linenos" data-linenos="2 "></span>save 300 10   # Guarda cada 5 minutos si al menos 10 claves cambiaron
-<span class="linenos" data-linenos="3 "></span>save 60 10000 # Guarda cada 60 segundos si al menos 10000 claves cambiaron
+<div class="highlight"><span class="filename">redis.conf</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span>save 900 1      # Guarda cada 15 minutos si se modificó al menos 1 clave
+<span class="linenos" data-linenos="2 "></span>save 300 10     # Guarda cada 5 minutos si al menos cambiaron 10 claves
+<span class="linenos" data-linenos="3 "></span>save 60 10000   # Guarda cada 60 segundos si al menos cambiaron 10000 claves 
 </code></pre></div>
-<p>Esto puede provocar pérdida de datos en caso de fallo. Para evitarlo, <em>Redis</em> dispone de un archivo <code>appendonly.aof</code> que guarda un registro para cada operación de escritura, lo que se conoce como persistencia <strong><em>AOF</em></strong> (<em>Append Only File</em>). Si el servidor cae antes de escribir en disco, cuando vuelva a estar disponible incluirá lo que esté pendiente.</p>
+<p>Esto puede provocar pérdida de datos en caso de fallo. Para evitarlo, <em>Redis</em> dispone del archivo <code>appendonly.aof</code> que guarda un registro para cada operación de escritura, lo que se conoce como persistencia <strong><em>AOF</em></strong> (<em>Append Only File</em>). Si el servidor cae antes de escribir en disco, cuando vuelva a estar disponible incluirá lo que esté pendiente.</p>
 <div class="highlight"><span class="filename">redis.conf</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span>appendonly yes
 <span class="linenos" data-linenos="2 "></span>appendfsync everysec  # Sincroniza cada segundo (opciones: always, everysec, no)
 </code></pre></div>
@@ -1944,7 +1954,7 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://university.redis.io/">Redis University</a></li>
+<li><a href="https://university.redis.io/">Redis University</a>, portal formativo de Redis.io con diversos cursos sobre *Redis.</li>
 <li><a href="resources/Redis_Cheat_Sheet.pdf">Redis Cheat Sheet</a></li>
 <li><a href="https://ualmtorres.github.io/SeminarioRedis/">Seminario de Redis</a> por <em>Manuel Torres</em>, de la Universidad de Almería.</li>
 <li>El libro <a href="https://bpbonline.com/products/redis%C2%AE-deep-dive">Redis Deep Dive</a>, de <em>Suyog Dilip Kale</em> y <em>Chinmay Kulkarni</em>.</li>
