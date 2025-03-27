@@ -866,38 +866,14 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Persistencia">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rdb-redis-database" class="md-nav__link">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#en-resumen" class="md-nav__link">
     <span class="md-ellipsis">
-      RDB (Redis Database)
+      En resumen
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aof-append-only-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      AOF (Append Only File)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hibrido-rdb-aof" class="md-nav__link">
-    <span class="md-ellipsis">
-      Híbrido (RDB + AOF)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -905,15 +881,6 @@
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       Referencias
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#en-resumen" class="md-nav__link">
-    <span class="md-ellipsis">
-      En resumen
     </span>
   </a>
   
@@ -1242,38 +1209,14 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Persistencia">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rdb-redis-database" class="md-nav__link">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#en-resumen" class="md-nav__link">
     <span class="md-ellipsis">
-      RDB (Redis Database)
+      En resumen
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aof-append-only-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      AOF (Append Only File)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hibrido-rdb-aof" class="md-nav__link">
-    <span class="md-ellipsis">
-      Híbrido (RDB + AOF)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1281,15 +1224,6 @@
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       Referencias
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#en-resumen" class="md-nav__link">
-    <span class="md-ellipsis">
-      En resumen
     </span>
   </a>
   
@@ -1987,43 +1921,18 @@ https://www.ionos.es/digitalguide/hosting/cuestiones-tecnicas/redis-tutorial-pas
 -->
 
 <h2 id="persistencia">Persistencia<a class="headerlink" href="#persistencia" title="Permanent link">&para;</a></h2>
-<p>Redis ofrece varias opciones para persistir datos:</p>
-<!--
-Data Persistence Overview
-05:49
-RDB & Snapshotting
-04:03
-AOF - Append Only File
-04:47
-RDB & AOF In Action
--->
-
-<h3 id="rdb-redis-database">RDB (Redis Database)<a class="headerlink" href="#rdb-redis-database" title="Permanent link">&para;</a></h3>
-<p>Crea instantáneas periódicas del conjunto de datos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span># En redis.conf
-<span class="linenos" data-linenos="2 "></span>save 900 1    # Guarda cada 15 minutos si al menos 1 clave cambió
-<span class="linenos" data-linenos="3 "></span>save 300 10   # Guarda cada 5 minutos si al menos 10 claves cambiaron
-<span class="linenos" data-linenos="4 "></span>save 60 10000 # Guarda cada 60 segundos si al menos 10000 claves cambiaron
+<p>Por defecto, la gestión de la <a href="https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/">persistencia</a> en <em>Redis</em> implica que los datos no se almacenan instantáneamente en disco, sino que se realiza de forma periódica o a petición del cliente. </p>
+<p>Por defecto, en <code>redis.conf</code> se especifica el número de cambios ocurridos antes de almacenar una instantánea de los datos en disco, lo que se conoce como la persistencia <strong><em>RDB</em></strong> (<em>Redis DataBase</em>). Los valores predeterminados son:</p>
+<div class="highlight"><span class="filename">redis.conf</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span>save 900 1    # Guarda cada 15 minutos si al menos 1 clave cambió
+<span class="linenos" data-linenos="2 "></span>save 300 10   # Guarda cada 5 minutos si al menos 10 claves cambiaron
+<span class="linenos" data-linenos="3 "></span>save 60 10000 # Guarda cada 60 segundos si al menos 10000 claves cambiaron
 </code></pre></div>
-<p><strong>Ventajas</strong>: Más eficiente, archivo único compacto, ideal para copias de seguridad
-<strong>Desventajas</strong>: Posible pérdida de datos entre instantáneas</p>
-<h3 id="aof-append-only-file">AOF (Append Only File)<a class="headerlink" href="#aof-append-only-file" title="Permanent link">&para;</a></h3>
-<p>Registra todas las operaciones de escritura:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span># En redis.conf
-<span class="linenos" data-linenos="2 "></span>appendonly yes
-<span class="linenos" data-linenos="3 "></span>appendfsync everysec  # Sincroniza cada segundo (opciones: always, everysec, no)
+<p>Esto puede provocar pérdida de datos en caso de fallo. Para evitarlo, <em>Redis</em> dispone de un archivo <code>appendonly.aof</code> que guarda un registro para cada operación de escritura, lo que se conoce como persistencia <strong><em>AOF</em></strong> (<em>Append Only File</em>). Si el servidor cae antes de escribir en disco, cuando vuelva a estar disponible incluirá lo que esté pendiente.</p>
+<div class="highlight"><span class="filename">redis.conf</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span>appendonly yes
+<span class="linenos" data-linenos="2 "></span>appendfsync everysec  # Sincroniza cada segundo (opciones: always, everysec, no)
 </code></pre></div>
-<p><strong>Ventajas</strong>: Mayor durabilidad, menor pérdida de datos
-<strong>Desventajas</strong>: Archivos más grandes, menor rendimiento</p>
-<h3 id="hibrido-rdb-aof">Híbrido (RDB + AOF)<a class="headerlink" href="#hibrido-rdb-aof" title="Permanent link">&para;</a></h3>
-<p>Combina ambos enfoques para aprovechar sus ventajas.</p>
-<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://university.redis.io/">Redis University</a></li>
-<li><a href="resources/Redis_Cheat_Sheet.pdf">Redis Cheat Sheet</a></li>
-<li><a href="https://ualmtorres.github.io/SeminarioRedis/">Seminario de Redis</a> por <em>Manuel Torres</em>, de la Universidad de Almería.</li>
-<li>El libro <a href="https://bpbonline.com/products/redis%C2%AE-deep-dive">Redis Deep Dive</a>, de <em>Suyog Dilip Kale</em> y <em>Chinmay Kulkarni</em>.</li>
-</ul>
+<p>La elección entre un mecanismo y otro va a depender de las necesidades de la aplicación, evaluando la criticidad de los datos y del rendimiento. <em>RDB</em> es más eficiente, al utilizar un archivo único compacto, ideal para copias de seguridad. En cambio, puede suponer una posible pérdida de datos entre instantáneas</p>
+<p>En cambio, como <em>AOF</em> registra todas las operaciones de escritura, ofrece mayor durabilidad y menor pérdida de datos, pero empleando archivos más grandes y con un peor rendimiento.</p>
 <h2 id="en-resumen">En resumen<a class="headerlink" href="#en-resumen" title="Permanent link">&para;</a></h2>
 <p><em>Redis</em> destaca por su velocidad extrema, permitiendo realizar operaciones en cuestión de microsegundos. Su flexibilidad no se limita a un simple sistema clave-valor, sino que ofrece estructuras de datos avanzadas, lo que lo convierte en una herramienta versátil para distintas aplicaciones.</p>
 <p>Además, permite la ejecución de operaciones atómicas, como el incremento de valores con <code>INCR</code>, garantizando la coherencia de los datos. Otra de sus ventajas es la gestión nativa del tiempo de vida de las claves (<code>TTL</code>), lo que facilita la expiración automática de datos.</p>
@@ -2033,6 +1942,13 @@ RDB & AOF In Action
 Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 -->
 
+<h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://university.redis.io/">Redis University</a></li>
+<li><a href="resources/Redis_Cheat_Sheet.pdf">Redis Cheat Sheet</a></li>
+<li><a href="https://ualmtorres.github.io/SeminarioRedis/">Seminario de Redis</a> por <em>Manuel Torres</em>, de la Universidad de Almería.</li>
+<li>El libro <a href="https://bpbonline.com/products/redis%C2%AE-deep-dive">Redis Deep Dive</a>, de <em>Suyog Dilip Kale</em> y <em>Chinmay Kulkarni</em>.</li>
+</ul>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <p><a name="AC1207"></a></p>
 <ul>
