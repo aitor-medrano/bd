@@ -1325,14 +1325,14 @@
 <tr>
 <td>6</td>
 <td><a href="#lista">Listas</a></td>
-<td></td>
-<td></td>
+<td><a href="#AC1209">AC1209</a></td>
+<td><abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr></td>
 </tr>
 <tr>
 <td>7</td>
 <td><a href="#conjunto">Conjuntos</a></td>
-<td></td>
-<td></td>
+<td><a href="#AC1211">AC1211</a></td>
+<td><abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr></td>
 </tr>
 <tr>
 <td>8</td>
@@ -1785,7 +1785,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <ul>
 <li>
 <p><strong>Comandos</strong></p>
-<p>Para añadir elementos a un conjunto utilizaremos <a href="https://redis.io/docs/latest/commands/sadd/">SADD</a>, de manera que podemos añadir diversos valores a una clave, <a href="https://redis.io/docs/latest/commands/smembers/">SMEMBERS</a> para recuperar todos los valores, <a href="https://redis.io/docs/latest/commands/sismember/">SISMEMBER</a> para averiguar si un valor forma parte de un determinado conjunto:</p>
+<p>Para añadir elementos a un conjunto utilizaremos <a href="https://redis.io/docs/latest/commands/sadd/">SADD</a>, de manera que podemos añadir diversos valores a una clave, <a href="https://redis.io/docs/latest/commands/smembers/"><code>SMEMBERS</code></a> para recuperar todos los valores, <a href="https://redis.io/docs/latest/commands/sismember/"><code>SISMEMBER</code></a> para averiguar si un valor forma parte de un determinado conjunto:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">SADD</span> <span class="n">noticias</span> <span class="n">elpais</span><span class="o">.</span><span class="n">com</span> <span class="n">eldiario</span><span class="o">.</span><span class="n">es</span> <span class="n">xataka</span><span class="o">.</span><span class="n">com</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 3       # Devuelve la cantidad de elementos añadidos</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">SMEMBERS</span> <span class="n">noticias</span>   <span class="c1"># Devuelve todos los miembros</span>
@@ -1797,7 +1797,15 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">SISMEMBER</span> <span class="n">noticias</span> <span class="s2">&quot;eurogamer.es&quot;</span>
 </span><span class="linenos" data-linenos="10 "></span><span class="c1"># (integer) 0</span>
 </code></pre></div>
-<p>También podemos emplear las operaciones matemáticas de conjuntos, mediante <a href="https://redis.io/docs/latest/commands/sinter/">SINTER</a> para la intersección, <a href="https://redis.io/docs/latest/commands/sdiff/">SDIFF</a> la diferencia y <a href="https://redis.io/docs/latest/commands/sunion/">SUNION</a> para la union:</p>
+<p>Si queremos recuperar una cantidad de elementos aleatorios de un conjunto usaremos <a href="https://redis.io/docs/latest/commands/srandmember/"><code>SRANDMEMBER clave cantidad</code></a>, donde si <code>cantidad</code> es positiva devolverá elementos sin repetir, pero si es negativa, permitirá elementos repetidos:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SRANDMEMBER</span> <span class="n">noticias</span> <span class="mi">2</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) &quot;elpais.com&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># 2) &quot;xataka.com&quot;</span>
+<span class="hll"><span class="linenos" data-linenos="4 "></span><span class="n">SRANDMEMBER</span> <span class="n">noticias</span> <span class="o">-</span><span class="mi">2</span>
+</span><span class="linenos" data-linenos="5 "></span><span class="c1"># 1) &quot;xataka.com&quot;</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># 2) &quot;xataka.com&quot;</span>
+</code></pre></div>
+<p>También podemos emplear las operaciones matemáticas de conjuntos, mediante <a href="https://redis.io/docs/latest/commands/sinter/"><code>SINTER</code></a> para la intersección, <a href="https://redis.io/docs/latest/commands/sdiff/"><code>SDIFF</code></a> la diferencia y <a href="https://redis.io/docs/latest/commands/sunion/"><code>SUNION</code></a> para la union:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">SADD</span> <span class="n">tech</span> <span class="n">xataka</span><span class="o">.</span><span class="n">com</span> <span class="n">eurogamer</span><span class="o">.</span><span class="n">es</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 3</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">SINTER</span> <span class="n">noticias</span> <span class="n">tech</span>    <span class="c1"># Enlaces que aparecen en los dos conjuntos</span>
@@ -1852,20 +1860,28 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <ul>
 <li>
 <p><strong>Comandos</strong></p>
-<p>Para añadir elementos a un conjunto ordenado usaremos la operacion <a href="https://redis.io/docs/latest/commands/zadd/"><code>ZADD clave puntuación valor</code></a>, mientras que mediante <a href="https://redis.io/docs/latest/commands/zrange/"><code>ZRANGE clave inicio fin</code></a> podemos recuperar las claves por posición o puntuación:</p>
+<p>Para añadir elementos a un conjunto ordenado usaremos la operacion <a href="https://redis.io/docs/latest/commands/zadd/"><code>ZADD clave puntuación valor</code></a>, <a href="https://redis.io/docs/latest/commands/zrem/"><code>ZREM</code></a> para eliminarlos,  mientras que mediante <a href="https://redis.io/docs/latest/commands/zrange/"><code>ZRANGE clave inicio fin</code></a> podemos recuperar las claves entre un rango inclusivo (si queremos que no entren inicio o fin en el rango, les pondremos un paréntesis delante) por posición o puntuación (<code>BYSCORE</code>), pudiendo recuperarlo en orden inverso (<code>REV</code>) y/o con su puntuación <code>WITHSCORES</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">ZADD</span> <span class="n">visitas</span> <span class="mi">1000</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="mi">5000</span> <span class="n">aitor</span><span class="o">-</span><span class="n">iabd</span> <span class="mi">66</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 3</span>
-<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="n">WITHSCORES</span>  <span class="c1"># Lista ordenada por puntuación</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="n">WITHSCORES</span>                  <span class="c1"># Todos los elementos con puntuaciones</span>
 </span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># 1) &quot;aitor-blog&quot;</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1"># 2) &quot;66&quot;</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1"># 3) &quot;aitor-bd&quot;</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1"># 4) &quot;1000&quot;</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="c1"># 5) &quot;aitor-iabd&quot;</span>
 <span class="linenos" data-linenos=" 9 "></span><span class="c1"># 6) &quot;5000&quot;</span>
-<span class="hll"><span class="linenos" data-linenos="10 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="mi">50</span> <span class="mi">1500</span> <span class="n">BYSCORE</span>
+<span class="hll"><span class="linenos" data-linenos="10 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="mi">50</span> <span class="mi">1500</span> <span class="n">BYSCORE</span>                  <span class="c1"># Filtrado por puntuaciones</span>
 </span><span class="linenos" data-linenos="11 "></span><span class="c1"># 1) &quot;aitor-blog&quot;</span>
 <span class="linenos" data-linenos="12 "></span><span class="c1"># 2) &quot;aitor-bd&quot;</span>
+<span class="hll"><span class="linenos" data-linenos="13 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="p">(</span><span class="mi">66</span> <span class="mi">1500</span> <span class="n">BYSCORE</span>                 <span class="c1"># No incluye el 66</span>
+</span><span class="linenos" data-linenos="14 "></span><span class="c1"># 1) &quot;aitor-bd&quot;</span>
+<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="p">(</span><span class="mi">5000</span> <span class="mi">66</span> <span class="n">REV</span> <span class="n">BYSCORE</span> <span class="n">WITHSCORES</span>  <span class="c1"># No incluye el 5000, en orden descendente</span>
+</span><span class="linenos" data-linenos="16 "></span><span class="c1"># 1) &quot;aitor-bd&quot;</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1"># 2) &quot;1000&quot;</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1"># 3) &quot;aitor-blog&quot;</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1"># 4) &quot;66&quot;</span>
 </code></pre></div>
+<p>Han caído en desuso las operaciones <code>ZREVRANGE</code>, <code>ZRANGEBYSCORE</code>, <code>ZREVRANGEBYSCORE</code>, etc... ya que con <a href="https://redis.io/docs/latest/commands/zrange/"><code>ZRANGE</code></a> y los parámetros adecuados podemos obtener los mismos resultados.</p>
 <p>Si lo que queremos es averiguar cuantos valores tienen una puntuación entre entre un rango determinado, usaremos <a href="https://redis.io/docs/latest/commands/zincrby/"><code>ZCOUNT clave inicio fin</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">ZCOUNT</span> <span class="n">visitas</span> <span class="mi">50</span> <span class="mi">1500</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># (integer) 2</span>
@@ -2031,6 +2047,45 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 </ol>
 </li>
 </ul>
+<p><a name="AC1211"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1211</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando los conjuntos en <em>Redis</em>, se pide:</p>
+<ol>
+<li>Crea un conjunto que permita almacenar bases de datos NoSQL dentro de <code>ac1211nosql</code>.</li>
+<li>Añade al conjunto los valores <code>Redis</code>, <code>MongoDB</code> y <code>Neo4j</code>.</li>
+<li>Vuelve a añadir al conjunto el valor <code>Redis</code>.</li>
+<li>Recupera los elementos del conjunto.</li>
+<li>Crea otro conjunto que permita almacenar bases de datos relacionales dentro de <code>ac1211sql</code>.</li>
+<li>Añade al conjunto los valores <code>MariaDB</code>, <code>PostgreSQL</code> y <code>Oracle</code>.</li>
+<li>Comprueba si el conjunto <code>ac1211sql</code> contiene <code>Redis</code>.</li>
+<li>Crea el conjunto <code>ac1211bd</code> con la union de los dos conjuntos.</li>
+<li>Recupera cuantos elementos tiene el nuevo conjunto.</li>
+<li>Recupera los elementos del nuevo conjunto.</li>
+<li>Elimina del nuevo conjunto el valor <code>Neo4j</code>.</li>
+<li>Comprueba si hay algún elemento compartido entre los dos conjuntos iniciales.</li>
+<li>Recupera dos elementos aleatorios de cada conjunto (sin repetidos)</li>
+<li>Recupera dos elementos aleatorios de cada conjunto (con repetidos repetidos)</li>
+</ol>
+</li>
+</ul>
+<p><a name="AP1212"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1212</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando los conjuntos ordenados en <em>Redis</em>, se pide:</p>
+<ol>
+<li>Crea el conjunto ordenado <code>ap1212bd</code> que permita almacenar bases de datoscon una puntuación donde calificaremos nuestro conocimiento. </li>
+<li>Añade al conjunto los valores <code>Redis</code> con 50 puntos, <code>Neo4j</code> con 5 puntos, <code>MariaDB</code> con 90 puntos y <code>MongoDB</code> con 20 puntos.</li>
+<li>Recupera los elementos donde tengamos un conocimiento entre 30 y 95 puntos.</li>
+<li>Recupera los elementos donde tengamos un conocimiento entre 20 y 90 puntos, pero sin incluir esos valores.</li>
+<li>Recupera los elementos donde tengamos un conocimiento entre 5 y 100 puntos, con las puntuaciones asociadas.</li>
+<li>Recupera el número de elementos del conjunto ordenado.</li>
+<li>Recupera todos los elementos de menor a mayor conocimiento.</li>
+<li>Recupera todos los elementos de mayor a menor conocimiento.</li>
+<li>Elimina el elemento <code>Neo4j</code>.</li>
+</ol>
+</li>
+</ul>
 <p><a name="AR1215"></a></p>
 <ul>
 <li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1215</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr>, <abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) De forma similar a las <a href="resources/Redis_Cheat_Sheet.pdf"><em>cheatsheets</em> técnicas</a>, crea una tabla resumen con los comandos más importantes que hemos trabajado en esta sesión.</li>
@@ -2041,7 +2096,6 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 </ul>
 <!--
 TODO:
-1. Actividades Conjuntos y Conjuntos ordenados
 1. APuntes JSON
 1. Actividades JSON
 1. Explicación persistencia
