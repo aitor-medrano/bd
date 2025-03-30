@@ -834,7 +834,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Conjunto">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#conjunto-ordenado" class="md-nav__link">
@@ -845,12 +846,32 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#json" class="md-nav__link">
     <span class="md-ellipsis">
       JSON
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="JSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsonpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSONPath
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1177,7 +1198,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Conjunto">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#conjunto-ordenado" class="md-nav__link">
@@ -1188,12 +1210,32 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#json" class="md-nav__link">
     <span class="md-ellipsis">
       JSON
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="JSON">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsonpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSONPath
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1273,7 +1315,7 @@
   <h1>Redis</h1>
 
 <h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
-<p>Seguimos trabajando el siguientes resultados de aprendizaje (RA):</p>
+<p>Seguimos trabajando el siguiente resultado de aprendizaje (RA):</p>
 <ul>
 <li>RA7: <strong>Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor</strong>.</li>
 </ul>
@@ -1305,7 +1347,7 @@
 </ol>
 </div>
 <h3 id="programacion-de-aula-5h">Programación de Aula (5h)<a class="headerlink" href="#programacion-de-aula-5h" title="Permanent link">&para;</a></h3>
-<p>Seguimos con la unidad 12, y tras haber introducido los conceptos y elementos de los sistemas NoSQL, vamos a profundizar en el manejo de <em>Redis</em>, con una duración estimada de 5 horas:</p>
+<p>Seguimos con la penúltima unidad, y tras haber introducido los conceptos y elementos de los sistemas NoSQL, vamos a profundizar en el manejo de <em>Redis</em>, conociendo cómo funciona una solución clave-valor, con una duración estimada de 5 horas:</p>
 <table>
 <thead>
 <tr>
@@ -1840,7 +1882,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </li>
 </ul>
 </div>
-<h3 id="conjunto-ordenado">Conjunto ordenado<a class="headerlink" href="#conjunto-ordenado" title="Permanent link">&para;</a></h3>
+<h4 id="conjunto-ordenado">Conjunto ordenado<a class="headerlink" href="#conjunto-ordenado" title="Permanent link">&para;</a></h4>
 <div class="grid cards">
 <ul>
 <li>
@@ -1898,32 +1940,75 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <ul>
 <li>
 <p><strong>Estructura</strong></p>
-<p><em>Redis</em> permite el uso de <a href="https://redis.io/docs/latest/develop/data-types/json/">JSON</a> como un tipo de datos, permitiendo almacenar, modificar y recuperar valores JSON, lo que en parte la convierte en una base de datos documental.
-Módulo RedisJSON</p>
+<p><em>Redis</em> permite el uso de <a href="https://redis.io/docs/latest/develop/data-types/json/">JSON</a> como un tipo de datos, permitiendo almacenar, modificar y recuperar valores JSON, lo que en parte la convierte en una base de datos documental.</p>
+<p>Toda la interacción de <em>Redis</em> con estructuras <em>JSON</em> se realizan con el prefijo <code>JSON.</code>.</p>
 </li>
 </ul>
-<p>Extensión que permite almacenar, recuperar y manipular documentos JSON
-Instalación mediante módulo RedisJSON
-Operaciones nativas de JSON sin conversión previa</p>
-<p>Las consultas se realizan con JSONPath, utilzando la siguiente sintaxis en el uso de selectores:</p>
-<p>$: Raíz del documento
-$.nombre: Campo específico
-$.array[*]: Todos los elementos de un array
-$.array[0,1]: Elementos específicos</p>
 </div>
 <div class="grid cards">
 <ul>
 <li>
 <p><strong>Comandos</strong></p>
-<p>Para añadir elementos :</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">clave</span> <span class="err">$</span> <span class="s1">&#39;{&quot;nombre&quot;: &quot;Juan&quot;, &quot;edad&quot;: 30}&#39;</span>    <span class="c1"># Crear documento</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">clave</span>                                       <span class="c1"># Obtener documento</span>
-<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">DEL</span> <span class="n">clave</span> <span class="err">$</span><span class="o">.</span><span class="n">campo</span>                               <span class="c1"># Eliminar campo</span>
-</span><span class="linenos" data-linenos="4 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">ARRAPPEND</span> <span class="n">clave</span> <span class="err">$</span><span class="o">.</span><span class="n">array</span> <span class="n">valor</span>                   <span class="c1"># Añadir a array</span>
+<p>Los comandos que más vamos a emplear son <a href="https://redis.io/docs/latest/commands/json.set/"><code>JSON.SET</code></a> para asignar una cadena JSON a una clave y <a href="https://redis.io/docs/latest/commands/json.get/"><code>JSON.GET</code></a> para recuperar un valor, pudiendo realizar selección y filtrado de elementos.</p>
+<p>Como hemos comentado, para asignar un elemento usaremos el comando <a href="https://redis.io/docs/latest/commands/json.set/"><code>JSON.SET clave ruta valor</code></a>, donde <code>ruta</code> será <code>$</code> para indicar el raíz o una expresión <em>JSONPATH</em> si queremos añadir contenido en un lugar específico, y mediante <code>valor</code> le asignamos una cadena en formato JSON. Además, podemos pasar el parámetro <code>NX</code> para indicar que lo cree si no existe o <code>XX</code> para sobreescribir en caso de que ya exista. Veamos algunos ejemplos:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="err">$</span> <span class="s1">&#39;{&quot;nombre&quot;: &quot;Aitor Medrano&quot;, &quot;altura&quot;: 182, &quot;hobbies&quot;: [&quot;baloncesto&quot;, &quot;videojuegos&quot;]}&#39;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># OK</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">2</span> <span class="err">$</span> <span class="s1">&#39;{&quot;nombre&quot;: &quot;José Manuel Pérez&quot;}&#39;</span> <span class="n">NX</span>   <span class="c1"># NX: Lo crea si no existe</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="c1"># OK</span>
+<span class="hll"><span class="linenos" data-linenos="5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">2</span> <span class="err">$</span> <span class="s1">&#39;{&quot;nombre&quot;: &quot;Andreu Medrano&quot;}&#39;</span> <span class="n">XX</span>      <span class="c1"># XX: Lo sobreescribe, sólo si ya existe. Si no, ni lo inserta</span>
+</span></code></pre></div>
+<p>Si queremos modificar un documento, además de <code>JSON.SET</code> para campos sencillos, podemos utilizar <a href="https://redis.io/docs/latest/commands/json.arrappend/"><code>JSON.ARRAPPEND</code></a> y <a href="https://redis.io/docs/latest/commands/json.arrinsert/"><code>JSON.ARRINSERT</code></a> al trabajar con <em>arrays</em> para añadir, respectivamente, elementos al final o en una posición determinada:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.altura&#39;</span> <span class="mi">183</span>   <span class="c1"># Modificamos un campo</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># OK</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.ciudad&#39;</span> <span class="s1">&#39;&quot;Elche&quot;&#39;</span>   <span class="c1"># Agregamos un nuevo campo</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="c1"># OK</span>
+<span class="hll"><span class="linenos" data-linenos="5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">ARRAPPEND</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.hobbies&#39;</span> <span class="s1">&#39;&quot;big data&quot;&#39;</span>
+</span><span class="linenos" data-linenos="6 "></span><span class="c1"># 1) (integer) 3</span>
+<span class="hll"><span class="linenos" data-linenos="7 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">ARRINSERT</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.hobbies&#39;</span> <span class="mi">1</span> <span class="s1">&#39;&quot;música&quot;&#39;</span>
+</span><span class="linenos" data-linenos="8 "></span><span class="c1"># 1) (integer) 4</span>
 </code></pre></div>
+<p>Para recuperar documentos usaremos <a href="https://redis.io/docs/latest/commands/json.get/"><code>JSON.GET clave [ruta]</code></a>, donde <code>ruta</code> es una expresión <em>JSONPath</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># &quot;{\&quot;nombre\&quot;:\&quot;Aitor Medrano\&quot;,\&quot;altura\&quot;:183,\&quot;hobbies\&quot;:[\&quot;baloncesto\&quot;,\&quot;m\xc3\xbasica\&quot;,\&quot;videojuegos\&quot;,\&quot;big data\&quot;],\&quot;ciudad\&quot;:\&quot;Elche\&quot;}&quot;</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.nombre&#39;</span>       <span class="c1"># Un campo sencillo</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># &quot;[\&quot;Aitor Medrano\&quot;]&quot;</span>
+<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.hobbies&#39;</span>      <span class="c1"># Un campo array</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># &quot;[[\&quot;baloncesto\&quot;,\&quot;m\xc3\xbasica\&quot;,\&quot;videojuegos\&quot;,\&quot;big data\&quot;]]&quot;</span>
+<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.hobbies[0]&#39;</span>   <span class="c1"># El primer elemento del array</span>
+</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># &quot;[\&quot;baloncesto\&quot;]&quot;</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.nombre&#39;</span> <span class="s1">&#39;$.ciudad&#39;</span>    <span class="c1"># Varias rutas</span>
+</span><span class="linenos" data-linenos="10 "></span><span class="c1"># &quot;{\&quot;$.nombre\&quot;:[\&quot;Aitor Medrano\&quot;],\&quot;$.ciudad\&quot;:[\&quot;Elche\&quot;]}&quot;</span>
+</code></pre></div>
+<p>También podemos emplear <a href="https://redis.io/docs/latest/commands/json.mget/"><code>JSON.MGET</code></a> para recuperar la misma ruta de varias claves:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">MGET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">2</span> <span class="s1">&#39;$.nombre&#39;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) &quot;[\&quot;Aitor Medrano\&quot;]&quot;</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="c1"># 2) &quot;[\&quot;Andreu Medrano\&quot;]&quot;</span>
+</span></code></pre></div>
+<p>Finalmente, para eliminar elementos disponemos de <a href="https://redis.io/docs/latest/commands/json.del/"><code>JSON.DEL</code></a> y para vaciarlos <a href="https://redis.io/docs/latest/commands/json.clear/"><code>JSON.CLEAR</code></a> (vacía los arrays y los objetos y pone a cero los valores enteros). En el caso de arrays, podemos emplear <a href="https://redis.io/docs/latest/commands/json.arrpop/"><code>JSON.ARRPOP</code></a> para sacar un elemento de una posición o <a href="https://redis.io/docs/latest/commands/json.arrtrim/"><code>JSON.ARRTRIM</code></a> para recortar el <em>array</em> a una subconjunto de los elementos:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">DEL</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.ciudad&#39;</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 1</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">CLEAR</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.altura&#39;</span>         <span class="c1"># Ponemos la altura a 0</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># (integer) 1</span>
+<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">ARRPOP</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.hobbies&#39;</span> <span class="mi">0</span>     <span class="c1"># Sacamos el primer elemento</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># 1) &quot;\&quot;baloncesto\&quot;&quot;</span>
+<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span>
+</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># &quot;{\&quot;nombre\&quot;:\&quot;Aitor Medrano\&quot;,\&quot;altura\&quot;:0,\&quot;hobbies\&quot;:[\&quot;m\xc3\xbasica\&quot;,\&quot;videojuegos\&quot;,\&quot;big data\&quot;]}&quot;</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">ARRTRIM</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.hobbies&#39;</span> <span class="mi">1</span> <span class="mi">2</span>  <span class="c1"># Nos quedamos con los elementos del 1 al 2</span>
+</span><span class="linenos" data-linenos="10 "></span><span class="c1"># 1) (integer) 2</span>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span>
+</span><span class="linenos" data-linenos="12 "></span><span class="c1"># &quot;{\&quot;nombre\&quot;:\&quot;Aitor Medrano\&quot;,\&quot;altura\&quot;:0,\&quot;hobbies\&quot;:[\&quot;videojuegos\&quot;,\&quot;big data\&quot;]}&quot;</span>
+</code></pre></div>
+<p>Otras operaciones comunes son <a href="https://redis.io/docs/latest/commands/json.arrlen/"><code>JSON.ARRLEN</code></a> para averiguar el tamaño de un array o <a href="https://redis.io/docs/latest/commands/json.type/"><code>JSON.TYPE</code></a> para obtener el tipo de un determinado campo.</p>
 </li>
 </ul>
 </div>
+<h4 id="jsonpath">JSONPath<a class="headerlink" href="#jsonpath" title="Permanent link">&para;</a></h4>
+<p>En el módulo de lenguaje de marcas ya habéis utilizado <em>JSONPath</em> para hacer consultas sobre documentos JSON. Aún así, vamos a repasar su sintaxis, la cual se basa en el uso de selectores:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">$</span><span class="o">:</span><span class="w"> </span><span class="nx">Raíz</span><span class="w"> </span><span class="nx">del</span><span class="w"> </span><span class="nx">documento</span>
+<span class="linenos" data-linenos="2 "></span><span class="nx">$</span><span class="p">.</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="nx">Campo</span><span class="w"> </span><span class="nx">específico</span>
+<span class="linenos" data-linenos="3 "></span><span class="nx">$</span><span class="p">.</span><span class="nx">array</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">Todos</span><span class="w"> </span><span class="nx">los</span><span class="w"> </span><span class="nx">elementos</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">un</span><span class="w"> </span><span class="nx">array</span>
+<span class="linenos" data-linenos="4 "></span><span class="nx">$</span><span class="p">.</span><span class="nx">array</span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">Elementos</span><span class="w"> </span><span class="nx">específicos</span>
+</code></pre></div>
 <hr />
 <p>Otras estructuras de datos menos comunes son:</p>
 <ul>
@@ -2098,7 +2183,6 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 TODO:
 1. APuntes JSON
 1. Actividades JSON
-1. Explicación persistencia
 -->
 
 <!--
