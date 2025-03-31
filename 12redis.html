@@ -1941,6 +1941,11 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <li>
 <p><strong>Estructura</strong></p>
 <p><em>Redis</em> permite el uso de <a href="https://redis.io/docs/latest/develop/data-types/json/">JSON</a> como un tipo de datos, permitiendo almacenar, modificar y recuperar valores JSON, lo que en parte la convierte en una base de datos documental.</p>
+<p>Un documento JSON está formado por pares de clave-valor, donde las claves son cadenas, pero los valores pueden ser de diferentes tipos, los cuales pueden ser:
+* numéricos: enteros y decimales
+* cadenas de texto
+* valores booleanos: <code>true</code> o <code>false</code>
+, null (valor nulo), objetos (conjuntos de pares clave-valor anidados) y arrays (listas ordenadas de valores, que pueden incluir cualquier combinación de los tipos anteriores).</p>
 <p>Toda la interacción de <em>Redis</em> con estructuras <em>JSON</em> se realizan con el prefijo <code>JSON.</code>.</p>
 </li>
 </ul>

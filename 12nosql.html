@@ -1302,7 +1302,7 @@
 <li>¿Qué tipos de analítica de datos existen? ¿En qué consisten?</li>
 <li>¿Qué es un <em>dashboard</em> y para qué se utiliza?</li>
 <li>¿En qué consiste la ciencia de datos?</li>
-<li>¿Que significa el acrónimo NoSQL?</li>
+<li>¿Qué significa el acrónimo NoSQL?</li>
 <li>¿Por qué aparecieron las soluciones NoSQL?</li>
 <li>¿Qué tipos de modelos NoSQL existen? ¿Puedes nombrar una solución <em>software</em> para cada uno de ellos?</li>
 </ol>
@@ -1430,7 +1430,7 @@
 <h3 id="replicacion">Replicación<a class="headerlink" href="#replicacion" title="Permanent link">&para;</a></h3>
 <p>La replicación mantiene copias idénticas de los datos en múltiples servidores, lo que facilita que las aplicaciones siempre funcionen y los datos se mantengan seguros, incluso si alguno de los servidores sufre algún problema.</p>
 <p>La mayoría de las bases de datos actuales también soportan la replicación automática, lo que implica una alta disponibilidad y recuperación frente a desastres sin la necesidad de aplicaciones de terceros encargadas de ello. Desde el punto de vista del desarrollador, el entorno de almacenamiento es virtual y ajeno al código de aplicación.</p>
-<p>Antes de ver los tipos, hemos de ser conscientes de cual va a ser la función de la máquina replicada. Si queremos tener una copia de los datos, la cual sólo vamos a utilizar para realizar operaciones de consulta (<strong>réplica de lectura</strong>) va a implicar una configuración diferente de si lo que queremos es replicar nodos donde queremos que se pueda escribir también (<strong>réplica de escritura</strong>).</p>
+<p>Antes de ver los tipos, hemos de ser conscientes de cuál va a ser la función de la máquina replicada. Si queremos tener una copia de los datos, la cual sólo vamos a utilizar para realizar operaciones de consulta (<strong>réplica de lectura</strong>) va a implicar una configuración diferente de si lo que queremos es replicar nodos donde queremos que se pueda escribir también (<strong>réplica de escritura</strong>).</p>
 <p>Dicho esto, las principales arquitecturas de replicación son:</p>
 <ul>
 <li>
@@ -1511,14 +1511,14 @@
     <figcaption>Datos y más datos</figcaption>
 </figure>
 
-<p>Esta claro que los datos son el petroleo del siglo XX, tal como dijo <em>Clive Humby</em> en el 2006, y que se puede obtener mucho valor si almacenamos y sabemos extraer información precisa de "nuestros" datos. Sin embargo, ya en la década del 2020, los <a href="https://www.forbes.com/sites/nishatalagala/2022/03/02/data-as-the-new-oil-is-not-enough-four-principles-for-avoiding-data-fires">datos <em>per se</em> no son suficiente</a> si no que debemos conocerlos y cuidarlos.</p>
+<p>Está claro que los datos son el petróleo del siglo XX, tal como dijo <em>Clive Humby</em> en el 2006, y que se puede obtener mucho valor si almacenamos y sabemos extraer información precisa de "nuestros" datos. Sin embargo, ya en la década del 2020, los <a href="https://www.forbes.com/sites/nishatalagala/2022/03/02/data-as-the-new-oil-is-not-enough-four-principles-for-avoiding-data-fires">datos <em>per se</em> no son suficiente</a> si no que debemos conocerlos y cuidarlos.</p>
 <p>Pero el adjetivo <em>Big</em> implica cantidades ingentes, dicho de otro modo, cantidades de datos que una de nuestras máquinas no puede gestionar y necesita de la computación distribuida y plataformas como el <em>cloud</em> para su almacenamiento y gestión. Es probable que con soluciones de <em>Small Data</em> podamos cubrir gran parte de los problemas que requieren nuestra industria más cercana. Eso sí, muchas de las técnicas y destrezas asociadas a la ingeniería de datos no son únicas de grandes volúmenes de datos con arquitecturas distribuidas, sino que, podemos llevárnoslas a nuestros desarrollos a menor escala para automatizar y poner los datos por delante de nuestras empresas y aplicaciones.</p>
 <p>Pero antes de entrar en harina, retrocedamos en el tiempo.</p>
 <h3 id="hablemos-de-v">Hablemos de V<a class="headerlink" href="#hablemos-de-v" title="Permanent link">&para;</a></h3>
 <p><a href="https://es.wikipedia.org/wiki/V_(serie_de_televisi%C3%B3n_de_1983)">V</a> fue un fenómeno en los 80 como serie de ciencia ficción, pero relacionado con el <em>Big Data</em>, dependiendo de la literatura, tenemos las 3V del Big Data, las 5V, las 7V...</p>
 <p>En los inicios, para saber si hablábamos o no de <em>Big Data</em>, nos teníamos que preguntar si cumplían con las 3V:</p>
 <ul>
-<li><strong>Variedad</strong>: en relación a las fuentes, formas y tipos. Por ejemplo, pueden ser: estructurados, como tablas de una base de datos relacional o ficheros de texto o semiestructurados como los documentos JSON. Incluso almacenar datos no estructurados como correos electrónicos, imágenes o audios.</li>
+<li><strong>Variedad</strong>: en relación con las fuentes, formas y tipos. Por ejemplo, pueden ser: estructurados, como tablas de una base de datos relacional o ficheros de texto o semiestructurados como los documentos JSON. Incluso almacenar datos no estructurados como correos electrónicos, imágenes o audios.</li>
 <li><strong>Volumen</strong>: Entendida como la cantidad de datos procesados y almacenados. A día de hoy probablemente superior al orden de TB de datos y que, para su procesamiento, superan la memoria RAM de nuestros sistemas.</li>
 <li><strong>Velocidad</strong>: el tratamiento que realizamos sobre los datos, en ocasiones cercano al tiempo real o con unos tiempos de recolección, procesamiento y almacenamiento finitos y claramente definidos.</li>
 </ul>
@@ -1527,7 +1527,7 @@
 <li><strong>Valor</strong>: <em>"Lo que importa, son los datos importantes"</em>, los que aportan valor, transformando datos en información, y a su vez, en conocimiento que facilita la toma de decisiones.</li>
 <li><strong>Veracidad</strong>: Debemos asegurar que los datos que tenemos son reales y no contienen datos erróneos, es decir, que son fiables. Se dedica un esfuerzo importante en explorar y validar los datos para que la analítica realizada sea veraz.</li>
 </ul>
-<p>Y por último, otras dos hasta llegar a las 7V:</p>
+<p>Y, por último, otras dos hasta llegar a las 7V:</p>
 <ul>
 <li><strong>Viabilidad</strong>: Es necesario saber la capacidad que tiene una empresa para realizar un uso eficaz de los datos, cuestionarse qué y cuántos datos se necesitan para predecir los resultados más interesantes para la empresa.</li>
 <li><strong>Visualización</strong>: Necesitamos poder representar los datos, ya sea de manera visual mediante gráficos o codificados en indicadores (KPI) para hacer que sean legibles y accesibles.</li>
@@ -1540,7 +1540,7 @@
 <p>Claramente, para los departamentos de <em>marketing</em>, <em>Big Data</em> se escribe con V.</p>
 <h3 id="inteligencia-de-negocio">Inteligencia de negocio<a class="headerlink" href="#inteligencia-de-negocio" title="Permanent link">&para;</a></h3>
 <p>Mientras que las aplicaciones <em>Big Data</em> recogen información desde múltiples fuentes de entrada, el concepto de inteligencia de negocio (<strong><em>business intelligence</em></strong>) se centra en el uso que hace la empresa de dichos datos, es decir, coge los datos y los transforma en conocimiento para la ayuda en la toma de decisiones en base a los datos analizados.</p>
-<p>Hasta ahora, las preguntas a las que hemos dado respuesta son del tipo ¿Cuantas zapatillas hemos vendido en el último mes?. Las empresas necesitas adoptar decisiones estratégicas para definir una estrategia que mejore su competitividad. Así pues, necesita respuestas a preguntas del tipo ¿Cuántos zapatillas blancas del 46 se vendieron el último mes en los centros comerciales más cercanos a la ciudad; comparados con las ventas del mismo mes el año pasado? o ¿Qué tipo de cliente me ha estado comprando una zapatilla premium en los últimos 5 años?</p>
+<p>Hasta ahora, las preguntas a las que hemos dado respuesta son del tipo ¿Cuantas zapatillas hemos vendido en el último mes? Las empresas necesitas adoptar decisiones estratégicas para definir una estrategia que mejore su competitividad. Así pues, necesita respuestas a preguntas del tipo ¿Cuántos zapatillas blancas del 46 se vendieron el último mes en los centros comerciales más cercanos a la ciudad; comparados con las ventas del mismo mes el año pasado? o ¿Qué tipo de cliente me ha estado comprando una zapatilla premium en los últimos 5 años?</p>
 <p>Para poder tener respuesta a estas preguntas, necesitamos realizar una <strong>analítica de datos</strong>, la cual implica procesar, limpiar, organizar y extraer información útil de grandes volúmenes de datos. Para ello, las herramientas de <em>Business Intelligence</em> (BI) son aplicaciones de soporte de decisiones que permiten en tiempo real, acceso interactivo, análisis y manipulación de información crítica y así ser capaces de generar conocimiento mediante el análisis de la información ya almacenada, es decir, realizando <strong>analítica descriptiva</strong> (¿Qué sucedió?) y <strong>diagnóstica</strong> (¿Por qué sucedió?).</p>
 <p>Con la ayuda del <em>Big Data</em> y la IA, podemos afrontar analíticas más avanzadas, como son la analítica <strong>predictiva</strong> (¿Qué pasará en el futuro?) y <strong>prescriptiva</strong> (¿Cómo podemos prevenir? ¿Qué debería suceder?) para establecer tendencias, averiguar por qué suceden las cosas y hacer una estimación de cómo se desarrollarán las cosas en el futuro.</p>
 <div class="admonition info">
@@ -1628,7 +1628,7 @@ con datos estructurados, semi-estructurados y sin estructurar. Casi todas las im
 <p>Escalabilidad horizontal: Están diseñadas para distribuir datos en múltiples servidores mediante técnicas como el <em>sharding</em> o particionado, lo que permite aumentar la capacidad del sistema simplemente añadiendo más nodos. A diferencia de las bases de datos relacionales, que suelen escalar verticalmente (aumentando la capacidad de un solo servidor), las bases de datos NoSQL pueden crecer de forma distribuida sin afectar el rendimiento, de un modo transparente para el desarrollador.</p>
 </li>
 <li>
-<p>Modelos de datos diversos: Pueden organizarse en diferentes tipos de almacenamiento, que resuelven varios problemas que no se plantearon al definir el modelo relacional, como los modelos vlave-valor (<em>Redis</em>), documental (<em>MongoDB</em>), columnar (<em>Cassandra</em>) o basada en grafos (<em>Neo4j</em>).</p>
+<p>Modelos de datos diversos: Pueden organizarse en diferentes tipos de almacenamiento, que resuelven varios problemas que no se plantearon al definir el modelo relacional, como los modelos clave-valor (<em>Redis</em>), documental (<em>MongoDB</em>), columnar (<em>Cassandra</em>) o basada en grafos (<em>Neo4j</em>).</p>
 </li>
 <li>
 <p>Alta disponibilidad y tolerancia a fallos: Utilizan replicación y distribución de datos en múltiples nodos para garantizar que el sistema continúe funcionando ante fallos de hardware o red. Algunos sistemas NoSQL implementan modelos de replicación maestro-esclavo o replicación distribuida para asegurar la continuidad del servicio.</p>
