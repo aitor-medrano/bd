@@ -777,6 +777,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Redis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redis-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis cloud
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -946,6 +970,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Redis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#redis-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redis cloud
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -975,6 +1023,7 @@
 <li><a href="https://www.pgadmin.org/">PgAdmin</a>: herramienta gráfica de gestión de <em>PostgreSQL</em></li>
 </ul>
 </li>
+<li><a href="https://redis.io/">Redis</a>: Base de datos NoSQL de tipo clave-valor</li>
 <li><a href="https://grafana.com/">Grafana</a>: herramienta de observabilidad y visualización de datos.</li>
 <li><a href="https://code.visualstudio.com/">Visual Studio Code</a>: editor de texto/código</li>
 </ul>
@@ -1191,6 +1240,33 @@
 <figure style="align: center;">
     <img src="images/00dbeaver.png">
     <figcaption>Interfaz de DBeaver para PostgreSQL</figcaption>
+</figure>
+
+<h2 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h2>
+<p>Aunque podemos instalar <em>Redis</em> en cualquier sistema operativo, en nuestro caso, vamos a centrarnos en hacerlo mediante un contenedor <em>Docker</em>.</p>
+<p>La primera posibilidad es instalar la imagen <code>redis/redis-stack-server</code> mediante el comando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>redis-stack-server<span class="w"> </span>-p<span class="w"> </span><span class="m">6379</span>:6379<span class="w"> </span>redis/redis-stack-server:latest
+</code></pre></div>
+<p>Si en cambio, queremos utilizar el <em>stack</em> de <em>Redis</em> que también incluye la herramienta gráfica <a href="https://redis.io/insight/"><em>Redis Insight</em></a> en el puerto <code>8001</code> para administrar el sistema, usaremos la imagen <code>redis/redis-stack</code> mediante el comando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>redis-stack<span class="w"> </span>-p<span class="w"> </span><span class="m">6379</span>:6379<span class="w"> </span>-p<span class="w"> </span><span class="m">8001</span>:8001<span class="w"> </span>redis/redis-stack:latest
+</code></pre></div>
+<p>Si accedemos a <a href="http://localhost:8001/">http://localhost:8001/</a> accederemos a la página de inicio:</p>
+<figure style="align: center;">
+    <img src="images/12redis-insight.png" width="1024px">
+    <figcaption>Redis Insight</figcaption>
+</figure>
+
+<h3 id="redis-cloud">Redis cloud<a class="headerlink" href="#redis-cloud" title="Permanent link">&para;</a></h3>
+<p>Si no queremos instalar <em>Redis</em> en nuestro ordenador, podemos emplear <em>Redis cloud</em>, el cual ofrece de manera gratuita una instancia con 30MB de datos. Para ello, en la propia página de <em>Redis</em>, tras registrarnos, podremos crear una instancia.</p>
+<figure style="align: center;">
+    <img src="images/12redis-cloud.png" width="1024px">
+    <figcaption>Redis Cloud</figcaption>
+</figure>
+
+<p>Una vez creada, obtendremos su información de acceso, con su <em>endpoint</em> público, al cual podemos conectarnos con el cliente Redis CLI o mediante el interfaz gráfico <em>Redis Insight</em> (en su caso, deberíamos también instalarlo como cliente en nuestro dispositivo).</p>
+<figure style="align: center;">
+    <img src="images/12redis-cloud-s8a.png" width="1024px">
+    <figcaption>Conexión a Redis Cloud</figcaption>
 </figure>
 
 <!--

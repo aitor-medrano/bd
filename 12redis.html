@@ -881,6 +881,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#publicacion-suscripcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publicación-Suscripción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#persistencia" class="md-nav__link">
     <span class="md-ellipsis">
       Persistencia
@@ -1245,6 +1254,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#publicacion-suscripcion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publicación-Suscripción
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#persistencia" class="md-nav__link">
     <span class="md-ellipsis">
       Persistencia
@@ -1398,6 +1416,7 @@
 
 <p><a href="https://redis.io/es/">Redis</a> es una base de datos NoSQL <em>open source</em> en memoria, con un modelo de datos de clave-valor, que permite el cacheo de los datos y funcionar como un <em>broker</em> de mensajería. Soporta estructuras de datos como cadenas, <em>hash</em>, listas, conjuntos, conjuntos ordenador con consultas por rango, así como otras estructuras más específicas como mapas de bit, consultas <em>radius</em>, índices geospaciales, etc...</p>
 <p>El nombre <em>Redis</em> proviene de las iniciales de <strong><em>Remote Dictionary Server</em></strong> (servidor de diccionario remoto), un tipo de servidor apto como memoria rápida para datos, permitiendo su uso como una base de datos en memoria y como de clave-valor.</p>
+<p>También se ofrece como una opción de pago mediante <a href="https://redis.io/pricing/">Redis Lab</a>, ofreciéndola como una solución gestionada donde no tenemos que preocuparnos de la infraestructura.</p>
 <h2 id="caracteristicas">Características<a class="headerlink" href="#caracteristicas" title="Permanent link">&para;</a></h2>
 <p><em>Redis</em> almacena los datos como pares clave-valor, donde:</p>
 <ul>
@@ -1438,7 +1457,7 @@
 </table>
 <p>Cuando decimos que <em>Redis</em> es una base de datos en memoria, estamos indicando que el servidor almacena todos los datos en la memoria principal (RAM), ya que es la manera más rápida para almacenar y recuperar datos.  Esto permite que <em>Redis</em> funcione como memoria caché y también como unidad de memoria principal, con independencia de si los datos permanecen en la base de datos por mucho o poco tiempo. Así pues, en un servidor <em>Redis</em> con su uso principal, los datos no se guardan en el disco duro, sino en la memoria principal.</p>
 <p>Gracias a ser un almacén clave-valor, ofrece un alto rendimiento y puede escalarse fácilmente. Para cada entrada se crea una clave mediante la que se puede volver a solicitar la información en cuestión. Esto implica que las entradas no necesitan estar relacionadas entre sí ni tampoco consultarse con varias tablas diferentes, sino que la información está disponible de manera directa.</p>
-<p>¿Y si falla el servidor o se va la luz? ¿Corremos el riesgo de perder todos los datos? Para evitar que eso ocurra, <em>Redis</em> puede, o bien hacer regularmente un duplicado de todos los datos en un disco duro secundario (persistencia RDB - <em>???</em>), o bien guardar en un archivo de registro todas las órdenes necesarias para llevar a cabo una reconstrucción (persistencia AOF - <em>Append Only File</em>).</p>
+<p>¿Y si falla el servidor o se va la luz? ¿Corremos el riesgo de perder todos los datos? Para evitar que eso ocurra, <em>Redis</em> puede, o bien hacer regularmente un duplicado de todos los datos en un disco duro secundario (persistencia RDB - <em>Redis Database</em>), o bien guardar en un archivo de registro todas las órdenes necesarias para llevar a cabo una reconstrucción (persistencia AOF - <em>Append Only File</em>).</p>
 <p>Finalmente, respecto a la escalabilidad, como solución NoSQL, si toda la información no cabe es un único nodo, el sistema puede escalar horizontalmente añadiendo más nodos. Si cada nodo puede almacenar 64GB RAM, y tenemos 4 servidores, podríamos almacenar hasta 256GB de datos en nuestro servidor <em>Redis</em>.</p>
 <div class="admonition info">
 <p class="admonition-title">Hablemos de tamaños</p>
@@ -1448,32 +1467,7 @@ Los valores en <em>Redis</em> son de 64 bits.<br />
 En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <em>Redis</em>. En la práctica, hay servidores de una única instancia con 250 millones de claves.</p>
 </div>
 <h2 id="puesta-en-marcha">Puesta en marcha<a class="headerlink" href="#puesta-en-marcha" title="Permanent link">&para;</a></h2>
-<p>Aunque podemos instalar <em>Redis</em> en cualquier sistema operativo, en nuestro caso, vamos a centrarnos en hacerlo mediante un contenedor <em>Docker</em>.</p>
-<p>La primera posibilidad es instalar la imagen <code>redis/redis-stack-server</code> mediante el comando:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>redis-stack-server<span class="w"> </span>-p<span class="w"> </span><span class="m">6379</span>:6379<span class="w"> </span>redis/redis-stack-server:latest
-</code></pre></div>
-<p>Si en cambio, queremos utilizar el <em>stack</em> de <em>Redis</em> que también incluye la herramienta gráfica <a href="https://redis.io/insight/"><em>Redis Insight</em></a> en el puerto <code>8001</code> para administrar el sistema, usaremos la imagen <code>redis/redis-stack</code> mediante el comando:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>redis-stack<span class="w"> </span>-p<span class="w"> </span><span class="m">6379</span>:6379<span class="w"> </span>-p<span class="w"> </span><span class="m">8001</span>:8001<span class="w"> </span>redis/redis-stack:latest
-</code></pre></div>
-<p>Si accedemos a <a href="http://localhost:8001/">http://localhost:8001/</a> accederemos a la página de inicio:</p>
-<figure style="align: center;">
-    <img src="images/12redis-insight.png" width="1024px">
-    <figcaption>Redis Insight</figcaption>
-</figure>
-
-<div class="admonition tip">
-<p class="admonition-title">Redis cloud</p>
-<p>Si no queremos instalar <em>Redis</em> en nuestro ordenador, podemos emplear <em>Redis cloud</em>, el cual ofrece de manera gratuita una instancia con 30MB de datos. Para ello, en la propia página de <em>Redis</em>, tras registrarnos, podremos crear una instancia.</p>
-<p><figure style="align: center;">
-    <img src="images/12redis-cloud.png" width="1024px">
-    <figcaption>Redis Cloud</figcaption>
-</figure></p>
-<p>Una vez creada, obtendremos su información de acceso, con su <em>endpoint</em> público, al cual podemos conectarnos con el cliente Redis CLI o mediante el interfaz gráfico <em>Redis Insight</em> (en su caso, deberíamos también instalarlo como cliente en nuestro dispositivo).</p>
-<p><figure style="align: center;">
-    <img src="images/12redis-cloud-s8a.png" width="1024px">
-    <figcaption>Conexión a Redis Cloud</figcaption>
-</figure></p>
-</div>
+<p>Para poner en marcha <em>Redis</em>, bien podemos instalarlo en nuestro sistema, usar un contenedor <em>Docker</em> o utilizar la solución <em>Redis cloud</em>. Para ello, consulta la sección de <em>Redis</em> en la página de <a href="00entorno.html#redis">Entorno</a>.</p>
 <h3 id="uso-del-cliente-redis-cli">Uso del cliente redis-cli<a class="headerlink" href="#uso-del-cliente-redis-cli" title="Permanent link">&para;</a></h3>
 <p>Aunque hayamos visto que existe un interfaz gráfico, de momento vamos a centrarnos en el uso mediante la consola y acceder al cliente interactivo mediante <a href="https://redis.io/docs/latest/develop/tools/cli/"><code>redis-cli</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>redis-cli
@@ -2009,11 +2003,128 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </div>
 <h4 id="jsonpath">JSONPath<a class="headerlink" href="#jsonpath" title="Permanent link">&para;</a></h4>
 <p>En el módulo de lenguaje de marcas ya habéis utilizado <em>JSONPath</em> para hacer consultas sobre documentos JSON. Aún así, vamos a repasar su sintaxis, la cual se basa en el uso de selectores:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">$</span><span class="o">:</span><span class="w"> </span><span class="nx">Raíz</span><span class="w"> </span><span class="nx">del</span><span class="w"> </span><span class="nx">documento</span>
-<span class="linenos" data-linenos="2 "></span><span class="nx">$</span><span class="p">.</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="nx">Campo</span><span class="w"> </span><span class="nx">específico</span>
-<span class="linenos" data-linenos="3 "></span><span class="nx">$</span><span class="p">.</span><span class="nx">array</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">Todos</span><span class="w"> </span><span class="nx">los</span><span class="w"> </span><span class="nx">elementos</span><span class="w"> </span><span class="nx">de</span><span class="w"> </span><span class="nx">un</span><span class="w"> </span><span class="nx">array</span>
-<span class="linenos" data-linenos="4 "></span><span class="nx">$</span><span class="p">.</span><span class="nx">array</span><span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">]</span><span class="o">:</span><span class="w"> </span><span class="nx">Elementos</span><span class="w"> </span><span class="nx">específicos</span>
+<table>
+<thead>
+<tr>
+<th>Símbolo</th>
+<th>Significado</th>
+<th>Ejemplo</th>
+<th>Explicación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$</code></td>
+<td>Raíz del documento</td>
+<td><code>$.nombre</code></td>
+<td>Selecciona el campo "nombre" en la raíz</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>Acceso a propiedades</td>
+<td><code>$.usuario.nombre</code></td>
+<td>Accede a propiedades anidadas</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>Indexación de arrays</td>
+<td><code>$.hobbies[0]</code></td>
+<td>Selecciona el primer elemento del array</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Comodín para todos los elementos</td>
+<td><code>$.usuario.*</code></td>
+<td>Selecciona todas las propiedades de usuario</td>
+</tr>
+<tr>
+<td><code>..</code></td>
+<td>Búsqueda recursiva</td>
+<td><code>$..nombre</code></td>
+<td>Busca "nombre" en cualquier nivel</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Preparando datos</p>
+<p>Vamos a crear un documento JSON complejo, con datos de dos usuarios con elmentos anidados y uso de arrays, para ilustrar diferentes consultas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="err">JSON.SET</span><span class="w"> </span><span class="err">usuarios</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="err">&#39;</span><span class="p">{</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="nt">&quot;usuarios&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">        </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">            </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">            </span><span class="nt">&quot;edad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">            </span><span class="nt">&quot;contacto&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">                </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a.medrano@edu.gva.es&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">                </span><span class="nt">&quot;telefonos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;636 123456&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;686 567890&quot;</span><span class="p">]</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">            </span><span class="p">},</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">            </span><span class="nt">&quot;hobbies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;programación&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;música&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;viajes&quot;</span><span class="p">],</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">            </span><span class="nt">&quot;direcciones&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">                </span><span class="p">{</span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;casa&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ciudad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Elche&quot;</span><span class="p">},</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">                </span><span class="p">{</span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trabajo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ciudad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Elche&quot;</span><span class="p">}</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">            </span><span class="p">]</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="p">},</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">        </span><span class="p">{</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">            </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Juani Moya&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">            </span><span class="nt">&quot;edad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">            </span><span class="nt">&quot;contacto&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">                </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;j.moya@edu.gva.es&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">                </span><span class="nt">&quot;telefonos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;696 543210&quot;</span><span class="p">]</span>
+<span class="linenos" data-linenos="24 "></span><span class="w">            </span><span class="p">},</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">            </span><span class="nt">&quot;hobbies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;lectura&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;música&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;deporte&quot;</span><span class="p">],</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">            </span><span class="nt">&quot;direcciones&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">                </span><span class="p">{</span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;casa&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ciudad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Murcia&quot;</span><span class="p">},</span><span class="w"> </span>
+<span class="linenos" data-linenos="28 "></span><span class="w">                </span><span class="p">{</span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trabajo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ciudad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Elche&quot;</span><span class="p">}</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">            </span><span class="p">]</span>
+<span class="linenos" data-linenos="30 "></span><span class="w">        </span><span class="p">}</span>
+<span class="linenos" data-linenos="31 "></span><span class="w">    </span><span class="p">]</span>
+<span class="linenos" data-linenos="32 "></span><span class="p">}</span><span class="err">&#39;</span>
 </code></pre></div>
+<p>Para poder ejecutar la instrucción, bien necesitamos que esté en una única línea:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>redis-cli JSON.SET usuarios $ &#39;{&quot;usuarios&quot;:[{&quot;id&quot;:1,&quot;nombre&quot;:&quot;Aitor Medrano&quot;,&quot;edad&quot;:21,&quot;contacto&quot;:{&quot;email&quot;:&quot;a.medrano@edu.gva.es&quot;,&quot;telefonos&quot;:[&quot;636 123456&quot;,&quot;686 567890&quot;]},&quot;hobbies&quot;:[&quot;programación&quot;,&quot;música&quot;,&quot;viajes&quot;],&quot;direcciones&quot;:[{&quot;tipo&quot;:&quot;casa&quot;,&quot;ciudad&quot;:&quot;Elche&quot;},{&quot;tipo&quot;:&quot;trabajo&quot;,&quot;ciudad&quot;:&quot;Elche&quot;}]},{&quot;id&quot;:2,&quot;nombre&quot;:&quot;Juani Moya&quot;,&quot;edad&quot;:18,&quot;contacto&quot;:{&quot;email&quot;:&quot;j.moya@edu.gva.es&quot;,&quot;telefonos&quot;:[&quot;696 543210&quot;]},&quot;hobbies&quot;:[&quot;lectura&quot;,&quot;música&quot;,&quot;deporte&quot;],&quot;direcciones&quot;:[{&quot;tipo&quot;:&quot;casa&quot;,&quot;ciudad&quot;:&quot;Murcia&quot;},{&quot;tipo&quot;:&quot;trabajo&quot;,&quot;ciudad&quot;:&quot;Elche&quot;}]}]}&#39;
+</code></pre></div>
+<p>O podemos almacenar los datos en un archivo JSON (por ejemplo, <code>usuarios.json</code>) y ejecutarlo desde fuera del CLI mediante:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>redis-cli<span class="w"> </span>JSON.SET<span class="w"> </span>usuarios<span class="w"> </span>$<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>cat<span class="w"> </span>usuarios.json<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+</div>
+<p>Para nuestras primeras consultas, usaremos los selectores básicos:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$.usuarios[0]&#39;</span>   <span class="c1"># Recuperamos el primer usuario</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># s&quot;[{\&quot;id\&quot;:1,\&quot;nombre\&quot;:\&quot;Aitor Medrano\&quot;,\&quot;edad\&quot;:21,\&quot;contacto\&quot;:{\&quot;email\&quot;:\&quot;a.medrano@edu.gva.es\&quot;,\&quot;telefonos\&quot;:[\&quot;636 123456\&quot;,\&quot;686 567890\&quot;]},\&quot;hobbies\&quot;:[\&quot;programaci\xc3\xb3n\&quot;,\&quot;m\xc3\xbasica\&quot;,\&quot;viajes\&quot;],\&quot;direcciones\&quot;:[{\&quot;tipo\&quot;:\&quot;casa\&quot;,\&quot;ciudad\&quot;:\&quot;Elche\&quot;},{\&quot;tipo\&quot;:\&quot;trabajo\&quot;,\&quot;ciudad\&quot;:\&quot;Elche\&quot;}]}]&quot;</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$.usuarios[*].nombre&#39;</span> <span class="c1"># Obtenemos el nombre de todos los usuarios</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="c1"># &quot;[\&quot;Aitor Medrano\&quot;,\&quot;Juani Moya\&quot;]&quot;</span>
+<span class="linenos" data-linenos="5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$.usuarios[*].contacto.telefonos[0]&#39;</span> <span class="c1"># Primer teléfono de cada usuario</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># &quot;[\&quot;636 123456\&quot;,\&quot;696 543210\&quot;]&quot;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Datos sin escapar</p>
+<p>Si queremos recuperar los datos sin escapar las llaves, corchetes, etc..., desde fuera del cliente, podemos invocarlo pasándole la consulta y el parámetro <code>--raw</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">redis</span><span class="o">-</span><span class="n">cli</span> <span class="o">--</span><span class="n">raw</span> <span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$.usuarios[0]&#39;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># [{&quot;id&quot;:1,&quot;nombre&quot;:&quot;Aitor Medrano&quot;,&quot;edad&quot;:21,&quot;contacto&quot;:{&quot;email&quot;:&quot;a.medrano@edu.gva.es&quot;,&quot;telefonos&quot;:[&quot;636 123456&quot;,&quot;686 567890&quot;]},&quot;hobbies&quot;:[&quot;programación&quot;,&quot;música&quot;,&quot;viajes&quot;],&quot;direcciones&quot;:[{&quot;tipo&quot;:&quot;casa&quot;,&quot;ciudad&quot;:&quot;Elche&quot;},{&quot;tipo&quot;:&quot;trabajo&quot;,&quot;ciudad&quot;:&quot;Elche&quot;}]}]</span>
+</code></pre></div>
+</div>
+<p>Por ejemplo, podemos filtrar los datos haciendo uso de expresiones de filtrado mediante <code>?()</code> para restringir los documentos. </p>
+<p>Las rutas dentro de la condición de filtro utilizan la notación de punto con <code>@</code> para indicar el elemento actual del array o el valor actual del objeto, o <code>$</code> para indicar el elemento de nivel superior. Es importante destacar que Redis no soporta el operador <code>?()</code> para filtrar arrays directamente en la consulta.</p>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Nombre de los usuarios mayores de 20 años</span>
+<span class="linenos" data-linenos="2 "></span>JSON.GET<span class="w"> </span>usuarios<span class="w"> </span><span class="s1">&#39;$.usuarios[?(@.edad &lt; 20)].nombre&#39;</span><span class="w">      </span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># &quot;[\&quot;Juani Moya\&quot;]&quot;</span>
+<span class="linenos" data-linenos="4 "></span>
+<span class="linenos" data-linenos="5 "></span><span class="c1"># Nombre del usuario cuyo email es a.medrano@edu.gva.es</span>
+<span class="linenos" data-linenos="6 "></span>JSON.GET<span class="w"> </span>usuarios<span class="w"> </span><span class="s1">&#39;$.usuarios[?(@.contacto.email == &quot;a.medrano@edu.gva.es&quot;)].nombre&#39;</span>
+<span class="linenos" data-linenos="7 "></span><span class="s2">&quot;[\&quot;Aitor Medrano\&quot;]&quot;</span>
+</code></pre></div>
+<p>También podemos emplear <code>..</code> para realizar búsquedas recursivas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$..nombre&#39;</span>   <span class="c1"># Encontrar todos los elementos llamados &quot;nombre&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># &quot;[\&quot;Aitor Medrano\&quot;,\&quot;Juani Moya\&quot;]&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$..ciudad&#39;</span>   <span class="c1"># Encontrar todas las ciudades</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># &quot;[\&quot;Elche\&quot;,\&quot;Elche\&quot;,\&quot;Murcia\&quot;,\&quot;Elche\&quot;]&quot;</span>
+</code></pre></div>
+<p>Una vez visto estas operaciones, cabe destacar que:</p>
+<ol>
+<li><em>Redis</em> tiene soporte limitado para JSONPath complejo, por lo que si necesitamos hacer consultas avanzadas, bien necesitaremos hacerlas mediante un lenguaje de programación para realizar el procesamiento adicional u optar por una solución documental como MongoDB.</li>
+<li>La eficiencia depende del tamaño y complejidad del documento</li>
+</ol>
 <hr />
 <p>Otras estructuras de datos menos comunes son:</p>
 <ul>
@@ -2022,23 +2133,27 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <li><strong><em>Stream</em></strong>: lista de strings o pares complejos de key-value</li>
 </ul>
 <p>Puesto que <em>Redis</em> es un sistema de código abierto, hay muchos desarrolladores trabajando para ampliar el sistema. Los llamados módulos o ampliaciones aumentan el rango de funciones de la base de datos, que por lo demás es bastante sencilla, y adaptan el software a ámbitos de uso específicos.</p>
+<h2 id="publicacion-suscripcion">Publicación-Suscripción<a class="headerlink" href="#publicacion-suscripcion" title="Permanent link">&para;</a></h2>
+<p>Existen diferentes sistemas de mensajería que permiten desacoplar el emisor de datos del receptor, como pueden ser <a href="https://www.rabbitmq.com/">RabbitMQ</a>, <a href="https://docs.celeryq.dev/en/stable/index.html">Celery</a> o incluso <a href="https://kafka.apache.org/">Apache Kafka</a> en sistemas de <em>Big Data</em>. Si no necesitamos una solución tan potente, <em>Redis</em> ofrece un mecanismo de <a href="https://redis.io/docs/latest/develop/interact/pubsub/">publicación-suscripción</a> que permite a los clientes enviar y recibir mensajes en tiempo real.</p>
+<p>Los clientes pueden suscribirse a canales y recibir mensajes publicados en esos canales por otros clientes. Este mecanismo es útil para implementar sistemas de mensajería, notificaciones en tiempo real, actualizaciones en tiempo real, etc.</p>
+<p>Para ello, se emplean los siguientes comandos:</p>
+<ul>
+<li><a href="https://redis.io/docs/latest/commands/subscribe/"><code>SUBSCRIBE canal \[canal …​\]</code></a>: Se suscribe a uno o más canales.</li>
+<li><a href="https://redis.io/docs/latest/commands/unsubscribe/"><code>UNSUBSCRIBE \[canal \[canal …​\]\]</code></a>: Se desuscribe de uno o más canales.</li>
+<li><a href="https://redis.io/docs/latest/commands/publish/"><code>PUBLISH canal mensaje</code></a>: Publica un mensaje en un canal.</li>
+</ul>
 <!--
-## Casos de Uso
-
-Redis es de código abierto y cualquiera puede usarlo de forma gratuita. Está patrocinado principalmente por la empresa Redis Labs, que ofrece versiones en la nube, de pago, de este programa.
-
-¿Para qué ámbitos de aplicación es más adecuado?
-Un escenario estándar de Redis es el almacenamiento en caché, para lo cual también Twitter utiliza esta base de datos, por ejemplo: la propia timeline en el servicio de mensajería es posible gracias a una caché de Redis. La timeline se compone principalmente de una lista que, gracias a Redis, puede solicitarse fácilmente y ampliarse de forma incremental.
-
-No obstante, Redis también se utiliza para otros fines. Gracias a su velocidad de respuesta, por ejemplo, esta base de datos es perfecta para servicios de mensajería o chat rooms. El sistema puede mostrar las nuevas entradas en tiempo real y actualiza regularmente las listas.
-
-https://www.ionos.es/digitalguide/hosting/cuestiones-tecnicas/redis-tutorial-paso-a-paso/
-
+TODO: Completar - https://ualmtorres.github.io/SeminarioRedis/#_publicaci%C3%B3n_suscripci%C3%B3n
 -->
 
+<p>Así pues, mediante la publicación-suscripción en Redis podemos implementar:</p>
+<ul>
+<li>Un sistema de notificaciones en tiempo real. Por ejemplo, se puede utilizar Redis para enviar notificaciones a los usuarios en tiempo real cuando se producen eventos importantes en la aplicación.</li>
+<li>Un sistema de chat en tiempo real. Por ejemplo, se puede utilizar Redis para enviar mensajes de chat entre usuarios en tiempo real.</li>
+</ul>
 <h2 id="persistencia">Persistencia<a class="headerlink" href="#persistencia" title="Permanent link">&para;</a></h2>
 <p>Por defecto, la gestión de la <a href="https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/">persistencia</a> en <em>Redis</em> implica que los datos no se almacenan instantáneamente en disco, sino que se realiza de forma periódica o a petición del cliente. </p>
-<p>Por defecto, en <code>redis.conf</code> se especifica el número de cambios ocurridos antes de almacenar una instantánea de los datos en disco, lo que se conoce como la persistencia <strong><em>RDB</em></strong> (<em>Redis DataBase</em>). Los valores predeterminados son:</p>
+<p>Para ello, en <code>redis.conf</code> se especifica el número de cambios ocurridos antes de almacenar una instantánea de los datos en disco, lo que se conoce como la persistencia <strong><em>RDB</em></strong> (<em>Redis DataBase</em>). Los valores predeterminados son:</p>
 <div class="highlight"><span class="filename">redis.conf</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span>save 900 1      # Guarda cada 15 minutos si se modificó al menos 1 clave
 <span class="linenos" data-linenos="2 "></span>save 300 10     # Guarda cada 5 minutos si al menos cambiaron 10 claves
 <span class="linenos" data-linenos="3 "></span>save 60 10000   # Guarda cada 60 segundos si al menos cambiaron 10000 claves 
@@ -2053,7 +2168,7 @@ https://www.ionos.es/digitalguide/hosting/cuestiones-tecnicas/redis-tutorial-pas
 <p><em>Redis</em> destaca por su velocidad extrema, permitiendo realizar operaciones en cuestión de microsegundos. Su flexibilidad no se limita a un simple sistema clave-valor, sino que ofrece estructuras de datos avanzadas, lo que lo convierte en una herramienta versátil para distintas aplicaciones.</p>
 <p>Además, permite la ejecución de operaciones atómicas, como el incremento de valores con <code>INCR</code>, garantizando la coherencia de los datos. Otra de sus ventajas es la gestión nativa del tiempo de vida de las claves (<code>TTL</code>), lo que facilita la expiración automática de datos.</p>
 <p>Sin embargo, <em>Redis</em> también presenta ciertas limitaciones. Su principal restricción es que los datos deben almacenarse en memoria RAM, lo que impone un límite de capacidad. Además, no impone una estructura de datos estricta, ya que no cuenta con validación de esquemas o tipos. Sus opciones de consulta son limitadas, ya que solo permite búsquedas por clave o patrones simples. A diferencia de las bases de datos relacionales, no soporta integridad referencial, por lo que no se pueden definir claves foráneas ni realizar uniones (<code>JOIN</code>). También, dependiendo de su configuración, la durabilidad de los datos no está garantizada, existiendo la posibilidad de pérdida de información. Sus transacciones, aunque permiten la ejecución de múltiples operaciones, no disponen de un mecanismo de reversión (<code>rollback</code>) real.</p>
-<p><em>Redis</em> es la opción ideal cuando se requiere acceso a los datos con latencias mínimas, especialmente en aplicaciones donde los datos pueden modelarse con estructuras simples. Sus casos de uso más comunes son  Es una sistemas de caché, contadores, colas y almacenamiento de información en tiempo real con alta concurrencia. Además, su capacidad de gestionar automáticamente la expiración de datos lo convierte en una herramienta valiosa en escenarios donde la información tiene un ciclo de vida determinado.</p>
+<p><em>Redis</em> es la opción ideal cuando se requiere acceso a los datos con latencias mínimas, especialmente en aplicaciones donde los datos pueden modelarse con estructuras simples. Sus casos de uso más comunes son sistemas de caché, contadores, colas y almacenamiento de información en tiempo real con alta concurrencia. Además, su capacidad de gestionar automáticamente la expiración de datos lo convierte en una herramienta valiosa en escenarios donde la información tiene un ciclo de vida determinado.</p>
 <!--
 Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 -->
@@ -2063,6 +2178,7 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 <li><a href="https://university.redis.io/">Redis University</a>, portal formativo de Redis.io con diversos cursos sobre *Redis.</li>
 <li><a href="resources/Redis_Cheat_Sheet.pdf">Redis Cheat Sheet</a></li>
 <li><a href="https://ualmtorres.github.io/SeminarioRedis/">Seminario de Redis</a> por <em>Manuel Torres</em>, de la Universidad de Almería.</li>
+<li><a href="https://www.ionos.es/digitalguide/hosting/cuestiones-tecnicas/redis-tutorial-paso-a-paso/">Tutorial de Redis</a> de Ionos.</li>
 <li>El libro <a href="https://bpbonline.com/products/redis%C2%AE-deep-dive">Redis Deep Dive</a>, de <em>Suyog Dilip Kale</em> y <em>Chinmay Kulkarni</em>.</li>
 </ul>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
@@ -2188,6 +2304,13 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 TODO:
 1. APuntes JSON
 1. Actividades JSON
+
+
+Crea consultas para:
+1. Encontrar usuarios con más de un hobby
+2. Extraer el primer teléfono de usuarios mayores de 30
+3. Buscar usuarios con direcciones en ciudades específicas
+
 -->
 
 <!--
