@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -2140,23 +2140,57 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </ul>
 <p>Puesto que <em>Redis</em> es un sistema de código abierto, hay muchos desarrolladores trabajando para ampliar el sistema. Los llamados módulos o ampliaciones aumentan el rango de funciones de la base de datos, que por lo demás es bastante sencilla, y adaptan el software a ámbitos de uso específicos.</p>
 <h2 id="publicacion-suscripcion">Publicación-Suscripción<a class="headerlink" href="#publicacion-suscripcion" title="Permanent link">&para;</a></h2>
-<p>Existen diferentes sistemas de mensajería que permiten desacoplar el emisor de datos del receptor, como pueden ser <a href="https://www.rabbitmq.com/">RabbitMQ</a>, <a href="https://docs.celeryq.dev/en/stable/index.html">Celery</a> o incluso <a href="https://kafka.apache.org/">Apache Kafka</a> en sistemas de <em>Big Data</em>. Si no necesitamos una solución tan potente, <em>Redis</em> ofrece un mecanismo de <a href="https://redis.io/docs/latest/develop/interact/pubsub/">publicación-suscripción</a> que permite a los clientes enviar y recibir mensajes en tiempo real.</p>
+<p>Existen diferentes sistemas de mensajería que permiten desacoplar el emisor de datos del receptor, como pueden ser <a href="https://www.rabbitmq.com/">RabbitMQ</a>, <a href="https://docs.celeryq.dev/en/stable/index.html">Celery</a> o incluso <a href="https://kafka.apache.org/">Apache Kafka</a> en sistemas de <em>Big Data</em>. Si no necesitamos una solución tan potente, <em>Redis</em> ofrece un mecanismo de <a href="https://redis.io/docs/latest/develop/interact/pubsub/">Publicación-Suscripción</a> que permite a los clientes enviar y recibir mensajes en tiempo real desacoplando a unos de otros, lo que permite un procesamiento asíncrono de los datos.</p>
+<p>El modelo <em>Pub/Sub</em> es un patrón de comunicación donde los emisores (publicadores) no programan los mensajes para ser enviados directamente a receptores específicos (suscriptores). En su lugar, los mensajes publicados se colocan en canales, sin conocimiento de qué suscriptores pueden existir.</p>
+<figure style="align: center;">
+    <img src="images/12redis-pubsub.png" width="800px" alt="Evolución de los sistemas de almacenamiento">
+    <figcaption>Arquitectura Pub/Sub</figcaption>
+</figure>
+
 <p>Los clientes pueden suscribirse a canales y recibir mensajes publicados en esos canales por otros clientes. Este mecanismo es útil para implementar sistemas de mensajería, notificaciones en tiempo real, actualizaciones en tiempo real, etc.</p>
 <p>Para ello, se emplean los siguientes comandos:</p>
 <ul>
-<li><a href="https://redis.io/docs/latest/commands/subscribe/"><code>SUBSCRIBE canal \[canal …​\]</code></a>: Se suscribe a uno o más canales.</li>
-<li><a href="https://redis.io/docs/latest/commands/unsubscribe/"><code>UNSUBSCRIBE \[canal \[canal …​\]\]</code></a>: Se desuscribe de uno o más canales.</li>
+<li><a href="https://redis.io/docs/latest/commands/subscribe/"><code>SUBSCRIBE canal [canal …​]</code></a>: Se suscribe a uno o más canales.</li>
+<li><a href="https://redis.io/docs/latest/commands/unsubscribe/"><code>UNSUBSCRIBE [canal [canal …​]]</code></a>: Se desuscribe de uno o más canales.</li>
 <li><a href="https://redis.io/docs/latest/commands/publish/"><code>PUBLISH canal mensaje</code></a>: Publica un mensaje en un canal.</li>
 </ul>
+<p>Vamos a comenzar creando un suscriptor que se suscribe a un canal de noticias. Al lanzarlo, el cliente se quedará a la espera de recibir mensajes:</p>
+<div class="highlight"><span class="filename">suscriptor</span><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SUBSCRIBE</span> <span class="n">noticias</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) &quot;subscribe&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># 2) &quot;noticias&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># 3) (integer) 1</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1"># Reading messages... (press Ctrl-C to quit or any key to type command)</span>
+</code></pre></div>
+<p>En otro terminal, ahora creamos un publicador que publica un mensaje en el canal de deportes, y luego en el canal de noticias:</p>
+<div class="highlight"><span class="filename">publicador</span><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">PUBLISH</span> <span class="n">deportes</span> <span class="s2">&quot;Nikola Jokic logra el triple-doble con mayor anotación de la historia&quot;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="p">(</span><span class="n">integer</span><span class="p">)</span> <span class="mi">0</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">PUBLISH</span> <span class="n">noticias</span> <span class="s2">&quot;Inteligencia Artificial y Data: la nueva familia de FP que se abre paso&quot;</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="p">(</span><span class="n">integer</span><span class="p">)</span> <span class="mi">1</span>
+</code></pre></div>
+<p>Justo en el momento de publicar en el canal <code>noticias</code>, el subscriptor recibe el mensaje.</p>
+<div class="highlight"><span class="filename">suscriptor</span><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SUBSCRIBE</span> <span class="n">noticias</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) &quot;subscribe&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># 2) &quot;noticias&quot;</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># 3) (integer) 1</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1"># 1) &quot;message&quot;</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># 2) &quot;noticias&quot;</span>
+<span class="hll"><span class="linenos" data-linenos="7 "></span><span class="c1"># 3) &quot;Inteligencia Artificial y Data: la nueva familia de FP que se abre paso&quot;</span>
+</span><span class="linenos" data-linenos="8 "></span><span class="c1"># Reading messages... (press Ctrl-C to quit or any key to type command)</span>
+</code></pre></div>
+<p>¿Y qué sucede si ahora creamos un suscriptor sobre el canal <code>deportes</code>?</p>
 <!--
 TODO: Completar - https://ualmtorres.github.io/SeminarioRedis/#_publicaci%C3%B3n_suscripci%C3%B3n
 -->
 
-<p>Así pues, mediante la publicación-suscripción en Redis podemos implementar:</p>
-<ul>
-<li>Un sistema de notificaciones en tiempo real. Por ejemplo, se puede utilizar Redis para enviar notificaciones a los usuarios en tiempo real cuando se producen eventos importantes en la aplicación.</li>
-<li>Un sistema de chat en tiempo real. Por ejemplo, se puede utilizar Redis para enviar mensajes de chat entre usuarios en tiempo real.</li>
-</ul>
+<p>function validaTrabajador(int edad, int anyosTrabados) {</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>if (edad&lt;18 || edad&gt;67) {
+<span class="linenos" data-linenos="2 "></span>    return false
+<span class="linenos" data-linenos="3 "></span>} else if (edad &lt; 67 &amp;&amp; anyosTrabajados&gt;38) {
+<span class="linenos" data-linenos="4 "></span>    return false
+<span class="linenos" data-linenos="5 "></span>} else return true;
+</code></pre></div>
+<p>}</p>
+<p>67</p>
 <h2 id="persistencia">Persistencia<a class="headerlink" href="#persistencia" title="Permanent link">&para;</a></h2>
 <p>Por defecto, la gestión de la <a href="https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/">persistencia</a> en <em>Redis</em> implica que los datos no se almacenan instantáneamente en disco, sino que se realiza de forma periódica o a petición del cliente. </p>
 <p>Para ello, en <code>redis.conf</code> se especifica el número de cambios ocurridos antes de almacenar una instantánea de los datos en disco, lo que se conoce como la persistencia <strong><em>RDB</em></strong> (<em>Redis DataBase</em>). Los valores predeterminados son:</p>
@@ -2640,7 +2674,7 @@ para la gestión de la información almacenada.
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
       
     
   </body>
