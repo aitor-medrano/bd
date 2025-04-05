@@ -881,9 +881,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#publicacion-suscripcion" class="md-nav__link">
+  <a href="#mensajeria" class="md-nav__link">
     <span class="md-ellipsis">
-      Publicación-Suscripción
+      Mensajería
     </span>
   </a>
   
@@ -1254,9 +1254,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#publicacion-suscripcion" class="md-nav__link">
+  <a href="#mensajeria" class="md-nav__link">
     <span class="md-ellipsis">
-      Publicación-Suscripción
+      Mensajería
     </span>
   </a>
   
@@ -1402,9 +1402,9 @@
 </tr>
 <tr>
 <td>9</td>
-<td>Mensajería</td>
-<td></td>
-<td></td>
+<td><a href="#mensajeria">Mensajería</a></td>
+<td><a href="#AC1215">AC1215</a></td>
+<td><abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr></td>
 </tr>
 </tbody>
 </table>
@@ -2143,7 +2143,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <li><strong><em>Stream</em></strong>: lista de strings o pares complejos de key-value</li>
 </ul>
 <p>Puesto que <em>Redis</em> es un sistema de código abierto, hay muchos desarrolladores trabajando para ampliar el sistema. Los llamados módulos o ampliaciones aumentan el rango de funciones de la base de datos, que por lo demás es bastante sencilla, y adaptan el software a ámbitos de uso específicos.</p>
-<h2 id="publicacion-suscripcion">Publicación-Suscripción<a class="headerlink" href="#publicacion-suscripcion" title="Permanent link">&para;</a></h2>
+<h2 id="mensajeria">Mensajería<a class="headerlink" href="#mensajeria" title="Permanent link">&para;</a></h2>
 <p>Existen diferentes sistemas de mensajería que permiten desacoplar el emisor de datos del receptor, como pueden ser <a href="https://www.rabbitmq.com/">RabbitMQ</a>, <a href="https://docs.celeryq.dev/en/stable/index.html">Celery</a> o incluso <a href="https://kafka.apache.org/">Apache Kafka</a> en sistemas de <em>Big Data</em>. Si no necesitamos una solución tan potente, <em>Redis</em> ofrece un mecanismo de <a href="https://redis.io/docs/latest/develop/interact/pubsub/">Publicación-Suscripción</a> que permite a los clientes enviar y recibir mensajes en tiempo real desacoplando a unos de otros, lo que permite un procesamiento asíncrono de los datos.</p>
 <p>El modelo <em>Pub/Sub</em> es un patrón de comunicación donde los emisores (publicadores) no programan los mensajes para ser enviados directamente a receptores específicos (suscriptores). En su lugar, los mensajes publicados se colocan en canales, sin conocimiento de qué suscriptores pueden existir.</p>
 <figure style="align: center;">
