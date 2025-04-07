@@ -801,6 +801,48 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      MongoDB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MongoDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongo-atlas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mongo Atlas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-compass" class="md-nav__link">
+    <span class="md-ellipsis">
+      MongoDB Compass
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -984,6 +1026,48 @@
   <a href="#redis-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       Redis cloud
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      MongoDB
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MongoDB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongo-atlas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mongo Atlas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-compass" class="md-nav__link">
+    <span class="md-ellipsis">
+      MongoDB Compass
     </span>
   </a>
   
@@ -1269,6 +1353,104 @@
     <figcaption>Conexión a Redis Cloud</figcaption>
 </figure>
 
+<h2 id="mongodb">MongoDB<a class="headerlink" href="#mongodb" title="Permanent link">&para;</a></h2>
+<p>Desde <a href="https://www.mongodb.com/try/download/community">https://www.mongodb.com/try/download/community</a> podemos descargar la versión <em>Community</em> acorde a nuestro sistema operativo.</p>
+<p>Independientemente de nuestro sistema operativo, por defecto, el demonio se lanza sobre el puerto 27017. Una vez instalado, si accedemos a <a href="http://localhost:27017">http://localhost:27017</a> podremos ver que nos indica cómo estamos intentando acceder mediante HTTP a <em>MongoDB</em> mediante el puerto reservado al <em>driver</em> nativo.</p>
+<figure style="align: center;">
+    <img src="images/00localhost27017.png" alt="MongoDB - Acceso al puerto 27017">
+    <figcaption>Acceso al puerto 27017</figcaption>
+</figure>
+
+<p>En vez de instalarlo como un servicio en nuestra máquina, a día de hoy, es mucho más cómodo hacer uso de contenedores <em>Docker</em> o utilizar una solución <em>cloud</em>.</p>
+<h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
+<p>Para lanzar el contenedor de Docker al que llamaremos <code>iadb-mongo</code> mediante el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:27017:27017<span class="w"> </span>--name<span class="w"> </span>iabd-mongo<span class="w"> </span>-d<span class="w"> </span>mongo
+</code></pre></div>
+<div class="admonition caution">
+<p class="admonition-title">MongoDB y procesadores AVX</p>
+<p>Si tenemos un procesador sin soporte para AVX, necesitamos instalar una versión inferior a la 5.0.</p>
+<p>Así pues, podemos indicar la versión 4.4:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:27017:27017<span class="w"> </span>--name<span class="w"> </span>iabd-mongo<span class="w"> </span>-d<span class="w"> </span>mongo:4.4
+</code></pre></div>
+</div>
+<p>A continuación vamos a descargar el conjunto de datos comprimido (<a href="https://atlas-education-staging.s3.amazonaws.com/sampledata.archive.gz">sampledata.archive.gz</a>) o sin comprimir (<a href="https://atlas-education.s3.amazonaws.com/sampledata.archive">sampledata.archive</a>) que ofrece <em>MongoDB</em> a modo de prueba, el cual vamos a emplear a lo largo de las diferentes sesiones.</p>
+<p>Volvemos al terminal de nuestro sistema y copiamos los datos desde nuestro sistema a la carpeta <code>/tmp</code> del contenedor:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>cp<span class="w"> </span>sampledata.archive.gz<span class="w"> </span>iabd-mongo:/tmp
+</code></pre></div>
+<p>Posteriormente abrimos un terminal dentro de nuestro contenedor (o mediante <em>Attach Shell</em> en <em>VSCode</em>):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>iabd-mongo<span class="w"> </span>bash
+</code></pre></div>
+<p>Y finalmente, si hemos descargado el <code>.gz</code> lo descomprimimos (<code>gunzip sampledata.archive.gz</code>) y restauramos los datos mediante <code>mongorestore</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongorestore<span class="w"> </span>--archive<span class="o">=</span>sampledata.archive
+</code></pre></div>
+<p>Una vez cargados, nos informará que se han restaurado 433.281 documentos.</p>
+<h3 id="mongo-atlas">Mongo Atlas<a class="headerlink" href="#mongo-atlas" title="Permanent link">&para;</a></h3>
+<p>Si, en cambio, preferimos una solución <em>cloud</em>, disponemos de <a href="https://www.mongodb.com/es/atlas">Mongo Atlas</a>, que nos ofrece de manera gratuita un clúster compartido de servidores con 3 nodos y 512 MB para datos. Si queremos una solución <em>serverless</em> o un servidor dedicado, ya tendremos que <a href="https://www.mongodb.com/pricing">pasar por caja</a>.</p>
+<figure style="align: center;">
+    <img src="images/00mongoatlas-register.png" alt="MongoDB - Registro en Mongo Atlas">
+    <figcaption>Registro en Mongo Atlas</figcaption>
+</figure>
+
+<p>Para comenzar a utilizar <em>Mongo Atlas</em> el primer paso es <a href="https://www.mongodb.com/cloud/atlas/register">registrarnos</a> y completar un cuestionario sobre nuestro uso. Tras ello:</p>
+<ol>
+<li>
+<p>Creamos el clúster de despliegue. En nuestro caso, hemos realizado el despliegue en AWS en la región de Paris (<code>eu-west-3</code>) y dejado el nombre por defecto, <code>Cluster 0</code>.</p>
+<p><figure style="align: center;">
+  <img src="images/00mongoatlas-cluster.png" alt="MongoDB - Elección del clúster">
+  <figcaption>Elección del clúster</figcaption>
+</figure></p>
+</li>
+<li>
+<p>Creamos un usuario/contraseña para autenticar nuestra conexión. En nuestro caso, hemos creado el usuario <code>iabd</code> con la contraseña <code>iabdiabd</code> (después la podemos modificar desde el menú <em>Security -&gt; Database Access</em>):</p>
+<p><figure style="align: center;">
+  <img src="images/00mongoatlas-usuario.png" alt="MongoDB - Configuración del usuario">
+  <figcaption>Configuración del usuario</figcaption>
+</figure></p>
+<p>En la misma pantalla, indicamos que permitimos las conexiones desde todas las direcciones IP (esta decisión sólo la tomamos por comodidad, para poder conectarnos desde casa y el centro) mediante la IP <code>0.0.0.0</code> (después podemos modificar la configuración desde el menú <em>Security -&gt; Network Access</em>).</p>
+</li>
+<li>
+<p>Una vez realizados los dos pasos anteriores, comenzará la creación del clúster, la cual puede tardar de 2 a 3 minutos.</p>
+<p><figure style="align: center;">
+  <img src="images/00mongoatlas-dashboard.png" alt="MongoDB - Dashboard del clúster">
+  <figcaption>Dashboard del clúster</figcaption>
+</figure></p>
+</li>
+<li>
+<p>A continuación, cargaremos los datos de ejemplo. Para ello, en el menú con los tres puntos (<code>...</code>), elegiremos la opción <em>Load Sample Dataset</em>. Una vez haya finalizado, podremos ver los datos cargados pulsando sobre el botón <em>Browse Collections</em>:</p>
+<p><figure style="align: center;">
+  <img src="images/00mongoatlas-colecciones.png" alt="MongoDB - Colecciones con los datos de prueba">
+  <figcaption>Colecciones con los datos de prueba</figcaption>
+</figure></p>
+</li>
+</ol>
+<div class="admonition tip inline end">
+<p class="admonition-title">Conexión segura</p>
+<p>Mediante <code>srv</code> se establece una conexión segura</p>
+</div>
+<p>Finalmente, para obtener la cadena de conexión, desde el <em>dashboard</em> del clúster con la opción <em>Connect</em> o desde la pestaña <em>Cmd Line Tools</em> del propio clúster, podremos obtener la <a href="https://www.mongodb.com/docs/manual/reference/connection-string">cadena de conexión</a>, que tendrá un formato similar a :</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongodb+srv://usuario:password@host/basededatos
+</code></pre></div>
+<p>En versiones anteriores, una herramienta de terceros bastante utilizada era <a href="http://robomongo.org"><em>RoboMongo</em></a> / <em>Robo3T</em> / <a href="https://studio3t.com/"><em>Studio3T</em></a> el cual extiende el shell y ofrece un IDE más amigable. A días de hoy, <em>MongoDB</em> tiene su propio IDE conocido como <a href="https://www.mongodb.com/es/products/compass">MongoDB Compass</a>.</p>
+<h3 id="mongodb-compass">MongoDB Compass<a class="headerlink" href="#mongodb-compass" title="Permanent link">&para;</a></h3>
+<p>En el curso nos vamos a centrar en el uso del <em>shell</em>, pero no está de más conocer las herramientas visuales que facilitan el trabajo con <em>MongoDB</em> en el día a día.</p>
+<p>Una de ellas es <a href="https://www.mongodb.com/es/products/compass"><em>MongoDB Compass</em></a>, que facilita la exploración y manipulación de los datos. De una manera flexible e intuitiva, <em>Compass</em> ofrece visualizaciones detalladas de los esquemas, métricas de rendimiento en tiempo real así como herramientas para la creación de consultas.</p>
+<p>Existen tres versiones de <em>Compass</em>, una completa con todas las características, una de sólo lectura sin posibilidad de insertar, modificar o eliminar datos (perfecta para analítica de datos) y una última versión <em>isolated</em> que solo permite la conexión a una instancia local.</p>
+<p>Una vez descargada e instalada la versión que nos interesa, tras crear la conexión a partir de la cadena de conexión (similar a <code>mongodb+srv://iabd:iabdiabd@cluster0.4hm7u8y.mongodb.net/test</code>), veremos en el menú de la izquierda un resumen del clúster, así como las consultas que vayamos almacenando y las diferentes bases de datos almacenadas:</p>
+<figure style="align: center;">
+    <img src="images/00mongocompass-init.png" alt="MongoDB - GUI de Mongo Compass">
+    <figcaption>GUI de Mongo Compass</figcaption>
+</figure>
+
+<p>Si seleccionamos una base de datos concreta, y de ella, una colección en el menú de la izquierda, en el panel central tendremos una visualización de los datos contenidos, así como opciones para ver su esquema, realizar consultas agregadas, editar los índices, etc... Además, podremos realizar consultas sobre los datos:</p>
+<figure style="align: center;">
+    <img src="images/00mongocompass-coleccion.png" alt="MongoDB - Opciones desde una colección en MongoDBCompass">
+    <figcaption>Opciones desde una colección</figcaption>
+</figure>
+
+<div class="admonition tip">
+<p class="admonition-title">mongosh en Compass</p>
+<p>Si te fijas, en la barra inferior podemos desplegar un panel para interactuar mediante comandos como lo haríamos desde <code>mongosh</code>.</p>
+</div>
 <!--
 * https://selectstarsql.com/
 -->
