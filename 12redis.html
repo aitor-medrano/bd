@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -1353,15 +1353,15 @@
 <div class="admonition question">
 <p class="admonition-title">Cuestionario inicial</p>
 <ol>
-<li>¿Qué es Redis y cuáles son sus principales características como base de datos NoSQL?</li>
-<li>¿Cuáles son las ventajas y desventajas de utilizar Redis como sistema de almacenamiento en memoria frente a otros sistemas de almacenamiento persistente?</li>
+<li>¿Qué es <em>Redis</em> y cuáles son sus principales características como base de datos NoSQL?</li>
+<li>¿Cuáles son las ventajas y desventajas de utilizar <em>Redis</em> como sistema de almacenamiento en memoria frente a otros sistemas de almacenamiento persistente?</li>
 <li>¿Cómo se diferencian las bases de datos clave-valor de las bases de datos relacionales tradicionales?</li>
-<li>¿Qué estructuras de datos admite Redis y cómo se utilizan en la gestión de información?</li>
+<li>¿Qué estructuras de datos admite <em>Redis</em> y cómo se utilizan en la gestión de información?</li>
 <li>¿Cómo se implementan las operaciones CRUD?</li>
 <li>¿Qué son los espacios de nombres y cuál es su propósito en la organización de claves?</li>
 <li>¿Cómo se maneja la expiración de claves y qué comandos se utilizan para ello?</li>
 <li>¿Cómo se implementan para garantizar la atomicidad de las operaciones?</li>
-<li>¿Cómo se pueden representar y manipular estructuras de datos complejas, como JSON, dentro de Redis?</li>
+<li>¿Cómo se pueden representar y manipular estructuras de datos complejas, como JSON, dentro de <em>Redis</em>?</li>
 </ol>
 </div>
 <h3 id="programacion-de-aula-5h">Programación de Aula (5h)<a class="headerlink" href="#programacion-de-aula-5h" title="Permanent link">&para;</a></h3>
@@ -1642,6 +1642,16 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <p class="admonition-title">Convención de nombrado</p>
 <p>Aunque podemos emplear <code>SELECT</code> para cambiar de <em>base de datos</em>, es recomendable utilizar prefijos en las claves del tipo <code>usuario:1:nombre</code> o <code>producto:1:nombre</code> para diferenciar espacios de nombres, utilizando los dos puntos (<code>:</code>) como separador de los prefijos.</p>
 <p>De esta manera, posteriormente podremos filtrar las claves por un subconjunto de los prefijos de las claves.</p>
+<p>Mediante <em>Redis Insight</em>, si utilizamos esta convención, al mostrar las claves podemos visualizarlas de forma jerárquica. Si insertamos estos datos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">set</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">nombre</span> <span class="s2">&quot;Aitor Medrano&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="nb">set</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">edad</span> <span class="mi">47</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">set</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">ciudad</span> <span class="s2">&quot;Elche&quot;</span>
+</code></pre></div>
+<p>Al pulsar en el botón de vista en forma de árbol, tendríamos:</p>
+<p><figure style="align: center;">
+    <img src="images/12redis-tree-view.png" alt="Vista de árbol en Redis" width="800px">
+    <figcaption>Vista de árbol en Redis</figcaption>
+</figure></p>
 </div>
 <p>A pesar de sus limitaciones, el comando <code>SELECT</code> puede ser útil en varios escenarios:</p>
 <ul>
@@ -1763,19 +1773,20 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <ul>
 <li>
 <p><strong>Estructura</strong></p>
-<p>Las <a href="https://redis.io/docs/latest/develop/data-types/lists/">listas</a> en Redis son como un array de cadenas, teniendo en cuenta que los elementos se ordenan por orden de inserción. Pueden funcionar como colas FIFO (<em>first in, first out</em>) o como pilas LIFO (<em>last in, first out</em>).</p>
-<p>Se implementan mediante listas enlazadas, lo que provoca que las operaciones en la cabeza y en la cola ocurran con complejidad constante, independientemente del tamaño de la lista. En cambio, acceder a un elemento determinado, supone recorrer la lista elemento por elemento. En este caso, es mejor utilizar conjuntos ordenados.</p>
-<p>En Redis, la cabeza (<em>head</em>) es el extremo izquierda y la cola (<em>tail</em>) el derecho.</p>
+<p>Las <a href="https://redis.io/docs/latest/develop/data-types/lists/">listas</a> en <em>Redis</em> son como un array de cadenas, teniendo en cuenta que los elementos se ordenan por orden de inserción. Es decir, son una estructura que respeta el orden de los elementos.Pueden funcionar como colas FIFO (<em>first in, first out</em>) o como pilas LIFO (<em>last in, first out</em>). Terminológicamente, las inserciones son <em>push</em> y las extracciones son <em>pop</em>.</p>
+<p>Se implementan mediante listas enlazadas, lo que provoca que las operaciones en la cabeza y en la cola tengan con complejidad constante, independientemente del tamaño de la lista. En cambio, acceder a un elemento determinado, supone recorrer la lista elemento por elemento. En este caso, es mejor utilizar <a href="#conjunto-ordenado">conjuntos ordenados</a>.</p>
+<p>En <em>Redis</em>, la cabeza (<em>head</em>) es el extremo izquierdo y la cola (<em>tail</em>) el derecho.</p>
 <p><figure style="align: center;">
     <img src="images/12redis-list.jpg" alt="Listas en Redis" width="400px">
     <figcaption>Listas en Redis</figcaption>
 </figure></p>
 <p>Casos de uso:</p>
 <ul>
-<li>Implementar colas como estructuras de datos</li>
-<li>Cronogramas de mensajes (<em>feed</em> de una red social, logs recientes, etc...)</li>
-<li>Listado de tareas, para su procesamiento en el orden de adicción.</li>
+<li>Implementar colas como estructuras de datos.</li>
+<li>Cronogramas de mensajes (<em>feed</em> de una red social, logs recientes, etc...).</li>
+<li>Listado de tareas, para su procesamiento en el orden de inserción.</li>
 </ul>
+<p>Todas sus operaciones comienzan por la letra <code>L</code>: <code>LINDEX</code>, <code>LRANGE</code>, <code>LLEN</code>, <code>LREM</code>, <code>LTRIM</code>, <code>LMOVE</code>, etc... además de las operaciones <em>PUSH</em> y <em>POP</em> que llevan delante el lado por el que se realizan.</p>
 </li>
 </ul>
 </div>
@@ -1783,38 +1794,47 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <ul>
 <li>
 <p><strong>Comandos</strong></p>
-<p>Para interactuar con un lista utilizaremos los comandos <a href="https://redis.io/docs/latest/commands/lpush/"><code>LPUSH</code></a> para insertar valores por la izquierda y <a href="https://redis.io/docs/latest/commands/lpop/"><code>LPOP</code></a> para sacarlos, y sus homónimos <a href="https://redis.io/docs/latest/commands/rpush/"><code>RPUSH</code></a> y <a href="https://redis.io/docs/latest/commands/rpop/"><code>RPOP</code></a> para hacerlo por la derecha. Si queremos recuperar un subconjunto de elementos, usaremos <a href="https://redis.io/docs/latest/commands/lrange/"><code>LRANGE</code></a>, mientras que para averiguar la longitud de la lista usaremos <a href="https://redis.io/docs/latest/commands/rpush/"><code>LLEN</code></a>.</p>
+<p>Para interactuar con un lista utilizaremos los comandos <a href="https://redis.io/docs/latest/commands/lpush/"><code>LPUSH</code></a> para insertar valores por la izquierda y <a href="https://redis.io/docs/latest/commands/lpop/"><code>LPOP</code></a> para sacarlos, y sus homónimos <a href="https://redis.io/docs/latest/commands/rpush/"><code>RPUSH</code></a> y <a href="https://redis.io/docs/latest/commands/rpop/"><code>RPOP</code></a> para hacerlo por la derecha. El uso como una cola implica insertar por la izquierda y sacar por la derecha.</p>
+<p><figure style="align: center;">
+    <img src="images/12redis-lpush-rpop.png" alt="Operaciones con listas en Redis" width="600px">
+    <figcaption>Operaciones con listas en Redis</figcaption>
+</figure></p>
+<p>Si queremos recuperar un elemento concreto usaremos <a href="https://redis.io/docs/latest/commands/lindex/"><code>LINDEX</code></a>. En cambio, si nos interesa un subconjunto de elementos, utilizaremos <a href="https://redis.io/docs/latest/commands/lrange/"><code>LRANGE</code></a>, mientras que para averiguar la longitud de la lista emplearemos <a href="https://redis.io/docs/latest/commands/rpush/"><code>LLEN</code></a>.</p>
 <p>Supongamos que queremos asignarles a nuestros usuarios una lista de URL favoritas. Para ello, podríamos hacer:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">RPUSH</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="n">aitor</span><span class="o">-</span><span class="n">iabd</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="c1"># (integer) 3</span>
-<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">LLEN</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span>
-</span><span class="linenos" data-linenos="4 "></span><span class="c1"># (integer) 3</span>
-<span class="hll"><span class="linenos" data-linenos="5 "></span><span class="n">LRANGE</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span>
-</span><span class="linenos" data-linenos="6 "></span><span class="c1"># 1) &quot;aitor-bd&quot;</span>
-<span class="linenos" data-linenos="7 "></span><span class="c1"># 2) &quot;aitor-iabd&quot;</span>
-<span class="linenos" data-linenos="8 "></span><span class="c1"># 3) &quot;aitor-blog&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">LPUSH</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="n">aitor</span><span class="o">-</span><span class="n">iabd</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 3</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">LLEN</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># (integer) 3</span>
+<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">LINDEX</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="mi">0</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># &quot;aitor-blog&quot;</span>
+<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">LINDEX</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># &quot;aitor-bd&quot;</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">LRANGE</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span>
+</span><span class="linenos" data-linenos="10 "></span><span class="c1"># 1) &quot;aitor-blog&quot;</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1"># 2) &quot;aitor-iabd&quot;</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1"># 3) &quot;aitor-bd&quot;</span>
 </code></pre></div>
 <p>Todas las operaciones de listas utilizan un acceso <em>0-index</em>, donde un valor negativo indica el número de pasos desde el final.</p>
-<p>Para sacar elementos, podemos emplear <a href="https://redis.io/docs/latest/commands/lrem/"><code>LREM</code></a> para a partir de una clave, cuantos elementos queremos quitar de un determinado valor (si ponemos 0, borrará todos los que coincidan, y si ponemos un número negativo, borrará los indicados pero empezando a buscar desde el final):</p>
+<p>Para eliminar y recuperar cada valor en el orden en el que se añadieron (de forma similar a una cola FIFO), al insertarlos por la izquierda, debemos sacarlos por la derecha (la cola) de la lista:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">RPOP</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># &quot;aitor-bd&quot;</span>
+</code></pre></div>
+<p>Para sacar elementos, también podemos emplear <a href="https://redis.io/docs/latest/commands/lrem/"><code>LREM clave cantidad elemento</code></a> para a partir de una clave, permite indicar cuantos elementos queremos quitar de un determinado valor (si ponemos 0, borrará todos los que coincidan, y si ponemos un número negativo, borrará los indicados pero empezando a buscar desde el final):</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">LREM</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="mi">0</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># (integer) 1</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">LLEN</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span>
-</span><span class="linenos" data-linenos="4 "></span><span class="c1"># (integer) 2</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="c1"># (integer) 1</span>
 </code></pre></div>
 <p>Si queremos reducir una lista y quedarnos con una cantidad concreta de elementos, podemos emplear <a href="https://redis.io/docs/latest/commands/ltrim/"><code>LTRIM clave inicio fin</code></a> para, por ejemplo, asegurarnos que nuestra lista no contiene más de 10 elementos:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">LTRIM</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="mi">0</span> <span class="mi">9</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># OK</span>
 </code></pre></div>
-<p>Para eliminar y recuperar cada valor en el orden en el que se añadieron (de forma similar a una cola FIFO), al insertarlos por la derecha, debemos sacarlos por la izquierda (la cabeza) de la lista:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">LPOP</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="c1"># &quot;aitor-bd&quot;</span>
-</code></pre></div>
-<p>Si en cambio queremos que funcione como una pila, tras insertarlos con <code>RPUSH</code>, utililizaremos <code>RPOP</code> para sacarlos. Estas operaciones tienen un coste computacional constante (lo que significa que el tamaño de la lista no impacta en el rendimiento).</p>
+<p>Si en cambio queremos que funcione como una pila LIFO, tras insertarlos con <code>LPUSH</code>, utililizaremos <code>LPOP</code> para sacarlos. Estas operaciones tienen un coste computacional constante (lo que significa que el tamaño de la lista no impacta en el rendimiento).</p>
 <p>Si queremos sacar, con un único comando, valores de la cola para insertarla en la cabeza de otra, antiguamente podíamos hacerlo mediante el comando <code>RPOPLPUSH</code> (<em>right pop, left push</em>):</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">RPOPLPUSH</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="n">pedro</span><span class="p">:</span><span class="n">visitados</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="s2">&quot;aitor-iabd&quot;</span>
 </code></pre></div>
-<p>El problema era doble. Por un lado, el comando se ha marcado como obsoleto, y por el otro, solo permitía sacar por la derecha e insertar por la izquierda. Por suerte, desde la versión 6.2, podemos emplear el comando <a href="https://redis.io/docs/latest/commands/lmove/"><code>LMOVE origen destino &lt;LEFT | RIGHT&gt; &lt;LEFT | RIGHT&gt;</code></a>, el cual es más flexible al permitir sacar el elemento tanto de la izquierda como de la derecha y a su vez, volver a insertarlo a la izquierda o la derecha del destino. Así pues, podemos conseguir el mismo resultado mediante:</p>
+<p>Con esta operación el problema es doble. Por un lado, el comando se ha marcado como obsoleto, y por el otro, solo permite sacar por la derecha e insertar por la izquierda. Por suerte, desde la versión 6.2, podemos emplear el comando <a href="https://redis.io/docs/latest/commands/lmove/"><code>LMOVE origen destino &lt;LEFT | RIGHT&gt; &lt;LEFT | RIGHT&gt;</code></a>, el cual es más flexible al permitir sacar el elemento tanto de la izquierda como de la derecha y a su vez, volver a insertarlo a la izquierda o la derecha del destino. Así pues, podemos conseguir el mismo resultado mediante:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">LMOVE</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="n">pedro</span><span class="p">:</span><span class="n">visitados</span> <span class="n">RIGHT</span> <span class="n">LEFT</span>
 </code></pre></div>
 </li>
@@ -1827,7 +1847,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <ul>
 <li>
 <p><strong>Estructura</strong></p>
-<p>Los <a href="https://redis.io/docs/latest/develop/data-types/sets/">conjuntos</a> se parecen a las listas en que almacenan una colección de cadenas, pero los elementos no están ordenados ni repetidos.</p>
+<p>Los <a href="https://redis.io/docs/latest/develop/data-types/sets/">conjuntos</a> se parecen a las listas en que almacenan una colección de cadenas, pero los elementos no están ordenados ni repetidos. Dicho de otro modo, los elementos son únicos.</p>
 <p><figure style="align: center;">
     <img src="images/12redis-set.jpg" alt="Sets en Redis" width="400px">
     <figcaption>Sets en Redis</figcaption>
@@ -1835,6 +1855,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <p>Además de añadir y eliminar elementos de un conjunto, podemos realizar varias operaciones de conjuntos, como la unión, la intersección, la diferencia etc.... Estas operaciones se realizan dentro de <em>Redis</em> y son muy rápidas. Lo que no podemos realizar es un acceso secuencial.</p>
 <p>¿Cuándo debemos considerar el uso de conjuntos? Siempre que no nos importe la cardinalidad o cuántos elementos tenemos de una misma clave. Es más, en ocasiones necesitamos realizar un almacenamiento de elementos únicos, sin requerir la sobrecarga de tener que realizar una búsqueda para saber si el elemento existía previamente.</p>
 <p>Por ejemplo, podemos emplear conjuntos para almacenar la lista de usuarios únicos de una web, elegir el ganador de un sorteo así como encontrar usuarios o elementos que pertenecen a dos grupos distintos.</p>
+<p>Todas sus operaciones comienzan por la letra <code>S</code>: <code>SADD</code>, <code>SMEMBERS</code>, <code>SISMEMBER</code>, <code>SRANDMEMBER</code>, <code>SINTER</code>, <code>SDIFF</code>, <code>SUNION</code>, <code>SCARD</code>, <code>SPOP</code>, <code>SREM</code>, etc...</p>
 </li>
 </ul>
 </div>
@@ -1845,14 +1866,16 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <p>Para añadir elementos a un conjunto utilizaremos <a href="https://redis.io/docs/latest/commands/sadd/">SADD</a>, de manera que podemos añadir diversos valores a una clave, <a href="https://redis.io/docs/latest/commands/smembers/"><code>SMEMBERS</code></a> para recuperar todos los valores, <a href="https://redis.io/docs/latest/commands/sismember/"><code>SISMEMBER</code></a> para averiguar si un valor forma parte de un determinado conjunto:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">SADD</span> <span class="n">noticias</span> <span class="n">elpais</span><span class="o">.</span><span class="n">com</span> <span class="n">eldiario</span><span class="o">.</span><span class="n">es</span> <span class="n">xataka</span><span class="o">.</span><span class="n">com</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 3       # Devuelve la cantidad de elementos añadidos</span>
-<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">SMEMBERS</span> <span class="n">noticias</span>   <span class="c1"># Devuelve todos los miembros</span>
-</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># 1) &quot;elpais.com&quot;</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1"># 2) &quot;eldiario.es&quot;</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="c1"># 3) &quot;xataka.com    </span>
-<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">SISMEMBER</span> <span class="n">noticias</span> <span class="s2">&quot;xataka.com&quot;</span>  <span class="c1"># Comprueba si &quot;xataka.com&quot; está en el conjunto</span>
-</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># (integer) 1</span>
-<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">SISMEMBER</span> <span class="n">noticias</span> <span class="s2">&quot;eurogamer.es&quot;</span>
-</span><span class="linenos" data-linenos="10 "></span><span class="c1"># (integer) 0</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">SADD</span> <span class="n">noticias</span> <span class="n">xataka</span><span class="o">.</span><span class="n">com</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># (integer) 0       # Como ya existe, devuelve 0, ya que no ha insertado el elemento</span>
+<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">SMEMBERS</span> <span class="n">noticias</span>   <span class="c1"># Devuelve todos los elementos</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># 1) &quot;elpais.com&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># 2) &quot;eldiario.es&quot;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># 3) &quot;xataka.com    </span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">SISMEMBER</span> <span class="n">noticias</span> <span class="s2">&quot;xataka.com&quot;</span>  <span class="c1"># Comprueba si &quot;xataka.com&quot; está en el conjunto</span>
+</span><span class="linenos" data-linenos="10 "></span><span class="c1"># (integer) 1</span>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="n">SISMEMBER</span> <span class="n">noticias</span> <span class="s2">&quot;eurogamer.es&quot;</span>
+</span><span class="linenos" data-linenos="12 "></span><span class="c1"># (integer) 0</span>
 </code></pre></div>
 <p>Si queremos recuperar una cantidad de elementos aleatorios de un conjunto usaremos <a href="https://redis.io/docs/latest/commands/srandmember/"><code>SRANDMEMBER clave cantidad</code></a>, donde si <code>cantidad</code> es positiva devolverá elementos sin repetir, pero si es negativa, permitirá elementos repetidos:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SRANDMEMBER</span> <span class="n">noticias</span> <span class="mi">2</span>
@@ -1862,7 +1885,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </span><span class="linenos" data-linenos="5 "></span><span class="c1"># 1) &quot;xataka.com&quot;</span>
 <span class="linenos" data-linenos="6 "></span><span class="c1"># 2) &quot;xataka.com&quot;</span>
 </code></pre></div>
-<p>También podemos emplear las operaciones matemáticas de conjuntos, mediante <a href="https://redis.io/docs/latest/commands/sinter/"><code>SINTER</code></a> para la intersección, <a href="https://redis.io/docs/latest/commands/sdiff/"><code>SDIFF</code></a> la diferencia y <a href="https://redis.io/docs/latest/commands/sunion/"><code>SUNION</code></a> para la union:</p>
+<p>También podemos emplear las operaciones matemáticas de conjuntos, mediante <a href="https://redis.io/docs/latest/commands/sinter/"><code>SINTER</code></a> para la intersección, <a href="https://redis.io/docs/latest/commands/sdiff/"><code>SDIFF</code></a> para la diferencia y <a href="https://redis.io/docs/latest/commands/sunion/"><code>SUNION</code></a> para la union:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">SADD</span> <span class="n">tech</span> <span class="n">xataka</span><span class="o">.</span><span class="n">com</span> <span class="n">eurogamer</span><span class="o">.</span><span class="n">es</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 3</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">SINTER</span> <span class="n">noticias</span> <span class="n">tech</span>    <span class="c1"># Enlaces que aparecen en los dos conjuntos</span>
@@ -1886,7 +1909,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="linenos" data-linenos="6 "></span><span class="c1"># 3) &quot;xataka.com&quot;</span>
 <span class="linenos" data-linenos="7 "></span><span class="c1"># 4) &quot;eurogamer.es&quot;</span>
 </code></pre></div>
-<p>Igual que usamops <code>LMOVE</code> para mover elementos entre listas, podemos emplear <a href="https://redis.io/docs/latest/commands/smove/"><code>SMOVE</code></a> para mover valores entre conjuntos. Otras operaciones que muy útiles son <a href="https://redis.io/docs/latest/commands/scard/"><code>SCARD clave</code></a> para averiguar su tamaño (cardinalidad), <a href="https://redis.io/docs/latest/commands/spop/"><code>SPOP</code></a> para sacar un elemento cualquiera (al no estar ordenados) o <a href="https://redis.io/docs/latest/commands/srem/"><code>SREM clave valor</code></a> si queremos eliminar un valor concreto.</p>
+<p>Igual que usamos <code>LMOVE</code> para mover elementos entre listas, podemos emplear <a href="https://redis.io/docs/latest/commands/smove/"><code>SMOVE</code></a> para mover valores entre conjuntos. Otras operaciones que muy útiles son <a href="https://redis.io/docs/latest/commands/scard/"><code>SCARD clave</code></a> para averiguar su tamaño (cardinalidad), <a href="https://redis.io/docs/latest/commands/spop/"><code>SPOP</code></a> para sacar un elemento cualquiera (al no estar ordenados) o <a href="https://redis.io/docs/latest/commands/srem/"><code>SREM clave valor</code></a> si queremos eliminar un valor concreto.</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SCARD</span> <span class="n">sitiosweb</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># (integer) 4</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">SREM</span> <span class="n">sitiosweb</span> <span class="n">eldiario</span><span class="o">.</span><span class="n">es</span>
@@ -2255,7 +2278,7 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 <p><a name="AR1208"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1208</strong>. Utilizando las <em>hashes</em> en <em>Redis</em> con el prefijo <code>ar1208pelis:</code>, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1208</strong>. Utilizando las <em>hashes</em> en <em>Redis</em> con el prefijo <code>ar1208:pelis:</code>, se pide:</p>
 <ol>
 <li>Crea un <em>hash</em> para añadir a la película <code>ar1208:pelis:1</code> la propiedad <code>titulo</code>.</li>
 <li>Para la misma película, mediante una única operación, añade las propiedades <code>anyo</code> y <code>plataforma</code> (plataforma de <em>streaming</em> donde hemos visto la película, o bien <code>cine</code> o <code>tv</code> dependiendo del caso).</li>
@@ -2738,7 +2761,7 @@ para la gestión de la información almacenada.
     <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
+      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>
