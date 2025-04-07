@@ -1446,11 +1446,11 @@
 <tr>
 <td>Consultas</td>
 <td>Basadas en claves</td>
-<td>Basadas en conjuntos (SELECT)</td>
+<td>Basadas en conjuntos (<code>SELECT</code>)</td>
 </tr>
 <tr>
 <td>Transacciones</td>
-<td>Soporte básico con comandos MULTI/EXEC</td>
+<td>Soporte básico con comandos <code>MULTI</code>/<code>EXEC</code></td>
 <td>Completo soporte ACID</td>
 </tr>
 </tbody>
@@ -1492,12 +1492,13 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </code></pre></div>
 <h2 id="crud">CRUD<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h2>
 <p>En este apartado vamos a simular que queremos crear un acortador de URLs, del tipo <a href="https://bitly.com/">bit.ly</a>, de manera que cuando un usuario pone una URL corta, accederíamos a la URL larga, lo que también nos permite llevar un contador de las visitas a cada dirección.</p>
-<p>Usaremos los comandos <a href="https://redis.io/docs/latest/commands/set/"><code>SET</code></a> y <a href="https://redis.io/docs/latest/commands/get/"><code>GET</code></a> para asignar y recuperar un valor de una clave. <code>SET</code> siempre requiere dos parámetros, la clave y el valor, mientras que <code>GET</code> sólo permite recuperar por la clave:</p>
+<p>Usaremos los comandos <a href="https://redis.io/docs/latest/commands/set/"><code>SET</code></a> y <a href="https://redis.io/docs/latest/commands/get/"><code>GET</code></a> para asignar y recuperar un valor de una clave. <code>SET clave valor</code> siempre requiere dos parámetros, la clave y el valor, mientras que <code>GET clave</code> sólo permite recuperar por la clave:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="n">aitor</span><span class="o">-</span><span class="n">medrano</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">bd</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># OK</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">GET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
 </span><span class="linenos" data-linenos="4 "></span><span class="c1"># &quot;aitor-medrano.github.io/bd&quot;</span>
 </code></pre></div>
+<p>Tras ejecutar un comando en <em>Redis</em>, siempre recibiremos una respuesta, ya sea <code>OK</code>, la cantidad de claves implicadas, o el resultado del comando (el valor devuelto, la lista de valores, etc...).</p>
 <div class="admonition tip inline end">
 <p class="admonition-title">Letra inicial</p>
 <p>La primera letra de los comandos normalmente puede indicar el tipo de datos sobre el que trabaja, el módulo de Redis que emplea o un tipo de operación específica. En este caso, todas las operaciones que empiezan por <code>M</code> se consideran operaciones múltiples que operan sobre más de una clave o valor con el mismo comando.</p>
@@ -1565,7 +1566,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <li>No bloqueante: Permite que otras operaciones se ejecuten mientras se realiza el escaneo</li>
 <li>Cobertura completa: Garantiza que se examinan todas las claves existentes</li>
 <li>Opciones de filtrado: Permite filtrar mediante patrones con <code>MATCH</code></li>
-<li>Control de rendimiento: El parámetro CO`UNT sugiere cuántas claves examinar por iteración</li>
+<li>Control de rendimiento: El parámetro <code>COUNT</code> sugiere cuántas claves examinar por iteración</li>
 </ul>
 </div>
 <p>Para borrar una determinada clave usaremos <a href="https://redis.io/docs/latest/commands/del/"><code>DEL</code></a> y <a href="https://redis.io/docs/latest/commands/exists/"><code>EXISTS</code></a> para comprobar si existe:</p>
@@ -1578,6 +1579,15 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="linenos" data-linenos="7 "></span><span class="n">GET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
 <span class="linenos" data-linenos="8 "></span><span class="c1"># (nil)</span>
 </code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">DEL vs UNLINK</p>
+<p>Desde la versión 4, podemos utilizar <a href="https://redis.io/docs/latest/commands/unlink/"><code>UNLINK</code></a> para eliminar una clave de forma similar a <code>DEL</code>, pero con mejor rendimiento, al ejecutarse en otro hilo de ejecución:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>UNLINK aitor-iabd
+<span class="linenos" data-linenos="2 "></span># (integer) 1
+</code></pre></div>
+<p><code>DEL</code> es el comando tradicional que elimina la clave inmediatamente y bloquea el hilo principal hasta que la memoria sea liberada. Esto puede causar problemas de rendimiento si eliminas claves muy grandes.</p>
+<p><code>UNLINK</code> fue introducido para resolver este problema. Elimina la clave del espacio de claves instantáneamente (como <code>DEL</code>), pero libera la memoria asociada en un hilo separado, permitiendo que el servidor Redis continúe atendiendo otras solicitudes.</p>
+</div>
 <h3 id="cadenas">Cadenas<a class="headerlink" href="#cadenas" title="Permanent link">&para;</a></h3>
 <p>Si nuestros valores son cadenas, podemos emplear una serie de operaciones para trabajar con ellos, como <a href="https://redis.io/docs/latest/commands/strlen/"><code>STRLEN</code></a> para recuperar el tamaño de un valor, <a href="https://redis.io/docs/latest/commands/getrange/"><code>GETRANGE clave inicio fin</code></a> para obtener una subcadena o <a href="https://redis.io/docs/latest/commands/append/"><code>APPEND</code></a> para añadir contenido al final</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="n">GET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
@@ -1609,6 +1619,11 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <p>Casos de uso muy comunes de almacenamiento de número enteros pueden ser contar el número de clics que se realiza sobre un enlace, o controlar la cantidad de entradas disponibles de un evento/concierto/partido/festival, etc...</p>
 <h3 id="espacios-de-nombres">Espacios de nombres<a class="headerlink" href="#espacios-de-nombres" title="Permanent link">&para;</a></h3>
 <p><em>Redis</em> utiliza un concepto diferente al de las bases de datos tradicionales. En lugar de tener múltiples bases de datos separadas, proporciona bases de datos lógicas numeradas dentro de una única instancia. Por defecto, <em>Redis</em> cuenta con 16 bases de datos numeradas de 0 a 15, aunque este número se puede configurar en el archivo <code>redis.conf</code> mediante la directiva <code>databases</code>.</p>
+<div class="admonition warning inline end">
+<p class="admonition-title">Redis cloud</p>
+<p>Si estás utilizando <em>Redis</em> en modo clúster en el <em>cloud</em>, este solo soporta la base de datos 0.</p>
+<p>Los comandos <code>SELECT</code> con índices distintos de 0 no funcionarán en <em>Redis Cluster</em>.</p>
+</div>
 <p>Podemos recuperar las bases de datos que tenemos mediante <code>CONFIG GET DATABASES</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">6379</span><span class="o">&gt;</span> <span class="n">CONFIG</span> <span class="n">GET</span> <span class="n">DATABASES</span>
 <span class="linenos" data-linenos="2 "></span><span class="mi">1</span><span class="p">)</span> <span class="s2">&quot;databases&quot;</span>
@@ -1623,11 +1638,11 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="linenos" data-linenos="6 "></span><span class="c1"># (nil)</span>
 </code></pre></div>
 <p>De esta manera, podemos crear espacios de nombres separados para diferentes aplicaciones o componentes de la misma aplicación.</p>
-<div class="admonition warning">
-<p class="admonition-title">Redis cloud</p>
-<p>Si estás utilizando <em>Redis</em> en modo clúster en el <em>cloud</em>, este solo soporta la base de datos 0. Los comandos <code>SELECT</code> con índices distintos de 0 no funcionarán en <em>Redis Cluster</em>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Convención de nombrado</p>
+<p>Aunque podemos emplear <code>SELECT</code> para cambiar de <em>base de datos</em>, es recomendable utilizar prefijos en las claves del tipo <code>usuario:1:nombre</code> o <code>producto:1:nombre</code> para diferenciar espacios de nombres, utilizando los dos puntos (<code>:</code>) como separador de los prefijos.</p>
+<p>De esta manera, posteriormente podremos filtrar las claves por un subconjunto de los prefijos de las claves.</p>
 </div>
-<p>Aunque podemos emplear <code>SELECT</code> para cambiar de <em>base de datos</em>, algunos desarrolladores prefieren utilizar prefijos en las claves del tipo <code>usuario:1:nombre</code> o <code>producto:1:nombre</code> para diferencias espacios de nombres.</p>
 <p>A pesar de sus limitaciones, el comando <code>SELECT</code> puede ser útil en varios escenarios:</p>
 <ul>
 <li>Entornos de desarrollo/pruebas: Usar diferentes bases de datos para separar datos de prueba de datos de producción en la misma instancia.</li>
