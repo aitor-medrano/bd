@@ -684,9 +684,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-5h" class="md-nav__link">
+  <a href="#programacion-de-aula-6h" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación de Aula (5h)
+      Programación de Aula (6h)
     </span>
   </a>
   
@@ -1057,9 +1057,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-5h" class="md-nav__link">
+  <a href="#programacion-de-aula-6h" class="md-nav__link">
     <span class="md-ellipsis">
-      Programación de Aula (5h)
+      Programación de Aula (6h)
     </span>
   </a>
   
@@ -1359,13 +1359,14 @@
 <li>¿Qué estructuras de datos admite <em>Redis</em> y cómo se utilizan en la gestión de información?</li>
 <li>¿Cómo se implementan las operaciones CRUD?</li>
 <li>¿Qué son los espacios de nombres y cuál es su propósito en la organización de claves?</li>
+<li>¿Por qué es recomendable utilizar claves con prefijos en vez de espacios de nombres?</li>
 <li>¿Cómo se maneja la expiración de claves y qué comandos se utilizan para ello?</li>
 <li>¿Cómo se implementan para garantizar la atomicidad de las operaciones?</li>
 <li>¿Cómo se pueden representar y manipular estructuras de datos complejas, como JSON, dentro de <em>Redis</em>?</li>
 </ol>
 </div>
-<h3 id="programacion-de-aula-5h">Programación de Aula (5h)<a class="headerlink" href="#programacion-de-aula-5h" title="Permanent link">&para;</a></h3>
-<p>Seguimos con la penúltima unidad, y tras haber introducido los conceptos y elementos de los sistemas NoSQL, vamos a profundizar en el manejo de <em>Redis</em>, conociendo cómo funciona una solución clave-valor, con una duración estimada de 5 horas:</p>
+<h3 id="programacion-de-aula-6h">Programación de Aula (6h)<a class="headerlink" href="#programacion-de-aula-6h" title="Permanent link">&para;</a></h3>
+<p>Seguimos con la penúltima unidad, y tras haber introducido los conceptos y elementos de los sistemas NoSQL, vamos a profundizar en el manejo de <em>Redis</em>, conociendo cómo funciona una solución clave-valor, con una duración estimada de 6 horas:</p>
 <table>
 <thead>
 <tr>
@@ -1384,26 +1385,32 @@
 </tr>
 <tr>
 <td>6</td>
-<td><a href="#lista">Listas</a></td>
-<td><a href="#AC1209">AC1209</a></td>
+<td><a href="#hash">Hashes</a></td>
+<td><a href="#AC1208">AC1208</a></td>
 <td><abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr></td>
 </tr>
 <tr>
 <td>7</td>
-<td><a href="#conjunto">Conjuntos</a></td>
-<td><a href="#AC1211">AC1211</a></td>
+<td><a href="#lista">Listas</a></td>
+<td><a href="#AC1210">AC1210</a></td>
 <td><abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr></td>
 </tr>
 <tr>
 <td>8</td>
-<td><a href="#json">JSON</a></td>
-<td><a href="#AC1213">AC1213</a></td>
+<td><a href="#conjunto">Conjuntos</a></td>
+<td><a href="#AC1212">AC1212</a></td>
 <td><abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr></td>
 </tr>
 <tr>
 <td>9</td>
+<td><a href="#json">JSON</a></td>
+<td><a href="#AC1214">AC1214</a></td>
+<td><abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr></td>
+</tr>
+<tr>
+<td>10</td>
 <td><a href="#mensajeria">Mensajería</a></td>
-<td><a href="#AC1215">AC1215</a></td>
+<td><a href="#AC1216">AC1216</a></td>
 <td><abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr></td>
 </tr>
 </tbody>
@@ -1738,7 +1745,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <ul>
 <li>
 <p><strong>Estructura</strong></p>
-<p>Un mapa o <a href="https://redis.io/docs/latest/develop/data-types/hashes/"><em>hash</em></a> en <em>Redis</em> es similar a un documento JSON, donde se mapea una clave con un valor. Destacar que sus valores siempre serán cadenas, es decir, no puede anidar otros mapas o conjuntos.</p>
+<p>Un mapa o <a href="https://redis.io/docs/latest/develop/data-types/hashes/"><em>hash</em></a> en <em>Redis</em> es una colección de parejas campo-valor, similar a un documento JSON. Paran evitar confusiones, el concepto clave lo utilizaremos para los elementos de <em>Redis</em>, mientra que campo para las "claves" de los <em>hashes</em>. Además, cabe destacar que sus valores siempre serán cadenas, es decir, no puede anidar otros mapas o conjuntos.</p>
 <p><figure style="align: center;">
     <img src="images/12redis-hash.jpg" alt="Hashes en Redis" width="400px">
     <figcaption>Hashes en Redis</figcaption>
@@ -1752,7 +1759,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <ul>
 <li>
 <p><strong>Comandos</strong></p>
-<p>Para interactuar con un <em>Hash</em> utilizaremos los comandos <a href="https://redis.io/docs/latest/commands/hset/"><code>HSET</code></a> para asignar valores, <a href="https://redis.io/docs/latest/commands/hkeys/"><code>HKEYS</code></a> para recuperar todas las claves y <a href="https://redis.io/docs/latest/commands/hvals/"><code>HVALS</code></a> para recuperar todos los valores, o <a href="https://redis.io/docs/latest/commands/hget/"><code>HGET</code></a> para recuperar una clave concreta:</p>
+<p>Para interactuar con un <em>Hash</em> utilizaremos los comandos <a href="https://redis.io/docs/latest/commands/hset/"><code>HSET</code></a> para asignar valores, <a href="https://redis.io/docs/latest/commands/hkeys/"><code>HKEYS</code></a> para recuperar todos los campos y <a href="https://redis.io/docs/latest/commands/hvals/"><code>HVALS</code></a> para recuperar todos los valores, o <a href="https://redis.io/docs/latest/commands/hget/"><code>HGET</code></a> para recuperar un campo concreto:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">HSET</span> <span class="n">usuario</span><span class="p">:</span><span class="n">aitor</span> <span class="n">nombre</span> <span class="s2">&quot;Aitor Medrano&quot;</span> <span class="n">pwd</span> <span class="s2">&quot;123456&quot;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># OK</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">HVALS</span> <span class="n">usuario</span><span class="p">:</span><span class="n">aitor</span>
@@ -2275,12 +2282,12 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 </ol>
 </li>
 </ul>
-<p><a name="AR1208"></a></p>
+<p><a name="AC1208"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1208</strong>. Utilizando las <em>hashes</em> en <em>Redis</em> con el prefijo <code>ar1208:pelis:</code>, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AC1208</strong>. Utilizando las <em>hashes</em> en <em>Redis</em> con el prefijo <code>ar1208:pelis:</code>, se pide:</p>
 <ol>
-<li>Crea un <em>hash</em> para añadir a la película <code>ar1208:pelis:1</code> la propiedad <code>titulo</code>.</li>
+<li>Crea un <em>hash</em> para añadir a la película <code>ac1208:pelis:1</code> la propiedad <code>titulo</code>.</li>
 <li>Para la misma película, mediante una única operación, añade las propiedades <code>anyo</code> y <code>plataforma</code> (plataforma de <em>streaming</em> donde hemos visto la película, o bien <code>cine</code> o <code>tv</code> dependiendo del caso).</li>
 <li>Recupera el año de la película.</li>
 <li>Recupera toda la información de la película.</li>
@@ -2297,12 +2304,16 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 </ol>
 </li>
 </ul>
-<p><a name="AC1209"></a></p>
+<p><a name="AR1209"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1209</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr>, <abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando clave sencillas pero utilizando los prefijos en forma de árbol, vuelve a rehacer la actividad anterior. Por ejemplo, para la primera película, debes utilizar el prefijo <code>ar1209:pelis:1</code>, de manera que el titulo se almacenará en la clave <code>ar1209:pelis:1:titulo</code>.</li>
+</ul>
+<p><a name="AC1210"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1209</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando las listas en <em>Redis</em>, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1210</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando las listas en <em>Redis</em>, se pide:</p>
 <ol>
-<li>Crea una lista que permita almacenar las series que marca un usuario como <code>ac1209:watchlist</code>.</li>
+<li>Crea una lista que permita almacenar las series que marca un usuario como <code>ac1210:watchlist</code>.</li>
 <li>Añade 3 títulos de series a la lista por la izquierda.</li>
 <li>Añade 2 series a la lista por la derecha.</li>
 <li>Recupera el tamaño de la lista.</li>
@@ -2313,12 +2324,12 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 </ol>
 </li>
 </ul>
-<p><a name="AP1210"></a></p>
+<p><a name="AP1211"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1210</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando las listas de <em>Redis</em>, se pide simular una cola. Para ello:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1211</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando las listas de <em>Redis</em>, se pide simular una cola. Para ello:</p>
 <ol>
-<li>Crea una cola llamada <code>ap1210:emails:pendientes</code>.</li>
+<li>Crea una cola llamada <code>ap1211:emails:pendientes</code>.</li>
 <li>Añade 3 mensajes de email al final de la cola. Cada mensaje es un <em>hash</em> formado por <code>para</code>, <code>asunto</code> y <code>texto</code>.</li>
 <li>Procesa el primer mensaje (extráelo).</li>
 <li>Verifica cuántos mensajes quedan.</li>
@@ -2328,19 +2339,19 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 </ol>
 </li>
 </ul>
-<p><a name="AC1211"></a></p>
+<p><a name="AC1212"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1211</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando los conjuntos en <em>Redis</em>, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1212</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando los conjuntos en <em>Redis</em>, se pide:</p>
 <ol>
-<li>Crea un conjunto que permita almacenar bases de datos NoSQL dentro de <code>ac1211:nosql</code>.</li>
+<li>Crea un conjunto que permita almacenar bases de datos NoSQL dentro de <code>ac1212:nosql</code>.</li>
 <li>Añade al conjunto los valores <code>Redis</code>, <code>MongoDB</code> y <code>Neo4j</code>.</li>
 <li>Vuelve a añadir al conjunto el valor <code>Redis</code>.</li>
 <li>Recupera los elementos del conjunto.</li>
-<li>Crea otro conjunto que permita almacenar bases de datos relacionales dentro de <code>ac1211:sql</code>.</li>
+<li>Crea otro conjunto que permita almacenar bases de datos relacionales dentro de <code>ac1212:sql</code>.</li>
 <li>Añade al conjunto los valores <code>MariaDB</code>, <code>PostgreSQL</code> y <code>Oracle</code>.</li>
-<li>Comprueba si el conjunto <code>ac1211:sql</code> contiene <code>Redis</code>.</li>
-<li>Crea el conjunto <code>ac1211:bd</code> con la union de los dos conjuntos.</li>
+<li>Comprueba si el conjunto <code>ac1212:sql</code> contiene <code>Redis</code>.</li>
+<li>Crea el conjunto <code>ac1212:bd</code> con la union de los dos conjuntos.</li>
 <li>Recupera cuantos elementos tiene el nuevo conjunto.</li>
 <li>Recupera los elementos del nuevo conjunto.</li>
 <li>Elimina del nuevo conjunto el valor <code>Neo4j</code>.</li>
@@ -2350,12 +2361,12 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 </ol>
 </li>
 </ul>
-<p><a name="AP1212"></a></p>
+<p><a name="AP1213"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1212</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando los conjuntos ordenados en <em>Redis</em>, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1213</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando los conjuntos ordenados en <em>Redis</em>, se pide:</p>
 <ol>
-<li>Crea el conjunto ordenado <code>ap1212:bd</code> que permita almacenar bases de datos con una puntuación donde calificaremos nuestro conocimiento. </li>
+<li>Crea el conjunto ordenado <code>ap1213:bd</code> que permita almacenar bases de datos con una puntuación donde calificaremos nuestro conocimiento. </li>
 <li>Añade al conjunto los valores <code>Redis</code> con 50 puntos, <code>Neo4j</code> con 5 puntos, <code>MariaDB</code> con 90 puntos y <code>MongoDB</code> con 20 puntos.</li>
 <li>Recupera los elementos donde tengamos un conocimiento entre 30 y 95 puntos.</li>
 <li>Recupera los elementos donde tengamos un conocimiento entre 20 y 90 puntos, pero sin incluir esos valores.</li>
@@ -2367,13 +2378,13 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 </ol>
 </li>
 </ul>
-<p><a name="AC1213"></a></p>
+<p><a name="AC1214"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1213</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando los comandos para gestionar documentos JSON en <em>Redis</em>, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1214</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando los comandos para gestionar documentos JSON en <em>Redis</em>, se pide:</p>
 <ol>
 <li>Crea un documento JSON con tus datos que represente un usuario con <code>nombre</code>, <code>edad</code> y <code>email</code>.</li>
-<li>Almacena el documento en Redis en la clave <code>ac1213:usuario:yo</code>.</li>
+<li>Almacena el documento en Redis en la clave <code>ac1214:usuario:yo</code>.</li>
 <li>Recupera y muestra el documento completo.</li>
 <li>Recupera y muestra solo el campo <code>nombre</code> del documento.</li>
 <li>Modifica el <code>email</code> con un nuevo correo electrónico.</li>
@@ -2385,10 +2396,10 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 </ol>
 </li>
 </ul>
-<p><a name="AP1214"></a></p>
+<p><a name="AP1215"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1214</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando los comandos para gestionar documentos JSON en <em>Redis</em>, y a partir del siguiente documento:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1215</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando los comandos para gestionar documentos JSON en <em>Redis</em>, y a partir del siguiente documento:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="s2">&quot;Electrónica Severa&quot;</span><span class="p">,</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nt">&quot;productos&quot;</span><span class="p">:[</span>
@@ -2399,7 +2410,7 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 </code></pre></div>
 <p>Se pide:</p>
 <ol>
-<li>Inserta el documento en Redis con la clave <code>ap1214:tienda</code>.</li>
+<li>Inserta el documento en Redis con la clave <code>ap1215:tienda</code>.</li>
 <li>Añade una <em>Tablet</em> al array de <code>productos</code> con un precio de <code>399.99</code>.</li>
 <li>Inserta un nuevo producto (el que tú quieras), pero añadelo en la segunda posición.</li>
 <li>Añade un campo <code>cantidad</code> cuyo valor sea <code>4</code>.</li>
@@ -2412,9 +2423,9 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 </ol>
 </li>
 </ul>
-<p><a name="AC1215"></a></p>
+<p><a name="AC1216"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1213</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando el mecanismo de publicación/subscripción en <em>Redis</em>, se pide:</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1216</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando el mecanismo de publicación/subscripción en <em>Redis</em>, se pide:</li>
 </ul>
 <ol>
 <li>En un primer terminal, súbscribete al canal <code>canal.general</code>.</li>
@@ -2424,13 +2435,13 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 <li>En un cuarto terminal, subscríbete a todos los canales usando el patrón <code>canal.*</code>. ¿Ha recibido algún mensaje al subcribirse?</li>
 <li>En el tercer terminal, averigua cuantos subscritores tiene cada canal.</li>
 </ol>
-<p><a name="AR1216"></a></p>
-<ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1216</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr>, <abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) De forma similar a las <a href="resources/Redis_Cheat_Sheet.pdf"><em>cheatsheets</em> técnicas</a>, crea una tabla resumen con los comandos más importantes que hemos trabajado en esta sesión.</li>
-</ul>
 <p><a name="AR1217"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1217</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr>, <abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se ha reconocido la utilidad de las bases de datos distribuidas.">CE1g</abbr>, <abbr title="Se han analizado las políticas de fragmentación de la información.">CE1h</abbr>, <abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr>, <abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr>, <abbr title="Se han evaluado los principales tipos de bases de datos no relacionales.">CE7b</abbr>, <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1217</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr>, <abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) De forma similar a las <a href="resources/Redis_Cheat_Sheet.pdf"><em>cheatsheets</em> técnicas</a>, crea una tabla resumen con los comandos más importantes que hemos trabajado en esta sesión.</li>
+</ul>
+<p><a name="AR1218"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1218</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr>, <abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se ha reconocido la utilidad de las bases de datos distribuidas.">CE1g</abbr>, <abbr title="Se han analizado las políticas de fragmentación de la información.">CE1h</abbr>, <abbr title="Se han reconocido los conceptos de Big Data y de la inteligencia de negocios.">CE1j</abbr>, <abbr title="Se han caracterizado las bases de datos no relacionales.">CE7a</abbr>, <abbr title="Se han evaluado los principales tipos de bases de datos no relacionales.">CE7b</abbr>, <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
 </ul>
 <!--
 TODO:
