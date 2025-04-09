@@ -1939,14 +1939,15 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <ul>
 <li>
 <p><strong>Estructura</strong></p>
-<p>Un <a href="https://redis.io/docs/latest/develop/data-types/sorted-sets/">conjunto ordenado</a> también es una colección de cadenas únicas. A diferencia de un conjunto normal, los valores de un conjunto ordenado están ordenados (<em>elemental, querido Watson</em>)</p>
+<p>Un <a href="https://redis.io/docs/latest/develop/data-types/sorted-sets/">conjunto ordenado</a> también es una colección de cadenas únicas. A diferencia de un conjunto normal, los valores de un conjunto ordenado están ordenados (<em>elemental, querido Watson</em>), por lo que son una estructura que une el concepto de lista como conjunto de elementos ordenados, con el de conjunto, donde no permite elementos repetidos.</p>
 <p><figure style="align: center;">
     <img src="images/12redis-zset.jpg" alt="Sets ordenados en Redis" width="400px">
     <figcaption>Sets ordenados en Redis</figcaption>
 </figure></p>
-<p>¿Cómo se realiza la ordenación? La ordenación se basa en las puntuaciones y el orden léxico (orden alfabético) de las cadenas. Así, cada cadena es única, aunque las puntuaciones pueden coincidir. ¿Cómo se realiza la puntuación de estos valores? <em>Redis</em> proporciona operaciones para que los usuarios puedan manipular una puntuación para un elemento del conjunto. </p>
-<p>Los conjuntos ordenados son preferibles a las listas cuando el acceso rápido a un miembro concreto es más importante que la rapidez de inserción/eliminación, es decir, son más importantes las lecturas que las escrituras. Es por ello, que la complejidad temporal de la inserción/eliminación en un conjunto ordenado es O(N), donde N es el número de elementos del conjunto, ya que mantiene los valores ordenados, en vez la complejidad O(1) que tienen las listas. Así pues, podemos considerar un conjunto ordenado como una cola prioritaria de acceso aleatorio.</p>
+<p>¿Cómo se realiza la ordenación? Cada elemento de un conjunto ordenado se compone a su vez de dos partes, un miembro almacenado como una cadena y una calificación. La ordenación se basa en las puntuaciones y el orden léxico (orden alfabético) de las cadenas. Así, cada miembro es único, aunque las puntuaciones pueden coincidir. ¿Cómo se realiza la puntuación de estos valores? <em>Redis</em> proporciona operaciones para que los usuarios puedan manipular una puntuación para un elemento del conjunto. </p>
+<p>Los conjuntos ordenados son preferibles a las listas cuando el acceso a un miembro concreto es más importante que la rapidez de inserción/eliminación, es decir, son más importantes las lecturas que las escrituras. Es por ello, que la complejidad temporal de la inserción/eliminación en un conjunto ordenado es O(N), donde N es el número de elementos del conjunto, ya que mantiene los valores ordenados, en vez de la complejidad O(1) que tienen las listas. Así pues, podemos considerar un conjunto ordenado como una cola prioritaria de acceso aleatorio.</p>
 <p>Los conjuntos ordenados de <em>Redis</em> son ideales para casos de uso como <em>rankings</em> de productos más comprados, visitados, etc... así como sistemas con puntuación, tipo las preguntas de <em>Stack Overflow</em> o <em>posts</em> en <em>Reddit</em>.</p>
+<p>Todas sus operaciones comienzan por la letra <code>Z</code>: <code>ZADD</code>, <code>ZREM</code>, <code>ZRANGE</code>, <code>ZSCORE</code>, <code>ZCOUNT</code>, <code>ZINCRBY</code>, etc...</p>
 </li>
 </ul>
 </div>
@@ -1954,33 +1955,39 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <ul>
 <li>
 <p><strong>Comandos</strong></p>
-<p>Para añadir elementos a un conjunto ordenado usaremos la operacion <a href="https://redis.io/docs/latest/commands/zadd/"><code>ZADD clave puntuación valor</code></a>, <a href="https://redis.io/docs/latest/commands/zrem/"><code>ZREM</code></a> para eliminarlos,  mientras que mediante <a href="https://redis.io/docs/latest/commands/zrange/"><code>ZRANGE clave inicio fin</code></a> podemos recuperar las claves entre un rango inclusivo (si queremos que no entren inicio o fin en el rango, les pondremos un paréntesis delante) por posición o puntuación (<code>BYSCORE</code>), pudiendo recuperarlo en orden inverso (<code>REV</code>) y/o con su puntuación <code>WITHSCORES</code>:</p>
+<p>Para añadir elementos a un conjunto ordenado usaremos la operacion <a href="https://redis.io/docs/latest/commands/zadd/"><code>ZADD clave puntuación valor</code></a>, <a href="https://redis.io/docs/latest/commands/zrem/"><code>ZREM</code></a> para eliminarlos, <a href="https://redis.io/docs/latest/commands/zscore/"><code>ZCORE clave miembro</code></a> para recuperar la puntuación de un valor, mientra que mediante <a href="https://redis.io/docs/latest/commands/zrange/"><code>ZRANGE clave inicio fin</code></a> podemos recuperar las claves entre un rango inclusivo (si queremos que no entren inicio o fin en el rango, les pondremos un paréntesis delante) por posición o puntuación (<code>BYSCORE</code>), pudiendo recuperarlo en orden inverso (<code>REV</code>) y/o con su puntuación <code>WITHSCORES</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">ZADD</span> <span class="n">visitas</span> <span class="mi">1000</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="mi">5000</span> <span class="n">aitor</span><span class="o">-</span><span class="n">iabd</span> <span class="mi">66</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 3</span>
-<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="n">WITHSCORES</span>                  <span class="c1"># Todos los elementos con puntuaciones</span>
-</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># 1) &quot;aitor-blog&quot;</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1"># 2) &quot;66&quot;</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="c1"># 3) &quot;aitor-bd&quot;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1"># 4) &quot;1000&quot;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1"># 5) &quot;aitor-iabd&quot;</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1"># 6) &quot;5000&quot;</span>
-<span class="hll"><span class="linenos" data-linenos="10 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="mi">50</span> <span class="mi">1500</span> <span class="n">BYSCORE</span>                  <span class="c1"># Filtrado por puntuaciones</span>
-</span><span class="linenos" data-linenos="11 "></span><span class="c1"># 1) &quot;aitor-blog&quot;</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1"># 2) &quot;aitor-bd&quot;</span>
-<span class="hll"><span class="linenos" data-linenos="13 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="p">(</span><span class="mi">66</span> <span class="mi">1500</span> <span class="n">BYSCORE</span>                 <span class="c1"># No incluye el 66</span>
-</span><span class="linenos" data-linenos="14 "></span><span class="c1"># 1) &quot;aitor-bd&quot;</span>
-<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="p">(</span><span class="mi">5000</span> <span class="mi">66</span> <span class="n">REV</span> <span class="n">BYSCORE</span> <span class="n">WITHSCORES</span>  <span class="c1"># No incluye el 5000, en orden descendente</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">ZSCORE</span> <span class="n">visitas</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># &quot;1000&quot;</span>
+<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="n">WITHSCORES</span>                  <span class="c1"># Todos los elementos con puntuaciones</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># 1) &quot;aitor-blog&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># 2) &quot;66&quot;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># 3) &quot;aitor-bd&quot;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1"># 4) &quot;1000&quot;</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># 5) &quot;aitor-iabd&quot;</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1"># 6) &quot;5000&quot;</span>
+<span class="hll"><span class="linenos" data-linenos="12 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="mi">50</span> <span class="mi">1500</span> <span class="n">BYSCORE</span>                  <span class="c1"># Filtrado por puntuaciones</span>
+</span><span class="linenos" data-linenos="13 "></span><span class="c1"># 1) &quot;aitor-blog&quot;</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1"># 2) &quot;aitor-bd&quot;</span>
+<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="p">(</span><span class="mi">66</span> <span class="mi">1500</span> <span class="n">BYSCORE</span>                 <span class="c1"># No incluye el 66</span>
 </span><span class="linenos" data-linenos="16 "></span><span class="c1"># 1) &quot;aitor-bd&quot;</span>
-<span class="linenos" data-linenos="17 "></span><span class="c1"># 2) &quot;1000&quot;</span>
-<span class="linenos" data-linenos="18 "></span><span class="c1"># 3) &quot;aitor-blog&quot;</span>
-<span class="linenos" data-linenos="19 "></span><span class="c1"># 4) &quot;66&quot;</span>
+<span class="hll"><span class="linenos" data-linenos="17 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="p">(</span><span class="mi">5000</span> <span class="mi">66</span> <span class="n">REV</span> <span class="n">BYSCORE</span> <span class="n">WITHSCORES</span>  <span class="c1"># No incluye el 5000, en orden descendente</span>
+</span><span class="linenos" data-linenos="18 "></span><span class="c1"># 1) &quot;aitor-bd&quot;</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1"># 2) &quot;1000&quot;</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1"># 3) &quot;aitor-blog&quot;</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1"># 4) &quot;66&quot;</span>
 </code></pre></div>
 <p>Han caído en desuso las operaciones <code>ZREVRANGE</code>, <code>ZRANGEBYSCORE</code>, <code>ZREVRANGEBYSCORE</code>, etc... ya que con <a href="https://redis.io/docs/latest/commands/zrange/"><code>ZRANGE</code></a> y los parámetros adecuados podemos obtener los mismos resultados.</p>
 <p>Si lo que queremos es averiguar cuantos valores tienen una puntuación entre entre un rango determinado, usaremos <a href="https://redis.io/docs/latest/commands/zincrby/"><code>ZCOUNT clave inicio fin</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">ZCOUNT</span> <span class="n">visitas</span> <span class="mi">50</span> <span class="mi">1500</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># (integer) 2</span>
 </code></pre></div>
-<p>Para incrementar la puntuación de un elemento, podemos volver a añadirlo con la nueva puntuación, lo cual modifica la puntuación pero no añade un nuevo valor, o incrementarlo por un determinado valor mediante <a href="https://redis.io/docs/latest/commands/zincrby/"><code>ZINCRBY</code></a>, el cual devolverá un nuevo valor (o reducirlo mediante un valor negativo):</p>
+<p>También podemos averiguar qué posición ocupa un determinado miembro mediante <a href="https://redis.io/docs/latest/commands/zrank/"><code>ZRANK clave miembro</code></a> (la primera posición es la posición 0): </p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">ZRANK</span> <span class="n">visitas</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># (integer) 1</span>
+</code></pre></div>
+<p>Para incrementar la puntuación de un miembro, podemos volver a añadirlo con la nueva puntuación, lo cual modifica la puntuación pero no añade un nuevo valor, o incrementarlo por un determinado valor  (o reducirlo mediante un valor negativo) mediante <a href="https://redis.io/docs/latest/commands/zincrby/"><code>ZINCRBY</code></a>, el cual devolverá un nuevo valor:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">ZINCRBY</span> <span class="n">visitas</span> <span class="mi">1</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># &quot;1001&quot;</span>
 </code></pre></div>
@@ -2018,7 +2025,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </span><span class="linenos" data-linenos="4 "></span><span class="c1"># OK</span>
 <span class="hll"><span class="linenos" data-linenos="5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">2</span> <span class="err">$</span> <span class="s1">&#39;{&quot;nombre&quot;: &quot;Andreu Medrano&quot;}&#39;</span> <span class="n">XX</span>      <span class="c1"># XX: Lo sobreescribe, sólo si ya existe. Si no, ni lo inserta</span>
 </span></code></pre></div>
-<p>Si queremos modificar un documento, además de <code>JSON.SET</code> para campos sencillos, podemos utilizar <a href="https://redis.io/docs/latest/commands/json.arrappend/"><code>JSON.ARRAPPEND</code></a> y <a href="https://redis.io/docs/latest/commands/json.arrinsert/"><code>JSON.ARRINSERT</code></a> al trabajar con <em>arrays</em> para añadir, respectivamente, elementos al final o en una posición determinada:</p>
+<p>Si queremos modificar un documento, además de <code>JSON.SET</code> para campos sencillos, podemos emplear <a href="https://redis.io/docs/latest/commands/json.toggle/"><code>JSON.TOGGLE</code></a> para cambiar el estado de un campo booleano, y <a href="https://redis.io/docs/latest/commands/json.arrappend/"><code>JSON.ARRAPPEND</code></a> y <a href="https://redis.io/docs/latest/commands/json.arrinsert/"><code>JSON.ARRINSERT</code></a> para trabajar con <em>arrays</em> para añadir, respectivamente, elementos al final o en una posición determinada:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.altura&#39;</span> <span class="mi">183</span>   <span class="c1"># Modificamos un campo</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># OK</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.ciudad&#39;</span> <span class="s1">&#39;&quot;Elche&quot;&#39;</span>   <span class="c1"># Agregamos un nuevo campo</span>
@@ -2292,7 +2299,7 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 <p><a name="AC1208"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AC1208</strong>. Utilizando las <em>hashes</em> en <em>Redis</em> con el prefijo <code>ar1208:pelis:</code>, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AC1208</strong>. Utilizando las <em>hashes</em> en <em>Redis</em> con el prefijo <code>ac1208:pelis:</code>, se pide:</p>
 <ol>
 <li>Crea un <em>hash</em> para añadir a la película <code>ac1208:pelis:1</code> la propiedad <code>titulo</code>.</li>
 <li>Para la misma película, mediante una única operación, añade las propiedades <code>anyo</code> y <code>plataforma</code> (plataforma de <em>streaming</em> donde hemos visto la película, o bien <code>cine</code> o <code>tv</code> dependiendo del caso).</li>
