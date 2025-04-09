@@ -2343,7 +2343,7 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1211</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando las listas de <em>Redis</em>, se pide simular una cola. Para ello:</p>
 <ol>
 <li>Crea una cola llamada <code>ap1211:emails:pendientes</code>.</li>
-<li>Añade 3 mensajes de email al final de la cola. Cada mensaje es un <em>hash</em> formado por <code>para</code>, <code>asunto</code> y <code>texto</code>.</li>
+<li>Añade 3 mensajes de email al final de la cola. Cada mensaje es una cadena con formato JSON con los campos <code>para</code>, <code>asunto</code> y <code>texto</code>.</li>
 <li>Procesa el primer mensaje (extráelo).</li>
 <li>Verifica cuántos mensajes quedan.</li>
 <li>Añade un mensaje prioritario al inicio de la cola.</li>
