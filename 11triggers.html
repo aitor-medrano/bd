@@ -1603,14 +1603,14 @@
 </div>
 </div>
 <h4 id="evento-recurrente">Evento recurrente<a class="headerlink" href="#evento-recurrente" title="Permanent link">&para;</a></h4>
-<p>Pero la potencia de los eventos es que se ejecuten de forma periódica. Para ello, en el horario usaremos la cláusula <code>EVERY</code> para indicar la repetición</p>
+<p>Pero la potencia de los eventos es que se ejecuten de forma periódica. Para ello, en el horario usaremos la cláusula <code>EVERY</code> para indicar el intervalo de la repetición:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="n">EVENT</span><span class="w"> </span><span class="n">evento_recurrente</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">ON</span><span class="w"> </span><span class="n">SCHEDULE</span><span class="w"> </span><span class="k">EVERY</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">DAY</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">STARTS</span><span class="w"> </span><span class="s1">&#39;2025-03-01 00:00:00&#39;</span><span class="w"> </span><span class="n">ENDS</span><span class="w"> </span><span class="s1">&#39;2025-03-31 23:59:59&#39;</span>
 <span class="linenos" data-linenos="4 "></span><span class="k">DO</span>
 <span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">historico</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">fecha</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">DATE_SUB</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">30</span><span class="w"> </span><span class="k">DAY</span><span class="p">);</span>
 </code></pre></div>
-<p>También podemos indicar una fecha de inicio para comenzar el evento periódico mediante <code>STARTS</code>, que finalice con <code>ENDS</code> o usando ambos para indicar un periodo determinado:</p>
+<p>Además del intervalo de repetición, también podemos indicar una fecha de inicio para comenzar el evento periódico mediante <code>STARTS</code>, una fecha de finalización para que termine mediante <code>ENDS</code> o utilizar ambos para indicar un periodo determinado:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Recurrente con inicio</label><label for="__tabbed_2_2">Recurrente con finalización</label><label for="__tabbed_2_3">Recurrente con inicio/fin</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1635,6 +1635,10 @@
 </code></pre></div>
 </div>
 </div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Eventos y procedimientos</p>
+<p>Una buena práctica es encapsular la lógica de los eventos dentro de procedimientos almacenados, para poder probarlos sin necesidad de provocar que se dispare el evento, además de poder reutilizar la lógica entre eventos con periodicidades distintas.</p>
 </div>
 <hr />
 <p>Una vez creados los eventos, cuando llegue el momento adecuado, se ejecutarán. En el fichero de log de <em>MariaDB</em> (por ejemplo, desde la consola de <em>Docker Desktop</em> o en <code>/var/log/mysql/</code>) podremos comprobar su ejecución:</p>
@@ -2749,11 +2753,11 @@ flowchart TD
 </ul>
 </li>
 </ul>
-<p>Sobre estas tabla, se pide:</p>
+<p>Sobre estas tablas, se pide:</p>
 <ol>
 <li>Crea un evento (<code>ac1101evento3min</code>) que se ejecute dentro de tres minutos y que inserte en <code>contador</code> un registro con todos los valores a 0.</li>
 <li>Crea un evento (<code>ac1101evento5min</code>) que se ejecute cada 5 minutos y que, haciendo uso de un procedimiento almacenado, inserte en <code>estadisticas</code> un registro con los datos actualizados. Además, modificará la tabla <code>contador</code> incrementando en uno los valores de <code>total</code> y <code>mensual</code>.</li>
-<li>Crea un evento (<code>ac1101eventoDiarioLunes</code>) que se ejecute de forma diaria, comenzando su ejecución el Lunes a las 8:00, y que, haciendo uso de un procedimiento almacenado,  inserte un nuevo registro en <code>estadisticas</code>. Además, modificará la tabla <code>contador</code> incrementando en uno los valores de <code>total</code> y <code>mensual</code>. </li>
+<li>Crea un evento (<code>ac1101eventoDiarioLunes</code>) que se ejecute de forma diaria, comenzando su ejecución el lunes a las 8:00, y que, haciendo uso de un procedimiento almacenado, inserte un nuevo registro en <code>estadisticas</code>. Además, modificará la tabla <code>contador</code> incrementando en uno los valores de los campos <code>total</code> y <code>mensual</code>. </li>
 <li>Crea un evento (<code>ac1101eventoMensual</code>) que se ejecute cada mes a partir del momento de su lanzamiento y que, haciendo uso de un procedimiento almacenado, elimine las estadísticas que tienen más de un año y ponga el valor del contador mensual a 0.</li>
 <li>Deshabilita el evento <code>ac1101eventoDiarioLunes</code>.</li>
 </ol>
