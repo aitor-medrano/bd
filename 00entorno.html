@@ -1099,17 +1099,18 @@
 <h2 id="herramientas">Herramientas<a class="headerlink" href="#herramientas" title="Permanent link">&para;</a></h2>
 <p>Las herramientas que vamos a utilizar a lo largo del curso son:</p>
 <ul>
-<li><a href="https://mariadb.org/">MariaDB</a>: SGBD relacional basado en <em>MySQL</em><ul>
+<li><a href="https://mariadb.org/">MariaDB</a>: SGBD relacional basado en <em>MySQL</em>.<ul>
 <li><a href="https://www.phpmyadmin.net/">PhpMyAdmin</a>: herramienta gráfica de gestión de <em>MariaDB</em> / <em>MySQL</em></li>
 </ul>
 </li>
-<li><a href="https://www.postgresql.org/">PostgreSQL</a>: SGBD relacional<ul>
-<li><a href="https://www.pgadmin.org/">PgAdmin</a>: herramienta gráfica de gestión de <em>PostgreSQL</em></li>
+<li><a href="https://www.postgresql.org/">PostgreSQL</a>: SGBD relacional.<ul>
+<li><a href="https://www.pgadmin.org/">PgAdmin</a>: herramienta gráfica de gestión de <em>PostgreSQL</em>.</li>
 </ul>
 </li>
-<li><a href="https://redis.io/">Redis</a>: Base de datos NoSQL de tipo clave-valor</li>
+<li><a href="https://redis.io/">Redis</a>: Base de datos NoSQL de tipo clave-valor.</li>
+<li><a href="https://www.mongodb.com/">MongoDB</a>: Base de datos NoSQL de tipo documental.</li>
 <li><a href="https://grafana.com/">Grafana</a>: herramienta de observabilidad y visualización de datos.</li>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a>: editor de texto/código</li>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a>: editor de texto/código.</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Docker</p>
@@ -1327,6 +1328,7 @@
 </figure>
 
 <h2 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h2>
+<p><em>Redis</em> es una solución NoSQL basada en un modelo de datos de clave-valor en memoria que se utiliza como base de datos de respuesta rápida o caché de aplicaciones.</p>
 <p>Aunque podemos instalar <em>Redis</em> en cualquier sistema operativo, en nuestro caso, vamos a centrarnos en hacerlo mediante un contenedor <em>Docker</em>.</p>
 <p>La primera posibilidad es instalar la imagen <code>redis/redis-stack-server</code> mediante el comando:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>redis-stack-server<span class="w"> </span>-p<span class="w"> </span><span class="m">6379</span>:6379<span class="w"> </span>redis/redis-stack-server:latest
@@ -1435,13 +1437,13 @@
 <p>En el curso nos vamos a centrar en el uso del <em>shell</em>, pero no está de más conocer las herramientas visuales que facilitan el trabajo con <em>MongoDB</em> en el día a día.</p>
 <p>Una de ellas es <a href="https://www.mongodb.com/es/products/compass"><em>MongoDB Compass</em></a>, que facilita la exploración y manipulación de los datos. De una manera flexible e intuitiva, <em>Compass</em> ofrece visualizaciones detalladas de los esquemas, métricas de rendimiento en tiempo real así como herramientas para la creación de consultas.</p>
 <p>Existen tres versiones de <em>Compass</em>, una completa con todas las características, una de sólo lectura sin posibilidad de insertar, modificar o eliminar datos (perfecta para analítica de datos) y una última versión <em>isolated</em> que solo permite la conexión a una instancia local.</p>
-<p>Una vez descargada e instalada la versión que nos interesa, tras crear la conexión a partir de la cadena de conexión (similar a <code>mongodb+srv://iabd:iabdiabd@cluster0.4hm7u8y.mongodb.net/test</code>), veremos en el menú de la izquierda un resumen del clúster, así como las consultas que vayamos almacenando y las diferentes bases de datos almacenadas:</p>
+<p>Una vez descargada e instalada la versión que nos interesa, tras crear la conexión a partir de la cadena de conexión (similar a <code>mongodb+srv://&lt;usuario&gt;:&lt;contraseña&gt;@cluster0.4hm7u8y.mongodb.net/test</code>), veremos en el menú de la izquierda todas las conexiones a servidores MongoDB almacenadas y las diferentes bases de datos de las respectivas conexiones:</p>
 <figure style="align: center;">
     <img src="images/00mongocompass-init.png" alt="MongoDB - GUI de Mongo Compass">
     <figcaption>GUI de Mongo Compass</figcaption>
 </figure>
 
-<p>Si seleccionamos una base de datos concreta, y de ella, una colección en el menú de la izquierda, en el panel central tendremos una visualización de los datos contenidos, así como opciones para ver su esquema, realizar consultas agregadas, editar los índices, etc... Además, podremos realizar consultas sobre los datos:</p>
+<p>Si seleccionamos una base de datos concreta, y de ella, una colección en el menú de la izquierda, en el panel central tendremos una visualización de los datos contenidos, así como opciones para analizar su esquema, realizar consultas agregadas, editar los índices, etc... Además, podremos realizar consultas sobre los datos:</p>
 <figure style="align: center;">
     <img src="images/00mongocompass-coleccion.png" alt="MongoDB - Opciones desde una colección en MongoDBCompass">
     <figcaption>Opciones desde una colección</figcaption>
@@ -1449,7 +1451,7 @@
 
 <div class="admonition tip">
 <p class="admonition-title">mongosh en Compass</p>
-<p>Si te fijas, en la barra inferior podemos desplegar un panel para interactuar mediante comandos como lo haríamos desde <code>mongosh</code>.</p>
+<p>Tanto sobre el nombre de la conexión (dejando el ratón encima aparecerá un icono), como desde la parte superior derecha, podemos conectarnos desde un <em>shell</em> similar a <code>mongosh</code>.</p>
 </div>
 <!--
 * https://selectstarsql.com/

@@ -810,15 +810,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#trabajando-con-el-shell" class="md-nav__link">
-    <span class="md-ellipsis">
-      Trabajando con el shell
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#empleando-javascript" class="md-nav__link">
     <span class="md-ellipsis">
       Empleando JavaScript
@@ -1137,7 +1128,7 @@
 <tbody>
 <tr>
 <td style="text-align: center;">1</td>
-<td>MongoDB</td>
+<td><a href="#mongodb">MongoDB</a></td>
 <td></td>
 <td></td>
 </tr>
@@ -1203,12 +1194,12 @@
     <figcaption>Logo de MongoDB</figcaption>
 </figure>
 
-<p><em>MongoDB</em> (<a href="http://www.mongodb.com">http://www.mongodb.com</a>) es una de las bases de datos NoSQL más conocidas. Sigue un modelo de datos documental, donde los documentos se basan en JSON.</p>
+<p><em>MongoDB</em> (<a href="http://www.mongodb.com">http://www.mongodb.com</a>) es una de las bases de datos NoSQL más conocidas. Sigue un modelo de datos documental, donde los documentos se basan en el formato JSON.</p>
 <p><em>MongoDB</em> destaca porque:</p>
 <ul>
 <li>Soporta esquemas dinámicos: diferentes documentos de una misma colección pueden tener atributos diferentes.</li>
 <li>Aunque inicialmente tenía un soporte limitado de <em>joins</em>, desde la versión 5.2 se pueden realizar incluso entre colecciones particionadas.</li>
-<li>Soporte de transacciones sólo a nivel de aplicación. Lo que en un RDMS puede suponer múltiples operaciones, con <em>MongoDB</em> se puede hacer en una sola operación al insertar/actualizar todo un documento de una sola vez, pero si queremos crear una transacción entre dos documentos, la gestión la debe realizar el driver.</li>
+<li>Soporte de transacciones sólo a nivel de aplicación. Lo que en un SGBD relacional puede suponer múltiples operaciones, con <em>MongoDB</em> se puede hacer en una sola operación al insertar/actualizar todo un documento de una sola vez, pero si queremos crear una transacción entre dos documentos, la gestión la debe realizar el driver.</li>
 </ul>
 <div class="admonition tip inline end">
 <p class="admonition-title">huMONGOus</p>
@@ -1216,9 +1207,9 @@
 </div>
 <p>Hay una serie de conceptos que conviene conocer antes de entrar en detalle:</p>
 <ul>
-<li><em>MongoDB</em> tienen el mismo concepto de <strong>base de datos</strong> que un RDMS. Dentro de una instancia de <em>MongoDB</em> podemos tener 0 o más bases de datos, actuando cada una como un contenedor de alto nivel.</li>
-<li>Una base de datos tendrá 0 o más colecciones. Una <strong>colección</strong> es muy similar a lo que entendemos como tabla dentro de un RDMS. <em>MongoDB</em> ofrece diferentes tipos de colecciones, desde las normales cuyo tamaño crece conforme lo hace el número de documentos, como las colecciones <em>capped</em>, las cuales tienen un tamaño predefinido y que pueden contener una cierta cantidad de información que se sustituirá por nueva cuando se llene.</li>
-<li>Las colecciones contienen 0 o más <strong>documentos</strong>, por lo que es similar a una fila o registro de un RDMS.</li>
+<li><em>MongoDB</em> tienen el mismo concepto de <strong>base de datos</strong> que un SGBD relacional. Dentro de una instancia de <em>MongoDB</em> podemos tener 0 o más bases de datos, actuando cada una como un contenedor de alto nivel.</li>
+<li>Una base de datos tendrá 0 o más colecciones. Una <strong>colección</strong> es muy similar a lo que entendemos como tabla dentro de una base de datos relacional. <em>MongoDB</em> ofrece diferentes tipos de colecciones, desde las normales cuyo tamaño crece conforme lo hace el número de documentos, como las colecciones <em>capped</em>, las cuales tienen un tamaño predefinido y que pueden contener una cierta cantidad de información que se sustituirá por nueva cuando se llene.</li>
+<li>Las colecciones contienen 0 o más <strong>documentos</strong>, por lo que es similar a una fila o registro de un tabla relacional.</li>
 <li>Cada documento contiene 0 o más atributos, compuestos de <strong>parejas clave/valor</strong>. Cada uno de estos documentos no sigue ningún esquema, por lo que dos documentos de una misma colección pueden contener todos los atributos diferentes entre sí.</li>
 </ul>
 <figure style="align: center;">
@@ -1226,12 +1217,7 @@
     <figcaption>Elementos de MongoDB</figcaption>
 </figure>
 
-<p>Así pues, tenemos que una base de datos va a contener varias colecciones, donde cada colección contendrá un conjunto de documentos:</p>
-<figure style="align: center;">
-    <img src="images/13mongodbmodel.jpg" alt="Modelo de MongoDB" width="400px">
-    <figcaption>Modelo de MongoDB</figcaption>
-</figure>
-
+<p>Así pues, tenemos que una base de datos va a contener varias colecciones, donde cada colección contendrá un conjunto de documentos.</p>
 <p>Además, <em>MongoDB</em> soporta <strong>índices</strong>, igual que cualquier RDMS, para acelerar la búsqueda de datos. Al realizar cualquier consulta, se devuelve un <strong>cursor</strong>, con el cual podemos realizar operaciones como contar, ordenar, limitar o saltar documentos.</p>
 <h3 id="bson">BSON<a class="headerlink" href="#bson" title="Permanent link">&para;</a></h3>
 <p>Mediante <em>JavaScript</em> podemos crear objetos que se representan con JSON. Internamente, <em>MongoDB</em> almacena los documentos mediante BSON (<em>Binary JSON</em>). Podemos consultar la especificación en <a href="http://BSONSpec.org">http://BSONSpec.org</a></p>
@@ -1286,77 +1272,58 @@
 <li><a href="https://www.mongodb.com/try/download/community">MongoDB Community Edition</a>, versión gratuita para trabajar <em>on-premise</em>, con versiones para Windows, MacOS y Linux.</li>
 <li><a href="https://www.mongodb.com/products/mongodb-enterprise-advanced">MongoDB Enterprise Advanced</a>, versión de pago con soporte, herramientas avanzadas de monitorización y seguridad, y administración automatizada.</li>
 </ul>
-<p>En nuestro caso, por comodidad, trabajaremos tanto con la versión <em>cloud</em> de <em>Mongo Atlas</em>, como una versión local que instalaremos mediante <em>Docker</em>. Más información en la sección de <a href="00entorno.html#mongodb">Entorno</a></p>
+<p>En nuestro caso, por comodidad, trabajaremos con la versión <em>cloud</em> de <em>Mongo Atlas</em>. Los pasos necesarios para su creación, configuración y uso, así como la conexión mediante <em>MongoDBCompass</em> los puedes encontrar en la sección de <a href="00entorno.html#mongodb">Entorno</a></p>
 <h3 id="uso-del-shell">Uso del shell<a class="headerlink" href="#uso-del-shell" title="Permanent link">&para;</a></h3>
-<p>Una vez ya tenemos en marcha <em>MongoDB</em>, llega el momento de acceder mediante el cliente <a href="https://www.mongodb.com/docs/mongodb-shell/"><code>mongosh</code></a> (en versiones anteriores el comando utilizado era <code>mongo</code>), el cual funciona igual que un <em>shell</em>, de modo que con la fecha hacia arriba visualizaremos el último comando. El cliente utiliza <em>JavaScript</em> como lenguaje de interacción con la base de datos.</p>
-<p>Si nos conectamos desde Docker, no necesitamos instalarlo. Primero nos conectamos al contenedor:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>iabd-mongo<span class="w"> </span>bash
-</code></pre></div>
-<p>Al conectar con <code>mongosh</code> si no le indicamos nada se conectará por defecto a la base de datos <code>test</code> de <em>localhost</em>. Si queremos conectarnos a una base de datos concreta, por ejemplo, a <code>sample_training</code>, la pasaremos como parámetro:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">root</span><span class="err">@</span><span class="mf">3</span><span class="nx">ad17b675fb1</span><span class="o">:</span><span class="err">/# mongosh sample_training</span>
-<span class="linenos" data-linenos="2 "></span><span class="nx">Current</span><span class="w"> </span><span class="nx">Mongosh</span><span class="w"> </span><span class="nx">Log</span><span class="w"> </span><span class="nx">ID</span><span class="o">:</span><span class="w"> </span><span class="mf">672</span><span class="nx">df5e3f40f260196fe6910</span>
-<span class="linenos" data-linenos="3 "></span><span class="nx">Connecting</span><span class="w"> </span><span class="nx">to</span><span class="o">:</span><span class="w">          </span><span class="nx">mongodb</span><span class="o">:</span><span class="c1">//127.0.0.1:27017/sample_training</span>
-<span class="linenos" data-linenos="4 "></span><span class="nx">Using</span><span class="w"> </span><span class="nx">MongoDB</span><span class="o">:</span><span class="w">          </span><span class="mf">8.0.3</span>
-<span class="linenos" data-linenos="5 "></span><span class="nx">Using</span><span class="w"> </span><span class="nx">Mongosh</span><span class="o">:</span><span class="w">          </span><span class="mf">2.3.2</span>
-</code></pre></div>
+<p>Una vez ya tenemos en marcha <em>MongoDB</em>, llega el momento de conectarnos. Aunque utilizaremos <em>MongoDBCompas</em>, durante esta unidad vamos a practicar los diferentes comandos haciendo uso del cliente <a href="https://www.mongodb.com/docs/mongodb-shell/"><code>mongosh</code></a> (en versiones anteriores el comando utilizado era <code>mongo</code>). Para ello, en la parte superior derecha, tenemos la opción de <code>&gt;_ Open MongoDB shell</code>.</p>
+<p>El <em>shell</em> de <em>MongoDB</em> utiliza <em>JavaScript</em> como lenguaje de interacción con la base de datos, y como buen <em>shell</em>, mediante la fecha hacia arriba visualizaremos el último comando. </p>
 <p>Si queremos ver las bases de datos que existen ejecutaremos el comando <code>show dbs</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>sample_training&gt;<span class="w"> </span>show<span class="w"> </span>dbs<span class="p">;</span>
-<span class="linenos" data-linenos=" 2 "></span>admin<span class="w">                </span><span class="m">40</span>.00<span class="w"> </span>KiB
-<span class="linenos" data-linenos=" 3 "></span>config<span class="w">               </span><span class="m">60</span>.00<span class="w"> </span>KiB
-<span class="linenos" data-linenos=" 4 "></span><span class="nb">local</span><span class="w">                </span><span class="m">40</span>.00<span class="w"> </span>KiB
-<span class="linenos" data-linenos=" 5 "></span>sample_airbnb<span class="w">        </span><span class="m">52</span>.53<span class="w"> </span>MiB
-<span class="linenos" data-linenos=" 6 "></span>sample_analytics<span class="w">      </span><span class="m">9</span>.39<span class="w"> </span>MiB
-<span class="linenos" data-linenos=" 7 "></span>sample_geospatial<span class="w">   </span><span class="m">980</span>.00<span class="w"> </span>KiB
-<span class="linenos" data-linenos=" 8 "></span>sample_guides<span class="w">        </span><span class="m">40</span>.00<span class="w"> </span>KiB
-<span class="linenos" data-linenos=" 9 "></span>sample_mflix<span class="w">        </span><span class="m">108</span>.55<span class="w"> </span>MiB
-<span class="linenos" data-linenos="10 "></span>sample_restaurants<span class="w">    </span><span class="m">5</span>.91<span class="w"> </span>MiB
-<span class="linenos" data-linenos="11 "></span>sample_supplies<span class="w">     </span><span class="m">968</span>.00<span class="w"> </span>KiB
-<span class="linenos" data-linenos="12 "></span>sample_training<span class="w">      </span><span class="m">40</span>.73<span class="w"> </span>MiB
-<span class="linenos" data-linenos="13 "></span>sample_weatherdata<span class="w">    </span><span class="m">2</span>.39<span class="w"> </span>MiB
-</code></pre></div>
-<p>Si nos quisiéramos conectar a nuestro clúster de <em>Mongo Atlas</em> utilizaremos la cadena de conexión tras el comando <code>mongosh</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>root@3ad17b675fb1:/#<span class="w"> </span>mongosh<span class="w"> </span>mongodb+srv://iabd:iabdiabd@cluster0.dfaz5er.mongodb.net/test
-<span class="linenos" data-linenos="2 "></span>Current<span class="w"> </span>Mongosh<span class="w"> </span>Log<span class="w"> </span>ID:<span class="w"> </span>672df3b580435559490d818f
-<span class="linenos" data-linenos="3 "></span>Connecting<span class="w"> </span>to:<span class="w">          </span>mongodb+srv://&lt;credentials&gt;@cluster0.dfaz5er.mongodb.net/test
-<span class="linenos" data-linenos="4 "></span>Using<span class="w"> </span>MongoDB:<span class="w">          </span><span class="m">7</span>.0.15
-<span class="linenos" data-linenos="5 "></span>Using<span class="w"> </span>Mongosh:<span class="w">          </span><span class="m">2</span>.3.3
-<span class="linenos" data-linenos="6 "></span>
-<span class="linenos" data-linenos="7 "></span>For<span class="w"> </span>mongosh<span class="w"> </span>info<span class="w"> </span>see:<span class="w"> </span>https://docs.mongodb.com/mongodb-shell/
-<span class="linenos" data-linenos="8 "></span>
-<span class="linenos" data-linenos="9 "></span>Atlas<span class="w"> </span>atlas-4wikkb-shard-0<span class="w"> </span><span class="o">[</span>primary<span class="o">]</span><span class="w"> </span>test&gt;
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Atlas<span class="w"> </span>atlas-pxc2m9-shard-0<span class="w"> </span><span class="o">[</span>primary<span class="o">]</span><span class="w"> </span>pruebas&gt;<span class="w"> </span>show<span class="w"> </span>dbs
+<span class="linenos" data-linenos=" 2 "></span>iabd<span class="w">                </span><span class="m">416</span>.00<span class="w"> </span>KiB
+<span class="linenos" data-linenos=" 3 "></span>pruebas<span class="w">             </span><span class="m">216</span>.00<span class="w"> </span>KiB
+<span class="linenos" data-linenos=" 4 "></span>sample_airbnb<span class="w">        </span><span class="m">52</span>.52<span class="w"> </span>MiB
+<span class="linenos" data-linenos=" 5 "></span>sample_analytics<span class="w">      </span><span class="m">8</span>.93<span class="w"> </span>MiB
+<span class="linenos" data-linenos=" 6 "></span>sample_geospatial<span class="w">     </span><span class="m">1</span>.29<span class="w"> </span>MiB
+<span class="linenos" data-linenos=" 7 "></span>sample_guides<span class="w">        </span><span class="m">40</span>.00<span class="w"> </span>KiB
+<span class="linenos" data-linenos=" 8 "></span>sample_mflix<span class="w">         </span><span class="m">47</span>.23<span class="w"> </span>MiB
+<span class="linenos" data-linenos=" 9 "></span>sample_restaurants<span class="w">    </span><span class="m">6</span>.72<span class="w"> </span>MiB
+<span class="linenos" data-linenos="10 "></span>sample_supplies<span class="w">       </span><span class="m">1</span>.05<span class="w"> </span>MiB
+<span class="linenos" data-linenos="11 "></span>sample_training<span class="w">      </span><span class="m">52</span>.50<span class="w"> </span>MiB
+<span class="linenos" data-linenos="12 "></span>sample_weatherdata<span class="w">    </span><span class="m">3</span>.32<span class="w"> </span>MiB
+<span class="linenos" data-linenos="13 "></span>admin<span class="w">                </span><span class="m">40</span>.00<span class="w"> </span>KiB
+<span class="linenos" data-linenos="14 "></span><span class="nb">local</span><span class="w">                </span><span class="m">40</span>.00<span class="w"> </span>KiB
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Uso externo</p>
-<p>Si no queremos tener que conectarnos al contenedor o vamos a trabajar con un servidor remoto, podemos instalar únicamente el <em>shell</em> desde <a href="https://www.mongodb.com/try/download/shell">https://www.mongodb.com/try/download/shell</a></p>
+<p>Si nos queremos conectar únicamente desde un terminal, podemos instalar únicamente el <em>shell</em> desde <a href="https://www.mongodb.com/try/download/shell">https://www.mongodb.com/try/download/shell</a></p>
 </div>
 <h3 id="hola-mongodb">Hola MongoDB<a class="headerlink" href="#hola-mongodb" title="Permanent link">&para;</a></h3>
 <p>Pues una vez que ya nos hemos conectado a <em>MongoDB</em> mediante <code>mongosh</code>, vamos a empezar a interactuar con los datos.</p>
 <p>En cualquier momento podemos cambiar la base de datos activa mediante <code>use nombreBaseDatos</code>. Si la base de datos no existiese, <em>MongoDB</em> creará dicha base de datos. Esto es una verdad a medias, ya que la base de datos realmente se crea al insertar datos dentro de alguna colección.</p>
-<p>Así pues, vamos a crear nuestra base de datos <code>iabd</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">use</span><span class="w"> </span><span class="nx">iabd</span>
+<p>Así pues, vamos a crear nuestra base de datos <code>s8a</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">use</span><span class="w"> </span><span class="nx">s8a</span>
 </code></pre></div>
-<p>Una vez creada, podemos crear nuestra primera colección, que llamaremos <code>people</code>, e insertaremos una persona con nuestros datos personales mediante el método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne/"><code>insertOne</code></a>, al que le pasamos un objeto JSON:</p>
+<p>Una vez creada, podemos crear nuestra primera colección, que llamaremos <code>personas</code>, e insertaremos una persona con nuestros datos personales mediante el método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne/"><code>insertOne</code></a>, al que le pasamos un objeto JSON:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">({</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="mf">47</span><span class="p">,</span><span class="w"> </span><span class="nx">profesion</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Profesor&quot;</span><span class="w"> </span><span class="p">})</span>
+</code></pre></div>
 <div class="admonition caution inline end">
 <p class="admonition-title">Tipos de datos</p>
 <p>Cuidado con los tipos, ya que no es lo mismo insertar un atributo con <code>edad:45</code> (se considera el campo como entero) que con <code>edad:"45"</code>, ya que considera el campo como texto.</p>
 </div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">({</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="mf">47</span><span class="p">,</span><span class="w"> </span><span class="nx">profesion</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Profesor&quot;</span><span class="w"> </span><span class="p">})</span>
-</code></pre></div>
 <p>Tras ejecutar el comando, veremos que nos devuelve un objeto JSON con su ACK y el identificador del documento insertado:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
-<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="err">ack</span><span class="kc">n</span><span class="err">owledged</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="err">i</span><span class="kc">nserte</span><span class="err">dId</span><span class="p">:</span><span class="w"> </span><span class="err">Objec</span><span class="kc">t</span><span class="err">Id(</span><span class="s2">&quot;6316fc938cc2bc168bfed066&quot;</span><span class="err">)</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">acknowledged</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">insertedId</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s1">&#39;67fa9f27d152b48c68424418&#39;</span><span class="p">)</span>
 <span class="linenos" data-linenos="4 "></span><span class="p">}</span>
 </code></pre></div>
-<p>Una vez insertada, sólo nos queda realizar una consulta para recuperar los datos y comprobar que todo funciona correctamente mediante el método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.findOne/"><code>findOne</code></a>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">findOne</span><span class="p">()</span>
+<p>Una vez insertado el documento, sólo nos queda realizar una consulta para recuperar los datos y comprobar que todo funciona correctamente mediante el método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.findOne/"><code>findOne</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">findOne</span><span class="p">()</span>
 </code></pre></div>
 <p>Lo que nos dará como resultado un objeto JSON que contiene un atributo <code>_id</code> con el mismo identificador mostrado anteriormente, además de los que le añadimos al insertar la persona:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
-<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;6316fc938cc2bc168bfed066&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Aitor Medrano&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="mf">47</span><span class="p">,</span>
-<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="nx">profesion</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Profesor&#39;</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s1">&#39;67fa9f27d152b48c68424418&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Aitor Medrano&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">  </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="mf">47</span><span class="p">,</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">  </span><span class="nx">profesion</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Profesor&#39;</span>
 <span class="linenos" data-linenos="6 "></span><span class="p">}</span>
 </code></pre></div>
 <p>Como podemos observar, todas las instrucciones van a seguir el patrón de <code>db.nombreColeccion.operacion()</code>.</p>
@@ -1370,26 +1337,29 @@
 </ul>
 <p>Este objeto lo crea el driver y no <em>MongoDB</em>, por lo cual no deberemos considerar que siguen un orden concreto, ya que clientes diferentes pueden tener <em>timestamps</em> desincronizados. Lo que sí que podemos obtener a partir del <code>ObjectId</code> es la fecha de creación del documento, mediante el método <code>getTimestamp()</code> del atributo <code>_id</code>.</p>
 <p>Obteniendo la fecha de creación de un documento</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span>&gt;<span class="w"> </span>db.people.findOne<span class="o">()</span>._id
-</span><span class="linenos" data-linenos="2 "></span>&lt;<span class="w"> </span>ObjectId<span class="o">(</span><span class="s2">&quot;6316fc938cc2bc168bfed066&quot;</span><span class="o">)</span>
-<span class="hll"><span class="linenos" data-linenos="3 "></span>&gt;<span class="w"> </span>db.people.findOne<span class="o">()</span>._id.getTimestamp<span class="o">()</span>
-</span><span class="linenos" data-linenos="4 "></span>&lt;<span class="w"> </span>ISODate<span class="o">(</span><span class="s2">&quot;2022-09-06T07:53:55.000Z&quot;</span><span class="o">)</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">findOne</span><span class="p">().</span><span class="nx">_id</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1">// ObjectId(&#39;67fa9f27d152b48c68424418&#39;)</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">findOne</span><span class="p">().</span><span class="nx">_id</span><span class="p">.</span><span class="nx">getTimestamp</span><span class="p">()</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="c1">// 2025-04-12T17:13:11.000Z</span>
 </code></pre></div>
 <p>Este identificador es global, único e inmutable. Esto es, no habrá dos repetidos y una vez un documento tiene un <code>_id</code>, éste no se puede modificar.</p>
 <p>Si en la definición del objeto a insertar no ponemos el atributo identificador, <em>MongoDB</em> creará uno de manera automática. Si lo ponemos nosotros de manera explícita, <em>MongoDB</em> no añadirá ningún <code>ObjectId</code>. Eso sí, debemos asegurarnos que sea único (podemos usar números, cadenas, etc…​).</p>
 <p>Por lo tanto, podemos asignar un identificador al insertar:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">insert</span><span class="p">({</span><span class="nx">_id</span><span class="o">:</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="mf">17</span><span class="w"> </span><span class="p">})</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="o">&lt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">acknowledged</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="nx">insertedIds</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">&#39;0&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">4</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">({</span><span class="nx">_id</span><span class="o">:</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="mf">17</span><span class="w"> </span><span class="p">})</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1">// { acknowledged: true, insertedIds: { &#39;0&#39;: 4 } }</span>
 </code></pre></div>
 <p>O también, si queremos podemos hacer que el <code>_id</code> de un documento sea un documento en sí, y no un entero, para ello, al insertarlo, podemos asignarle un objeto JSON al atributo identificador:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">({</span><span class="nx">_id</span><span class="o">:</span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="s1">&#39;Aitor&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">apellidos</span><span class="o">:</span><span class="s1">&#39;Medrano&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">twitter</span><span class="o">:</span><span class="s1">&#39;@aitormedrano&#39;</span><span class="p">},</span><span class="w"> </span><span class="nx">ciudad</span><span class="o">:</span><span class="s1">&#39;Elx&#39;</span><span class="p">})</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="o">&lt;</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nx">acknowledged</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="nx">insertedId</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Aitor&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">apellidos</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Medrano&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">twitter</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;@aitormedrano&#39;</span><span class="w"> </span><span class="p">}</span>
-<span class="linenos" data-linenos="5 "></span><span class="w">  </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">({</span><span class="nx">_id</span><span class="o">:</span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="s1">&#39;Aitor&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">apellidos</span><span class="o">:</span><span class="s1">&#39;Medrano&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">bsky</span><span class="o">:</span><span class="s1">&#39;@aitormedrano.bsky.social&#39;</span><span class="p">},</span><span class="w"> </span><span class="nx">ciudad</span><span class="o">:</span><span class="s1">&#39;Elx&#39;</span><span class="p">})</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1">// {</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">//     acknowledged: true,</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">//     insertedId: {</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">//       nombre: &#39;Aitor&#39;,</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">//       apellidos: &#39;Medrano&#39;,</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">//       bsky: &#39;@aitormedrano.bsky.social&#39;</span>
+<span class="linenos" data-linenos="8 "></span><span class="c1">//     }</span>
+<span class="linenos" data-linenos="9 "></span><span class="c1">// }</span>
 </code></pre></div>
 </div>
-<h3 id="trabajando-con-el-shell">Trabajando con el shell<a class="headerlink" href="#trabajando-con-el-shell" title="Permanent link">&para;</a></h3>
 <p>Antes de entrar en detalles en las instrucciones necesarias para realizar las operaciones CRUD, veamos algunos comandos que nos serán muy útiles al interactuar con el <em>shell</em>:</p>
 <table>
 <thead>

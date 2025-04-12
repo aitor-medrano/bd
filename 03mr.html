@@ -2107,6 +2107,10 @@ clave primaria de la tabla que relaciona.</p>
 <p>El primer fallo que encontramos es que el campo <code>CURSAR.nifEstudiante</code> contiene nulos. Aunque las claves ajenas permiten valores nulos, al tratarse también de una clave primaria, estaría incumpliendo la integridad de entidad.</p>
 <p>El segundo error es que el valor <code>66666666Z</code> referencia a un estudiante invalido, y este valor sí que viola la integridad referencial, ya que dicho valor no existe en <code>ESTUDIANTE.nif</code>.</p>
 <h2 id="notacion">Notación<a class="headerlink" href="#notacion" title="Permanent link">&para;</a></h2>
+<!--
+FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
+-->
+
 <p>Para representar una tabla en el modelo relación usaremos una notación textual que facilita su comprensión y posterior transformación al modelo físico. A esta representación se le conoce como <strong>esquema relacional</strong> (o esquema lógico/canónico).</p>
 <p>Pondremos el nombre de la tabla en mayúsculas, y a continuación, entre paréntesis, enumeraremos los campos mediante su nombre en minúsculas (y opcionalmente su dominio). Como convención, el primer atributo será aquel que hace la función de clave primaria, el cual además subrayaremos para facilitar la legibilidad, y a aquellos campos que sean claves ajenas les añadiremos un asterisco (<code>*</code>) para indicar su condición.</p>
 <p>Tras el listado de campos, enumeraremos las restricciones, con el siguiente orden:</p>
