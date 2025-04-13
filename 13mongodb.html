@@ -31,6 +31,12 @@
       
       
 
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6z"/></svg>');}</style>
+
 
     
     
@@ -807,21 +813,22 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Hola MongoDB">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#empleando-javascript" class="md-nav__link">
+  <a href="#objectid" class="md-nav__link">
     <span class="md-ellipsis">
-      Empleando JavaScript
+      ObjectId
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#importando-y-exportando" class="md-nav__link">
+  <a href="#crud" class="md-nav__link">
     <span class="md-ellipsis">
-      Importando y exportando
+      CRUD
     </span>
   </a>
   
@@ -831,15 +838,20 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#recuperando-datos" class="md-nav__link">
+  <a href="#consultas" class="md-nav__link">
     <span class="md-ellipsis">
-      Recuperando datos
+      Consultas
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Recuperando datos">
+    <nav class="md-nav" aria-label="Consultas">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1037,6 +1049,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#administracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Administración
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Administración">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#empleando-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Empleando JavaScript
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#importando-y-exportando" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importando y exportando
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
       Referencias
@@ -1129,14 +1174,14 @@
 <tr>
 <td style="text-align: center;">1</td>
 <td><a href="#mongodb">MongoDB</a></td>
-<td></td>
-<td></td>
+<td><a href="#AC1301">AC1301</a></td>
+<td><abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr></td>
 </tr>
 <tr>
 <td style="text-align: center;">2</td>
-<td>Consultas sencillas</td>
-<td></td>
-<td></td>
+<td><a href="#consultas">Consultas sencillas</a></td>
+<td><a href="#AC1302">AC1302</a></td>
+<td><abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr></td>
 </tr>
 <tr>
 <td style="text-align: center;">3</td>
@@ -1194,14 +1239,14 @@
     <figcaption>Logo de MongoDB</figcaption>
 </figure>
 
-<p><em>MongoDB</em> (<a href="http://www.mongodb.com">http://www.mongodb.com</a>) es una de las bases de datos NoSQL más conocidas. Sigue un modelo de datos documental, donde los documentos se basan en el formato JSON.</p>
+<p><a href="http://www.mongodb.com"><em>MongoDB</em></a> es una de las bases de datos NoSQL más conocidas y empleadas. Sigue un modelo de datos documental, donde los documentos se basan en el formato JSON.</p>
 <p><em>MongoDB</em> destaca porque:</p>
 <ul>
 <li>Soporta esquemas dinámicos: diferentes documentos de una misma colección pueden tener atributos diferentes.</li>
 <li>Aunque inicialmente tenía un soporte limitado de <em>joins</em>, desde la versión 5.2 se pueden realizar incluso entre colecciones particionadas.</li>
 <li>Soporte de transacciones sólo a nivel de aplicación. Lo que en un SGBD relacional puede suponer múltiples operaciones, con <em>MongoDB</em> se puede hacer en una sola operación al insertar/actualizar todo un documento de una sola vez, pero si queremos crear una transacción entre dos documentos, la gestión la debe realizar el driver.</li>
 </ul>
-<div class="admonition tip inline end">
+<div class="admonition info">
 <p class="admonition-title">huMONGOus</p>
 <p>Como curiosidad, su nombre viene de la palabra inglesa <em>humongous</em>, que significa gigantesco/enorme.</p>
 </div>
@@ -1210,7 +1255,7 @@
 <li><em>MongoDB</em> tienen el mismo concepto de <strong>base de datos</strong> que un SGBD relacional. Dentro de una instancia de <em>MongoDB</em> podemos tener 0 o más bases de datos, actuando cada una como un contenedor de alto nivel.</li>
 <li>Una base de datos tendrá 0 o más colecciones. Una <strong>colección</strong> es muy similar a lo que entendemos como tabla dentro de una base de datos relacional. <em>MongoDB</em> ofrece diferentes tipos de colecciones, desde las normales cuyo tamaño crece conforme lo hace el número de documentos, como las colecciones <em>capped</em>, las cuales tienen un tamaño predefinido y que pueden contener una cierta cantidad de información que se sustituirá por nueva cuando se llene.</li>
 <li>Las colecciones contienen 0 o más <strong>documentos</strong>, por lo que es similar a una fila o registro de un tabla relacional.</li>
-<li>Cada documento contiene 0 o más atributos, compuestos de <strong>parejas clave/valor</strong>. Cada uno de estos documentos no sigue ningún esquema, por lo que dos documentos de una misma colección pueden contener todos los atributos diferentes entre sí.</li>
+<li>Cada documento contiene 0 o más atributos, compuestos de <strong>parejas clave/valor</strong>. Cada uno de estos documentos no sigue ningún esquema, por lo que dos documentos de una misma colección pueden contener todos los atributos diferentes entre sí. Todo documento contiene un campo <code>_id</code> que hace la función de atributo identificador del documento.</li>
 </ul>
 <figure style="align: center;">
     <img src="images/13mongodbitems.png" alt="Elementos de MongoDB" width="400px">
@@ -1226,10 +1271,11 @@
     <figcaption>Especificación BSON</figcaption>
 </figure>
 
-<p>BSON representa un superset de JSON ya que:</p>
+<p>BSON representa un <em>superset</em> de JSON ya que:</p>
 <ul>
 <li>Permite almacenar datos en binario</li>
 <li>Incluye un conjunto de tipos de datos no incluidos en JSON, como pueden ser <code>ObjectId</code>, <code>Date</code> o <code>BinData</code>.</li>
+<li>Diseñado para ser más eficiente en espacio y realizar más búsquedas de forma más eficiente.</li>
 </ul>
 <p>Podemos consultar todos los tipos que soporta un objeto BSON en <a href="http://docs.mongodb.org/manual/reference/bson-types/">http://docs.mongodb.org/manual/reference/bson-types/</a></p>
 <p>Un ejemplo de un objeto BSON podría ser:</p>
@@ -1241,7 +1287,7 @@
 <span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="err">casado</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="err">hijos</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="err">co</span><span class="kc">nta</span><span class="err">c</span><span class="kc">t</span><span class="err">o</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="kc">t</span><span class="err">wi</span><span class="kc">tter</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@aitormedrano&quot;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="err">bsky</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@aitormedrano.bsky.social&quot;</span><span class="p">,</span>
 <span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="err">email</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a.medrano@edu.gva.es&quot;</span>
 <span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="p">},</span>
 <span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="kc">fe</span><span class="err">chaCreacio</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="kc">ne</span><span class="err">w</span><span class="w"> </span><span class="err">Times</span><span class="kc">ta</span><span class="err">mp()</span>
@@ -1327,8 +1373,7 @@
 <span class="linenos" data-linenos="6 "></span><span class="p">}</span>
 </code></pre></div>
 <p>Como podemos observar, todas las instrucciones van a seguir el patrón de <code>db.nombreColeccion.operacion()</code>.</p>
-<div class="admonition info">
-<p class="admonition-title">ObjectId</p>
+<h4 id="objectid">ObjectId<a class="headerlink" href="#objectid" title="Permanent link">&para;</a></h4>
 <p>En <em>MongoDB</em>, el atributo <code>_id</code> es único dentro de la colección, y hace la función de clave primaria. Se le asocia un <a href="https://www.mongodb.com/docs/manual/reference/method/ObjectId/"><code>ObjectId</code></a>, el cual es un tipo BSON de 12 bytes que se crea mediante:</p>
 <ul>
 <li>el <em>timestamp</em> actual (4 bytes)</li>
@@ -1359,7 +1404,7 @@
 <span class="linenos" data-linenos="8 "></span><span class="c1">//     }</span>
 <span class="linenos" data-linenos="9 "></span><span class="c1">// }</span>
 </code></pre></div>
-</div>
+<h4 id="crud">CRUD<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h4>
 <p>Antes de entrar en detalles en las instrucciones necesarias para realizar las operaciones CRUD, veamos algunos comandos que nos serán muy útiles al interactuar con el <em>shell</em>:</p>
 <table>
 <thead>
@@ -1395,73 +1440,88 @@
 </tr>
 </tbody>
 </table>
+<p>Y las operaciones básicas para realizar un CRUD, siguiendo la sintaxis <code>db.nombreColeccion.operacion()</code>, son:</p>
+<ul>
+<li><a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne/"><code>insertOne</code></a>: permite insertar un documento</li>
+<li><a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.find/"><code>find</code></a> y <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.findOne/"><code>findOne</code></a>: recupera los documentos (o el primero) de una colección</li>
+<li><a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.countDocuments/"><code>countDocuments</code></a>: obtiene la cantidad de documentos de una colección</li>
+</ul>
 <p>En el resto de la sesión vamos a hacer un uso intenso del <em>shell</em> de <em>MongoDB</em>. Por ejemplo, si nos basamos en el objeto definido en el apartado de BSON, podemos ejecutar las siguientes instrucciones:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">(</span><span class="nx">yo</span><span class="p">)</span><span class="w">  </span><span class="c1">// (1)</span>
-</span><span class="linenos" data-linenos=" 2 "></span><span class="o">&lt;</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nx">acknowledged</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="nx">insertedId</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;631704a042aae0893122f2d6&quot;</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="p">}</span>
-<span class="hll"><span class="linenos" data-linenos=" 6 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">find</span><span class="p">()</span><span class="w">  </span><span class="c1">// (2)</span>
-</span><span class="linenos" data-linenos=" 7 "></span><span class="o">&lt;</span><span class="w"> </span><span class="p">[</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="p">{</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">      </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;6316fc938cc2bc168bfed066&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Aitor Medrano&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="mf">45</span><span class="p">,</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="nx">profesion</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Profesor&#39;</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="p">},</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="p">{</span>
-<span class="linenos" data-linenos="15 "></span><span class="w">      </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;631704a042aae0893122f2d6&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos="16 "></span><span class="w">      </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Aitor&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="nx">apellidos</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Medrano&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="18 "></span><span class="w">      </span><span class="nx">fnac</span><span class="o">:</span><span class="w"> </span><span class="nx">ISODate</span><span class="p">(</span><span class="s2">&quot;1977-10-03T00:00:00.000Z&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos="19 "></span><span class="w">      </span><span class="nx">hobbies</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s1">&#39;programación&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;videojuegos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;baloncesto&#39;</span><span class="w"> </span><span class="p">],</span>
-<span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="nx">casado</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="linenos" data-linenos="21 "></span><span class="w">      </span><span class="nx">hijos</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
-<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="nx">contacto</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">twitter</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;@aitormedrano&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a.medrano@edu.gva.es&#39;</span><span class="w"> </span><span class="p">},</span>
-<span class="linenos" data-linenos="23 "></span><span class="w">      </span><span class="nx">fechaCreacion</span><span class="o">:</span><span class="w"> </span><span class="nx">Timestamp</span><span class="p">({</span><span class="w"> </span><span class="nx">t</span><span class="o">:</span><span class="w"> </span><span class="mf">1662452896</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">})</span>
-<span class="linenos" data-linenos="24 "></span><span class="w">    </span><span class="p">}</span>
-<span class="linenos" data-linenos="25 "></span><span class="w">  </span><span class="p">]</span>
-<span class="hll"><span class="linenos" data-linenos="26 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">yo</span><span class="p">.</span><span class="nx">profesion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Profesor&quot;</span>
-</span><span class="linenos" data-linenos="27 "></span><span class="o">&lt;</span><span class="w"> </span><span class="nx">Profesor</span>
-<span class="hll"><span class="linenos" data-linenos="28 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">(</span><span class="nx">yo</span><span class="p">)</span>
-</span><span class="linenos" data-linenos="29 "></span><span class="o">&lt;</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="nx">acknowledged</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="linenos" data-linenos="31 "></span><span class="w">    </span><span class="nx">insertedId</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;6317056d42aae0893122f2d7&quot;</span><span class="p">)</span>
-<span class="linenos" data-linenos="32 "></span><span class="w">  </span><span class="p">}</span>
-<span class="linenos" data-linenos="33 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">find</span><span class="p">()</span><span class="w">  </span><span class="c1">// (3)</span>
-<span class="linenos" data-linenos="34 "></span><span class="o">&lt;</span><span class="w"> </span><span class="p">[</span>
-<span class="linenos" data-linenos="35 "></span><span class="w">    </span><span class="p">{</span>
-<span class="linenos" data-linenos="36 "></span><span class="w">      </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;6316fc938cc2bc168bfed066&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos="37 "></span><span class="w">      </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Aitor Medrano&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="38 "></span><span class="w">      </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="mf">45</span><span class="p">,</span>
-<span class="linenos" data-linenos="39 "></span><span class="w">      </span><span class="nx">profesion</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Profesor&#39;</span>
-<span class="linenos" data-linenos="40 "></span><span class="w">    </span><span class="p">},</span>
-<span class="linenos" data-linenos="41 "></span><span class="w">    </span><span class="p">{</span>
-<span class="linenos" data-linenos="42 "></span><span class="w">      </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;631704a042aae0893122f2d6&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos="43 "></span><span class="w">      </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Aitor&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="44 "></span><span class="w">      </span><span class="nx">apellidos</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Medrano&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="45 "></span><span class="w">      </span><span class="nx">fnac</span><span class="o">:</span><span class="w"> </span><span class="nx">ISODate</span><span class="p">(</span><span class="s2">&quot;1977-10-03T00:00:00.000Z&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos="46 "></span><span class="w">      </span><span class="nx">hobbies</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s1">&#39;programación&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;videojuegos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;baloncesto&#39;</span><span class="w"> </span><span class="p">],</span>
-<span class="linenos" data-linenos="47 "></span><span class="w">      </span><span class="nx">casado</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="linenos" data-linenos="48 "></span><span class="w">      </span><span class="nx">hijos</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
-<span class="linenos" data-linenos="49 "></span><span class="w">      </span><span class="nx">contacto</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">twitter</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;@aitormedrano&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a.medrano@edu.gva.es&#39;</span><span class="w"> </span><span class="p">},</span>
-<span class="linenos" data-linenos="50 "></span><span class="w">      </span><span class="nx">fechaCreacion</span><span class="o">:</span><span class="w"> </span><span class="nx">Timestamp</span><span class="p">({</span><span class="w"> </span><span class="nx">t</span><span class="o">:</span><span class="w"> </span><span class="mf">1662452896</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">})</span>
-<span class="linenos" data-linenos="51 "></span><span class="w">    </span><span class="p">},</span>
-<span class="linenos" data-linenos="52 "></span><span class="w">    </span><span class="p">{</span>
-<span class="linenos" data-linenos="53 "></span><span class="w">      </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;6317056d42aae0893122f2d7&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos="54 "></span><span class="w">      </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Aitor&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="55 "></span><span class="w">      </span><span class="nx">apellidos</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Medrano&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="56 "></span><span class="w">      </span><span class="nx">fnac</span><span class="o">:</span><span class="w"> </span><span class="nx">ISODate</span><span class="p">(</span><span class="s2">&quot;1977-10-03T00:00:00.000Z&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos="57 "></span><span class="w">      </span><span class="nx">hobbies</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s1">&#39;programación&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;videojuegos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;baloncesto&#39;</span><span class="w"> </span><span class="p">],</span>
-<span class="linenos" data-linenos="58 "></span><span class="w">      </span><span class="nx">casado</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="linenos" data-linenos="59 "></span><span class="w">      </span><span class="nx">hijos</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
-<span class="hll"><span class="linenos" data-linenos="60 "></span><span class="w">      </span><span class="nx">contacto</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">twitter</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;@aitormedrano&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a.medrano@edu.gva.es&#39;</span><span class="w"> </span><span class="p">},</span>
-</span><span class="linenos" data-linenos="61 "></span><span class="w">      </span><span class="nx">fechaCreacion</span><span class="o">:</span><span class="w"> </span><span class="nx">Timestamp</span><span class="p">({</span><span class="w"> </span><span class="nx">t</span><span class="o">:</span><span class="w"> </span><span class="mf">1662453101</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">}),</span>
-<span class="linenos" data-linenos="62 "></span><span class="w">      </span><span class="nx">profesion</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Profesor&#39;</span>
-<span class="linenos" data-linenos="63 "></span><span class="w">    </span><span class="p">}</span>
-<span class="linenos" data-linenos="64 "></span><span class="w">  </span><span class="p">]</span>
-<span class="linenos" data-linenos="65 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">countDocuments</span><span class="p">()</span><span class="w">    </span><span class="c1">// (4)</span>
-<span class="linenos" data-linenos="66 "></span><span class="o">&lt;</span><span class="w"> </span><span class="mf">3</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">(</span><span class="nx">yo</span><span class="p">)</span><span class="w">  </span><span class="c1">// (1)!</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="c1">// {</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">//   acknowledged: true,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">//   insertedId: ObjectId(&#39;67fbe737b496860bf5c3679e&#39;)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">// }</span>
+<span class="hll"><span class="linenos" data-linenos=" 6 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">find</span><span class="p">()</span><span class="w">  </span><span class="c1">// (2)!</span>
+</span><span class="linenos" data-linenos=" 7 "></span><span class="c1">// [</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">//   {</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">//     _id: ObjectId(&#39;67fa9f27d152b48c68424418&#39;),</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">//     nombre: &#39;Aitor Medrano&#39;,</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">//     edad: 47,</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">//     profesion: &#39;Profesor&#39;</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">//   }</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">//   {</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">//     _id: ObjectId(&#39;67fbe737b496860bf5c3679e&#39;),</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">//     nombre: &#39;Aitor&#39;,</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">//     apellidos: &#39;Medrano&#39;,</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">//     fnac: 1977-10-02T23:00:00.000Z,</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">//     hobbies: [ &#39;programación&#39;, &#39;videojuegos&#39;, &#39;baloncesto&#39; ],</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">//     casado: true,</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">//     hijos: 2,</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">//     contacto: {</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">//       bsky: &quot;@aitormedrano.bsky.social&quot;,</span>
+<span class="linenos" data-linenos="24 "></span><span class="c1">//       email: &#39;a.medrano@edu.gva.es&#39;</span>
+<span class="linenos" data-linenos="25 "></span><span class="c1">//     },</span>
+<span class="linenos" data-linenos="26 "></span><span class="c1">//     fechaCreacion: Timestamp({ t: 1744561974, i: 5 })</span>
+<span class="linenos" data-linenos="27 "></span><span class="c1">//   }</span>
+<span class="linenos" data-linenos="28 "></span><span class="c1">// ]</span>
+<span class="linenos" data-linenos="29 "></span><span class="nx">yo</span><span class="p">.</span><span class="nx">profesion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Profesor&quot;</span>
+<span class="linenos" data-linenos="30 "></span><span class="c1">// Profesor</span>
+<span class="hll"><span class="linenos" data-linenos="31 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">(</span><span class="nx">yo</span><span class="p">)</span>
+</span><span class="linenos" data-linenos="32 "></span><span class="c1">// {</span>
+<span class="linenos" data-linenos="33 "></span><span class="c1">//   acknowledged: true,</span>
+<span class="linenos" data-linenos="34 "></span><span class="c1">//   insertedId: ObjectId(&#39;67fbe851b496860bf5c3679f&#39;)</span>
+<span class="linenos" data-linenos="35 "></span><span class="c1">// }</span>
+<span class="hll"><span class="linenos" data-linenos="36 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">find</span><span class="p">()</span><span class="w">  </span><span class="c1">// (3)!</span>
+</span><span class="linenos" data-linenos="37 "></span><span class="c1">// [</span>
+<span class="linenos" data-linenos="38 "></span><span class="c1">//   {</span>
+<span class="linenos" data-linenos="39 "></span><span class="c1">//     _id: ObjectId(&#39;67fa9f27d152b48c68424418&#39;),</span>
+<span class="linenos" data-linenos="40 "></span><span class="c1">//     nombre: &#39;Aitor Medrano&#39;,</span>
+<span class="linenos" data-linenos="41 "></span><span class="c1">//     edad: 47,</span>
+<span class="linenos" data-linenos="42 "></span><span class="c1">//     profesion: &#39;Profesor&#39;</span>
+<span class="linenos" data-linenos="43 "></span><span class="c1">//   }</span>
+<span class="linenos" data-linenos="44 "></span><span class="c1">//   {</span>
+<span class="linenos" data-linenos="45 "></span><span class="c1">//     _id: ObjectId(&#39;67fbe737b496860bf5c3679e&#39;),</span>
+<span class="linenos" data-linenos="46 "></span><span class="c1">//     nombre: &#39;Aitor&#39;,</span>
+<span class="linenos" data-linenos="47 "></span><span class="c1">//     apellidos: &#39;Medrano&#39;,</span>
+<span class="linenos" data-linenos="48 "></span><span class="c1">//     fnac: 1977-10-02T23:00:00.000Z,</span>
+<span class="linenos" data-linenos="49 "></span><span class="c1">//     hobbies: [ &#39;programación&#39;, &#39;videojuegos&#39;, &#39;baloncesto&#39; ],</span>
+<span class="linenos" data-linenos="50 "></span><span class="c1">//     casado: true,</span>
+<span class="linenos" data-linenos="51 "></span><span class="c1">//     hijos: 2,</span>
+<span class="linenos" data-linenos="52 "></span><span class="c1">//     contacto: {</span>
+<span class="linenos" data-linenos="53 "></span><span class="c1">//       bsky: &quot;@aitormedrano.bsky.social&quot;,</span>
+<span class="linenos" data-linenos="54 "></span><span class="c1">//       email: &#39;a.medrano@edu.gva.es&#39;</span>
+<span class="linenos" data-linenos="55 "></span><span class="c1">//     },</span>
+<span class="linenos" data-linenos="56 "></span><span class="c1">//     fechaCreacion: Timestamp({ t: 1744561974, i: 5 })</span>
+<span class="linenos" data-linenos="57 "></span><span class="c1">//   }</span>
+<span class="linenos" data-linenos="58 "></span><span class="c1">//   {</span>
+<span class="linenos" data-linenos="59 "></span><span class="c1">//     _id: ObjectId(&#39;67fbe851b496860bf5c3679f&#39;),</span>
+<span class="linenos" data-linenos="60 "></span><span class="c1">//     nombre: &#39;Aitor&#39;,</span>
+<span class="linenos" data-linenos="61 "></span><span class="c1">//     apellidos: &#39;Medrano&#39;,</span>
+<span class="linenos" data-linenos="62 "></span><span class="c1">//     fnac: 1977-10-02T23:00:00.000Z,</span>
+<span class="linenos" data-linenos="63 "></span><span class="c1">//     hobbies: [ &#39;programación&#39;, &#39;videojuegos&#39;, &#39;baloncesto&#39; ],</span>
+<span class="linenos" data-linenos="64 "></span><span class="c1">//     casado: true,</span>
+<span class="linenos" data-linenos="65 "></span><span class="c1">//     hijos: 2,</span>
+<span class="linenos" data-linenos="66 "></span><span class="c1">//     contacto: {</span>
+<span class="linenos" data-linenos="67 "></span><span class="c1">//       bsky: &quot;&#39;@aitormedrano.bsky.social&quot;,</span>
+<span class="linenos" data-linenos="68 "></span><span class="c1">//       email: &#39;a.medrano@edu.gva.es&#39;</span>
+<span class="linenos" data-linenos="69 "></span><span class="c1">//     },</span>
+<span class="linenos" data-linenos="70 "></span><span class="c1">//     fechaCreacion: Timestamp({ t: 1744562256, i: 4 }),</span>
+<span class="linenos" data-linenos="71 "></span><span class="c1">//     profesion: &#39;Profesor&#39;</span>
+<span class="linenos" data-linenos="72 "></span><span class="c1">//   }</span>
+<span class="linenos" data-linenos="73 "></span><span class="c1">// ]</span>
+<span class="hll"><span class="linenos" data-linenos="74 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">countDocuments</span><span class="p">()</span><span class="w">    </span><span class="c1">// (4)!</span>
+</span><span class="linenos" data-linenos="75 "></span><span class="c1">// 3</span>
 </code></pre></div>
 <ol>
 <li>Si queremos insertar un documento en una colección, hemos de utilizar el método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne/"><code>insertOne</code></a> pasándole como parámetro el documento que queremos insertar, ya sea a partir de una variable o el propio documento en sí.</li>
@@ -1470,102 +1530,32 @@
 <li>Obtenemos la cantidad de documentos de la colección mediante <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.countDocuments/"><code>countDocuments</code></a>.</li>
 </ol>
 <p>Con este ejemplo, hemos podido observar cómo los documentos de una misma colección no tienen por qué tener el mismo esquema, ni hemos necesitado definirlo explícitamente antes de insertar datos. Así pues, el esquema se irá generando y actualizando conforme se inserten documentos. Más adelante veremos que podemos definir un esquema para validar que los datos que insertamos cumplan restricciones de tipos de datos o elementos que obligatoriamente deben estar rellenados.</p>
-<h3 id="empleando-javascript">Empleando JavaScript<a class="headerlink" href="#empleando-javascript" title="Permanent link">&para;</a></h3>
-<p>Ya hemos comentado que el <em>shell</em> utiliza <em>JavaScript</em> como lenguaje de interacción, por lo que podemos almacenar los comandos en un script externo y ejecutarlo mediante <a href="https://www.mongodb.com/docs/mongodb-shell/reference/methods/#std-label-mongosh-native-method-load"><code>load()</code></a>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">load</span><span class="p">(</span><span class="s2">&quot;scripts/misDatos.js&quot;</span><span class="p">);</span>
-<span class="linenos" data-linenos="2 "></span><span class="nx">load</span><span class="p">(</span><span class="s2">&quot;/data/db/scripts/misDatos.js&quot;</span><span class="p">);</span>
-</code></pre></div>
-<div class="admonition tip inline end">
-<p class="admonition-title">MongoDB Compass</p>
-<p>Si utilizamos <em>mongosh</em> desde <em>MongoDB Compass</em>, no podemos hacer uso del comando <code>load</code>.<br />
-Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, sabiendo que para añadir un salto de línea emplearemos <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-enter">Enter</kbd></span>.</p>
-</div>
-<p>Si hacemos una referencia relativa, lo hace respecto a la ruta desde la cual se ejecuta el <em>shell</em> <code>mongosh</code>.</p>
-<p>Otra manera de lanzar un <em>script</em> es hacerlo desde la línea de comandos, pasándole como segundo parámetro el script a ejecutar:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongosh<span class="w"> </span>iabd<span class="w"> </span>misDatos.js
-</code></pre></div>
-<p>Si el código a ejecutar no necesita almacenarse en un script externo, el propio <em>shell</em> permite introducir instrucciones en varias líneas:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="o">&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="mf">10</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="nx">db</span><span class="p">.</span><span class="nx">espias</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">({</span><span class="s2">&quot;nombre&quot;</span><span class="o">:</span><span class="s2">&quot;James Bond &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;agente&quot;</span><span class="o">:</span><span class="s2">&quot;00&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">});</span>
-</span><span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="p">}</span>
-</span><span class="linenos" data-linenos=" 4 "></span><span class="o">&lt;</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nx">acknowledged</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nx">insertedId</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;63171d2142aae0893122f2e1&quot;</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="p">}</span>
-<span class="hll"><span class="linenos" data-linenos=" 8 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">espias</span><span class="p">.</span><span class="nx">find</span><span class="p">()</span>
-</span><span class="linenos" data-linenos=" 9 "></span><span class="o">&lt;</span><span class="w"> </span><span class="p">[</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="p">{</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;63171d2142aae0893122f2d8&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;James Bond 0&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">      </span><span class="nx">agente</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;000&#39;</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="p">},</span>
-<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="p">{</span>
-<span class="linenos" data-linenos="16 "></span><span class="w">      </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;63171d2142aae0893122f2d9&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;James Bond 1&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="18 "></span><span class="w">      </span><span class="nx">agente</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;001&#39;</span>
-<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="p">},</span>
-<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="p">...</span>
-<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="p">{</span>
-<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;63171d2142aae0893122f2e1&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos="23 "></span><span class="w">      </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;James Bond 9&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="24 "></span><span class="w">      </span><span class="nx">agente</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;009&#39;</span>
-<span class="linenos" data-linenos="25 "></span><span class="w">    </span><span class="p">}</span>
-<span class="linenos" data-linenos="26 "></span><span class="w">  </span><span class="p">]</span>
-</code></pre></div>
-<h3 id="importando-y-exportando">Importando y exportando<a class="headerlink" href="#importando-y-exportando" title="Permanent link">&para;</a></h3>
-<p>Además del propio servidor de <em>MongoDB</em> y el cliente para conectarse a él, <em>MongoDB</em> ofrece un conjunto de <a href="https://www.mongodb.com/docs/database-tools">herramientas</a> para interactuar con las bases de datos, permitiendo crear y restaurar copias de seguridad.</p>
-<p>Si estamos interesados en introducir o exportar una colección de datos mediante JSON, podemos emplear los comandos <a href="https://www.mongodb.com/docs/database-tools/mongoimport/"><code>mongoimport</code></a> y <a href="https://www.mongodb.com/docs/database-tools/mongoexport/"><code>mongoexport</code></a>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongoimport<span class="w"> </span>-d<span class="w"> </span>nombreBaseDatos<span class="w"> </span>-c<span class="w"> </span>coleccion<span class="w"> </span>--file<span class="w"> </span>nombreFichero.json
-<span class="linenos" data-linenos="2 "></span>mongoexport<span class="w"> </span>-d<span class="w"> </span>nombreBaseDatos<span class="w"> </span>-c<span class="w"> </span>coleccion<span class="w"> </span>nombreFichero.json
-</code></pre></div>
-<p>Estas herramientas interactúan con datos JSON y no sobre toda la base de datos.</p>
-<p>Un caso particular y muy común es importar datos que se encuentran en formato CSV/TSV. Para ello, emplearemos el parámetro <code>--type csv</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongoimport<span class="w"> </span>--type<span class="w"> </span>tsv<span class="w"> </span>-d<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-c<span class="w"> </span>poblacion<span class="w"> </span>--headerline<span class="w"> </span>--drop<span class="w"> </span>poblacionEspanya2013.tsv
-</code></pre></div>
-<p>En vez de realizar un <em>export</em>, es más conveniente realizar un <em>backup</em> en binario mediante <a href="https://www.mongodb.com/docs/database-tools/mongodump/"><code>mongodump</code></a>, el cual genera ficheros BSON. Estos archivos posteriormente se restauran mediante <a href="https://www.mongodb.com/docs/database-tools/mongorestore/"><code>mongorestore</code></a>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongodump<span class="w"> </span>-d<span class="w"> </span>nombreBaseDatos<span class="w"> </span>nombreFichero.bson
-<span class="linenos" data-linenos="2 "></span>mongorestore<span class="w"> </span>-d<span class="w"> </span>nombreBaseDatos<span class="w"> </span>nombreFichero.bson
-</code></pre></div>
-<div class="admonition question">
-<p class="admonition-title">Autoevaluación</p>
-<p>Intenta exportar los datos de la base de datos <code>sample_training</code> desde <em>MongoAtlas</em>. Verás que ha creado una carpeta que contiene dos archivos ¿Cuáles son? ¿Qué contiene cada uno de ellos y cuál es su formato?</p>
-</div>
-<p>Si necesitamos transformar un fichero BSON a JSON (de binario a texto), tenemos el comando <a href="https://www.mongodb.com/docs/database-tools/bsondump"><code>bsondump</code></a>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>bsondump<span class="w"> </span>file.bson<span class="w"> </span>&gt;<span class="w"> </span>file.json
-</code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Más información sobre copias de seguridad en <a href="https://www.mongodb.com/docs/manual/core/backups/">https://www.mongodb.com/docs/manual/core/backups/</a>.</p>
-</div>
-<p>Para poder trabajar con <em>MongoDB</em> desde cualquier aplicación necesitamos un driver. <em>MongoDB</em> ofrece <a href="https://www.mongodb.com/docs/drivers/">drivers</a> oficiales para casi todos los lenguajes de programación actuales. En una <a href="pymongo.md">sesión posterior</a> trabajaremos con <a href="https://pymongo.readthedocs.io/en/stable/">PyMongo</a>.</p>
-<div class="admonition tip">
-<p class="admonition-title">Monitorización</p>
-<p>Tanto <a href="https://www.mongodb.com/docs/database-tools/mongostat/"><code>mongostat</code></a> como <a href="https://www.mongodb.com/docs/database-tools/mongotop/"><code>mongotop</code></a> permiten visualizar el estado del servidor <em>MongoDB</em>, así como algunas estadísticas sobre su rendimiento. Si trabajamos con <em>MongoAtlas</em> estas herramientas están integradas en las diferentes herramientas de monitorización de la plataforma.</p>
-</div>
-<h2 id="recuperando-datos">Recuperando datos<a class="headerlink" href="#recuperando-datos" title="Permanent link">&para;</a></h2>
+<h2 id="consultas">Consultas<a class="headerlink" href="#consultas" title="Permanent link">&para;</a></h2>
 <p>Para recuperar los datos de una colección o un documento en concreto usaremos el método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.find/"><code>find()</code></a>:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">find</span><span class="p">()</span>
-</span><span class="linenos" data-linenos=" 2 "></span><span class="o">&lt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;6316fc1597eb703de2add36e&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Aitor&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="mf">45</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nx">profesion</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Profesor&#39;</span><span class="w"> </span><span class="p">}</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;6317048697eb703de2add36f&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Aitor&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nx">apellidos</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Medrano&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="nx">fnac</span><span class="o">:</span><span class="w"> </span><span class="mf">1977</span><span class="o">-</span><span class="mf">10</span><span class="o">-</span><span class="mo">02</span><span class="nx">T23</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mo">00</span><span class="mf">.000</span><span class="nx">Z</span><span class="p">,</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="nx">hobbies</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s1">&#39;programación&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;videojuegos&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;baloncesto&#39;</span><span class="w"> </span><span class="p">],</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="nx">casado</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="nx">hijos</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="nx">contacto</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">twitter</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;@aitormedrano&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;a.medrano@edu.gva.es&#39;</span><span class="w"> </span><span class="p">},</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="nx">fechaCreacion</span><span class="o">:</span><span class="w"> </span><span class="nx">Timestamp</span><span class="p">({</span><span class="w"> </span><span class="nx">t</span><span class="o">:</span><span class="w"> </span><span class="mf">1662452870</span><span class="p">,</span><span class="w"> </span><span class="nx">i</span><span class="o">:</span><span class="w"> </span><span class="mf">3</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="nx">use</span><span class="w"> </span><span class="nx">sample_training</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">zips</span><span class="p">.</span><span class="nx">find</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">// {</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">//   _id: ObjectId(&#39;5c8eccc1caa187d17ca6ed40&#39;),</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">//   city: &#39;MORRIS&#39;,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">//   zip: &#39;35116&#39;,</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">//   loc: { y: 33.739172, x: 86.772551 },</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">//   pop: 3622,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">//   state: &#39;AL&#39;</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">// }</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">// ...</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">// Type &quot;it&quot; for more</span>
 </code></pre></div>
 <p>El método <code>find()</code> sobre una colección devuelve un cursor a los datos obtenidos, el cual se queda abierto con el servidor y que se cierra automáticamente a los 30 minutos de inactividad o al finalizar su recorrido. Si hay muchos resultados, la consola nos mostrará un subconjunto de los datos (20). Si queremos seguir obteniendo resultados, solo tenemos que introducir <code>it</code>, para que continúe iterando el cursor.</p>
 <p>En cambio, si sólo queremos recuperar un documento hemos de utilizar <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.findOne/"><code>findOne()</code></a>:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="err">&gt;</span><span class="w"> </span><span class="err">db.people.</span><span class="kc">f</span><span class="err">i</span><span class="kc">n</span><span class="err">dO</span><span class="kc">ne</span><span class="err">()</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="err">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">_id</span><span class="p">:</span><span class="w"> </span><span class="err">Objec</span><span class="kc">t</span><span class="err">Id(</span><span class="s2">&quot;6316fc1597eb703de2add36e&quot;</span><span class="err">)</span><span class="p">,</span>
-<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="kc">n</span><span class="err">ombre</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;Ai</span><span class="kc">t</span><span class="err">or&#39;</span><span class="p">,</span>
-<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="err">edad</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span>
-<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="err">pro</span><span class="kc">fes</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;Pro</span><span class="kc">fes</span><span class="err">or&#39;</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">zips</span><span class="p">.</span><span class="nx">findOne</span><span class="p">()</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1">// {</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">//   _id: ObjectId(&#39;5c8eccc1caa187d17ca6ed40&#39;),</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">//   city: &#39;MORRIS&#39;,</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">//   zip: &#39;35116&#39;,</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">//   loc: { y: 33.739172, x: 86.772551 },</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">//   pop: 3622,</span>
+<span class="linenos" data-linenos="8 "></span><span class="c1">//   state: &#39;AL&#39;</span>
+<span class="linenos" data-linenos="9 "></span><span class="c1">// }</span>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Preparando los ejemplos</p>
@@ -1688,7 +1678,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <p>Las comparaciones de cadenas se realizan siguiendo el orden UTF8, similar a ASCII, con lo cual no es lo mismo buscar un rango entre mayúsculas que minúsculas.</p>
 </div>
 <p>Con cierto parecido a la condición de valor no nulo de las BBDD relacionales y teniendo en cuenta que la libertad de esquema puede provocar que un documento tenga unos campos determinados y otro no lo tenga, podemos utilizar el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/query/exists/"><code>$exists</code></a> si queremos averiguar si un campo existe (y por tanto tiene algún valor).</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="s2">&quot;edad&quot;</span><span class="o">:</span><span class="p">{</span><span class="nx">$exists</span><span class="o">:</span><span class="kc">true</span><span class="p">}})</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="s2">&quot;edad&quot;</span><span class="o">:</span><span class="p">{</span><span class="nx">$exists</span><span class="o">:</span><span class="kc">true</span><span class="p">}})</span>
 </code></pre></div>
 <div class="admonition danger">
 <p class="admonition-title">Polimorfismo</p>
@@ -1696,7 +1686,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </div>
 <p>Pese a que ciertos operadores contengan su correspondiente operador negado, <em>MongoDB</em> ofrece el operador <code>$not</code>. Éste puede utilizarse conjuntamente con otros operadores para negar el resultado de los documentos obtenidos.</p>
 <p>Por ejemplo, si queremos obtener todas las personas cuya edad no sea múltiplo de 5, podríamos hacerlo así:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">edad</span><span class="o">:</span><span class="p">{</span><span class="nx">$not</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$mod</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">5</span><span class="p">,</span><span class="mf">0</span><span class="p">]}}})</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">edad</span><span class="o">:</span><span class="p">{</span><span class="nx">$not</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$mod</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">5</span><span class="p">,</span><span class="mf">0</span><span class="p">]}}})</span>
 </code></pre></div>
 <h4 id="expresiones-regulares">Expresiones regulares<a class="headerlink" href="#expresiones-regulares" title="Permanent link">&para;</a></h4>
 <p>Finalmente, si queremos realizar consultas sobre partes de un campo de texto, hemos de emplear expresiones regulares. Para ello, tenemos el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/query/regex/"><code>$regexp</code></a> o, de manera más sencilla, indicando como valor la expresión regular a cumplir:</p>
@@ -1845,7 +1835,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <p>Finalmente, a la hora de proyectar los datos, si no estamos interesados en todos los valores de un campo que es un array, podemos restringir el resultado mediante el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/projection/slice/"><code>$slice</code></a>. Así pues, si quisiéramos obtener los mensajes titulados <code>US Constitution</code> y que de esos mensajes, mostrara sólo tres etiquetas y dos comentarios, haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">title</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;US Constitution&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">comments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$slice</span><span class="o">:</span><span class="mf">2</span><span class="p">},</span><span class="w"> </span><span class="nx">tags</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$slice</span><span class="o">:</span><span class="mf">3</span><span class="p">}}</span><span class="w"> </span><span class="p">)</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="o">&lt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;50ab0f8bbcf1bfe2536dc416&quot;</span><span class="p">),</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;We the People ...&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;We the personas ...&#39;</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nx">permalink</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;NhWDUNColpvxFjovsgqU&#39;</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="nx">author</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;machine&#39;</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;US Constitution&#39;</span><span class="p">,</span>
@@ -2001,7 +1991,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <div class="admonition info">
 <p class="admonition-title">Preparando una persona</p>
 <p>Para este apartado, vamos a insertar dos veces la misma persona sobre la cual realizaremos las modificaciones:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">insertMany</span><span class="p">([{</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="mf">45</span><span class="p">,</span><span class="w"> </span><span class="nx">profesion</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Profesor&quot;</span><span class="p">},</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">insertMany</span><span class="p">([{</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="mf">45</span><span class="p">,</span><span class="w"> </span><span class="nx">profesion</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Profesor&quot;</span><span class="p">},</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">                      </span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="mf">45</span><span class="p">,</span><span class="w"> </span><span class="nx">profesion</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Profesor&quot;</span><span class="p">},</span><span class="w"> </span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">                      </span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Andreu Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="mf">12</span><span class="p">,</span><span class="w"> </span><span class="nx">profesion</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Estudiante&quot;</span><span class="p">}])</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="o">&lt;</span><span class="w"> </span><span class="p">{</span>
@@ -2015,7 +2005,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </code></pre></div>
 </div>
 <p>Para actualizar (y fusionar datos), se utilizan los métodos <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne"><code>updateOne</code></a> / <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.updateMany"><code>updateMany</code></a> dependiendo de cuantos documentos queremos que modifique. Ambos métodos requieren 2 parámetros: el primero es la consulta para averiguar sobre qué documentos, y en el segundo parámetro, los campos a modificar utilizando los operadores de actualización:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">$set</span><span class="o">:</span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">profesion</span><span class="o">:</span><span class="s2">&quot;Estudiante&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">salario</span><span class="o">:</span><span class="w"> </span><span class="mf">123456</span><span class="p">}})</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">$set</span><span class="o">:</span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">profesion</span><span class="o">:</span><span class="s2">&quot;Estudiante&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">salario</span><span class="o">:</span><span class="w"> </span><span class="mf">123456</span><span class="p">}})</span>
 </code></pre></div>
 <p>Al realizar la modificación, el shell nos devolverá información sobre cuantos documentos ha encontrado, modificado y más información:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span><span class="w"> </span><span class="err">ack</span><span class="kc">n</span><span class="err">owledged</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
@@ -2031,7 +2021,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </div>
 <p>Si cuando vamos a actualizar, en el criterio de selección no encuentra el documento sobre el que hacer los cambios, no se realiza ninguna acción.</p>
 <p>Si quisiéramos que en el caso de no encontrar nada insertase un nuevo documento, acción conocida como <strong><em>upsert</em></strong> (<em>update + insert</em>), hay que pasarle un tercer parámetro al método con el objeto <code>{upsert:true}</code>. Si encuentra el documento, lo modificará, pero si no, creará uno nuevo:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Andreu Medrano&quot;</span><span class="p">},</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Andreu Medrano&quot;</span><span class="p">},</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">                    </span><span class="p">{</span><span class="nx">$set</span><span class="o">:</span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;Andreu Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">twitter</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;@andreumedrano&quot;</span><span class="p">}},</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">                    </span><span class="p">{</span><span class="nx">upsert</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">})</span>
 </code></pre></div>
@@ -2039,32 +2029,32 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <p><em>MongoDB</em> ofrece un conjunto de operadores para simplificar la modificación de campos.</p>
 <p>El operador más utilizado es el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/update/set/"><code>$set</code></a>, el cual admite los campos que se van a modificar. Si el campo no existe, lo creará.</p>
 <p>Por ejemplo, para modificar el <code>salario</code> haríamos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err">db.people.upda</span><span class="kc">te</span><span class="err">O</span><span class="kc">ne</span><span class="err">(</span><span class="p">{</span><span class="kc">n</span><span class="err">ombre</span><span class="p">:</span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="err">$se</span><span class="kc">t</span><span class="p">:{</span><span class="err">salario</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">}}</span><span class="err">)</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err">db.perso</span><span class="kc">nas</span><span class="err">.upda</span><span class="kc">te</span><span class="err">O</span><span class="kc">ne</span><span class="err">(</span><span class="p">{</span><span class="kc">n</span><span class="err">ombre</span><span class="p">:</span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="err">$se</span><span class="kc">t</span><span class="p">:{</span><span class="err">salario</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">}}</span><span class="err">)</span>
 </code></pre></div>
 <p>Mediante <a href="https://www.mongodb.com/docs/manual/reference/operator/update/inc/"><code>$inc</code></a> podemos incrementar (o decrementar en negativo) el valor de una variable:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err">db.people.upda</span><span class="kc">te</span><span class="err">O</span><span class="kc">ne</span><span class="err">(</span><span class="p">{</span><span class="kc">n</span><span class="err">ombre</span><span class="p">:</span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="err">$i</span><span class="kc">n</span><span class="err">c</span><span class="p">:{</span><span class="err">salario</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">}}</span><span class="err">)</span>
-<span class="linenos" data-linenos="2 "></span><span class="err">db.people.upda</span><span class="kc">te</span><span class="err">O</span><span class="kc">ne</span><span class="err">(</span><span class="p">{</span><span class="kc">n</span><span class="err">ombre</span><span class="p">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="err">$i</span><span class="kc">n</span><span class="err">c</span><span class="p">:{</span><span class="err">salario</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">}}</span><span class="err">)</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err">db.perso</span><span class="kc">nas</span><span class="err">.upda</span><span class="kc">te</span><span class="err">O</span><span class="kc">ne</span><span class="err">(</span><span class="p">{</span><span class="kc">n</span><span class="err">ombre</span><span class="p">:</span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="err">$i</span><span class="kc">n</span><span class="err">c</span><span class="p">:{</span><span class="err">salario</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">}}</span><span class="err">)</span>
+<span class="linenos" data-linenos="2 "></span><span class="err">db.perso</span><span class="kc">nas</span><span class="err">.upda</span><span class="kc">te</span><span class="err">O</span><span class="kc">ne</span><span class="err">(</span><span class="p">{</span><span class="kc">n</span><span class="err">ombre</span><span class="p">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="err">$i</span><span class="kc">n</span><span class="err">c</span><span class="p">:{</span><span class="err">salario</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">}}</span><span class="err">)</span>
 </code></pre></div>
 <p>Para eliminar un campo de un documento, usaremos el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/update/unset/"><code>$unset</code></a>.</p>
 <p>De este modo, para eliminar el campo <em>twitter</em> de una persona haríamos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">$unset</span><span class="o">:</span><span class="p">{</span><span class="nx">twitter</span><span class="o">:</span><span class="s1">&#39;&#39;</span><span class="p">}})</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">$unset</span><span class="o">:</span><span class="p">{</span><span class="nx">twitter</span><span class="o">:</span><span class="s1">&#39;&#39;</span><span class="p">}})</span>
 </code></pre></div>
 <p>Otros operadores que podemos utilizar son <a href="https://www.mongodb.com/docs/manual/reference/operator/update/mul/"><code>$mul</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/update/min/"><code>$min</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/update/max/"><code>$max</code></a> y <a href="https://www.mongodb.com/docs/manual/reference/operator/update/currentDate/"><code>$currentDate</code></a>. Podemos consultar todos los operadores disponibles en <a href="https://www.mongodb.com/docs/manual/reference/operator/update/">https://www.mongodb.com/docs/manual/reference/operator/update/</a></p>
 <div class="admonition question">
 <p class="admonition-title">Autoevaluación</p>
 <p>Tras realizar la siguiente operación sobre una colección vacía:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s1">&#39;yo&#39;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s1">&#39;$set&#39;</span><span class="o">:</span><span class="p">{</span><span class="s1">&#39;hobbies&#39;</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;gaming&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;sofing&#39;</span><span class="p">]}},</span><span class="w"> </span><span class="p">{</span><span class="nx">upsert</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w"> </span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s1">&#39;yo&#39;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s1">&#39;$set&#39;</span><span class="o">:</span><span class="p">{</span><span class="s1">&#39;hobbies&#39;</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;gaming&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;sofing&#39;</span><span class="p">]}},</span><span class="w"> </span><span class="p">{</span><span class="nx">upsert</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w"> </span><span class="p">);</span>
 </code></pre></div>
 <p>¿Cuál es el estado de la colección?</p>
 </div>
 <p>Finalmente, un caso particular de las actualizaciones es la posibilidad de renombrar un campo mediante el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/update/rename"><code>$rename</code></a>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">updateMany</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">_id</span><span class="o">:</span><span class="mf">1</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">$rename</span><span class="o">:</span><span class="p">{</span><span class="s1">&#39;nickname&#39;</span><span class="o">:</span><span class="s1">&#39;alias&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cell&#39;</span><span class="o">:</span><span class="s1">&#39;movil&#39;</span><span class="p">}})</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">updateMany</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">_id</span><span class="o">:</span><span class="mf">1</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">$rename</span><span class="o">:</span><span class="p">{</span><span class="s1">&#39;nickname&#39;</span><span class="o">:</span><span class="s1">&#39;alias&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;cell&#39;</span><span class="o">:</span><span class="s1">&#39;movil&#39;</span><span class="p">}})</span>
 </code></pre></div>
 <p>Podemos consultar todas las opciones de configuración de una actualización en <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.update/">https://www.mongodb.com/docs/manual/reference/method/db.collection.update/</a>.</p>
 <h3 id="reemplazando-un-documento">Reemplazando un documento<a class="headerlink" href="#reemplazando-un-documento" title="Permanent link">&para;</a></h3>
 <p>Desde Mongo 4.2, podemos emplear la operación <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.replaceOne/"><code>replaceOne</code></a> para sustituir todo el contenido por el documento que le pasamos como parámetro.</p>
 <p>Así pues, si queremos sustituir el documento de <code>Andreu Medrano</code>, borrando los campos que tuviese y replazandolos por nuevos podríamos hacer:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">replaceOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Andreu Medrano&quot;</span><span class="p">},</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">replaceOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Andreu Medrano&quot;</span><span class="p">},</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">                     </span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Andreu&quot;</span><span class="p">,</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">                      </span><span class="nx">apellidos</span><span class="o">:</span><span class="s2">&quot;Medrano&quot;</span><span class="p">,</span>
 <span class="linenos" data-linenos="4 "></span><span class="w">                      </span><span class="nx">hobbies</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;baloncesto&quot;</span><span class="p">,</span><span class="s2">&quot;videojuegos&quot;</span><span class="p">,</span><span class="s2">&quot;spiderman&quot;</span><span class="p">]})</span>
@@ -2072,7 +2062,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <h3 id="control-de-la-concurrencia">Control de la concurrencia<a class="headerlink" href="#control-de-la-concurrencia" title="Permanent link">&para;</a></h3>
 <p>Cuando se hace una actualización múltiple, <em>MongoDB</em> no realiza la operación de manera atómica (a no ser que utilicemos <a href="https://www.mongodb.com/docs/manual/core/transactions/">transacciones</a> desde el driver), lo que provoca que se puedan producir pausas (<em>pause yielding</em>). Cada documento en sí es atómico, por lo que ninguno se va a quedar a la mitad.</p>
 <p><em>MongoDB</em> ofrece el método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.findAndModify/"><code>findAndModify</code></a> para encontrar y modificar un documento de manera atómica, y así evitar que, entre la búsqueda y la modificación, el estado del documento se vea afectado. Además, devuelve el documento modificado. Un caso de uso muy común es para contadores y casos similares.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">findAndModify</span><span class="p">({</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">findAndModify</span><span class="p">({</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">},</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">update</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$inc</span><span class="o">:</span><span class="p">{</span><span class="nx">salario</span><span class="o">:</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:-</span><span class="mf">30</span><span class="p">}},</span>
 <span class="linenos" data-linenos="4 "></span><span class="w">  </span><span class="ow">new</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
@@ -2180,8 +2170,8 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <p>Podemos consultar toda la documentación disponible sobre estos operadores en <a href="http://docs.mongodb.org/manual/reference/operator/update-array/">http://docs.mongodb.org/manual/reference/operator/update-array/</a></p>
 <h2 id="borrando-documentos">Borrando documentos<a class="headerlink" href="#borrando-documentos" title="Permanent link">&para;</a></h2>
 <p>Para borrar, usaremos los método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteOne/"><code>deleteOne</code></a> o <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteMany/"><code>deleteMany</code></a>, los cuales funcionan de manera similar a <code>findOne</code> y <code>find</code>. Si no pasamos ningún parámetro, <code>deleteOne</code> borrará el primer documento, o en el caso de <code>deleteMany</code> toda la colección documento a documento. Si le pasamos un parámetro, éste será el criterio de selección de documentos a eliminar.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">deleteOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">})</span>
-<span class="linenos" data-linenos="2 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">deleteMany</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">deleteOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">})</span>
+<span class="linenos" data-linenos="2 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">deleteMany</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">})</span>
 </code></pre></div>
 <p>Al eliminar un documento, no podemos olvidar que cualquier referencia al documento que exista en la base de datos seguirá existiendo. Por este motivo, manualmente también hay que eliminar o modificar esas referencias.</p>
 <div class="admonition tip">
@@ -2189,11 +2179,84 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <p>Recordad que eliminar un determinado campo de un documento no se considera una operación de borrado, sino una actualización mediante el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/update/unset/"><code>$unset</code></a>.</p>
 </div>
 <p>Si queremos borrar toda la colección, es más eficiente usar el método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.drop/"><code>drop</code></a>, ya que también elimina los índices.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">people</span><span class="p">.</span><span class="nx">drop</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">drop</span><span class="p">()</span>
 </code></pre></div>
 <p>Finalmente, para eliminar una base de datos usaremos el comando <a href="https://www.mongodb.com/docs/manual/reference/method/db.dropDatabase/"><code>db.dropDatabase()</code></a>, que eliminará la base de datos sobre la que nos encontremos (en nuestro caso, en <code>iabd</code>):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">dropDatabase</span><span class="p">()</span>
 </code></pre></div>
+<h2 id="administracion">Administración<a class="headerlink" href="#administracion" title="Permanent link">&para;</a></h2>
+<h3 id="empleando-javascript">Empleando JavaScript<a class="headerlink" href="#empleando-javascript" title="Permanent link">&para;</a></h3>
+<p>Ya hemos comentado que el <em>shell</em> utiliza <em>JavaScript</em> como lenguaje de interacción, por lo que podemos almacenar los comandos en un script externo y ejecutarlo mediante <a href="https://www.mongodb.com/docs/mongodb-shell/reference/methods/#std-label-mongosh-native-method-load"><code>load()</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">load</span><span class="p">(</span><span class="s2">&quot;scripts/misDatos.js&quot;</span><span class="p">);</span>
+<span class="linenos" data-linenos="2 "></span><span class="nx">load</span><span class="p">(</span><span class="s2">&quot;/data/db/scripts/misDatos.js&quot;</span><span class="p">);</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">MongoDB Compass</p>
+<p>Si utilizamos <em>mongosh</em> desde <em>MongoDB Compass</em>, no podemos hacer uso del comando <code>load</code>.<br />
+Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, sabiendo que para añadir un salto de línea emplearemos <span class="keys"><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-enter">Enter</kbd></span>.</p>
+</div>
+<p>Si hacemos una referencia relativa, lo hace respecto a la ruta desde la cual se ejecuta el <em>shell</em> <code>mongosh</code>.</p>
+<p>Otra manera de lanzar un <em>script</em> es hacerlo desde la línea de comandos, pasándole como segundo parámetro el script a ejecutar:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongosh<span class="w"> </span>iabd<span class="w"> </span>misDatos.js
+</code></pre></div>
+<p>Si el código a ejecutar no necesita almacenarse en un script externo, el propio <em>shell</em> permite introducir instrucciones en varias líneas:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="mf">10</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nx">db</span><span class="p">.</span><span class="nx">espias</span><span class="p">.</span><span class="nx">insertOne</span><span class="p">({</span><span class="s2">&quot;nombre&quot;</span><span class="o">:</span><span class="s2">&quot;James Bond &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;agente&quot;</span><span class="o">:</span><span class="s2">&quot;00&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">});</span>
+</span><span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="p">}</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1">// {</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">//   acknowledged: true,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">//   insertedId: ObjectId(&#39;67fbf408b496860bf5c367a9&#39;)</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">// }</span>
+<span class="hll"><span class="linenos" data-linenos=" 8 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">espias</span><span class="p">.</span><span class="nx">find</span><span class="p">()</span>
+</span><span class="linenos" data-linenos=" 9 "></span><span class="c1">// [</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">//   {</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">//     _id: ObjectId(&#39;67fbf408b496860bf5c367a0&#39;),</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">//     nombre: &#39;James Bond 0&#39;,</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">//     agente: &#39;000&#39;</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">//   }</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">//   {</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">//     _id: ObjectId(&#39;67fbf408b496860bf5c367a1&#39;),</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">//     nombre: &#39;James Bond 1&#39;,</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">//     agente: &#39;001&#39;</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">//   }</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">//   ...</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">//   {</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">//     _id: ObjectId(&#39;67fbf408b496860bf5c367a9&#39;),</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">//     nombre: &#39;James Bond 9&#39;,</span>
+<span class="linenos" data-linenos="24 "></span><span class="c1">//     agente: &#39;009&#39;</span>
+<span class="linenos" data-linenos="25 "></span><span class="c1">//   }</span>
+<span class="linenos" data-linenos="26 "></span><span class="c1">// ]</span>
+</code></pre></div>
+<h3 id="importando-y-exportando">Importando y exportando<a class="headerlink" href="#importando-y-exportando" title="Permanent link">&para;</a></h3>
+<p>Además del propio servidor de <em>MongoDB</em> y el cliente para conectarse a él, <em>MongoDB</em> ofrece un conjunto de <a href="https://www.mongodb.com/docs/database-tools">herramientas</a> para interactuar con las bases de datos, permitiendo crear y restaurar copias de seguridad.</p>
+<p>Si estamos interesados en introducir o exportar una colección de datos mediante JSON, podemos emplear los comandos <a href="https://www.mongodb.com/docs/database-tools/mongoimport/"><code>mongoimport</code></a> y <a href="https://www.mongodb.com/docs/database-tools/mongoexport/"><code>mongoexport</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongoimport<span class="w"> </span>-d<span class="w"> </span>nombreBaseDatos<span class="w"> </span>-c<span class="w"> </span>coleccion<span class="w"> </span>--file<span class="w"> </span>nombreFichero.json
+<span class="linenos" data-linenos="2 "></span>mongoexport<span class="w"> </span>-d<span class="w"> </span>nombreBaseDatos<span class="w"> </span>-c<span class="w"> </span>coleccion<span class="w"> </span>nombreFichero.json
+</code></pre></div>
+<p>Estas herramientas interactúan con datos JSON y no sobre toda la base de datos.</p>
+<p>Un caso particular y muy común es importar datos que se encuentran en formato CSV/TSV. Para ello, emplearemos el parámetro <code>--type csv</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongoimport<span class="w"> </span>--type<span class="w"> </span>tsv<span class="w"> </span>-d<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-c<span class="w"> </span>poblacion<span class="w"> </span>--headerline<span class="w"> </span>--drop<span class="w"> </span>poblacionEspanya2013.tsv
+</code></pre></div>
+<p>En vez de realizar un <em>export</em>, es más conveniente realizar un <em>backup</em> en binario mediante <a href="https://www.mongodb.com/docs/database-tools/mongodump/"><code>mongodump</code></a>, el cual genera ficheros BSON. Estos archivos posteriormente se restauran mediante <a href="https://www.mongodb.com/docs/database-tools/mongorestore/"><code>mongorestore</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongodump<span class="w"> </span>-d<span class="w"> </span>nombreBaseDatos<span class="w"> </span>nombreFichero.bson
+<span class="linenos" data-linenos="2 "></span>mongorestore<span class="w"> </span>-d<span class="w"> </span>nombreBaseDatos<span class="w"> </span>nombreFichero.bson
+</code></pre></div>
+<div class="admonition question">
+<p class="admonition-title">Autoevaluación</p>
+<p>Intenta exportar los datos de la base de datos <code>sample_training</code> desde <em>MongoAtlas</em>. Verás que ha creado una carpeta que contiene dos archivos ¿Cuáles son? ¿Qué contiene cada uno de ellos y cuál es su formato?</p>
+</div>
+<p>Si necesitamos transformar un fichero BSON a JSON (de binario a texto), tenemos el comando <a href="https://www.mongodb.com/docs/database-tools/bsondump"><code>bsondump</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>bsondump<span class="w"> </span>file.bson<span class="w"> </span>&gt;<span class="w"> </span>file.json
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Más información sobre copias de seguridad en <a href="https://www.mongodb.com/docs/manual/core/backups/">https://www.mongodb.com/docs/manual/core/backups/</a>.</p>
+</div>
+<p>Para poder trabajar con <em>MongoDB</em> desde cualquier aplicación necesitamos un driver. <em>MongoDB</em> ofrece <a href="https://www.mongodb.com/docs/drivers/">drivers</a> oficiales para casi todos los lenguajes de programación actuales.</p>
+<div class="admonition tip">
+<p class="admonition-title">Monitorización</p>
+<p>Tanto <a href="https://www.mongodb.com/docs/database-tools/mongostat/"><code>mongostat</code></a> como <a href="https://www.mongodb.com/docs/database-tools/mongotop/"><code>mongotop</code></a> permiten visualizar el estado del servidor <em>MongoDB</em>, así como algunas estadísticas sobre su rendimiento. Si trabajamos con <em>MongoAtlas</em> estas herramientas están integradas en las diferentes herramientas de monitorización de la plataforma.</p>
+</div>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.mongodb.com/docs/manual/">Manual de MongoDB</a></li>
@@ -2201,19 +2264,28 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <li><a href="https://www.mongodb.com/docs/manual/reference/sql-comparison/">Comparación entre SQL y MongoDB</a></li>
 <li>Cursos gratuitos de <a href="https://university.mongodb.com/">Mongo University</a></li>
 <li>Consultas solucionadas sobre la colección <code>sample_restaurants.restaurants</code> en <a href="https://www.w3resource.com/mongodb-exercises/">w3resource</a></li>
-<li>Consultas solucionada (en castellano) sobre la colección <code>sample_restaurants.restaurants</code> en <a href="https://www.apuntesinformaticafp.com/actividades/ejercicios_mongodb.html">w3resource</a></li>
+<li>Consultas solucionada (en castellano) sobre la colección <code>sample_restaurants.restaurants</code> en <a href="https://www.apuntesinformaticafp.com/actividades/ejercicios_mongodb.html">www.apuntesinformaticafp.com</a></li>
 </ul>
 <h2 id="actividades">Actividades<a class="headerlink" href="#actividades" title="Permanent link">&para;</a></h2>
 <p><a name="AC1301"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1301</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Crea un clúster en <em>MongoAtlas</em>, carga los datos de ejemplo y adjunta capturas de pantalla de:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1301</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Crea un clúster en <em>MongoAtlas</em>, carga los datos de ejemplo y</p>
+<ol>
+<li>
+<p>Adjunta capturas de pantalla del:</p>
 <ul>
 <li><em>Dashboard</em> del clúster</li>
 <li>Bases de datos / colecciones creadas</li>
 </ul>
-<p>A continuación, conéctate mediante <em>MongoDB Compass</em> y adjunta una captura de pantalla tras conectar con el clúster.</p>
-<p>(<em>opcional</em>) Realiza una nueva instalación en local con un contenedor Docker y carga también los datos de ejemplo. Comprueba que puedes conectarte mediante <em>MongoDB Compass</em>.</p>
+</li>
+<li>
+<p>Conéctate mediante <em>MongoDB Compass</em> y adjunta una captura de pantalla tras conectar con el clúster.</p>
+</li>
+<li>En la base de datos <code>s8a</code>, crea un documento con tus datos personales en la colección <code>ac1301</code>. Tras insertarlo, realiza una consulta para recuperarlo.</li>
+<li>Recupera las colecciones existentes en la base de datos.</li>
+</ol>
+<p>Adjunta un documento con las capturas realizadas, así como los comandos necesarios y la salida obtenida tras su ejecución.</p>
 </li>
 </ul>
 <p><a name="AC1302"></a></p>
@@ -2287,16 +2359,12 @@ https://www.mongodb.com/docs/manual/reference/collation/
 Collation allows users to specify language-specific rules for string comparison, such as rules for lettercase and accent marks.
 
 
-----
-2324
-Han cambiado las pantallas de MongoAtlas y ahora es más fácil cargar los datos
-Pedir al alumnado que instale DockerDesktop antes de esta sesión
-----
-
-
 https://github.com/mattdavis0351/mongodb-labs/tree/master/exercises
 https://www.geeksforgeeks.org/mongodb-exercises/
 https://www.apuntesinformaticafp.com/actividades/ejercicios_mongodb.html
+
+
+https://www.apuntesinformaticafp.com/cursos/bd_no_sql.html#el-modelo-de-datos-y-la-bd
 -->
 
 <!--
