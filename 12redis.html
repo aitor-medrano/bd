@@ -16,7 +16,7 @@
         <link rel="prev" href="12nosql.html">
       
       
-        <link rel="next" href="00entorno.html">
+        <link rel="next" href="13mongodb.html">
       
       
       <link rel="icon" href="images/favicon.png">
@@ -943,6 +943,27 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13mongodb.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13.- MongoDB
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2252,6 +2273,13 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="hll"><span class="linenos" data-linenos="7 "></span><span class="c1"># 3) &quot;Inteligencia Artificial y Data: la nueva familia de FP que se abre paso&quot;</span>
 </span><span class="linenos" data-linenos="8 "></span><span class="c1"># Reading messages... (press Ctrl-C to quit or any key to type command)</span>
 </code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Uso de patrones</p>
+<p>Si nos queremos subscribir a más de un canal, podemos emplear <a href="https://redis.io/docs/latest/commands/psubscribe/">PSUSCRIBE</a> que nos permite utilizar patrones en los nombres de los canales, tanto <code>?</code> para sustituir un caracter, <code>*</code> para uno o más elementos o emplear <code>[]</code> para indicar el conjunto de caracteres.</p>
+<p>Por ejemplo, si queresos suscribirnos a canales que acaben en <code>s</code>, haríamos:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">PSUBSCRIBE</span> <span class="o">*</span><span class="n">s</span>
+</span></code></pre></div>
+</div>
 <p>¿Y qué sucede si ahora creamos un suscriptor sobre el canal <code>deportes</code>? Pues que no recibirá ningún mensaje, ya que <em>Redis</em> distribuye los mensajes inmediatamente a todos los clientes que están activamente suscritos al canal. Si no hay ningún cliente suscrito, <em>Redis</em> simplemente descarta el mensaje. El comando <code>PUBLISH</code> devolverá <code>0</code>, indicando que ningún cliente recibió el mensaje.</p>
 <p>Cuando un nuevo cliente se suscribe posteriormente a un canal existente utilizando <code>SUBSCRIBE canal</code>, solo recibirá los mensajes que se publiquen después de que se haya establecido su suscripción. No hay ningún mecanismo integrado en <em>Redis</em> <em>Pub/Sub</em> para recuperar mensajes históricos o pendientes.</p>
 <p>Esta característica diferencia <em>Redis Pub/Sub</em> de otros sistemas de mensajería como <em>Kafka</em> o <em>RabbitMQ</em>, que pueden almacenar mensajes hasta que sean consumidos. <em>Redis Pub/Sub</em> está diseñado para comunicación en tiempo real donde la persistencia de mensajes no es una prioridad.</p>
@@ -2285,7 +2313,7 @@ Arquitectura: Redis Deep Dive- Core Archictures (p 68 / 275)
 
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://university.redis.io/">Redis University</a>, portal formativo de <a href="https://redis.io/">Redis.io</a> con diversos cursos sobre *Redis.</li>
+<li><a href="https://university.redis.io/">Redis University</a>, portal formativo de <a href="https://redis.io/">Redis.io</a> con diversos cursos sobre <em>Redis</em>.</li>
 <li><a href="resources/Redis_Cheat_Sheet.pdf">Redis Cheat Sheet</a></li>
 <li><a href="https://ualmtorres.github.io/SeminarioRedis/">Seminario de Redis</a> por <em>Manuel Torres</em>, de la Universidad de Almería.</li>
 <li><a href="https://www.ionos.es/digitalguide/hosting/cuestiones-tecnicas/redis-tutorial-paso-a-paso/">Tutorial de Redis</a> de Ionos.</li>
@@ -2651,13 +2679,13 @@ para la gestión de la información almacenada.
         
         
           
-          <a href="00entorno.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Entorno">
+          <a href="13mongodb.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: 13.- MongoDB">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Siguiente
               </span>
               <div class="md-ellipsis">
-                Entorno
+                13.- MongoDB
               </div>
             </div>
             <div class="md-footer__button md-icon">
