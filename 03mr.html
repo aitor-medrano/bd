@@ -1550,8 +1550,8 @@
 </figure>
 
 <p>Si nuestra elección es un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> relacional, el modelo por excelencia es el <strong>modelo relacional</strong>. Creado por <em>Codd</em> a finales de los 60, aunque los primeros <abbr title="Sistema gestor de bases de datos">SGBD</abbr> relacionales no aparecieron hasta los 80. Una base de datos modelada mediante el modelo relacional se conoce como una base de datos relacional.</p>
-<p>Supuso una revolución en el diseño lógico de base de datos, dando lugar a la segunda generación de SBGD.
-Es el modelo lógico más extendido, y <em>por ende</em>, el mercado de <abbr title="Sistema gestor de bases de datos">SGBD</abbr> está copado de soluciones relacionales como <em>Oracle</em>, <em>PostgreSQL</em>, <em>MySQL</em>, <em>SQL Server</em>, etc...</p>
+<p>Supuso una revolución en el diseño lógico de las base de datos, dando lugar a la segunda generación de SBGD.</p>
+<p>Es el modelo lógico más extendido, y <em>por ende</em>, el mercado de <abbr title="Sistema gestor de bases de datos">SGBD</abbr> está copado de soluciones relacionales como <em>Oracle</em>, <em>PostgreSQL</em>, <em>MySQL</em>, <em>SQL Server</em>, etc...</p>
 <p>Los objetivos del modelo relacional son:</p>
 <ul>
 <li>Independencia física<ul>
@@ -1559,7 +1559,7 @@ Es el modelo lógico más extendido, y <em>por ende</em>, el mercado de <abbr ti
 </ul>
 </li>
 <li>Independencia lógica<ul>
-<li>Las aplicaciones que usan el <abbr title="Sistema gestor de bases de datos">SGBD</abbr> no deben sufrir una modificación cuando se modifique una <abbr title="Base de datos">BD</abbr>.</li>
+<li>Las aplicaciones que usan el <abbr title="Sistema gestor de bases de datos">SGBD</abbr> no deben sufrir una modificación cuando se modifique una base de datos.</li>
 </ul>
 </li>
 <li>Flexibilidad<ul>
@@ -1570,7 +1570,7 @@ Es el modelo lógico más extendido, y <em>por ende</em>, el mercado de <abbr ti
 <li>Sencillez</li>
 </ul>
 <h2 id="elementos">Elementos<a class="headerlink" href="#elementos" title="Permanent link">&para;</a></h2>
-<p>El elemento principal es la relación, que consiste en una tabla que contiene filas y columnas. Una <strong>base de datos relacional</strong> consiste en un conjunto de tablas relacionadas donde cada tabla tiene un nombre único.</p>
+<p>El elemento principal es la <strong>relación</strong>, que consiste en una tabla que contiene filas y columnas. Una base de datos relacional consiste en un conjunto de tablas relacionadas donde cada tabla tiene un nombre único.</p>
 <p>Las relaciones se conocen como tablas relacionales o más comúnmente como <strong>tablas</strong>. </p>
 <p>Cada <strong>columna</strong> (también llamado <strong>campo</strong> o atributo de la relación) almacena información sobre una propiedad determinada de la tabla, como puede ser el nombre, DNI, apellidos o la edad.</p>
 <p>Cada <strong>fila</strong> posee una ocurrencia o ejemplar de la instancia o relación representada por la tabla (a las filas se las llama también <strong>tuplas</strong> o <strong>registros</strong>).</p>
@@ -1854,9 +1854,18 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
     <figcaption>Ocurrencias 1:N</figcaption>
 </figure></p>
 </li>
+<li>
+<p>Representación relacional</p>
+<hr />
+<p><figure style="align:center;">
+    <img src="images/03producto-categoria.png" title="Representación Producto-Categoría">
+    <figcaption>Representación Producto-Categoría</figcaption>
+</figure></p>
+</li>
 </ul>
 </div>
 <p>Puedes observar como hemos subrayado las claves primaria de cada tabla. ¿Qué atributo tiene la función de clave ajena? En este ejemplo, la columna <code>PRODUCTO.codCategoria</code> es una clave ajena que apunta a <code>CATEGORIA.codigo</code> (fíjate que en este caso, al atributo que es clave ajena le hemos puesto un asterisco <code>*</code> tras su nombre). Si revisamos los valores, podemos comprobar como podemos tener valores repetidos y valores nulos, facilitando que de una categoría tengamos varios productos (categorías de los productos <code>1</code> y <code>4</code>), que de una categoría no tengamos productos (la categoría <code>4</code> no está asociada a ningún producto) y, aunque el modelo conceptual no representaba dicha cardinalidad, que tengamos productos sin categoría (como el producto <code>6</code>).</p>
+<hr />
 <p>Veamos otro ejemplo, donde tenemos dos tablas, una para estudiantes (igual que el ejemplo de las claves candidatas) y otra para almacenar qué cursos realizan los estudiantes, similares a las siguientes:</p>
 <ul>
 <li>
@@ -1933,8 +1942,8 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 <p>El campo <code>CURSAR.nifEstudiante</code> es una clave ajena de la relación <code>CURSAR</code> y enlaza con la relación <code>ESTUDIANTE</code> con el campo <code>ESTUDIANTE.nif</code>.</p>
 <p>Visualmente, lo podemos representar mediante el siguiente gráfico:</p>
 <figure style="align: center;">
-    <img src="images/03clave-ajena.png" width="447" title="Clave ajena">
-    <figcaption>Clave ajena</figcaption>
+    <img src="images/03estudiante-cursar.png" title="Clave ajena entre ESTUDIANTE y CURSAR" width="500px">
+    <figcaption>Clave ajena entre ESTUDIANTE y CURSAR</figcaption>
 </figure>
 
 <p>Conviene aclarar que un campo puede ser clave primaria y clave ajena a la vez. Además, una tabla puede tener más de una clave ajena o no tener ninguna. Además, en el caso de las relaciones reflexivas, la clave ajena de la relación enlazará con la clave primaria de sí misma.</p>

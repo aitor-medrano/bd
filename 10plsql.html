@@ -2338,6 +2338,63 @@
 </ul>
 <!--
 https://www.w3resource.com/plsql-exercises/fundamentals/index.php
+
+FIXME: Usar DDL dentro de PL/SQL
+
+En MariaDB, también puedes crear tablas dinámicamente desde procedimientos almacenados, pero la sintaxis es ligeramente diferente a PL/SQL de Oracle.
+
+Para crear tablas dentro de un procedimiento almacenado en MariaDB, utilizas la sentencia `PREPARE` y `EXECUTE`:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">crear_tabla</span><span class="p">()</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="k">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;CREATE TABLE empleados (</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="s1">        id INT PRIMARY KEY AUTO_INCREMENT,</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="s1">        nombre VARCHAR(100),</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="s1">        departamento VARCHAR(50),</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="s1">        salario DECIMAL(10,2)</span>
+<span class="linenos" data-linenos="10 "></span><span class="s1">    )&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">PREPARE</span><span class="w"> </span><span class="n">stmt</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">@</span><span class="k">sql</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">EXECUTE</span><span class="w"> </span><span class="n">stmt</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">DEALLOCATE</span><span class="w"> </span><span class="k">PREPARE</span><span class="w"> </span><span class="n">stmt</span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;Tabla creada exitosamente&#39;</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="20 "></span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">-- Para ejecutar el procedimiento</span>
+<span class="linenos" data-linenos="22 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">crear_tabla</span><span class="p">();</span>
+</code></pre></div>
+
+También puedes usar directamente sentencias dinámicas:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">crear_tabla_dinamica</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">nombre_tabla</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="k">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;CREATE TABLE &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">nombre_tabla</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; (</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="s1">        id INT PRIMARY KEY AUTO_INCREMENT,</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="s1">        nombre VARCHAR(100),</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="s1">        departamento VARCHAR(50),</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="s1">        salario DECIMAL(10,2)</span>
+<span class="linenos" data-linenos="10 "></span><span class="s1">    )&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">PREPARE</span><span class="w"> </span><span class="n">stmt</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="o">@</span><span class="k">sql</span><span class="p">;</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">EXECUTE</span><span class="w"> </span><span class="n">stmt</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">DEALLOCATE</span><span class="w"> </span><span class="k">PREPARE</span><span class="w"> </span><span class="n">stmt</span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span><span class="k">END</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">-- Para ejecutar con un nombre de tabla específico</span>
+<span class="linenos" data-linenos="20 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">crear_tabla_dinamica</span><span class="p">(</span><span class="s1">&#39;mis_empleados&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+Esta funcionalidad es útil cuando necesitas crear estructuras de base de datos dinámicamente como parte de algún proceso automatizado.
+
 -->
 
 <!--
