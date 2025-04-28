@@ -1865,6 +1865,56 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 </ul>
 </div>
 <p>Puedes observar como hemos subrayado las claves primaria de cada tabla. ¿Qué atributo tiene la función de clave ajena? En este ejemplo, la columna <code>PRODUCTO.codCategoria</code> es una clave ajena que apunta a <code>CATEGORIA.codigo</code> (fíjate que en este caso, al atributo que es clave ajena le hemos puesto un asterisco <code>*</code> tras su nombre). Si revisamos los valores, podemos comprobar como podemos tener valores repetidos y valores nulos, facilitando que de una categoría tengamos varios productos (categorías de los productos <code>1</code> y <code>4</code>), que de una categoría no tengamos productos (la categoría <code>4</code> no está asociada a ningún producto) y, aunque el modelo conceptual no representaba dicha cardinalidad, que tengamos productos sin categoría (como el producto <code>6</code>).</p>
+<p>Cuando tenemos dos tablas relacionadas mediante una clave ajena, mediante operaciones relacionales que veremos en la <a href="06sql.html">Unidad 6</a>, podremos crear una nueva relación con el resultado de unir una clave ajena con los datos a los que referencia.</p>
+<p>Así pues, al unir ambas tablas, obtendríamos como resultado:</p>
+<table>
+<thead>
+<tr>
+<th>PRODUCTO.codigo</th>
+<th>PRODUCTO.nombre</th>
+<th>PRODUCTO.codCategorua</th>
+<th>CATEGORIA.nombre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>PS5</td>
+<td>1</td>
+<td>Consola</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Nevera</td>
+<td>3</td>
+<td>Cocina</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Teclado</td>
+<td>2</td>
+<td>TIC</td>
+</tr>
+<tr>
+<td>4</td>
+<td>XBOX</td>
+<td>1</td>
+<td>Consola</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Ratón</td>
+<td>2</td>
+<td>TIC</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Volante</td>
+<td><code>NULL</code></td>
+<td><code>NULL</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <p>Veamos otro ejemplo, donde tenemos dos tablas, una para estudiantes (igual que el ejemplo de las claves candidatas) y otra para almacenar qué cursos realizan los estudiantes, similares a las siguientes:</p>
 <ul>
@@ -2211,6 +2261,33 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 · FK: (autor) → AUTOR
 </code></p>
 <p>Tenemos que el autor se identifica por un código, el cual es su clave primaria. En cambio, los libros se identifican por su ISBN, y tienen un atributo <code>autor</code> que referencia a la clave primaria de <code>AUTOR</code> (y por tanto, deben tener el mismo dominio). De esta relación, deducimos que el nombre del atributo de la clave ajena no tiene por qué coincidir con el nombre de la clave primaria, pero sí su dominio.</p>
+<div class="admonition tip">
+<p class="admonition-title">DBML - Database Markup Language</p>
+<p>La notación que vamos a emplear en clase es sencilla y cumple su propósito.</p>
+<p>Dicho esto, desde principio de 2020, gracias a la empresa https://dbdiagram.io/, se está popularizando <a href="https://dbml.dbdiagram.io/home">DBML</a> como un lenguaje de marcado para representar bases de datos.</p>
+<p>Si quieres profundizar en su uso, es recomendable consultar su <a href="https://dbml.dbdiagram.io/docs">sintaxis</a> o puedes probar a generar diagramas en <a href="https://dbdiagram.io/">https://dbdiagram.io/</a>.</p>
+<p>En nuestro caso, por ejemplo, podemos representa las entidades <code>AUTOR</code> y <code>LIBRO</code> del siguiente modo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Table AUTOR {
+<span class="linenos" data-linenos=" 2 "></span>    codigo entero [primary key]
+<span class="linenos" data-linenos=" 3 "></span>    nombre cadena
+<span class="linenos" data-linenos=" 4 "></span>    fnac fecha
+<span class="linenos" data-linenos=" 5 "></span>    pais cadena
+<span class="linenos" data-linenos=" 6 "></span>}
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span>Table LIBRO {
+<span class="linenos" data-linenos=" 9 "></span>    isbn cadena [primary key]
+<span class="linenos" data-linenos="10 "></span>    titulo cadena
+<span class="linenos" data-linenos="11 "></span>    autor entero [ref: &gt; AUTOR.codigo]
+<span class="linenos" data-linenos="12 "></span>    editorial cadena
+<span class="linenos" data-linenos="13 "></span>    pvp real
+<span class="linenos" data-linenos="14 "></span>}
+</code></pre></div>
+<p>Obteniendo como resultado el diagrama:</p>
+<p><figure style="align: center;">
+    <img src="images/03autor-libro.png" title="Diagrama AUTOR-LIBRO" width="400px">
+    <figcaption>Diagrama AUTOR-LIBRO</figcaption>
+</figure></p>
+</div>
 <p>Vamos a crear datos ficticios y comprobaremos si el modelo cumple la relación de uno a muchos:</p>
 <ul>
 <li>
@@ -2301,8 +2378,8 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </ul>
 </div>
 <h3 id="representacion-grafica">Representación gráfica<a class="headerlink" href="#representacion-grafica" title="Permanent link">&para;</a></h3>
-<p>Para la representación gráfica de los modelos lógicos podemos emplear diversas herramientas existentes en el mercado, como <a href="https://erdplus.com/">ERDPlus</a> o <a href="https://www.mysql.com/products/workbench/">MySQLWorbench</a> (más cercano al modelo físico).</p>
-<p>En nuestro caso, nos vamos a centrar en ERDPlus, al ser una herramienta online gratuita. Una vez registrados, tenemos la opción de generar un diagrama ER o un esquema relacional. En este caso, nos centraremos en el esquema relacional.</p>
+<p>Aunque ya hemos visto que podemos emplear <a href="https://dbdiagram.io/">DBDiagrams</a> para generar un diagrama a partir del esquema lógico mediante <a href="https://dbml.dbdiagram.io/docs">DBML</a>, también podemos emplear diversas herramientas existentes en el mercado, como <a href="https://erdplus.com/">ERDPlus</a> o <a href="https://www.mysql.com/products/workbench/">MySQLWorbench</a> (más cercano al modelo físico), que permiten dibujar los elementos.</p>
+<p>En nuestro caso, nos vamos a centrar en ERDPlus, principalmente por ser una herramienta online gratuita. Una vez registrados, tenemos la opción de generar un diagrama ER o un esquema relacional. En este caso, nos centraremos en el esquema relacional.</p>
 <p>Mediante la barra superior, con el botón <code>TABLE</code> nos aparecerá un diálogo a la derecha donde podremos indicar el nombre de la tabla y añadir y configurar los atributos de la tabla. Tras añadir todos los atributos, debemos configurar su clave primaria mediante el botón <em>PRIMARY KEY</em> del menú lateral:</p>
 <figure style="align: center;">
     <img src="images/03erdplus-autor.png" width="909" title="Tabla AUTOR en ERDPlus">
@@ -3427,6 +3504,7 @@ salario, nomDpto, jefeDpto, puntos)</code></p>
 TODO: UT03
     * AC305 - recalcar poner valores nulos o repetidos en los campos que se pueda para que se veas bien la cardinalidad de cada atributo
     * Reorganizar el diccionario de datos para poner las restricciones de cada tabla debajo de cada una de ellas
+    * Crear actividades de profundización de representación de diagramas mediante DBML
 -->
 
 <!--
