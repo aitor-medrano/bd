@@ -1941,19 +1941,18 @@
 <p>El <em>shell</em> de <em>MongoDB</em> utiliza <em>JavaScript</em> como lenguaje de interacción con la base de datos, y como buen <em>shell</em>, mediante la fecha hacia arriba visualizaremos el último comando. </p>
 <p>Si queremos ver las bases de datos que existen ejecutaremos el comando <code>show dbs</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Atlas<span class="w"> </span>atlas-pxc2m9-shard-0<span class="w"> </span><span class="o">[</span>primary<span class="o">]</span><span class="w"> </span>pruebas&gt;<span class="w"> </span>show<span class="w"> </span>dbs
-<span class="linenos" data-linenos=" 2 "></span>iabd<span class="w">                </span><span class="m">416</span>.00<span class="w"> </span>KiB
-<span class="linenos" data-linenos=" 3 "></span>pruebas<span class="w">             </span><span class="m">216</span>.00<span class="w"> </span>KiB
-<span class="linenos" data-linenos=" 4 "></span>sample_airbnb<span class="w">        </span><span class="m">52</span>.52<span class="w"> </span>MiB
-<span class="linenos" data-linenos=" 5 "></span>sample_analytics<span class="w">      </span><span class="m">8</span>.93<span class="w"> </span>MiB
-<span class="linenos" data-linenos=" 6 "></span>sample_geospatial<span class="w">     </span><span class="m">1</span>.29<span class="w"> </span>MiB
-<span class="linenos" data-linenos=" 7 "></span>sample_guides<span class="w">        </span><span class="m">40</span>.00<span class="w"> </span>KiB
-<span class="linenos" data-linenos=" 8 "></span>sample_mflix<span class="w">         </span><span class="m">47</span>.23<span class="w"> </span>MiB
-<span class="linenos" data-linenos=" 9 "></span>sample_restaurants<span class="w">    </span><span class="m">6</span>.72<span class="w"> </span>MiB
-<span class="linenos" data-linenos="10 "></span>sample_supplies<span class="w">       </span><span class="m">1</span>.05<span class="w"> </span>MiB
-<span class="linenos" data-linenos="11 "></span>sample_training<span class="w">      </span><span class="m">52</span>.50<span class="w"> </span>MiB
-<span class="linenos" data-linenos="12 "></span>sample_weatherdata<span class="w">    </span><span class="m">3</span>.32<span class="w"> </span>MiB
-<span class="linenos" data-linenos="13 "></span>admin<span class="w">                </span><span class="m">40</span>.00<span class="w"> </span>KiB
-<span class="linenos" data-linenos="14 "></span><span class="nb">local</span><span class="w">                </span><span class="m">40</span>.00<span class="w"> </span>KiB
+<span class="linenos" data-linenos=" 2 "></span>pruebas<span class="w">             </span><span class="m">216</span>.00<span class="w"> </span>KiB
+<span class="linenos" data-linenos=" 3 "></span>sample_airbnb<span class="w">        </span><span class="m">52</span>.52<span class="w"> </span>MiB
+<span class="linenos" data-linenos=" 4 "></span>sample_analytics<span class="w">      </span><span class="m">8</span>.93<span class="w"> </span>MiB
+<span class="linenos" data-linenos=" 5 "></span>sample_geospatial<span class="w">     </span><span class="m">1</span>.29<span class="w"> </span>MiB
+<span class="linenos" data-linenos=" 6 "></span>sample_guides<span class="w">        </span><span class="m">40</span>.00<span class="w"> </span>KiB
+<span class="linenos" data-linenos=" 7 "></span>sample_mflix<span class="w">         </span><span class="m">47</span>.23<span class="w"> </span>MiB
+<span class="linenos" data-linenos=" 8 "></span>sample_restaurants<span class="w">    </span><span class="m">6</span>.72<span class="w"> </span>MiB
+<span class="linenos" data-linenos=" 9 "></span>sample_supplies<span class="w">       </span><span class="m">1</span>.05<span class="w"> </span>MiB
+<span class="linenos" data-linenos="10 "></span>sample_training<span class="w">      </span><span class="m">52</span>.50<span class="w"> </span>MiB
+<span class="linenos" data-linenos="11 "></span>sample_weatherdata<span class="w">    </span><span class="m">3</span>.32<span class="w"> </span>MiB
+<span class="linenos" data-linenos="12 "></span>admin<span class="w">                </span><span class="m">40</span>.00<span class="w"> </span>KiB
+<span class="linenos" data-linenos="13 "></span><span class="nb">local</span><span class="w">                </span><span class="m">40</span>.00<span class="w"> </span>KiB
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Uso externo</p>
@@ -2953,7 +2952,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </div>
 <p>Si hacemos una referencia relativa, lo hace respecto a la ruta desde la cual se ejecuta el <em>shell</em> <code>mongosh</code>.</p>
 <p>Otra manera de lanzar un <em>script</em> es hacerlo desde la línea de comandos, pasándole como segundo parámetro el script a ejecutar:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongosh<span class="w"> </span>iabd<span class="w"> </span>misDatos.js
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongosh<span class="w"> </span>pruebas<span class="w"> </span>misDatos.js
 </code></pre></div>
 <p>Si el código a ejecutar no necesita almacenarse en un script externo, el propio <em>shell</em> permite introducir instrucciones en varias líneas:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="mf">10</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -3134,6 +3133,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <li>Los comentarios (con su cuerpo y email) que ha escrito el usuario <code>Salena Olmos</code>.</li>
 <li>Recupera los mensajes que en <code>body</code> contengan la palabra <code>earth</code>, y devuelve el título, 3 comentarios y 5 etiquetas.</li>
 </ol>
+<!-- COMPLETAR -->
 </li>
 </ul>
 <p><a name="AC1307"></a></p>
@@ -3162,6 +3162,8 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </ol>
 </li>
 </ul>
+<!-- AC1308 Hacer otra actividad DML sobre otra colección -->
+
 <p><a name="AC1309"></a></p>
 <ul>
 <li>
@@ -3171,6 +3173,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <li>Modifica todos los documentos de la provincia de <code>Alicante</code> y añade al atributo <code>tags</code> el valor <code>sun</code>.</li>
 <li>Modifica el valor de <code>sun</code> de tu código postal y sustitúyelo por <code>house</code>.</li>
 </ol>
+<!-- Completar DML sobre arrays -->
 </li>
 </ul>
 <p><a name="AR1316"></a></p>
