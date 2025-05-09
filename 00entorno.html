@@ -1513,35 +1513,35 @@
 
 <h2 id="mongodb">MongoDB<a class="headerlink" href="#mongodb" title="Permanent link">&para;</a></h2>
 <p>Desde <a href="https://www.mongodb.com/try/download/community">https://www.mongodb.com/try/download/community</a> podemos descargar la versión <em>Community</em> acorde a nuestro sistema operativo.</p>
+<p>En vez de instalarlo como un servicio en nuestra máquina, a día de hoy, es mucho más cómodo hacer uso de contenedores <em>Docker</em> o utilizar una solución <em>cloud</em>.</p>
+<h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
+<p>Para lanzar el contenedor de <em>Docker</em> al que llamaremos <code>iadb-mongo</code> mediante el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:27017:27017<span class="w"> </span>--name<span class="w"> </span>bd-mongo<span class="w"> </span>-d<span class="w"> </span>mongo
+</code></pre></div>
+<div class="admonition caution">
+<p class="admonition-title">MongoDB y procesadores AVX</p>
+<p>Si tenemos un procesador sin soporte para AVX, necesitamos instalar una versión inferior a la 5.0.</p>
+<p>Así pues, podemos indicar la versión 4.4:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:27017:27017<span class="w"> </span>--name<span class="w"> </span>bd-mongo<span class="w"> </span>-d<span class="w"> </span>mongo:4.4
+</code></pre></div>
+</div>
+<p>A continuación vamos a descargar el conjunto de datos (<a href="https://atlas-education.s3.amazonaws.com/sampledata.archive">sampledata.archive</a>) que ofrece <em>MongoDB</em> a modo de prueba, el cual vamos a emplear a lo largo de las diferentes sesiones.</p>
+<p>Volvemos al terminal de nuestro sistema y copiamos los datos desde nuestro sistema a la carpeta <code>/tmp</code> del contenedor:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>cp<span class="w"> </span>sampledata.archive.gz<span class="w"> </span>bd-mongo:/tmp
+</code></pre></div>
+<p>Posteriormente abrimos un terminal dentro de nuestro contenedor (o mediante <em>Attach Shell</em> en <em>VSCode</em>):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>bd-mongo<span class="w"> </span>bash
+</code></pre></div>
+<p>Y finalmente, restauramos los datos mediante <code>mongorestore</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongorestore<span class="w"> </span>--archive<span class="o">=</span>sampledata.archive
+</code></pre></div>
+<p>Una vez cargados, nos informará que se han restaurado 433.281 documentos.</p>
 <p>Independientemente de nuestro sistema operativo, por defecto, el demonio se lanza sobre el puerto 27017. Una vez instalado, si accedemos a <a href="http://localhost:27017">http://localhost:27017</a> podremos ver que nos indica cómo estamos intentando acceder mediante HTTP a <em>MongoDB</em> mediante el puerto reservado al <em>driver</em> nativo.</p>
 <figure style="align: center;">
     <img src="images/00localhost27017.png" alt="MongoDB - Acceso al puerto 27017">
     <figcaption>Acceso al puerto 27017</figcaption>
 </figure>
 
-<p>En vez de instalarlo como un servicio en nuestra máquina, a día de hoy, es mucho más cómodo hacer uso de contenedores <em>Docker</em> o utilizar una solución <em>cloud</em>.</p>
-<h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
-<p>Para lanzar el contenedor de Docker al que llamaremos <code>iadb-mongo</code> mediante el siguiente comando:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:27017:27017<span class="w"> </span>--name<span class="w"> </span>iabd-mongo<span class="w"> </span>-d<span class="w"> </span>mongo
-</code></pre></div>
-<div class="admonition caution">
-<p class="admonition-title">MongoDB y procesadores AVX</p>
-<p>Si tenemos un procesador sin soporte para AVX, necesitamos instalar una versión inferior a la 5.0.</p>
-<p>Así pues, podemos indicar la versión 4.4:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">127</span>.0.0.1:27017:27017<span class="w"> </span>--name<span class="w"> </span>iabd-mongo<span class="w"> </span>-d<span class="w"> </span>mongo:4.4
-</code></pre></div>
-</div>
-<p>A continuación vamos a descargar el conjunto de datos comprimido (<a href="https://atlas-education-staging.s3.amazonaws.com/sampledata.archive.gz">sampledata.archive.gz</a>) o sin comprimir (<a href="https://atlas-education.s3.amazonaws.com/sampledata.archive">sampledata.archive</a>) que ofrece <em>MongoDB</em> a modo de prueba, el cual vamos a emplear a lo largo de las diferentes sesiones.</p>
-<p>Volvemos al terminal de nuestro sistema y copiamos los datos desde nuestro sistema a la carpeta <code>/tmp</code> del contenedor:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>cp<span class="w"> </span>sampledata.archive.gz<span class="w"> </span>iabd-mongo:/tmp
-</code></pre></div>
-<p>Posteriormente abrimos un terminal dentro de nuestro contenedor (o mediante <em>Attach Shell</em> en <em>VSCode</em>):</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>iabd-mongo<span class="w"> </span>bash
-</code></pre></div>
-<p>Y finalmente, si hemos descargado el <code>.gz</code> lo descomprimimos (<code>gunzip sampledata.archive.gz</code>) y restauramos los datos mediante <code>mongorestore</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongorestore<span class="w"> </span>--archive<span class="o">=</span>sampledata.archive
-</code></pre></div>
-<p>Una vez cargados, nos informará que se han restaurado 433.281 documentos.</p>
 <h3 id="mongo-atlas">Mongo Atlas<a class="headerlink" href="#mongo-atlas" title="Permanent link">&para;</a></h3>
 <p>Si, en cambio, preferimos una solución <em>cloud</em>, disponemos de <a href="https://www.mongodb.com/es/atlas">Mongo Atlas</a>, que nos ofrece de manera gratuita un clúster compartido de servidores con 3 nodos y 512 MB para datos. Si queremos una solución <em>serverless</em> o un servidor dedicado, ya tendremos que <a href="https://www.mongodb.com/pricing">pasar por caja</a>.</p>
 <figure style="align: center;">
