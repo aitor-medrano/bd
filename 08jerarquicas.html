@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://aitor-medrano.github.io/bd/08jerarquicas.html">
       
       
+        <link rel="prev" href="13mongodb.html">
+      
+      
+        <link rel="next" href="00entorno.html">
       
       
       <link rel="icon" href="images/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>08jerarquicas - Bases de datos</title>
+        <title>Consultas jerárquicas - Bases de datos</title>
       
     
     
@@ -71,7 +75,7 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="08jerarquicas - Bases de datos" >
+        <meta  property="og:title"  content="Consultas jerárquicas - Bases de datos" >
       
         <meta  property="og:description"  content="None" >
       
@@ -87,7 +91,7 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="08jerarquicas - Bases de datos" >
+        <meta  name="twitter:title"  content="Consultas jerárquicas - Bases de datos" >
       
         <meta  name="twitter:description"  content="None" >
       
@@ -149,7 +153,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              08jerarquicas
+              Consultas jerárquicas
             
           </span>
         </div>
@@ -677,6 +681,150 @@
       
   
   
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Anexos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Anexos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Consultas jerárquicas
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="08jerarquicas.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Consultas jerárquicas
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#consultas-jerarquicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultas jerárquicas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Consultas jerárquicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cte-recursivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      CTE recursivo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operaciones-jerarquicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operaciones jerárquicas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
@@ -694,9 +842,33 @@
     </li>
   
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="validacion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validación CE
     
-      
-      
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
   
   
   
@@ -713,6 +885,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -796,93 +976,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#ejercicios-resueltos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ejercicios Resueltos
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ejercicios Resueltos">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ejercicio-3-encontrar-la-ruta-completa-desde-la-raiz-hasta-un-departamento-especifico" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ejercicio 3: Encontrar la ruta completa desde la raíz hasta un departamento específico
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ejercicio-4-presupuesto-total-por-nivel-jerarquico" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ejercicio 4: Presupuesto total por nivel jerárquico
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ejercicio-5-encontrar-el-departamento-con-mayor-numero-de-subordinados-directos-e-indirectos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ejercicio 5: Encontrar el departamento con mayor número de subordinados directos e indirectos
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ejercicio-6-departamentos-por-tipo-de-direccion-y-nivel-jerarquico" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ejercicio 6: Departamentos por tipo de dirección y nivel jerárquico
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ejercicio-7-cuales-departamentos-tienen-presupuesto-mayor-que-todos-sus-subdepartamentos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ejercicio 7: ¿Cuáles departamentos tienen presupuesto mayor que todos sus subdepartamentos?
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ejercicio-8-obtener-el-centro-con-mayor-numero-de-niveles-jerarquicos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ejercicio 8: Obtener el centro con mayor número de niveles jerárquicos
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ejercicio-9-distribucion-de-presupuesto-entre-departamentos-padre-e-hijos" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ejercicio 9: Distribución de presupuesto entre departamentos padre e hijos
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ejercicio-10-camino-mas-largo-en-la-jerarquia" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ejercicio 10: Camino más largo en la jerarquía
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -899,7 +992,7 @@
 
 
 
-  <h1>08jerarquicas</h1>
+  <h1>Consultas jerárquicas</h1>
 
 <!-- AC709 consulta jerárquica -->
 <h2 id="consultas-jerarquicas">Consultas jerárquicas<a class="headerlink" href="#consultas-jerarquicas" title="Permanent link">&para;</a></h2>
@@ -1258,10 +1351,14 @@ ASMZS --&gt; MECAS</code></pre>
 </code></pre></div>
 </li>
 </ul>
-<h2 id="ejercicios-resueltos">Ejercicios Resueltos<a class="headerlink" href="#ejercicios-resueltos" title="Permanent link">&para;</a></h2>
-<h3 id="ejercicio-3-encontrar-la-ruta-completa-desde-la-raiz-hasta-un-departamento-especifico">Ejercicio 3: Encontrar la ruta completa desde la raíz hasta un departamento específico<a class="headerlink" href="#ejercicio-3-encontrar-la-ruta-completa-desde-la-raiz-hasta-un-departamento-especifico" title="Permanent link">&para;</a></h3>
-<p><strong>Problema:</strong> Para el departamento 'ELELC', mostrar la ruta completa desde el departamento raíz.</p>
-<p><strong>Solución con CTE:</strong>
+<!--
+## Ejercicios Resueltos
+
+### Ejercicio 3: Encontrar la ruta completa desde la raíz hasta un departamento específico
+
+**Problema:** Para el departamento 'ELELC', mostrar la ruta completa desde el departamento raíz.
+
+**Solución con CTE:**
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">ruta_ascendente</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="c1">-- Consulta ancla: Comienza con el departamento objetivo</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span>
@@ -1290,10 +1387,13 @@ ASMZS --&gt; MECAS</code></pre>
 <span class="linenos" data-linenos="26 "></span><span class="w">    </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">ruta_inversa</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">ruta_ascendente</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">LENGTH</span><span class="p">(</span><span class="n">ruta_inversa</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">ruta_completa</span>
 <span class="linenos" data-linenos="27 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">ruta_ascendente</span>
 <span class="linenos" data-linenos="28 "></span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;ELELC&#39;</span><span class="p">;</span>
-</code></pre></div></p>
-<h3 id="ejercicio-4-presupuesto-total-por-nivel-jerarquico">Ejercicio 4: Presupuesto total por nivel jerárquico<a class="headerlink" href="#ejercicio-4-presupuesto-total-por-nivel-jerarquico" title="Permanent link">&para;</a></h3>
-<p><strong>Problema:</strong> Calcular la suma de presupuestos para cada nivel de profundidad en la jerarquía.</p>
-<p><strong>Solución con CTE:</strong>
+</code></pre></div>
+
+### Ejercicio 4: Presupuesto total por nivel jerárquico
+
+**Problema:** Calcular la suma de presupuestos para cada nivel de profundidad en la jerarquía.
+
+**Solución con CTE:**
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">jerarquia_por_nivel</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="c1">-- Consulta ancla: Departamentos raíz (nivel 1)</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span>
@@ -1323,10 +1423,13 @@ ASMZS --&gt; MECAS</code></pre>
 <span class="linenos" data-linenos="27 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">jerarquia_por_nivel</span>
 <span class="linenos" data-linenos="28 "></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">nivel</span>
 <span class="linenos" data-linenos="29 "></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">nivel</span><span class="p">;</span>
-</code></pre></div></p>
-<h3 id="ejercicio-5-encontrar-el-departamento-con-mayor-numero-de-subordinados-directos-e-indirectos">Ejercicio 5: Encontrar el departamento con mayor número de subordinados directos e indirectos<a class="headerlink" href="#ejercicio-5-encontrar-el-departamento-con-mayor-numero-de-subordinados-directos-e-indirectos" title="Permanent link">&para;</a></h3>
-<p><strong>Problema:</strong> Identificar qué departamento tiene más departamentos subordinados (considerando toda la estructura jerárquica debajo de él).</p>
-<p><strong>Solución con CTE:</strong>
+</code></pre></div>
+
+### Ejercicio 5: Encontrar el departamento con mayor número de subordinados directos e indirectos
+
+**Problema:** Identificar qué departamento tiene más departamentos subordinados (considerando toda la estructura jerárquica debajo de él).
+
+**Solución con CTE:**
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">jerarquia_completa</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="c1">-- Consulta ancla: Todos los departamentos</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span>
@@ -1362,10 +1465,13 @@ ASMZS --&gt; MECAS</code></pre>
 <span class="linenos" data-linenos="33 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">conteo_subordinados</span>
 <span class="linenos" data-linenos="34 "></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">num_subordinados</span><span class="w"> </span><span class="k">DESC</span>
 <span class="linenos" data-linenos="35 "></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-</code></pre></div></p>
-<h3 id="ejercicio-6-departamentos-por-tipo-de-direccion-y-nivel-jerarquico">Ejercicio 6: Departamentos por tipo de dirección y nivel jerárquico<a class="headerlink" href="#ejercicio-6-departamentos-por-tipo-de-direccion-y-nivel-jerarquico" title="Permanent link">&para;</a></h3>
-<p><strong>Problema:</strong> Agrupar los departamentos por tipo de dirección (F o P) y por nivel jerárquico.</p>
-<p><strong>Solución con CTE:</strong>
+</code></pre></div>
+
+### Ejercicio 6: Departamentos por tipo de dirección y nivel jerárquico
+
+**Problema:** Agrupar los departamentos por tipo de dirección (F o P) y por nivel jerárquico.
+
+**Solución con CTE:**
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">niveles_jerarquia</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="c1">-- Consulta ancla: Departamentos raíz</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span>
@@ -1395,10 +1501,13 @@ ASMZS --&gt; MECAS</code></pre>
 <span class="linenos" data-linenos="27 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">niveles_jerarquia</span>
 <span class="linenos" data-linenos="28 "></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">nivel</span><span class="p">,</span><span class="w"> </span><span class="n">TiDir</span>
 <span class="linenos" data-linenos="29 "></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">nivel</span><span class="p">,</span><span class="w"> </span><span class="n">TiDir</span><span class="p">;</span>
-</code></pre></div></p>
-<h3 id="ejercicio-7-cuales-departamentos-tienen-presupuesto-mayor-que-todos-sus-subdepartamentos">Ejercicio 7: ¿Cuáles departamentos tienen presupuesto mayor que todos sus subdepartamentos?<a class="headerlink" href="#ejercicio-7-cuales-departamentos-tienen-presupuesto-mayor-que-todos-sus-subdepartamentos" title="Permanent link">&para;</a></h3>
-<p><strong>Problema:</strong> Encontrar departamentos cuyo presupuesto es mayor que el de cualquiera de sus subdepartamentos directos.</p>
-<p><strong>Solución:</strong>
+</code></pre></div>
+
+### Ejercicio 7: ¿Cuáles departamentos tienen presupuesto mayor que todos sus subdepartamentos?
+
+**Problema:** Encontrar departamentos cuyo presupuesto es mayor que el de cualquiera de sus subdepartamentos directos.
+
+**Solución:**
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">d1</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d1</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span>
@@ -1410,10 +1519,13 @@ ASMZS --&gt; MECAS</code></pre>
 <span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d3</span><span class="w"> </span>
 <span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">d3</span><span class="p">.</span><span class="n">CodDepDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d1</span><span class="p">.</span><span class="n">CodDep</span>
 <span class="linenos" data-linenos="11 "></span><span class="p">);</span>
-</code></pre></div></p>
-<h3 id="ejercicio-8-obtener-el-centro-con-mayor-numero-de-niveles-jerarquicos">Ejercicio 8: Obtener el centro con mayor número de niveles jerárquicos<a class="headerlink" href="#ejercicio-8-obtener-el-centro-con-mayor-numero-de-niveles-jerarquicos" title="Permanent link">&para;</a></h3>
-<p><strong>Problema:</strong> Identificar el centro (CodCen) que tiene la estructura departamental más profunda.</p>
-<p><strong>Solución con CTE:</strong>
+</code></pre></div>
+
+### Ejercicio 8: Obtener el centro con mayor número de niveles jerárquicos
+
+**Problema:** Identificar el centro (CodCen) que tiene la estructura departamental más profunda.
+
+**Solución con CTE:**
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">profundidad_por_centro</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="c1">-- Consulta ancla: Departamentos raíz</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span>
@@ -1440,10 +1552,13 @@ ASMZS --&gt; MECAS</code></pre>
 <span class="linenos" data-linenos="24 "></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodCen</span>
 <span class="linenos" data-linenos="25 "></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">max_profundidad</span><span class="w"> </span><span class="k">DESC</span>
 <span class="linenos" data-linenos="26 "></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-</code></pre></div></p>
-<h3 id="ejercicio-9-distribucion-de-presupuesto-entre-departamentos-padre-e-hijos">Ejercicio 9: Distribución de presupuesto entre departamentos padre e hijos<a class="headerlink" href="#ejercicio-9-distribucion-de-presupuesto-entre-departamentos-padre-e-hijos" title="Permanent link">&para;</a></h3>
-<p><strong>Problema:</strong> Para cada departamento con subdepartamentos, calcular qué porcentaje del presupuesto total de la rama representa el departamento padre.</p>
-<p><strong>Solución con CTE:</strong>
+</code></pre></div>
+
+### Ejercicio 9: Distribución de presupuesto entre departamentos padre e hijos
+
+**Problema:** Para cada departamento con subdepartamentos, calcular qué porcentaje del presupuesto total de la rama representa el departamento padre.
+
+**Solución con CTE:**
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">jerarquia_presupuestos</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="c1">-- Consulta ancla: Todos los departamentos</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span>
@@ -1485,10 +1600,13 @@ ASMZS --&gt; MECAS</code></pre>
 <span class="linenos" data-linenos="39 "></span><span class="w">    </span><span class="n">ROUND</span><span class="p">((</span><span class="n">presupuesto_propio</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">presupuesto_total_rama</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">porcentaje_padre</span>
 <span class="linenos" data-linenos="40 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">presupuestos_rama</span>
 <span class="linenos" data-linenos="41 "></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">porcentaje_padre</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
-</code></pre></div></p>
-<h3 id="ejercicio-10-camino-mas-largo-en-la-jerarquia">Ejercicio 10: Camino más largo en la jerarquía<a class="headerlink" href="#ejercicio-10-camino-mas-largo-en-la-jerarquia" title="Permanent link">&para;</a></h3>
-<p><strong>Problema:</strong> Encontrar la ruta más larga (con más niveles) en toda la jerarquía de departamentos.</p>
-<p><strong>Solución con CTE:</strong>
+</code></pre></div>
+
+### Ejercicio 10: Camino más largo en la jerarquía
+
+**Problema:** Encontrar la ruta más larga (con más niveles) en toda la jerarquía de departamentos.
+
+**Solución con CTE:**
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">rutas_jerarquicas</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="c1">-- Consulta ancla: Departamentos raíz</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span>
@@ -1516,7 +1634,9 @@ ASMZS --&gt; MECAS</code></pre>
 <span class="linenos" data-linenos="25 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas_jerarquicas</span>
 <span class="linenos" data-linenos="26 "></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">longitud_ruta</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">ruta</span>
 <span class="linenos" data-linenos="27 "></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-</code></pre></div></p>
+</code></pre></div>
+-->
+
 <!--
 Contenidos básicos:
 
@@ -1672,6 +1792,44 @@ para la gestión de la información almacenada.
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Pie" >
+        
+          
+          <a href="13mongodb.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 13.- MongoDB">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                13.- MongoDB
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="00entorno.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Entorno">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              <div class="md-ellipsis">
+                Entorno
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

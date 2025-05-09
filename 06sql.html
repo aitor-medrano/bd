@@ -1099,6 +1099,77 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Anexos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Anexos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08jerarquicas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Consultas jerárquicas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="00entorno.html" class="md-nav__link">
         
@@ -1114,9 +1185,33 @@
     </li>
   
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="validacion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validación CE
     
-      
-      
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
   
   
   
@@ -1133,6 +1228,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -3142,7 +3245,8 @@ FETCH FIRST 1 ROW WITH TIES;
 </ul>
 </div>
 <h2 id="uniendo-tablas">Uniendo Tablas<a class="headerlink" href="#uniendo-tablas" title="Permanent link">&para;</a></h2>
-<p>Para unir varias tablas (realizar un <a href="https://mariadb.com/kb/en/join-syntax/"><em>join</em></a>) tenemos diferentes <a href="https://mariadb.com/kb/en/join-syntax/">formas</a> de hacerlo:</p>
+<p>Hasta ahora nos hemos dedicaod a realizar consultas sobre uno o más atributos de una determinada tabla. El modelo relacional se basa en la relación de una o más tablas, y por lo tanto, necesitamos de un mecanismo que nos permite obtener información de tablas que están relacionadas.</p>
+<p>Dicho esto, para unir varias tablas (realizar un <a href="https://mariadb.com/kb/en/join-syntax/"><em>join</em></a>) tenemos diferentes <a href="https://mariadb.com/kb/en/join-syntax/">formas</a> de hacerlo:</p>
 <ul>
 <li><em>cross join</em>: producto cartesiano entre dos tablas</li>
 <li><em>inner join</em>: une dos tablas por campos que coinciden en valor.</li>
@@ -3179,7 +3283,7 @@ FETCH FIRST 1 ROW WITH TIES;
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">CROSS</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="composicion-interna">Composición interna<a class="headerlink" href="#composicion-interna" title="Permanent link">&para;</a></h3>
-<p>La operación <code>[INNER] JOIN</code> combina registros de dos tablas siempre que existan valores coincidentes en un campo común (clave ajena con clave primaria). Para ello, se indica una tabla seguida (opcionalmente con el prefijo <code>inner</code>) de <code>join</code> con la segunda tabla, y tras <code>on</code>, igualamos la clave ajena con la primaria:</p>
+<p>La operación <code>[INNER] JOIN</code> combina registros de dos tablas siempre que existan valores coincidentes en un campo común (clave ajena con clave primaria). Para ello, se indica una tabla seguida (opcionalmente con el prefijo <code>INNER</code>) de <code>JOIN</code> con la segunda tabla, y tras <code>ON</code>, igualamos la clave ajena con la primaria:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">empleado</span><span class="p">.</span><span class="n">CodDep</span><span class="o">=</span><span class="n">departamento</span><span class="p">.</span><span class="n">CodDep</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+----------------------------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | NomDep                     |</span>
@@ -3197,12 +3301,12 @@ FETCH FIRST 1 ROW WITH TIES;
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- +-----------------------------+----------------------------+</span>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- 10 rows in set (0.001 sec)</span>
 </code></pre></div>
-<p>Es conveniente, y realmente más cómodo, poner un alias a las tablas (normalmente la inicial del nombre de la tabla tras el propio nombre de la misma) :</p>
+<p>Es conveniente, y realmente más cómodo, poner un alias a las tablas (normalmente la inicial del nombre de la tabla tras el propio nombre de la misma):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span><span class="p">;</span>
 </code></pre></div>
-<p>En versiones antiguas de SQL, era más común indicar las <a href="https://mariadb.com/kb/en/comma-vs-join/">tablas separadas por coma</a> y realizar el <em>join</em> en el <code>WHERE</code>, uniendo la clave ajena con la clave primaria de la tabla a la que referencia. Aunque a nivel funcional el resultado es el mismo, es recomendable utilizar la sintaxis <code>JOIN ... ON</code> por legibilidad, y es probable, que el optimizador de consultas del SGBD funcione mejor:</p>
+<p>En versiones antiguas de SQL era más común indicar las <a href="https://mariadb.com/kb/en/comma-vs-join/">tablas separadas por coma</a> y realizar el <em>join</em> en el <code>WHERE</code>, uniendo la clave ajena con la clave primaria de la tabla a la que referencia. Aunque a nivel funcional el resultado es el mismo, es recomendable utilizar la sintaxis <code>JOIN ... ON</code> por legibilidad, y es probable, que el optimizador de consultas del SGBD funcione mejor:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">--- SQL 86</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span>

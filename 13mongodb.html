@@ -16,7 +16,7 @@
         <link rel="prev" href="12redis.html">
       
       
-        <link rel="next" href="00entorno.html">
+        <link rel="next" href="08jerarquicas.html">
       
       
       <link rel="icon" href="images/favicon.png">
@@ -889,9 +889,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#contando-documentos" class="md-nav__link">
+  <a href="#contando" class="md-nav__link">
     <span class="md-ellipsis">
-      Contando Documentos
+      Contando
     </span>
   </a>
   
@@ -935,6 +935,30 @@
       Consultas sobre arrays
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Consultas sobre arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arrays-de-documentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arrays de documentos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proyeccion-de-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proyección de arrays
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1092,6 +1116,77 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_15" >
+        
+          
+          <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Anexos
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_15">
+            <span class="md-nav__icon md-icon"></span>
+            Anexos
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08jerarquicas.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Consultas jerárquicas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="00entorno.html" class="md-nav__link">
         
@@ -1107,9 +1202,33 @@
     </li>
   
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="validacion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validación CE
     
-      
-      
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
   
   
   
@@ -1126,6 +1245,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1356,9 +1483,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#contando-documentos" class="md-nav__link">
+  <a href="#contando" class="md-nav__link">
     <span class="md-ellipsis">
-      Contando Documentos
+      Contando
     </span>
   </a>
   
@@ -1402,6 +1529,30 @@
       Consultas sobre arrays
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Consultas sobre arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arrays-de-documentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arrays de documentos
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proyeccion-de-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proyección de arrays
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2320,7 +2471,7 @@
 <p class="admonition-title">Autoevaluación</p>
 <p>A partir de la colección <code>trips</code>, escribe una consulta que recupere los viajes realizados por subscriptores ordenados descendentemente por su duración y que obtenga los documentos de 15 al 20.</p>
 </div>
-<h4 id="contando-documentos">Contando Documentos<a class="headerlink" href="#contando-documentos" title="Permanent link">&para;</a></h4>
+<h4 id="contando">Contando<a class="headerlink" href="#contando" title="Permanent link">&para;</a></h4>
 <p>Para contar el número de documentos, en vez de <code>find</code> usaremos el método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.countDocuments/"><code>countDocuments</code></a>. Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">trips</span><span class="p">.</span><span class="nx">countDocuments</span><span class="p">({</span><span class="s2">&quot;birth year&quot;</span><span class="o">:</span><span class="mf">1977</span><span class="p">})</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1">// 186  </span>
@@ -2490,7 +2641,8 @@
 <span class="linenos" data-linenos="25 "></span><span class="c1">//   date: 2012-11-20T05:05:15.231Z }</span>
 </code></pre></div>
 </div>
-<p>Si trabajamos con arrays, vamos a poder consultar el contenido de una posición del mismo modo como si fuera un campo normal, siempre que sea un campo de primer nivel, es decir, no sea un documento embebido dentro de un array. Si hacemos una consulta sobre si un array contiene un elemento, obtendremos todos los documentos que contengan dicho valor:</p>
+<p>Si trabajamos con arrays, vamos a poder consultar el contenido de una posición del mismo modo como si fuera un campo normal, siempre que sea un campo de primer nivel, es decir, no sea un documento embebido dentro de un array.</p>
+<p>Si hacemos una consulta sobre si un array contiene un determinado elemento, obtendremos todos los documentos que contengan dicho valor:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">tags</span><span class="o">:</span><span class="s2">&quot;santa&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">tags</span><span class="o">:</span><span class="mf">1</span><span class="p">})</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1">// { _id: ObjectId(&#39;50ab0f8bbcf1bfe2536dc3f9&#39;),</span>
 <span class="linenos" data-linenos="3 "></span><span class="c1">//    tags: [&#39;watchmaker&#39;, &#39;santa&#39;, &#39;xylophone&#39;, &#39;math&#39;, &#39;handsaw&#39;, &#39;dream&#39;, &#39;undershirt&#39;, &#39;dolphin&#39;, &#39;tanker&#39;, &#39;action&#39;] }</span>
@@ -2499,9 +2651,13 @@
 <span class="linenos" data-linenos="6 "></span><span class="c1">// { _id: ObjectId(&#39;50ab0f8bbcf1bfe2536dc50d&#39;),</span>
 <span class="linenos" data-linenos="7 "></span><span class="c1">//    tags: [&#39;santa&#39;, &#39;spear&#39;, &#39;opinion&#39;, &#39;rainbow&#39;, &#39;century&#39;, &#39;puffin&#39;, &#39;romanian&#39;, &#39;scent&#39;, &#39;river&#39;, &#39;supermarket&#39;] }</span>
 </code></pre></div>
+<p>Si queremos que coincida exactamente (mismos elementos en el mismo orden), debemos indicarlo pasando el propio array</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">tags</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;santa&quot;</span><span class="p">]},</span><span class="w"> </span><span class="p">{</span><span class="nx">tags</span><span class="o">:</span><span class="mf">1</span><span class="p">})</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">// No encuentra ningún elemento</span>
+</code></pre></div>
 <p>Si queremos filtrar teniendo en cuenta el número de ocurrencias del array, podemos utilizar:</p>
 <ul>
-<li><a href="https://www.mongodb.com/docs/manual/reference/operator/query/all/"><code>$all</code></a> para filtrar ocurrencias que tienen todos los valores especificado, es decir, los valores pasados a la consulta serán un subconjunto del resultado. Puede que devuelva los mismos, o un array con más campos (el orden no importa)</li>
+<li><a href="https://www.mongodb.com/docs/manual/reference/operator/query/all/"><code>$all</code></a> para filtrar ocurrencias que tienen todos los valores especificados, es decir, los valores pasados a la consulta serán un subconjunto del resultado. Puede que devuelva los mismos, o un array con más campos (el orden no importa)</li>
 <li><a href="https://www.mongodb.com/docs/manual/reference/operator/query/in/"><code>$in</code></a>, igual que SQL, para obtener las ocurrencias que cumple con alguno de los valores pasados (similar a usar <code>$or</code> sobre un conjunto de valores de un mismo campo). Si queremos su negación, usaremos <code>$nin</code>, para obtener los documentos que no cumplen ninguno de los valores.</li>
 </ul>
 <p>Por ejemplo, si queremos obtener los mensajes que contenga las etiquetas <code>dream</code> y <code>action</code> tendríamos:</p>
@@ -2514,24 +2670,28 @@
 <span class="linenos" data-linenos="2 "></span><span class="c1">// { &quot;_id&quot;: ObjectId(&#39;50ab0f8bbcf1bfe2536dc3f9&#39;),</span>
 <span class="linenos" data-linenos="3 "></span><span class="c1">//   &quot;tags&quot;: [&quot;watchmaker&quot;, &quot;santa&quot;, &quot;xylophone&quot;, &quot;math&quot;, &quot;handsaw&quot;, &quot;dream&quot;, &quot;undershirt&quot;, &quot;dolphin&quot;, &quot;tanker&quot;, &quot;action&quot;] }</span>
 </code></pre></div>
-<p>Si el array contiene documentos y queremos filtrar la consulta sobre los campos de los documentos del array, tenemos que utilizar <a href="https://www.mongodb.com/docs/manual/reference/operator/query/elemMatch/"><code>$elemMatch</code></a>, de manera que obtengamos aquellos que al menos encuentre un elemento que cumpla el criterio. Así pues, si queremos recuperar los mensajes que tienen un comentario cuyo autor sea <code>Santiago Dollins</code> haríamos:</p>
+<p>Si lo que nos interesa es la cantidad de elementos que contiene un array, emplearemos el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/query/size/"><code>$size</code></a>. Por ejemplo, para obtener los mensajes que tienen 10 etiquetas haríamos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">tags</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$size</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">}}</span><span class="w"> </span><span class="p">)</span>
+</code></pre></div>
+<p>Finalmente, si queremos buscar por un valor en una posición específica del array, sabiendo que el primer índice es el elemento 0, podemos hacerlo mediante la notación punto:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="s2">&quot;tags.0&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;santa&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">tags</span><span class="o">:</span><span class="mf">1</span><span class="p">})</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">// { _id: ObjectId(&#39;50ab0f8bbcf1bfe2536dc50d&#39;),</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">//    tags: [&#39;santa&#39;, &#39;spear&#39;, &#39;opinion&#39;, &#39;rainbow&#39;, &#39;century&#39;, &#39;puffin&#39;, &#39;romanian&#39;, &#39;scent&#39;, &#39;river&#39;, &#39;supermarket&#39;] }</span>
+</code></pre></div>
+<h4 id="arrays-de-documentos">Arrays de documentos<a class="headerlink" href="#arrays-de-documentos" title="Permanent link">&para;</a></h4>
+<p>Si el array contiene documentos y queremos filtrar la consulta sobre los campos de los documentos del array, tenemos que utilizar <a href="https://www.mongodb.com/docs/manual/reference/operator/query/elemMatch/"><code>$elemMatch</code></a>, de manera que obtengamos aquellos que al menos encuentre un elemento que cumpla el criterio. Dicho de otra manera, el operador <code>elemMatch</code> garantiza que todas las condiciones se cumplan en el mismo elemento del array.</p>
+<p>Así pues, si queremos recuperar los mensajes que tienen un comentario cuyo autor sea <code>Santiago Dollins</code> el cual tiene como email <code>xnZKyvWD@jHfVKtUh.com</code> haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">comments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$elemMatch</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">author</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Santiago Dollins&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xnZKyvWD@jHfVKtUh.com&quot;</span><span class="p">}}}</span><span class="w"> </span><span class="p">)</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Criterio con notación punto</p>
 <p>En el ejemplo anterior, si sólo hubiéramos tenido un campo para el filtrado, podríamos haber utilizado la notación punto <code>comments.author</code>.</p>
 </div>
-<p>Si sólo queremos los comentarios escritos por un determinado autor, además de en el filtrado, hemos de indicarlo en la proyección:</p>
-<!-- FIXME: Revisar consultas con elemnMatch -->
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span>
-<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="p">{</span><span class="nx">comments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$elemMatch</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">author</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Santiago Dollins&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xnZKyvWD@jHfVKtUh.com&quot;</span><span class="p">}}},</span>
-<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="p">{</span><span class="nx">comments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$elemMatch</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">author</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Santiago Dollins&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xnZKyvWD@jHfVKtUh.com&quot;</span><span class="p">}}}</span><span class="w"> </span><span class="p">)</span>
+<p>De forma similar a antes, si queremos filtrar por un elemento que ocupa una determinada posición, usaremos la notación punto sabiendo que el primer índice comienza por 0. Así pues, si queremos recuperar aquellos mensajes donde el primer mensaje tenga un valor determinado, podemos hacer:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;comments.0.author&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Santiago Dollins&quot;</span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
 </code></pre></div>
-<p>Si lo que nos interesa es la cantidad de elementos que contiene un array, emplearemos el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/query/size/"><code>$size</code></a>. Por ejemplo, para obtener los mensajes que tienen 10 etiquetas haríamos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">tags</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$size</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">}}</span><span class="w"> </span><span class="p">)</span>
-</code></pre></div>
-<p>Finalmente, a la hora de proyectar los datos, si no estamos interesados en todos los valores de un campo que es un array, podemos restringir el resultado mediante el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/projection/slice/"><code>$slice</code></a>. Así pues, si quisiéramos obtener los mensajes titulados <code>US Constitution</code> y que de esos mensajes, mostrara sólo tres etiquetas y dos comentarios, haríamos:</p>
+<h4 id="proyeccion-de-arrays">Proyección de arrays<a class="headerlink" href="#proyeccion-de-arrays" title="Permanent link">&para;</a></h4>
+<p>A la hora de proyectar los datos, si no estamos interesados en todos los valores de un campo que es un array, podemos restringir el resultado mediante el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/projection/slice/"><code>$slice</code></a>. Así pues, si quisiéramos obtener los mensajes titulados <code>US Constitution</code> y que de esos mensajes, mostrara sólo tres etiquetas y dos comentarios, haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">title</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;US Constitution&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">comments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$slice</span><span class="o">:</span><span class="mf">2</span><span class="p">},</span><span class="w"> </span><span class="nx">tags</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$slice</span><span class="o">:</span><span class="mf">3</span><span class="p">}}</span><span class="w"> </span><span class="p">)</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">// { _id: ObjectId(&quot;50ab0f8bbcf1bfe2536dc416&quot;),</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">//   body: &#39;We the personas ...&#39;,</span>
@@ -2547,6 +2707,27 @@
 <span class="linenos" data-linenos="13 "></span><span class="c1">//        email: &#39;dsoLAdFS@VGBBuDVs.com&#39;,</span>
 <span class="linenos" data-linenos="14 "></span><span class="c1">//        author: &#39;Nobuko Linzey&#39; } ],</span>
 <span class="linenos" data-linenos="15 "></span><span class="c1">//   date: 2012-11-20T05:05:15.276Z }</span>
+</code></pre></div>
+<p>En cuanto a las proyecciones sobre subdocumentos contenidos dentro de un array, además de filtrar mediante <code>elemMatch</code> hemos de indicarlo en la proyección. Así pues, si sólo queremos los comentarios escritos por un determinado autor, haríamos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="p">{</span><span class="nx">comments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$elemMatch</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">author</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Santiago Dollins&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xnZKyvWD@jHfVKtUh.com&quot;</span><span class="p">}}},</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="p">{</span><span class="nx">comments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$elemMatch</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">author</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Santiago Dollins&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xnZKyvWD@jHfVKtUh.com&quot;</span><span class="p">}}}</span><span class="w"> </span><span class="p">)</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">// {</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">//   _id: ObjectId(&#39;50ab0f8bbcf1bfe2536dc45e&#39;),</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">//   comments: [</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">//     {</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">//       body: &#39;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum&#39;,</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">//       email: &#39;xnZKyvWD@jHfVKtUh.com&#39;,</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">//       author: &#39;Santiago Dollins&#39;</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">//     }</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">//   ]</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">// }</span>
+</code></pre></div>
+<p>Si sólo nos interesa el primer elemento que coincida podemos emplear el <a href="https://www.mongodb.com/docs/manual/reference/operator/update/positional/">operador posicional</a> <code>$</code> (lo estudiaremos más profundamente cuando trabajemos las operaciones DML sobre arrays):</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="p">{</span><span class="nx">comments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$elemMatch</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">author</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Santiago Dollins&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">email</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;xnZKyvWD@jHfVKtUh.com&quot;</span><span class="p">}}},</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="p">{</span><span class="s2">&quot;comments.$&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
 </code></pre></div>
 <h2 id="modificando-documentos">Modificando documentos<a class="headerlink" href="#modificando-documentos" title="Permanent link">&para;</a></h2>
 <p>Ya hemos visto que podemos añadir datos mediante la operación <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne"><code>insertOne</code></a>. Además, si queremos insertar más de un documento a la vez, podemos hacer uso de la operación <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.insertMany"><code>insertMany</code></a>, la cual admite un array de documentos.</p>
@@ -2866,16 +3047,24 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <p><a name="AC1302"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1302</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Haciendo uso de <code>mongosh</code>, escribe los comandos necesarios y adjunta el resultado de las consultas para:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1302</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Haciendo uso de <code>mongosh</code>, escribe los comandos necesarios y adjunta el resultado de las consultas para: <!-- compuestas, and, or, in + proyección de campos --></p>
 <ol>
 <li>Obtener las bases de datos creadas.</li>
-<li>Sobre la base de datos <code>sample_training</code> y la colección <code>zips</code>:<ol>
-<li>Recupera todos los documentos.</li>
-<li>Recupera el primer documento.</li>
-<li>Recupera los documentos de la ciudad de <code>SAN DIEGO</code>.</li>
-<li>Averigua cuantos documentos hay de la ciudad de <code>SAN DIEGO</code>.</li>
-<li>Recupera los documentos cuya ciudad sea <code>SAN DIEGO</code> pero no pertenezcan al estado de <code>CA</code>.</li>
-<li>Cual es el código postal de la ciudad de <code>ALLEN</code> que no tiene habitantes (sólo recupera el <code>zip</code>, no nos interesa ningún otro campo, ni el <code>_id</code>).</li>
+<li>Sobre la base de datos <code>sample_training</code><ol>
+<li>Recuperar todas las colecciones</li>
+<li>Recuperar qué base de datos está activa.</li>
+</ol>
+</li>
+<li>Sobre la colección <code>sample_training.zips</code>:<ol>
+<li>Recuperar todos los documentos.</li>
+<li>Recuperar el primer documento.</li>
+<li>Recuperar los documentos de la ciudad de <code>SAN DIEGO</code>.</li>
+<li>Recuperar los códigos postales (<code>zip</code>) cuya ciudad sea <code>SAN DIEGO</code> y el estado sea <code>CA</code>.</li>
+<li>Recuperar los documentos cuya ciudad sea <code>SAN DIEGO</code> pero no pertenezcan al estado de <code>CA</code>.</li>
+<li>Recuperar los documentos cuya ciudad sea <code>SAN DIEGO</code> y el estado sea <code>CA</code> o <code>TX</code>.</li>
+<li>Recuperar los documentos cuya ciudad sea <code>SAN DIEGO</code> o el estado sea <code>TX</code>.</li>
+<li>Recuperar los documentos donde el <code>zip</code> sea <code>92135</code>, <code>92136</code> o <code>92137</code>. <!-- db.zips.find({zip:{$in:['92135','92136','92137']}})  --></li>
+<li>¿Cual es el código postal de la ciudad de <code>ALLEN</code> que no tiene habitantes (sólo recupera el <code>zip</code>, no nos interesa ningún otro campo, ni el <code>_id</code>) ?.</li>
 </ol>
 </li>
 </ol>
@@ -2884,9 +3073,13 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <p><a name="AC1303"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1303</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p)  Escribe los comandos necesarios para realizar las siguientes consultas sobre la colección <code>zips</code> de la base de datos <code>sample_training</code>:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1303</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p)  Escribe los comandos necesarios para realizar las siguientes consultas sobre la colección <code>zips</code> de la base de datos <code>sample_training</code>: <!-- cursores, contar, fechas, regex, exprs --></p>
 <ol>
-<li>Averigua cuantos documentos tienen menos de 100 personas (campo <code>pop</code>).</li>
+<li>Recupera los documentos que tienen menos de 50 personas (campo <code>pop</code>).</li>
+<li>Recupera los documentos que tienen entre 50 y 100 personas.</li>
+<li>Averigua cuantos documentos hay de la ciudad de <code>SAN DIEGO</code>.</li>
+<li>Averigua cuantos documentos tienen menos de 100 personas.</li>
+<li>Recupera los documentos donde el nombre de la ciudad contenga la palabra <code>BEACH</code>.</li>
 <li>Obtén los estados de la ciudad de <code>SAN DIEGO</code> (Solución: <code>[ 'CA', 'TX' ]</code>).</li>
 <li>Listado con los 5 códigos postales más poblados (muestra los documentos completos).</li>
 <li>Cantidad de documentos que no tienen menos de 5.000 habitantes ni más de 1.000.000 (debes utilizar el operador <code>$nor</code>).</li>
@@ -2897,62 +3090,40 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <p><a name="AR1304"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1304</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p)  Escribe los comandos necesarios para realizar las siguientes consultas sobre la colección <code>trips</code> de la base de datos <code>sample_training</code>:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1304</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Escribe los comandos necesarios para realizar las siguientes consultas sobre la colección <code>trips</code> de la base de datos <code>sample_training</code>:</p>
 <ol>
-<li>xxx</li>
+<li>Recupera los viajes realizados con la bicicleta con ID 14785</li>
+<li>Encuentra los viajes que duraron más de 1 hora.</li>
+<li>Mostrar solo el ID de la bicicleta, la duración del viaje y los nombres de las estaciones de los viajes realizados por usuarios nacidos después de 1990.</li>
+<li>Recupera los viajes realizados desde la estación <code>Huron St &amp; Franklin St</code> y con duración menor a 500 segundos</li>
+<li>Encontrar los 10 viajes más largos, ordenados de mayor a menor duración.</li>
+<li>Encontrar viajes con estaciones que contengan <code>Ave</code> en su nombre.</li>
+<li>¿Cuantos viajes han realizado los usuarios de tipo <code>Customer</code>.</li>
+<li>Recuper los viajes realizados entre el 1 de enero y el 31 de marzo de 2016.</li>
+<li>Encontrar viajes con duración entre 10 y 20 minutos, hechos por usuarios nacidos antes de 1980.</li>
+<li>Encontrar los viajes que duraron más de una hora o que fueron realizados por usuarios nacidos después del año 2000</li>
+<li>Mostrar los 5 viajes más recientes, pero saltando los primeros 10 resultados</li>
 </ol>
 </li>
 </ul>
 <p><a name="AC1305"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1305</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Escribe los comandos necesarios para realizar las siguientes consultas sobre la colección <code>sales</code> de la base de datos <code>sample_supplies</code>:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1305</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado los elementos utilizados en estas bases de datos.">CE7c</abbr>, <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Escribe los comandos necesarios para realizar las siguientes consultas sobre la colección <code>sales</code> de la base de datos <code>sample_supplies</code>: <!-- arrays --></p>
 <ol>
-<li>Recupera los documentos que han vendido algún elemento (forma parte del array <code>items</code>) de nombre <code>notepad</code>.</li>
-<li>Averiguar cuantos documentos tienen elementos etiquetados (<code>tags</code>) como <code>office</code>.</li>
-<li>Recupera las ventas que tengan las etiquetas <code>stationary</code>, <code>office</code> y <code>general</code>.</li>
-<li>Recupera la ventas que tengan exactamente 4 eiquetas.</li>
+<li>Recupera los documentos que han vendido algún producto (forma parte del array <code>items</code>) de nombre <code>notepad</code>.</li>
+<li>Recupera los documentos donde el primer producto sea <code>notepad</code>.</li>
+<li>Recupera los documentos donde el primer producto sea  <code>notepad</code> y haya vendido un mínimo de 5 (<code>quantity</code>) unidades.</li>
+<li>Recupera los documentos que han vendido exactamente dos productos.</li>
+<li>Averiguar los ventas y sus productos donde el precio de los productos es superior a 20€ pero inferior a 40€.</li>
+<li>Recupera las ventas donde sus productos tengan las etiquetas <code>stationary</code>, <code>office</code> y <code>general</code>.</li>
+<li>Recupera las ventas donde sus productos tengan las etiquetas <code>writing</code>, <code>office</code> o <code>electronics</code>.</li>
+<li>Para las ventas que sean <code>notepad</code> o <code>laptop</code>, recuperar el primer producto.</li>
+<li>Recupera la ventas realizadas por hombres de más de 40 años que hayan comprado dos productos.</li>
+<li>Para las ventas realizadas por mujeres y realizadas por teléfono (<code>purchaseMethod</code>), recupera dos de los productos adquiridos.</li>
 </ol>
 </li>
 </ul>
-<!--
-Consulta 7: Obtener solo los items que coinciden con cierto criterio
-javascriptdb.sales.find(
-  {"items.tags": "school"},
-  {"items.$": 1, "storeLocation": 1}
-)
-Explicación: El operador de proyección posicional $ devuelve solo el primer elemento del array "items" que cumple con la condición especificada en la consulta, junto con el campo "storeLocation".
-
-Consulta 8: Buscar ventas con cierta cantidad de items
-javascriptdb.sales.find({
-  $expr: {
-    $gte: [{$size: "$items"}, 5]
-  }
-})
-Explicación: Usando $expr junto con $size y $gte, encontramos documentos que tengan 5 o más elementos en el array "items". El operador $expr permite usar operadores de agregación en la etapa de filtrado.
-
-Consulta 9: Filtrar por elementos específicos con $elemMatch
-javascriptdb.sales.find({
-  "items": {
-    $elemMatch: {
-      "name": "notepad",
-      "quantity": {$gt: 1}
-    }
-  }
-})
-Explicación: El operador $elemMatch busca documentos donde al menos un elemento del array "items" cumpla con múltiples condiciones simultáneamente: tener "name" igual a "notepad" y "quantity" mayor que 1.
-
-Consulta 11: Productos con precios dentro de un rango y con tags específicos
-javascriptdb.sales.find({
-  "items": {
-    $elemMatch: {
-      "price": {$gte: {$numberDecimal: "20"}, $lte: {$numberDecimal: "50"}},
-      "tags": {$in: ["office", "school"]}
-    }
-  }
-})
--->
-
 <p><a name="AR1306"></a></p>
 <ul>
 <li>
@@ -2980,7 +3151,7 @@ javascriptdb.sales.find({
 </code></pre></div>
 </li>
 <li>
-<p>Crea una entrada con los datos del código postal donde vives (si es el mismo código postal, crea uno diferente).</p>
+<p>Crea una entrada con los datos del código postal donde vives (si es el mismo código postal, crea uno diferente), con el valor de <code>state</code> a <code>España</code>.</p>
 </li>
 <li>Modifica la población de tu código postal a <code>1.000.000</code>.</li>
 <li>Incrementa la población de todos los documentos de <code>España</code> en 666 personas.</li>
@@ -3205,13 +3376,13 @@ para la gestión de la información almacenada.
         
         
           
-          <a href="00entorno.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Entorno">
+          <a href="08jerarquicas.html" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Consultas jerárquicas">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Siguiente
               </span>
               <div class="md-ellipsis">
-                Entorno
+                Consultas jerárquicas
               </div>
             </div>
             <div class="md-footer__button md-icon">
