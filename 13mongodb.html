@@ -3217,12 +3217,18 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <p>Un aspecto a tener en cuenta es que un documento BSON puede contener un máximo de 16MB. Si quisiéramos que un atributo contenga más información, tendríamos que utilizar el API de GridFS.</p>
 <p>Vamos a estudiar en detalle cada uno de los tipos de <a href="https://www.mongodb.com/docs/manual/applications/data-models-relationships/">relaciones</a>, para intentar clarificar cuando es conveniente utilizar referencias o datos embebidos.</p>
 <h3 id="relaciones-11">Relaciones 1:1<a class="headerlink" href="#relaciones-11" title="Permanent link">&para;</a></h3>
-<p>Cuando existe una relación 1:1, como pueda ser entre <code>Persona</code> y <code>Curriculum</code>, o <code>Persona</code> y <code>Direccion</code> hay que embeber un documento dentro del otro, como parte de un atributo:</p>
-<figure style="float: right;">
-    <img src="images/13persona.png" alt="Documento persona" width="400px">
-    <figcaption>Documento persona</figcaption>
-</figure>
-
+<p>Cuando existe una relación 1:1, como pueda ser entre <code>Persona</code> y <code>Curriculum</code>, o <code>Persona</code> y <code>Direccion</code> hay que embeber un documento dentro del otro, como parte de un atributo.</p>
+<div class="grid cards">
+<ul>
+<li>
+<p><strong>Estructura</strong></p>
+<p><figure style="align: center;">
+    <img src="images/13persona.png" alt="Relación 1:1 persona-dirección" width="400px">
+    <figcaption>Relación 1:1 persona-dirección</figcaption>
+</figure></p>
+</li>
+<li>
+<p><strong>Documento de ejemplo</strong></p>
 <div class="highlight"><span class="filename">persona.json</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Aitor&quot;</span><span class="p">,</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">edad</span><span class="o">:</span><span class="w"> </span><span class="mf">18</span><span class="p">,</span>
@@ -3232,6 +3238,9 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <span class="linenos" data-linenos="7 "></span><span class="w">  </span><span class="p">}</span>
 <span class="linenos" data-linenos="8 "></span><span class="p">}</span>
 </code></pre></div>
+</li>
+</ul>
+</div>
 <p>La principal ventaja de este planteamiento es que mediante una única consulta podemos obtener tanto los detalles del usuario como su dirección.</p>
 <p>Un par de aspectos que nos pueden llevar a no embeberlos son:</p>
 <ul>
@@ -3244,10 +3253,17 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <ul>
 <li>
 <p><strong>1 a pocos (1:F)</strong> (<em>one to few</em>), como por ejemplo, dentro de un blog, la relación entre <code>Mensaje</code> y <code>Comentario</code>. En este caso, la mejor solución es crear un array dentro de la entidad 1 (en nuestro caso, <code>Mensaje</code>). De este modo, el <code>Mensaje</code> contiene un array de <code>Comentario</code>:</p>
-<p><figure style="float: right;">
+<div class="grid cards" markdown>
+<ul>
+<li>
+<p><strong>Estructura</strong></p>
+<p><figure style="align: center;">
     <img src="images/13mensaje.png" alt="Relación 1:F mensaje-comentarios" width="400px">
     <figcaption>Relación 1:F mensaje-comentarios</figcaption>
 </figure></p>
+</li>
+<li>
+<p><strong>Documento de ejemplo</strong></p>
 <div class="highlight"><span class="filename">mensaje.json</span><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="p">{</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="s2">&quot;titulo&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;La broma asesina&quot;</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="s2">&quot;url&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;http://es.wikipedia.org/wiki/Batman:_The_Killing_Joke&quot;</span><span class="p">,</span>
@@ -3266,6 +3282,9 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <span class="linenos" data-linenos="16 "></span><span class="w">  </span><span class="p">]</span>
 <span class="linenos" data-linenos="17 "></span><span class="p">}</span>
 </code></pre></div>
+</li>
+</ul>
+</div>
 <div class="admonition caution">
 <p class="admonition-title">Vigilar el tamaño</p>
 <p>Hay que tener siempre en mente la restricción de los 16 MB de BSON. Si vamos a embeber muchos documentos y estos son grandes, hay que vigilar no llegar a dicho límite.</p>
@@ -3278,6 +3297,21 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </li>
 <li>
 <p><strong>1 a muchos (1:N)</strong> (<em>one to many</em>), como puede ser entre <code>Editorial</code> y <code>Libro</code>. Para este tipo de relación es mejor usar referencias entre los documentos colocando la referencia en el lado del muchos:</p>
+<div class="grid cards" markdown>
+<ul>
+<li>
+<p><strong>Estructura</strong></p>
+<p><figure style="align: center;">
+    <img src="images/13libro-editorial-sinfondo.png" alt="Relación 1:N editorial-libro" width="800px">
+    <figcaption>Relación 1:N editorial-libro</figcaption>
+</figure></p>
+</li>
+</ul>
+</div>
+<div class="grid cards" markdown>
+<ul>
+<li>
+<p><strong>Documento de ejemplo</strong></p>
 <div class="highlight"><span class="filename">editorial.json</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;O&#39;Reilly&quot;</span><span class="p">,</span>
@@ -3299,10 +3333,9 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="nx">editorial_id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
 <span class="linenos" data-linenos="14 "></span><span class="p">}</span>
 </code></pre></div>
-<p><figure style="align: center;">
-    <img src="images/13libro-editorial-sinfondo.png" alt="Relación 1:N editorial-libro" width="800px">
-    <figcaption>Relación 1:N editorial-libro</figcaption>
-</figure></p>
+</li>
+</ul>
+</div>
 <p>Si cada vez que recuperamos un libro queremos tener el nombre de la editorial y con una sola consulta recuperar todos los datos, en vez poner la referencia a la editorial, podemos embeber toda la información (esto se conoce como el patrón <a href="#referencia-extendida"><em>referencia extendida</em></a>), a costa de que un futuro cambio en el nombre de la editorial conlleve modificar muchos libros:</p>
 <div class="highlight"><span class="filename">libros2.json</span><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="p">{</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="mf">1234</span><span class="p">,</span>
