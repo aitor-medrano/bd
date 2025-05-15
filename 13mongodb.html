@@ -2313,7 +2313,7 @@
 <p>Para acceder a la coordenada <code>x</code> usaremos la propiedad <code>loc.x</code>, la cual obligatoriamente deberemos rodear mediante comillas:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">zips</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="s2">&quot;loc.x&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">86.239334</span><span class="p">})</span>
 </code></pre></div>
-<p>En cambio, si queremos indicar <strong>más de un criterio</strong>, el documento con las condiciones contendrá tantos campos como elementos a filtrar. Así pues, para obtener aquellas poblaciones del estado <code>AL</code> dentro de la ciudad <code>DELTA</code>, haríamos :</p>
+<p>En cambio, si queremos indicar <strong>más de un criterio</strong>, el documento con las condiciones contendrá tantos campos como elementos a filtrar. Así pues, para obtener aquellas poblaciones del estado <code>AL</code> dentro de la ciudad <code>DELTA</code>, haríamos:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Consulta</label><label for="__tabbed_2_2">Resultado</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2400,7 +2400,7 @@
 </code></pre></div>
 <div class="admonition danger">
 <p class="admonition-title">Polimorfismo</p>
-<p>Mucho cuidado al usar polimorfismo y almacenar en un mismo campo un entero y una cadena, ya que al hacer comparaciones para recuperar datos, no vamos a poder mezclar cadenas con valores numéricos. Se considera un antipatrón el mezclar tipos de datos en un campo.</p>
+<p>Mucho cuidado al usar polimorfismo y almacenar en un mismo campo un entero y una cadena, ya que, al hacer comparaciones para recuperar datos, no vamos a poder mezclar cadenas con valores numéricos. Se considera un antipatrón el mezclar tipos de datos en un campo.</p>
 </div>
 <p>Pese a que ciertos operadores contengan su correspondiente <strong>operador negado</strong>, <em>MongoDB</em> ofrece el operador <code>$not</code>. Éste puede utilizarse conjuntamente con otros operadores para negar el resultado de los documentos obtenidos.</p>
 <p>Por ejemplo, si queremos obtener todas las personas cuya edad no sea múltiplo de 5, podríamos hacerlo así:</p>
@@ -2800,7 +2800,7 @@
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;comments.0.author&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Santiago Dollins&quot;</span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
 </code></pre></div>
 <h4 id="proyeccion-de-arrays">Proyección de arrays<a class="headerlink" href="#proyeccion-de-arrays" title="Permanent link">&para;</a></h4>
-<p>A la hora de proyectar los datos, si no estamos interesados en todos los valores de un campo que es un array, podemos restringir el resultado mediante el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/projection/slice/"><code>$slice</code></a>. Así pues, si quisiéramos obtener los mensajes titulados <code>US Constitution</code> y que de esos mensajes, mostrara sólo tres etiquetas y dos comentarios, haríamos:</p>
+<p>A la hora de proyectar los datos, si no estamos interesados en todos los valores de un campo que es un array, podemos restringir el resultado mediante el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/projection/slice/"><code>$slice</code></a>. Así pues, si quisiéramos obtener los mensajes titulados <code>US Constitution</code> y que, de esos mensajes, muestre sólo tres etiquetas y dos comentarios, haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">title</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;US Constitution&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">comments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$slice</span><span class="o">:</span><span class="mf">2</span><span class="p">},</span><span class="w"> </span><span class="nx">tags</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$slice</span><span class="o">:</span><span class="mf">3</span><span class="p">}}</span><span class="w"> </span><span class="p">)</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">// { _id: ObjectId(&quot;50ab0f8bbcf1bfe2536dc416&quot;),</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">//   body: &#39;We the personas ...&#39;,</span>
@@ -2877,7 +2877,7 @@
 <p>Si cuando vamos a actualizar, en el criterio de selección no encuentra el documento sobre el que hacer los cambios, no se realiza ninguna acción.</p>
 <p>Si quisiéramos que en el caso de no encontrar nada insertase un nuevo documento, acción conocida como <strong><em>upsert</em></strong> (<em>update + insert</em>), hay que pasarle un tercer parámetro al método con el objeto <code>{upsert:true}</code>. Si encuentra el documento, lo modificará, pero si no, creará uno nuevo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Andreu Medrano&quot;</span><span class="p">},</span>
-<span class="linenos" data-linenos="2 "></span><span class="w">                    </span><span class="p">{</span><span class="nx">$set</span><span class="o">:</span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;Andreu Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">twitter</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;@andreumedrano&quot;</span><span class="p">}},</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">                    </span><span class="p">{</span><span class="nx">$set</span><span class="o">:</span><span class="p">{</span><span class="nx">name</span><span class="o">:</span><span class="s2">&quot;Andreu Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">bsky</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;@andreumedrano&quot;</span><span class="p">}},</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="w">                    </span><span class="p">{</span><span class="nx">upsert</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">})</span>
 </span></code></pre></div>
 <h3 id="operadores-de-actualizacion">Operadores de actualización<a class="headerlink" href="#operadores-de-actualizacion" title="Permanent link">&para;</a></h3>
@@ -2891,8 +2891,8 @@
 <span class="linenos" data-linenos="2 "></span><span class="err">db.perso</span><span class="kc">nas</span><span class="err">.upda</span><span class="kc">te</span><span class="err">O</span><span class="kc">ne</span><span class="err">(</span><span class="p">{</span><span class="kc">n</span><span class="err">ombre</span><span class="p">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="err">$i</span><span class="kc">n</span><span class="err">c</span><span class="p">:{</span><span class="err">salario</span><span class="p">:</span><span class="w"> </span><span class="mi">-500</span><span class="p">}}</span><span class="err">)</span>
 </code></pre></div>
 <p>Para eliminar un campo de un documento, usaremos el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/update/unset/"><code>$unset</code></a>.</p>
-<p>De este modo, para eliminar el campo <em>twitter</em> de una persona haríamos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">$unset</span><span class="o">:</span><span class="p">{</span><span class="nx">twitter</span><span class="o">:</span><span class="s1">&#39;&#39;</span><span class="p">}})</span>
+<p>De este modo, para eliminar el campo <em>bsky</em> de una persona haríamos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="nx">$unset</span><span class="o">:</span><span class="p">{</span><span class="nx">bsky</span><span class="o">:</span><span class="s1">&#39;&#39;</span><span class="p">}})</span>
 </code></pre></div>
 <p>Otros operadores que podemos utilizar son <a href="https://www.mongodb.com/docs/manual/reference/operator/update/mul/"><code>$mul</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/update/min/"><code>$min</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/update/max/"><code>$max</code></a> y <a href="https://www.mongodb.com/docs/manual/reference/operator/update/currentDate/"><code>$currentDate</code></a>. Podemos consultar todos los operadores disponibles en <a href="https://www.mongodb.com/docs/manual/reference/operator/update/">https://www.mongodb.com/docs/manual/reference/operator/update/</a></p>
 <div class="admonition question">
@@ -3124,7 +3124,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </div>
 <h2 id="modelado-documental">Modelado documental<a class="headerlink" href="#modelado-documental" title="Permanent link">&para;</a></h2>
 <p>Una de las características más importantes al utilizar un sistema documental es que mediante un documento podemos mantener toda la información que se utiliza junta en un único documento, sin necesidad de separar los datos en diferentes colecciones.</p>
-<p>Dependiendo del tipo de relación entre dos documentos, normalizaremos los datos para minimizar la redundancia pero manteniendo en la medida de lo posible que mediante operaciones atómicas se mantenga la integridad de los datos. Para ello, bien crearemos referencias entre dos documentos o embeberemos un documento dentro de otro, pero intentando que la información más utilizada quepa en un único documento.</p>
+<p>Dependiendo del tipo de relación entre dos documentos, normalizaremos los datos para minimizar la redundancia, pero manteniendo en la medida de lo posible que mediante operaciones atómicas se mantenga la integridad de los datos. Para ello, bien crearemos referencias entre dos documentos o embeberemos un documento dentro de otro, pero intentando que la información más utilizada quepa en un único documento.</p>
 <p><em>MongoDB</em> es una base de datos documental, no relacional, donde el esquema no se debe basar en el uso de claves ajenas/<em>joins</em>, ya que realmente no existen. A la hora de diseñar un esquema, si nos encontramos que el esquema está en 3FN o si cuando hacemos consultas estamos teniendo que realizar varias consultas de manera programativa (primero acceder a una tabla, con ese <code>_id</code> ir a otra tabla, etc… o hacemos un uso extensivo del operador <code>$lookup</code> mediante el <em>framework</em> de agregación) es que no estamos siguiendo el enfoque adecuado.</p>
 <p>En resumen, diseñar un buen modelo de datos documental supondrá que nuestro código será más legible y mantenible, así como tener un mayor rendimiento de nuestras aplicaciones, aunque conlleve la redundancia de datos.</p>
 <p>Las aplicaciones que emplean <em>MongoDB</em> utilizan dos técnicas para relacionar documentos:</p>
@@ -3174,7 +3174,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </code></pre></div>
 <p>El operador <code>$lookup</code> lo estudiaremos en profundidad en la <a href="#lookup">siguiente sesión</a>.</p>
 <h3 id="datos-embebidos">Datos embebidos<a class="headerlink" href="#datos-embebidos" title="Permanent link">&para;</a></h3>
-<p>En cambio, si dentro de un documento almacenamos los datos mediante sub-documentos, ya sea dentro de un atributo o un array, podremos obtener todos los datos mediante un único acceso, sin necesidad de claves ajenas ni comprobaciones de integridad referencial.</p>
+<p>En cambio, si dentro de un documento almacenamos los datos mediante subdocumentos, ya sea dentro de un atributo o un array, podremos obtener todos los datos mediante un único acceso, sin necesidad de claves ajenas ni comprobaciones de integridad referencial.</p>
 <figure style="align: center;">
     <img src="images/13data-model-denormalized.png" alt="Datos embebidos" width="500px">
     <figcaption>Datos embebidos</figcaption>
@@ -3186,7 +3186,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <li>relaciones "uno a muchos" entre entidades. En estas relaciones los documentos hijo (o "muchos") siempre aparecen dentro del contexto del padre o del documento "uno".</li>
 </ul>
 <p>Los datos embebidos/incrustados ofrecen mejor rendimiento al permitir obtener los datos mediante una única operación, así como modificar datos relacionados en una sola operación atómica de escritura (sin necesidad de transacciones)</p>
-<p>Un aspecto a tener en cuenta es que un documento BSON puede contener un máximo de 16MB. Si quisiéramos que un atributo contenga más información, tendríamos que utilizar el API de GridFS.</p>
+<p>Un aspecto a tener en cuenta es que un documento BSON puede contener un máximo de 16MB. Si quisiéramos que un atributo contenga más información, tendríamos que utilizar el API de <em>GridFS</em>.</p>
 <p>Vamos a estudiar en detalle cada uno de los tipos de <a href="https://www.mongodb.com/docs/manual/applications/data-models-relationships/">relaciones</a>, para intentar clarificar cuando es conveniente utilizar referencias o datos embebidos.</p>
 <h3 id="relaciones-11">Relaciones 1:1<a class="headerlink" href="#relaciones-11" title="Permanent link">&para;</a></h3>
 <p>Cuando existe una relación 1:1, como pueda ser entre <code>Persona</code> y <code>Curriculum</code>, o <code>Persona</code> y <code>Direccion</code> hay que embeber un documento dentro del otro, como parte de un atributo.</p>
@@ -3260,7 +3260,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <div class="admonition caution">
 <p class="admonition-title">Vigilar el tamaño</p>
 <p>Hay que tener siempre en mente la restricción de los 16 MB de BSON. Si vamos a embeber muchos documentos y estos son grandes, hay que vigilar no llegar a dicho límite.</p>
-<p>Si queremos saber cuanto ocupa un documento, en el <em>shell</em> podemos obtener su tamaño mediante el comando <code>bsonsize</code>:</p>
+<p>Si queremos saber cuánto ocupa un documento, en el <em>shell</em> podemos obtener su tamaño mediante el comando <code>bsonsize</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err">&gt;</span><span class="w"> </span><span class="err">var</span><span class="w"> </span><span class="err">p</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">db.people.</span><span class="kc">f</span><span class="err">i</span><span class="kc">n</span><span class="err">dO</span><span class="kc">ne</span><span class="err">()</span>
 <span class="linenos" data-linenos="2 "></span><span class="err">&gt;</span><span class="w"> </span><span class="err">bso</span><span class="kc">ns</span><span class="err">ize(p)</span>
 <span class="linenos" data-linenos="3 "></span><span class="err">&lt;</span><span class="w"> </span><span class="mi">96</span>
@@ -3308,7 +3308,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </li>
 </ul>
 </div>
-<p>Si cada vez que recuperamos un libro queremos tener el nombre de la editorial y con una sola consulta recuperar todos los datos, en vez poner la referencia a la editorial, podemos embeber toda la información (esto se conoce como el patrón <a href="#referencia-extendida"><em>referencia extendida</em></a>), a costa de que un futuro cambio en el nombre de la editorial conlleve modificar muchos libros:</p>
+<p>Si cada vez que recuperamos un libro queremos tener el nombre de la editorial y con una sola consulta recuperar todos los datos, en vez poner la referencia a la editorial, podemos embeber toda la información (esto se conoce como el patrón <a href="https://aitor-medrano.github.io/iabd/sa/modelado.html#referencia-extendida"><em>referencia extendida</em></a>), a costa de que un futuro cambio en el nombre de la editorial conlleve modificar muchos libros:</p>
 <div class="grid cards" markdown>
 <ul>
 <li>
@@ -3349,7 +3349,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </li>
 </ul>
 </div>
-<p>Un caso particular en las relaciones uno a muchos que se traducen en documentos embebidos es cuando la información que nos interesa tiene un valor concreto en un momento determinado. Por ejemplo, dentro de un pedido, el precio de los productos debe embeberse, ya que si en un futuro se modifica el precio de un producto determinado debido a una oferta, el pedido realizado no debe modificar su precio total.</p>
+<p>Un caso particular en las relaciones uno a muchos que se traducen en documentos embebidos es cuando la información que nos interesa tiene un valor concreto en un momento determinado. Por ejemplo, dentro de un pedido, el precio de los productos debe embeberse, ya que, si en un futuro se modifica el precio de un producto determinado debido a una oferta, el pedido realizado no debe modificar su precio total.</p>
 <p>Del mismo modo, al almacenar la dirección de una persona, también es conveniente embeberla. No queremos que la dirección de envío de un pedido ya enviado se modifique si un usuario cambia sus datos personales.</p>
 <p>En cambio, si necesitamos acceder por separado a los diferentes objetos de una relación, puede que nos convenga separarlo en dos colecciones distintas, aunque luego tengamos que hacer un <em>join</em>.</p>
 </li>
@@ -3396,7 +3396,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </li>
 </ul>
 <h3 id="relaciones-nm">Relaciones N:M<a class="headerlink" href="#relaciones-nm" title="Permanent link">&para;</a></h3>
-<p>Más que relaciones muchos a muchos, suelen ser relaciones pocos a pocos, como por ejemplo, <code>Libro</code> y <code>Autor</code>, o <code>Profesor</code> y <code>Estudiante</code>.</p>
+<p>Más que relaciones muchos a muchos, suelen ser relaciones pocos a pocos como, por ejemplo, <code>Libro</code> y <code>Autor</code>, o <code>Profesor</code> y <code>Estudiante</code>.</p>
 <p>Supongamos que tenemos libros modelados de la siguiente manera:</p>
 <div class="highlight"><span class="filename">libro.json</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
@@ -3476,7 +3476,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </li>
 </ol>
 <hr />
-<p>Por último, siempre podemos hacer una relación extendida, de manera que además de la clave que los une, añadmos los más utilizados para evitar el <em>join</em> en aquellas consultas más comunes. Por ejemplo, si al recuperar un libro necesitamos siempre el nombre del autor pero no el país, podríamos optar por la siguiente solución:</p>
+<p>Por último, siempre podemos hacer una relación extendida, de manera que además de la clave que los une, añadamos los atributos más utilizados para evitar el <em>join</em> en aquellas consultas más comunes. Por ejemplo, si al recuperar un libro necesitamos siempre el nombre del autor, pero no el país, podríamos optar por la siguiente solución:</p>
 <div class="grid cards">
 <ul>
 <li>
