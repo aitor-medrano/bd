@@ -2409,6 +2409,11 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <p>Cuando un nuevo cliente se suscribe posteriormente a un canal existente utilizando <code>SUBSCRIBE canal</code>, solo recibirá los mensajes que se publiquen después de que se haya establecido su suscripción. No hay ningún mecanismo integrado en <em>Redis</em> <em>Pub/Sub</em> para recuperar mensajes históricos o pendientes.</p>
 <p>Esta característica diferencia <em>Redis Pub/Sub</em> de otros sistemas de mensajería como <em>Kafka</em> o <em>RabbitMQ</em>, que pueden almacenar mensajes hasta que sean consumidos. <em>Redis Pub/Sub</em> está diseñado para comunicación en tiempo real donde la persistencia de mensajes no es una prioridad.</p>
 <p>Es por ello, que <em>Redis Pub/Sub</em> es ideal para aplicaciones que requieren comunicación en tiempo real con baja latencia donde la pérdida ocasional de mensajes es aceptable. Algunos casos de uso comunes incluyen notificaciones en tiempo real, actualizaciones de sensores en tiempo real, comunicación en sistemas distribuidos, aplicaciones de chat, actualizaciones de puntuaciones en vivo, etc...</p>
+<p>Otras operaciones que podemos realizar sobre los canales son:</p>
+<ul>
+<li><a href="https://redis.io/docs/latest/commands/pubsub-channels/"><code>PUBSUB CHANNELS [patron]</code></a>: Lista todos los canales activos (que cumplen algún patrón)</li>
+<li><a href="https://redis.io/docs/latest/commands/pubsub-numsub/"><code>PUBSUB NUMSUB [canal [canal …]]</code></a>: Recupera la cantidad de suscriptores de los canales indicados.</li>
+</ul>
 <p>Si necesita un uso de la mensajería más avanzado, deberías profundizar en <a href="https://redis.io/docs/latest/develop/data-types/streams/"><em>Redis Streams</em></a>.</p>
 <h2 id="persistencia">Persistencia<a class="headerlink" href="#persistencia" title="Permanent link">&para;</a></h2>
 <p>Por defecto, la gestión de la <a href="https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/">persistencia</a> en <em>Redis</em> implica que los datos no se almacenan instantáneamente en disco, sino que se realiza de forma periódica o a petición del cliente. </p>
@@ -2608,7 +2613,9 @@ Arquitectura: Redis Deep Dive- Core Architectures (p 68 / 275)
 <li>En un primer terminal, suscríbete al canal <code>canal.general</code>.</li>
 <li>En otro terminal, suscríbete a la vez a los canales <code>canal.general</code> y <code>canal.alertas</code>.</li>
 <li>En un tercer terminal, publica mensajes diferentes en cada canal.</li>
-<li>En el tercer terminal, publica un mensaje en el canal <code>canal.importante</code></li>
+<li>Comprueba si los mensajes aparecen en los diferentes canales.</li>
+<li>En el tercer terminal, publica un mensaje en el canal <code>canal.importante</code>.</li>
+<li>Comprueba si el mensaje aparece en los diferentes canales.</li>
 <li>En un cuarto terminal, suscríbete a todos los canales usando el patrón <code>canal.*</code>. ¿Ha recibido algún mensaje al suscribirse?</li>
 <li>En el tercer terminal, averigua cuantos suscritores tiene cada canal.</li>
 </ol>
