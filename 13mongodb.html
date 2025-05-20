@@ -3331,8 +3331,8 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <span class="linenos" data-linenos="2 "></span>mongoexport<span class="w"> </span>-d<span class="w"> </span>nombreBaseDatos<span class="w"> </span>-c<span class="w"> </span>coleccion<span class="w"> </span>nombreFichero.json
 </code></pre></div>
 <p>Estas herramientas interactúan con datos JSON y no sobre toda la base de datos.</p>
-<p>Un caso particular y muy común es importar datos que se encuentran en formato CSV/TSV. Para ello, emplearemos el parámetro <code>--type csv</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongoimport<span class="w"> </span>--type<span class="w"> </span>tsv<span class="w"> </span>-d<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-c<span class="w"> </span>poblacion<span class="w"> </span>--headerline<span class="w"> </span>--drop<span class="w"> </span>poblacionEspanya2013.tsv
+<p>Un caso particular y muy común es importar datos que se encuentran en formato CSV/TSV. Para ello, emplearemos el parámetro <code>--type csv</code> o <code>--type tsv</code> según el separador de los campos sea la coma o el tabulador:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongoimport<span class="w"> </span>--type<span class="w"> </span>tsv<span class="w"> </span>-d<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-c<span class="w"> </span>micoleccion<span class="w"> </span>--headerline<span class="w"> </span>--drop<span class="w"> </span>documento.tsv
 </code></pre></div>
 <p>En vez de realizar un <em>export</em>, es más conveniente realizar un <em>backup</em> en binario mediante <a href="https://www.mongodb.com/docs/database-tools/mongodump/"><code>mongodump</code></a>, el cual genera ficheros BSON. Estos archivos posteriormente se restauran mediante <a href="https://www.mongodb.com/docs/database-tools/mongorestore/"><code>mongorestore</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongodump<span class="w"> </span>-d<span class="w"> </span>nombreBaseDatos<span class="w"> </span>nombreFichero.bson
@@ -4594,6 +4594,24 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 <li>Elimina el valor <code>house</code> de <code>tags</code> de tu código postal.</li>
 <li>Elimina el último valor de <code>tags</code>.</li>
 <li>Elimina el primer valor de <code>tourism</code>.</li>
+</ol>
+</li>
+</ul>
+<p><a name="AP1310"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1310</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando las herramientas de administración de <em>MongoDB</em> (las cuales puedes utilizarlas desde dentro de <em>Docker</em> o descargarlas desde MongoTools), se pide:</p>
+<ol>
+<li>Exporta los datos de la colección <code>zips</code> en <code>s8a_zips.json</code></li>
+<li>Importa la colección recien exportada dentro de la base de datos <code>pruebas</code> en la colección <code>s8a_zips</code>.</li>
+<li>Realiza una consulta y comprueba que los datos se han importado correctamente.</li>
+<li>Exporta la base de datos de <code>sample_trainings</code> y muestra el resultado.</li>
+<li>Importa la base de datos recien exportada en <code>s8a_trainings</code></li>
+<li>Realiza una consulta y comprueba que los datos se han importado correctamente.</li>
+<li>Importa el archivo <a href="http://aitor-medrano.github.io/iabd/hadoop/resources/clientes.csv"><code>clientes.csv</code></a>  dentro de la base de datos <code>pruebas</code> en la colección <code>clientes</code>.</li>
+<li>Realiza una consulta y comprueba que los datos se han importado correctamente.</li>
+<li>Importa el archivo <a href="resources/poblacion.tsv"><code>poblacion.tsv</code></a> dentro de la base de datos <code>pruebas</code> en la colección <code>poblacion</code>.</li>
+<li>Realiza una consulta y comprueba que los datos se han importado correctamente.</li>
 </ol>
 </li>
 </ul>
