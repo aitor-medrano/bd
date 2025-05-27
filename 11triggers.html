@@ -2176,13 +2176,13 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <p>Dentro de un procedimiento voy a poder capturar los errores, pero si no quiero hacerlo por su código (<code>1050</code>), estado (<code>42S01</code>) o alias genérico (<code>SQLEXCEPTION</code>), puedo hacerlo por un nombre más específico que mejore la legibilidad del código, mediante <a href="https://mariadb.com/kb/en/declare-condition/"><code>DECLARE CONDITION</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">no_existe_tabla</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">1051</span><span class="p">;</span>
 </code></pre></div>
-<p>De esta manera, después podré controlar la captura por el nombre asignado y no por el número asociado.</p>
+<p>De esta manera, después podremos controlar la captura por el nombre asignado y no por el número asociado.</p>
 <p>Ya hemos visto que en la <a href="https://mariadb.com/kb/en/mariadb-error-code-reference/">lista de mensajes de error</a> aparecen dos tipos de errores asociados a cada mensaje:</p>
 <ul>
 <li><em>Error Code</em>: Son números específicos de <em>MariaDB</em>/<em>MySQL</em> que no valen para otros gestores.</li>
 <li><em>SQLState Code</em>: Cadena de 5 dígitos basado en ANSI SQL y ODBC y por lo tanto sus códigos están <em>estandarizados</em> entre todos los SGBD.</li>
 </ul>
-<p>Emplear uno u otro va a depender de nuestro programa cliente. Si este va a ser empleado en sistemas gestores diferentes (por ejemplo, <em>Oracle</em> o <em>SQL Server</em>) podría ser mejor emplear los código de estado SQL. En caso contrario, es recomendable utilizar mejor los específicos de cada gestor.</p>
+<p>Emplear uno u otro va a depender de nuestro programa cliente. Si este va a ser empleado en sistemas gestores diferentes (por ejemplo, <em>Oracle</em> o <em>SQL Server</em>) podría ser mejor emplear los códigos de estado SQL. En caso contrario, es recomendable utilizar mejor los específicos de cada gestor.</p>
 <p>En el caso de querer dar un nombre a la excepción empleando el <em>SQLState</em> la sintaxis cambia:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">no_existe_tabla</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLSTATE</span><span class="w"> </span><span class="s1">&#39;42S02&#39;</span><span class="p">;</span>
 </code></pre></div>
