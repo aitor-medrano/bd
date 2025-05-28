@@ -1104,6 +1104,8 @@
       
         
       
+        
+      
     
     
     
@@ -1189,6 +1191,28 @@
   
   <span class="md-ellipsis">
     Validación CE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="satisfaccion.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autoevaluación
     
   </span>
   
@@ -2785,6 +2809,384 @@ Respecto a las <em>keywords</em>, son <em>case insensitive</em>, pero al menos e
 <span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">PK_INGRESO</span><span class="w"> </span><span class="p">(</span><span class="n">cod</span><span class="p">),</span>
 <span class="hll"><span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">CK_INGRESO</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">importe</span><span class="o">&lt;</span><span class="n">importeMax</span><span class="p">));</span>
 </span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Supuesto DDL</p>
+<p>Dadas las siguientes tablas de una base de datos: </p>
+<div class="grid cards" markdown>
+<ul>
+<li>
+<p><code>VEHICULO</code></p>
+<table>
+<thead>
+<tr>
+<th>MATRICULA</th>
+<th>MARCA</th>
+<th>MODELO</th>
+<th>PERSONA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2345AAA</td>
+<td>Seat</td>
+<td>Altea</td>
+<td><code>NULL</code></td>
+</tr>
+<tr>
+<td>1234BBB</td>
+<td>Opel</td>
+<td>Astra</td>
+<td>15</td>
+</tr>
+<tr>
+<td>5555CCC</td>
+<td>Seat</td>
+<td>Ibiza</td>
+<td><code>NULL</code></td>
+</tr>
+<tr>
+<td>9876DDD</td>
+<td>Lexus</td>
+<td>LC</td>
+<td>10</td>
+</tr>
+<tr>
+<td>1111FFF</td>
+<td>Seat</td>
+<td>Ibiza</td>
+<td><code>NULL</code></td>
+</tr>
+<tr>
+<td>2222GGG</td>
+<td>Opel</td>
+<td>Astra</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>EMPLEADO</code></p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>NOMBRE</th>
+<th>DNI</th>
+<th>JEFE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>ANA MARTIN</td>
+<td>1111A</td>
+<td><code>NULL</code></td>
+</tr>
+<tr>
+<td>15</td>
+<td>JUAN LOPEZ</td>
+<td>2222B</td>
+<td>10</td>
+</tr>
+<tr>
+<td>20</td>
+<td>CARMEN DIAZ</td>
+<td>3333C</td>
+<td>10</td>
+</tr>
+<tr>
+<td>25</td>
+<td>ERNESTO GOMEZ</td>
+<td>4444D</td>
+<td>20</td>
+</tr>
+<tr>
+<td>30</td>
+<td>SILVIA GONZALEZ</td>
+<td>5555E</td>
+<td>15</td>
+</tr>
+<tr>
+<td>35</td>
+<td>FERNANDO SIERRA</td>
+<td>7777F</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>ASIGNACION</code></p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>CODIGO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10</td>
+<td>101</td>
+</tr>
+<tr>
+<td>15</td>
+<td>101</td>
+</tr>
+<tr>
+<td>20</td>
+<td>101</td>
+</tr>
+<tr>
+<td>10</td>
+<td>102</td>
+</tr>
+<tr>
+<td>15</td>
+<td>102</td>
+</tr>
+<tr>
+<td>30</td>
+<td>102</td>
+</tr>
+<tr>
+<td>35</td>
+<td>102</td>
+</tr>
+<tr>
+<td>20</td>
+<td>103</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>PROYECTO</code></p>
+<table>
+<thead>
+<tr>
+<th>CODIGO</th>
+<th>NOMBRE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>101</td>
+<td>GRIS</td>
+</tr>
+<tr>
+<td>102</td>
+<td>BLANCO</td>
+</tr>
+<tr>
+<td>103</td>
+<td>NEGRO</td>
+</tr>
+<tr>
+<td>104</td>
+<td>VERDE</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<p>Escribe las sentencias DDL necesarias para crear las tablas anteriores, respetando los nombre y los tipos de las columnas, y deduciendo la relaciones existentes entre las tablas. Además, debe cumplir las siguientes especificaciones:</p>
+<ol>
+<li>Cuando un proyecto es eliminado o modificado, se eliminan o modifican automáticamente las asignaciones correspondientes.</li>
+<li>Si un empleado se elimina o actualiza, se eliminan o actualizan las asignaciones de proyecto que pudiera tener.</li>
+<li>Cuando un empleado es eliminado, el vehículo que pudiera tener concertado no es eliminado y si la persona actualiza su identificación, automáticamente se actualiza también en su vehículo si lo tuviera.</li>
+<li>Cuando un empleado se elimina, su jefe sigue permaneciendo. Y si la persona actualiza su identificación, se actualiza automáticamente para todos aquellos que esa persona sea su jefe.</li>
+</ol>
+<p>A continuación, realiza las siguientes operaciones:</p>
+<ol>
+<li>Elimina la columna <code>MODELO</code> de la tabla <code>VEHICULO</code>.</li>
+<li>Añade una columna a <code>VEHICULO</code> que se llame COLOR que acepte los valores <code>Blanco</code>, <code>Negro</code> o <code>Otro</code>.</li>
+<li>Añade una columna a <code>VEHICULO</code> que se llame precio que almacene el precio del vehículo, el cual siempre debe ser superior a 1000€.</li>
+<li>Vacía la tabla <code>VEHICULO</code></li>
+<li>Elimina la tabla <code>VEHICULO</code>.</li>
+</ol>
+<details class="example">
+<summary>Solución</summary>
+<p>El primer paso es definir el modelo relacional para identificar las claves y las relaciones existentes. </p>
+<p><code>
+<strong>VEHICULO</strong> (<ins>MATRICULA</ins>, MARCA, MODELO, PERSONA<code>*</code>)<br />
+· PK: (MATRICULA)<br />
+· FK: (PERSONA) → EMPLEADO
+</code></p>
+<p><code>
+<strong>EMPLEADO</strong> (<ins>ID</ins>, NOMBRE, DNI, JEFE<code>*</code>)<br />
+· PK: (ID)<br />
+· FK: (JEFE) → EMPLEADO<br />
+· VNN: (NOMBRE)  <br />
+· VNN: (DNI)  <br />
+</code></p>
+<p><code>
+<strong>PROYECTO</strong> (<ins>CODIGO</ins>, NOMBRE)<br />
+· PK: (CODIGO)<br />
+</code></p>
+<p><code>
+<strong>ASIGNACION</strong> (<ins>ID</ins><code>*</code>, <ins>CODIGO</ins><code>*</code>)<br />
+· PK: (ID, CODIGO)<br />
+· FK: (ID) → EMPLEADO<br />
+· FK: (CODIGO) → PROYECTO
+</code></p>
+<p>Del modelo relacional deducimos que la tabla <code>ASIGNACIÓN</code> es una relación N:M entre <code>EMPLEADO</code> y <code>PROYECTO</code>, y que el atributo <code>EMPLEADO.JEFE</code> es una clave ajena que representa una relación reflexiva.</p>
+<p>Si empleamos <a href="https://dbdiagram.io/">DBDiagrams</a> para generar un diagrama a partir del esquema lógico mediante <a href="https://dbml.dbdiagram.io/docs">DBML</a> indicando los tipos de datos, tendríamos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">Table</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="err">{</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">ID</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="p">[</span><span class="n">pk</span><span class="p">,</span><span class="w"> </span><span class="k">increment</span><span class="p">]</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">NOMBRE</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">]</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">DNI</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="k">unique</span><span class="p">,</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">]</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">JEFE</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="p">[</span><span class="k">ref</span><span class="p">:</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="p">.</span><span class="n">ID</span><span class="p">]</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">FK</span><span class="w"> </span><span class="n">autoreferencial</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="err">}</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">Table</span><span class="w"> </span><span class="n">VEHICULO</span><span class="w"> </span><span class="err">{</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">MATRICULA</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">pk</span><span class="p">]</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="n">MARCA</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="n">MODELO</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="n">PERSONA</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="p">[</span><span class="k">ref</span><span class="p">:</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="p">.</span><span class="n">ID</span><span class="p">]</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">FK</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">EMPLEADO</span>
+<span class="linenos" data-linenos="13 "></span><span class="err">}</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="k">Table</span><span class="w"> </span><span class="n">PROYECTO</span><span class="w"> </span><span class="err">{</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="n">CODIGO</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">pk</span><span class="p">]</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="n">NOMBRE</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="linenos" data-linenos="18 "></span><span class="err">}</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="k">Table</span><span class="w"> </span><span class="n">ASIGNACION</span><span class="w"> </span><span class="err">{</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="n">ID</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="p">[</span><span class="n">pk</span><span class="p">,</span><span class="w"> </span><span class="k">ref</span><span class="p">:</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="p">.</span><span class="n">ID</span><span class="p">]</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">FK</span><span class="w"> </span><span class="n">compuesta</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="n">CODIGO</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">pk</span><span class="p">,</span><span class="w"> </span><span class="k">ref</span><span class="p">:</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">PROYECTO</span><span class="p">.</span><span class="n">CODIGO</span><span class="p">]</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">FK</span><span class="w"> </span><span class="n">compuesta</span>
+<span class="linenos" data-linenos="23 "></span><span class="err">}</span>
+</code></pre></div>
+<p>Obteniendo el siguiente diagrama:</p>
+<p><figure style="align: center;">
+    <img src="images/05ddl-supuesto-proyecto.png" width="848" title="Supuesto DDL proyecto">
+    <figcaption>Supuesto DDL Proyecto</figcaption>
+</figure></p>
+<!--
+<pre class="mermaid"><code>---
+config:
+look: handDrawn
+---
+erDiagram
+direction LR
+
+EMPLEADO {
+    INT ID PK
+    VARCHAR NOMBRE
+    VARCHAR DNI
+    INT JEFE FK
+}
+
+VEHICULO {
+    VARCHAR MATRICULA PK
+    VARCHAR MARCA
+    VARCHAR MODELO
+    INT PERSONA FK
+}
+
+PROYECTO {
+    VARCHAR CODIGO PK
+    VARCHAR NOMBRE
+}
+
+ASIGNACION {
+    INT ID PK,FK
+    VARCHAR CODIGO PK,FK
+}
+
+EMPLEADO |o--o{ VEHICULO : "conducir"
+EMPLEADO |o--o| EMPLEADO : "supervisar"
+EMPLEADO ||--o{ ASIGNACION : "participar"
+PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
+-->
+<p>Una vez generado el diagrama y analizado las relaciones y los tipos de los datos, ya estamos en disposición de crear el código DDL:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">supuesto_ddl_proyecto</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 2 "></span><span class="n">USE</span><span class="w"> </span><span class="n">supuesto_ddl_proyecto</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">ID</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">NOMBRE</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="n">DNI</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">UNIQUE</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">JEFE</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">PK_EMPLEADO</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">ID</span><span class="p">),</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">FK_EMPLEADO_JEFE</span><span class="w"> </span>
+<span class="linenos" data-linenos="13 "></span><span class="w">        </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">JEFE</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">NULL</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">CASCADE</span>
+<span class="linenos" data-linenos="16 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="17 "></span>
+<span class="linenos" data-linenos="18 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PROYECTO</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="n">CODIGO</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="n">NOMBRE</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">PK_PROYECTO</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">CODIGO</span><span class="p">)</span>
+<span class="linenos" data-linenos="23 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="24 "></span>
+<span class="linenos" data-linenos="25 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">VEHICULO</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">    </span><span class="n">MATRICULA</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">    </span><span class="n">MARCA</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="n">MODELO</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">    </span><span class="n">PERSONA</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="linenos" data-linenos="30 "></span>
+<span class="linenos" data-linenos="31 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">PK_VEHICULO</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">MATRICULA</span><span class="p">),</span>
+<span class="linenos" data-linenos="32 "></span>
+<span class="linenos" data-linenos="33 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">FK_VEHICULO_PERSONA</span><span class="w"> </span>
+<span class="linenos" data-linenos="34 "></span><span class="w">        </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">PERSONA</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span>
+<span class="linenos" data-linenos="35 "></span><span class="w">        </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">NULL</span>
+<span class="linenos" data-linenos="36 "></span><span class="w">        </span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">CASCADE</span>
+<span class="linenos" data-linenos="37 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="38 "></span>
+<span class="linenos" data-linenos="39 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">ASIGNACION</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="40 "></span><span class="w">    </span><span class="n">ID</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos="41 "></span><span class="w">    </span><span class="n">CODIGO</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos="42 "></span>
+<span class="linenos" data-linenos="43 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">PK_ASIGNACION</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">CODIGO</span><span class="p">),</span>
+<span class="linenos" data-linenos="44 "></span>
+<span class="linenos" data-linenos="45 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">FK_ASIGNACION_EMPLEADO</span><span class="w"> </span>
+<span class="linenos" data-linenos="46 "></span><span class="w">        </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">ID</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="p">(</span><span class="n">ID</span><span class="p">)</span>
+<span class="linenos" data-linenos="47 "></span><span class="w">        </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span>
+<span class="linenos" data-linenos="48 "></span><span class="w">        </span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">CASCADE</span><span class="p">,</span>
+<span class="linenos" data-linenos="49 "></span>
+<span class="linenos" data-linenos="50 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">FK_ASIGNACION_PROYECTO</span><span class="w"> </span>
+<span class="linenos" data-linenos="51 "></span><span class="w">        </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">CODIGO</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">PROYECTO</span><span class="p">(</span><span class="n">CODIGO</span><span class="p">)</span>
+<span class="linenos" data-linenos="52 "></span><span class="w">        </span><span class="k">ON</span><span class="w"> </span><span class="k">DELETE</span><span class="w"> </span><span class="k">CASCADE</span>
+<span class="linenos" data-linenos="53 "></span><span class="w">        </span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">CASCADE</span>
+<span class="linenos" data-linenos="54 "></span><span class="p">)</span>
+</code></pre></div>
+<p>Una vez tenemos el DDL, procedemos a realizar las operaciones solicitadas:</p>
+<ol>
+<li>
+<p>Elimina la columna <code>MODELO</code> de la tabla <code>VEHICULO</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">VEHICULO</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">MODELO</span><span class="p">;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Añade una columna a <code>VEHICULO</code> que se llame COLOR que acepte los valores <code>Blanco</code>, <code>Negro</code> o <code>Otro</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">VEHICULO</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">COLOR</span><span class="w"> </span><span class="n">ENUM</span><span class="p">(</span><span class="s1">&#39;Blanco&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Negro&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Otro&#39;</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Añade una columna a <code>VEHICULO</code> que se llame precio que almacene el precio del vehículo, el cual siempre debe ser superior a 1000€.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">VEHICULO</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">PRECIO</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">CHK_PRECIO_MINIMO</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">PRECIO</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+</code></pre></div>
+</li>
+<li>
+<p>Vacía la tabla <code>VEHICULO</code></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">TRUNCATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">VEHICULO</span><span class="p">;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Elimina la tabla <code>VEHICULO</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">VEHICULO</span><span class="p">;</span>
+</code></pre></div>
+</li>
+</ol>
+</details>
+</div>
 <h4 id="gestionando">Gestionando<a class="headerlink" href="#gestionando" title="Permanent link">&para;</a></h4>
 <p>Además de indicar las restricciones mientras creamos una tabla, podemos hacerlo mediante sentencia <code>ALTER TABLE</code>.</p>
 <p>Así pues, para añadir una nueva restricción usaremos la opción <code>ADD</code>:</p>
