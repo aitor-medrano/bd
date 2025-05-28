@@ -3116,7 +3116,7 @@ flowchart TD
 <li>Inserta una fila en la tabla <code>entradas</code> indicando la butaca (<code>idButaca</code>) que acaba de comprar el usuario (<code>nif</code>), siempre y cuando la entrada no estuviera asignada previamente a ningún usuario.</li>
 <li>Comprueba si ha ocurrido algún error en las operaciones anteriores. Si todo va bien aplica un <code>COMMIT</code> a la transacción y si ha ocurrido algún error haz <code>ROLLBACK</code>, y muestra un error con un mensaje informativo.</li>
 </ol>
-<p>A continuación, duplica el procedimiento llamándolo <code>ac1109comprarEntradaSenyales</code>. Elimina el parámetro error, y cuando suceda alguna anomalía, además de hacer un <code>ROLLBACK</code>, lanza un señal en cada caso con el mensaje adecuado.</p>
+<p>A continuación, duplica el procedimiento llamándolo <code>ac1109comprarEntradaSenyales</code>. Elimina el parámetro error, y cuando suceda alguna anomalía, además de hacer un <code>ROLLBACK</code>, lanza una señal en cada caso con el mensaje adecuado.</p>
 </li>
 </ul>
 <p><a name="AP1110"></a></p>
