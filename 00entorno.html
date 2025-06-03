@@ -1583,7 +1583,7 @@
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>bd-mongo<span class="w"> </span>bash
 </code></pre></div>
 <p>Y finalmente, restauramos los datos mediante <code>mongorestore</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongorestore<span class="w"> </span>--archive<span class="o">=</span>sampledata.archive
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongorestore<span class="w"> </span>--archive<span class="o">=</span>/tmp/sampledata.archive
 </code></pre></div>
 <p>Una vez cargados, nos informará que se han restaurado 433.281 documentos.</p>
 <p>Independientemente de nuestro sistema operativo, por defecto, el demonio se lanza sobre el puerto 27017. Una vez instalado, si accedemos a <a href="http://localhost:27017">http://localhost:27017</a> podremos ver que nos indica cómo estamos intentando acceder mediante HTTP a <em>MongoDB</em> mediante el puerto reservado al <em>driver</em> nativo.</p>
