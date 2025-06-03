@@ -4620,7 +4620,12 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR1306</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Escribe los comandos necesarios para realizar las siguientes consultas sobre la colección <code>posts</code>:</p>
 <ol>
-<li>Cuantos mensajes tienen las etiquetas <code>restaurant</code> o <code>moon</code>.</li>
+<li>Recupera los mensajes que tienen la etiqueta <code>club</code>.</li>
+<li>Recupera los mensajes que tienen la etiqueta <code>club</code> y <code>spy</code>.</li>
+<li>Recupera los mensajes que tienen la etiqueta <code>club</code> o <code>spy</code>. </li>
+<li>Cuantos mensajes no tienen la etiqueta <code>restaurant</code>.</li>
+<li>Cuantos mensajes tienen únicamente un comentario.</li>
+<li>Cuantos mensajes tienen al menos un comentario. <!-- db.posts.find({"comments": {$exists: true, $ne: []}}) --></li>
 <li>Los mensajes que tienen algún comentario que ha escrito el usuario <code>Salena Olmos</code>.</li>
 <li>Los comentarios (con su cuerpo y email) que ha escrito el usuario <code>Salena Olmos</code>.</li>
 <li>Recupera los mensajes que en <code>body</code> contengan la palabra <code>earth</code>, y devuelve el título, 3 comentarios y 5 etiquetas.</li>
@@ -4654,8 +4659,6 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 </ol>
 </li>
 </ul>
-<!-- TODO: AC1308 Hacer otra actividad DML sobre otra colección -->
-
 <p><a name="AR1308"></a></p>
 <ul>
 <li>
