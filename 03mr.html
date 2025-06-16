@@ -481,6 +481,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#clave-subrogada" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clave subrogada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#claves-candidatas" class="md-nav__link">
     <span class="md-ellipsis">
       Claves candidatas
@@ -1341,6 +1350,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#clave-subrogada" class="md-nav__link">
+    <span class="md-ellipsis">
+      Clave subrogada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#claves-candidatas" class="md-nav__link">
     <span class="md-ellipsis">
       Claves candidatas
@@ -1876,6 +1894,47 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 </tbody>
 </table>
 <p>El campo <code>dni</code> funciona como clave primaria de la tabla, ya que no hay dos clientes con el mismo DNI. Pero ¿y el campo <code>nombre</code>? Aunque en la tabla no tengamos ahora mismo dos clientes con el mismo nombre, conceptualmente sabemos que se puede dar el caso, y por lo tanto, no sería una elección correcta, ya que el nombre de un cliente no lo identifica de forma univoca.</p>
+<h4 id="clave-subrogada">Clave subrogada<a class="headerlink" href="#clave-subrogada" title="Permanent link">&para;</a></h4>
+<p>Cuando en una tabla no tengamos una columna que identifique claramente a una tabla, podemos crear una nueva columna numérica, normalmente denominada <code>id</code>, que tomas valores secuenciales y autoincrementables, de manera que actúa como una clave sustituta independiente de los valores de negocio, que realmente no tiene un significado por sí misma.</p>
+<p>Si añadimos una clave subrogada a la tabla <code>CLIENTE</code> tendríamos:</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>dni</th>
+<th>nombre</th>
+<th>dirección</th>
+<th>fecha</th>
+<th>genero</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>12345678A</td>
+<td>Pedro Casas</td>
+<td>Avenida de la libertad, 23</td>
+<td>21/03/24</td>
+<td>M</td>
+</tr>
+<tr>
+<td>2</td>
+<td>48123456B</td>
+<td>Mireia Vidal</td>
+<td>Porta de la Morera, 6</td>
+<td>22/03/24</td>
+<td>F</td>
+</tr>
+<tr>
+<td>3</td>
+<td>34123456C</td>
+<td>Laura Meca</td>
+<td>Plaça de Baix, s/n</td>
+<td>23/03/24</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
 <h4 id="claves-candidatas">Claves candidatas<a class="headerlink" href="#claves-candidatas" title="Permanent link">&para;</a></h4>
 <p>Si una tabla tiene más de un campo (o un conjunto de ellos) que pueden identificar unívocamente a cada tupla de la tabla, se dice que todas las claves posibles son <strong>claves candidatas</strong>.</p>
 <p>De entre las claves candidatas, elegiremos una como la clave primaria y el resto serán <strong>claves alternativas</strong>. Así pues, una clave alternativa es una clave candidata que no es primaria.</p>

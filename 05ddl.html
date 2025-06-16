@@ -724,6 +724,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#supuesto-ddl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supuesto DDL
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1630,6 +1639,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supuesto-ddl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supuesto DDL
+    </span>
+  </a>
   
 </li>
         
@@ -2557,19 +2575,20 @@ Respecto a las <em>keywords</em>, son <em>case insensitive</em>, pero al menos e
 <span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
 <span class="hll"><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">codigo</span><span class="p">,</span><span class="w"> </span><span class="n">departamento</span><span class="p">));</span><span class="w"> </span><span class="c1">-- clave primaria compuesta</span>
 </span></code></pre></div>
-<p>Una buena práctica es definir un atributo a modo de <code>codigo</code> (o <code>id</code>) asociado a un número entero autoincrementable. Para ello, tras la definición del atributo como entero (sin signo), añadiremos la propiedad <code>AUTO_INCREMENT</code> en la definición del atributo.</p>
+<h5 id="clave-subrogada">Clave subrogada<a class="headerlink" href="#clave-subrogada" title="Permanent link">&para;</a></h5>
+<p>También podemos añadir una clave subrogada a modo de código (o <code>id</code>) asociado a un número entero autoincrementable. Para ello, en <em>MariaDB</em>, tras la definición del atributo como entero (sin signo), añadiremos la propiedad <code>AUTO_INCREMENT</code> en la definición del atributo.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PERSONA</span><span class="w"> </span><span class="p">(</span>
 <span class="hll"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 </span><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
 <span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="n">fecha</span><span class="w"> </span><span class="nb">DATE</span><span class="p">);</span>
 </code></pre></div>
-<p>En <em>PostgreSQL</em> existe el tipo <a href="https://www.postgresql.org/docs/current/datatype-numeric.html#DATATYPE-SERIAL"><code>serial</code></a> para crear una secuencia entera autoincrementable.</p>
+<p>En <em>PostgreSQL</em> existe el tipo <a href="https://www.postgresql.org/docs/current/datatype-numeric.html#DATATYPE-SERIAL"><code>SERIAL</code></a> para crear una secuencia entera autoincrementable.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PERSONAP</span><span class="w"> </span><span class="p">(</span>
 <span class="hll"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 </span><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
 <span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="n">fecha</span><span class="w"> </span><span class="nb">DATE</span><span class="p">);</span>
 </code></pre></div>
-<p>En <em>Oracle</em> (y en <em>PostgreSQL</em> también podemos hacerlo), se utilizan las secuencias en vez de los tipos autoincrementables. Tras cada inserción, la secuencia toma un nuevo valor.</p>
+<p>En <em>Oracle</em> (y en <em>PostgreSQL</em> también podemos hacerlo) se utilizan las secuencias en vez de los tipos autoincrementables. Tras cada inserción, la secuencia toma un nuevo valor.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="n">SEQUENCE</span><span class="w"> </span><span class="n">pid_seq</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">integer</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PERSONAPS</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">integer</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">nextval</span><span class="p">(</span><span class="s1">&#39;pid_seq&#39;</span><span class="p">)</span>
@@ -2578,7 +2597,7 @@ Respecto a las <em>keywords</em>, son <em>case insensitive</em>, pero al menos e
 <div class="admonition info">
 <p class="admonition-title">Creando tablas con consultas</p>
 <p>Un caso particular de la creación de tablas es hacerlo a partir del resultado de una consulta, de manera que contiene la estructura (tipos de datos) y los datos obtenidos. Para ello, en vez de indicar los campos y restricciones, realizamos la consulta mediante <code>SELECT</code>: </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">SELECT</span><span class="err">…</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="err">…</span>
 </code></pre></div>
 <p>Por ejemplo, para crear una tabla <code>GERENTE</code> con los datos de empleados catalogados como Gerentes, haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">GERENTE</span><span class="w"> </span><span class="k">AS</span>
@@ -2586,7 +2605,7 @@ Respecto a las <em>keywords</em>, son <em>case insensitive</em>, pero al menos e
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="n">e</span>
 <span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">puesto</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="ss">&quot;%Gerente%&quot;</span><span class="p">;</span>
 </code></pre></div>
-<p>Volveremos a esta posibilidad cuando aprendamos a realizar consultas mediante SQL:</p>
+<p>Volveremos a esta posibilidad cuando aprendamos a realizar consultas mediante SQL.</p>
 </div>
 <h4 id="modificando-tablas">Modificando tablas<a class="headerlink" href="#modificando-tablas" title="Permanent link">&para;</a></h4>
 <p>Una vez creada una tabla, podemos modificar su estructura mediante las sentencias <strong><code>ALTER TABLE</code></strong>, tanto en <a href="https://mariadb.com/kb/en/alter-table/">MariaDB</a> como en <a href="https://www.postgresql.org/docs/current/sql-altertable.html">PostgreSQL</a>.</p>
@@ -2863,10 +2882,62 @@ Respecto a las <em>keywords</em>, son <em>case insensitive</em>, pero al menos e
 <span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">PK_INGRESO</span><span class="w"> </span><span class="p">(</span><span class="n">cod</span><span class="p">),</span>
 <span class="hll"><span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">CK_INGRESO</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">importe</span><span class="o">&lt;</span><span class="n">importeMax</span><span class="p">));</span>
 </span></code></pre></div>
+<h4 id="gestionando">Gestionando<a class="headerlink" href="#gestionando" title="Permanent link">&para;</a></h4>
+<p>Además de indicar las restricciones mientras creamos una tabla, podemos hacerlo mediante sentencia <code>ALTER TABLE</code>.</p>
+<p>Así pues, para añadir una nueva restricción usaremos la opción <code>ADD</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="p">[</span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">nombre</span><span class="p">]</span><span class="w"> </span><span class="n">tipoDeRestricción</span><span class="w"> </span><span class="p">(</span><span class="n">columnas</span><span class="p">);</span>
+</code></pre></div>
+<p>Para eliminar, la opción <code>DROP</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="err">{</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">nombreRestricción</span><span class="err">}</span><span class="w"> </span><span class="p">[</span><span class="k">CASCADE</span><span class="p">]</span>
+</code></pre></div>
+<p>Debes tener en cuenta que para eliminar una clave primaria, no debe haber ninguna clave ajena apuntando a ella. Además, si la clave primaria ya es clave ajena, antes de poder borrar la clave, deberemos borrar las claves ajenas que formen parte de la clave primaria y luego borrar sus índices. Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">PK_MUCHOS_N</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">PK_MUCHOS_M</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">FK_MUCHO_N</span><span class="p">;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">FK_MUCHO_M</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">;</span>
+</code></pre></div>
+<p>Respecto a las claves, si queremos deshabilitarlas para hacer algún tipo de modificación, haremos uso de las opciones <code>ENABLE</code> o <code>DISABLE</code> según convenga:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="n">ENABLE</span><span class="w"> </span><span class="n">KEYS</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="n">DISABLE</span><span class="w"> </span><span class="n">KEYS</span><span class="p">;</span>
+</code></pre></div>
+<p>Finalmente, si queremos comprobar todas las restricciones que tiene una tabla, podemos ejecutar la sentencia <code>SHOW CREATE TABLE</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">SHOW</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CURSAR</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Table  | Create Table                                                                                                                                                                                                                                                                                                                                                                         |</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | CURSAR | CREATE TABLE `CURSAR` (</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">--   `nifEstudiante` varchar(9) NOT NULL,</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">--   `asignatura` int(11) NOT NULL,</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">--   `anyo` int(11) NOT NULL,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">--   `repetidor` tinyint(1) DEFAULT NULL,</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">--   PRIMARY KEY (`nifEstudiante`,`asignatura`,`anyo`),</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">--   CONSTRAINT `FK_CUR_EST` FOREIGN KEY (`nifEstudiante`) REFERENCES `ESTUDIANTE` (`nif`)</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- 1 row in set (0.001 sec)</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Organizando las restricciones</p>
+<p>Para tener una mejor organización de las restricciones, definiremos:</p>
+<ul>
+<li>a nivel de columnas: <code>DEFAULT</code>, <code>NOT NULL</code> y <code>AUTO_INCREMENT</code>.</li>
+<li>mediante <code>CONSTRAINT</code> tras la definición de las columnas: <code>PRIMARY KEY</code>, <code>UNIQUE</code>, <code>FOREIGN KEY</code> y <code>CHECK</code>.</li>
+</ul>
+</div>
 <div class="admonition info">
-<p class="admonition-title">Supuesto DDL</p>
-<p>Dadas las siguientes tablas de una base de datos: </p>
-<div class="grid cards" markdown>
+<p class="admonition-title">Otros elementos</p>
+<p>Existen otras estructuras que forman parte de DDL pero que veremos más adelante son:</p>
+<ul>
+<li><strong>Vistas</strong>: Permiten crear una representación externa (tabla virtual) a partir de una consulta, mediante <code>CREATE VIEW</code>. Las estudiaremos en la unidad 8.</li>
+<li><strong>Índices</strong>: Se utilizan para acelerar las consultas, mediante <code>CREATE INDEX</code>. Los estudiaremos en la unidad 9.</li>
+<li><strong>Disparadores</strong> (<em>triggers</em>): Se asocian a operaciones que se producen en el sistema (evento) para realizar otra acción. Los estudiaremos en la unidad 11.</li>
+</ul>
+</div>
+<h3 id="supuesto-ddl">Supuesto DDL<a class="headerlink" href="#supuesto-ddl" title="Permanent link">&para;</a></h3>
+<p>Para integrar todos los conceptos planteados, vamos a realizar un supuesto que partiendo de unas tablas con datos, generemos el DDL y sus restricciones.</p>
+<p>Así pues, dadas las siguientes tablas de una base de datos: </p>
+<div class="grid cards">
 <ul>
 <li>
 <p><code>VEHICULO</code></p>
@@ -3046,20 +3117,20 @@ Respecto a las <em>keywords</em>, son <em>case insensitive</em>, pero al menos e
 </li>
 </ul>
 </div>
-<p>Escribe las sentencias DDL necesarias para crear las tablas anteriores, respetando los nombre y los tipos de las columnas, y deduciendo la relaciones existentes entre las tablas. Además, debe cumplir las siguientes especificaciones:</p>
+<p>Se nos plantea escribir las sentencias DDL necesarias para crear las tablas anteriores, respetando los nombre y los tipos de las columnas, y deduciendo la relaciones existentes entre las tablas. Además, debe cumplir las siguientes especificaciones:</p>
 <ol>
 <li>Cuando un proyecto es eliminado o modificado, se eliminan o modifican automáticamente las asignaciones correspondientes.</li>
 <li>Si un empleado se elimina o actualiza, se eliminan o actualizan las asignaciones de proyecto que pudiera tener.</li>
 <li>Cuando un empleado es eliminado, el vehículo que pudiera tener concertado no es eliminado y si la persona actualiza su identificación, automáticamente se actualiza también en su vehículo si lo tuviera.</li>
 <li>Cuando un empleado se elimina, su jefe sigue permaneciendo. Y si la persona actualiza su identificación, se actualiza automáticamente para todos aquellos que esa persona sea su jefe.</li>
 </ol>
-<p>A continuación, realiza las siguientes operaciones:</p>
+<p>A continuación, se nos pide realizar las siguientes operaciones:</p>
 <ol>
-<li>Elimina la columna <code>MODELO</code> de la tabla <code>VEHICULO</code>.</li>
-<li>Añade una columna a <code>VEHICULO</code> que se llame COLOR que acepte los valores <code>Blanco</code>, <code>Negro</code> o <code>Otro</code>.</li>
-<li>Añade una columna a <code>VEHICULO</code> que se llame precio que almacene el precio del vehículo, el cual siempre debe ser superior a 1000€.</li>
-<li>Vacía la tabla <code>VEHICULO</code></li>
-<li>Elimina la tabla <code>VEHICULO</code>.</li>
+<li>Eliminar la columna <code>MODELO</code> de la tabla <code>VEHICULO</code>.</li>
+<li>Añadir una columna a <code>VEHICULO</code> que se llame COLOR que acepte los valores <code>Blanco</code>, <code>Negro</code> o <code>Otro</code>.</li>
+<li>Añadir una columna a <code>VEHICULO</code> que se llame precio que almacene el precio del vehículo, el cual siempre debe ser superior a 1000€.</li>
+<li>Vaciar la tabla <code>VEHICULO</code></li>
+<li>Eliminar la tabla <code>VEHICULO</code>.</li>
 </ol>
 <details class="example">
 <summary>Solución</summary>
@@ -3240,59 +3311,6 @@ PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
 </li>
 </ol>
 </details>
-</div>
-<h4 id="gestionando">Gestionando<a class="headerlink" href="#gestionando" title="Permanent link">&para;</a></h4>
-<p>Además de indicar las restricciones mientras creamos una tabla, podemos hacerlo mediante sentencia <code>ALTER TABLE</code>.</p>
-<p>Así pues, para añadir una nueva restricción usaremos la opción <code>ADD</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="p">[</span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">nombre</span><span class="p">]</span><span class="w"> </span><span class="n">tipoDeRestricción</span><span class="w"> </span><span class="p">(</span><span class="n">columnas</span><span class="p">);</span>
-</code></pre></div>
-<p>Para eliminar, la opción <code>DROP</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="err">{</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">nombreRestricción</span><span class="err">}</span><span class="w"> </span><span class="p">[</span><span class="k">CASCADE</span><span class="p">]</span>
-</code></pre></div>
-<p>Debes tener en cuenta que para eliminar una clave primaria, no debe haber ninguna clave ajena apuntando a ella. Además, si la clave primaria ya es clave ajena, antes de poder borrar la clave, deberemos borrar las claves ajenas que formen parte de la clave primaria y luego borrar sus índices. Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">PK_MUCHOS_N</span><span class="p">;</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">PK_MUCHOS_M</span><span class="p">;</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">FK_MUCHO_N</span><span class="p">;</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">FK_MUCHO_M</span><span class="p">;</span>
-<span class="linenos" data-linenos="5 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">;</span>
-</code></pre></div>
-<p>Respecto a las claves, si queremos deshabilitarlas para hacer algún tipo de modificación, haremos uso de las opciones <code>ENABLE</code> o <code>DISABLE</code> según convenga:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="n">ENABLE</span><span class="w"> </span><span class="n">KEYS</span><span class="p">;</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="n">DISABLE</span><span class="w"> </span><span class="n">KEYS</span><span class="p">;</span>
-</code></pre></div>
-<p>Finalmente, si queremos comprobar todas las restricciones que tiene una tabla, podemos ejecutar la sentencia <code>SHOW CREATE TABLE</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">SHOW</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CURSAR</span><span class="p">;</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Table  | Create Table                                                                                                                                                                                                                                                                                                                                                                         |</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | CURSAR | CREATE TABLE `CURSAR` (</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="c1">--   `nifEstudiante` varchar(9) NOT NULL,</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">--   `asignatura` int(11) NOT NULL,</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">--   `anyo` int(11) NOT NULL,</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1">--   `repetidor` tinyint(1) DEFAULT NULL,</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">--   PRIMARY KEY (`nifEstudiante`,`asignatura`,`anyo`),</span>
-<span class="linenos" data-linenos="11 "></span><span class="c1">--   CONSTRAINT `FK_CUR_EST` FOREIGN KEY (`nifEstudiante`) REFERENCES `ESTUDIANTE` (`nif`)</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1">-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci |</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">-- +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="linenos" data-linenos="14 "></span><span class="c1">-- 1 row in set (0.001 sec)</span>
-</code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Organizando las restricciones</p>
-<p>Para tener una mejor organización de las restricciones, definiremos:</p>
-<ul>
-<li>a nivel de columnas: <code>DEFAULT</code>, <code>NOT NULL</code> y <code>AUTO_INCREMENT</code>.</li>
-<li>mediante <code>CONSTRAINT</code> tras la definición de las columnas: <code>PRIMARY KEY</code>, <code>UNIQUE</code>, <code>FOREIGN KEY</code> y <code>CHECK</code>.</li>
-</ul>
-</div>
-<div class="admonition info">
-<p class="admonition-title">Otros elementos</p>
-<p>Existen otras estructuras que forman parte de DDL pero que veremos más adelante son:</p>
-<ul>
-<li><strong>Vistas</strong>: Permiten crear una representación externa (tabla virtual) a partir de una consulta, mediante <code>CREATE VIEW</code>. Las estudiaremos en la unidad 8.</li>
-<li><strong>Índices</strong>: Se utilizan para acelerar las consultas, mediante <code>CREATE INDEX</code>. Los estudiaremos en la unidad 9.</li>
-<li><strong>Disparadores</strong> (<em>triggers</em>): Se asocian a operaciones que se producen en el sistema (evento) para realizar otra acción. Los estudiaremos en la unidad 11.</li>
-</ul>
-</div>
 <h2 id="cargando-datos">Cargando datos<a class="headerlink" href="#cargando-datos" title="Permanent link">&para;</a></h2>
 <p>A la hora de cargar datos en una base de datos, además de las operaciones de inserción individual o múltiple de registros, todos los SGBD incorporan herramientas para la importación tanto de datos como recuperación de copias de seguridad que nos sirven para tener un entorno listo para trabajar.</p>
 <h3 id="ejecutando-un-script">Ejecutando un script<a class="headerlink" href="#ejecutando-un-script" title="Permanent link">&para;</a></h3>
@@ -3419,7 +3437,7 @@ PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
 <span class="linenos" data-linenos="3 "></span><span class="c1">-- Query OK, 2 rows affected (0.002 sec)</span>
 <span class="linenos" data-linenos="4 "></span><span class="c1">-- Records: 2  Duplicates: 0  Warnings: 0</span>
 </code></pre></div>
-<p>Como <code>id</code> es un campo auto incrementable, podemos omitir su valor, y automáticamente se le asignará el siguiente valor de la secuencia:</p>
+<p>Cuando trabajamos con claves subrogadas, como es el caso de <code>id</code> que es un campo auto incrementable, podemos omitir su valor, y automáticamente se le asignará el siguiente valor de la secuencia:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dml8a</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;José Manuel Pérez&quot;</span><span class="p">);</span>
 </code></pre></div>
 <p>Cuando insertarmos un registro en una tabla autoincrementable, podemos recuperar el valor creado mediante la función <code>LAST_INSERT_ID()</code>. En el bloque de programación mediante PL/SQL profundizaremos en su uso:</p>
@@ -3431,7 +3449,12 @@ PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
 <span class="linenos" data-linenos="6 "></span><span class="c1">-- +------------------+</span>
 <span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.001 sec)</span>
 </code></pre></div>
-<p>Si queremos insertar los valores por defectos asociados a una columna o un valor nulo (por ejemplo, a una clave ajena) usaremos <code>DEFAULT</code> y <code>NULL</code> respectivamente. Por ejemplo:</p>
+<p>En el caso de <em>PostgreSQL</em>, si queremos recuperar la información sobre la fila recién insertada, podemos emplear la cláusula <code>RETURNING</code>:</p>
+<div class="highlight"><span class="filename">PostgreSQL</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dml8a</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;David Suárez&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;david@gmail.com&quot;</span><span class="p">)</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">RETURNING</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</code></pre></div>
+<p>Finalmente, si queremos insertar los valores por defectos asociados a una columna o un valor nulo (por ejemplo, a una clave ajena) usaremos <code>DEFAULT</code> y <code>NULL</code> respectivamente. Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dml8a</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">66</span><span class="p">,</span><span class="w"> </span><span class="k">DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">dml8a</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="o">=</span><span class="mi">66</span><span class="p">;</span>
 <span class="linenos" data-linenos="3 "></span><span class="c1">-- +----+--------------+-------+</span>
@@ -3441,18 +3464,13 @@ PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
 <span class="linenos" data-linenos="7 "></span><span class="c1">-- +----+--------------+-------+</span>
 <span class="linenos" data-linenos="8 "></span><span class="c1">-- 1 row in set (0.003 sec)</span>
 </code></pre></div>
-<p>En el caso de <em>PostgreSQL</em>, si queremos recuperar la información sobre la fila recién insertada, podemos emplear la cláusula <code>RETURNING</code>:</p>
-<div class="highlight"><span class="filename">PostgreSQL</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dml8a</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span>
-<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;David Suárez&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;david@gmail.com&quot;</span><span class="p">)</span>
-<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">RETURNING</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
-</code></pre></div>
 <div class="admonition danger">
 <p class="admonition-title">Gestión de errores</p>
 <p>Si insertamos datos con tipos diferentes, dejamos campos no nulos en blanco, o insertamos datos en un campo que es clave ajena y no cumplimos la integridad referencial, el SGBD nos devolverá diferentes mensajes:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dml8a</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;veinte&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Juan&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">33</span><span class="p">);</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1">-- ERROR 1366 (22007): Incorrect integer value: &#39;veinte&#39; for column `pruebas`.`dml8a`.`id` at row 1</span>
 </code></pre></div>
-<p>En cambio, si ejecutamos <code>INSERT INTO dml8a VALUES (20, "Juan", 33);</code> no dará error porque convertirá el número <code>33</code> a un <code>string</code> antes de insertarlo.</p>
+<p>En cambio, si ejecutamos <code class="highlight"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dml8a</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Juan&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">33</span><span class="p">);</span></code> no dará error porque convertirá el número <code>33</code> a un <code>string</code> antes de insertarlo.</p>
 </div>
 <p>También podemos insertar datos con el resultado de una consulta mediante la instrucción <a href="https://mariadb.com/kb/en/insert-select/"><code>INSERT SELECT</code></a>, pero esta operación la estudiaremos en profundidad más adelante.</p>
 <h3 id="modificaciones">Modificaciones<a class="headerlink" href="#modificaciones" title="Permanent link">&para;</a></h3>
@@ -3496,6 +3514,8 @@ PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
 <p>En cambio, si la clave ajena se configuró con <code>CASCADE</code>, al borrar el registro, se borrarán todos los registros de las tablas origen que referenciaban a éste.</p>
 <p>Finalmente, si se configuró con <code>NULL</code>, la tabla origen modificará el valor de su clave ajena se pondrá a nulo.</p>
 </div>
+<!-- ejemplo de borrado con integridad referencial, partiendo del ejemplo del supuesto -->
+
 <p>Conviene destacar que, si queremos eliminar todos los datos de una tabla, es mucho más eficiente utilizar el comando <code>TRUNCATE TABLE</code>, tanto en <a href="https://mariadb.com/kb/en/truncate-table/">MariaDB</a> como en <a href="https://www.postgresql.org/docs/current/sql-truncate.html">PostgreSQL</a></p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">TRUNCATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">dml8a</span>
 </code></pre></div>
