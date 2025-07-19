@@ -1985,7 +1985,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <div class="admonition question">
 <p class="admonition-title">Autoevaluación</p>
 <p>¿En qué cambiaría el gráfico de ocurrencias si las cardinalidades fueran <code>Card(DPTO, DIRIGIR) = (0,1)</code> y <code>Card(EMPLEADO, DIRIGIR) = (1,1)</code>?<br />
-¿Cuáles nos pueden quedarse sin relacionar? ¿Los departamentos? ¿Los empleados?</p>
+¿Cuáles pueden quedarse sin relacionar? ¿Los departamentos? ¿Los empleados?</p>
 </div>
 <p>Todas las posibles combinaciones de cardinalidades de una relación 1:1 son:</p>
 <div class="grid cards">
@@ -2086,6 +2086,15 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 </li>
 </ul>
 </div>
+<div class="admonition question">
+<p class="admonition-title">¿1:N imposible?</p>
+<p>Del mismo modo que en la relación 1:1, imagina que tenemos una relación 1:N con las dos cardinalidades mínimas también a 1.</p>
+<p>En este caso, la cardinalidad que es (1,N) debe pasar a ser (0,N).</p>
+<p><figure style="align: center;">
+    <img src="images/02relacion1n11a0n11.png" width="400" title="Relajación de Relación 1:N">
+    <figcaption>Relajación de Relación 1:N</figcaption>
+</figure></p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Supuesto I Empresa</p>
 <p>Queremos gestionar la información sobre los empleados de una empresa, a partir de las siguientes condiciones: para cada empleado dispondremos de su DNI, nombre, fecha de nacimiento, salario y departamento en el que trabaja.</p>
@@ -2125,6 +2134,11 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 </figure>
 
 <p>Si nos fijamos en las ocurrencias de las entidades, vemos como un empleado trabaja en uno o más proyectos (o en ninguno). Por ello, <code>Card(EMPLEADO, TRABAJAR) = (0,N)</code>. En cambio, tenemos proyectos en los que trabajan varios empleados, o incluso proyectos sin empleados, lo que implica que <code>Card(PROYECTO, TRABAJAR) = (0,N)</code>.</p>
+<div class="admonition question">
+<p class="admonition-title">Autoevaluación</p>
+<p>Igual que en las relaciones 1:1 y 1:N, ¿Serías capaz de anotar las combinaciones de cardinalidades y modelar todos los tipos de relaciones N:M posibles?<br />
+¿Tiene sentido que las cardinalidades mínimas, en las relaciones N:M, sean 1? ¿Por qué?</p>
+</div>
 <h5 id="relaciones-nm-con-fechas">Relaciones N:M con fechas<a class="headerlink" href="#relaciones-nm-con-fechas" title="Permanent link">&para;</a></h5>
 <p>En algunos casos, las relaciones muchos a muchos pueden tener múltiples ocurrencias entre las mismas entidades en fechas distintas.</p>
 <p>Por ejemplo, en el contexto de una biblioteca, si pensamos en la relación <code>PRESTAR</code> entre <code>LIBRO</code> y <code>USUARIO</code>, podemos deducir que un usuario puede llevarse prestados muchos libros y un libro lo pueden prestar muchos usuarios. Pero ¿cómo modelamos que un usuario se lleva el mismo libro en fechas diferentes?</p>
