@@ -2232,7 +2232,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
     <figcaption>Restricción de ID</figcaption>
 </figure>
 
-<p>En las restricciones de identificación, la entidad débil se identifica, completamente o en parte, con la entidad fuerte. Es por ello, que la clave ajena debe formar parte de la clave primaria compuesta por la clave primaria de la entidad fuerte y la débil:</p>
+<p>En las restricciones de identificación, la entidad débil se identifica, completamente o en parte, con la entidad fuerte. Es decir, parte de la clave primaria de la entidad débil son los atributos clave de la entidad fuerte. Es por ello, que la clave ajena debe formar parte de la clave primaria, la cual se define como una clave compuesta por la combinación de la clave primaria de la entidad fuerte y la débil:</p>
 <p><code>
 <strong>A</strong> (<ins>a0</ins>, <ins>b0</ins><code>*</code>, a1)<br />
 · PK: (a0, bo)<br />
@@ -2242,6 +2242,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <strong>B</strong> (<ins>b0</ins>, b1)<br />
 · PK: (b0)
 </code></p>
+<p>Los atributos clave de la entidad débil que no apuntan a la entidad fuerte se conocen como clave parcial. En el ejemplo anterior, <code>a0</code> sería la clave parcial de la entidad débil <code>A</code>.</p>
 <figure style="float: right;">
     <img src="images/04ejemplo-id2.png" width="637" title="Ejemplo de restricción de ID">
     <figcaption>Ejemplo de restricción de ID</figcaption>

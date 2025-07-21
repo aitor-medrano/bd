@@ -660,20 +660,14 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Formas Normales">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ejemplo_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ejemplo
-    </span>
-  </a>
-  
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso a paso
+    </span>
+  </a>
   
 </li>
         
@@ -1538,20 +1532,14 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Formas Normales">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ejemplo_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ejemplo
-    </span>
-  </a>
-  
 </li>
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Paso a paso
+    </span>
+  </a>
   
 </li>
         
@@ -2071,7 +2059,7 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 <tr>
 <td>6</td>
 <td>Volante</td>
-<td></td>
+<td><code>NULL</code></td>
 </tr>
 </tbody>
 </table>
@@ -2285,19 +2273,19 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 <td>12345678A</td>
 <td>1</td>
 <td>2024</td>
-<td>true</td>
+<td><code>true</code></td>
 </tr>
 <tr>
 <td>48123456B</td>
 <td>1</td>
 <td>2024</td>
-<td>false</td>
+<td><code>false</code></td>
 </tr>
 <tr>
 <td>12345678A</td>
 <td>2</td>
 <td>2023</td>
-<td>false</td>
+<td><code>false</code></td>
 </tr>
 </tbody>
 </table>
@@ -2426,19 +2414,19 @@ clave primaria de la tabla que relaciona.</p>
 <td>12345678A</td>
 <td>1</td>
 <td>2024</td>
-<td>true</td>
+<td><code>true</code></td>
 </tr>
 <tr>
 <td></td>
 <td>1</td>
 <td>2024</td>
-<td>false</td>
+<td><code>false</code></td>
 </tr>
 <tr>
 <td>66666666Z</td>
 <td>2</td>
 <td>2023</td>
-<td>false</td>
+<td><code>false</code></td>
 </tr>
 </tbody>
 </table>
@@ -2637,7 +2625,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <h4 id="componentes">Componentes<a class="headerlink" href="#componentes" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
-<p><strong>Tablas y columnas</strong>: Describe las tablas en la base de datos, los nombres de las columnas, tipos de datos, tamaños y si permiten valores nulos.</p>
+<p><strong>Tablas y columnas</strong>: Describe las tablas en la base de datos, los nombres de las columnas, tipos de datos (los diferentes <a href="05ddl.html#tipos-de-datos">tipos de datos</a> los estudiaremos en detalle en la <a href="05ddl.html">unidad 5</a>), tamaños y si permiten valores nulos.</p>
 </li>
 <li>
 <p><strong>Relaciones y claves</strong>: Define las relaciones entre tablas y especifica las claves primarias y ajenas.</p>
@@ -2664,22 +2652,22 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <tbody>
 <tr>
 <td><code>codigo</code></td>
-<td>INT</td>
+<td><code>INT</code></td>
 <td>Clave primaria. Identificador único del autor.</td>
 </tr>
 <tr>
 <td><code>nombre</code></td>
-<td>VARCHAR(64)</td>
+<td><code>VARCHAR(64)</code></td>
 <td>Nombre del autor.</td>
 </tr>
 <tr>
 <td><code>fnac</code></td>
-<td>DATE</td>
+<td><code>DATE</code></td>
 <td>Fecha de nacimiento del autor.</td>
 </tr>
 <tr>
 <td><code>pais</code></td>
-<td>VARCHAR(32)</td>
+<td><code>VARCHAR(32)</code></td>
 <td>País de nacimiento del autor.</td>
 </tr>
 </tbody>
@@ -2698,27 +2686,27 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <tbody>
 <tr>
 <td><code>isbn</code></td>
-<td>INT</td>
+<td><code>INT</code></td>
 <td>Clave primaria. Identificador único del libro.</td>
 </tr>
 <tr>
 <td><code>titulo</code></td>
-<td>VARCHAR(64)</td>
+<td><code>VARCHAR(64)</code></td>
 <td>Título del libro.</td>
 </tr>
 <tr>
 <td><code>autor</code></td>
-<td>INT</td>
+<td><code>INT</code></td>
 <td>Clave foránea que referencia a <code>AUTOR.codigo</code>. Indica el autor del libro.</td>
 </tr>
 <tr>
 <td><code>editorial</code></td>
-<td>VARCHAR(32)</td>
+<td><code>VARCHAR(32)</code></td>
 <td>Editorial que publica el libro.</td>
 </tr>
 <tr>
 <td><code>pvp</code></td>
-<td>FLOAT</td>
+<td><code>DECIMAL(10,2)</code></td>
 <td>Precio de venta al público del libro.</td>
 </tr>
 </tbody>
@@ -2737,8 +2725,9 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </ul>
 <h2 id="normalizacion">Normalización<a class="headerlink" href="#normalizacion" title="Permanent link">&para;</a></h2>
 <p>Un principio del diseño relacional es que "<em>hechos distintos se deben almacenar en objetos distintos</em>".</p>
-<p>Para conseguir este objetivo, la <strong>normalización</strong> es una técnica dentro del diseño de bases de datos relacionales que consiste en la separación de atributos en tablas lo más simples posibles para suprimir dependencias erróneas entre atributos, así como optimizar los procesos de inserción, modificación y borrado en la bases de datos, evitando las anomalías previamente comentadas.</p>
-<p>Así pues, se basa en el análisis de dependencias entre atributos mediante un proceso que consiste en identificar y aplicar una serie de reglas a las relaciones obtenidas del esquema relacional.</p>
+<p>Para conseguir este objetivo, la <strong>normalización</strong> es una técnica dentro del diseño de bases de datos relacionales que consiste en la separación de atributos en tablas lo más simples posibles para suprimir dependencias erróneas entre atributos, reducir la redundancia así como optimizar los procesos de inserción, modificación y borrado en la bases de datos, evitando las anomalías previamente comentadas, lo que maximiza la integridad de los datos y su consistencia.</p>
+<p>Podemos simplificar el objetivo de la normalización en maximizar la integridad de los datos, reduciendo su redundancia.</p>
+<p>Para conseguirlo, se basa en el análisis de dependencias entre atributos mediante un proceso que consiste en identificar y aplicar una serie de reglas a las relaciones obtenidas del esquema relacional.</p>
 <div class="admonition abstract">
 <p class="admonition-title">Supuesto Comerciales</p>
 <p>Supongamos los siguientes datos sobre ventas que realizan una serie de comerciales de los cuales tenemos su código y nombre, su estado laboral (con un código y una descripción), la ciudad y la provincia donde realizan las ventas, así como las poblaciones de dichas ciudades y provincias.</p>
@@ -2862,9 +2851,9 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <p>Antes de entrar a conocer los pasos de la normalización, previamente tenemos que definir una serie de conceptos:</p>
 <ul>
 <li>
-<p><strong>Dependencia funcional</strong> (DF): es la relación semántica existente entre atributos de una misma tabla. Decimos que <strong>A → B</strong>, es decir, que <strong>B depende funcionalmente de A</strong> (o A determina a B), si y solo si para cada valor de A sólo puede existir un B.</p>
+<p><strong>Dependencia funcional</strong> (<abbr title="Dependencia funcional">DF</abbr>): es la relación semántica existente entre atributos de una misma tabla. Decimos que <strong>A → B</strong>, es decir, que <strong>B depende funcionalmente de A</strong> (o A determina a B), si y solo si para cada valor de A sólo puede existir un B.</p>
 <div class="admonition abstract">
-<p class="admonition-title">DF - Supuesto Comerciales</p>
+<p class="admonition-title"><abbr title="Dependencia funcional">DF</abbr> - Supuesto Comerciales</p>
 <p>El primer paso es para cada columna, identificar las dependencias que hay entre los atributos.</p>
 <p>Por ejemplo, cogemos el nombre del comercial, y detectamos que dependen funcionalmente del identificador del comercial, por lo tanto: <code>comercialID → comercialNom</code>. Pero si nos fijamos bien en los nombres de los comerciales, no podemos decir lo mismo en el sentido contrario, ya que tenemos un nombre repetido en diferentes códigos de comercial (¡qué casualidad!), con lo que no es correcto decir <code>comercialNom → comercialID</code>.</p>
 <p>Si hacemos lo mismo con el identificador del estado del comercial, deducimos que depende también del identificador, obteniendo <code>comercialID → estadoID</code>.</p>
@@ -2882,17 +2871,17 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </div>
 </li>
 <li>
-<p><strong>Dependencia funcional completa</strong> (DFC): cuando tenemos que <em>A1, A2, ...AN → B</em> (B tiene una dependencia funcional del conjunto A1, A2, ...AN), pero no de ninguno de sus subconjuntos.</p>
+<p><strong>Dependencia funcional completa</strong> (<abbr title="Dependencia funcional completa">DFC</abbr>): cuando tenemos que <em>A1, A2, ...AN → B</em> (B tiene una dependencia funcional del conjunto A1, A2, ...AN), pero no de ninguno de sus subconjuntos.</p>
 <p>Es decir, B depende de la combinación completa de atributos, y no de un parte de la clave.</p>
 <div class="admonition abstract">
-<p class="admonition-title">DFC - Supuesto Comerciales</p>
+<p class="admonition-title"><abbr title="Dependencia funcional completa">DFC</abbr> - Supuesto Comerciales</p>
 <p>Tenemos que las ventas dependen de la combinación <code>comercialID, ciudad, provincia</code> y no de un subconjunto de ellas, es decir, <code>comercialID, ciudad, provincia → ventas</code>.</p>
 </div>
 </li>
 <li>
-<p><strong>Dependencia funcional transitiva</strong> (DFT): se dice que hay un DFT entre A y B, si A → B y B → C, siendo A y B columnas no claves. Dicho de otro modo, cuando tenemos columnas no claves que determinan otras columnas no clave.</p>
+<p><strong>Dependencia funcional transitiva</strong> (<abbr title="Dependencia funcional transitiva">DFT</abbr>): se dice que hay un <abbr title="Dependencia funcional transitiva">DFT</abbr> entre A y B, si A → B y B → C, siendo A y B columnas no claves. Dicho de otro modo, cuando tenemos columnas no claves que determinan otras columnas no clave.</p>
 <div class="admonition abstract">
-<p class="admonition-title">DFT - Supuesto Comerciales</p>
+<p class="admonition-title"><abbr title="Dependencia funcional transitiva">DFT</abbr> - Supuesto Comerciales</p>
 <p>Tenemos que <code>estadoID → estadoDesc</code> y que <code>estadoDesc → estadoID</code>.</p>
 </div>
 </li>
@@ -2909,29 +2898,499 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <ul>
 <li>
 <p><strong>1FN</strong>: Una relación está en primera forma normal si, y sólo si, todos sus dominios contienen valores atómicos. Supone la eliminación de todos los campos multivaluados.</p>
-<p>Por lo general, si tenemos una tabla de un modelo relacional, por las propias restricciones semánticas del modelo relacional, no deberíamos tener ningún campo con varios valores.</p>
+<p>Por lo general, si tenemos una tabla de un modelo relacional, por las propias restricciones semánticas del modelo relacional, no deberíamos tener ningún campo con varios valores, ya que deberían haberse transformado en relaciones 1:N.</p>
+<div class="admonition abstract">
+<p class="admonition-title">1FN - Supuesto Comerciales</p>
+<p>Como ninguna columna tiene más de un valor, la tabla ya está en 1FN.</p>
+</div>
 </li>
 <li>
-<p><strong>2FN</strong>: una relación está en segunda forma normal si está en 1FN y todas las columnas que no son clave tienen un DFC de la clave primaria. </p>
-<p>Para ello, descompondremos la tabla en varias tablas, y comprobamos que ningún subconjunto de los atributos no clave determinan campos no principales.</p>
+<p><strong>2FN</strong>: una relación está en segunda forma normal si está en 1FN y todas las columnas que no son clave tienen un <abbr title="Dependencia funcional completa">DFC</abbr> de la clave primaria. </p>
+<p>Para ello, descompondremos la tabla en varias subtablas, y comprobaremos que ningún subconjunto de los atributos no clave determinan campos no principales.</p>
 <p>Si todas las claves candidatas de las tablas en 1FN son simples (unitarias), automáticamente las tablas ya están en 2FN. En cambio, si la clave primaria es compuesta, deberemos comprobar que todos los atributos dependen de la clave primaria compuesta y no de un subconjunto de esta.</p>
+<div class="admonition abstract">
+<p class="admonition-title">2FN - Supuesto Comerciales</p>
+<p>Si revisamos las dependencia funcionales, hemos de comprobar que  todos los atributos no clave dependan de toda la clave primaria. Para ello, necesitamos crear al menos tres tablas:</p>
+<p><code>
+<strong>COMERCIAL</strong> (<ins>comercialID</ins>, comercialNom, estadoID, estadoDesc)<br />
+· PK: (codigo)
+</code></p>
+<p><code>
+<strong>CIUDAD</strong> (<ins>ciudad</ins>, <ins>provincia</ins>, ciudadPob, provinciaPob)<br />
+· PK: (ciudad)
+</code></p>
+<p><code>
+<strong>REGISTRO</strong> (<ins>comercialID</ins><code>*</code>, <ins>ciudad</ins><code>*</code>, <ins>provincia</ins><code>*</code>, ventas)<br />
+· PK: (comercialID, ciudad, provincia)<br />
+· FK: (comercialID) → COMERCIAL<br />
+· FK: (ciudad, provincia) → CIUDAD<br />
+</code></p>
+<p>Dando como resultado las siguientes tablas con datos:</p>
+<ul>
+<li>
+<p><code>COMERCIAL</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>comercialID</ins></th>
+<th>comercialNom</th>
+<th>estadoID</th>
+<th>estadoDesc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>Carlos Suarez</td>
+<td>JC</td>
+<td>Jornada Completa</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Manoli Campos</td>
+<td>JC</td>
+<td>Jornada Completa</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Carlos Suarez</td>
+<td>JPM</td>
+<td>Jornada Partida Mañanas</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>Sonia Sánchez</td>
+<td>JPT</td>
+<td>Jornada Partida Tardes</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Marina Vidal</td>
+<td>JC</td>
+<td>Jornada Completa</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Michael Johnson</td>
+<td>JC</td>
+<td>Jornada Completa</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>CIUDAD</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>ciudad</ins></th>
+<th><ins>provincia</ins></th>
+<th>ciudadPob</th>
+<th>provinciaPob</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Elche</td>
+<td>Alicante</td>
+<td>230.000</td>
+<td>1.800.000</td>
+</tr>
+<tr>
+<td>Denia</td>
+<td>Alicante</td>
+<td>42.000</td>
+<td>1.800.000</td>
+</tr>
+<tr>
+<td>Aspe</td>
+<td>Alicante</td>
+<td>22.000</td>
+<td>1.800.000</td>
+</tr>
+<tr>
+<td>Cartagena</td>
+<td>Murcia</td>
+<td>218.000</td>
+<td>1.520.000</td>
+</tr>
+<tr>
+<td>Gandía</td>
+<td>Valencia</td>
+<td>73.000</td>
+<td>2.550.000</td>
+</tr>
+<tr>
+<td>Valencia</td>
+<td>Valencia</td>
+<td>807.000</td>
+<td>1.800.000</td>
+</tr>
+<tr>
+<td>Valencia</td>
+<td>California</td>
+<td>63.000</td>
+<td>38.940.000</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>REGISTRO</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>comercialID</ins><code>*</code></th>
+<th><ins>ciudad</ins><code>*</code></th>
+<th><ins>provincia</ins><code>*</code></th>
+<th>ventas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>Elche</td>
+<td>Alicante</td>
+<td>33</td>
+</tr>
+<tr>
+<td>C1</td>
+<td>Denia</td>
+<td>Alicante</td>
+<td>22</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Elche</td>
+<td>Alicante</td>
+<td>55</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Aspe</td>
+<td>Alicante</td>
+<td>44</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Cartagena</td>
+<td>Murcia</td>
+<td>17</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>Gandía</td>
+<td>Valencia</td>
+<td>27</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Valencia</td>
+<td>Valencia</td>
+<td>37</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Valencia</td>
+<td>California</td>
+<td>47</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>3FN</strong>: 2FN + todo atributo que no es clave primaria no tiene una dependencia funcional transitiva de otro atributo no clave, es decir, depende únicamente de la clave primaria de modo no transitivo.    </p>
+<div class="admonition abstract">
+<p class="admonition-title">3FN - Supuesto Comerciales</p>
+<p>Ahora revisamos que no haya atributos que dependan de forma transitiva de la clave primaria. Tanto <code>COMERCIAL.estadoDesc</code> como <code>CIUDAD.provinciaPob</code> dependen de forma transitiva de un atributo no que es clave en sus tablas (<code>COMERCIAL.estadoID</code> y <code>CIUDAD.provincia</code>, respectivamente).</p>
+<p>Así pues, dividimos más las tablas:</p>
+<p><code>
+<strong>ESTADO</strong> (<ins>estadoID</ins>, estadoDesc)<br />
+· PK: (codigo)
+</code></p>
+<p><code>
+<strong>COMERCIAL</strong> (<ins>comercialID</ins>, comercialNom, estadoID<code>*</code>)<br />
+· PK: (codigo)<br />
+· FK: (estadoID) → ESTADO<br />
+</code></p>
+<p><code>
+<strong>PROVINCIA</strong> (<ins>provincia</ins>, provinciaPob)<br />
+· PK: (provincia)
+</code></p>
+<p><code>
+<strong>CIUDAD</strong> (<ins>ciudad</ins>, <ins>provincia</ins><code>*</code>, ciudadPob)<br />
+· PK: (ciudad)<br />
+· FK: (provincia) → PROVINCIA<br />
+</code></p>
+<p><code>
+<strong>REGISTRO</strong> (<ins>comercialID</ins><code>*</code>, <ins>ciudad</ins><code>*</code>, <ins>provincia</ins><code>*</code>, ventas)<br />
+· PK: (comercialID, ciudad, provincia)<br />
+· FK: (comercialID) → COMERCIAL<br />
+· FK: (ciudad, provincia) → CIUDAD<br />
+</code></p>
+<p>Dando como resultado las siguientes tablas con datos:</p>
+<div class="grid cards" markdown>
+<ul>
+<li>
+<p><code>ESTADO</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>estadoID</ins></th>
+<th>estadoDesc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JC</td>
+<td>Jornada Completa</td>
+</tr>
+<tr>
+<td>JPM</td>
+<td>Jornada Partida Mañanas</td>
+</tr>
+<tr>
+<td>JPT</td>
+<td>Jornada Partida Tardes</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>COMERCIAL</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>comercialID</ins></th>
+<th>comercialNom</th>
+<th>estadoID<code>*</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>Carlos Suarez</td>
+<td>JC</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Manoli Campos</td>
+<td>JC</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Carlos Suarez</td>
+<td>JPM</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>Sonia Sánchez</td>
+<td>JPT</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Marina Vidal</td>
+<td>JC</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Michael Johnson</td>
+<td>JC</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>PROVINCIA</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>provincia</ins></th>
+<th>provinciaPob</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Alicante</td>
+<td>1.800.000</td>
+</tr>
+<tr>
+<td>Murcia</td>
+<td>1.520.000</td>
+</tr>
+<tr>
+<td>Valencia</td>
+<td>2.550.000</td>
+</tr>
+<tr>
+<td>California</td>
+<td>38.940.000</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>CIUDAD</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>ciudad</ins></th>
+<th><ins>provincia</ins><code>*</code></th>
+<th>ciudadPob</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Elche</td>
+<td>Alicante</td>
+<td>230.000</td>
+</tr>
+<tr>
+<td>Denia</td>
+<td>Alicante</td>
+<td>42.000</td>
+</tr>
+<tr>
+<td>Aspe</td>
+<td>Alicante</td>
+<td>22.000</td>
+</tr>
+<tr>
+<td>Cartagena</td>
+<td>Murcia</td>
+<td>218.000</td>
+</tr>
+<tr>
+<td>Gandía</td>
+<td>Valencia</td>
+<td>73.000</td>
+</tr>
+<tr>
+<td>Valencia</td>
+<td>Valencia</td>
+<td>807.000</td>
+</tr>
+<tr>
+<td>Valencia</td>
+<td>California</td>
+<td>63.000</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><code>REGISTRO</code></p>
+<table>
+<thead>
+<tr>
+<th><ins>comercialID</ins><code>*</code></th>
+<th><ins>ciudad</ins><code>*</code></th>
+<th><ins>provincia</ins><code>*</code></th>
+<th>ventas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>Elche</td>
+<td>Alicante</td>
+<td>33</td>
+</tr>
+<tr>
+<td>C1</td>
+<td>Denia</td>
+<td>Alicante</td>
+<td>22</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Elche</td>
+<td>Alicante</td>
+<td>55</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>Aspe</td>
+<td>Alicante</td>
+<td>44</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>Cartagena</td>
+<td>Murcia</td>
+<td>17</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>Gandía</td>
+<td>Valencia</td>
+<td>27</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Valencia</td>
+<td>Valencia</td>
+<td>37</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>Valencia</td>
+<td>California</td>
+<td>47</td>
+</tr>
+</tbody>
+</table>
 </li>
 </ul>
-<h4 id="ejemplo_1">Ejemplo<a class="headerlink" href="#ejemplo_1" title="Permanent link">&para;</a></h4>
+</div>
+</div>
+<p>El problema de la 3FN es que no maneja relaciones que:</p>
+<ul>
+<li>Tienen varias claves candidatas,</li>
+<li>Esas claves candidatas son compuestas, y</li>
+<li>Las claves candidatas tienen por lo menos un atributo en común.</li>
+</ul>
+</li>
+<li>
+<p><strong><abbr title="Forma normal de Boyce-Codd">FNBC</abbr></strong>: Es una mejora de la 3FN donde, si tenemos más de una clave candidata y estas son compuestas y comparten algún atributo entonces, ningún atributo, sea clave o no,  puede depender de algo que no sea la clave primaria.</p>
+<p>Si la clave no es compuesta y no existe más de una clave candidata (sólo tenemos la clave primaria), la <abbr title="Forma normal de Boyce-Codd">FNBC</abbr> es equivalente a la 3FN.</p>
+<p>El objetivo de la <abbr title="Forma normal de Boyce-Codd">FNBC</abbr> es asegurar que cada dato de una tabla depende únicamente de una clave real y completa, y no de otra cosa.</p>
+<div class="admonition abstract">
+<p class="admonition-title">3FN - Supuesto Comerciales</p>
+<p>Como la única tabla con una clave primaria compuesta (<code>REGISTRO</code>) no tiene otras claves candidatas, ya está en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr>.</p>
+</div>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">En resumen...</p>
+<p>En la práctica, cuando todas las tablas están en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr>, se puede considerar que la base de datos está totalmente normalizada. Una tabla en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr> ya está desde 1FN hasta 3FN y tiene las siguientes características:</p>
+<ul>
+<li>Tiene una clave primaria.</li>
+<li>No tiene columnas multivaluadas.</li>
+<li>Todas las columnas dependen de una clave pero nada más.</li>
+<li>No contiene ninguna dependencia transitiva.</li>
+</ul>
+<p><figure style="align: center;">
+    <img src="images/03normalizacion.png" width="600" title="Proceso de normalización">
+    <figcaption>Proceso de normalización</figcaption>
+</figure></p>
+</div>
+<h3 id="paso-a-paso">Paso a paso<a class="headerlink" href="#paso-a-paso" title="Permanent link">&para;</a></h3>
+<p>Vamos a plasmar el proceso de normalización en un ejemplo resuelto paso a paso.</p>
 <p>Tenemos una tabla sobre la cual queremos comprobar si está normalizada. Se basa en los datos de una escuela de diseño, donde tenemos alumnado que cursa diversas asignaturas que imparte un docente, y en la cual puede obtener una calificación de dicho docente.</p>
 <p>Se muestra un ejemplo de datos de la tabla de la cual partimos:</p>
 <table>
 <thead>
 <tr>
-<th>cod-alumno</th>
-<th>nom-alumno</th>
-<th>cod-asignatura</th>
-<th>nom-asignatura</th>
-<th>cod-profesor</th>
-<th>nom-profesor</th>
+<th>codAlumno</th>
+<th>nomAlumno</th>
+<th>codAsignatura</th>
+<th>nomAsignatura</th>
+<th>codProfesor</th>
+<th>nomProfesor</th>
 <th>nota</th>
 </tr>
 </thead>
@@ -2983,48 +3442,63 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </tr>
 </tbody>
 </table>
-<p>Vamos a aplicar las diferentes reglas y transformaciones necesarias hasta comprobar la <abbr title="Forma Normal de Boyce-Codd">FNBC</abbr>.</p>
+<p>Vamos a aplicar las diferentes reglas y transformaciones necesarias hasta comprobar la <abbr title="Forma normal de Boyce-Codd">FNBC</abbr>.</p>
 <p>El primer paso es definir las dependencias funcionales, obteniendo:</p>
 <ul>
-<li><code>cod-alumno → nom-alumno</code>: El nombre del alumno DF del código.</li>
-<li><code>cod-asignatura → nom-asignatura</code>: El nombre de la asignatura DF del código.</li>
-<li><code>cod-profesor → nom-profesor</code>: El nombre del profesor DF del código.</li>
-<li><code>(cod-alumno, cod-asignatura, cod-profesor) → nota</code>: La combinación del código del alumno, el código de la asignatura y el código del profesor determina la nota.</li>
+<li><code>codAlumno → nomAlumno</code>: El nombre del alumno depende funcionalmente del código.</li>
+<li><code>codAsignatura → nomAsignatura</code>: El nombre de la asignatura depende funcionalmente  del código.</li>
+<li><code>codProfesor → nomProfesor</code>: El nombre del profesor depende funcionalmente del código.</li>
+<li><code>(codAlumno, codAsignatura, codProfesor) → nota</code>: La combinación del código del alumno, el código de la asignatura y el código del profesor determina la nota.</li>
 </ul>
-<p>Las claves candidatas de la relación serían <code>cod-alumno</code>, <code>cod-asignatura</code>, <code>cod-profesor</code> y <code>(cod-alumno, cod-asignatura, cod-profesor)</code> y los campos no clave serían <code>nom-alumno</code>, <code>nom-asignatura</code>, <code>nom-profesor</code> y <code>nota</code>.</p>
+<p>Las claves candidatas de la relación serían <code>codAlumno</code>, <code>codAsignatura</code>, <code>codProfesor</code> y <code>(codAlumno, codAsignatura, codProfesor)</code> y los campos no clave serían <code>nomAlumno</code>, <code>nomAsignatura</code>, <code>nomProfesor</code> y <code>nota</code>.</p>
 <p>A continuación, comprobamos si cumple las diferentes formas normales:</p>
 <ul>
 <li>
 <p>¿Está en 1FN? Comprobamos que la tabla no tiene campos multivaluados y, por lo tanto, la tabla de por sí ya está en primera forma normal.</p>
 </li>
 <li>
-<p>¿Está en 2FN? Está en 1FN y comprobamos las dependencias funcionales completas entre los atributos de la relación, es decir, todos los atributos no clave tienen una DFC de la clave primaria.</p>
-<p>Como los atributos <code>nom-alumno</code>, <code>nom-asignatura</code>, <code>nom-profesor</code> tienen no tienen una DFC de la clave <code>(cod-alumno, cod-asignatura, cod-profesor)</code> (ya que la tienen de un subconjunto de la clave, por ejemplo, el nombre del alumno DF de su código), necesitamos descomponer la relación en las siguientes tablas:</p>
-<ul>
-<li><code>ALUMNO(cod-alumno, nom-alumno)</code></li>
-<li><code>ASIGNATURA(cod-asignatura, nom-asignatura)</code></li>
-<li><code>PROFESOR(cod-profesor, nom-profesor)</code></li>
-<li><code>CALIFICAR(cod-alumno, cod-asignatura, cod-profesor, nota)</code></li>
-</ul>
+<p>¿Está en 2FN? Está en 1FN y comprobamos las dependencias funcionales completas entre los atributos de la relación, es decir, todos los atributos no clave tienen una <abbr title="Dependencia funcional completa">DFC</abbr> de la clave primaria.</p>
+<p>Como los atributos <code>nomAlumno</code>, <code>nomAsignatura</code>, <code>nomProfesor</code> tienen no tienen una <abbr title="Dependencia funcional completa">DFC</abbr> de la clave <code>(codAlumno, codAsignatura, codProfesor)</code> (ya que la tienen de un subconjunto de la clave, por ejemplo, el nombre del alumno depende funcionalmente de su código), necesitamos descomponer la relación en las siguientes tablas:</p>
+<p><code>
+<strong>ALUMNO</strong> (<ins>codAlumno</ins>, nomAlumno)<br />
+· PK: (codAlumno)
+</code></p>
+<p><code>
+<strong>ASIGNATURA</strong> (<ins>codAsignatura</ins>, nomAsignatura)<br />
+· PK: (codAsignatura)
+</code></p>
+<p><code>
+<strong>PROFESOR</strong> (<ins>codProfesor</ins>, nomProfesor)<br />
+· PK: (codProfesor)
+</code></p>
+<p><code>
+<strong>CALIFICAR</strong> (<ins>codAlumno</ins><code>*</code>, <ins>codAlumno</ins><code>*</code>, <ins>codAlumno</ins><code>*</code>, nota)<br />
+· PK: (codAlumno, codAsignatura, codProfesor)<br />
+· FK: (codAlumno) → ALUMNO<br />
+· FK: (codAsignatura) → ASIGNATURA<br />
+· FK: (codProfesor) → PROFESOR<br />
+</code></p>
 </li>
 <li>
-<p>¿Está en 3FN? Está en 2FN y comprobamos que todos los atributos no clave deben depender únicamente de la clave primaria.</p>
-<p>En la tabla <code>CALIFICAR</code> no hay dependencias transitivas, ya que nota depende directamente de la clave primaria compuesta <code>(cod-alumno, cod-asignatura, cod-profesor)</code>.</p>
+<p>¿Está en 3FN? Está en 2FN y comprobamos que todos los atributos no clave dependen únicamente de la clave primaria.</p>
+<p>En la tabla <code>CALIFICAR</code> no hay dependencias transitivas, ya que nota depende directamente de la clave primaria compuesta <code>(codAlumno, codAsignatura, codProfesor)</code>.</p>
 </li>
 <li>
-<p>¿Está en <abbr title="Forma Normal de Boyce-Codd">FNBC</abbr>? Una tabla está en <abbr title="Forma Normal de Boyce-Codd">FNBC</abbr> si para toda dependencia funcional es una superclave.</p>
-<p>En la tabla<code>CALIFICAR</code>, <code>(cod-alumno, cod-asignatura, cod-profesor)</code> juntos forman una superclave, y no hay violaciones a la <abbr title="Forma Normal de Boyce-Codd">FNBC</abbr>.</p>
+<p>¿Está en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr>? Está en 3FN y además, todos los atributos no dependen de otra cosa que la clave primaria.</p>
+<p>En la tabla <code>CALIFICAR</code>, <code>(codAlumno, codAsignatura, codProfesor)</code> juntos forman la única clave candidata, por lo tanto, ya está en 8FNBC.</p>
 </li>
 </ul>
 <p>El resultado de normalizar la tabla inicial sería</p>
-<ol>
+<div class="grid cards">
+<ul>
 <li>
-<p><code>ALUMNO(cod-alumno, nom-alumno)</code></p>
+<p><code><strong>ALUMNO</strong> (<ins>codAlumno</ins>, nomAlumno)<br />
+    · PK: (codAlumno)</code></p>
 <table>
 <thead>
 <tr>
-<th>cod-alumno</th>
-<th>nom-alumno</th>
+<th><ins>codAlumno</ins></th>
+<th>nomAlumno</th>
 </tr>
 </thead>
 <tbody>
@@ -3044,12 +3518,13 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </table>
 </li>
 <li>
-<p><code>ASIGNATURA(cod-asignatura, nom-asignatura)</code></p>
+<p><code><strong>ASIGNATURA</strong> (<ins>codAsignatura</ins>, nomAsignatura)<br />
+    · PK: (codAsignatura)</code></p>
 <table>
 <thead>
 <tr>
-<th>cod-asignatura</th>
-<th>nom-asignatura</th>
+<th><ins>codAsignatura</ins></th>
+<th>nomAsignatura</th>
 </tr>
 </thead>
 <tbody>
@@ -3069,12 +3544,13 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </table>
 </li>
 <li>
-<p><code>PROFESOR(cod-profesor, nom-profesor)</code></p>
+<p><code><strong>PROFESOR</strong> (<ins>codProfesor</ins>, nomProfesor)<br />
+    · PK: (codProfesor)</code></p>
 <table>
 <thead>
 <tr>
-<th>cod-profesor</th>
-<th>nom-profesor</th>
+<th><ins>codProfesor</ins></th>
+<th>nomProfesor</th>
 </tr>
 </thead>
 <tbody>
@@ -3090,13 +3566,17 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </table>
 </li>
 <li>
-<p><code>CALIFICAR(cod-alumno, cod-asignatura, cod-profesor, nota)</code></p>
+<p><code><strong>CALIFICAR</strong> (<ins>codAlumno</ins><code>*</code>, <ins>codAlumno</ins><code>*</code>, <ins>codAlumno</ins><code>*</code>, nota)<br />
+    · PK: (codAlumno, codAsignatura, codProfesor)<br />
+    · FK: (codAlumno) → ALUMNO<br />
+    · FK: (codAsignatura) → ASIGNATURA<br />
+    · FK: (codProfesor) → PROFESOR</code></p>
 <table>
 <thead>
 <tr>
-<th>cod-alumno</th>
-<th>cod-asignatura</th>
-<th>cod-profesor</th>
+<th><ins>codAlumno</ins><code>*</code></th>
+<th><ins>codAsignatura</ins><code>*</code></th>
+<th><ins>codProfesor</ins><code>*</code></th>
 <th>nota</th>
 </tr>
 </thead>
@@ -3128,8 +3608,9 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </tbody>
 </table>
 </li>
-</ol>
-<p>Estas tablas están ahora en <abbr title="Forma Normal de Boyce-Codd">FNBC</abbr>, eliminando redundancias y asegurando que todas las dependencias funcionales se respetan correctamente.</p>
+</ul>
+</div>
+<p>Estas tablas están ahora en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr>, eliminando redundancias y asegurando que todas las dependencias funcionales se respetan correctamente.</p>
 <h3 id="desnormalizacion">Desnormalización<a class="headerlink" href="#desnormalizacion" title="Permanent link">&para;</a></h3>
 <p>El concepto de <strong>desnormalizar</strong> un modelo relacional consiste en transformar una base de datos a una forma normal menor, siempre con el objetivo de mejorar el rendimiento de las operaciones de consulta de datos, a costa de aceptar cierta redundancia de datos</p>
 <p>Por ejemplo, podemos unir varias relaciones en una si se usan juntas frecuentemente mediante operaciones <em>join</em>.</p>
@@ -3439,6 +3920,7 @@ relación.</li>
 · VNN: (empleado)<br />
 · UK: (codigo)
 </code></p>
+<p>Para mostrar las diferentes restricciones del modelo debes tener en cuenta las cardinalidades de la relación, los posibles valores repetidos o nulos de los campos, etc...</p>
 </li>
 </ul>
 <p><a name="AC306"></a></p>
@@ -3737,11 +4219,84 @@ salario, nomDpto, jefeDpto, puntos)</code></p>
 </ul>
 <p><a name="AR316"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR316</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR316</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Realiza la normalización, paso a paso, indicando en cada uno de ellos las tablas resultantes y sus datos, de los siguientes supuestos:</p>
+<ol>
+<li>
+<p>Un tabla que contiene la información de estudiantes y los cursos en los que se matricula, la cual tiene la siguiente información:</p>
+<table>
+<thead>
+<tr>
+<th>idEstudiante</th>
+<th>nomEstudiante</th>
+<th>cursos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>134</td>
+<td>Javier Hernández</td>
+<td>Matemáticas, Biología, Física</td>
+</tr>
+<tr>
+<td>178</td>
+<td>Sonia Tovar</td>
+<td>Biología, Informática</td>
+</tr>
+<tr>
+<td>249</td>
+<td>Juani Moya</td>
+<td>Informática, Matemáticas</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>Una tabla que contiene información de productos y sus proveedores</p>
+<table>
+<thead>
+<tr>
+<th>idProducto</th>
+<th>nomProducto</th>
+<th>nomProveedor</th>
+<th>telefProveedor</th>
+<th>categoría</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1234</td>
+<td>Tela de araña</td>
+<td>Spiderman</td>
+<td>666000000</td>
+<td>Consumible</td>
+</tr>
+<tr>
+<td>3378</td>
+<td>Máquina del Tiempo</td>
+<td>Dr Who</td>
+<td>777000000</td>
+<td>Vehículo</td>
+</tr>
+<tr>
+<td>2549</td>
+<td>Varita Mágica</td>
+<td>Harry Potter</td>
+<td>888000000</td>
+<td>Herramienta</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</li>
+</ul>
+<p><a name="AR317"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR317</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
 </ul>
 <!--
 TODO: UT03
-    * AC305 - recalcar poner valores nulos o repetidos en los campos que se pueda para que se veas bien la cardinalidad de cada atributo
     * Reorganizar el diccionario de datos para poner las restricciones de cada tabla debajo de cada una de ellas
     * Crear actividades de profundización de representación de diagramas mediante DBML
 -->
