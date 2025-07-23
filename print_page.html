@@ -4542,6 +4542,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <ul>
 <li>
 <p><strong>Dependencia funcional</strong> (<abbr title="Dependencia funcional">DF</abbr>): es la relación semántica existente entre atributos de una misma tabla. Decimos que <strong>A → B</strong>, es decir, que <strong>B depende funcionalmente de A</strong> (o A determina a B), si y solo si para cada valor de A sólo puede existir un B.</p>
+<p>El sentido de la relación no es bidireccional. Que para una valor de A sólo exista un B, no significa que dado B, siempre obtengamos A. Por ejemplo, la dependencia <code>dni → nombre, apellidos</code> es correcta, ya que tanto el nombre de una persona como sus apellidos dependen funcionalmente de su DNI, pero no al revés. ¿Dado un nombre de una persona, podemos saber su DNI?</p>
 <div class="admonition abstract">
 <p class="admonition-title"><abbr title="Dependencia funcional">DF</abbr> - Supuesto Comerciales</p>
 <p>El primer paso es para cada columna, identificar las dependencias que hay entre los atributos.</p>
@@ -4569,10 +4570,10 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </div>
 </li>
 <li>
-<p><strong>Dependencia funcional transitiva</strong> (<abbr title="Dependencia funcional transitiva">DFT</abbr>): se dice que hay un <abbr title="Dependencia funcional transitiva">DFT</abbr> entre A y B, si A → B y B → C, siendo A y B columnas no claves. Dicho de otro modo, cuando tenemos columnas no claves que determinan otras columnas no clave.</p>
+<p><strong>Dependencia funcional transitiva</strong> (<abbr title="Dependencia funcional transitiva">DFT</abbr>): se dice que hay un <abbr title="Dependencia funcional transitiva">DFT</abbr> entre A y C, si A → B y B → C, siendo B y C columnas no claves. Dicho de otro modo, cuando tenemos columnas no claves que determinan otras columnas no clave.</p>
 <div class="admonition abstract">
 <p class="admonition-title"><abbr title="Dependencia funcional transitiva">DFT</abbr> - Supuesto Comerciales</p>
-<p>Tenemos que <code>estadoID → estadoDesc</code> y que <code>estadoDesc → estadoID</code>.</p>
+<p>Tenemos que <code>comercialID → comercialNom, estadoID, estadoDesc</code> y que <code>estadoID → estadoDesc</code>, por lo que tenemos una dependencia transitiva de <code>comercialID</code> a <code>estadoDesc</code>, ya que <code>comercialID → estadoID → estadoDesc</code>.</p>
 </div>
 </li>
 </ul>
@@ -4795,8 +4796,8 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <p><strong>3FN</strong>: 2FN + todo atributo que no es clave primaria no tiene una dependencia funcional transitiva de otro atributo no clave, es decir, depende únicamente de la clave primaria de modo no transitivo.    </p>
 <div class="admonition abstract">
 <p class="admonition-title">3FN - Supuesto Comerciales</p>
-<p>Ahora revisamos que no haya atributos que dependan de forma transitiva de la clave primaria. Tanto <code>COMERCIAL.estadoDesc</code> como <code>CIUDAD.provinciaPob</code> dependen de forma transitiva de un atributo no que es clave en sus tablas (<code>COMERCIAL.estadoID</code> y <code>CIUDAD.provincia</code>, respectivamente).</p>
-<p>Así pues, dividimos más las tablas:</p>
+<p>Ahora revisamos que no haya atributos que dependan de forma transitiva de la clave primaria. Tanto <code>COMERCIAL.estadoDesc</code> como <code>CIUDAD.provinciaPob</code> dependen de forma transitiva de un atributo no que es clave en sus tablas (<code>COMERCIAL.estadoID</code> y <code>CIUDAD.provincia</code>, respectivamente). Es decir, tenemos las <abbr title="Dependencia funcional transitiva">DFT</abbr> <code>comercialID → estadoID → estadoDesc</code> y <code>ciudad → provincia → provinciaPob</code>.</p>
+<p>Así pues, para deshacer las dependencias funcionales transitivas dividimos las tablas <code>COMERCIAL</code> y <code>CIUDAD</code> en dos nuevas tablas (<code>ESTADO</code>y <code>PROVINCIA</code>):</p>
 <p><code>
 <strong>ESTADO</strong> (<ins>estadoID</ins>, estadoDesc)<br />
 · PK: (codigo)
