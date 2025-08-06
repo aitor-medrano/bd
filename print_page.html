@@ -1475,7 +1475,8 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <li>¿Sabes qué significan las siglas ACID? Explica cada una de ellas.</li>
 <li>¿Qué significan las siglas RGPD, LOPDGDD, AEPD y DPO?</li>
 <li>¿Qué es el consentimiento explícito y por qué es importante en el RGPD?</li>
-<li>¿Qué se entiende por "dato personal" según el RGPD? ¿Y "dato sensible"? ¿Podemos almacenar todos los datos de los usuarios de nuestras aplicaciones?</li>
+<li>¿Qué se entiende por <em>"dato personal"</em> según el RGPD? ¿Y <em>"dato sensible"</em>?</li>
+<li>¿Podemos almacenar todos los datos que queramos de los usuarios de nuestras aplicaciones?</li>
 </ol>
 </div>
 <h3 id="01intro-programacion-de-aula-9h">Programación de Aula (9h)<a class="headerlink" href="#01intro-programacion-de-aula-9h" title="Permanent link">&para;</a></h3>
@@ -1702,21 +1703,21 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </tr>
 </tbody>
 </table>
-<p>Conviene pararse en los tipos de bases de datos existentes dependiendo de la ubicación. Aunque volveremos a ellas en las últimas unidades donde estudiemos los sistemas <em>NoSQL</em>, es importante tener claro las diferentes arquitecturas físicas existentes hoy en día. Por un lado, tenemos los sistemas <strong>centralizados</strong> donde se sigue un modelo cliente-servidor. En un servidor de internet, bien sea un VPS o un servicio gestionado por un proveedor <em>cloud</em>, la base de datos reside en una única máquina (se conoce como servidor) y las diferentes aplicaciones y servicios que consumen dichos datos son los clientes que acceden a la base de datos mediante conexiones remotas.</p>
+<p>Conviene pararse en los tipos de bases de datos existentes dependiendo de la ubicación. Aunque volveremos a ellas en las <a href="#12nosql">últimas unidades donde estudiemos los sistemas <em>NoSQL</em></a>, es importante tener claro las diferentes arquitecturas físicas existentes hoy en día. Por un lado, tenemos los sistemas <strong>centralizados</strong> donde se sigue un modelo cliente-servidor. En un servidor de internet, bien sea un VPS o un servicio gestionado por un proveedor <em>cloud</em>, la base de datos reside en una única máquina (se conoce como servidor) y las diferentes aplicaciones y servicios que consumen dichos datos son los clientes que acceden a la base de datos mediante conexiones remotas.</p>
 <p>Si el sistema crece y la carga de usuario supera la capacidad del servidor, es necesario migrar a un modelo más potente (y normalmente más caro) como son las bases de datos <strong>distribuidas</strong>, donde los datos se reparten entre varias máquinas, particionando los datos o fragmentándolos dependiendo de las necesidades de las aplicaciones, incrementando la complejidad del sistema para dar soporte a la sincronización de los datos y la tolerancia a fallos.</p>
 <h3 id="01intro-modelos-de-datos">Modelos de datos<a class="headerlink" href="#01intro-modelos-de-datos" title="Permanent link">&para;</a></h3>
 <p>Un modelo simboliza una parte del mundo real, de forma que se simplifique su manipulación. Por ejemplo, un modelo de una ciudad sería un mapa a escala 1:100.</p>
 <p>Un <strong>modelo de datos</strong> es un conjunto de herramientas conceptuales para describir los datos, sus relaciones, su semántica y sus restricciones.</p>
 <p>Inicialmente, los modelos de datos primitivos se basaban en sistemas de ficheros, tal como hemos visto en el apartado anterior.</p>
-<p>A continuación, se definieron los modelos clásicos:</p>
+<p>Posteriormente, se definieron los modelos clásicos, entre los que destacan los modelos:</p>
 <ul>
 <li><strong>Jerárquicos</strong> (finales de los 60): almacenan la información en forma de árbol y unidireccional, de arriba hacía abajo. La información se almacena en nodos, y los nodos se relacionan mediante punteros, permitiendo que un nodo padre puede tener muchos nodos hijos (relaciones de uno a muchos).</li>
 <li><strong>En red</strong> (principios de los 70): a partir de los modelos jerárquicos, los datos se relacionan en forma de red o grafo, permitiendo la relaciones de muchos a muchos, de manera que un nodo hijo puede tener varios nodos padre, y viceversa.</li>
 <li><strong>Relacionales</strong> (finales de los 70 hasta hoy en día): se basan en la relación entre los datos, mediante el uso de tablas bidimensionales (filas=ocurrencia, columnas=atributo) que contienen campos que se relacionan con campos de otras tablas (este es el modelo más difundido y es que el estudiaremos en profundidad en este curso).</li>
 </ul>
-<p>Tras los clásicos, hubo un movimiento por el uso de modelos avanzados que no terminaron de cuajar:</p>
+<p>Tras los clásicos, hubo un movimiento por el uso de modelos avanzados que no terminaron de cuajar, como fueron los modelos:</p>
 <ul>
-<li><strong>Orientadas a objetos</strong> (década de los 80): soportan el paradigma de programación orientada a objetos, permitiendo la creación de tipos de datos compuestos y herencia entre los diferentes tipos.</li>
+<li><strong>Orientados a objetos</strong> (década de los 80): soportan el paradigma de programación orientada a objetos, permitiendo la creación de tipos de datos compuestos y herencia entre los diferentes tipos.</li>
 </ul>
 <p>Con la explosión de internet, y la necesidad de trabajar con grandes conjuntos de datos, aparecieron y se establecieron en el mercado los modelos:</p>
 <ul>
@@ -1729,7 +1730,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </ul>
 </li>
 </ul>
-<p>Estos cuatro últimos modelos los estudiaremos en profundidad en la unidad <em>12 - Sistemas NoSQL</em>.</p>
+<p>Estos cuatro últimos modelos los estudiaremos en profundidad en la unidad <a href="#12nosql"><em>12 - Sistemas NoSQL</em></a>.</p>
 <h2 id="01intro-sistemas-gestores-de-bases-de-datos">Sistemas Gestores de Bases de Datos<a class="headerlink" href="#01intro-sistemas-gestores-de-bases-de-datos" title="Permanent link">&para;</a></h2>
 <p>Un sistema gestor de base de datos (<abbr title="Sistema gestor de bases de datos">SGBD</abbr>), también conocido como <em>DataBase Management System</em> (<abbr title="Database management system">DBMS</abbr>), es la herramienta de software que permite la creación, manipulación y administración de bases de datos. Así pues, tanto <a href="https://www.oracle.com/es/">Oracle</a>, <a href="https://www.mysql.com/">MySQL</a>, <a href="https://mariadb.org/">MariaDB</a>, <a href="https://es.libreoffice.org/descubre/base/">OpenOffice/LibreOffice Base</a>, <a href="https://www.microsoft.com/es-es/microsoft-365/access">Access</a>, <a href="https://www.mongodb.com/">MongoDB</a> o <a href="https://www.postgresql.org/">PostgreSQL</a> son sistemas gestores de bases de datos, y no bases de datos en sí.</p>
 <figure style="align: center;">
@@ -1737,7 +1738,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
     <figcaption>Relación entre BD y SGDB - cibertareas.com</figcaption>
 </figure>
 
-<p>Formalmente, un sistema gestor de bases de datos es una herramienta de propósito general que permiten crear bases de datos de cualquier tamaño y complejidad, con propósitos específicos distintos. Ofrece la interfaz entre el usuario y las bases de datos, mediante herramientas para la manipulación y administración de las mismas.</p>
+<p>Formalmente, un sistema gestor de bases de datos es una herramienta de propósito general que permite crear bases de datos de cualquier tamaño y complejidad, con propósitos específicos distintos. Ofrece la interfaz entre el usuario y las bases de datos, mediante herramientas para la manipulación y administración de las mismas.</p>
 <h3 id="01intro-funciones">Funciones<a class="headerlink" href="#01intro-funciones" title="Permanent link">&para;</a></h3>
 <p>Las funciones de un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> son:</p>
 <ul>
@@ -1757,13 +1758,14 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <li><strong>I</strong>solation (Aislamiento): Una transacción no afecta a otras transacciones, de manera que la modificación de un registro / documento no es visible por otras lecturas hasta que ha finalizado la transacción. Esto implica que ninguna transacción obtiene una versión intermedia de los datos.</li>
 <li><strong>D</strong>urabilidad: La escritura de los datos asegura que una vez finalizada una operación, los datos no se perderán.</li>
 </ul>
+<p>Volveremos a estos conceptos cuando trabajemos la transaccionalidad de las operaciones, en la <a href="#09dcl-tcl">unidad 9</a>.</p>
 </div>
 <h3 id="01intro-componentes">Componentes<a class="headerlink" href="#01intro-componentes" title="Permanent link">&para;</a></h3>
 <p>Un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> se compone de:</p>
 <ul>
 <li><strong>Diccionario de datos</strong>: metadatos con las estructuras de las diferentes bases de datos, relaciones entre los datos, restricciones existentes así como información sobre las cuentas y permisos de los usuarios.</li>
-<li><strong>Espacio de datos</strong>: zona sonde se almacenan los datos en sí. Se pueden organizar de diferentes maneras, dependiente del sistemas gestor. Por ejemplo, <em>Oracle</em> lo realiza mediante el uso de <em>tablespaces</em> y otros gestores con el concepto de base de datos.</li>
-<li>Un conjunto de herramientas, las cuales suele gestionar el rol de DBA (<em>Database Administrator</em>) para<ul>
+<li><strong>Espacio de datos</strong>: zona donde se almacenan los datos en sí. Se pueden organizar de diferentes maneras, dependiente del sistemas gestor. Por ejemplo, <em>Oracle</em> lo realiza mediante el uso de <em>tablespaces</em> y otros gestores con el concepto de base de datos.</li>
+<li>Un conjunto de herramientas, las cuales suele gestionar la persona con el rol de DBA (<em>Database Administrator</em>) para:<ul>
 <li>Crear y especificar los datos (mediante el <em>Data Definition Language</em> - DDL), el control de datos (mediante el <em>Data Control Language</em> - DCL) y su manipulación (mediante el <em>Data Manipulation Language</em> - DML)</li>
 <li>Recuperación (<em>failover</em>). Tras una caída del sistema, configurar los posibles mecanismos de recuperación y aceptación o revisión de las operaciones pendientes.</li>
 <li>Copia de seguridad (<em>backup</em>), ya sea copias completas o incrementales.</li>
@@ -3380,13 +3382,13 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <tr>
 <td>4</td>
 <td><a href="#03mr-notacion">Notación</a></td>
-<td><a href="#03mr-AC305">AC305</a>, <a href="#03mr-AC306">AC306</a></td>
+<td><a href="#03mr-AC305">AC305</a></td>
 <td><abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr></td>
 </tr>
 <tr>
 <td>5</td>
 <td>Interpretando modelos</td>
-<td><a href="#03mr-AC310">AC310</a></td>
+<td><a href="#03mr-AC309">AC309</a></td>
 <td><abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr></td>
 </tr>
 <tr>
@@ -4169,6 +4171,12 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 · FK: (autor) → AUTOR
 </code></p>
 <p>Tenemos que el autor se identifica por un código, el cual es su clave primaria. En cambio, los libros se identifican por su ISBN, y tienen un atributo <code>autor</code> que referencia a la clave primaria de <code>AUTOR</code> (y por tanto, deben tener el mismo dominio). De esta relación, deducimos que el nombre del atributo de la clave ajena no tiene por qué coincidir con el nombre de la clave primaria, pero sí su dominio.</p>
+<p>Si analizamos las cardinalidades de las tablas, tenemos:</p>
+<ul>
+<li><code>Card(LIBRO, ESCRIBIR) = (0, 1)</code>: Todo libro tiene un atributo autor, y sólo uno, el cual puede estar rellenado o no.</li>
+<li><code>Card(AUTOR, ESCRIBIR) = (0, N)</code>: Si un libro tiene un atributo autor, y el mismo autor puede aparecer en más de un libro, entonces un autor puede escribir muchos libros (o ninguno, si no aparece en ninguna ocurrencia de <code>LIBRO</code>).</li>
+</ul>
+<p>En la próxima unidad estudiaremos el proceso de transformación de un modelo conceptual a uno relacional, y en concreto, cómo se gestionan las claves ajenas para cumplir las cardinalidades y restricciones de las relaciones.</p>
 <div class="admonition tip">
 <p class="admonition-title">DBML - Database Markup Language</p>
 <p>La notación que vamos a emplear en clase es sencilla y cumple su propósito.</p>
@@ -5598,7 +5606,7 @@ relación.</li>
 <p><a name="AC305"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC305</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr> // 2p) Crea las tablas necesarias con datos ficticios (con al menos 5 registros cada tabla) que respete las restricciones semánticas del modelo relacional a partir del siguiente esquema relacional:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC305</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr> // 3p) Crea las tablas necesarias con datos ficticios (con al menos 5 registros cada tabla) que respete las restricciones semánticas del modelo relacional a partir del siguiente esquema relacional:</p>
 <p><code>
 <strong>EMPLEADO</strong> (<ins>nif</ins>, nombre, direccion, cargo)<br />
 · PK: (nif)<br />
@@ -5612,19 +5620,13 @@ relación.</li>
 · UK: (codigo)
 </code></p>
 <p>Para mostrar las diferentes restricciones del modelo debes tener en cuenta las cardinalidades de la relación, los posibles valores repetidos o nulos de los campos, etc...</p>
+<p>Una vez realizado, dibuja a mano un diagrama que represente el modelo relacional. A continuación, utiliza <a href="https://erdplus.com/">https://erdplus.com/</a> o <a href="https://dbdiagram.io/">https://dbdiagram.io/</a> para pasarlo a digital. En la entrega en <em>Aules</em>, adjunta ambos diagramas.</p>
 </li>
 </ul>
-<p><a name="AC306"></a></p>
+<p><a name="AP306"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC306</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 1p) A partir del esquema del ejercicio anterior (<a href="#03mr-AC305">AC305</a>), dibuja a mano un diagrama que represente el modelo relacional.</p>
-<p>Si te da tiempo, una vez dibujado en papel, puedes utilizar ERDPlus para pasarlo a digital. En este caso, adjunta ambos diagramas.</p>
-</li>
-</ul>
-<p><a name="AP307"></a></p>
-<ul>
-<li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP307</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p)  A partir del siguiente esquema relacional, crea tres tablas con datos ficticios, y explica el tipo de relación existente entre los campos y las tablas relacionadas (cardinalidad):</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP306</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p)  A partir del siguiente esquema relacional, crea tres tablas con datos ficticios, y explica el tipo de relación existente entre los campos y las tablas relacionadas (cardinalidad):</p>
 <p><code>
 <strong>CONDUCTOR</strong> (<ins>nif</ins>, nombre, fAlta)<br />
 · PK: (nif)
@@ -5642,29 +5644,29 @@ relación.</li>
 </code></p>
 </li>
 </ul>
-<p><a name="AR308"></a> </p>
+<p><a name="AR307"></a> </p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR308</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir de las tablas de la actividad <a href="#03mr-AC303">AC303</a>, crea el esquema relacional.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR307</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir de las tablas de la actividad <a href="#03mr-AC303">AC303</a>, crea el esquema relacional.</p>
 <p>A continuación, crea una nueva tabla <code>PROVEEDOR</code> con datos asociados a esta nueva relación, y actualiza el esquema relacional para que estén las tres tablas relacionadas.</p>
 </li>
 </ul>
-<p><a name="AR309"></a></p>
+<p><a name="AR308"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR309</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir del siguiente diagrama, crea el esquema relacional:</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR308</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir del siguiente diagrama, crea el esquema relacional:</li>
 </ul>
 <figure style="align: center;">
-    <img src="images/03ac309.png" width="701" title="Actividad 309">
-    <figcaption>Actividad 309</figcaption>
+    <img src="images/03ar308.png" width="701" title="Actividad 308">
+    <figcaption>Actividad 308</figcaption>
 </figure>
 
-<p><a name="AC310"></a></p>
+<p><a name="AC309"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC310</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del siguiente diagrama relacional sobre un comercio:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC309</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del siguiente diagrama relacional sobre un comercio:</p>
 <p><figure style="align: center;">
-    <img src="images/03ac310.png" width="865" title="Actividad 310">
-    <figcaption>Actividad 310</figcaption>
+    <img src="images/03ac309.png" width="865" title="Actividad 309">
+    <figcaption>Actividad 309</figcaption>
 </figure></p>
 <p>Contesta a las siguientes preguntas argumentado tus respuestas:</p>
 <ol>
@@ -5677,9 +5679,29 @@ relación.</li>
 </ol>
 </li>
 </ul>
+<p><a name="AR310"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR310</strong>.  (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del siguiente diagrama relacional sobre una agencia de viajes:</p>
+<p><figure style="align: center;">
+    <img src="images/03ar310.png" width="865" title="Actividad 310">
+    <figcaption>Actividad 310</figcaption>
+</figure></p>
+<p>Contesta a las siguientes preguntas justificando tus respuestas:</p>
+<ol>
+<li>¿Puede un hotel estar en más de un punto?</li>
+<li>Dada una ciudad, ¿Cuántos hoteles podemos tener?</li>
+<li>¿Podemos tener dos rutas con el mismo nombre?</li>
+<li>¿De cuantos tipos puede ser una ruta? ¿Y toda ruta debe tener un tipo?</li>
+<li>¿Podemos tener hoteles que no pertenezcan a ningún viaje? ¿Y al revés?, es decir, ¿Podemos tener viajes sin hotel incluido?</li>
+<li>Si en un determinado viaje no está incluido el hotel, ¿Puede haber más de una ruta?</li>
+</ol>
+<p>A continuación, añade al modelo las tablas y relaciones necesarias para almacenar la información de los clientes que realizan el viaje, así como en qué hotel duermen.</p>
+</li>
+</ul>
 <p><a name="AC311"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC311</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del esquema y de las tablas obtenidas en la actividad <a href="#03mr-AC305">AC305</a>, completa el diccionario de datos.</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC311</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del esquema y de las tablas obtenidas en la actividad <a href="#03mr-AC305">AC305</a>, completa el diccionario de datos, indicando tanto la información de las tablas, como sus relaciones y restricciones.</li>
 </ul>
 <p><a name="AR312"></a></p>
 <ul>
@@ -5982,9 +6004,32 @@ salario, nomDpto, jefeDpto, puntos)</code></p>
 </ol>
 </li>
 </ul>
-<p><a name="AR317"></a></p>
+<p><a name="AP317"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR317</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP317</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p)  A partir del siguiente esquema relacional, se nos pide optimizar el modelo aplicando desnormalización, ya que, para cada artista, se quieren recuperar las 5 canciones primeras canciones, y con el diseño actual, la consulta es muy lenta: </p>
+<p><code>
+<strong>ARTISTA</strong> (<ins>id</ins>, nombre, foto)<br />
+· PK: (id)
+</code></p>
+<p><code>
+<strong>ALBUM</strong> (<ins>id</ins><code>*</code>, nombre, foto, <ins>artista_id</ins><code>*</code>)<br />
+· PK: (id)<br />
+· FK: (artista_id) → ARTISTA<br />
+· VNN: (artista_id)
+</code></p>
+<p><code>
+<strong>CANCION</strong> (<ins>id</ins>, nombre, letra, <ins>album_id</ins><code>*</code>)<br />
+· PK: (id)<br />
+· FK: (album_id) → ARTISTA<br />
+· VNN: (album_id)
+</code></p>
+<p>¿Qué has hecho para mejorar el rendimiento? ¿En qué forma normal se encuentra ahora el modelo relacional? Justifica tu respuesta.</p>
+</li>
+</ul>
+<p><a name="AR318"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR318</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
 </ul>
 <!--
 TODO: UT03
@@ -6144,7 +6189,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </tr>
 <tr>
 <td>6</td>
-<td>Actividad Cocina</td>
+<td>Práctica "Cocina"</td>
 <td><a href="#04mr-eer-PR409">PR409</a></td>
 <td><abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>-<abbr title="Se han aplicado reglas de normalización.">CE6g</abbr>, <abbr title="Se han analizado y documentado las restricciones que no pueden plasmarse en el diseño lógico.">CE6h</abbr></td>
 </tr>
@@ -6163,25 +6208,25 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <tr>
 <td>9</td>
 <td>Interpretando MR</td>
-<td><a href="#04mr-eer-AC414">AC414</a></td>
+<td><a href="#04mr-eer-AC415">AC415</a></td>
 <td><abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>-<abbr title="Se han aplicado reglas de integridad.">CE6f</abbr></td>
 </tr>
 <tr>
 <td>10</td>
 <td>Reto - diseño lógico</td>
-<td><a href="#04mr-eer-PY415">PY415</a></td>
+<td><a href="#04mr-eer-PY416">PY416</a></td>
 <td>RA6</td>
 </tr>
 <tr>
 <td>11</td>
-<td>Reto - diseño lógico</td>
-<td></td>
-<td></td>
+<td>Práctica "Ticket de compra"</td>
+<td><a href="#04mr-eer-PR417">PR417</a></td>
+<td>RA6</td>
 </tr>
 <tr>
 <td>12</td>
 <td>Prueba objetiva</td>
-<td><a href="#04mr-eer-PO416">PO416</a></td>
+<td><a href="#04mr-eer-PO418">PO418</a></td>
 <td>RA6</td>
 </tr>
 <tr>
@@ -7025,7 +7070,104 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </ul>
 </li>
 </ul>
-<h3 id="04mr-eer-supuesto-i">Supuesto I<a class="headerlink" href="#04mr-eer-supuesto-i" title="Permanent link">&para;</a></h3>
+<h3 id="04mr-eer-cardinalidades">Cardinalidades<a class="headerlink" href="#04mr-eer-cardinalidades" title="Permanent link">&para;</a></h3>
+<p>Un primer enfoque consiste en recuperar las cardinalidades de las relaciones a partir de un modelo relacional. De esta manera, será más fácil dibujar el modelo entidad relación.</p>
+<p>Vamos a partir de un modelo inicial sobre el cual vamos a ir iterando, el cual relaciona a un alumno con las asignaturas en las que se matricula:</p>
+<p><code>
+<strong>ASIGNATURA</strong> (<ins>id</ins>, nombre, horas)<br />
+· PK: (id)
+</code></p>
+<p><code>
+<strong>ALUMNO</strong> (<ins>dni</ins>, nombre)<br />
+· PK: (dni)
+</code></p>
+<p><code>
+<strong>MATRICULAR</strong> (<ins>id</ins><code>*</code>, <ins>dni</ins><code>*</code>, fecha)<br />
+· PK: (id, dni)<br />
+· FK: (id) → ASIGNATURA<br />
+· FK: (dni) → ALUMNO
+</code></p>
+<p>Revisando las relaciones, la tabla <code>MATRICULAR</code> tiene dos claves ajenas, una a <code>ASIGNATURA</code> y otra a <code>ALUMNO</code>, y ambas son clave primaria. Por lo tanto, la relación es N:M.</p>
+<p>Dicho esto, las cardinalidades de las relaciones son:</p>
+<ul>
+<li><code>Card(ASIGNATURA, MATRICULAR) = (0, N)</code></li>
+<li><code>Card(ALUMNO, MATRICULAR) = (0, N)</code></li>
+</ul>
+<figure style="align: center;">
+    <img src="images/04mr-eer-01.png" width="600" title="De MR a EER I">
+    <figcaption>De MR a EER I</figcaption>
+</figure>
+
+<p>Ahora supongamos que eliminamos la tabla <code>MATRICULAR</code> y colocamos las claves ajenas en las propias entidades <code>ALUMNO</code> y <code>ASIGNATURA</code>. Si añadimos la clave ajena en <code>ALUMNO</code> tendríamos:</p>
+<figure style="float: right;">
+    <img src="images/04mr-eer-02.png" width="600" title="De MR a EER II">
+    <figcaption>De MR a EER II</figcaption>
+</figure>
+
+<p><code>
+<strong>ASIGNATURA</strong> (<ins>id</ins>, nombre, horas)<br />
+· PK: (id)
+</code></p>
+<p><code>
+<strong>ALUMNO</strong> (<ins>dni</ins>, nombre, id<code>*</code>)<br />
+· PK: (dni)<br />
+· FK: (id) → ASIGNATURA<br />
+</code></p>
+<p>En este caso, tenemos una relación 1:N entre <code>ASIGNATURA</code> y <code>ALUMNO</code> con las siguientes cardinalidades:</p>
+<ul>
+<li><code>Card(ASIGNATURA, MATRICULAR) = (0, N)</code></li>
+<li><code>Card(ALUMNO, MATRICULAR) = (0, 1)</code></li>
+</ul>
+<p>¿Y si ahora colocamos la clave ajena en <code>ASIGNATURA</code>? En este caso, tendríamos:</p>
+<figure style="float: right;">
+    <img src="images/04mr-eer-03.png" width="600" title="De MR a EER III">
+    <figcaption>De MR a EER III</figcaption>
+</figure>
+
+<p><code>
+<strong>ASIGNATURA</strong> (<ins>id</ins>, nombre, horas, dni<code>*</code>)<br />
+· PK: (id)<br />
+· FK: (dni) → ALUMNO
+</code></p>
+<p><code>
+<strong>ALUMNO</strong> (<ins>dni</ins>, nombre, id<code>*</code>)<br />
+· PK: (dni)
+</code></p>
+<p>Lo que conlleva que la relación 1:N cambie de sentido, con las siguientes cardinalidades:</p>
+<ul>
+<li><code>Card(ASIGNATURA, MATRICULAR) = (0, 1)</code></li>
+<li><code>Card(ALUMNO, MATRICULAR) = (0, N)</code></li>
+</ul>
+<div class="admonition question">
+<p class="admonition-title">Autoevaluación</p>
+<p>Y si en el último modelo, hacemos que la clave ajena de <code>ASIGNATURA</code> sea única, ¿qué pasaría? ¿Cómo cambiarían las cardinalidades?<br />
+Y si además hacemos que la clave ajena también tenga una restricción de valor no nulo (VNN), ¿qué pasaría? ¿Cómo cambiarían las cardinalidades?</p>
+</div>
+<p>Finalmente, volvamos al caso de la relación N:M, pero ¿Y si cambiamos la clave primaria de la tabla <code>MATRICULAR</code> para que no sea una clave compuesta y la dividimos en una clave primaria más una clave única? Supongamos el siguiente caso:</p>
+<p><code>
+<strong>MATRICULAR</strong> (<ins>id</ins><code>*</code>, dni<code>*</code>, fecha)<br />
+· PK: (id)<br />
+· UK: (dni)<br />
+· FK: (id) → ASIGNATURA<br />
+· FK: (dni) → ALUMNO
+</code></p>
+<p>En este caso, ya no tenemos una relación N:M, sino que tenemos una relación 1:1 con una restricción de identificación entre <code>ASIGNATURA</code> y <code>MATRICULAR</code> (a la que podemos llamar <code>MATRICULAR_ASIGNATURA</code>), de manera que <code>MATRICULAR</code> pasa de ser una relación N:M a una entidad débil. Además, tenemos una relación 1:N entre <code>ALUMNO</code> y <code>MATRICULAR</code> (a la que podemos llamar <code>MATRICULAR_ALUMNO</code>). Es decir, pasamos de tener una relación entre dos entidades, a tener dos relaciones entre tres entidades. </p>
+<p>Dicho de otra manera, un alumno se puede matricular en varias asignaturas, pero una asignatura sólo puede tener un alumno matriculado.</p>
+<p>Así pues, ahora las cardinalidades son:</p>
+<ul>
+<li><code>Card(ASIGNATURA, MATRICULAR_ASIGNATURA) = (0, 1)</code></li>
+<li><code>Card(MATRICULAR, MATRICULAR_ASIGNATURA) = (1, 1)</code></li>
+<li><code>Card(ALUMNO, MATRICULAR_ALUMNO) = (0, N)</code></li>
+<li><code>Card(MATRICULAR, MATRICULAR_ALUMNO) = (0, 1)</code></li>
+</ul>
+<figure style="align: center;">
+    <img src="images/04mr-eer-04.png" width="800" title="De MR a EER IV">
+    <figcaption>De MR a EER IV</figcaption>
+</figure>
+
+<h3 id="04mr-eer-dibujando-el-modelo-er">Dibujando el modelo <abbr title="Entidad Relación">ER</abbr><a class="headerlink" href="#04mr-eer-dibujando-el-modelo-er" title="Permanent link">&para;</a></h3>
+<p>A la hora de dibujar el modelo <abbr title="Entidad Relación">ER</abbr>, debemos seguir un orden lógico. Primero, dibujamos las entidades que no tienen claves ajenas que salgan de ellas, y luego vamos añadiendo las entidades que sí tienen claves ajenas, revisando las restricciones y cardinalidades.</p>
+<h4 id="04mr-eer-supuesto-i">Supuesto I<a class="headerlink" href="#04mr-eer-supuesto-i" title="Permanent link">&para;</a></h4>
 <p>Vamos a crear el modelo conceptual partiendo del siguiente modelo relacional:</p>
 <p><code>
 <strong>A</strong> (<ins>a0</ins>, a1, a2)<br />
@@ -7049,7 +7191,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <details class="example">
 <summary>Solución</summary>
 <p>El primer paso es dibujar aquellas entidades que no tienen ninguna clave ajena que salga de ellas, es decir, entidades <em>"finales"</em>. Así pues empezaremos modelando la entidad <code>A</code>. Para modelar la entidad <code>B</code>, necesitamos previamente haber modelado las entidades <code>C</code> y <code>D</code>. Así pues, vamos a continuar con la entidad <code>C</code>.</p>
-<p>Cuando nos planteamos la entidad <code>D</code>, vemos que tiene un atributo que es clave ajena hacía <code>D</code>, el cual además es clave primaria, por lo tanto, podemos decir que <code>D</code> es una subclase de <code>C</code>.</p>
+<p>Cuando nos planteamos la entidad <code>C</code>, vemos que tiene un atributo que es clave ajena hacia <code>D</code>, el cual además es clave primaria, por lo tanto, podemos decir que <code>C</code> es una subclase de <code>D</code>.</p>
 <p>Finalmente, modelamos la entidad <code>B</code>, la cual tiene dos claves ajenas sencillas que no son claves primarias, y por lo tanto, son relaciones 1:N con las entidades a las que referencia.</p>
 <p>El resultado se puede comprobar en el siguiente diagrama:</p>
 <p><figure style="align: center;">
@@ -7057,7 +7199,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
     <figcaption>Supuesto MR-<abbr title="Entidad Relación">ER</abbr></figcaption>
 </figure></p>
 </details>
-<h3 id="04mr-eer-supuesto-ii">Supuesto II<a class="headerlink" href="#04mr-eer-supuesto-ii" title="Permanent link">&para;</a></h3>
+<h4 id="04mr-eer-supuesto-ii">Supuesto II<a class="headerlink" href="#04mr-eer-supuesto-ii" title="Permanent link">&para;</a></h4>
 <p>En este caso, vamos a realizar un ejemplo más complejo. Partimos del siguiente modelo relacional:</p>
 <p><code>
 <strong>A</strong> (<ins>a0</ins>, a1)<br />
@@ -7213,6 +7355,90 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
     <img src="images/02cocina.png" width="1080" title="Modelo EER Cocina">
     <figcaption>Modelo EER Cocina</figcaption>
 </figure></p>
+</li>
+</ul>
+<p><a name="AC410"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC410</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 1p) Indica las cardinalidades de las siguientes tablas:</p>
+<div class="grid cards" markdown>
+<ul>
+<li>
+<p>410.1</p>
+<hr />
+<p><code>
+<strong>DEPARTAMENTO</strong> (<ins>id</ins>, nombre)<br />
+· PK: (id)<br />
+</code></p>
+<p><code>
+<strong>EMPLEADO</strong> (<ins>nif</ins>, nombre, dpto<code>*</code>)<br />
+· PK: (nif)<br />
+· FK: (dpto) → DEPARTAMENTO<br />
+</code></p>
+<hr />
+<ul>
+<li>Card(DEPARTAMENTO, TRABAJAR) = ( &nbsp; &nbsp; &nbsp; , &nbsp; &nbsp; &nbsp; )</li>
+<li>Card(EMPLEADO, TRABAJAR) = (   ,   )</li>
+</ul>
+</li>
+<li>
+<p>410.2</p>
+<hr />
+<p><code>
+<strong>DEPARTAMENTO</strong> (<ins>id</ins>, nombre)<br />
+· PK: (id)<br />
+</code></p>
+<p><code>
+<strong>EMPLEADO</strong> (<ins>nif</ins>, nombre, dpto<code>*</code>)<br />
+· PK: (nif)<br />
+· FK: (dpto) → DEPARTAMENTO<br />
+· VNN: (dpto)<br />
+</code></p>
+<hr />
+<ul>
+<li>Card(DEPARTAMENTO, TRABAJAR) = ( &nbsp; &nbsp; &nbsp; , &nbsp; &nbsp; &nbsp; )</li>
+<li>Card(EMPLEADO, TRABAJAR) = (   ,   )</li>
+</ul>
+</li>
+<li>
+<p>410.3</p>
+<hr />
+<p><code>
+<strong>DEPARTAMENTO</strong> (<ins>id</ins>, nombre, jefe)<br />
+· PK: (id)<br />
+· FK: (jefe) → EMPLEADO<br />
+</code></p>
+<p><code>
+<strong>EMPLEADO</strong> (<ins>nif</ins>, nombre)<br />
+· PK: (nif)<br />
+</code></p>
+<hr />
+<ul>
+<li>Card(DEPARTAMENTO, TRABAJAR) = ( &nbsp; &nbsp; &nbsp; , &nbsp; &nbsp; &nbsp; )</li>
+<li>Card(EMPLEADO, TRABAJAR) = (   ,   )</li>
+</ul>
+</li>
+<li>
+<p>410.4</p>
+<hr />
+<p><code>
+<strong>DEPARTAMENTO</strong> (<ins>id</ins>, nombre)<br />
+· PK: (id)<br />
+</code></p>
+<p><code>
+<strong>EMPLEADO</strong> (<ins>nif</ins>, nombre, dpto<code>*</code>)<br />
+· PK: (nif)<br />
+· FK: (dpto) → DEPARTAMENTO<br />
+· UK: (dpto)<br />
+</code></p>
+<hr />
+<ul>
+<li>Card(DEPARTAMENTO, TRABAJAR) = ( &nbsp; &nbsp; &nbsp; , &nbsp; &nbsp; &nbsp; )</li>
+<li>Card(EMPLEADO, TRABAJAR) = (   ,   )</li>
+</ul>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 <p><a name="AC410"></a></p>
@@ -7387,10 +7613,64 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <p>Crea las tablas en el modelo relacional, modificando aquellas que sean necesarias, y comprueba si las tablas que dependen de ellas también deben modificarse.</p>
 </li>
 </ul>
-<p><a name="AC414"></a></p>
+<p><a name="AP414"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC414</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) A partir del siguiente modelo relacional:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP414</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Las siguientes tablas representan programas de televisión e invitados que participan en ellos:</p>
+<p><code>
+<strong>PROGRAMA</strong> (<ins>id</ins>, nombre)<br />
+· PK: (id)
+</code></p>
+<p><code>
+<strong>INVITADO</strong> (<ins>dni</ins>, nombre)<br />
+· PK: (dni)
+</code></p>
+<p>Añade los elementos necesarios (claves ajenas, únicas, valores no nulos, etc...) para que se cumplan las siguientes restricciones:</p>
+<ol>
+<li>
+<p><code>Card(PROGRAMA, DAR_EXCLUSIVA) = (1 , 1)</code><br />
+<code>Card(INVITADO, DAR_EXCLUSIVA) = (0 , N)</code></p>
+</li>
+<li>
+<p><code>Card(PROGRAMA, ASISTIR) = (0 , N)</code><br />
+<code>Card(INVITADO, ASISTIR) = (1 , 1)</code></p>
+</li>
+<li>
+<p><code>Card(PROGRAMA, COTILLEAR) = (0 , N)</code><br />
+<code>Card(INVITADO, COTILLEAR) = (0 , N)</code></p>
+</li>
+<li>
+<p><code>Card(PROGRAMA, HACER_RIDICULO) = (0 , N)</code><br />
+<code>Card(INVITADO, HACER_RIDICULO) = (0 , 1)</code></p>
+</li>
+<li>
+<p><code>Card(PROGRAMA, INSULTAR) = (0 , 1)</code><br />
+<code>Card(INVITADO, INSULTAR) = (0 , 1)</code></p>
+</li>
+<li>
+<p><code>Card(PROGRAMA, DIFAMAR) = (0 , N)</code><br />
+<code>Card(INVITADO, DIFAMAR) = (0 , 1)</code></p>
+</li>
+<li>
+<p><code>Card(PROGRAMA, RAZONAR) = (0 , 1)</code><br />
+<code>Card(INVITADO, RAZONAR) = (1 , 1)</code></p>
+</li>
+<li>
+<p><code>Card(PROGRAMA, GRITAR) = (0 , N)</code><br />
+<code>Card(INVITADO, GRITAR) = (0 , N)</code></p>
+</li>
+<li>
+<p><code>Card(PROGRAMA, LADRAR) = (0 , N)</code><br />
+<code>Card(INVITADO, LADRAR) = (0 , N)</code></p>
+</li>
+</ol>
+<p>Finalmente, dibuja el modelo <abbr title="Entidad Relación">ER</abbr> resultante con todas las relaciones y restricciones.</p>
+</li>
+</ul>
+<p><a name="AC415"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC415</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) A partir del siguiente modelo relacional:</p>
 <p><code>
 <strong>EQUIPO</strong> (<ins>num</ins>, fUltimaRevision, fAlta, detalle<code>*</code>)<br />
 · PK: (num)<br />
@@ -7443,10 +7723,10 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 </ol>
 </li>
 </ul>
-<p><a name="PY415"></a></p>
+<p><a name="PY416"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg></span> <strong>PY415</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr>, <abbr title="Se han analizado y documentado las restricciones que no pueden plasmarse en el diseño lógico.">CE6h</abbr> // 30p) Una vez finalizamos el bloque de <em>Diseño de bases de datos,</em> ya estamos en condiciones de afrontar el reto <a href="#02er-reto-i-disenamos">Diseñamos</a>.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg></span> <strong>PY416</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr>, <abbr title="Se han analizado y documentado las restricciones que no pueden plasmarse en el diseño lógico.">CE6h</abbr> // 30p) Una vez finalizamos el bloque de <em>Diseño de bases de datos,</em> ya estamos en condiciones de afrontar el reto <a href="#02er-reto-i-disenamos">Diseñamos</a>.</p>
 <p>Para ello, a partir del modelo conceptual obtenido en la <a href="#02er-PY215">actividad 215</a>, cada equipo debe entregar:</p>
 <ul>
 <li>El modelo <abbr title="Entidad Relación">ER</abbr>.</li>
@@ -7471,11 +7751,25 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 -->
 </li>
 </ul>
-<p><a name="PO416"></a></p>
+<p><a name="PR417"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.563 1.396a.95.95 0 0 0-.534.184c-.404.307-.501.9-.425 1.654.075.755.335 1.704.751 2.8.357.937.835 1.984 1.407 3.095-1.17.146-2.24.338-3.158.57-1.08.274-1.958.6-2.583.973C.397 11.045 0 11.484 0 12s.397.955 1.021 1.328c.55.33 1.308.618 2.217.87a1 1 0 0 0-.006.097c0 .485.365.887.82.887.368 0 .678-.26.784-.616q.89.171 1.898.297a31 31 0 0 0-1.408 3.067c-.421 1.093-.686 2.04-.765 2.795-.08.754.016 1.347.42 1.656.201.154.46.208.734.181s.572-.125.896-.287c.649-.323 1.407-.894 2.244-1.67.962-.89 2.026-2.058 3.118-3.421 1.086 1.37 2.146 2.543 3.103 3.439.834.78 1.588 1.355 2.235 1.682.323.163.62.265.894.293s.534-.025.736-.178c.405-.307.502-.9.426-1.654-.054-.54-.206-1.18-.437-1.9a.91.91 0 0 0 .343-.72.92.92 0 0 0-.238-.625.8.8 0 0 0-.701-.251c-.312-.75-.69-1.557-1.125-2.4a27 27 0 0 0 3.187-.575c1.08-.273 1.958-.597 2.583-.97.624-.374 1.021-.813 1.021-1.329s-.397-.957-1.021-1.33c-.625-.373-1.503-.696-2.583-.969a27 27 0 0 0-3.156-.568 31 31 0 0 0 1.406-3.063c.422-1.093.687-2.04.766-2.795.08-.754-.017-1.347-.42-1.656a.95.95 0 0 0-.531-.185 1.3 1.3 0 0 0-.203.004c-.274.026-.57.127-.895.289-.51.254-1.092.665-1.722 1.205a.8.8 0 0 0-.418-.123c-.456 0-.82.4-.82.886q0 .178.06.334a35 35 0 0 0-2.465 2.791c-1.086-1.37-2.146-2.543-3.103-3.439-.834-.78-1.588-1.355-2.235-1.682-.323-.163-.62-.265-.894-.293a1.3 1.3 0 0 0-.204-.006zm.021.385a1 1 0 0 1 .143.004c.205.02.462.105.757.254.592.298 1.33.855 2.147 1.62.955.893 2.022 2.077 3.119 3.466-.428.544-.859 1.12-1.29 1.72a42 42 0 0 0-3.29.235 31 31 0 0 1-1.453-3.184c-.409-1.075-.658-2.002-.729-2.7-.07-.7.05-1.136.276-1.307a.55.55 0 0 1 .32-.108m12.854.033a.55.55 0 0 1 .32.108c.225.172.343.61.27 1.308s-.33 1.624-.743 2.698a31 31 0 0 1-1.455 3.15 42 42 0 0 0-3.312-.234 49 49 0 0 0-1.274-1.717 35 35 0 0 1 2.436-2.772.78.78 0 0 0 .543.223c.456 0 .82-.401.82-.887a.94.94 0 0 0-.133-.484c.61-.519 1.163-.909 1.625-1.139.297-.147.555-.23.76-.25a1 1 0 0 1 .142-.004zm-6.442 5.622c.344.443.69.913 1.035 1.394q-.51-.012-1.031-.014-.532.001-1.05.014c.35-.481.699-.95 1.046-1.394M12 9.203q.668.001 1.314.02.398.563.793 1.154c.366.55.71 1.093 1.041 1.633a54 54 0 0 1-1.046 1.623q-.395.584-.791 1.138-.646.02-1.311.022-.684-.001-1.348-.022a53 53 0 0 1-.789-1.148 52 52 0 0 1-1.04-1.633 53 53 0 0 1 1.84-2.765q.658-.02 1.337-.022m-1.824.04q-.315.444-.625.905c-.334.496-.647.988-.953 1.477a47 47 0 0 1-1.239-2.178 41 41 0 0 1 2.817-.205zm3.625 0a41 41 0 0 1 2.838.202 47 47 0 0 1-1.264 2.198 53 53 0 0 0-1.574-2.4m3.248.251c1.213.146 2.317.34 3.252.576 1.057.268 1.907.587 2.478.928s.834.689.834.998-.263.655-.834.996c-.57.342-1.421.662-2.478.93-.943.239-2.056.433-3.281.58a47 47 0 0 0-1.416-2.492 47 47 0 0 0 1.445-2.516M6.95 9.496c.424.805.899 1.64 1.418 2.494a47 47 0 0 0-1.443 2.508 30 30 0 0 1-2.059-.318.9.9 0 0 0-.23-.508.8.8 0 0 0-.584-.262.8.8 0 0 0-.696.418c-.894-.247-1.63-.53-2.136-.832C.65 12.655.387 12.31.387 12s.263-.654.834-.996c.57-.342 1.421-.662 2.478-.93.935-.237 2.039-.431 3.252-.578zm4.34.8c-.576 0-1.041.5-1.041 1.112 0 .484.29.897.695 1.049v.063c0 .612.466 1.109 1.041 1.109.576 0 1.041-.497 1.041-1.11q0-.025-.002-.05c.424-.141.73-.565.73-1.063 0-.294-.107-.575-.302-.783a1.01 1.01 0 0 0-.738-.326 1 1 0 0 0-.711.3 1 1 0 0 0-.713-.3zm-2.695 2.061a51 51 0 0 0 1.572 2.397c-.99-.04-1.941-.108-2.832-.205q.573-1.067 1.26-2.192m6.779.02c.448.743.862 1.472 1.236 2.176a42 42 0 0 1-2.814.199q.313-.443.625-.902c.333-.495.647-.986.953-1.473m-8.23 2.537c1.033.117 2.141.198 3.304.236.427.6.854 1.179 1.278 1.723-1.103 1.382-2.176 2.561-3.135 3.45-.821.76-1.562 1.31-2.155 1.605-.296.147-.554.23-.76.25s-.35-.018-.462-.104c-.225-.172-.343-.61-.27-1.308s.329-1.624.742-2.698c.366-.948.861-2.018 1.458-3.154m9.656.004c.459.884.854 1.727 1.178 2.504a.91.91 0 0 0-.348.724c0 .486.364.887.82.887a1 1 0 0 0 .123-.01c.218.686.36 1.293.408 1.782.07.698-.05 1.135-.275 1.306-.113.086-.258.124-.463.104s-.462-.105-.758-.254c-.59-.298-1.329-.855-2.146-1.62-.955-.893-2.023-2.077-3.12-3.466.43-.545.862-1.123 1.294-1.725a42 42 0 0 0 3.287-.232m-3.776.246a49 49 0 0 1-1.05 1.4 49 49 0 0 1-1.04-1.398 47 47 0 0 0 2.09-.002"/></svg></span> <strong>PR417</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // RA6 //  10p) A partir del siguiente ticket de una compra en una tienda de deportes, se pide:</p>
+<ul>
+<li>Crea el modelo <abbr title="Entidad Relación">ER</abbr> que permita almacenar toda la información</li>
+<li>Crear el modelo relacional a partir del modelo <abbr title="Entidad Relación">ER</abbr> anterior.</li>
+</ul>
+<p><figure style="align: center;">
+    <img src="images/04ticket.png" width="350" title="Ticket de compra">
+    <figcaption>Ticket de compra</figcaption>
+</figure></p>
+</li>
+</ul>
+<p><a name="PO418"></a></p>
 <!-- prueba objetiva -->
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> <strong>PO416</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // RA6 // 30p) La prueba objetiva que agrupa todo el resultado de aprendizaje consistirá en:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> <strong>PO418</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // RA6 // 60p) La prueba objetiva que agrupa todo el resultado de aprendizaje consistirá en:</p>
 <ul>
 <li>Crear un modelo <abbr title="Entidad Relación">ER</abbr> a partir de un sistema de información.</li>
 <li>Crear un modelo relacional a partir de un modelo <abbr title="Entidad Relación">ER</abbr> (basado en uno de los modelos generados en el reto de la actividad anterior).</li>
@@ -7484,13 +7778,12 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 </ul>
 </li>
 </ul>
-<p><a name="AR417"></a></p>
+<p><a name="AR419"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR417</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR419</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
 </ul>
 <!--
 TODO: UT04
-    * de MR a EER: coger un caso de A con B, e ir cambiando y explicando cada caso, paso a paso
     * ***IMP -> CE6h*** Indicar la pérdida expresiva en los atributos derivados, reglas de negocio, etc...
 
 -->
@@ -7881,7 +8174,7 @@ Respecto a las <em>keywords</em>, son <em>case insensitive</em>, pero al menos e
 <span class="linenos" data-linenos="7 "></span>template0
 <span class="linenos" data-linenos="8 "></span>(4 rows)
 </code></pre></div>
-<p>Si queremos toda la información, podemos hacer uso del comando <code>\l</code>:</p>
+<p>Si queremos toda la información, podemos hacer uso del metacomando <code>\l</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>pruebas=# \l
 <span class="linenos" data-linenos=" 2 "></span>                                                List of databases
 <span class="linenos" data-linenos=" 3 "></span>Name    | Owner | Encoding | Locale Provider |  Collate   |   Ctype    | ICU Locale | ICU Rules | Access privileges       
@@ -7913,9 +8206,30 @@ Respecto a las <em>keywords</em>, son <em>case insensitive</em>, pero al menos e
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">nombreBD</span><span class="p">;</span>
 </code></pre></div>
 <p>Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">midb</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">severo</span><span class="p">;</span>
 </code></pre></div>
 <p>Más información en la <a href="https://www.postgresql.org/docs/current/sql-createdatabase.html">documentación oficial</a></p>
+</div>
+</div>
+</div>
+<p>Una vez creada, nos hemos de conectar a la base de datos para poder gestionar sus elementos.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="05ddl-__tabbed_4_1" name="05ddl-__tabbed_4" type="radio" /><input id="05ddl-__tabbed_4_2" name="05ddl-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="05ddl-__tabbed_4_1">MariaDB</label><label for="05ddl-__tabbed_4_2">PostgreSQL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>En <em>MariaDB</em> usaremos el comando <a href="https://mariadb.com/docs/server/reference/sql-statements/administrative-sql-statements/use-database"><code>USE</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">USE</span><span class="w"> </span><span class="n">nombreBD</span><span class="p">;</span>
+</code></pre></div>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">USE</span><span class="w"> </span><span class="n">severo</span><span class="p">;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>En <em>PostgreSQL</em> usaremos el metacomando <a href="https://mariadb.com/docs/server/reference/sql-statements/administrative-sql-statements/use-database"><code>\c</code></a></p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err">\</span><span class="k">c</span><span class="w"> </span><span class="n">nombreBD</span><span class="p">;</span>
+</code></pre></div>
+<p>Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="err">\</span><span class="k">c</span><span class="w"> </span><span class="n">severo</span><span class="p">;</span>
+</code></pre></div>
 </div>
 </div>
 </div>
@@ -7928,6 +8242,54 @@ Respecto a las <em>keywords</em>, son <em>case insensitive</em>, pero al menos e
 </code></pre></div>
 <h3 id="05ddl-almacenamiento">Almacenamiento<a class="headerlink" href="#05ddl-almacenamiento" title="Permanent link">&para;</a></h3>
 <p>A la hora de almacenar la información de una base de datos, tanto a nivel lógico como físico, necesitamos de diferentes elementos que conviene conocer.</p>
+<h4 id="05ddl-jerarquia-logica-de-una-bd">Jerarquía lógica de una BD<a class="headerlink" href="#05ddl-jerarquia-logica-de-una-bd" title="Permanent link">&para;</a></h4>
+<figure style="float: right;">
+    <img src="images/05estructura-logica.png" width="425" title="Jerarquía lógica">
+    <figcaption>Jerarquía lógica</figcaption>
+</figure>
+
+<p>A nivel lógico, los elementos que organizan la información de una base de datos, y dependiendo del soporte de cada sistema gestor de base de datos, se definen mediante la siguiente jerarquía:</p>
+<ul>
+<li><strong><em>Tablespace</em></strong> o espacio de tablas: estructura física (normalmente una carpeta/directorio) para agrupar varias bases de datos o esquemas (en <em>MySQL</em>/<em>MariaDB</em> <a href="https://mariadb.com/kb/en/create-tablespace/">no está soportado</a>).</li>
+<li><strong>Base de datos</strong>: elemento lógico de nivel superior.</li>
+<li><strong>Esquema</strong>: agrupación lógica de una o más tablas (en <em>MySQL</em>/<em>MariaDB</em> un esquema es una base de datos, es decir, son conceptos sinónimos).</li>
+<li><strong>Tabla</strong>: representación de una tabla relacional, que contiene datos organizados en filas y columnas. Cada tabla pertenece a un esquema o base de datos específico, y sus datos se almacenan en el <em>tablespace</em> asociado (normalmente no lo indicamos, ya que se almacena en el espacio por defecto).</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Esquema vs Tablespace</p>
+<p>Ambas estructuras permiten organizar los recursos de una base de datos, pero en el mundo del desarrollo de software actual, los <em>schemas</em> se usan frecuentemente. En cambio, los <em>tablespaces</em> se reservan para casos especiales de administración del almacenamiento físico, más propios de administradores de sistemas de bases de datos.</p>
+<p>Un <strong>esquema</strong> es una forma de organizar objetos (tablas, vistas, funciones, etc.) dentro de una base de datos. Un <em>schema</em> es como un <em>namespace</em> o espacio de nombres. En el caso de <em>PostreSQL</em>, todas las bases de datos tienen el esquema <code>public</code>. Se utilizan para:</p>
+<ul>
+<li>Separar lógicamente distintos módulos o partes de una aplicación dentro de la misma base de datos. Por ejemplo, ventas, contabilidad, almacén, etc...</li>
+<li>Gestionar permisos más fácilmente.</li>
+<li>Evitar conflictos de nombres entre tablas o funciones.</li>
+</ul>
+<p>Por otro lado, un <strong><em>tablespace</em></strong> es una ubicación física en el sistema de archivos donde el SGBD almacena datos. Se utilizan para:</p>
+<ul>
+<li>Separar datos físicamente (por rendimiento, disponibilidad de espacio, etc.), por ejemplo, en bases de datos muy grandes que necesitan distribuirse en varios discos.</li>
+<li>Colocar tablas/indexes grandes en discos específicos de alto rendimiento.</li>
+</ul>
+<p>En conclusión, el uso de <em>tablespace</em> y <em>schema</em> es independiente: uno organiza el almacenamiento físico (<em>tablespace</em>) y el otro el lógico (<em>schema</em>).</p>
+</div>
+<p><em>MariaDB</em> es un sistema más sencillo que se basa únicamente en bases de datos y tablas. En cambio, <em>PostgreSQL</em> sí que permite definir la jerarquía completa, desde el espacios de tablas, la base de datos, el esquema y las tablas.</p>
+<p>Así pues, si nos centramos en <em>PostgreSQL</em>, para crear un <em>schema</em>, utilizaremos la sentencia <a href="https://www.postgresql.org/docs/current/sql-createschema.html"><code>CREATE SCHEMA</code></a>, mientras que para crear un espacio de tabla usaremos la instrucción <a href="https://www.postgresql.org/docs/current/sql-createtablespace.html"><code>CREATE TABLESPACE</code></a>. Una vez creados, podemos relacionarlos, por ejemplo, asociando una tabla a un <em>tablespace</em>, o crear una tabla dentro de un determinado esquema:</p>
+<div class="highlight"><span class="filename">create-postgre.sql</span><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="w"> </span><span class="n">mi_tablespace</span><span class="w"> </span><span class="k">LOCATION</span><span class="w"> </span><span class="s1">&#39;/ruta/al/directorio&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">mi_db</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="w"> </span><span class="n">mi_tablespace</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span>
+<span class="linenos" data-linenos=" 5 "></span><span class="err">\</span><span class="k">c</span><span class="w"> </span><span class="n">mi_db</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">SCHEMA</span><span class="w"> </span><span class="n">mi_esquema</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="err">\</span><span class="n">dn</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">mi_esquema</span><span class="p">.</span><span class="n">mi_tabla</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="linenos" data-linenos="14 "></span><span class="p">)</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="w"> </span><span class="n">mi_tablespace</span><span class="p">;</span>
+<span class="linenos" data-linenos="15 "></span>
+<span class="linenos" data-linenos="16 "></span><span class="err">\</span><span class="n">d</span>
+</code></pre></div>
 <h4 id="05ddl-motores-de-almacenamiento">Motores de almacenamiento<a class="headerlink" href="#05ddl-motores-de-almacenamiento" title="Permanent link">&para;</a></h4>
 <p>En los SGBD, y en concreto en <em>MariaDB</em> y <em>PostgreSQL</em>, los motores de almacenamiento (<em>storage engines</em>) son fundamentales para definir el formato de almacenamiento, es decir, cómo se almacenan y gestionan los datos en las bases de datos. Tanto <em>MariaDB</em> como <em>PostgreSQL</em> ofrecen diferentes motores de almacenamiento que proporcionan distintas capacidades, los cuales influyen en cómo gestionan y organizan los datos en disco, afectando el rendimiento, la concurrencia y la eficiencia del espacio.</p>
 <div class="grid cards">
@@ -7967,31 +8329,7 @@ Respecto a las <em>keywords</em>, son <em>case insensitive</em>, pero al menos e
 <p>Cuando hay una modificación de datos, en lugar de sobrescribir una fila en actualizaciones, se almacena una nueva versión de la fila mientras se mantiene la versión anterior hasta que ya no sea necesaria (las transacciones que la usan han finalizado).</p>
 <p>Las versiones anteriores de una fila se almacenan en el espacio de "deshacer" (<em>undo space</em>) para permitir transacciones y lecturas consistentes.</p>
 </div>
-<h4 id="05ddl-jerarquia-logica-de-una-bd">Jerarquía lógica de una BD<a class="headerlink" href="#05ddl-jerarquia-logica-de-una-bd" title="Permanent link">&para;</a></h4>
-<figure style="float: right;">
-    <img src="images/05estructura-logica.png" width="425" title="Jerarquía lógica">
-    <figcaption>Jerarquía lógica</figcaption>
-</figure>
-
-<p>A nivel lógico, los elementos que organizan la información de una base de datos se definen mediante la siguiente jerarquía:</p>
-<ul>
-<li><em>Tablespace</em> o espacio de tablas: estructura física (normalmente una carpeta/directorio) para agrupar varias bases de datos o esquemas.</li>
-<li>Base de datos: elemento lógico de nivel superior</li>
-<li>Esquema: agrupación lógica de una o más tablas (en <em>MySQL</em>/<em>MariaDB</em> un esquema es una base de datos).</li>
-<li>Tabla: representación de una tabla relacional, que contiene datos organizados en filas y columnas. Cada tabla pertenece a un base de datos específica, y sus datos se almacenan en el <em>tablespace</em> asociado.</li>
-<li>Fila: cada uno de los registros de la tabla</li>
-</ul>
-<p>En cuanto a los <em>tablespaces</em>, podemos crearlos mediante la instrucción <code>CREATE TABLESPACE</code> en <a href="https://www.postgresql.org/docs/current/sql-createtablespace.html">PostgreSQL</a> (en <em>MariaDB</em> <a href="https://mariadb.com/kb/en/create-tablespace/">no está soportado</a>), y a partir de él, crear bases de datos y tablas:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="w"> </span><span class="n">mi_tablespace</span><span class="w"> </span><span class="k">LOCATION</span><span class="w"> </span><span class="s1">&#39;/ruta/al/directorio&#39;</span><span class="p">;</span>
-<span class="linenos" data-linenos="2 "></span>
-<span class="linenos" data-linenos="3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">mi_db</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="w"> </span><span class="n">mi_tablespace</span><span class="p">;</span>
-<span class="linenos" data-linenos="4 "></span>
-<span class="linenos" data-linenos="5 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">mi_tabla</span><span class="w"> </span><span class="p">(</span>
-<span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
-<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="linenos" data-linenos="8 "></span><span class="p">)</span><span class="w"> </span><span class="n">TABLESPACE</span><span class="w"> </span><span class="n">mi_tablespace</span><span class="p">;</span>
-</code></pre></div>
-<p>En cambio, a nivel físico, el formato de almacenamiento depende principalmente del <em>motor de almacenamiento</em> que se esté utilizando, ya que cada motor tiene su propia manera de organizar y almacenar los datos.</p>
+<p>A nivel físico, el formato de almacenamiento depende principalmente del <em>motor de almacenamiento</em> que se esté utilizando, ya que cada motor tiene su propia manera de organizar y almacenar los datos.</p>
 <div class="grid cards">
 <ul>
 <li>
@@ -8047,7 +8385,7 @@ Respecto a las <em>keywords</em>, son <em>case insensitive</em>, pero al menos e
 </ul>
 </div>
 <p>Del mismo modo, la configuración del juego de caracteres y la colación dependen del SGBD empleado, y se indican a la hora de crear la base de datos:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="05ddl-__tabbed_4_1" name="05ddl-__tabbed_4" type="radio" /><input id="05ddl-__tabbed_4_2" name="05ddl-__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="05ddl-__tabbed_4_1">MariaDB</label><label for="05ddl-__tabbed_4_2">PostgreSQL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="05ddl-__tabbed_5_1" name="05ddl-__tabbed_5" type="radio" /><input id="05ddl-__tabbed_5_2" name="05ddl-__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="05ddl-__tabbed_5_1">MariaDB</label><label for="05ddl-__tabbed_5_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>La codificación y la colación se especifican al crear una base de datos mediante <a href="https://mariadb.com/kb/en/create-database/"><code>CREATE DATABASE</code></a> con las opciones <code>CHARACTER SET</code> y <code>COLLATE</code>.</p>
@@ -8331,7 +8669,7 @@ Si vives en España y tus amigos de Chile quieren informarte de su hora local si
 <h4 id="05ddl-enumeraciones">Enumeraciones<a class="headerlink" href="#05ddl-enumeraciones" title="Permanent link">&para;</a></h4>
 <p>Además de los tipos vistos, podemos crear enumeraciones como un conjunto de valores restringidos que puede tomar un determinado campo, definiendo una lista de valores posibles.</p>
 <p>Para ello haremos uso de la <em>keyword</em> <code>ENUM</code> tanto en <a href="https://mariadb.com/kb/en/enum/">MariaDB</a> como en <a href="https://www.postgresql.org/docs/16/datatype-enum.html">PostgreSQL</a>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="05ddl-__tabbed_5_1" name="05ddl-__tabbed_5" type="radio" /><input id="05ddl-__tabbed_5_2" name="05ddl-__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="05ddl-__tabbed_5_1">MariaDB</label><label for="05ddl-__tabbed_5_2">PostgreSQL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="05ddl-__tabbed_6_1" name="05ddl-__tabbed_6" type="radio" /><input id="05ddl-__tabbed_6_2" name="05ddl-__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="05ddl-__tabbed_6_1">MariaDB</label><label for="05ddl-__tabbed_6_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">curso</span><span class="w"> </span><span class="n">ENUM</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2&#39;</span><span class="p">),</span>
@@ -8425,20 +8763,21 @@ Si vives en España y tus amigos de Chile quieren informarte de su hora local si
 <span class="linenos" data-linenos=" 6 "></span>
 <span class="linenos" data-linenos=" 7 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PRESTAMO</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">idPrestamo</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">fechaPrestamo</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">));</span>
-<span class="linenos" data-linenos="10 "></span>
-<span class="linenos" data-linenos="11 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CIUDAD</span><span class="w"> </span><span class="p">(</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="n">codigoPostal</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;03203&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="15 "></span>
-<span class="linenos" data-linenos="16 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PROVINCIA</span><span class="w"> </span><span class="p">(</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
-<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">5000</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">fechaPrestamo</span><span class="w"> </span><span class="nb">DATE</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="p">,</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="n">instantePrestamo</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">);</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CIUDAD</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="n">codigoPostal</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;03203&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PROVINCIA</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">5000</span><span class="p">);</span>
 </code></pre></div>
 <p>Con estos ejemplos, hemos visto que algunas de las propiedades de columna que podemos indicar son los valores no nulos (mediante <code>NOT NULL</code>) o valores por defecto (mediante <code>DEFAULT</code>). En el apartado <a href="#05ddl-restricciones">Restricciones</a> las estudiaremos en profundidad.</p>
 <p>En todo momento, podemos obtener la estructura de una tabla mediante el comando <code>DESCRIBE nombreTabla</code> en <a href="https://mariadb.com/kb/en/describe">MariaDB</a> como mediante <code>\d nombreTabla</code> en <a href="https://www.postgresql.org/docs/current/app-psql.html#APP-PSQL-META-COMMANDS">PostgreSQL</a>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="05ddl-__tabbed_6_1" name="05ddl-__tabbed_6" type="radio" /><input id="05ddl-__tabbed_6_2" name="05ddl-__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="05ddl-__tabbed_6_1">MariaDB</label><label for="05ddl-__tabbed_6_2">PostgreSQL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="05ddl-__tabbed_7_1" name="05ddl-__tabbed_7" type="radio" /><input id="05ddl-__tabbed_7_2" name="05ddl-__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="05ddl-__tabbed_7_1">MariaDB</label><label for="05ddl-__tabbed_7_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DESCRIBE</span><span class="w"> </span><span class="n">CIUDAD</span>
@@ -8459,7 +8798,7 @@ Si vives en España y tus amigos de Chile quieren informarte de su hora local si
 </div>
 </div>
 <h4 id="05ddl-clave-primaria">Clave primaria<a class="headerlink" href="#05ddl-clave-primaria" title="Permanent link">&para;</a></h4>
-<p>Una vez visto cómo crear las tablas y sus atributos, nos centramos en la creación de la clave primaria. Toda tabla debe tener una clave primaria (ya sea simple o compuesta). Para ello, si tenemos un atributo simple, podemos añadir la propiedad <code>PRIMARY KEY</code> al atributo, aunque por convenciones de código, es mejor definir la clave primaria después de todos los atributos, a modo de restricciones. </p>
+<p>Una vez visto cómo crear las tablas y sus atributos, nos centramos en la creación de la clave primaria. Toda tabla debe tener una clave primaria (ya sea simple o compuesta). Para ello, si tenemos un atributo simple, podemos añadir la propiedad <code>PRIMARY KEY</code> al atributo, aunque por convenciones de código, es mejor definir la clave primaria después de todos los atributos, a modo de restricción: </p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CIUDAD</span><span class="w"> </span><span class="p">(</span>
 <span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span><span class="w"> </span><span class="c1">-- clave primaria como propiedad</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">5000</span><span class="p">);</span>
@@ -8469,11 +8808,16 @@ Si vives en España y tus amigos de Chile quieren informarte de su hora local si
 <span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span>
 <span class="hll"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">nombre</span><span class="p">));</span><span class="w"> </span><span class="c1">-- clave primaria como restricción</span>
 </span><span class="linenos" data-linenos=" 9 "></span>
-<span class="linenos" data-linenos="10 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="p">(</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="n">codigo</span><span class="w"> </span><span class="nb">BIGINT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="p">,</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="n">departamento</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
-<span class="hll"><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">codigo</span><span class="p">,</span><span class="w"> </span><span class="n">departamento</span><span class="p">));</span><span class="w"> </span><span class="c1">-- clave primaria compuesta</span>
+<span class="linenos" data-linenos="10 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">COMUNIDAD</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span>
+<span class="hll"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">PK_COMUNIDAD</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">nombre</span><span class="p">));</span><span class="w"> </span><span class="c1">-- clave primaria como restricción con nombre</span>
+</span><span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="n">codigo</span><span class="w"> </span><span class="nb">BIGINT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="p">,</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="n">departamento</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
+<span class="hll"><span class="linenos" data-linenos="19 "></span><span class="w">    </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">(</span><span class="n">codigo</span><span class="p">,</span><span class="w"> </span><span class="n">departamento</span><span class="p">));</span><span class="w"> </span><span class="c1">-- clave primaria compuesta</span>
 </span></code></pre></div>
 <h5 id="05ddl-clave-subrogada">Clave subrogada<a class="headerlink" href="#05ddl-clave-subrogada" title="Permanent link">&para;</a></h5>
 <p>También podemos añadir una clave subrogada a modo de código (o <code>id</code>) asociado a un número entero autoincrementable. Para ello, en <em>MariaDB</em>, tras la definición del atributo como entero (sin signo), añadiremos la propiedad <code>AUTO_INCREMENT</code> en la definición del atributo.</p>
@@ -8612,9 +8956,9 @@ Si vives en España y tus amigos de Chile quieren informarte de su hora local si
 </code></pre></div>
 <p>La principal diferencia entre una clave primaria y una clave única es que la clave única permite valores nulos.</p>
 <div class="admonition tip">
-<p class="admonition-title">Nombrando las restricciones</p>
+<p class="admonition-title">Buenas prácticas - Nombrando las restricciones</p>
 <p>Aunque hemos visto que podemos añadir las restricciones asociadas a cada campo, es mucho mejor definirlas tras todos los campos, haciendo uso de la <em>keyword</em> <a href="https://mariadb.com/kb/en/constraint/"><code>CONSTRAINT</code></a> poniéndole un nombre a la restricción. Así pues, como norma general, nombraremos las restricciones con <code>PK</code>, <code>UK</code>, <code>FK</code>, etc... y utilizando la barra de subrayado como separador, seguido del nombre de la tabla y/o los campos implicados.</p>
-<p>Al asignarles un nombre, más adelante podremos acceder a las restricciones para modificarlas o eliminarlas. </p>
+<p>Al asignarles un nombre, más adelante podremos acceder a las restricciones para modificarlas o eliminarlas. Además, si ocurre alguna violación de una restricción, el mensaje de error contendrá el nombre de la restricción, lo que nos facilitará identificar el problema.</p>
 <p>De este modo, la tabla anterior queda mucho mejor si la definimos mediante:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="p">(</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">dni</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>
@@ -8624,10 +8968,12 @@ Si vives en España y tus amigos de Chile quieren informarte de su hora local si
 </span><span class="hll"><span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">UK_EMPLEADO_SEGSOC</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">nSegSocial</span><span class="p">)</span>
 </span><span class="linenos" data-linenos="7 "></span><span class="p">);</span>
 </code></pre></div>
+<p>Por supuesto, si no le asignamos un nombre a una restricción, el SGBD le asignará un nombre automáticamente.</p>
+<p>Por último, ciertas restricciones, como <code>NOT NULL</code> y <code>DEFAULT</code>, no se suelen nombran. Estas restricciones es mejor definirlas a nivel de columna, ya que rara vez podrían referenciarse por separado, y así son más fáciles de escribir y más sencillos de leer.</p>
 </div>
 <h4 id="05ddl-claves-ajenas">Claves ajenas<a class="headerlink" href="#05ddl-claves-ajenas" title="Permanent link">&para;</a></h4>
 <p>Para indicar las claves ajenas, aunque podemos hacerlo a nivel de campo, es mucho mejor acostumbrarse a definirlas siempre como restricciones. Para ello, usaremos la siguiente estructura, donde <code>col</code> es el campo que apunta a la clave primaria <code>clave</code> de la tabla <code>tabla</code>. </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="p">(</span><span class="n">clave</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">col</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="p">(</span><span class="n">clave</span><span class="p">)</span>
 </code></pre></div>
 <p>Como norma general, nombraremos a las claves ajenas como <code>FK_&lt;TABLAPADRE&gt;_&lt;TABLAHIJO&gt;</code> sustituyendo los nombres de las tablas por los tres primeros caracteres de cada una de ellas.</p>
 <p>Así pues, un ejemplo de tabla con clave primaria y claves ajenas definidas mediante <code>CONSTRAINT</code> sería:</p>
@@ -8651,7 +8997,7 @@ Si vives en España y tus amigos de Chile quieren informarte de su hora local si
 <span class="linenos" data-linenos="9 "></span><span class="p">);</span>
 </code></pre></div>
 <h4 id="05ddl-propagacion">Propagación<a class="headerlink" href="#05ddl-propagacion" title="Permanent link">&para;</a></h4>
-<p>Cuando se elimina (<code>ON DELETE</code>) o actualiza (<code>ON UPDATE</code>) un campo que está referenciado mediante una clave ajena, debemos indicar qué comportamiento de propagación debe realizar el SGBD con los datos en las tablas origen.</p>
+<p>Cuando se elimina (<code>ON DELETE</code>) o actualiza (<code>ON UPDATE</code>) un campo que está referenciado mediante una clave ajena, debemos indicar qué comportamiento de propagación debe realizar el SGBD con los datos en las tablas origen. Estas operaciones se conocen como acciones referenciales.</p>
 <p>Vamos a retomar el ejemplo que vimos en la unidad 3, sobre un estudiante y las asignaturas que cursa, el cual se podría traducir en el siguiente DDL:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">ESTUDIANTE</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">nif</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>
@@ -8719,19 +9065,19 @@ Si vives en España y tus amigos de Chile quieren informarte de su hora local si
 <td>12345678A</td>
 <td>1</td>
 <td>2024</td>
-<td>true</td>
+<td><code>TRUE</code></td>
 </tr>
 <tr>
 <td>48123456B</td>
 <td>1</td>
 <td>2024</td>
-<td>false</td>
+<td><code>FALSE</code></td>
 </tr>
 <tr>
 <td>12345678A</td>
 <td>2</td>
 <td>2023</td>
-<td>false</td>
+<td><code>FALSE</code></td>
 </tr>
 </tbody>
 </table>
@@ -8740,11 +9086,11 @@ Si vives en España y tus amigos de Chile quieren informarte de su hora local si
 <p>¿Cómo repercute el sistema si eliminamos el estudiante <code>12345678A</code> de la tabla <code>ESTUDIANTE</code>? ¿O le cambiamos el <code>nif</code> (algo inusual, pero que puede pasar si nos hemos equivocado al teclearlo)? ¿Qué opciones tenemos para respetar la integridad referencial? </p>
 <p>Las posibilidades son:</p>
 <ul>
-<li><strong><code>NO ACTION</code></strong>: se impide la operación, rechazando el borrado o la actualización. Este es el comportamiento por defecto si no indicamos nada.</li>
+<li><strong><code>RESTRICT</code> / <code>NO ACTION</code></strong>: se impide la operación, rechazando el borrado o la actualización. Este es el comportamiento por defecto si no indicamos nada.</li>
 <li><strong><code>CASCADE</code></strong>: la operación se propaga de la tabla origen a la de destino. Esto es, si borramos el estudiante, borrará los registros de <code>CURSAR</code>. Si modificamos su <code>nif</code>, también modificará los <code>nifEstudiante</code> de <code>CURSAR</code>.</li>
 <li><strong><code>SET NULL</code></strong>: la clave ajena se pone a <code>NULL</code>, de manera que se pierde la relación existente, provocando probablemente inconsistencia de datos.</li>
 </ul>
-<p>Si volvemos a definir la tabla CURSAR indicando las restricciones de propagación, podríamos hacer:</p>
+<p>Si volvemos a definir la tabla <code>CURSAR</code> indicando las restricciones de propagación, podríamos hacer:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CURSAR</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">nifEstudiante</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">asignatura</span><span class="w"> </span><span class="nb">int</span><span class="p">,</span>
@@ -8790,6 +9136,16 @@ Si vives en España y tus amigos de Chile quieren informarte de su hora local si
 <p>Para eliminar, la opción <code>DROP</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="err">{</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">nombreRestricción</span><span class="err">}</span><span class="w"> </span><span class="p">[</span><span class="k">CASCADE</span><span class="p">]</span>
 </code></pre></div>
+<p>Algunos ejemplos de gestión de restricciones sobre los esquemas que hemos ido trabajando serían:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Borramos una clave ajena</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CURSAR</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">FK_CUR_EST</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- La volvemos a crear</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CURSAR</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">FK_CUR_EST_NUEVA</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">nifEstudiante</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">ESTUDIANTE</span><span class="p">(</span><span class="n">nif</span><span class="p">);</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- Borramos una validación</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">INGRESO3</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">CK_INGRESO</span><span class="p">;</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">-- La volvemos a crear</span>
+<span class="linenos" data-linenos="8 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">INGRESO3</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">CK_INGRESO_NUEVA</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">importe</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">importe</span><span class="o">&lt;</span><span class="n">importeMax</span><span class="p">));</span>
+</code></pre></div>
 <p>Debes tener en cuenta que para eliminar una clave primaria, no debe haber ninguna clave ajena apuntando a ella. Además, si la clave primaria ya es clave ajena, antes de poder borrar la clave, deberemos borrar las claves ajenas que formen parte de la clave primaria y luego borrar sus índices. Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">PK_MUCHOS_N</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">PK_MUCHOS_M</span><span class="p">;</span>
@@ -8829,9 +9185,9 @@ Si vives en España y tus amigos de Chile quieren informarte de su hora local si
 <p class="admonition-title">Otros elementos</p>
 <p>Existen otras estructuras que forman parte de DDL pero que veremos más adelante son:</p>
 <ul>
-<li><strong>Vistas</strong>: Permiten crear una representación externa (tabla virtual) a partir de una consulta, mediante <code>CREATE VIEW</code>. Las estudiaremos en la unidad 8.</li>
-<li><strong>Índices</strong>: Se utilizan para acelerar las consultas, mediante <code>CREATE INDEX</code>. Los estudiaremos en la unidad 9.</li>
-<li><strong>Disparadores</strong> (<em>triggers</em>): Se asocian a operaciones que se producen en el sistema (evento) para realizar otra acción. Los estudiaremos en la unidad 11.</li>
+<li><strong>Vistas</strong>: Permiten crear una representación externa (tabla virtual) a partir de una consulta, mediante <code>CREATE VIEW</code>. Las estudiaremos en la <a href="#07sql-group-vistas">unidad 7</a>.</li>
+<li><strong>Índices</strong>: Se utilizan para acelerar las consultas, mediante <code>CREATE INDEX</code>. Los estudiaremos en la <a href="#08sql-subquerys-indices">unidad 9</a>.</li>
+<li><strong>Disparadores</strong> (<em>triggers</em>): Se asocian a operaciones que se producen en el sistema (evento) para realizar otra acción. Los estudiaremos en la <a href="#11triggers-triggers">unidad 11</a>.</li>
 </ul>
 </div>
 <h3 id="05ddl-supuesto-ddl">Supuesto DDL<a class="headerlink" href="#05ddl-supuesto-ddl" title="Permanent link">&para;</a></h3>
@@ -9220,7 +9576,7 @@ PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
 <span class="linenos" data-linenos="3 "></span>psql<span class="w"> </span>-U<span class="w"> </span>usuario<span class="w"> </span>-d<span class="w"> </span>nombre_de_base_de_datos<span class="w"> </span>-f<span class="w"> </span>archivo.sql
 </code></pre></div>
 <p>Si en cambio lo queremos hacer dentro de cada cliente (una vez nos hemos autenticado con el usuario y contraseña):</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="05ddl-__tabbed_7_1" name="05ddl-__tabbed_7" type="radio" /><input id="05ddl-__tabbed_7_2" name="05ddl-__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="05ddl-__tabbed_7_1">MariaDB</label><label for="05ddl-__tabbed_7_2">PostgreSQL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="05ddl-__tabbed_8_1" name="05ddl-__tabbed_8" type="radio" /><input id="05ddl-__tabbed_8_2" name="05ddl-__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="05ddl-__tabbed_8_1">MariaDB</label><label for="05ddl-__tabbed_8_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>En <em>MariaDB</em> usaremos el comando <a href="https://mariadb.com/kb/en/mariadb-command-line-client/">source</a>:</p>
@@ -9237,7 +9593,7 @@ PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
 </div>
 <h3 id="05ddl-cargando-datos-desde-archivos">Cargando datos desde archivos<a class="headerlink" href="#05ddl-cargando-datos-desde-archivos" title="Permanent link">&para;</a></h3>
 <p>Si en vez de un <em>script</em> tenemos los datos a cargar y ya tenemos nuestra estructura de datos creada (y probablemente con datos ya existentes), tenemos otras posibilidades:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="05ddl-__tabbed_8_1" name="05ddl-__tabbed_8" type="radio" /><input id="05ddl-__tabbed_8_2" name="05ddl-__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="05ddl-__tabbed_8_1">MariaDB</label><label for="05ddl-__tabbed_8_2">PostgreSQL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="05ddl-__tabbed_9_1" name="05ddl-__tabbed_9" type="radio" /><input id="05ddl-__tabbed_9_2" name="05ddl-__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="05ddl-__tabbed_9_1">MariaDB</label><label for="05ddl-__tabbed_9_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>En <em>MariaDB</em> usaremos la herramienta <a href="https://mariadb.com/kb/en/mariadb-import/">mariadb-import</a> que permite cargar datos en formato texto, csv, etc...:</p>
@@ -9273,7 +9629,7 @@ PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
 <div class="admonition info">
 <p class="admonition-title">Importando datos en binario</p>
 <p>Para un administrador de bases de datos, es muy común cargar datos a partir de una copia de seguridad. Para ello, dependiendo del SGBD, utilizaremos una herramienta u otra.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="05ddl-__tabbed_9_1" name="05ddl-__tabbed_9" type="radio" /><input id="05ddl-__tabbed_9_2" name="05ddl-__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="05ddl-__tabbed_9_1">MariaDB</label><label for="05ddl-__tabbed_9_2">PostgreSQL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="05ddl-__tabbed_10_1" name="05ddl-__tabbed_10" type="radio" /><input id="05ddl-__tabbed_10_2" name="05ddl-__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="05ddl-__tabbed_10_1">MariaDB</label><label for="05ddl-__tabbed_10_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Usaremos la herramienta <a href="https://mariadb.com/kb/en/mariabackup-overview/">mariabackup</a>, la cual es una herramienta de <em>MariaDB</em> para crear copias de seguridad físicas (binarias) de las bases de datos.</p>
@@ -9340,7 +9696,7 @@ PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
 <p>Cuando trabajamos con claves subrogadas, como es el caso de <code>id</code> que es un campo auto incrementable, podemos omitir su valor, y automáticamente se le asignará el siguiente valor de la secuencia:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dml8a</span><span class="p">(</span><span class="n">nombre</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;José Manuel Pérez&quot;</span><span class="p">);</span>
 </code></pre></div>
-<p>Cuando insertarmos un registro en una tabla autoincrementable, podemos recuperar el valor creado mediante la función <code>LAST_INSERT_ID()</code>. En el bloque de programación mediante PL/SQL profundizaremos en su uso:</p>
+<p>Cuando insertarmos un registro en una tabla autoincrementable, podemos recuperar el valor creado mediante la función <a href="https://mariadb.com/docs/server/reference/sql-functions/secondary-functions/information-functions/last_insert_id"><code>LAST_INSERT_ID()</code></a>. En el bloque de programación mediante PL/SQL profundizaremos en su uso:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">LAST_INSERT_ID</span><span class="p">();</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1">-- +------------------+</span>
 <span class="linenos" data-linenos="3 "></span><span class="c1">-- | LAST_INSERT_ID() |</span>
@@ -9349,7 +9705,7 @@ PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
 <span class="linenos" data-linenos="6 "></span><span class="c1">-- +------------------+</span>
 <span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.001 sec)</span>
 </code></pre></div>
-<p>En el caso de <em>PostgreSQL</em>, si queremos recuperar la información sobre la fila recién insertada, podemos emplear la cláusula <code>RETURNING</code>:</p>
+<p>En el caso de <em>PostgreSQL</em>, si queremos recuperar la información sobre la fila recién insertada, podemos emplear la cláusula <a href="https://www.postgresql.org/docs/current/dml-returning.html"><code>RETURNING</code></a>:</p>
 <div class="highlight"><span class="filename">PostgreSQL</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dml8a</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;David Suárez&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;david@gmail.com&quot;</span><span class="p">)</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">RETURNING</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
@@ -9364,13 +9720,72 @@ PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
 <span class="linenos" data-linenos="7 "></span><span class="c1">-- +----+--------------+-------+</span>
 <span class="linenos" data-linenos="8 "></span><span class="c1">-- 1 row in set (0.003 sec)</span>
 </code></pre></div>
+<h4 id="05ddl-supuesto-dml">Supuesto DML<a class="headerlink" href="#05ddl-supuesto-dml" title="Permanent link">&para;</a></h4>
+<p>A partir del <a href="#05ddl-supuesto-ddl">Supuesto DDL</a>, vamos a insertar los datos de las tablas para rellenar la base de datos (pero sin aplicar las modificaciones <code>ALTER TABLE</code>, trabajaremos directamente sobre el <em>script</em> de <code>CREATE TABLE</code>).</p>
+<p>Para ello, es importante respetar las dependencias de las claves ajenas para primero insertar las tablas que no tienen dependencias. Por esta razón, primero insertaremos los datos en <code>PROYECTO</code> y luego en <code>EMPLEADO</code>, para posteriomente las tablas <code>VEHICULO</code> y <code>ASIGNACION</code> que dependen de las anteriores. Si no respetamos el orden, y por ejemplo, insertaramos los vehículos antes que los empleados, al hacerlo, obtendríamos diversos errores de integridad referencial.</p>
+<p>Así pues, los comandos SQL necesarios son:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">PROYECTO</span><span class="w"> </span><span class="p">(</span><span class="n">CODIGO</span><span class="p">,</span><span class="w"> </span><span class="n">NOMBRE</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="p">(</span><span class="s1">&#39;101&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;GRIS&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="p">(</span><span class="s1">&#39;102&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;BLANCO&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="p">(</span><span class="s1">&#39;103&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;NEGRO&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="p">(</span><span class="s1">&#39;104&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;VERDE&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">NOMBRE</span><span class="p">,</span><span class="w"> </span><span class="n">DNI</span><span class="p">,</span><span class="w"> </span><span class="n">JEFE</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ANA MARTIN&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;1111A&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;JUAN LOPEZ&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2222B&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">),</span>
+<span class="linenos" data-linenos="10 "></span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;CARMEN DIAZ&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3333C&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">),</span>
+<span class="linenos" data-linenos="11 "></span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ERNESTO GOMEZ&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;4444D&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">),</span>
+<span class="linenos" data-linenos="12 "></span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;SILVIA GONZALEZ&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;5555E&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">),</span>
+<span class="linenos" data-linenos="13 "></span><span class="p">(</span><span class="mi">35</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;FERNANDO SIERRA&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;7777F&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">);</span>
+<span class="linenos" data-linenos="14 "></span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- VEHICULO referencia a EMPLEADO</span>
+<span class="linenos" data-linenos="16 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">VEHICULO</span><span class="w"> </span><span class="p">(</span><span class="n">MATRICULA</span><span class="p">,</span><span class="w"> </span><span class="n">MARCA</span><span class="p">,</span><span class="w"> </span><span class="n">MODELO</span><span class="p">,</span><span class="w"> </span><span class="n">PERSONA</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="linenos" data-linenos="17 "></span><span class="p">(</span><span class="s1">&#39;2345AAA&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Seat&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Altea&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">),</span>
+<span class="linenos" data-linenos="18 "></span><span class="p">(</span><span class="s1">&#39;1234BBB&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Opel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Astra&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">),</span>
+<span class="linenos" data-linenos="19 "></span><span class="p">(</span><span class="s1">&#39;5555CCC&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Seat&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ibiza&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">),</span>
+<span class="linenos" data-linenos="20 "></span><span class="p">(</span><span class="s1">&#39;9876DDD&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Lexus&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;LC&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">),</span>
+<span class="linenos" data-linenos="21 "></span><span class="p">(</span><span class="s1">&#39;1111FFF&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Seat&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Ibiza&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">),</span>
+<span class="linenos" data-linenos="22 "></span><span class="p">(</span><span class="s1">&#39;2222GGG&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Opel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Astra&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="c1">-- ASIGNACION referencia tanto a EMPLEADO como a PROYECTO</span>
+<span class="linenos" data-linenos="25 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">ASIGNACION</span><span class="w"> </span><span class="p">(</span><span class="n">ID</span><span class="p">,</span><span class="w"> </span><span class="n">CODIGO</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="linenos" data-linenos="26 "></span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;101&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos="27 "></span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;101&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos="28 "></span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;101&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos="29 "></span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;102&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos="30 "></span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;102&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos="31 "></span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;102&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos="32 "></span><span class="p">(</span><span class="mi">35</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;102&#39;</span><span class="p">),</span>
+<span class="linenos" data-linenos="33 "></span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;103&#39;</span><span class="p">);</span>
+</code></pre></div>
+<p>¿Y si quiero insertar dos empleados, de manera que el primero sea el jefe del segundo, pero para ninguno de ellos quiero asignarle su código de manera explicita, ya que lo debe autogenerar el SGBD?</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Insertamos el primer empleado</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="p">(</span><span class="n">NOMBRE</span><span class="p">,</span><span class="w"> </span><span class="n">DNI</span><span class="p">,</span><span class="w"> </span><span class="n">JEFE</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;Empleado Nuevo 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;8888G&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- Al segundo empleado le asignamos como jefe el identificador de la última inserción</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="p">(</span><span class="n">NOMBRE</span><span class="p">,</span><span class="w"> </span><span class="n">DNI</span><span class="p">,</span><span class="w"> </span><span class="n">JEFE</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;Empleado Nuevo 2&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;9999G&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">LAST_INSERT_ID</span><span class="p">());</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- Comprobamos los resultados</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- (recuperamos los empleados con un identificador superior al último que habíamos insertado)</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ID</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">35</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +----+------------------+-------+------+</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | ID | NOMBRE           | DNI   | JEFE |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- +----+------------------+-------+------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | 36 | Empleado Nuevo 1 | 8888G |   10 |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | 37 | Empleado Nuevo 2 | 9999G |   36 |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- +----+------------------+-------+------+</span>
+</code></pre></div>
 <div class="admonition danger">
 <p class="admonition-title">Gestión de errores</p>
 <p>Si insertamos datos con tipos diferentes, dejamos campos no nulos en blanco, o insertamos datos en un campo que es clave ajena y no cumplimos la integridad referencial, el SGBD nos devolverá diferentes mensajes:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dml8a</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;veinte&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Juan&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">33</span><span class="p">);</span>
-<span class="linenos" data-linenos="2 "></span><span class="c1">-- ERROR 1366 (22007): Incorrect integer value: &#39;veinte&#39; for column `pruebas`.`dml8a`.`id` at row 1</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="ss">&quot;cuarenta&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Empleado con errores&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;1234&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">-- ERROR 1366 (22007): Incorrect integer value: &#39;cuarenta&#39; for column `pruebas`.`EMPLEADO`.`ID` at row 1</span>
 </code></pre></div>
-<p>En cambio, si ejecutamos <code class="highlight"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">dml8a</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Juan&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">33</span><span class="p">);</span></code> no dará error porque convertirá el número <code>33</code> a un <code>string</code> antes de insertarlo.</p>
+<p>En cambio, si ejecutamos <code class="highlight"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;JUAN PALOMO&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">);</span></code> no dará error porque convertirá el número <code>1234</code> a un <code>string</code> antes de insertarlo.</p>
+<p>¿Y qué sucede si insertamos un dato que no cumple la integridad referencial en una clave ajena? Al intentar insertar un empleado que apunte a otro que no existe, obtendrémos un error de fallo de la restricción de la clave ajena:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">EMPLEADO</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;Empleado con error en integridad referencial&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;5678&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">-- ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails </span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- (`pruebas`.`EMPLEADO`, CONSTRAINT `FK_EMPLEADO_JEFE` FOREIGN KEY (`JEFE`) REFERENCES `EMPLEADO` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE)</span>
+</code></pre></div>
 </div>
 <p>También podemos insertar datos con el resultado de una consulta mediante la instrucción <a href="https://mariadb.com/kb/en/insert-select/"><code>INSERT SELECT</code></a>, pero esta operación la estudiaremos en profundidad más adelante.</p>
 <h3 id="05ddl-modificaciones">Modificaciones<a class="headerlink" href="#05ddl-modificaciones" title="Permanent link">&para;</a></h3>
@@ -9422,7 +9837,7 @@ PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
     <figcaption>Supuesto DDL Proyecto</figcaption>
 </figure>
 
-<p>Si volvemos al ejemplo del , si nos fijamos en la tabla <code>ASIGNACION</code>, tenemos que su definición de claves tanto hacia <code>EMPLEADO</code> como a <code>PROYECTO</code> son siempre en cascada:</p>
+<p>Si nos fijamos en la tabla <code>ASIGNACION</code>, tenemos que su definición de claves tanto hacia <code>EMPLEADO</code> como a <code>PROYECTO</code> son siempre en cascada:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">ASIGNACION</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">ID</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">CODIGO</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
@@ -14527,6 +14942,20 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- 4 rows in set (0.001 sec)</span>
 </code></pre></div>
 <p>Esta operación se utiliza mucho en analítica de datos y en consultas complejas, ya que persiste el resultado en una tabla, lo que mejora el futuro acceso a dichos datos (siempre y cuando sea factible que los datos no estén sincronizados). Por ejemplo, si necesitamos unir todas las tablas de nuestra base de datos <code>empresa</code> para obtener cuánto ganan los empleados que tienen determinadas habilidades, y la consulta tardase del orden de 10 segundos, podríamos crear una tabla con el resultado de la consulta. Cada vez que se modificara el salario de un empleado o que un empleado adquiriese una nueva habilidad, volveríamos a crear la tabla para que actualizase los datos, y que así fueran consistentes con los datos originales.</p>
+<div class="admonition tip">
+<p class="admonition-title">Investiga</p>
+<p>¿Sabrías deducir que genera la siguiente operación DDL en <em>PostgreSQL</em>? ¿Qué realiza exactamente la función <a href="https://www.postgresql.org/docs/current/functions-srf.html"><code>generate_series</code></a>?</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">ventas</span><span class="w"> </span><span class="k">AS</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">SELECT</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">        </span><span class="n">id</span><span class="p">,</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">        </span><span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">cliente_id</span><span class="p">,</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">        </span><span class="p">(</span><span class="nb">array</span><span class="p">[</span><span class="s1">&#39;€&#39;</span><span class="p">,</span><span class="s1">&#39;$&#39;</span><span class="p">,</span><span class="s1">&#39;&amp;&#39;</span><span class="p">])[</span><span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)]</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">moneda</span><span class="p">,</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">        </span><span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">cantidad</span><span class="p">,</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">        </span><span class="n">round</span><span class="p">(</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">precio</span><span class="p">,</span>
+<span class="linenos" data-linenos="8 "></span><span class="w">        </span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">fecha</span>
+<span class="linenos" data-linenos="9 "></span><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">generate_series</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</code></pre></div>
+</div>
 <h3 id="08sql-subquerys-dml">DML<a class="headerlink" href="#08sql-subquerys-dml" title="Permanent link">&para;</a></h3>
 <p>Si queremos insertar datos a partir de una consulta usaremos la sentencia <a href="https://mariadb.com/kb/en/insert-select/"><code>INSERT tabla SELECT</code></a>.</p>
 <p>Por ejemplo, vamos a insertar en la tabla recién creada también los directivos de tipo <code>F</code>:</p>
@@ -14688,7 +15117,7 @@ EXPLAIN.
 <p>Antes hemos comentado que un índice en una base de datos es similar a un índice de un libro; permite saltar directamente a la parte del libro en vez de tener que pasar las páginas buscando el tema o la palabra que nos interesa. Esta estructura permite recorrer los datos y ordenarlos de manera muy rápida. Así pues, los índices se utilizan tanto al buscar un elemento como al ordenar los datos de una consulta.</p>
 <p>Al buscar un valor concreto en una columna de una tabla, si la columna no tiene un índice, hay que recorrer toda la tabla comparando fila a fila. Si la tabla tiene pocas filas no hay problema.</p>
 <p>Para mejorar el rendimiento, podemos crear un índice para cada columna que se utiliza en la cláusula <code>WHERE</code> o en <code>ORDER BY</code>.</p>
-<p>Los índices se comportan como punteros sobre las filas de la tabla y nos permiten determinar rápidamente cuáles son las filas necesarias. Internamente, los índices se traducen en estructura de datos en forma de árbol (*b-tree) que facilitan la búsqueda.</p>
+<p>Cuando se crea un índice sobre una columna, el motor de la base de datos construye el índice escaneando toda la tabla y registrando los valores de la columna indexada junto con los punteros a las filas correspondientes. Mediante estos punteros sobre las filas de la tabla, el SGBD puede determinar rápidamente cuáles son las filas necesarias. Internamente, los índices se traducen en estructura de datos en forma de árbol (<a href="https://es.wikipedia.org/wiki/%C3%81rbol-B"><em>b-tree</em></a>) que facilitan la búsqueda.</p>
 <figure style="align: center;">
     <img src="images/08btree.png" width="800" title="Índice B-Tree - https://severalnines.com/blog/overview-mysql-database-indexing/">
     <figcaption>Índice B-Tree - https://severalnines.com/blog/overview-mysql-database-indexing/</figcaption>
@@ -14840,16 +15269,16 @@ EXPLAIN.
 <p>Algunos consejos que debes tener en cuenta a la hora de hacer consultas son:</p>
 <ul>
 <li>
-<p>Filtra antes con <code>WHERE</code>: Como la cláusula WHERE se ejecuta antes que GROUP BY y JOIN, aplicar los filtros antes reduce el número de filas procesadas por las cláusulas posteriores, lo que mejora el rendimiento de la consulta. Al filtrar los datos no agrupados lo antes posible, limitas los datos que hay que agrupar o unir, ahorrando tiempo de procesamiento.</p>
+<p>Filtra antes con <code>WHERE</code>: Como la cláusula <code>WHERE</code> se ejecuta antes que <code>GROUP BY</code> y <code>JOIN</code>, aplicar los filtros antes reduce el número de filas procesadas por las cláusulas posteriores, lo que mejora el rendimiento de la consulta. Al filtrar los datos no agrupados lo antes posible, limitas los datos que hay que agrupar o unir, ahorrando tiempo de procesamiento.</p>
 </li>
 <li>
-<p>Preagregar datos antes de unirlos: Sabiendo que FROM y JOIN son las primeras cláusulas que se ejecutan, preagrupar los datos mediante subconsultas o expresiones comunes de tabla (CTE) te permite reducir el conjunto de datos antes del proceso de unión. Esto garantiza que se procesen menos filas durante la unión.</p>
+<p>Preagregar datos antes de unirlos: Sabiendo que <code>FROM</code> y <code>JOIN</code> son las primeras cláusulas que se ejecutan, preagrupar los datos mediante subconsultas o expresiones comunes de tabla (<em>CTE</em>) te permite reducir el conjunto de datos antes del proceso de unión. Esto garantiza que se procesen menos filas durante la unión.</p>
 </li>
 <li>
 <p>Optimizar <code>ORDER BY</code> con índices: Puesto que la cláusula ORDER BY es uno de los últimos pasos ejecutados, asegurarse de que las columnas ordenadas están indexadas acelerará el rendimiento de la consulta al ayudar a la base de datos a gestionar las operaciones de ordenación con mayor eficacia.</p>
 </li>
 <li>
-<p>Evitar <code>SELECT *</code> en las consultas de producción: La cláusula SELECT se ejecuta después de filtrar, agrupar y agregar, por lo que especificar sólo las columnas necesarias minimiza la cantidad de datos recuperados, reduciendo la sobrecarga innecesaria.</p>
+<p>Evitar <code>SELECT *</code> en las consultas de producción: La cláusula <code>SELECT</code> se ejecuta después de filtrar, agrupar y agregar, por lo que especificar sólo las columnas necesarias minimiza la cantidad de datos recuperados, reduciendo la sobrecarga innecesaria.</p>
 </li>
 </ul>
 <!--
@@ -15331,6 +15760,40 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>En SQL, dentro del DCL, las sentencias como <code>GRANT</code> y <code>REVOKE</code> permiten otorgar o revocar permisos de acceso y modificación sobre los datos. De esta forma, se establece un entorno seguro donde cada usuario tiene acceso únicamente a los recursos necesarios para sus funciones.</p>
 <p>Además del control de acceso, la seguridad de un SGBD también se refuerza mediante el <strong>uso de transacciones y políticas de bloqueo y concurrencia</strong>. Las transacciones garantizan que las operaciones sobre la base de datos se ejecuten de manera atómica, consistente, aislada y duradera (propiedades ACID), lo que previene inconsistencias en caso de errores o fallos del sistema.</p>
 <p>Para manejar el acceso concurrente de múltiples usuarios, los SGBD implementan mecanismos de bloqueo que evitan conflictos y garantizan la integridad de los datos. Estos bloqueos, combinados con estrategias de control de concurrencia, aseguran que las transacciones se gestionen de forma ordenada y segura, minimizando riesgos como condiciones de carrera, lecturas sucias o actualizaciones perdidas. Todo esto contribuye a mantener la coherencia y fiabilidad de la base de datos frente a accesos simultáneos y posibles fallos.</p>
+<h3 id="09dcl-tcl-uso-de-contrasenas">Uso de contraseñas<a class="headerlink" href="#09dcl-tcl-uso-de-contrasenas" title="Permanent link">&para;</a></h3>
+<p>Independientemente de la gestión de seguridad de los SGBD, las aplicaciones que desarrollemos normalmente utilizarán una base de datos donde se almacene la contraseña de los usuarios. No cabe decir que almacenar las contraseñas en texto plano es un agujero de seguridad, ya que si la base de datos se compromete, las contraseñas de todos los usuarios quedarán expuestas.</p>
+<p>Si tenemos una tabla que almacena la información de los usuarios con la siguiente estructura:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">usuarios</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">username</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">password_hash</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">salt</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">updated_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">esta_activo</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">TRUE</span>
+<span class="linenos" data-linenos="10 "></span><span class="p">);</span>
+</code></pre></div>
+<p>Conviene explicar el propósito del campo <code>salt</code>. El <em>salt</em> es un valor aleatorio único que se añade a cada contraseña antes del proceso de <em>hashing</em>. Su propósito es hacer que cada <em>hash</em> sea único, incluso para contraseñas idénticas. Mediante su uso, dos usuarios que tengan la misma contraseña, tendrán almacenado diferente <code>password_hash</code>. Para ello, usaremos primero la función hash <a href="https://mariadb.com/docs/server/reference/sql-functions/secondary-functions/encryption-hashing-and-compression-functions/md5"><code>MD5</code></a> para crear un cadena aleatoria.</p>
+<p>A continuación, cuando insertemos un nuevo usuario, tras concatenar la contraseña con el <em>salt</em>, debemos encriptar el resultado mediante la función <em>hash</em> <a href="https://mariadb.com/docs/server/reference/sql-functions/secondary-functions/encryption-hashing-and-compression-functions/sha2"><code>SHA2</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Generar salt aleatorio</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">salt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">SUBSTRING</span><span class="p">(</span><span class="n">MD5</span><span class="p">(</span><span class="n">RAND</span><span class="p">())</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- Insertar usuario con hash SHA256 + salt</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">usuarios</span><span class="w"> </span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">password_hash</span><span class="p">,</span><span class="w"> </span><span class="n">salt</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="s1">&#39;usuario1&#39;</span><span class="p">,</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="s1">&#39;user@email.com&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">SHA2</span><span class="p">(</span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;mi_password&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">salt</span><span class="p">),</span><span class="w"> </span><span class="mi">256</span><span class="p">),</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="o">@</span><span class="n">salt</span>
+<span class="linenos" data-linenos="11 "></span><span class="p">);</span>
+</code></pre></div>
+<p>Por lo tanto, cuando queramos recuperar un usuario que ha hecho <em>login</em> en la aplicación, necesitamos volver a concatenar la contraseña con el <em>salt</em>, realizar el <em>hash</em> y finalmente, comparar las dos cadenas encriptadas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">usuarios</span><span class="w"> </span>
+<span class="linenos" data-linenos="2 "></span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;usuario1&#39;</span><span class="w"> </span>
+<span class="linenos" data-linenos="3 "></span><span class="k">AND</span><span class="w"> </span><span class="n">password_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SHA2</span><span class="p">(</span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;mi_password&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">salt</span><span class="p">),</span><span class="w"> </span><span class="mi">256</span><span class="p">);</span>
+</code></pre></div>
+<p>Dicho esto, los algoritmos `MD5<em> y </em>SHA2*, a día de hoy, están obsoletos (se consideran criptográficamente rotos), y por ello, en vez de basarse en las funciones de encriptación que ofrece el SGBD, es mejor hacer uso de los algoritmos <a href="https://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>, <a href="https://en.wikipedia.org/wiki/scrypt">scrypt</a> o <a href="https://en.wikipedia.org/wiki/Argon2">argon2</a> desde el lenguaje de programación que utilice el SGBD, ya sea Java, PHP o Python.</p>
 <h2 id="09dcl-tcl-dcl">DCL<a class="headerlink" href="#09dcl-tcl-dcl" title="Permanent link">&para;</a></h2>
 <p>El <em>Data Control Language</em> (DCL- Lenguaje de control de datos) se emplea para gestionar los permisos y privilegios de acceso a los objetos dentro de una base de datos, estableciendo políticas de seguridad que determinan qué usuarios o roles pueden interactuar con los datos y de qué manera.</p>
 <p>A través del DCL, los administradores de bases de datos pueden otorgar o revocar permisos, asegurando que cada usuario solo pueda realizar las acciones que le han sido expresamente autorizadas. Este control es esencial para proteger la información sensible, evitar accesos no autorizados y mantener la integridad de los datos.</p>
@@ -24279,37 +24742,44 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </figure>
 
 <h2 id="00entorno-postgresql">PostgreSQL<a class="headerlink" href="#00entorno-postgresql" title="Permanent link">&para;</a></h2>
-<p><em>PostgreSQL</em> es un SGBD relacional que sigue un modelo cliente-servidor, soportando accesos concurrentes de múltiples usuarios. </p>
+<p><em>PostgreSQL</em> es un SGBD relacional <em>open-source</em> que sigue un modelo cliente-servidor, soportando accesos concurrentes de múltiples usuarios. Está escrito en C y tiene soporte para todos los sistemas operativos, incluyendo su uso mediante <em>Docker</em>. </p>
 <p>Por ello, necesitamos lanzar un contenedor con el servidor al cual nos conectaremos desde el cliente por línea de comandos <code>psql</code> o desde el cliente gráfico <em>PgAdmin</em>. Por ello, en el fichero de configuración <a href="resources/docker-compose-postgres.yml"><code>docker-compose-postgres.yml</code></a> de <em>Docker Compose</em> tenemos dos servicios:</p>
 <div class="highlight"><span class="filename">docker-compose-postgres.yml</span><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">services</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">db</span><span class="p">:</span>
-<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-</span><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pg</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5432:5432&quot;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=s8a</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=s8a</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_DB=pruebas</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pg-data:/var/lib/postgresql/data</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="nt">pgadmin</span><span class="p">:</span>
-<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpage/pgadmin4</span>
-</span><span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pgadmin</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
-<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="linenos" data-linenos="19 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5050:80&quot;</span>
-<span class="linenos" data-linenos="20 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<span class="linenos" data-linenos="21 "></span><span class="w">      </span><span class="nt">PGADMIN_DEFAULT_EMAIL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin@s8a.com</span>
-<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="nt">PGADMIN_DEFAULT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
-<span class="linenos" data-linenos="23 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="linenos" data-linenos="24 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pgadmin-data:/var/lib/pgadmin</span>
-<span class="linenos" data-linenos="25 "></span>
-<span class="linenos" data-linenos="26 "></span><span class="nt">volumes</span><span class="p">:</span>
-<span class="linenos" data-linenos="27 "></span><span class="w">  </span><span class="nt">pg-data</span><span class="p">:</span>
-<span class="linenos" data-linenos="28 "></span><span class="w">  </span><span class="nt">pgadmin-data</span><span class="p">:</span>
+<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+</span><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pg</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5432:5432&quot;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=s8a</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=s8a</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_DB=pruebas</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pg-data:/var/lib/postgresql/data</span>
+<span class="hll"><span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="nt">pgadmin</span><span class="p">:</span>
+</span><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpage/pgadmin4</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pgadmin</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5050:80&quot;</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">      </span><span class="nt">PGADMIN_DEFAULT_EMAIL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin@s8a.com</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="nt">PGADMIN_DEFAULT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pgadmin-data:/var/lib/pgadmin</span>
+<span class="linenos" data-linenos="23 "></span>
+<span class="linenos" data-linenos="24 "></span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">  </span><span class="nt">pg-data</span><span class="p">:</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">  </span><span class="nt">pgadmin-data</span><span class="p">:</span>
 </code></pre></div>
+<!--
+Windows:
+docker run --name postgres `
+    -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=password `
+    -p 5432:5432 `
+    -v ${PWD}/postgres-volume:/var/lib/postgresql/data `
+    -d postgres:latest
+-->
+
 <p>Tras crear este archivo en nuestro sistema, podemos crear los contenedores mediante:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>-p<span class="w"> </span>pg-s8a<span class="w"> </span>-f<span class="w"> </span>docker-compose-postgres.yml<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>
 </code></pre></div>
@@ -24317,16 +24787,24 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>Primero nos conectamos al contenedor (el cual en el archivo <em>docker-compose</em> hemos llamado <code>pg</code>):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>pg<span class="w"> </span>bash
 </code></pre></div>
-<p>A continuación, con el cliente del SGBD, nos conectamos al servidor (al ser <code>localhost</code> no hace falta que lo indiquemos) pasándole el usuario (<code>-U nomusuario</code>) y luego rellenando la contraseña (<code>s8a</code>):</p>
+<p>A continuación, mediante el cliente del SGBD, nos conectamos al servidor (al ser <code>localhost</code> no hace falta que lo indiquemos) pasándole el usuario (<code>-U s8a</code>) y luego la base de datos a la que nos queremos conectar (<code>pruebas</code>):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>psql<span class="w"> </span>-U<span class="w"> </span>s8a<span class="w"> </span>pruebas
 </code></pre></div>
 <p>Obteniendo información de la versión instalada y en la última línea muestra que ha conectado con la bd <code>pruebas</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="gp">root@6475b31d89f4:/# </span>psql<span class="w"> </span>-U<span class="w"> </span>s8a<span class="w"> </span>pruebas
-<span class="linenos" data-linenos="2 "></span><span class="go">psql (16.4 (Debian 16.4-1.pgdg120+1))</span>
+<span class="linenos" data-linenos="2 "></span><span class="go">psql (17.5 (Debian 17.5-1.pgdg120+1))</span>
 <span class="linenos" data-linenos="3 "></span><span class="go">Type &quot;help&quot; for help.</span>
 <span class="linenos" data-linenos="4 "></span>
 <span class="hll"><span class="linenos" data-linenos="5 "></span><span class="go">pruebas=#</span>
 </span></code></pre></div>
+<p>Además de soportar sentencias SQL estándar, <code>psql</code> también viene con varios metacomandos que le permiten obtener información sobre la conexión actual, listar objetos de base de datos existentes, copiar datos de archivos externos y mucho más. Todos estos comandos comienzan con el símbolo de la barra invertida (<code>\</code>). Por ejemplo, si queremos obtener información de la conexión usaremos el comando <code>\conninfo</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">pruebas</span><span class="o">=#</span><span class="w"> </span><span class="err">\</span><span class="n">conninfo</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">You</span><span class="w"> </span><span class="k">are</span><span class="w"> </span><span class="n">connected</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="ss">&quot;pruebas&quot;</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="ss">&quot;s8a&quot;</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">socket</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="ss">&quot;/var/run/postgresql&quot;</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="ss">&quot;5432&quot;</span><span class="p">.</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Metacomandos</p>
+<p>Mediante el metacomando <code>\?</code> podemos obtener una lista completa de todos los metacomandos soportados por <code>psql</code>. Para cerrar la lista generada y devolver el control al indicador <code>psql</code>, pulsa la letra <code>q</code>.</p>
+</div>
 <h3 id="00entorno-pgadmin">PgAdmin<a class="headerlink" href="#00entorno-pgadmin" title="Permanent link">&para;</a></h3>
 <p>Una vez arrancados los contenedores, accederemos a <a href="http://localhost:5050/">http://localhost:5050/</a> y tras introducir los datos del usuario administrador (<code>admin@s8a.com</code> / <code>admin</code>), veremos el interfaz de inicio de la herramienta de administración <em>PgAdmin</em>.</p>
 <p>El siguiente paso es crear la conexión con el servidor. Para ello, creamos un nuevo servidor mediante la opción <em>Agregar un nuevo servidor</em> y en los datos de configuración, indicamos los mismos datos que hemos utilizado al definir el contenedor (en el nombre del servidor podemos poner el nombre del contenedor o su identificador <code>pg</code>, así como el usuario <code>s8a</code> y la contraseña <code>s8a</code>):</p>

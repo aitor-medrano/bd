@@ -1440,7 +1440,8 @@
 <li>¿Sabes qué significan las siglas ACID? Explica cada una de ellas.</li>
 <li>¿Qué significan las siglas RGPD, LOPDGDD, AEPD y DPO?</li>
 <li>¿Qué es el consentimiento explícito y por qué es importante en el RGPD?</li>
-<li>¿Qué se entiende por "dato personal" según el RGPD? ¿Y "dato sensible"? ¿Podemos almacenar todos los datos de los usuarios de nuestras aplicaciones?</li>
+<li>¿Qué se entiende por <em>"dato personal"</em> según el RGPD? ¿Y <em>"dato sensible"</em>?</li>
+<li>¿Podemos almacenar todos los datos que queramos de los usuarios de nuestras aplicaciones?</li>
 </ol>
 </div>
 <h3 id="programacion-de-aula-9h">Programación de Aula (9h)<a class="headerlink" href="#programacion-de-aula-9h" title="Permanent link">&para;</a></h3>
@@ -1667,21 +1668,21 @@
 </tr>
 </tbody>
 </table>
-<p>Conviene pararse en los tipos de bases de datos existentes dependiendo de la ubicación. Aunque volveremos a ellas en las últimas unidades donde estudiemos los sistemas <em>NoSQL</em>, es importante tener claro las diferentes arquitecturas físicas existentes hoy en día. Por un lado, tenemos los sistemas <strong>centralizados</strong> donde se sigue un modelo cliente-servidor. En un servidor de internet, bien sea un VPS o un servicio gestionado por un proveedor <em>cloud</em>, la base de datos reside en una única máquina (se conoce como servidor) y las diferentes aplicaciones y servicios que consumen dichos datos son los clientes que acceden a la base de datos mediante conexiones remotas.</p>
+<p>Conviene pararse en los tipos de bases de datos existentes dependiendo de la ubicación. Aunque volveremos a ellas en las <a href="12nosql.html">últimas unidades donde estudiemos los sistemas <em>NoSQL</em></a>, es importante tener claro las diferentes arquitecturas físicas existentes hoy en día. Por un lado, tenemos los sistemas <strong>centralizados</strong> donde se sigue un modelo cliente-servidor. En un servidor de internet, bien sea un VPS o un servicio gestionado por un proveedor <em>cloud</em>, la base de datos reside en una única máquina (se conoce como servidor) y las diferentes aplicaciones y servicios que consumen dichos datos son los clientes que acceden a la base de datos mediante conexiones remotas.</p>
 <p>Si el sistema crece y la carga de usuario supera la capacidad del servidor, es necesario migrar a un modelo más potente (y normalmente más caro) como son las bases de datos <strong>distribuidas</strong>, donde los datos se reparten entre varias máquinas, particionando los datos o fragmentándolos dependiendo de las necesidades de las aplicaciones, incrementando la complejidad del sistema para dar soporte a la sincronización de los datos y la tolerancia a fallos.</p>
 <h3 id="modelos-de-datos">Modelos de datos<a class="headerlink" href="#modelos-de-datos" title="Permanent link">&para;</a></h3>
 <p>Un modelo simboliza una parte del mundo real, de forma que se simplifique su manipulación. Por ejemplo, un modelo de una ciudad sería un mapa a escala 1:100.</p>
 <p>Un <strong>modelo de datos</strong> es un conjunto de herramientas conceptuales para describir los datos, sus relaciones, su semántica y sus restricciones.</p>
 <p>Inicialmente, los modelos de datos primitivos se basaban en sistemas de ficheros, tal como hemos visto en el apartado anterior.</p>
-<p>A continuación, se definieron los modelos clásicos:</p>
+<p>Posteriormente, se definieron los modelos clásicos, entre los que destacan los modelos:</p>
 <ul>
 <li><strong>Jerárquicos</strong> (finales de los 60): almacenan la información en forma de árbol y unidireccional, de arriba hacía abajo. La información se almacena en nodos, y los nodos se relacionan mediante punteros, permitiendo que un nodo padre puede tener muchos nodos hijos (relaciones de uno a muchos).</li>
 <li><strong>En red</strong> (principios de los 70): a partir de los modelos jerárquicos, los datos se relacionan en forma de red o grafo, permitiendo la relaciones de muchos a muchos, de manera que un nodo hijo puede tener varios nodos padre, y viceversa.</li>
 <li><strong>Relacionales</strong> (finales de los 70 hasta hoy en día): se basan en la relación entre los datos, mediante el uso de tablas bidimensionales (filas=ocurrencia, columnas=atributo) que contienen campos que se relacionan con campos de otras tablas (este es el modelo más difundido y es que el estudiaremos en profundidad en este curso).</li>
 </ul>
-<p>Tras los clásicos, hubo un movimiento por el uso de modelos avanzados que no terminaron de cuajar:</p>
+<p>Tras los clásicos, hubo un movimiento por el uso de modelos avanzados que no terminaron de cuajar, como fueron los modelos:</p>
 <ul>
-<li><strong>Orientadas a objetos</strong> (década de los 80): soportan el paradigma de programación orientada a objetos, permitiendo la creación de tipos de datos compuestos y herencia entre los diferentes tipos.</li>
+<li><strong>Orientados a objetos</strong> (década de los 80): soportan el paradigma de programación orientada a objetos, permitiendo la creación de tipos de datos compuestos y herencia entre los diferentes tipos.</li>
 </ul>
 <p>Con la explosión de internet, y la necesidad de trabajar con grandes conjuntos de datos, aparecieron y se establecieron en el mercado los modelos:</p>
 <ul>
@@ -1694,7 +1695,7 @@
 </ul>
 </li>
 </ul>
-<p>Estos cuatro últimos modelos los estudiaremos en profundidad en la unidad <em>12 - Sistemas NoSQL</em>.</p>
+<p>Estos cuatro últimos modelos los estudiaremos en profundidad en la unidad <a href="12nosql.html"><em>12 - Sistemas NoSQL</em></a>.</p>
 <h2 id="sistemas-gestores-de-bases-de-datos">Sistemas Gestores de Bases de Datos<a class="headerlink" href="#sistemas-gestores-de-bases-de-datos" title="Permanent link">&para;</a></h2>
 <p>Un sistema gestor de base de datos (<abbr title="Sistema gestor de bases de datos">SGBD</abbr>), también conocido como <em>DataBase Management System</em> (<abbr title="Database management system">DBMS</abbr>), es la herramienta de software que permite la creación, manipulación y administración de bases de datos. Así pues, tanto <a href="https://www.oracle.com/es/">Oracle</a>, <a href="https://www.mysql.com/">MySQL</a>, <a href="https://mariadb.org/">MariaDB</a>, <a href="https://es.libreoffice.org/descubre/base/">OpenOffice/LibreOffice Base</a>, <a href="https://www.microsoft.com/es-es/microsoft-365/access">Access</a>, <a href="https://www.mongodb.com/">MongoDB</a> o <a href="https://www.postgresql.org/">PostgreSQL</a> son sistemas gestores de bases de datos, y no bases de datos en sí.</p>
 <figure style="align: center;">
@@ -1702,7 +1703,7 @@
     <figcaption>Relación entre BD y SGDB - cibertareas.com</figcaption>
 </figure>
 
-<p>Formalmente, un sistema gestor de bases de datos es una herramienta de propósito general que permiten crear bases de datos de cualquier tamaño y complejidad, con propósitos específicos distintos. Ofrece la interfaz entre el usuario y las bases de datos, mediante herramientas para la manipulación y administración de las mismas.</p>
+<p>Formalmente, un sistema gestor de bases de datos es una herramienta de propósito general que permite crear bases de datos de cualquier tamaño y complejidad, con propósitos específicos distintos. Ofrece la interfaz entre el usuario y las bases de datos, mediante herramientas para la manipulación y administración de las mismas.</p>
 <h3 id="funciones">Funciones<a class="headerlink" href="#funciones" title="Permanent link">&para;</a></h3>
 <p>Las funciones de un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> son:</p>
 <ul>
@@ -1722,13 +1723,14 @@
 <li><strong>I</strong>solation (Aislamiento): Una transacción no afecta a otras transacciones, de manera que la modificación de un registro / documento no es visible por otras lecturas hasta que ha finalizado la transacción. Esto implica que ninguna transacción obtiene una versión intermedia de los datos.</li>
 <li><strong>D</strong>urabilidad: La escritura de los datos asegura que una vez finalizada una operación, los datos no se perderán.</li>
 </ul>
+<p>Volveremos a estos conceptos cuando trabajemos la transaccionalidad de las operaciones, en la <a href="09dcl-tcl.html">unidad 9</a>.</p>
 </div>
 <h3 id="componentes">Componentes<a class="headerlink" href="#componentes" title="Permanent link">&para;</a></h3>
 <p>Un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> se compone de:</p>
 <ul>
 <li><strong>Diccionario de datos</strong>: metadatos con las estructuras de las diferentes bases de datos, relaciones entre los datos, restricciones existentes así como información sobre las cuentas y permisos de los usuarios.</li>
-<li><strong>Espacio de datos</strong>: zona sonde se almacenan los datos en sí. Se pueden organizar de diferentes maneras, dependiente del sistemas gestor. Por ejemplo, <em>Oracle</em> lo realiza mediante el uso de <em>tablespaces</em> y otros gestores con el concepto de base de datos.</li>
-<li>Un conjunto de herramientas, las cuales suele gestionar el rol de DBA (<em>Database Administrator</em>) para<ul>
+<li><strong>Espacio de datos</strong>: zona donde se almacenan los datos en sí. Se pueden organizar de diferentes maneras, dependiente del sistemas gestor. Por ejemplo, <em>Oracle</em> lo realiza mediante el uso de <em>tablespaces</em> y otros gestores con el concepto de base de datos.</li>
+<li>Un conjunto de herramientas, las cuales suele gestionar la persona con el rol de DBA (<em>Database Administrator</em>) para:<ul>
 <li>Crear y especificar los datos (mediante el <em>Data Definition Language</em> - DDL), el control de datos (mediante el <em>Data Control Language</em> - DCL) y su manipulación (mediante el <em>Data Manipulation Language</em> - DML)</li>
 <li>Recuperación (<em>failover</em>). Tras una caída del sistema, configurar los posibles mecanismos de recuperación y aceptación o revisión de las operaciones pendientes.</li>
 <li>Copia de seguridad (<em>backup</em>), ya sea copias completas o incrementales.</li>

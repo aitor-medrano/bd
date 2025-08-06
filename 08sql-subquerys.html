@@ -2202,6 +2202,20 @@
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- 4 rows in set (0.001 sec)</span>
 </code></pre></div>
 <p>Esta operación se utiliza mucho en analítica de datos y en consultas complejas, ya que persiste el resultado en una tabla, lo que mejora el futuro acceso a dichos datos (siempre y cuando sea factible que los datos no estén sincronizados). Por ejemplo, si necesitamos unir todas las tablas de nuestra base de datos <code>empresa</code> para obtener cuánto ganan los empleados que tienen determinadas habilidades, y la consulta tardase del orden de 10 segundos, podríamos crear una tabla con el resultado de la consulta. Cada vez que se modificara el salario de un empleado o que un empleado adquiriese una nueva habilidad, volveríamos a crear la tabla para que actualizase los datos, y que así fueran consistentes con los datos originales.</p>
+<div class="admonition tip">
+<p class="admonition-title">Investiga</p>
+<p>¿Sabrías deducir que genera la siguiente operación DDL en <em>PostgreSQL</em>? ¿Qué realiza exactamente la función <a href="https://www.postgresql.org/docs/current/functions-srf.html"><code>generate_series</code></a>?</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">ventas</span><span class="w"> </span><span class="k">AS</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">SELECT</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">        </span><span class="n">id</span><span class="p">,</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">        </span><span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">cliente_id</span><span class="p">,</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">        </span><span class="p">(</span><span class="nb">array</span><span class="p">[</span><span class="s1">&#39;€&#39;</span><span class="p">,</span><span class="s1">&#39;$&#39;</span><span class="p">,</span><span class="s1">&#39;&amp;&#39;</span><span class="p">])[</span><span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)]</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">moneda</span><span class="p">,</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">        </span><span class="n">random</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">cantidad</span><span class="p">,</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">        </span><span class="n">round</span><span class="p">(</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">precio</span><span class="p">,</span>
+<span class="linenos" data-linenos="8 "></span><span class="w">        </span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">fecha</span>
+<span class="linenos" data-linenos="9 "></span><span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">generate_series</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+</code></pre></div>
+</div>
 <h3 id="dml">DML<a class="headerlink" href="#dml" title="Permanent link">&para;</a></h3>
 <p>Si queremos insertar datos a partir de una consulta usaremos la sentencia <a href="https://mariadb.com/kb/en/insert-select/"><code>INSERT tabla SELECT</code></a>.</p>
 <p>Por ejemplo, vamos a insertar en la tabla recién creada también los directivos de tipo <code>F</code>:</p>
@@ -2363,7 +2377,7 @@ EXPLAIN.
 <p>Antes hemos comentado que un índice en una base de datos es similar a un índice de un libro; permite saltar directamente a la parte del libro en vez de tener que pasar las páginas buscando el tema o la palabra que nos interesa. Esta estructura permite recorrer los datos y ordenarlos de manera muy rápida. Así pues, los índices se utilizan tanto al buscar un elemento como al ordenar los datos de una consulta.</p>
 <p>Al buscar un valor concreto en una columna de una tabla, si la columna no tiene un índice, hay que recorrer toda la tabla comparando fila a fila. Si la tabla tiene pocas filas no hay problema.</p>
 <p>Para mejorar el rendimiento, podemos crear un índice para cada columna que se utiliza en la cláusula <code>WHERE</code> o en <code>ORDER BY</code>.</p>
-<p>Los índices se comportan como punteros sobre las filas de la tabla y nos permiten determinar rápidamente cuáles son las filas necesarias. Internamente, los índices se traducen en estructura de datos en forma de árbol (*b-tree) que facilitan la búsqueda.</p>
+<p>Cuando se crea un índice sobre una columna, el motor de la base de datos construye el índice escaneando toda la tabla y registrando los valores de la columna indexada junto con los punteros a las filas correspondientes. Mediante estos punteros sobre las filas de la tabla, el SGBD puede determinar rápidamente cuáles son las filas necesarias. Internamente, los índices se traducen en estructura de datos en forma de árbol (<a href="https://es.wikipedia.org/wiki/%C3%81rbol-B"><em>b-tree</em></a>) que facilitan la búsqueda.</p>
 <figure style="align: center;">
     <img src="images/08btree.png" width="800" title="Índice B-Tree - https://severalnines.com/blog/overview-mysql-database-indexing/">
     <figcaption>Índice B-Tree - https://severalnines.com/blog/overview-mysql-database-indexing/</figcaption>
@@ -2515,16 +2529,16 @@ EXPLAIN.
 <p>Algunos consejos que debes tener en cuenta a la hora de hacer consultas son:</p>
 <ul>
 <li>
-<p>Filtra antes con <code>WHERE</code>: Como la cláusula WHERE se ejecuta antes que GROUP BY y JOIN, aplicar los filtros antes reduce el número de filas procesadas por las cláusulas posteriores, lo que mejora el rendimiento de la consulta. Al filtrar los datos no agrupados lo antes posible, limitas los datos que hay que agrupar o unir, ahorrando tiempo de procesamiento.</p>
+<p>Filtra antes con <code>WHERE</code>: Como la cláusula <code>WHERE</code> se ejecuta antes que <code>GROUP BY</code> y <code>JOIN</code>, aplicar los filtros antes reduce el número de filas procesadas por las cláusulas posteriores, lo que mejora el rendimiento de la consulta. Al filtrar los datos no agrupados lo antes posible, limitas los datos que hay que agrupar o unir, ahorrando tiempo de procesamiento.</p>
 </li>
 <li>
-<p>Preagregar datos antes de unirlos: Sabiendo que FROM y JOIN son las primeras cláusulas que se ejecutan, preagrupar los datos mediante subconsultas o expresiones comunes de tabla (CTE) te permite reducir el conjunto de datos antes del proceso de unión. Esto garantiza que se procesen menos filas durante la unión.</p>
+<p>Preagregar datos antes de unirlos: Sabiendo que <code>FROM</code> y <code>JOIN</code> son las primeras cláusulas que se ejecutan, preagrupar los datos mediante subconsultas o expresiones comunes de tabla (<em>CTE</em>) te permite reducir el conjunto de datos antes del proceso de unión. Esto garantiza que se procesen menos filas durante la unión.</p>
 </li>
 <li>
 <p>Optimizar <code>ORDER BY</code> con índices: Puesto que la cláusula ORDER BY es uno de los últimos pasos ejecutados, asegurarse de que las columnas ordenadas están indexadas acelerará el rendimiento de la consulta al ayudar a la base de datos a gestionar las operaciones de ordenación con mayor eficacia.</p>
 </li>
 <li>
-<p>Evitar <code>SELECT *</code> en las consultas de producción: La cláusula SELECT se ejecuta después de filtrar, agrupar y agregar, por lo que especificar sólo las columnas necesarias minimiza la cantidad de datos recuperados, reduciendo la sobrecarga innecesaria.</p>
+<p>Evitar <code>SELECT *</code> en las consultas de producción: La cláusula <code>SELECT</code> se ejecuta después de filtrar, agrupar y agregar, por lo que especificar sólo las columnas necesarias minimiza la cantidad de datos recuperados, reduciendo la sobrecarga innecesaria.</p>
 </li>
 </ul>
 <!--

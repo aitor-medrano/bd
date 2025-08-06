@@ -1690,13 +1690,13 @@
 <tr>
 <td>4</td>
 <td><a href="#notacion">Notación</a></td>
-<td><a href="#AC305">AC305</a>, <a href="#AC306">AC306</a></td>
+<td><a href="#AC305">AC305</a></td>
 <td><abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr></td>
 </tr>
 <tr>
 <td>5</td>
 <td>Interpretando modelos</td>
-<td><a href="#AC310">AC310</a></td>
+<td><a href="#AC309">AC309</a></td>
 <td><abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr></td>
 </tr>
 <tr>
@@ -2479,6 +2479,12 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 · FK: (autor) → AUTOR
 </code></p>
 <p>Tenemos que el autor se identifica por un código, el cual es su clave primaria. En cambio, los libros se identifican por su ISBN, y tienen un atributo <code>autor</code> que referencia a la clave primaria de <code>AUTOR</code> (y por tanto, deben tener el mismo dominio). De esta relación, deducimos que el nombre del atributo de la clave ajena no tiene por qué coincidir con el nombre de la clave primaria, pero sí su dominio.</p>
+<p>Si analizamos las cardinalidades de las tablas, tenemos:</p>
+<ul>
+<li><code>Card(LIBRO, ESCRIBIR) = (0, 1)</code>: Todo libro tiene un atributo autor, y sólo uno, el cual puede estar rellenado o no.</li>
+<li><code>Card(AUTOR, ESCRIBIR) = (0, N)</code>: Si un libro tiene un atributo autor, y el mismo autor puede aparecer en más de un libro, entonces un autor puede escribir muchos libros (o ninguno, si no aparece en ninguna ocurrencia de <code>LIBRO</code>).</li>
+</ul>
+<p>En la próxima unidad estudiaremos el proceso de transformación de un modelo conceptual a uno relacional, y en concreto, cómo se gestionan las claves ajenas para cumplir las cardinalidades y restricciones de las relaciones.</p>
 <div class="admonition tip">
 <p class="admonition-title">DBML - Database Markup Language</p>
 <p>La notación que vamos a emplear en clase es sencilla y cumple su propósito.</p>
@@ -3908,7 +3914,7 @@ relación.</li>
 <p><a name="AC305"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC305</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr> // 2p) Crea las tablas necesarias con datos ficticios (con al menos 5 registros cada tabla) que respete las restricciones semánticas del modelo relacional a partir del siguiente esquema relacional:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC305</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr> // 3p) Crea las tablas necesarias con datos ficticios (con al menos 5 registros cada tabla) que respete las restricciones semánticas del modelo relacional a partir del siguiente esquema relacional:</p>
 <p><code>
 <strong>EMPLEADO</strong> (<ins>nif</ins>, nombre, direccion, cargo)<br />
 · PK: (nif)<br />
@@ -3922,19 +3928,13 @@ relación.</li>
 · UK: (codigo)
 </code></p>
 <p>Para mostrar las diferentes restricciones del modelo debes tener en cuenta las cardinalidades de la relación, los posibles valores repetidos o nulos de los campos, etc...</p>
+<p>Una vez realizado, dibuja a mano un diagrama que represente el modelo relacional. A continuación, utiliza <a href="https://erdplus.com/">https://erdplus.com/</a> o <a href="https://dbdiagram.io/">https://dbdiagram.io/</a> para pasarlo a digital. En la entrega en <em>Aules</em>, adjunta ambos diagramas.</p>
 </li>
 </ul>
-<p><a name="AC306"></a></p>
+<p><a name="AP306"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC306</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 1p) A partir del esquema del ejercicio anterior (<a href="#AC305">AC305</a>), dibuja a mano un diagrama que represente el modelo relacional.</p>
-<p>Si te da tiempo, una vez dibujado en papel, puedes utilizar ERDPlus para pasarlo a digital. En este caso, adjunta ambos diagramas.</p>
-</li>
-</ul>
-<p><a name="AP307"></a></p>
-<ul>
-<li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP307</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p)  A partir del siguiente esquema relacional, crea tres tablas con datos ficticios, y explica el tipo de relación existente entre los campos y las tablas relacionadas (cardinalidad):</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP306</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p)  A partir del siguiente esquema relacional, crea tres tablas con datos ficticios, y explica el tipo de relación existente entre los campos y las tablas relacionadas (cardinalidad):</p>
 <p><code>
 <strong>CONDUCTOR</strong> (<ins>nif</ins>, nombre, fAlta)<br />
 · PK: (nif)
@@ -3952,29 +3952,29 @@ relación.</li>
 </code></p>
 </li>
 </ul>
-<p><a name="AR308"></a> </p>
+<p><a name="AR307"></a> </p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR308</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir de las tablas de la actividad <a href="#AC303">AC303</a>, crea el esquema relacional.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR307</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir de las tablas de la actividad <a href="#AC303">AC303</a>, crea el esquema relacional.</p>
 <p>A continuación, crea una nueva tabla <code>PROVEEDOR</code> con datos asociados a esta nueva relación, y actualiza el esquema relacional para que estén las tres tablas relacionadas.</p>
 </li>
 </ul>
-<p><a name="AR309"></a></p>
+<p><a name="AR308"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR309</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir del siguiente diagrama, crea el esquema relacional:</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR308</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir del siguiente diagrama, crea el esquema relacional:</li>
 </ul>
 <figure style="align: center;">
-    <img src="images/03ac309.png" width="701" title="Actividad 309">
-    <figcaption>Actividad 309</figcaption>
+    <img src="images/03ar308.png" width="701" title="Actividad 308">
+    <figcaption>Actividad 308</figcaption>
 </figure>
 
-<p><a name="AC310"></a></p>
+<p><a name="AC309"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC310</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del siguiente diagrama relacional sobre un comercio:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC309</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del siguiente diagrama relacional sobre un comercio:</p>
 <p><figure style="align: center;">
-    <img src="images/03ac310.png" width="865" title="Actividad 310">
-    <figcaption>Actividad 310</figcaption>
+    <img src="images/03ac309.png" width="865" title="Actividad 309">
+    <figcaption>Actividad 309</figcaption>
 </figure></p>
 <p>Contesta a las siguientes preguntas argumentado tus respuestas:</p>
 <ol>
@@ -3987,9 +3987,29 @@ relación.</li>
 </ol>
 </li>
 </ul>
+<p><a name="AR310"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR310</strong>.  (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del siguiente diagrama relacional sobre una agencia de viajes:</p>
+<p><figure style="align: center;">
+    <img src="images/03ar310.png" width="865" title="Actividad 310">
+    <figcaption>Actividad 310</figcaption>
+</figure></p>
+<p>Contesta a las siguientes preguntas justificando tus respuestas:</p>
+<ol>
+<li>¿Puede un hotel estar en más de un punto?</li>
+<li>Dada una ciudad, ¿Cuántos hoteles podemos tener?</li>
+<li>¿Podemos tener dos rutas con el mismo nombre?</li>
+<li>¿De cuantos tipos puede ser una ruta? ¿Y toda ruta debe tener un tipo?</li>
+<li>¿Podemos tener hoteles que no pertenezcan a ningún viaje? ¿Y al revés?, es decir, ¿Podemos tener viajes sin hotel incluido?</li>
+<li>Si en un determinado viaje no está incluido el hotel, ¿Puede haber más de una ruta?</li>
+</ol>
+<p>A continuación, añade al modelo las tablas y relaciones necesarias para almacenar la información de los clientes que realizan el viaje, así como en qué hotel duermen.</p>
+</li>
+</ul>
 <p><a name="AC311"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC311</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del esquema y de las tablas obtenidas en la actividad <a href="#AC305">AC305</a>, completa el diccionario de datos.</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC311</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p) A partir del esquema y de las tablas obtenidas en la actividad <a href="#AC305">AC305</a>, completa el diccionario de datos, indicando tanto la información de las tablas, como sus relaciones y restricciones.</li>
 </ul>
 <p><a name="AR312"></a></p>
 <ul>
@@ -4292,9 +4312,32 @@ salario, nomDpto, jefeDpto, puntos)</code></p>
 </ol>
 </li>
 </ul>
-<p><a name="AR317"></a></p>
+<p><a name="AP317"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR317</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP317</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p)  A partir del siguiente esquema relacional, se nos pide optimizar el modelo aplicando desnormalización, ya que, para cada artista, se quieren recuperar las 5 canciones primeras canciones, y con el diseño actual, la consulta es muy lenta: </p>
+<p><code>
+<strong>ARTISTA</strong> (<ins>id</ins>, nombre, foto)<br />
+· PK: (id)
+</code></p>
+<p><code>
+<strong>ALBUM</strong> (<ins>id</ins><code>*</code>, nombre, foto, <ins>artista_id</ins><code>*</code>)<br />
+· PK: (id)<br />
+· FK: (artista_id) → ARTISTA<br />
+· VNN: (artista_id)
+</code></p>
+<p><code>
+<strong>CANCION</strong> (<ins>id</ins>, nombre, letra, <ins>album_id</ins><code>*</code>)<br />
+· PK: (id)<br />
+· FK: (album_id) → ARTISTA<br />
+· VNN: (album_id)
+</code></p>
+<p>¿Qué has hecho para mejorar el rendimiento? ¿En qué forma normal se encuentra ahora el modelo relacional? Justifica tu respuesta.</p>
+</li>
+</ul>
+<p><a name="AR318"></a></p>
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR318</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
 </ul>
 <!--
 TODO: UT03

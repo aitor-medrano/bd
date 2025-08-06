@@ -596,6 +596,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Seguridad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uso-de-contrasenas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso de contraseñas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1270,6 +1285,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Seguridad">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uso-de-contrasenas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso de contraseñas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1635,6 +1665,40 @@
 <p>En SQL, dentro del DCL, las sentencias como <code>GRANT</code> y <code>REVOKE</code> permiten otorgar o revocar permisos de acceso y modificación sobre los datos. De esta forma, se establece un entorno seguro donde cada usuario tiene acceso únicamente a los recursos necesarios para sus funciones.</p>
 <p>Además del control de acceso, la seguridad de un SGBD también se refuerza mediante el <strong>uso de transacciones y políticas de bloqueo y concurrencia</strong>. Las transacciones garantizan que las operaciones sobre la base de datos se ejecuten de manera atómica, consistente, aislada y duradera (propiedades ACID), lo que previene inconsistencias en caso de errores o fallos del sistema.</p>
 <p>Para manejar el acceso concurrente de múltiples usuarios, los SGBD implementan mecanismos de bloqueo que evitan conflictos y garantizan la integridad de los datos. Estos bloqueos, combinados con estrategias de control de concurrencia, aseguran que las transacciones se gestionen de forma ordenada y segura, minimizando riesgos como condiciones de carrera, lecturas sucias o actualizaciones perdidas. Todo esto contribuye a mantener la coherencia y fiabilidad de la base de datos frente a accesos simultáneos y posibles fallos.</p>
+<h3 id="uso-de-contrasenas">Uso de contraseñas<a class="headerlink" href="#uso-de-contrasenas" title="Permanent link">&para;</a></h3>
+<p>Independientemente de la gestión de seguridad de los SGBD, las aplicaciones que desarrollemos normalmente utilizarán una base de datos donde se almacene la contraseña de los usuarios. No cabe decir que almacenar las contraseñas en texto plano es un agujero de seguridad, ya que si la base de datos se compromete, las contraseñas de todos los usuarios quedarán expuestas.</p>
+<p>Si tenemos una tabla que almacena la información de los usuarios con la siguiente estructura:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">usuarios</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">username</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">password_hash</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">salt</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">updated_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">esta_activo</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">TRUE</span>
+<span class="linenos" data-linenos="10 "></span><span class="p">);</span>
+</code></pre></div>
+<p>Conviene explicar el propósito del campo <code>salt</code>. El <em>salt</em> es un valor aleatorio único que se añade a cada contraseña antes del proceso de <em>hashing</em>. Su propósito es hacer que cada <em>hash</em> sea único, incluso para contraseñas idénticas. Mediante su uso, dos usuarios que tengan la misma contraseña, tendrán almacenado diferente <code>password_hash</code>. Para ello, usaremos primero la función hash <a href="https://mariadb.com/docs/server/reference/sql-functions/secondary-functions/encryption-hashing-and-compression-functions/md5"><code>MD5</code></a> para crear un cadena aleatoria.</p>
+<p>A continuación, cuando insertemos un nuevo usuario, tras concatenar la contraseña con el <em>salt</em>, debemos encriptar el resultado mediante la función <em>hash</em> <a href="https://mariadb.com/docs/server/reference/sql-functions/secondary-functions/encryption-hashing-and-compression-functions/sha2"><code>SHA2</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Generar salt aleatorio</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">SET</span><span class="w"> </span><span class="o">@</span><span class="n">salt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">SUBSTRING</span><span class="p">(</span><span class="n">MD5</span><span class="p">(</span><span class="n">RAND</span><span class="p">())</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">16</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 3 "></span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- Insertar usuario con hash SHA256 + salt</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">usuarios</span><span class="w"> </span><span class="p">(</span><span class="n">username</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">password_hash</span><span class="p">,</span><span class="w"> </span><span class="n">salt</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="s1">&#39;usuario1&#39;</span><span class="p">,</span><span class="w"> </span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="s1">&#39;user@email.com&#39;</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">SHA2</span><span class="p">(</span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;mi_password&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">salt</span><span class="p">),</span><span class="w"> </span><span class="mi">256</span><span class="p">),</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="o">@</span><span class="n">salt</span>
+<span class="linenos" data-linenos="11 "></span><span class="p">);</span>
+</code></pre></div>
+<p>Por lo tanto, cuando queramos recuperar un usuario que ha hecho <em>login</em> en la aplicación, necesitamos volver a concatenar la contraseña con el <em>salt</em>, realizar el <em>hash</em> y finalmente, comparar las dos cadenas encriptadas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">usuarios</span><span class="w"> </span>
+<span class="linenos" data-linenos="2 "></span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;usuario1&#39;</span><span class="w"> </span>
+<span class="linenos" data-linenos="3 "></span><span class="k">AND</span><span class="w"> </span><span class="n">password_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SHA2</span><span class="p">(</span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;mi_password&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">salt</span><span class="p">),</span><span class="w"> </span><span class="mi">256</span><span class="p">);</span>
+</code></pre></div>
+<p>Dicho esto, los algoritmos `MD5<em> y </em>SHA2*, a día de hoy, están obsoletos (se consideran criptográficamente rotos), y por ello, en vez de basarse en las funciones de encriptación que ofrece el SGBD, es mejor hacer uso de los algoritmos <a href="https://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>, <a href="https://en.wikipedia.org/wiki/scrypt">scrypt</a> o <a href="https://en.wikipedia.org/wiki/Argon2">argon2</a> desde el lenguaje de programación que utilice el SGBD, ya sea Java, PHP o Python.</p>
 <h2 id="dcl">DCL<a class="headerlink" href="#dcl" title="Permanent link">&para;</a></h2>
 <p>El <em>Data Control Language</em> (DCL- Lenguaje de control de datos) se emplea para gestionar los permisos y privilegios de acceso a los objetos dentro de una base de datos, estableciendo políticas de seguridad que determinan qué usuarios o roles pueden interactuar con los datos y de qué manera.</p>
 <p>A través del DCL, los administradores de bases de datos pueden otorgar o revocar permisos, asegurando que cada usuario solo pueda realizar las acciones que le han sido expresamente autorizadas. Este control es esencial para proteger la información sensible, evitar accesos no autorizados y mantener la integridad de los datos.</p>
