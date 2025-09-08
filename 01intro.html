@@ -1528,7 +1528,7 @@
 <p>¿Y qué tienen que ver el sistema de información con las bases de datos? Pues como toda empresa tiene una forma de trabajar, es necesario que almacene sus datos para poder extraer información, y saber si por ejemplo, deben reponer un producto, hacer algún tipo de oferta, o contratar a un nuevo empleado porque está perdiendo ventas por no poder atender a los clientes.</p>
 <h2 id="ficheros">Ficheros<a class="headerlink" href="#ficheros" title="Permanent link">&para;</a></h2>
 <p>En los inicios del desarrollo de las aplicaciones, el almacenamiento de la información que gestiona cualquier aplicación informática era mediante el uso de archivos o ficheros (<em>files</em> en inglés). Esto provocaba que las aplicaciones estuvieran "<em>acopladas</em>" a los ficheros (dependencia físico-lógica), y dificultaba compartir datos entre diferentes aplicaciones, así como el acceso concurrente a los mismos.</p>
-<p>Respecto a los ficheros, conviene conocer que existen ficheros con diferente estructura y formato, como pueden ser de tipo texto (o plano) o binario y con un determinado formato, como puede ser CSV, JSON, XML, Parquet o Avro. Los ficheros normalmente contiene un nombre y una extensión, la cual indica el formato. Así pues, <code>clientes.csv</code> sería un fichero en formato CSV que contiene datos sobre clientes.</p>
+<p>Respecto a los ficheros, conviene conocer que existen ficheros con diferente estructura y formato, como pueden ser de tipo texto (o plano) o binario y con un determinado formato, como puede ser CSV, JSON, XML, Parquet o Avro. Los ficheros normalmente contienen un nombre y una extensión, la cual indica el formato. Así pues, <code>clientes.csv</code> sería un fichero en formato CSV que almacena datos sobre clientes.</p>
 <div class="admonition question">
 <p class="admonition-title">Autoevaluación</p>
 <p>Hemos comentado que tenemos archivos de tipo texto y binario, y con su extensión, es fácil que conozcas muchos formatos.</p>
@@ -1760,19 +1760,18 @@ Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de 
 <p>Esta arquitectura aporta:</p>
 <ul>
 <li><strong>Independencia lógica</strong>: capacidad de modificar el esquema conceptual sin tener que reescribir los esquemas externos ni las aplicaciones. Permite modificar el esquema conceptual para ampliar la <abbr title="Base de datos">BD</abbr> o para reducirla, por ejemplo, si se elimina una entidad, los esquemas externos que no se refieran a ella no se verán afectados.</li>
-<li><strong>Independencia física</strong>: capacidad de modificar el esquema interno sin tener que alterar ni el esquema conceptual, ni los externos. Por ejemplo, se pueden reorganizar los archivos físicos con el
-fin de mejorar el rendimiento de las operaciones de consulta o de actualización, o se pueden añadir nuevos archivos de datos porque los que había se han llenado.</li>
+<li><strong>Independencia física</strong>: capacidad de modificar el esquema interno sin tener que alterar ni el esquema conceptual, ni los externos. Por ejemplo, se pueden reorganizar los archivos físicos con el fin de mejorar el rendimiento de las operaciones de consulta o de actualización, o se pueden añadir nuevos archivos de datos porque los que había se han llenado.</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Arquitecturas físicas</p>
 <p>Si nos centramos en la organización física de la infraestructura necesaria a la hora de desplegar un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> (comentados en los <a href="#tipos-de-bases-de-datos">Tipos de Bases de Datos</a>), podemos clasificar las arquitecturas en:</p>
 <ul>
 <li>Centralizada<ul>
-<li>Monousuario: en un único ordenador, no permitiendo el acceso concurrente (MS Access)</li>
-<li>Cliente-Servidor: Los datos están en un servidor, pero se desacoplan los clientes los cuales se conectan vía red/internet (MySQL, PostreSQL, Oracle)</li>
+<li>Monousuario: en un único ordenador, no permitiendo el acceso concurrente (<em>MS Access</em>)</li>
+<li>Cliente-Servidor: Los datos están en un servidor, pero se desacoplan los clientes los cuales se conectan vía red/internet (<em>MySQL</em>, <em>PostgreSQL</em>, <em>Oracle</em>)</li>
 </ul>
 </li>
-<li>Distribuida: Existen múltiples servidores, ya sea replicando, particionando o fragmentando los datos, facilitando la robustez del sistema (Oracle cloud, MongoDB, Redis)</li>
+<li>Distribuida: Existen múltiples servidores, ya sea replicando, particionando o fragmentando los datos, facilitando la robustez del sistema (<em>Oracle cloud</em>, <em>MongoDB</em>, <em>Redis</em>)</li>
 </ul>
 </div>
 <h3 id="perfiles">Perfiles<a class="headerlink" href="#perfiles" title="Permanent link">&para;</a></h3>
@@ -1891,7 +1890,7 @@ fin de mejorar el rendimiento de las operaciones de consulta o de actualización
 <h3 id="obligaciones">Obligaciones<a class="headerlink" href="#obligaciones" title="Permanent link">&para;</a></h3>
 <p>Así pues, en base a los requerimiento de la LOPDGDD, un responsable de la gestión de una base de datos debe cumplir con las siguientes obligaciones: </p>
 <ul>
-<li>Mantener las BBDD actualizadas, para reflejar la situación actual del titular de los datos. </li>
+<li>Mantener las bases de datos actualizadas, para reflejar la situación actual del titular de los datos. </li>
 <li>No utilizar los datos de manera que se excedan los fines para los que fueron recabados. </li>
 <li>Obtener el consentimiento previo al tratamiento de los datos. Para esto, se debe informar al usuario de sus derechos, para qué fines serán usados sus datos, quiénes serán los responsables de la gestión, y cuáles serán los plazos en los que serán usados.</li>
 <li>Los datos sensibles no deben ser recogidos a menos que sea estrictamente necesario, por lo que información como la ideología, religión o creencias son datos que no deberían pedirse. Cuando así suceda se debe advertir a la persona de que está en su derecho a no dar ese tipo de datos.</li>
@@ -1972,7 +1971,7 @@ fin de mejorar el rendimiento de las operaciones de consulta o de actualización
 <ul>
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC105</strong> (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se ha identificado la legislación vigente sobre protección de datos.">CE1i</abbr> // 3p) Diseña y crea un formulario que de forma premeditada, solicite un par de datos sensibles. A continuación, con el propio formulario y haciendo uso de <em>ChatGPT</em> o <em>Copilot</em>, redacta una hoja de consentimiento que cumpla la LOPDGDD e informe de los datos solicitados al usuario.</p>
-<p>Completa los datos relativos a la empresa y la aplicación (conforme consideres) y adjunta tanto el formulario, como el prompt indicado a la IA, el texto generado y el documento completado con los datos de la empresa.</p>
+<p>Completa los datos relativos a la empresa y la aplicación (conforme consideres) y adjunta tanto el formulario, como el <em>prompt</em> indicado a la IA, el texto generado y el documento completado con los datos de la empresa.</p>
 <p>Finalmente, indica qué tipo de infracciones cometeríamos si no informamos al usuario de la recopilación de estos datos sensibles y cual sería aproximadamente la sanción económica.</p>
 </li>
 </ul>
@@ -2220,7 +2219,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      2024-2025 Aitor Medrano - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
+      2024-2026 Aitor Medrano - <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">Licencia CC BY-NC-SA</a>
     </div>
   
   
