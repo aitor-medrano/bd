@@ -2426,7 +2426,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <td><img alt="Notación (0,1)" src="images/02notacion0.png" /></td>
 </tr>
 <tr>
-<td>Un guión representa "<em>uno</em>"</td>
+<td>Un guion representa "<em>uno</em>"</td>
 <td><img alt="Notación (1,1)" src="images/02notacion1.png" /></td>
 </tr>
 <tr>
@@ -2446,12 +2446,12 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 </thead>
 <tbody>
 <tr>
-<td>Anillo y guión</td>
+<td>Anillo y guion</td>
 <td>(0, 1)</td>
 <td><img alt="Notación (0,1)" src="images/02notacion01.png" /></td>
 </tr>
 <tr>
-<td>Guión y guión</td>
+<td>Guion y guion</td>
 <td>(1, 1)</td>
 <td><img alt="Notación (1,1)" src="images/02notacion11.png" /></td>
 </tr>
@@ -2691,13 +2691,13 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <p>Respecto a los atributos identificadores podemos tener:</p>
 <ul>
 <li>Atributos identificadores <strong>sencillos</strong>. Un atributo identifica de forma unívoca a una ocurrencia de la entidad. Por ejemplo, el <code>isbn</code> de un libro.</li>
-<li>Atributos identificadores <strong>compuestos</strong>, donde una entidad se identifica por dos o más atributos a la vez. Por ejemplo, una calle que se identifique por el tipo de via y por el nombre de la calle, de manera que no es lo mismo la "<em>Avenida América</em>" que la "<em>Calle América</em>".</li>
+<li>Atributos identificadores <strong>compuestos</strong>, donde una entidad se identifica por dos o más atributos a la vez. Por ejemplo, una calle que se identifique por el tipo de vía y por el nombre de la calle, de manera que no es lo mismo la "<em>Avenida América</em>" que la "<em>Calle América</em>".</li>
 <li>Varios atributos <strong>candidatos</strong> que pueden identificar a la entidad. Por ejemplo, una persona que podemos identificar mediante su DNI, número de pasaporte, número de la seguridad social, etc.. Todos los atributos pueden identificar a la entidad <code>PERSONA</code>. Lo que haremos es elegir uno de ellos como identificador (el más común o importante dependiendo del contexto del problema), y el resto de atributos se consideran <em>claves alternativas</em>, y se marcan como que aceptan valores únicos subrayando el nombre de los atributos con una línea troceada.<br />
 ¿Y si tenemos una entidad que no tiene aparentemente ningún atributo identificador? En ese caso, crearemos un nuevo atributo que lo haga, como <code>codigo</code> o <code>id</code>, y más adelante, el SGBD le dará un valor secuencial.</li>
 <li>Atributos identificadores que se <strong>complementan</strong> con otra entidad (este tipo lo estudiaremos en esta unidad dentro de las <a href="#02er-restricciones">Restricciones</a>)</li>
 </ul>
 <p>Dicho esto, un atributo identificador, como su propio nombre indica, debe identificar a la entidad de forma única, siempre debe tener valor (no admite nulos), debe ser estable (a priori, no debería cambiar), mejor si es sencilla y corta, y debe evitar la redundancia.</p>
-<p>Por ejemplo, pensemos en una entidad <code>USUARIO</code>, la cual tiene los atributos <code>login</code>,<code>password</code>, <code>email</code>, <code>nombre</code> y <code>telefono</code>. Si analizamos sus características, claramente, los atributos candidatos serían <code>login</code> y <code>email</code>, aunque como un usuario puede cambiar su email (por ejemplo, entre el personal y el de trabajo), sería recomendable utilizar el atributo <code>login</code> como atributo identificador.</p>
+<p>Por ejemplo, pensemos en una entidad <code>USUARIO</code>, la cual tiene los atributos <code>login</code>, <code>password</code>, <code>email</code>, <code>nombre</code> y <code>telefono</code>. Si analizamos sus características, claramente, los atributos candidatos serían <code>login</code> y <code>email</code>, aunque como un usuario puede cambiar su email (por ejemplo, entre el personal y el de trabajo), sería recomendable utilizar el atributo <code>login</code> como atributo identificador.</p>
 <table>
 <thead>
 <tr>
@@ -2769,7 +2769,7 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <p>A continuación, nos centramos en las cardinalidades de la relación:</p>
 <ul>
 <li>Dado un usuario, ¿Cuantas bicicletas puede alquilar? Muchas ¿Y podemos tener usuarios que no alquilen ninguna bicicleta? Sí, cuando se crean y todavía no han empleado el servicio. Así pues, <code>Card(USUARIO, ALQUILAR) = (0,N)</code></li>
-<li>Dada una bicicleta. ¿Cuantos usuarios la pueden alquilar? Muchos ¿Y podemos tener bicliteas que no han sido alquiladas todavía? Sí, cuando se adquieren y todavía no han alquiladas. Así pues, <code>Card(BICICLETA, ALQUILAR) = (0,N)</code></li>
+<li>Dada una bicicleta. ¿Cuantos usuarios la pueden alquilar? Muchos ¿Y podemos tener bicicletas que no han sido alquiladas todavía? Sí, cuando se adquieren y todavía no han alquiladas. Así pues, <code>Card(BICICLETA, ALQUILAR) = (0,N)</code></li>
 </ul>
 <figure style="align: center;">
     <img src="images/02elaborando3.png" width="700" title="Modelo sencillo - Añadidas cardinalidades">
@@ -3040,7 +3040,7 @@ Se desea conocer el nombre, longitud y caudal de algunos ríos, registrando las 
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP207</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Realiza el modelo <abbr title="Entidad-Relación">ER</abbr> del siguiente sistema de información:</p>
 <p>Una agencia de viajes pretende informatizar su gestión, que hasta ahora se venía haciendo de forma manual. De cada viaje se tiene la siguiente información: código del viaje, nombre del viaje y países visitados</p>
-<p>Cada viaje se desarrolla en una serie de jornadas (días). De cada jornada se desea mantener la siguiente información: número de la jornada en el viaje, descripción, localidad de partida, localidad de destino y localidades intermedias que se visitan (se puede visitar 0,1 o más localidades intermedias), principal medio de transporte utilizado (0 ó 1), kilómetros recorridos y hotel de pernocta (puede ocurrir que una jornada no incluya ningún hotel de pernocta, por ejemplo, una jornada de vuelo).</p>
+<p>Cada viaje se desarrolla en una serie de jornadas (días). De cada jornada se desea mantener la siguiente información: número de la jornada en el viaje, descripción, localidad de partida, localidad de destino y localidades intermedias que se visitan (se puede visitar 0,1 o más localidades intermedias), principal medio de transporte utilizado (0 o 1), kilómetros recorridos y hotel de pernocta (puede ocurrir que una jornada no incluya ningún hotel de pernocta, por ejemplo, una jornada de vuelo).</p>
 <p>En un viaje se visitan uno o más países. De cada país se cuenta con la siguiente información: nombre, pasaporte (si/no), localidad capital y descripción.</p>
 <p>De cada localidad se desea conocer su nombre, país y descripción. Es posible que en una jornada se visiten localidades situadas en países distintos a los indicados como visitados en el viaje.</p>
 <p>De cada medio de transporte se desea mantener su código y descripción.
