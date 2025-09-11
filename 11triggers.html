@@ -2050,6 +2050,15 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <li><code>after_insert_ventas_2</code> (porque <code>FOLLOWS</code> <code>after_insert_ventas_1</code>)</li>
 </ol>
 </div>
+<!--
+Triggers en PostgreSQL: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINIST
+
+CREATE TRIGGER trigger_update_order_total
+AFTER INSERT OR UPDATE OR DELETE ON sales.order_item
+FOR EACH ROW
+EXECUTE FUNCTION update_order_total();
+-->
+
 <h3 id="gestion-de-disparadores">Gestión de disparadores<a class="headerlink" href="#gestion-de-disparadores" title="Permanent link">&para;</a></h3>
 <p>Los comandos que podemos utilizar para gestionar los disparadores son:</p>
 <ul>
@@ -3302,6 +3311,21 @@ Esta estructura anidada con bloques independientes asegura que:
 - Se mantiene un ámbito adecuado para las variables y manejadores
 
 Es importante este enfoque de ámbitos para evitar confusiones entre los estados de los diferentes cursores y asegurar que se procesen correctamente los datos de cada uno.
+-->
+
+<!--
+if your application needs Postgres to send notifications in response to data changes or database events, explore the LISTEN/NOTIFY capabilities. An application can register for notifications on a specific channel using the LISTEN command. When a particular event occurs, the database can asynchronously notify all registered client sessions with the NOTIFY counterpart. This capability can also be used if one client session needs to send notifications to others.
+
+### LISTEN/NOTIFY en PostgreSQL
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Conexión 1: Registrar para escuchar notificaciones en el canal &#39;mi_canal</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">LISTEN</span><span class="w"> </span><span class="n">mi_canal</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- Conexión 2: Enviar una notificación en el canal &#39;mi_canal&#39;</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">NOTIFY</span><span class="w"> </span><span class="n">mi_canal</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;¡Hola desde la notificación!&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- Conexión 1: Esperar y recibir la notificación</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">-- (esto se maneja en el cliente, no en SQL directamente)</span>
+</code></pre></div>
+
 -->
 
 <!--

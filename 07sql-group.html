@@ -2234,6 +2234,24 @@ You cannot associate a trigger with a view.
 <p>Una vista materializada, a diferencia de una vista estándar (o lógica), que genera sus resultados dinámicamente cada vez que se consulta, persiste los datos en disco, lo que puede mejorar significativamente el rendimiento en ciertos casos.</p>
 <p>A nivel conceptual, es similar a crear una tabla temporal que almacena los resultados de ejecución de la vista. </p>
 <p>Pueden tener una sincronización estática (los datos no se actualizan automáticamente), o dinámica (los datos se sincronizan bajo petición del usuario o cuando se modifiquen los datos de origen).</p>
+<p>&lt;!--
+A materialized view executes the underlying query and persists the result. All clients will see the same result until the view is explicitly refreshed. This is useful for queries that consume a lot of resources or for use cases where up-to-date data isn't required.</p>
+<p>To create a materialized view, you just need to add MATERIALIZED to the CREATE VIEW statement. Imagine that our eCommerce platform uses the materialized view from listing 2.29 to generate sales numbers for each month:</p>
+<p>CREATE MATERIALIZED VIEW monthly_sales_summary AS
+SELECT 
+    date_trunc('month', o.order_date) AS sales_month,
+    SUM(oi.quantity * oi.price) AS total_revenue,
+    COUNT(DISTINCT(o.id)) AS total_orders
+FROM sales.order o
+JOIN sales.order_item oi ON o.id = oi.order_id
+GROUP BY sales_month
+ORDER BY sales_month;</p>
+<p>Ahora crearíamos nuevos pedido que no aparecerían en la vista materializada hasta que se actualizara</p>
+<p>The view can be refreshed manually with the REFRESH MATERIALIZED VIEW command:</p>
+<p>REFRESH MATERIALIZED VIEW monthly_sales_summary;</p>
+<p>SELECT * FROM monthly_sales_summary;</p>
+<p>In addition to providing users with controls to update materialized views, you might want to refresh them periodically using extensions like pg_cron or in response to certain events with triggers.
+--&gt;</p>
 <p>En la siguiente unidad simularemos las vistas materializadas mediante la creación de tablas a partir de consultas.</p>
 </div>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
