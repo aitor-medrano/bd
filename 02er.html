@@ -2119,6 +2119,11 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 </figure>
 
 <p>Otra posibilidad es crear una entidad débil, por ejemplo, <code>PRESTAMO</code>, con restricciones de ID con <code>LIBRO</code> y <code>USUARIO</code>.</p>
+<!-- TODO: Relaciones ternarias
+
+Las relaciones de grado mayor que dos, ya sean ternarias o de grado 4, son complejas de gestionar y, por lo general, se pueden dividir en relaciones binarias (con la ayuda de las agregaciones que veremos más adelante)
+ -->
+
 <h4 id="relaciones-reflexivas">Relaciones reflexivas<a class="headerlink" href="#relaciones-reflexivas" title="Permanent link">&para;</a></h4>
 <figure style="float: right;">
     <img src="images/02relacion-reflexiva.png" width="166" title="Relación reflexiva">
@@ -2129,8 +2134,6 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <p>Algunos ejemplos comunes son cuando una persona se casa con otra persona, una pieza que se compone de otras piezas o un empleado es responsable de otro empleado.</p>
 <p>Vamos a centrarnos en el caso de que un empleado sea el responsable de otro, donde podemos decir que todo empleado trabaja para otro pero que el empleado responsable (el jefe) lo es de varios empleados, lo que daría lugar a una relación 1:N. Así pues, creamos una relación <code>TRABAJAR</code> y la unimos con <code>EMPLEADO</code> por los dos sentidos de la misma, y anotamos el rol en cada una de las cardinalidades.</p>
 <!-- TODO: Relaciones exclusivas -->
-
-<!-- TODO: Relaciones ternarias -->
 
 <div class="admonition tip">
 <p class="admonition-title">Nomenclatura UA</p>
