@@ -1562,6 +1562,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
     <figcaption>Acceso secuencial vs aleatorio - Wikipedia</figcaption>
 </figure>
 
+<h3 id="01intro-tipos-de-acceso">Tipos de acceso<a class="headerlink" href="#01intro-tipos-de-acceso" title="Permanent link">&para;</a></h3>
 <p>Dependiendo del acceso, tenemos diferentes tipos de ficheros:</p>
 <ul>
 <li>
@@ -1700,10 +1701,10 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <ul>
 <li><strong>Multidimensionales</strong> (década de los 90 y explosión en 2010 con el <em>Big Data</em>): se utilizan para desarrollar aplicaciones de <em>Data Warehouse</em> de procesamiento analítico en línea (OLAP). Las tablas se estructuran como cubos de información, mediante una tabla de hechos y varias tablas de dimensiones (tiempo, lugar, etc..).</li>
 <li><strong>Soluciones NoSQL</strong> (década del 2000 hasta hoy en día): como complemento a los modelos relacionales, ofrecen alternativas donde prima el rendimiento y escalabilidad de los datos. Destacan los modelos:<ul>
-<li>Clave-Valor: se almacenan datos a los cuales sólo se puede acceder mediante una clave. </li>
-<li>Documental: utiliza estructuras de documentos JSON que contiene la información de varias entidades en un mismo documento</li>
-<li>Grafos: Uso de nodos y vértices para navegar por los datos.</li>
-<li>Basado en columnas: gira las tablas para almacenar los datos por columnas en vez de hacerlo por filas.</li>
+<li><strong>Clave-Valor</strong>: se almacenan datos a los cuales sólo se puede acceder mediante una clave. </li>
+<li><strong>Documental</strong>: utiliza estructuras de documentos JSON que contiene la información de varias entidades en un mismo documento</li>
+<li><strong>Grafos</strong>: Uso de nodos y vértices para navegar por los datos.</li>
+<li><strong>Basado en columnas</strong>: gira las tablas para almacenar los datos por columnas en vez de hacerlo por filas.</li>
 </ul>
 </li>
 </ul>
@@ -1943,7 +1944,7 @@ Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de 
 <h2 id="01intro-actividades">Actividades<a class="headerlink" href="#01intro-actividades" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Formato de entrega</p>
-<p>Para la entrega de las actividades, si no se pide una captura o un archivo concreto, se debe adjuntar un fichero de texto en formato <em>Markdown</em> con el enunciado y la solución justificada. El nombre del archivo debe contener el nombre de la actividad y el nombre del alumn@. Por ejemplo, para la actividad AC101, la alumna Laura entregará el archivo <code>AC101Laura.md</code>. Dentro del documento, se seguirá la siguiente estructura:</p>
+<p>Para la entrega de las actividades, si no se pide una captura o un archivo concreto, se debe adjuntar un fichero de texto en formato <em>Markdown</em> con el enunciado y la solución justificada. El nombre del archivo debe contener el nombre de la actividad y el nombre del alumn@. Por ejemplo, para la actividad <code>AC101</code>, la alumna Laura entregará el archivo <code>AC101Laura.md</code>. Dentro del documento, se seguirá la siguiente estructura:</p>
 <div class="highlight"><span class="filename">ac101Laura.md</span><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="gh"># AC101</span>
 <span class="linenos" data-linenos=" 2 "></span>
 <span class="linenos" data-linenos=" 3 "></span>Laura García Sánchez
@@ -1969,7 +1970,7 @@ Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de 
 <p>Se pide:</p>
 <ul>
 <li>Enumera los errores detectados e indica cómo solucionarlos.</li>
-<li>Indica el tipo de acceso que se realiza sobre los ficheros y los posibles errores que nos podríamos encontrar si una aplicación gestiona sus datos mediante estos dos ficheros.</li>
+<li>Indica el tipo de acceso que se realiza sobre los ficheros y los posibles errores que nos podríamos encontrar si una aplicación gestionase sus datos mediante estos dos ficheros.</li>
 <li>Además de un documento con los apartados anteriores, adjunta una copia de los archivos con los problemas solucionados.</li>
 </ul>
 </li>
@@ -1994,7 +1995,7 @@ Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de 
 </ul>
 <p><a name="AC104"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC104</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se ha reconocido la función de cada uno de los elementos de un sistema gestor de bases de datos.">CE1e</abbr>, <abbr title="Se han clasificado los sistemas gestores de bases de datos.">CE1f</abbr> // 3p) A través de algún portal de ofertas de trabajo (<em>Infojobs</em>) o redes sociales laborales (<em>Linkedin</em>), realiza búsquedas de ofertas de trabajo como desarrollador en <em>Alicante/Comunidad Valenciana</em> indicando el/los <abbr title="Sistema gestor de bases de datos">SGBD</abbr> empleados. De entre los 3 <abbr title="Sistema gestor de bases de datos">SGBD</abbr> más solicitados, destaca los elementos principales de cada uno de ellos, como el tipo de modelo de datos empleado, la versión (si la indican), sistema operativo, etc... e incluye un enlace a la oferta de trabajo.</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC104</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se ha reconocido la función de cada uno de los elementos de un sistema gestor de bases de datos.">CE1e</abbr>, <abbr title="Se han clasificado los sistemas gestores de bases de datos.">CE1f</abbr> // 3p) A través de algún portal de ofertas de trabajo (<em>Infojobs</em>) o redes sociales laborales (<em>Linkedin</em>), y teniendo en cuenta el <a href="https://db-engines.com/en/ranking"><em>ranking</em></a> de sistemas gestores más utilizados, realiza búsquedas de ofertas de trabajo como desarrollador en <em>Alicante/Comunidad Valenciana</em> indicando el/los <abbr title="Sistema gestor de bases de datos">SGBD</abbr> empleados. De entre los 3 <abbr title="Sistema gestor de bases de datos">SGBD</abbr> más solicitados en Alicante, destaca los elementos principales de cada uno de ellos (por ejemplo, el tipo de modelo de datos empleado, la versión (si la indican), sistema operativo, etc...) e incluye un enlace a la oferta de trabajo.</li>
 </ul>
 <p><a name="AC105"></a></p>
 <ul>
@@ -2252,22 +2253,16 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>Una empresa vende productos a varios clientes. Se necesita conocer los datos personales de los clientes (nombre, apellidos, dni, dirección y fecha de nacimiento). Cada producto tiene un nombre y un código, así como un precio unitario. Un cliente puede comprar varios productos a la empresa, y un mismo producto puede ser comprado por varios clientes.</p>
 <p>Los productos los suministran diferentes proveedores. Se debe tener en cuenta que un producto sólo puede ser suministrado por un proveedor, y que un proveedor puede suministrar diferentes productos. De cada proveedor se desea conocer el NIF, nombre y dirección.</p>
 </div>
-<!--
-TODO: reescribir pg 72
-
-The overall goal of database design is to deliver a well-structured,
-efficient database that meets the requirements of users and
-organizations. Beyond meeting these requirements, a successful
-database design typically meets five common goals:
-
-Data consistency and integrity
-Maintainability and ease of use
-Performance and optimization
-Data security
-Scalability and flexibility
--->
-
-<p>Antes de comenzar el diseño, el primer paso y más crítico es determinar los requisitos de la base de datos mediante un <strong>sistema de información</strong>, describiendo el problema que la base de datos debe cubrir. Este paso está más asociado a la ingeniería del software y lo estudiarás en detalle en el módulo de <em>Entornos de Desarrollo</em>.</p>
+<p>El objetivo general del diseñar bases de datos es ofrecer una base de datos bien estructurada y eficiente que cumpla los requisitos de usuarios y empresas. Además de cumplir estos requisitos, un diseño
+diseño de bases de datos, generalmente, cumple cinco objetivos comunes (los cuales trabajaremos a lo largo del curso):</p>
+<ol>
+<li>Coherencia e integridad de los datos.</li>
+<li>Mantenibilidad y facilidad de uso.</li>
+<li>Rendimiento y optimización.</li>
+<li>Seguridad de los datos.</li>
+<li>Escalabilidad y flexibilidad.</li>
+</ol>
+<p>Así pues, antes de comenzar el diseño, el primer paso y más crítico es determinar los requisitos de la base de datos mediante un <strong>sistema de información</strong>, describiendo el problema que la base de datos debe cubrir. Este paso está más asociado a la ingeniería del software y lo estudiarás en detalle en el módulo de <em>Entornos de Desarrollo</em>.</p>
 <p>Las fases que se realizan a la hora de diseñar una base de datos son tres:</p>
 <ol>
 <li><strong>Diseño conceptual</strong>: a partir de los requisitos y entendido el problema (conocido como el mundo real), mediante un modelo conceptual de alto nivel (<abbr title="Entidad-Relación Extendido">EER</abbr>) crearemos el <strong>esquema conceptual</strong>.</li>
@@ -2399,8 +2394,8 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <p>La cardinalidad define la cantidad de ocurrencias de una entidad que se relacionan con una relación (que a su vez se relaciona con otra entidad).</p>
 <p>Para ello, definimos las cardinalidades:</p>
 <ul>
-<li><strong>mínima</strong> (también conocido como participación): indica el número mínimo de asociaciones en las que aparecerá cada ejemplar de la entidad. Los valores que puede tomar son cero (opcional) o uno (obligatorio)</li>
-<li><strong>máxima</strong>: indica el número máximo de relaciones en las que puede aparecer cada ejemplar de la entidad. Los valores pueden ser uno o N (muchos).</li>
+<li><strong>mínima</strong> (también conocido como participación): indica el número mínimo de asociaciones en las que aparecerá cada ejemplar de la entidad. Los valores que puede tomar son <strong>cero</strong> (opcional) o <strong>uno</strong> (obligatorio)</li>
+<li><strong>máxima</strong>: indica el número máximo de relaciones en las que puede aparecer cada ejemplar de la entidad. Los valores pueden ser <strong>uno</strong> o <strong>N</strong> (muchos).</li>
 </ul>
 <p>La cardinalidad entre una entidad y una relación se representa entre paréntesis indicando el valor mínimo a la izquierda y el mayor a la derecha mediante <code>Card(E,R) = (min, max)</code>. Las posibles combinaciones son:</p>
 <ul>
@@ -2623,18 +2618,34 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 <p>De cada departamento sabremos su nombre, el número del despacho en el que se ubica y conoceremos quien es el jefe de dicho departamento.</p>
 <details class="example">
 <summary>Solución</summary>
+<p>El primero paso es, a partir del enunciado, identificar las entidades buscando los sustantivos. </p>
+<blockquote>
+<p>"Queremos gestionar la información sobre los empleados de una empresa, a partir de las siguientes condiciones: para cada <strong>empleado</strong> dispondremos de su DNI, nombre, fecha de nacimiento, salario y departamento en el que trabaja.
+De cada <strong>departamento</strong> sabremos su nombre, el número del despacho en el que se ubica y conoceremos quien es el jefe de dicho departamento."</p>
+</blockquote>
+<p>Tras su revisión, deducimos que tenemos empleados y departamentos, que serán nuestras dos entidades principales: <code>EMPLEADO</code> y <code>DPTO</code> (hemos reducido la palabra para reducir el tamaño del diagrama). </p>
+<p>El siguiente paso es localizar las relaciones. Para ello, buscaremos los verbos que relacionen las entidades localizadas.</p>
+<blockquote>
+<p>"Queremos gestionar la información sobre los empleados de una empresa, a partir de las siguientes condiciones: para cada empleado dispondremos de su DNI, nombre, fecha de nacimiento, salario y departamento en el que <strong>trabaja</strong>.
+De cada departamento sabremos su nombre, el número del despacho en el que se ubica y conoceremos quien <strong>es el jefe</strong> de dicho departamento.".</p>
+</blockquote>
+<p>Así pues, tenemos dos relaciones: <code>TRABAJAR</code> y <code>SER_JEFE</code>.</p>
+<p>Y por último, localizamos los atributos de las entidades y de las relaciones. Para ello, buscaremos los adjetivos y complementos que describan a las entidades y relaciones:</p>
+<blockquote>
+<p>"Queremos gestionar la información sobre los empleados de una empresa, a partir de las siguientes condiciones: para cada empleado dispondremos de su <strong>DNI</strong>, <strong>nombre</strong>, <strong>fecha de nacimiento</strong>, <strong>salario</strong> y departamento en el que trabaja.
+De cada departamento sabremos su <strong>nombre</strong>, el <strong>número del despacho</strong> en el que se ubica y conoceremos quien es el jefe de dicho departamento.".</p>
+</blockquote>
+<p>Así pues, hemos localizado las siguientes entidades y sus atributos:</p>
+<ul>
+<li>Atributos de <code>EMPLEADO</code>: <code>dni</code> (atributo identificador), <code>nombre</code>, <code>fecha de nacimiento</code>, <code>salario</code>.</li>
+<li>Atributos de <code>DPTO</code>: <code>nombre</code>, <code>número de despacho</code>.</li>
+</ul>
 <p><figure style="float: right;">
     <img src="images/02solucion-empresa.png" width="380" title="Solución supuesto Empresa">
     <figcaption>Solución supuesto Empresa</figcaption>
 </figure></p>
-<p>Primero localizamos las entidades y sus atributos:</p>
-<ul>
-<li>Entidades: <code>EMPLEADO</code>, <code>DEPARTAMENTO</code></li>
-<li>Atributos de <code>EMPLEADO</code>: dni (atributo identificador), nombre, fecha de nacimiento, salario</li>
-<li>Atributos de <code>DEPARTAMENTO</code>: nombre, número de despacho</li>
-</ul>
-<p>Respecto a la nomenclatura, hemos recortado la palabra DPTO para reducir el tamaño del diagrama. Además, recuerda que las entidades y las relaciones se nombran en mayúsculas y los atributos en minúsculas. También es recomendable nombrar todos los elementos sin espacios en blanco, para facilitar su posterior transformación al modelo relacional.</p>
-<p>Destacar que ni el departamento del empleado ni el jefe son atributos de las entidades, sino que se traducen en relaciones:</p>
+<p>No olvides que las entidades y las relaciones se nombran en mayúsculas y los atributos en minúsculas. También es recomendable nombrar todos los elementos sin espacios en blanco, para facilitar su posterior transformación al modelo relacional.</p>
+<p>¿Y por qué no he añadido en <code>EMPLEADO</code> como atributo el departamento? ¿Y en <code>DPTO</code> el jefe? En ambos casos, no son son atributos de las entidades, sino que se traducen en las relaciones:</p>
 <ul>
 <li>Relación 1:N nombrada como <code>TRABAJAR</code> entre <code>DEPARTAMENTO</code> Y <code>EMPLEADO</code>, de manera que en un departamento trabajan muchos empleados, pero un empleado sólo trabaja en un departamento.</li>
 <li>Relación 1:1 nombrada como <code>SER_JEFE</code> entre <code>DEPARTAMENTO</code> y <code>EMPLEADO</code>. Un empleado es jefe de un departamento, y en un departamento, un empleado es el jefe.</li>
@@ -2671,6 +2682,57 @@ Igual que las entidades, las relaciones también pueden tener atributos, para re
 </figure>
 
 <p>Otra posibilidad es crear una entidad débil, por ejemplo, <code>PRESTAMO</code>, con restricciones de ID con <code>LIBRO</code> y <code>USUARIO</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Supuesto II Empresa</p>
+<p>Vamos a ampliar el sistema de información anterior para almacenar más información. El nuevo sistema de información es:</p>
+<p>La empresa está organizada en departamentos. Cada uno tiene un nombre único, el número del despacho en el que se ubica y un empleado que lo dirige. Nos interesa la fecha que empezó a dirigirlo.</p>
+<p>Cada departamento controla una serie de proyectos, los cuales tienen nombre y número únicos.</p>
+<p>De cada empleado nos interesa el DNI, nombre, fecha de nacimiento, salario y departamento en el que trabaja. Cada empleado puede trabajar en más de un proyecto, dedicándole un determinado número de horas a la semana en cada proyecto.</p>
+<p>Finalmente, queremos guardar también los familiares de cada empleado, para administrar información relativa a las pólizas de seguros. De los familiares, queremos saber el nombre, fecha de nacimiento y parentesco con el empleado.</p>
+<details class="example">
+<summary>Solución</summary>
+<p>Si volvemos a repetir el mismo proceso que hemos realizando anteriormente, vamos a localizar las entidades y las relaciones buscando los sustantivos y los verbos:</p>
+<blockquote>
+<p>La empresa está organizada en <strong>departamentos</strong>. Cada uno tiene un nombre único, el número del despacho en el que se ubica y un empleado que lo <ins>dirige</ins>. Nos interesa la fecha que empezó a dirigirlo.</p>
+<p>Cada departamento <ins>controla</ins> una serie de <strong>proyectos</strong>, los cuales tienen nombre y número únicos.</p>
+<p>De cada <strong>empleado</strong> nos interesa el DNI, nombre, fecha de nacimiento, salario y departamento en el que <ins>trabaja</ins>. Cada empleado puede <ins>dedicarse</ins> a más de un proyecto, facturando un determinado número de horas a la semana a cada proyecto.</p>
+<p>Finalmente, queremos guardar también los <strong>familiares</strong> que <ins>tiene</ins> cada empleado, para administrar información relativa a las pólizas de seguros. De los familiares, queremos saber el nombre, fecha de nacimiento y parentesco con el empleado.</p>
+</blockquote>
+<p>Resumiendo, hemos localizado:</p>
+<ul>
+<li>Entidades: <code>EMPLEADO</code>, <code>DPTO</code>, <code>PROYECTO</code> y <code>FAMILIAR</code>.</li>
+<li>Relaciones:<ul>
+<li><code>DIRIGIR</code> entre <code>EMPLEADO</code> y <code>DPTO</code>.</li>
+<li><code>TRABAJAR</code> entre <code>EMPLEADO</code> y <code>DPTO</code>.</li>
+<li><code>CONTROLAR</code> entre <code>DPTO</code> y <code>PROYECTO</code>.</li>
+<li><code>DEDICARSE</code> entre <code>EMPLEADO</code> y <code>PROYECTO</code>.</li>
+<li><code>TENER</code> entre <code>EMPLEADO</code> y <code>FAMILIAR</code>.     </li>
+</ul>
+</li>
+</ul>
+<p>Si nos centramos en las cardinalidades de las relaciones, tenemos:</p>
+<ul>
+<li><code>Card(EMPLEADO, DIRIGIR) = (0,1)</code> y <code>Card(DPTO, DIRIGIR) = (1,1)</code></li>
+<li><code>Card(EMPLEADO, TRABAJAR) = (0,N)</code> y <code>Card(DPTO, TRABAJAR) = (1,N)</code></li>
+<li><code>Card(DPTO, CONTROLAR) = (1,N)</code> y <code>Card(PROYECTO, CONTROLAR) = (0,N)</code></li>
+<li><code>Card(EMPLEADO, DEDICARSE) = (0,N)</code> y <code>Card(PROYECTO, DEDICARSE) = (0,N)</code></li>
+<li><code>Card(EMPLEADO, TENER) = (0,N)</code> y <code>Card(FAMILIAR, TENER) = (0,N)</code></li>
+</ul>
+<p>Finalmente, los atributos de las entidades y las relaciones son:</p>
+<ul>
+<li>Atributos de <code>EMPLEADO</code>: <code>dni</code> (atributo identificador), <code>nombre</code>, <code>fecha de nacimiento</code>, <code>salario</code>.</li>
+<li>Atributos de <code>DPTO</code>: <code>nombre</code> (atributo identificador), <code>número de despacho</code>.</li>
+<li>Atributos de <code>PROYECTO</code>: <code>nombre</code> y <code>número</code> (ambos atributos identificadores).</li>
+<li>Atributos de <code>FAMILIAR</code>: <code>nombre</code> (atributo identificador), <code>fecha de nacimiento</code>, <code>parentesco</code>.</li>
+<li>Atributos de las relaciones:<ul>
+<li><code>DIRIGIR</code>: <code>fecha_inicio</code></li>
+<li><code>DEDICARSE</code>: <code>horas_semana</code></li>
+</ul>
+</li>
+</ul>
+<!-- FIXME: Revisar y generar diagrama con herramienta -->
+</details>
+</div>
 <!-- TODO: Relaciones ternarias
 
 Las relaciones de grado mayor que dos, ya sean ternarias o de grado 4, son complejas de gestionar y, por lo general, se pueden dividir en relaciones binarias (con la ayuda de las agregaciones que veremos más adelante)
@@ -2818,7 +2880,7 @@ Las relaciones de grado mayor que dos, ya sean ternarias o de grado 4, son compl
 </ol>
 <p><a name="supuesto-carreteras"></a></p>
 <div class="admonition info">
-<p class="admonition-title">Supuesto II Carreteras</p>
+<p class="admonition-title">Supuesto III Carreteras</p>
 <p>Se desea diseñar una base de datos que contenga la información relativa a todas las carreteras de España. Se pide realizar el diseño del modelo <abbr title="Entidad-Relación">ER</abbr> sabiendo que:</p>
 <ul>
 <li>Las carreteras se encuentran divididas en tramos.</li>
@@ -2953,7 +3015,7 @@ y los comunes se colocan en la superclase.</p>
 </table>
 <p><a name="supuesto-tienda"></a></p>
 <div class="admonition example">
-<p class="admonition-title">Supuesto III Tienda</p>
+<p class="admonition-title">Supuesto IV Tienda</p>
 <p>Se pide diseñar la base de datos de una tienda, la cual está organizada por departamentos, que contenga información sobre los trabajadores y los artículos que se ofertan.</p>
 <p>Se deben tener en cuenta las siguientes restricciones:</p>
 <ul>
