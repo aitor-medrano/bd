@@ -6,11 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Consultas jerárquicas sobre MariaDB">
+        <meta name="description" content="Explicación y ejemplos de relaciones ternarias y su descomposición en agregaciones">
       
       
       
-        <link rel="canonical" href="https://aitor-medrano.github.io/bd/anexos/geoespaciales.html">
+        <link rel="canonical" href="https://aitor-medrano.github.io/bd/anexos/ternarias.html">
       
       
       
@@ -20,7 +20,7 @@
     
     
       
-        <title>Consultas jerárquicas sobre MariaDB - Bases de datos</title>
+        <title>Relaciones ternarias en el modelo conceptual - Bases de datos</title>
       
     
     
@@ -73,11 +73,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Consultas jerárquicas sobre MariaDB - Bases de datos" >
+        <meta  property="og:title"  content="Relaciones ternarias en el modelo conceptual - Bases de datos" >
       
-        <meta  property="og:description"  content="Consultas jerárquicas sobre MariaDB" >
+        <meta  property="og:description"  content="Explicación y ejemplos de relaciones ternarias y su descomposición en agregaciones" >
       
-        <meta  property="og:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/anexos/geoespaciales.png" >
+        <meta  property="og:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/anexos/ternarias.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -85,15 +85,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://aitor-medrano.github.io/bd/anexos/geoespaciales.html" >
+        <meta  property="og:url"  content="https://aitor-medrano.github.io/bd/anexos/ternarias.html" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Consultas jerárquicas sobre MariaDB - Bases de datos" >
+        <meta  name="twitter:title"  content="Relaciones ternarias en el modelo conceptual - Bases de datos" >
       
-        <meta  name="twitter:description"  content="Consultas jerárquicas sobre MariaDB" >
+        <meta  name="twitter:description"  content="Explicación y ejemplos de relaciones ternarias y su descomposición en agregaciones" >
       
-        <meta  name="twitter:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/anexos/geoespaciales.png" >
+        <meta  name="twitter:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/anexos/ternarias.png" >
       
     
     
@@ -114,11 +114,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#entidades" class="md-skip">
-          Saltar a contenido
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -151,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Consultas jerárquicas sobre MariaDB
+              Relaciones ternarias en el modelo conceptual
             
           </span>
         </div>
@@ -883,92 +878,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#entidades" class="md-nav__link">
-    <span class="md-ellipsis">
-      Entidades
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Entidades">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#punto" class="md-nav__link">
-    <span class="md-ellipsis">
-      Punto
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#linea" class="md-nav__link">
-    <span class="md-ellipsis">
-      Línea
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#poligono" class="md-nav__link">
-    <span class="md-ellipsis">
-      Polígono
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#operaciones" class="md-nav__link">
-    <span class="md-ellipsis">
-      Operaciones
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#consultas-geoespaciales-en-mariadb" class="md-nav__link">
-    <span class="md-ellipsis">
-      Consultas geoespaciales en MariaDB
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#consultas-geoespaciales-en-mongodb" class="md-nav__link">
-    <span class="md-ellipsis">
-      Consultas geoespaciales en MongoDB
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#optimizacion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Optimización
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -986,131 +895,22 @@
       
       
       
-        <a href="../tags.html#tag:ra3" class="md-tag">RA3</a>
+        <a href="../tags.html#tag:modelo-entidad-relación" class="md-tag">Modelo Entidad Relación</a>
       
     
       
       
       
-        <a href="../tags.html#tag:sql" class="md-tag">SQL</a>
+        <a href="../tags.html#tag:ra6" class="md-tag">RA6</a>
       
     
   </nav>
 
 
 
-  <h1>Consultas jerárquicas sobre MariaDB</h1>
+  <h1>Relaciones ternarias en el modelo conceptual</h1>
 
-<!--
-http://127.0.0.1:8000/bd/anexos/geoespaciales.html
--->
-
-<p>Los datos geoespaciales son aquellos que representan objetos o fenómenos que están asociados con una ubicación en la Tierra. </p>
-<figure style="float: right;">
-    <img src="../images/30elementos-geoespacial.gif" width="425" title="Elementos gesespaciales">
-    <figcaption>Elementos gesespaciales - arcgis.com</figcaption>
-</figure>
-
-<p>El uso de mapas y la relevancia de los datos por proximidad han propiciado la evolución de los datos geospaciales de sistemas específicos GIS (<em>Geographic Information System</em>) como <em>Oracle Spatial</em> hacia su existencia en la mayor de sistemas gestores de bases de datos, ya sea formando parte del propio núcleo o mediante una extensión, permitiendo el almacenamiento, manipulación y análisis de este tipo de datos.</p>
-<p>En nuestro caso, nos vamos a centrar de modo general tanto en MariaDB como en MongoDB, sin dejar de lado PostGIS sobre PostgreSQL, el cual es el referente en el mercado. </p>
-<p>Los SGBD actuales facilitan el uso de datos geoespaciales al ser compatibles con el estándar OpenGIS, así como dar soporte para índices espaciales R-Tree, obteniendo un rendimiento optimizado para consultas geoespaciales, mediante el soporte de amplio conjunto de funciones espaciales.</p>
-<h2 id="entidades">Entidades<a class="headerlink" href="#entidades" title="Permanent link">&para;</a></h2>
-<p>Los <a href="https://mariadb.com/kb/en/geometry-types/">elementos geoespaciales</a> más importante son el punto, la línea y el polígono. En los siguientes apartados los estudiaremos en detalles, tanto su almacenamiento como procesamiento.</p>
-<p>Todo ellos se basan en el uso de coordenadas, ya sean expresadas mediante <code>X</code> e <code>Y</code> (o <code>longitud</code> y <code>latitud</code>), donde los valores de longitud van desde <code>-180</code> hasta <code>180</code> (de Este a Oeste), mientras que los de latitud de <code>-90</code> a <code>90</code> (de Sur a Norte). El orden es muy importante ya que siempre se indican con <code>(X,Y)</code> o <code>[longitud, latitud]</code>.</p>
-<figure style="align: center;">
-    <img src="../images/30Latitud_y_Longitud_en_la_Tierra.svg" width="600" title="Longitud y latitud - Wikipedia">
-    <figcaption>Longitud y latitud - Wikipedia</figcaption>
-</figure>
-
-<h3 id="punto">Punto<a class="headerlink" href="#punto" title="Permanent link">&para;</a></h3>
-<p>Representa una ubicación específica mediante coordenadas, por ejemplo, utilizando el tipo <code>POINT</code> en <em>MariaBD</em>.</p>
-<p>A continuación, tenemos un ejemplo donde creamos una tabla con un campo de tipo <code>POINT</code> donde almacenamos las coordenadas de una determinada ubicación, y posteriormente insertamos registros utilizando la función <a href="https://mariadb.com/kb/en/point/"><code>POINT()</code></a> para su almacenamiento.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">ubicaciones</span><span class="w"> </span><span class="p">(</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">coordenadas</span><span class="w"> </span><span class="n">POINT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="p">);</span>
-<span class="linenos" data-linenos=" 6 "></span>
-<span class="linenos" data-linenos=" 7 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">ubicaciones</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">coordenadas</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="p">(</span><span class="s1">&#39;Ubicación A&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">POINT</span><span class="p">(</span><span class="mi">40</span><span class="p">.</span><span class="mi">7128</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">74</span><span class="p">.</span><span class="mi">0060</span><span class="p">)),</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="p">(</span><span class="s1">&#39;Ubicación B&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">POINT</span><span class="p">(</span><span class="mi">34</span><span class="p">.</span><span class="mi">0522</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">118</span><span class="p">.</span><span class="mi">2437</span><span class="p">)),</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="p">(</span><span class="s1">&#39;Ubicación C&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">POINT</span><span class="p">(</span><span class="mi">51</span><span class="p">.</span><span class="mi">5074</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">1278</span><span class="p">));</span>
-</code></pre></div>
-<p>En cambio, en <em>MongoDB</em> se expresan mediante un tipo <code>Point</code> donde se indican las coordenadas dentro de un array:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
-<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Point&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">coordinates</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">3.7038</span><span class="p">,</span><span class="w"> </span><span class="mf">40.4168</span><span class="p">]</span><span class="w">  </span><span class="c1">// Madrid</span>
-<span class="linenos" data-linenos="4 "></span><span class="p">}</span>
-</code></pre></div>
-<h3 id="linea">Línea<a class="headerlink" href="#linea" title="Permanent link">&para;</a></h3>
-<p>Representa una secuencia de puntos conectados formando una línea, por ejemplo, utilizando el tipo <code>LINESTRING</code> en MariaBD </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Creación de una línea</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">rutas</span><span class="w"> </span><span class="p">(</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">ruta</span><span class="w"> </span><span class="n">LINESTRING</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="p">);</span>
-<span class="linenos" data-linenos=" 7 "></span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- Insertar una línea</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">rutas</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">ruta</span><span class="p">)</span><span class="w"> </span>
-<span class="linenos" data-linenos="10 "></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Ruta 1&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ST_LineStringFromText</span><span class="p">(</span><span class="s1">&#39;LINESTRING(0 0, 10 10, 20 25)&#39;</span><span class="p">));</span>
-</code></pre></div>
-<p>En cambio, en <em>MongoDB</em> se expresan mediante un tipo <code>LineString</code> donde se indican las coordenadas dentro de un array:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
-<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;LineString&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">coordinates</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
-<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">3.7038</span><span class="p">,</span><span class="w"> </span><span class="mf">40.4168</span><span class="p">],</span><span class="w">  </span><span class="c1">// Madrid</span>
-<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">0.3763</span><span class="p">,</span><span class="w"> </span><span class="mf">39.4699</span><span class="p">]</span><span class="w">   </span><span class="c1">// Valencia</span>
-<span class="linenos" data-linenos="6 "></span><span class="w">  </span><span class="p">]</span>
-<span class="linenos" data-linenos="7 "></span><span class="p">}</span>
-</code></pre></div>
-<h3 id="poligono">Polígono<a class="headerlink" href="#poligono" title="Permanent link">&para;</a></h3>
-<p>Representa un área cerrada definida por un anillo exterior y, opcionalmente, uno o más anillos interiores que definen "agujeros".</p>
-<p>El primer array define el perímetro exterior, los siguientes definen agujeros internos.</p>
-<p>mediante el tipo <code>POLYGON</code> en MariaBD </p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Creación de un polígono</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">terrenos</span><span class="w"> </span><span class="p">(</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">area</span><span class="w"> </span><span class="n">POLYGON</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="p">);</span>
-<span class="linenos" data-linenos=" 7 "></span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- Insertar un polígono (cuadrado simple)</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">terrenos</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">area</span><span class="p">)</span><span class="w"> </span>
-<span class="linenos" data-linenos="10 "></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Parcela A&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">ST_PolygonFromText</span><span class="p">(</span><span class="s1">&#39;POLYGON((0 0, 0 10, 10 10, 10 0, 0 0))&#39;</span><span class="p">));</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="p">{</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Polygon&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nx">coordinates</span><span class="o">:</span><span class="w"> </span><span class="p">[[</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span><span class="w"> </span><span class="mf">40.3</span><span class="p">],</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">3.6</span><span class="p">,</span><span class="w"> </span><span class="mf">40.3</span><span class="p">],</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">3.6</span><span class="p">,</span><span class="w"> </span><span class="mf">40.5</span><span class="p">],</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span><span class="w"> </span><span class="mf">40.5</span><span class="p">],</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="p">[</span><span class="o">-</span><span class="mf">3.8</span><span class="p">,</span><span class="w"> </span><span class="mf">40.3</span><span class="p">]</span><span class="w">  </span><span class="c1">// Debe cerrar el polígono</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="p">]]</span>
-<span class="linenos" data-linenos="10 "></span><span class="p">}</span>
-</code></pre></div>
-<div class="admonition info">
-<p class="admonition-title">Tipos compuestos</p>
-<p>Otros tipos compuestos son:</p>
-<ul>
-<li>MULTIPOINT: Almacena una colección de puntos.</li>
-<li>MULTILINESTRING: Almacena una colección de objetos LineString.</li>
-<li>MULTIPOLYGON: Una superficie formada por una o más líneas cerradas. Almacena una colección de polígonos.</li>
-<li>GEOMETRYCOLLECTION: Colección de diferentes tipos de geometrías.</li>
-<li>GEOMETRY: almacena valores de cualquier tipo.</li>
-</ul>
-</div>
-<h2 id="operaciones">Operaciones<a class="headerlink" href="#operaciones" title="Permanent link">&para;</a></h2>
-<h2 id="consultas-geoespaciales-en-mariadb">Consultas geoespaciales en MariaDB<a class="headerlink" href="#consultas-geoespaciales-en-mariadb" title="Permanent link">&para;</a></h2>
-<h2 id="consultas-geoespaciales-en-mongodb">Consultas geoespaciales en MongoDB<a class="headerlink" href="#consultas-geoespaciales-en-mongodb" title="Permanent link">&para;</a></h2>
-<h2 id="optimizacion">Optimización<a class="headerlink" href="#optimizacion" title="Permanent link">&para;</a></h2>
-<p>Indexar Datos Espaciales</p>
-<p>Es recomendable crear un <code>SPATIAL INDEX</code> (índices espaciales) para campos espaciales, ya que mejora el rendimiento de las consultas geoespaciales. Sin embargo, estos índices tienen limitaciones, como que solo funcionan con tablas de tipo MyISAM o InnoDB (en versiones recientes). Ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Campo nombre y coordenadas tienen que estar a not null</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="n">SPATIAL</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">idx_coordenadas</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">ubicaciones</span><span class="w"> </span><span class="p">(</span><span class="n">coordenadas</span><span class="p">);</span>
-</code></pre></div>
-<p>Esto puede mejorar significativamente el rendimiento de las consultas espaciales.</p>
+<p>Las relaciones de grado mayor que dos, ya sean ternarias o de grado 4, son complejas de gestionar y, por lo general, se pueden dividir en relaciones binarias (con la ayuda de las agregaciones que veremos más adelante)</p>
 <!--
 Contenidos básicos:
 
