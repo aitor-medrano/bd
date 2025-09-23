@@ -1197,7 +1197,7 @@ ASMZS --&gt; MECAS</code></pre>
 <p>De esta manera, cada nivel supone añadir nuevos atributos y unir con otra tabla, debiendo hacer una consulta específica. Pero, ¿y si de antemano no sabemos cuantos niveles tenemos de dependencia, o nos interesa saber cuantos son?</p>
 <p>Hasta la llegada de los CTE, la única solución factible era crear un procedimiento almacenado haciendo uso de bucles y cursores. Un tipo de CTE que nos va a permitir navegar por las reflexiones reflexivas son los CTE cíclicos, o también conocidos como CTE recursivo.</p>
 <h3 id="cte-recursivo">CTE recursivo<a class="headerlink" href="#cte-recursivo" title="Permanent link">&para;</a></h3>
-<p>Para utilizar un <a href="https://mariadb.com/kb/en/recursive-common-table-expressions-overview/">CTE recursivo</a>, definiremos un CTE con el prefijo <code>RECURSIVE</code>, y donde definiremos una consulta base (que definirá el punto de partida) y una consulta recursiva (que definirá cómo avanzar en la jerarquía), de la misma manera que hemos estudiado la recursividad en el módulo profesional de <em>Programación</em>. Ambas consultas las debemos unir mediante <code>UNION ALL</code> para añadir todos los registros obtenido. Así pues, la sintaxis de un CTE recursivo es similar a:</p>
+<p>Para utilizar un <a href="https://mariadb.com/kb/en/recursive-common-table-expressions-overview/">CTE recursivo</a>, definiremos un CTE con el prefijo <code>RECURSIVE</code>, donde definiremos una consulta base (que definirá el punto de partida) y una consulta recursiva (que definirá cómo avanzar en la jerarquía), de la misma manera que hemos estudiado la recursividad en el módulo profesional de <em>Programación</em>. Ambas consultas las debemos unir mediante <code>UNION ALL</code> para añadir todos los registros obtenidos. Así pues, la sintaxis de un CTE recursivo es similar a:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">nombreCTE</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="c1">-- Consulta base</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="n">columnas</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condicion</span>
@@ -1389,6 +1389,351 @@ ASMZS --&gt; MECAS</code></pre>
 </code></pre></div>
 </li>
 </ul>
+<!--
+CREATE TABLE bus_rutas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  origen VARCHAR(50),
+  destino VARCHAR(50)
+);
+
+INSERT INTO bus_rutas (origen, destino) VALUES
+  ('Madrid', 'Barcelona'),
+  ('Barcelona', 'Madrid'),
+  ('Madrid', 'Valencia'),
+  ('Valencia', 'Sevilla'),
+  ('Sevilla', 'Granada'),
+  ('Granada', 'Málaga'),
+  ('Málaga', 'Sevilla'),
+  ('Bilbao', 'San Sebastián'),
+  ('San Sebastián', 'Pamplona'),
+  ('Pamplona', 'Zaragoza'),
+  ('Zaragoza', 'Madrid');
+
+Transitive closure - determining bus destinations
+https://mariadb.com/docs/server/reference/sql-statements/data-manipulation/selecting-data/common-table-expressions/recursive-common-table-expressions-overview
+
+¡Perfecto! 🚍 Con CTEs (Common Table Expressions) podemos recorrer la tabla `bus_rutas` como si fuera un grafo y calcular rutas posibles entre ciudades. Te muestro algunos ejemplos en **SQL estándar** (válido en MySQL 8+, PostgreSQL, SQL Server, etc.):
+
+---
+
+### 1. Todas las rutas directas
+
+Consulta básica para ver las conexiones inmediatas:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">bus_rutas</span><span class="p">;</span>
+</code></pre></div>
+
+---
+
+### 2. Rutas de **dos tramos** (con un transbordo)
+
+Usando un `JOIN` simple:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">WITH</span><span class="w"> </span><span class="n">rutas_dos_tramos</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">r1</span><span class="p">.</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">r1</span><span class="p">.</span><span class="n">destino</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">intermedio</span><span class="p">,</span><span class="w"> </span><span class="n">r2</span><span class="p">.</span><span class="n">destino</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">bus_rutas</span><span class="w"> </span><span class="n">r1</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">bus_rutas</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">r1</span><span class="p">.</span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r2</span><span class="p">.</span><span class="n">origen</span>
+<span class="linenos" data-linenos="5 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas_dos_tramos</span><span class="p">;</span>
+</code></pre></div>
+
+👉 Esto devuelve rutas del tipo `Madrid → Valencia → Sevilla`.
+
+---
+
+### 3. Rutas de **varios tramos (recursivas)**
+
+Con un CTE recursivo podemos encontrar rutas de cualquier longitud:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">rutas</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="c1">-- Caso base: rutas directas</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">,</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">camino</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pasos</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">bus_rutas</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="c1">-- Caso recursivo: extender la ruta actual</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">         </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">rutas</span><span class="p">.</span><span class="n">camino</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">destino</span><span class="p">),</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">         </span><span class="n">rutas</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">bus_rutas</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">origen</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="w">  </span><span class="c1">-- límite para evitar bucles infinitos</span>
+<span class="linenos" data-linenos="15 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="16 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span><span class="p">;</span>
+</code></pre></div>
+
+👉 Esto te da todas las rutas posibles hasta 5 saltos, con el detalle del camino completo.
+
+---
+
+### 4. Rutas posibles entre dos ciudades concretas
+
+Por ejemplo, de **Madrid a Sevilla**:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">rutas</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">,</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">camino</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pasos</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">bus_rutas</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">origen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Madrid&#39;</span>
+<span class="linenos" data-linenos=" 5 "></span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">         </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">rutas</span><span class="p">.</span><span class="n">camino</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">destino</span><span class="p">),</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">         </span><span class="n">rutas</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">bus_rutas</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">origen</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">6</span>
+<span class="linenos" data-linenos="14 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="15 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="linenos" data-linenos="16 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span>
+<span class="linenos" data-linenos="17 "></span><span class="k">WHERE</span><span class="w"> </span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Sevilla&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+👉 Esto te devuelve **todas las posibles combinaciones de rutas** desde Madrid hasta Sevilla (con 1, 2, 3… transbordos).
+
+¡Muy buena idea! 🚍💶
+Si añadimos una columna `precio` (por ejemplo, `DECIMAL(6,2)`), entonces las CTE pueden acumular también el coste total del viaje.
+
+---
+
+### 1. Crear la tabla con precio
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">bus_rutas</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="n">origen</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="n">destino</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">),</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="n">precio</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="p">);</span>
+<span class="linenos" data-linenos=" 7 "></span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">bus_rutas</span><span class="w"> </span><span class="p">(</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">,</span><span class="w"> </span><span class="n">precio</span><span class="p">)</span><span class="w"> </span><span class="k">VALUES</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="p">(</span><span class="s1">&#39;Madrid&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Barcelona&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="p">(</span><span class="s1">&#39;Barcelona&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Madrid&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="p">(</span><span class="s1">&#39;Madrid&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Valencia&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="p">(</span><span class="s1">&#39;Valencia&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sevilla&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="p">(</span><span class="s1">&#39;Sevilla&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Granada&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">  </span><span class="p">(</span><span class="s1">&#39;Granada&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Málaga&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">  </span><span class="p">(</span><span class="s1">&#39;Málaga&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Sevilla&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">  </span><span class="p">(</span><span class="s1">&#39;Bilbao&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;San Sebastián&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">  </span><span class="p">(</span><span class="s1">&#39;San Sebastián&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pamplona&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">  </span><span class="p">(</span><span class="s1">&#39;Pamplona&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Zaragoza&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">.</span><span class="mi">00</span><span class="p">),</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">  </span><span class="p">(</span><span class="s1">&#39;Zaragoza&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Madrid&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">.</span><span class="mi">00</span><span class="p">);</span>
+</code></pre></div>
+
+---
+
+### 2. Rutas de dos tramos con precio total
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">WITH</span><span class="w"> </span><span class="n">rutas_dos_tramos</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">r1</span><span class="p">.</span><span class="n">origen</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">         </span><span class="n">r1</span><span class="p">.</span><span class="n">destino</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">intermedio</span><span class="p">,</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">         </span><span class="n">r2</span><span class="p">.</span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">         </span><span class="n">r1</span><span class="p">.</span><span class="n">precio</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r2</span><span class="p">.</span><span class="n">precio</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">precio_total</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">bus_rutas</span><span class="w"> </span><span class="n">r1</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">bus_rutas</span><span class="w"> </span><span class="n">r2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">r1</span><span class="p">.</span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r2</span><span class="p">.</span><span class="n">origen</span>
+<span class="linenos" data-linenos="8 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="9 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas_dos_tramos</span><span class="p">;</span>
+</code></pre></div>
+
+👉 Ejemplo: `Madrid → Valencia → Sevilla` cuesta **60 €**.
+
+---
+
+### 3. Rutas con precio acumulado (recursivas)
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">rutas</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="c1">-- Caso base: trayectos directos</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">         </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">camino</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">         </span><span class="n">precio</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">precio_total</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">         </span><span class="mi">1</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pasos</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">bus_rutas</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="c1">-- Extender rutas</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">         </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">rutas</span><span class="p">.</span><span class="n">camino</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">destino</span><span class="p">),</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">         </span><span class="n">rutas</span><span class="p">.</span><span class="n">precio_total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">precio</span><span class="p">,</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">         </span><span class="n">rutas</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">bus_rutas</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">origen</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5</span><span class="w">  </span><span class="c1">-- límite de saltos</span>
+<span class="linenos" data-linenos="19 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="20 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span><span class="p">;</span>
+</code></pre></div>
+
+---
+
+### 4. Ejemplo: rutas de **Madrid a Granada** con precio total
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">rutas</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">         </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">camino</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">         </span><span class="n">precio</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">precio_total</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">         </span><span class="mi">1</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pasos</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">bus_rutas</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">origen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Madrid&#39;</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">         </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">rutas</span><span class="p">.</span><span class="n">camino</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">destino</span><span class="p">),</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">         </span><span class="n">rutas</span><span class="p">.</span><span class="n">precio_total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">precio</span><span class="p">,</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">         </span><span class="n">rutas</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">bus_rutas</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">origen</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">6</span>
+<span class="linenos" data-linenos="18 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="19 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="linenos" data-linenos="20 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span>
+<span class="linenos" data-linenos="21 "></span><span class="k">WHERE</span><span class="w"> </span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Granada&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+👉 Esto devuelve las **posibles combinaciones de rutas** de `Madrid` a `Granada`, junto con el **precio total** de cada trayecto.
+
+---
+
+¡Genial! 🚍💶
+Vamos a calcular la **ruta más barata** entre dos ciudades (ejemplo: `Madrid → Granada`) usando un **CTE recursivo** que acumula costes y luego seleccionando el mínimo.
+
+---
+
+### Consulta: ruta más barata entre Madrid y Granada
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">rutas</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="c1">-- Caso base: trayectos directos desde Madrid</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">         </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">camino</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">         </span><span class="n">precio</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">precio_total</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">         </span><span class="mi">1</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pasos</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">bus_rutas</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">origen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Madrid&#39;</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="c1">-- Caso recursivo: extender la ruta</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">         </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">rutas</span><span class="p">.</span><span class="n">camino</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">destino</span><span class="p">),</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">         </span><span class="n">rutas</span><span class="p">.</span><span class="n">precio_total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">precio</span><span class="p">,</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">         </span><span class="n">rutas</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">bus_rutas</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">origen</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">rutas</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">6</span><span class="w">   </span><span class="c1">-- límite para evitar bucles infinitos</span>
+<span class="linenos" data-linenos="20 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="21 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="linenos" data-linenos="22 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span>
+<span class="linenos" data-linenos="23 "></span><span class="k">WHERE</span><span class="w"> </span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Granada&#39;</span>
+<span class="linenos" data-linenos="24 "></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">precio_total</span><span class="w"> </span><span class="k">ASC</span>
+<span class="linenos" data-linenos="25 "></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
+
+---
+
+### 🔎 ¿Qué hace esta consulta?
+
+1. Empieza en `Madrid` con todos los trayectos directos.
+2. Recorre la red extendiendo rutas y acumulando el **precio total**.
+3. Filtra solo las rutas que llegan a **Granada**.
+4. Ordena por `precio_total` y se queda con la más barata (`LIMIT 1`).
+
+👉 Resultado esperado (con los datos de ejemplo):
+`Madrid → Valencia → Sevilla → Granada` con un **precio total de 75 €**.
+
+---
+
+🚍💶 Perfecto.
+Montar la **ruta más barata entre todas las parejas de ciudades** en SQL se puede hacer con un **CTE recursivo** que explore todas las rutas y luego seleccionar el mínimo coste por cada combinación `(origen, destino)`.
+
+Aquí tienes un ejemplo estilo *Floyd-Warshall simplificado con SQL*:
+
+---
+
+### 1. Generar todas las rutas posibles con precios acumulados
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">rutas</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="c1">-- Caso base: trayectos directos</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">origen</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">         </span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">         </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">camino</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">         </span><span class="n">precio</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">precio_total</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">         </span><span class="mi">1</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pasos</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">bus_rutas</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="c1">-- Caso recursivo: extender rutas</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">origen</span><span class="p">,</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">         </span><span class="n">b</span><span class="p">.</span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">         </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">camino</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">destino</span><span class="p">),</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">         </span><span class="n">r</span><span class="p">.</span><span class="n">precio_total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">precio</span><span class="p">,</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">         </span><span class="n">r</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span><span class="w"> </span><span class="n">r</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">bus_rutas</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">origen</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">6</span><span class="w">   </span><span class="c1">-- límite de saltos para evitar ciclos infinitos</span>
+<span class="linenos" data-linenos="21 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="22 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span>
+<span class="linenos" data-linenos="23 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span><span class="p">;</span>
+</code></pre></div>
+
+Esto genera **todas las rutas posibles** entre todas las ciudades hasta 6 saltos, con el precio acumulado.
+
+---
+
+### 2. Seleccionar la ruta más barata por cada par `(origen, destino)`
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">RECURSIVE</span><span class="w"> </span><span class="n">rutas</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">origen</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">         </span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">         </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">camino</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">         </span><span class="n">precio</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">precio_total</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">         </span><span class="mi">1</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">pasos</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">bus_rutas</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span>
+<span class="linenos" data-linenos="10 "></span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">origen</span><span class="p">,</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">         </span><span class="n">b</span><span class="p">.</span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">         </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">camino</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; -&gt; &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">destino</span><span class="p">),</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">         </span><span class="n">r</span><span class="p">.</span><span class="n">precio_total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">precio</span><span class="p">,</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">         </span><span class="n">r</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span><span class="w"> </span><span class="n">r</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">  </span><span class="k">JOIN</span><span class="w"> </span><span class="n">bus_rutas</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">origen</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">  </span><span class="k">WHERE</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">pasos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">6</span>
+<span class="linenos" data-linenos="19 "></span><span class="p">),</span>
+<span class="linenos" data-linenos="20 "></span><span class="n">rutas_min</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">  </span><span class="k">SELECT</span><span class="w"> </span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span><span class="p">,</span><span class="w"> </span><span class="k">MIN</span><span class="p">(</span><span class="n">precio_total</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">precio_min</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">  </span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">  </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">destino</span>
+<span class="linenos" data-linenos="24 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="25 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">rm</span><span class="p">.</span><span class="n">origen</span><span class="p">,</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">       </span><span class="n">rm</span><span class="p">.</span><span class="n">destino</span><span class="p">,</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">       </span><span class="n">rm</span><span class="p">.</span><span class="n">precio_min</span><span class="p">,</span>
+<span class="linenos" data-linenos="28 "></span><span class="w">       </span><span class="n">r</span><span class="p">.</span><span class="n">camino</span>
+<span class="linenos" data-linenos="29 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">rutas_min</span><span class="w"> </span><span class="n">rm</span>
+<span class="linenos" data-linenos="30 "></span><span class="k">JOIN</span><span class="w"> </span><span class="n">rutas</span><span class="w"> </span><span class="n">r</span>
+<span class="linenos" data-linenos="31 "></span><span class="w">  </span><span class="k">ON</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">origen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rm</span><span class="p">.</span><span class="n">origen</span>
+<span class="linenos" data-linenos="32 "></span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">destino</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rm</span><span class="p">.</span><span class="n">destino</span>
+<span class="linenos" data-linenos="33 "></span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">precio_total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rm</span><span class="p">.</span><span class="n">precio_min</span>
+<span class="linenos" data-linenos="34 "></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">rm</span><span class="p">.</span><span class="n">origen</span><span class="p">,</span><span class="w"> </span><span class="n">rm</span><span class="p">.</span><span class="n">destino</span><span class="p">;</span>
+</code></pre></div>
+
+---
+
+### 🔎 ¿Qué devuelve?
+
+* Todas las **ciudades de origen y destino**.
+* El **precio mínimo** del viaje.
+* El **camino concreto** (por ejemplo: `Madrid -> Valencia -> Sevilla -> Granada`).
+
+---
+
+¿Quieres que te prepare un **dataset más grande de rutas españolas con precios** (20–30 trayectos) para que estas consultas den resultados más ricos?
+
+
+-->
+
 <!--
 ## Ejercicios Resueltos
 

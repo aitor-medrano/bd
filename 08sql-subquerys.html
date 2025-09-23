@@ -2215,68 +2215,6 @@
 <span class="linenos" data-linenos="4 "></span><span class="c1">-- Query OK, 5 rows affected (0.006 sec)</span>
 </code></pre></div>
 <p>Es importante tener en cuenta que algunos SGBD no permiten modificar/eliminar los datos que se están leyenda en la subconsulta.</p>
-<!--
-TODO: MERGE INTO
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">MERGE</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">tabla_destino</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">t</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">USING</span><span class="w"> </span><span class="n">tabla_origen</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">s</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">ON</span><span class="w"> </span><span class="p">(</span><span class="n">condición_de_coincidencia</span><span class="p">)</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">WHEN</span><span class="w"> </span><span class="n">MATCHED</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">columna1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valor1</span><span class="p">,</span><span class="w"> </span><span class="n">columna2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">valor2</span>
-<span class="linenos" data-linenos="6 "></span><span class="k">WHEN</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">MATCHED</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="p">(</span><span class="n">columna1</span><span class="p">,</span><span class="w"> </span><span class="n">columna2</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
-<span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">valor1</span><span class="p">,</span><span class="w"> </span><span class="n">valor2</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
-</code></pre></div>
-
-Sincronización de productos
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="n">MERGE</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">productos</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">USING</span><span class="w"> </span><span class="n">productos_nuevos</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">n</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">ON</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">id_producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">id_producto</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="k">WHEN</span><span class="w"> </span><span class="n">MATCHED</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">nombre</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="n">precio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">precio</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="n">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">stock</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="k">WHEN</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">MATCHED</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="p">(</span><span class="n">id_producto</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">precio</span><span class="p">,</span><span class="w"> </span><span class="n">stock</span><span class="p">)</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="n">id_producto</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">precio</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">stock</span><span class="p">);</span>
-</code></pre></div>
-
-Borrado condicionado
-
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="n">MERGE</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">productos</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">p</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">USING</span><span class="w"> </span><span class="n">productos_nuevos</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">n</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">ON</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">id_producto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">id_producto</span><span class="p">)</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="k">WHEN</span><span class="w"> </span><span class="n">MATCHED</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">nombre</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="n">precio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">precio</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">        </span><span class="n">p</span><span class="p">.</span><span class="n">stock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">stock</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="k">WHEN</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">MATCHED</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="k">INSERT</span><span class="w"> </span><span class="p">(</span><span class="n">id_producto</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">precio</span><span class="p">,</span><span class="w"> </span><span class="n">stock</span><span class="p">)</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="n">id_producto</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">precio</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">stock</span><span class="p">)</span>
-<span class="linenos" data-linenos="12 "></span><span class="k">WHEN</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="n">MATCHED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">SOURCE</span><span class="w"> </span><span class="k">THEN</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">DELETE</span><span class="p">;</span>
-</code></pre></div>
-
-MERGE INTO combina inserción, actualización y eliminación en una sola instrucción.
-
-Se usa sobre todo para sincronizar tablas o integrar datos externos.
-
-Es más eficiente y seguro que ejecutar varias operaciones independientes.
-
-MERGE INTO sales.order_item AS oi  
-USING (SELECT id, price FROM products.catalog WHERE id = product_id_param) AS prod
-ON oi.product_id = prod.id AND oi.order_id = pending_order_id
-WHEN MATCHED THEN
-    UPDATE SET quantity = quantity_param
-WHEN NOT MATCHED THEN
-    INSERT (order_id, product_id, quantity, price)
-    VALUES (pending_order_id, prod.id, quantity_param, prod.price);
-
--->
-
 <div class="admonition warning">
 <p class="admonition-title">CTE y modificaciones</p>
 <p>Cabe destacar que MariaDB todavía no soporta CTE para el DML, sólo para hacer <code>SELECT</code> tras el <code>WITH</code>.</p>

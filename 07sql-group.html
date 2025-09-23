@@ -642,6 +642,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Funciones ventana">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sintaxis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sintaxis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1306,6 +1321,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Funciones ventana">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sintaxis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sintaxis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1908,14 +1938,15 @@ FIXME: Revisar JJS + formatear
 </li>
 </ul>
 <h2 id="funciones-ventana">Funciones ventana<a class="headerlink" href="#funciones-ventana" title="Permanent link">&para;</a></h2>
-<p>Desde <a href="https://en.wikipedia.org/wiki/SQL:2003">SQL:2003</a> podemos emplear las <a href="https://mariadb.com/kb/en/window-functions-overview/">funciones ventana</a>, las cuales son similares a las consultas <code>group by</code> en cuanto que permiten ejecutar funciones agregadas en varias filas. La diferencia es que permiten funciones de agregación incorporadas sin necesidad de agrupar cada campo en una sola fila.</p>
+<p>Desde <a href="https://en.wikipedia.org/wiki/SQL:2003">SQL:2003</a> podemos emplear las <a href="https://mariadb.com/kb/en/window-functions-overview/">funciones ventana</a>, las cuales son similares a las consultas <code>group by</code> en cuanto que permiten ejecutar funciones agregadas en varias filas. La diferencia es que permiten funciones de agregación incorporadas sin necesidad de agrupar cada campo en una sola fila, es decir, permiten realizar cálculos en horizontal.</p>
 <figure style="align: center;">
     <img src="images/07aggregate-vs-window-functions.webp" width="800" title="Funciones Ventana">
     <figcaption>Funciones Ventana - https://learnsql.com</figcaption>
 </figure>
 
-<p>Vamos a realizar un ejemplo para explicarlo mejor. Para ello, vamos a recuperar para cada empleado, cuantos empleados trabajan en su mismo departamento, es decir, cuantos compañeros tiene.</p>
-<p>Nuestra primera idea, para obtener cuantas personas trabajan en un departamento y agrupar por el código del departamento y contar cuantas personas trabajan.</p>
+<hr />
+<p>Vamos a realizar un ejemplo para entender mejor qué podemos obtener mediante su uso. Para ello, vamos a recuperar para cada empleado, cuantos empleados trabajan en su mismo departamento, es decir, cuantos compañeros tiene.</p>
+<p>Nuestra primera idea, para obtener cuantas personas trabajan en un departamento, es agrupar por el código del departamento y contar cuantas personas trabajan.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CodDep</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+----------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodDep | count(*) |</span>
@@ -1944,8 +1975,7 @@ FIXME: Revisar JJS + formatear
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- +-----------------------------+--------+----------+</span>
 <span class="linenos" data-linenos="13 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>Mientras que una cláusula <code>group by</code> devolverá un registro por cada valor de grupo coincidente,
-una función de ventana, la cual no contrae los resultados por grupo, puede devolver un registro distinto para cada fila.</p>
+<p>Mientras que una cláusula <code>group by</code> devolverá un registro por cada valor de grupo coincidente, una función de ventana, la cual no contrae los resultados por grupo, puede devolver un registro distinto para cada fila.</p>
 <p>Así que, si quisiéramos obtener el nombre de todos los empleados, y además, cuantos compañeros tiene, podemos realizar una partición por el código del empleado. Para ello, hemos de utilizar la cláusula <strong><code>OVER (PARTITION BY campo)</code></strong> precedida de la función ventana que queramos emplear; en este caso, contaremos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span>
 <span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">companyeros</span>
@@ -1966,9 +1996,15 @@ una función de ventana, la cual no contrae los resultados por grupo, puede devo
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- +-----------------------------+--------+-------------+</span>
 <span class="linenos" data-linenos="18 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>Podemos pensar en <code>PARTITION BY</code> como algo parecido a <code>GROUP BY</code>, pero en lugar de agrupar
-los resultados fuera de la lista de atributos <code>SELECT</code>, y por lo tanto, combinar los resultados en menos filas, devuelve los valores agrupados como cualquier otro campo (calculando sobre la variable agrupada pero, por lo demás, como un atributo más).</p>
-<p>Las funciones ventana se pueden dividir en tres tipos:</p>
+<h3 id="sintaxis">Sintaxis<a class="headerlink" href="#sintaxis" title="Permanent link">&para;</a></h3>
+<p>La <a href="https://mariadb.com/docs/server/reference/sql-functions/special-functions/window-functions/window-functions-overview">sintaxis</a> básica que emplearemos es:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">funcion_ventana</span><span class="p">()</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">campo</span><span class="p">)</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">tabla</span><span class="p">;</span>
+</code></pre></div>
+<p>Las consultas que utilizan funciones ventana dividen los datos en grupos (ventanas) con la cláusula <code>OVER</code> y luego aplican una función a cada ventana. La cláusula <code>PARTITION BY</code> dentro de <code>OVER</code> define cómo se dividen los datos en esas ventanas.</p>
+<p>Podemos pensar en <code>PARTITION BY</code> como algo parecido a <code>GROUP BY</code>, pero en lugar de agrupar los resultados, lo hacemos fuera de la lista de atributos <code>SELECT</code>, y por lo tanto, combina los resultados en menos filas y devuelve los valores agrupados como cualquier otro campo (calculando sobre la variable agrupada pero, por lo demás, como un atributo más).</p>
+<p>Respecto a las funciones ventana que podemos utilizar, se pueden dividir en tres tipos:</p>
 <ol>
 <li>Agregadas, con los operadores ya vistos, como <code>SUM</code>, <code>COUNT</code>, <code>AVG</code>, etc...</li>
 <li><em>Ranking</em> o clasificación, como <a href="https://mariadb.com/kb/en/row_number/"><code>ROW_NUMBER()</code></a>, <a href="https://mariadb.com/kb/en/rank/"><code>RANK()</code></a>, <a href="https://mariadb.com/kb/en/ntile/"><code>NTILE()</code></a>, etc...</li>

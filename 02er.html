@@ -2129,57 +2129,6 @@ De cada departamento sabremos su <strong>nombre</strong>, el <strong>número del
 </figure>
 
 <p>Otra posibilidad es crear una entidad débil, por ejemplo, <code>PRESTAMO</code>, con restricciones de ID con <code>LIBRO</code> y <code>USUARIO</code>.</p>
-<div class="admonition info">
-<p class="admonition-title">Supuesto II Empresa</p>
-<p>Vamos a ampliar el sistema de información anterior para almacenar más información. El nuevo sistema de información es:</p>
-<p>La empresa está organizada en departamentos. Cada uno tiene un nombre único, el número del despacho en el que se ubica y un empleado que lo dirige. Nos interesa la fecha que empezó a dirigirlo.</p>
-<p>Cada departamento controla una serie de proyectos, los cuales tienen nombre y número únicos.</p>
-<p>De cada empleado nos interesa el DNI, nombre, fecha de nacimiento, salario y departamento en el que trabaja. Cada empleado puede trabajar en más de un proyecto, dedicándole un determinado número de horas a la semana en cada proyecto.</p>
-<p>Finalmente, queremos guardar también los familiares de cada empleado, para administrar información relativa a las pólizas de seguros. De los familiares, queremos saber el nombre, fecha de nacimiento y parentesco con el empleado.</p>
-<details class="example">
-<summary>Solución</summary>
-<p>Si volvemos a repetir el mismo proceso que hemos realizando anteriormente, vamos a localizar las entidades y las relaciones buscando los sustantivos y los verbos:</p>
-<blockquote>
-<p>La empresa está organizada en <strong>departamentos</strong>. Cada uno tiene un nombre único, el número del despacho en el que se ubica y un empleado que lo <ins>dirige</ins>. Nos interesa la fecha que empezó a dirigirlo.</p>
-<p>Cada departamento <ins>controla</ins> una serie de <strong>proyectos</strong>, los cuales tienen nombre y número únicos.</p>
-<p>De cada <strong>empleado</strong> nos interesa el DNI, nombre, fecha de nacimiento, salario y departamento en el que <ins>trabaja</ins>. Cada empleado puede <ins>dedicarse</ins> a más de un proyecto, facturando un determinado número de horas a la semana a cada proyecto.</p>
-<p>Finalmente, queremos guardar también los <strong>familiares</strong> que <ins>tiene</ins> cada empleado, para administrar información relativa a las pólizas de seguros. De los familiares, queremos saber el nombre, fecha de nacimiento y parentesco con el empleado.</p>
-</blockquote>
-<p>Resumiendo, hemos localizado:</p>
-<ul>
-<li>Entidades: <code>EMPLEADO</code>, <code>DPTO</code>, <code>PROYECTO</code> y <code>FAMILIAR</code>.</li>
-<li>Relaciones:<ul>
-<li><code>DIRIGIR</code> entre <code>EMPLEADO</code> y <code>DPTO</code>.</li>
-<li><code>TRABAJAR</code> entre <code>EMPLEADO</code> y <code>DPTO</code>.</li>
-<li><code>CONTROLAR</code> entre <code>DPTO</code> y <code>PROYECTO</code>.</li>
-<li><code>DEDICARSE</code> entre <code>EMPLEADO</code> y <code>PROYECTO</code>.</li>
-<li><code>TENER</code> entre <code>EMPLEADO</code> y <code>FAMILIAR</code>.     </li>
-</ul>
-</li>
-</ul>
-<p>Si nos centramos en las cardinalidades de las relaciones, tenemos:</p>
-<ul>
-<li><code>Card(EMPLEADO, DIRIGIR) = (0,1)</code> y <code>Card(DPTO, DIRIGIR) = (1,1)</code></li>
-<li><code>Card(EMPLEADO, TRABAJAR) = (0,N)</code> y <code>Card(DPTO, TRABAJAR) = (1,N)</code></li>
-<li><code>Card(DPTO, CONTROLAR) = (1,N)</code> y <code>Card(PROYECTO, CONTROLAR) = (0,N)</code></li>
-<li><code>Card(EMPLEADO, DEDICARSE) = (0,N)</code> y <code>Card(PROYECTO, DEDICARSE) = (0,N)</code></li>
-<li><code>Card(EMPLEADO, TENER) = (0,N)</code> y <code>Card(FAMILIAR, TENER) = (0,N)</code></li>
-</ul>
-<p>Finalmente, los atributos de las entidades y las relaciones son:</p>
-<ul>
-<li>Atributos de <code>EMPLEADO</code>: <code>dni</code> (atributo identificador), <code>nombre</code>, <code>fecha de nacimiento</code>, <code>salario</code>.</li>
-<li>Atributos de <code>DPTO</code>: <code>nombre</code> (atributo identificador), <code>número de despacho</code>.</li>
-<li>Atributos de <code>PROYECTO</code>: <code>nombre</code> y <code>número</code> (ambos atributos identificadores).</li>
-<li>Atributos de <code>FAMILIAR</code>: <code>nombre</code> (atributo identificador), <code>fecha de nacimiento</code>, <code>parentesco</code>.</li>
-<li>Atributos de las relaciones:<ul>
-<li><code>DIRIGIR</code>: <code>fecha_inicio</code></li>
-<li><code>DEDICARSE</code>: <code>horas_semana</code></li>
-</ul>
-</li>
-</ul>
-<!-- FIXME: Revisar y generar diagrama con herramienta -->
-</details>
-</div>
 <!-- TODO: Relaciones ternarias
 
 Las relaciones de grado mayor que dos, ya sean ternarias o de grado 4, son complejas de gestionar y, por lo general, se pueden dividir en relaciones binarias (con la ayuda de las agregaciones que veremos más adelante)
@@ -2194,6 +2143,8 @@ Las relaciones de grado mayor que dos, ya sean ternarias o de grado 4, son compl
 <p>Las relaciones reflexivas (o unarias) son aquellas relaciones de grado uno donde la misma entidad cumple dos roles diferentes en la relación, los cuales se representan escribiéndolo en cada lado de la relación.</p>
 <p>Algunos ejemplos comunes son cuando una persona se casa con otra persona, una pieza que se compone de otras piezas o un empleado es responsable de otro empleado.</p>
 <p>Vamos a centrarnos en el caso de que un empleado sea el responsable de otro, donde podemos decir que todo empleado trabaja para otro pero que el empleado responsable (el jefe) lo es de varios empleados, lo que daría lugar a una relación 1:N. Así pues, creamos una relación <code>TRABAJAR</code> y la unimos con <code>EMPLEADO</code> por los dos sentidos de la misma, y anotamos el rol en cada una de las cardinalidades.</p>
+<!-- TODO: Rol - Libro Kindle BD -->
+
 <!-- TODO: Relaciones exclusivas -->
 
 <div class="admonition tip">
@@ -2327,7 +2278,7 @@ Las relaciones de grado mayor que dos, ya sean ternarias o de grado 4, son compl
 </ol>
 <p><a name="supuesto-carreteras"></a></p>
 <div class="admonition info">
-<p class="admonition-title">Supuesto III Carreteras</p>
+<p class="admonition-title">Supuesto II Carreteras</p>
 <p>Se desea diseñar una base de datos que contenga la información relativa a todas las carreteras de España. Se pide realizar el diseño del modelo <abbr title="Entidad-Relación">ER</abbr> sabiendo que:</p>
 <ul>
 <li>Las carreteras se encuentran divididas en tramos.</li>
@@ -2338,10 +2289,6 @@ cuales no puede pertenecer a más de un área.</li>
 </ul>
 <details class="example">
 <summary>Solución</summary>
-<p><figure style="align: center;">
-    <img src="images/02solucion-carretera.png" width="850" title="Solución supuesto Carretera">
-    <figcaption>Solución supuesto Carreteras</figcaption>
-</figure></p>
 <p>Primero localizamos las entidades y sus atributos:</p>
 <ul>
 <li>Entidades: <code>CARRETERA</code>, <code>TRAMO</code>, <code>MUNICIPIO</code>, <code>AREA</code></li>
@@ -2353,6 +2300,10 @@ cuales no puede pertenecer a más de un área.</li>
 <li>Relación N:M nombrada como <code>PASAR</code> entre <code>TRAMO</code> y <code>MUNICIPIO</code>, ya que "<strong>un tramo puede pasar por varios términos municipales</strong>", y aunque no lo indica de forma explícita, deducimos que por un municipio pueden pasar varios tramos. Además, añadimos dos atributos en la relación para almacenar "el <strong>km del tramo por el que entra</strong> en dicho término municipal y el <strong>km por el que sale</strong>". Si hubiéramos colocado los atributos en <code>TRAMO</code> o en <code>MUNICIPIO</code> no tendrían el mismo significado, ya que nos interesa el dato de la relación entre las dos entidades y no de una de ellas por separado.</li>
 <li>Relación 1:N nombrada como <code>AGRUPAR</code> entre <code>TRAMO</code> Y <code>AREA</code>, ya que "existen una serie de <strong>áreas en las que se agrupan los tramos</strong>, cada uno de los cuales <strong>no puede pertenecer a más de un área</strong>.".</li>
 </ul>
+<p><figure style="align: center;">
+    <img src="images/02solucion-carretera.png" width="850" title="Solución supuesto Carretera">
+    <figcaption>Solución supuesto Carreteras</figcaption>
+</figure></p>
 </details>
 </div>
 <h3 id="restricciones">Restricciones<a class="headerlink" href="#restricciones" title="Permanent link">&para;</a></h3>
@@ -2391,6 +2342,61 @@ cuales no puede pertenecer a más de un área.</li>
     <img src="images/02cardinalidades-exactas.png" width="543" title="Cardinalidades exactas">
     <figcaption>Cardinalidades exactas</figcaption>
 </figure></p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Supuesto III Empresa</p>
+<p>Vamos a ampliar el sistema de información anterior para almacenar más información. El nuevo sistema es:</p>
+<p>La empresa está organizada en departamentos. Cada uno tiene un nombre único, el número del despacho en el que se ubica y un empleado que lo dirige. Nos interesa la fecha que empezó a dirigirlo.</p>
+<p>Cada departamento controla una serie de proyectos, los cuales tienen nombre y número únicos.</p>
+<p>De cada empleado nos interesa el DNI, nombre, fecha de nacimiento, salario y departamento en el que trabaja. Cada empleado puede trabajar en más de un proyecto, dedicándole un determinado número de horas a la semana en cada proyecto.</p>
+<p>Finalmente, queremos guardar también los familiares de cada empleado, para administrar información relativa a las pólizas de seguros. De los familiares, queremos saber el nombre, fecha de nacimiento y parentesco con el empleado.</p>
+<details class="example">
+<summary>Solución</summary>
+<p>Si volvemos a repetir el mismo proceso que hemos realizando anteriormente, vamos a localizar las entidades y las relaciones buscando los sustantivos y los verbos:</p>
+<blockquote>
+<p>La empresa está organizada en <strong>departamentos</strong>. Cada uno tiene un nombre único, el número del despacho en el que se ubica y un empleado que lo <ins>dirige</ins>. Nos interesa la fecha que empezó a dirigirlo.</p>
+<p>Cada departamento <ins>controla</ins> una serie de <strong>proyectos</strong>, los cuales tienen nombre y número únicos.</p>
+<p>De cada <strong>empleado</strong> nos interesa el DNI, nombre, fecha de nacimiento, salario y departamento en el que <ins>trabaja</ins>. Cada empleado puede <ins>dedicarse</ins> a más de un proyecto, facturando un determinado número de horas a la semana a cada proyecto.</p>
+<p>Finalmente, queremos guardar también los <strong>familiares</strong> que <ins>tiene</ins> cada empleado, para administrar información relativa a las pólizas de seguros. De los familiares, queremos saber el nombre, fecha de nacimiento y parentesco con el empleado.</p>
+</blockquote>
+<p>Resumiendo, hemos localizado:</p>
+<ul>
+<li>Entidades: <code>EMPLEADO</code>, <code>DPTO</code>, <code>PROYECTO</code> y <code>FAMILIAR</code>.</li>
+<li>Relaciones:<ul>
+<li><code>TRABAJAR</code> entre <code>EMPLEADO</code> y <code>DPTO</code>.</li>
+<li><code>SER_JEFE</code> entre <code>EMPLEADO</code> y <code>DPTO</code>.</li>
+<li><code>CONTROLAR</code> entre <code>DPTO</code> y <code>PROYECTO</code>.</li>
+<li><code>DEDICAR</code> entre <code>EMPLEADO</code> y <code>PROYECTO</code>.</li>
+<li><code>TENER</code> entre <code>EMPLEADO</code> y <code>FAMILIAR</code>.     </li>
+</ul>
+</li>
+</ul>
+<p>Si nos centramos en las cardinalidades de las relaciones, tenemos:</p>
+<ul>
+<li><code>Card(EMPLEADO, TRABAJAR) = (0, 1)</code> y <code>Card(DPTO, TRABAJAR) = (0, N)</code></li>
+<li><code>Card(EMPLEADO, SER_JEFE) = (0, 1)</code> y <code>Card(DPTO, SER_JEFE) = (1, 1)</code></li>
+<li><code>Card(DPTO, CONTROLAR) = (0, N)</code> y <code>Card(PROYECTO, CONTROLAR) = (1, 1)</code></li>
+<li><code>Card(EMPLEADO, DEDICAR) = (0, N)</code> y <code>Card(PROYECTO, DEDICAR) = (1, N)</code></li>
+<li><code>Card(EMPLEADO, TENER) = (0, N)</code> y <code>Card(FAMILIAR, TENER) = (1, 1)</code></li>
+</ul>
+<p>Finalmente, los atributos de las entidades y las relaciones son:</p>
+<ul>
+<li>Atributos de <code>EMPLEADO</code>: <code>dni</code> (atributo identificador), <code>nombre</code>, <code>fecha de nacimiento</code>, <code>salario</code>.</li>
+<li>Atributos de <code>DPTO</code>: <code>nombre</code> (atributo identificador), <code>número de despacho</code>.</li>
+<li>Atributos de <code>PROYECTO</code>: <code>nombre</code> y <code>número</code> (ambos atributos identificadores).</li>
+<li>Atributos de <code>FAMILIAR</code>: <code>nombre</code> (atributo identificador), <code>fecha de nacimiento</code>, <code>parentesco</code>.</li>
+<li>Atributos de las relaciones:<ul>
+<li><code>SER_JEFE</code>: <code>fecha de inicio</code></li>
+<li><code>DEDICARSE</code>: <code>horas semanales</code></li>
+</ul>
+</li>
+</ul>
+<p>Con estas consideraciones, el modelo resultante es:</p>
+<p><figure style="align: center;">
+    <img src="images/02solucion-empresa2.png" width="800px" title="Supuesto II - Empresa">
+    <figcaption>Supuesto II - Empresa</figcaption>
+</figure></p>
+</details>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Pérdida expresiva</p>
