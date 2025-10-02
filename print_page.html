@@ -2045,6 +2045,10 @@ Infracción muy grave sería recoger datos personales de manera fraudulenta y co
 <li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR109</strong>. (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se han analizado los sistemas lógicos de almacenamiento y sus características.">CE1a</abbr>, <abbr title="Se han identificado los distintos tipos de bases de datos según el modelo de datos utilizado.">CE1b</abbr>, <abbr title="Se han identificado los distintos tipos de bases de datos en función de la ubicación de la información.">CE1c</abbr>, <abbr title="Se ha evaluado la utilidad de un sistema gestor de bases de datos.">CE1d</abbr>, <abbr title="Se ha reconocido la función de cada uno de los elementos de un sistema gestor de bases de datos.">CE1e</abbr>, <abbr title="Se han clasificado los sistemas gestores de bases de datos.">CE1f</abbr>, <abbr title="Se ha identificado la legislación vigente sobre protección de datos.">CE1i</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
 </ul>
 <!--
+https://www.g2.com/categories/relational-databases?segment=all
+-->
+
+<!--
 Contenidos básicos:
 
 Almacenamiento de la información:
@@ -2249,7 +2253,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </table>
 <h2 id="02er-diseno-de-bases-de-datos">Diseño de Bases de Datos<a class="headerlink" href="#02er-diseno-de-bases-de-datos" title="Permanent link">&para;</a></h2>
 <p>Una vez que hemos trabajado conceptos generales asociados a las bases de datos y los sistemas gestores de bases de datos, tenemos claro que existen diferentes modelos de datos que dan lugar a diferentes tipos de soluciones.</p>
-<p>Pero antes de entrar en uno de los modelos, conviene saber cual es el proceso de diseño de una base de datos. Es lógico que un buen diseño sobre los datos va a facilitar el posterior desarrollo de las aplicaciones que explotan la base de datos.</p>
+<p>Pero antes de entrar en uno de los modelos, conviene saber cual es el proceso de diseño de una base de datos. Es lógico pensar que un buen diseño sobre los datos va a facilitar el posterior desarrollo de las aplicaciones que explotan la base de datos.</p>
 <div class="admonition abstract inline end">
 <p class="admonition-title">Sistema de información</p>
 <p>En la <a href="#01intro-introduccion">introducción</a> de la unidad anterior estudiamos que un sistema de información define cómo funciona una empresa y el uso que hace de los datos. Veamos un ejemplo concreto sobre una empresa.</p>
@@ -2949,23 +2953,19 @@ cuales no puede pertenecer a más de un área.</li>
     <img src="images/02solucion-empresa2.png" width="800px" title="Supuesto II - Empresa">
     <figcaption>Supuesto II - Empresa</figcaption>
 </figure></p>
+<p>Hemos considerado la relación <code>TENER</code> como una relación con una restricción de identificación, ya que un familiar no tiene sentido sin el empleado al que pertenece, y además, se identifica por su nombre y por el empleado al que pertenece. Respecto al parentesco, aunque podríamos pensar que pertenece a la relación <code>TENER</code>, lo hemos colocado en la entidad <code>FAMILIAR</code> ya que el familiar depende del empleado, y por tanto, duplicaríamos el familiar si tuviera parentesco con varios empleados.</p>
+<p>Una alternativa sería que el familiar se identificara por un código o id, eliminando la restricción de identificación, y por lo tanto, un familiar podría ser de más de un empleado a la vez, como podría ser el caso de un hijo que trabaja en la misma empresa que sus padres, o dos hermanos que trabajan con una tercera empleada, que es el esposa de uno y la hermana del otro. En este caso, el atributo de <code>parentesco</code> pasaría a la relación <code>TENER</code>, ya que el parentesco dependería del empleado y no del familiar.</p>
 </details>
 </div>
 <h4 id="02er-perdida-expresiva">Pérdida expresiva<a class="headerlink" href="#02er-perdida-expresiva" title="Permanent link">&para;</a></h4>
 <p>En ocasiones, los modelos conceptuales no son capaces de expresar todas las restricciones, relaciones o propiedades el mundo real, ya sea por algunas relaciones muy complejas, dependencias temporales o reglas de negocio.</p>
-<!-- TODO: AMPLIAR PE -->
-
-<p>Para ello, en el pie de los modelos indicaremos con texto una frase del estilo <em>"Pérdida expresiva: Todo cliente debe haber nacido en la misma provincia que la tienda donde realiza el pedido"</em>.</p>
-<!--
-#### Exclusividad o inclusividad entre relaciones
-
-En algunas ocasiones, una entidad puede participar en varias relaciones del mismo tipo, pero de manera exclusiva. Por ejemplo, un empleado puede ser jefe de un departamento o responsable de otro empleado, pero no las dos cosas a la vez. O un invitado a una boda puede acudir a la recepción o a una actividad lúdica, pero no a las dos cosas a la vez.
-
-Dentro de una misma entidad, si una ocurrencia participa en una relación, no puede participar en la otra. Es decir, las relaciones son excluyentes.
-
-Para representar esta exclusividad, se dibuja una línea discontinua que una las relaciones exclusivas. El problema es que esta notación no es estándar, y no todas las herramientas la soportan, de hecho, ERDPlus no la soporta.
--->
-
+<p>En estos casos, se dice que el modelo sufre una <strong>pérdida expresiva</strong> (o también pérdida semántica), y para evitar ambigüedades, es recomendable documentar dichas pérdidas mediante <em>notas de diseño</em> en el pie del modelo.</p>
+<p>Ejemplos de pérdidas expresivas pueden ser "Todo cliente debe haber nacido en la misma provincia que la tienda donde realiza el pedido", "Un empleado no puede trabajar en proyectos de departamentos diferentes al suyo", etc...</p>
+<p>Si nos centramos en el modelo del <a href="#02er-supuesto3">Supuesto III Empresa</a>, y el sistema de información nos dijese que <em>"Un empleado no puede ser jefe de su propio departamento"</em>, tendríamos una pérdida expresiva, ya que el modelo no puede expresar dicha restricción, y por lo tanto, en el pie del modelo pondríamos una nota de diseño indicando dicha restricción, como por ejemplo:</p>
+<ul>
+<li><abbr title="Pérdida expresiva">PE</abbr>: "Un empleado no puede ser jefe de su propio departamento".</li>
+</ul>
+<p>En algunas ocasiones, las pérdidas expresivas se pueden representar mediante restricciones en las relaciones, como la exclusividad o inclusividad, pero que nosotros, en este curso, no vamos a representar gráficamente (sólo lo soportan algunos modelos).</p>
 <h2 id="02er-el-modelo-entidad-relacion-extendido">El modelo Entidad Relación Extendido<a class="headerlink" href="#02er-el-modelo-entidad-relacion-extendido" title="Permanent link">&para;</a></h2>
 <p>Con el paso de los años, y dadas ciertas carencias del modelo entidad relación, a mediados de los años 80 se extendió con la incorporación de los conceptos de clase y subclase, junto con los conceptos de generalización y especialización, así como la agregación de entidades, dando lugar al modelo <em>Entidad Relación Extendido</em> (<strong><abbr title="Entidad-Relación Extendido">EER</abbr></strong>).</p>
 <h3 id="02er-generalizacion">Generalización<a class="headerlink" href="#02er-generalizacion" title="Permanent link">&para;</a></h3>
@@ -3097,7 +3097,7 @@ y los comunes se colocan en la superclase.</p>
 <p><a name="AC201"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC201</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr> // 3p) A partir del siguiente sistema de información:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>[AC201]</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr> // 3p) A partir del siguiente sistema de información:</p>
 <p>Una empresa vende productos a varios clientes.
 Se necesita conocer los datos personales de los clientes (nombre, apellidos, dni, dirección y fecha de nacimiento).
 Cada producto tiene un nombre y un código, así como un precio unitario. Un cliente puede comprar varios productos a la empresa, y un mismo producto puede ser comprado por varios clientes.
@@ -3113,7 +3113,7 @@ Los productos son suministrados por diferentes proveedores. Se debe tener en cue
 <p><a name="AR202"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR202</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr> // 3p) A partir del siguiente sistema de información de una naviera que transporta mercancías, crea el modelo <abbr title="Entidad-Relación">ER</abbr> únicamente con las entidades y las relaciones:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR202</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr> // 3p) A partir del siguiente sistema de información, crea el modelo <abbr title="Entidad-Relación">ER</abbr> únicamente con las entidades y las relaciones:</p>
 <p>Los encargados de transportar las mercancías son los capitanes de cada embarcación, de los que se quiere guardar el DNI, nombre, teléfono, dirección, salario y población en la que vive cuando no navega.</p>
 <p>De los contenedores transportados, interesa conocer su código, una descripción y las direcciones tanto del destinatario como del remitente. Un capitán transporta muchos contenedores, y un contenedor sólo puede ser distribuido por un capitán. De los puertos a las que llegan los contenedores interesa guardar el código de puerto y el nombre. Un contenedor sólo puede llegar a un puerto. Sin embargo, a un puerto pueden llegar varios contenedores.</p>
 <p>De las embarcaciones que llevan los capitanes, interesa conocer el nombre y la matrícula (cualquiera de los dos puede identificarlo), motor y astillero que lo fabricó. Un capitán puede navegar diferentes embarcaciones en fechas diferentes, y una embarcación puede ser capitaneado por varios capitanes.</p>
@@ -3311,6 +3311,91 @@ por un experto.</p>
 <li>Supuesto III - <a href="#02er-supuesto3">Empresa ampliada</a></li>
 <li>Supuesto IV - <a href="#02er-supuesto4">Tienda</a></li>
 </ul>
+<p>Otros sistemas de información resueltos, cortesía de <a href="mailto:j.vives@edu.gva.es">Jesús Vives</a> son:</p>
+<p><a name="supuesto5"></a></p>
+<div class="admonition info">
+<p class="admonition-title">Supuesto V Proveedores</p>
+<p>Tenemos que diseñar una base de datos sobre proveedores y disponemos de la siguiente información:</p>
+<ul>
+<li>De cada proveedor conocemos su nombre, dirección, localidad, provincia y un identificador de proveedor que será único para cada uno de ellos.</li>
+<li>Nos interesa llevar un control de las piezas que nos suministra cada proveedor. Es importante conocer la cantidad de las diferentes piezas que nos suministra y en qué fecha lo hace. Tenga en cuenta que un mismo proveedor nos puede suministrar una pieza con el mismo identificador en diferentes fechas. El diseño de la base de datos debe permitir almacenar un histórico con todas las fechas y las cantidades que nos ha proporcionado un proveedor.</li>
+<li>Una misma pieza puede ser suministrada por diferentes proveedores.</li>
+<li>De cada pieza conocemos un identificador que será único, nombre, color, precio y categoría.</li>
+<li>Pueden existir varias categorías y para cada categoría hay un nombre y un identificador de categoría único.</li>
+<li>Una pieza sólo puede pertenecer a una categoría. </li>
+</ul>
+<details class="example">
+<summary>Solución</summary>
+<p><figure style="align: center;">
+    <img src="images/02supuestoJV1_proveedores.png" width="1080" title="Supuesto V - Proveedores">
+    <figcaption>Supuesto V - Proveedores</figcaption>
+</figure></p>
+</details>
+</div>
+<p><a name="supuesto6"></a></p>
+<div class="admonition info">
+<p class="admonition-title">Supuesto VI Artículos y pedidos</p>
+<p>Una base de datos para una pequeña empresa debe contener información acerca de clientes, artículos y pedidos. Hasta el momento se registran los siguientes datos en documentos varios:</p>
+<ul>
+<li>
+<p>Para cada cliente: Número de cliente (único), Direcciones de envío (varias por cliente), Saldo, Límite de crédito (depende del cliente, pero en ningún caso debe superar los 20.000 €) y un Descuento.</p>
+</li>
+<li>
+<p>Para cada artículo: Número de artículo (único), Fábricas que lo distribuyen, Existencias de ese artículo en cada fábrica, Descripción del artículo.</p>
+</li>
+<li>
+<p>Para cada pedido: Cada pedido tiene una cabecera y el cuerpo del pedido. La cabecera está formada por el número de cliente, dirección de envío, un número de pedido y fecha del pedido. El cuerpo del pedido son varias líneas, en cada línea se especifican el número de línea y la cantidad del artículo solicitado en dicha línea. El número de línea se puede repetir, pero no puede repetirse dentro del mismo pedido </p>
+</li>
+</ul>
+<p>Además, se ha determinado que se debe almacenar la información de las fábricas. Sin embargo, dado el uso de distribuidores, se usará: Número de la fábrica (único) y Teléfono de contacto. Y se desean ver cuántos artículos (en total) provee la fábrica. También, por información estratégica, se podría incluir información de fábricas alternativas respecto de las que ya fabrican artículos para esta empresa.</p>
+<p>Nota: Una dirección se entenderá como Número, Calle, Comuna y Ciudad. Una fecha incluye la hora.</p>
+<p>Se pide hacer el diagrama <abbr title="Entidad-Relación">ER</abbr> para la base de datos que represente esta información.</p>
+<details class="example">
+<summary>Solución</summary>
+<p><figure style="align: center;">
+    <img src="images/02supuestoJV2_articulos_pedidos.png" width="1080" title="Supuesto VI - Artículos y Pedidos">
+    <figcaption>Supuesto VI - Artículos y Pedidos</figcaption>
+</figure></p>
+</details>
+</div>
+<p><a name="supuesto7"></a></p>
+<div class="admonition info">
+<p class="admonition-title">Supuesto VII Sistema de ventas</p>
+<p>Nos han contratado para hacer una <abbr title="Base de datos">BD</abbr> que permita apoyar la gestión de un sistema de ventas. La empresa necesita llevar un control de proveedores, clientes, productos y ventas.</p>
+<p>Un proveedor tiene un NIF, nombre, dirección, teléfono y página web. Un cliente también tiene NIF, nombre, dirección, pero puede tener varios teléfonos de contacto. La dirección se entiende por calle, número, ciudad y provincia. </p>
+<p>Un producto tiene un identificador único, nombre, precio actual, stock y nombre del proveedor. Además se organizan en categorías, y cada producto va sólo en una categoría. Una categoría tiene identificador, nombre y descripción.</p>
+<p>Por razones de contabilidad, se debe registrar la información de cada venta con un id, fecha, cliente, descuento y monto final. Además, se debe guardar el precio del producto en el momento de la venta, que puede ser diferente el precio actual de producto (esto es habitual, en ocasiones a los buenos clientes le hacemos un descuento al cliente, precio especial...), y la cantidad vendida en dicha venta y el monto total por el producto, entendiéndose como la cantidad vendida por el precio del producto en el momento de la venta.</p>
+<details class="example">
+<summary>Solución</summary>
+<p><figure style="align: center;">
+    <img src="images/02supuestoJV3_sistema_ventas.png" width="1080" title="Supuesto VII - Sistema de ventas">
+    <figcaption>Supuesto VII - Sistema de ventas</figcaption>
+</figure></p>
+</details>
+</div>
+<p><a name="supuesto8"></a></p>
+<div class="admonition info">
+<p class="admonition-title">Supuesto VIII Cadena editorial</p>
+<p>Tenemos esta información sobre una cadena editorial:</p>
+<ul>
+<li>La editorial tiene varias sucursales, con su domicilio, teléfono y un identificador de sucursal.</li>
+<li>Cada sucursal tiene varios empleados, de los cuales tendremos su nombre, apellidos, NIF y teléfono. Un empleado trabaja en una única sucursal.</li>
+<li>En cada sucursal se publican varias revistas, de las que almacenaremos su título, número de registro, periodicidad y tipo.</li>
+<li>Una revista puede ser publicada por varias sucursales.</li>
+<li>La editorial tiene periodistas (que no trabajan en las sucursales) que pueden escribir artículos para varias revistas. Almacenaremos los mismos datos que para los empleados, añadiendo su especialidad.</li>
+<li>En algunos casos los periodistas forman parejas de trabajo. Queremos saber que parejas forman. Eso sí, los periodistas sólo pueden formar una pareja de trabajo.</li>
+<li>También es necesario guardar las secciones fijas que tiene cada revista, que constan de un título y una extensión.</li>
+<li>Para cada revista, almacenaremos información de cada ejemplar, que incluirá la fecha, número de páginas y el número de ejemplares vendidos.</li>
+</ul>
+<p>Se pide hacer el diagrama <abbr title="Entidad-Relación">ER</abbr> para la base de datos que represente esta información.</p>
+<details class="example">
+<summary>Solución</summary>
+<p><figure style="align: center;">
+    <img src="images/02supuestoJV4_cadena_editorial.png" width="1080" title="Supuesto VIII - Cadena editorial">
+    <figcaption>Supuesto VIII - Cadena editorial</figcaption>
+</figure></p>
+</details>
+</div>
 <!--
 https://aules.edu.gva.es/fp/course/view.php?id=172181
 
@@ -3324,7 +3409,7 @@ Se requiere el desarrollo de un sistema de tráfico aéreo para la DGAC de todo 
 Se requiere una base de datos para una famosa cadena de cines, dentro de lo que se requiere se debe contemplar la venta y asignación de asientos a los clientes así como la venta de productos en la confitería de cada cine, la cartelera de las películas y funciones así como la asignación de las salas debe ser ingresada y planificada en el sistema considerando los siguiente.1. Planificación de Horarios disponibles acordé con la duración de cada película y la restricción de edad de la misma.2. Tipo de película, idioma y subtítulos disponibles en cartelera.3. Descuento a socios que tenga las tarjetas (silver, gold y black) y acumulación de puntos cobrables en entradas o ítems de confitería.4. Sistema debe almacenar del cliente las preferencias de películas, horarios y confites para en un futuro extraer información de mercadeo de productos u ofertas.5. Se debe guardas la recaudación total por cada función de los cines
 
 
-Se requiere una base de datos para una famosa cadena de cines, dentro de lo que se requiere se debe contemplar la venta y asignación de asientos a los clientes así como la venta deproductos en la confitería de cada cine, la cartelera de las películas y funciones así como la asignación de las salas debe ser ingresada y planificada en el sistema considerando los siguiente.1. Planificación de Horarios disponibles acordé con la duración de cada película y la restricción de edad de la misma.2. Tipo de película, idioma y subtítulos disponibles en cartelera.3. Descuento a socios que tenga las tarjetas (silver, gold y black) y acumulación de puntos cobrables en entradas o ítems de confitería.4. Sistema debe almacenar del cliente las preferencias de películas, horarios y confites para en un futuro extraer información de mercadeo de productos u ofertas.5. Se debe guardas la recaudación total por cada función de los cines
+Se requiere una base de datos para una famosa cadena de cines, dentro de lo que se requiere se debe contemplar la venta y asignación de asientos a los clientes así como la venta de productos en la confitería de cada cine, la cartelera de las películas y funciones así como la asignación de las salas debe ser ingresada y planificada en el sistema considerando los siguiente.1. Planificación de Horarios disponibles acordé con la duración de cada película y la restricción de edad de la misma.2. Tipo de película, idioma y subtítulos disponibles en cartelera.3. Descuento a socios que tenga las tarjetas (silver, gold y black) y acumulación de puntos cobrables en entradas o ítems de confitería.4. Sistema debe almacenar del cliente las preferencias de películas, horarios y confites para en un futuro extraer información de mercadeo de productos u ofertas.5. Se debe guardas la recaudación total por cada función de los cines
 -->
 
 <!--
