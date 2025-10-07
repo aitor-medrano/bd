@@ -2631,6 +2631,29 @@ y los comunes se colocan en la superclase.</p>
 <p>Así pues, creamos una entidad asociativa que funciona como una agregación, y la nombramos, por ejemplo como <code>SESION</code> (una sesión lectiva la imparte un docente en un aula) y ésta es la que relacionamos con la entidad <code>INCIDENCIA</code> mediante la relación <code>REGISTRAR</code>. Es importante destacar que la entidad asociativa no tiene atributo identificador, porque realmente es como si tuviera una restricción de identificación respecto a las otras entidades, a modo de entidad débil que necesita de todas las entidades con las que se asocia para identificarse.</p>
 <p>El mecanismo de agregación lo que hace es abstraer las entidades y la relación que las asocia para obtener una entidad compleja, conocida como entidad asociativa, que a su vez puede relacionarse como una entidad normal con el resto de entidades de nuestro sistema.</p>
 <p>Aunque tiene muchos puntos de contacto con una relación ternaria, la agregación remarca la relación entre una determinada pareja de entidades, al mismo tiempo que no implica una necesaria asociación con la tercera entidad, como si ocurre en las ternarias.</p>
+<div class="admonition question">
+<p class="admonition-title">Autoevaluación</p>
+<p>A partir del siguiente esquema <abbr title="Entidad-Relación Extendido">EER</abbr>, contesta con verdadero o falso, justificando la respuesta <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>:</p>
+<p><figure style="align: center;">
+    <img src="images/02eer-autoevaluacion.png" width="1080" title="Autoevaluación Clínica Veterinaria">
+    <figcaption>Autoevaluación Clínica Veterinaria</figcaption>
+</figure></p>
+<ol>
+<li>Una escuela sólo adiestra perros de una única raza.</li>
+<li>Un supervisor adiestra perros de cualquier raza.</li>
+<li>Siempre conocemos la fecha en que se adiestra un perro en una escuela.</li>
+<li>Una escuela <code>E</code> puede adiestrar el mismo perro <code>P</code> en varias fechas distintas.</li>
+<li>Si un perro es adiestrado en una escuela, obligatoriamente hay un supervisor para tal tarea.</li>
+<li>Todos los perros adiestrados en una escuela en concreto (por ejemplo: la <code>Escuela1</code>) son supervisados por un único supervisor, que siempre es el mismo para todos esos perros.</li>
+<li>Para toda raza conocemos al menos un perro que pertenece a ella.</li>
+<li>Para una escuela <code>E</code> hay tantas ocurrencias de la entidad <code>ESCUELA</code> como números de teléfono tiene.</li>
+<li>Los perros pueden no tener nombre.</li>
+<li>La base de datos sólo admite perros de razas puras, sin cruces.</li>
+<li>Siempre conozco el teléfono de todas las escuelas.</li>
+<li>Un supervisor, si adiestra a un determinado perro, lo hace una sola vez.</li>
+<li>Suponiendo que la perrita <code>Krypto</code> ha sido o es adiestrada en la escuela <code>DC Cans</code>, sólo ha ido una vez o está actualmente siendo adiestrada en esa escuela.</li>
+</ol>
+</div>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -3044,6 +3067,15 @@ Las actividades profesionales asociadas a esta función se aplican en:
 La formación del módulo contribuye a alcanzar los objetivos generales c), e), f), p) y t) del ciclo formativo y las competencias b), c), e), p) y t) del título.
 
 -->
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>1) F, 2) V, 3) V, 4) F, 5) F, 6) F, 7) F, 8) F, 9) V, 10) V, 11) F, 12) F, 13) V&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
