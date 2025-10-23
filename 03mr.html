@@ -1868,7 +1868,7 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 <p>Cuando estudiemos el modelo físico haremos más hincapié en todos los tipos de dominio existente. De momento, lo más importante es tener claro que todos los valores de un determinado campo en una tabla comparten el mismo dominio.</p>
 </div>
 <h3 id="claves">Claves<a class="headerlink" href="#claves" title="Permanent link">&para;</a></h3>
-<p>Cada tabla tiene una columna (o en algunos casos un conjunto de columnas) que sirven como <strong>clave primaria</strong> (<strong>PK</strong> / <em>primary key</em>). Su propósito es distinguir a una tupla de otra dentro de la tabla. </p>
+<p>Cada tabla tiene una columna (o en algunos casos un conjunto de columnas) que sirven como <strong>clave primaria</strong> (<strong><abbr title="Primary Key / Clave primaria">PK</abbr></strong> / <em>primary key</em>). Su propósito es distinguir a una tupla de otra dentro de la tabla. </p>
 <p><ins>Cada tabla debe tener una clave primaria</ins>, la cual es una columna (o conjunto de columnas) cuyo valor es único para cada fila.</p>
 <p>Volvamos al ejemplo anterior sobre la tabla <code>CLIENTE</code>:</p>
 <table>
@@ -1986,7 +1986,7 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 </tbody>
 </table>
 <h4 id="claves-ajenas">Claves ajenas<a class="headerlink" href="#claves-ajenas" title="Permanent link">&para;</a></h4>
-<p>Finalmente, tenemos las <strong>claves ajenas</strong> (<strong>FK</strong> / <em>foreign key</em>), los cuales son campos cuyos valores referencian a valores de otra tabla.</p>
+<p>Finalmente, tenemos las <strong>claves ajenas</strong> (<strong><abbr title="Foreign Key / Clave ajena">FK</abbr></strong> / <em>foreign key</em>), los cuales son campos cuyos valores referencian a valores de otra tabla.</p>
 <p>Dentro del modelo relacional, el hecho de relacionar los datos de una tabla con otra es crucial, y se realiza mediante las claves ajenas. Así pues, la clave ajena de una tabla referencia, normalmente, al valor de la clave primaria de otra tabla. Por ello, los dominios de la clave ajena y de la clave primaria referenciada deben ser iguales (un campo numérico no puede referenciar a un campo de texto).</p>
 <p>Comencemos con el mismo ejemplo que vimos con las <a href="02er.html#relacion-1n">relaciones 1:N</a> del modelo conceptual, donde teníamos que todo producto tiene una categoría, pero de una categoría, tenemos muchos productos, el cual representamos así:</p>
 <figure style="align: center;">
@@ -2467,22 +2467,22 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <p>Por ejemplo, un esquema lógico en modelo relacional que relaciona un libro con un autor, y un autor con muchos libros (relación 1:N) podría ser el siguiente:</p>
 <p><code>
 <strong>AUTOR</strong> (<ins>codigo</ins>: autonumérico, nombre: texto, fnac: fecha, nacionalidad: texto)<br />
-· PK: (codigo)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (codigo)
 </code></p>
 <p><code>
 <strong>LIBRO</strong> (<ins>isbn</ins>: texto, titulo: texto, descripcion: texto, autor<code>*</code>: numérico, editorial: texto, pvp: real)<br />
-· PK: (isbn)<br />
-· FK: (autor) → AUTOR
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (isbn)<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (autor) → AUTOR
 </code></p>
 <p>Por legibilidad, vamos a omitir los dominios y representar las tablas únicamente con el nombre de los campos, y posteriormente, en el diccionario de datos, definiremos sus tipos. De este modo, quedaría así:</p>
 <p><code>
 <strong>AUTOR</strong> (<ins>codigo</ins>, nombre, fnac, pais)<br />
-· PK: (codigo)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (codigo)
 </code></p>
 <p><code>
 <strong>LIBRO</strong> (<ins>isbn</ins>, titulo, autor<code>*</code>, editorial, pvp)<br />
-· PK: (isbn)<br />
-· FK: (autor) → AUTOR
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (isbn)<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (autor) → AUTOR
 </code></p>
 <p>Tenemos que el autor se identifica por un código, el cual es su clave primaria. En cambio, los libros se identifican por su ISBN, y tienen un atributo <code>autor</code> que referencia a la clave primaria de <code>AUTOR</code> (y por tanto, deben tener el mismo dominio). De esta relación, deducimos que el nombre del atributo de la clave ajena no tiene por qué coincidir con el nombre de la clave primaria, pero sí su dominio.</p>
 <p>Si analizamos las cardinalidades de las tablas, tenemos:</p>
@@ -2616,7 +2616,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
     <figcaption>Tabla AUTOR en ERDPlus</figcaption>
 </figure>
 
-<p>A continuación, repetimos los pasos y añadimos los campos de la tabla <code>LIBRO</code>, pero sin añadir la clave ajena. Para ello, mediante el botón <em>CONNECT</em> de la barra superior, pinchamos en <code>AUTOR</code> y arrastramos a <code>LIBRO</code>, y veremos como añade un nuevo atributo en la tabla <code>LIBRO</code> con la clave primaria de <code>AUTOR</code>, marcando el nuevo atributo con la etiqueta <em>FK</em>. A continuación, para que coincida con nuestro modelo lógico, renombramos el atributo, y lo colocamos tras el <code>titulo</code>:</p>
+<p>A continuación, repetimos los pasos y añadimos los campos de la tabla <code>LIBRO</code>, pero sin añadir la clave ajena. Para ello, mediante el botón <em>CONNECT</em> de la barra superior, pinchamos en <code>AUTOR</code> y arrastramos a <code>LIBRO</code>, y veremos como añade un nuevo atributo en la tabla <code>LIBRO</code> con la clave primaria de <code>AUTOR</code>, marcando el nuevo atributo con la etiqueta <em><abbr title="Foreign Key / Clave ajena">FK</abbr></em>. A continuación, para que coincida con nuestro modelo lógico, renombramos el atributo, y lo colocamos tras el <code>titulo</code>:</p>
 <figure style="align: center;">
     <img src="images/03erdplus-relationhip.gif" width="1243" title="Clave ajena con ERDPlus">
     <figcaption>Clave ajena con ERDPlus</figcaption>
@@ -2649,7 +2649,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <p>Si nos centramos en los modelos físicos, podríamos incluir otros componentes como índices, vistas, procedimientos almacenados y funciones o <em>triggers</em>, así como usuarios y permisos.</p>
 <h4 id="ejemplo">Ejemplo<a class="headerlink" href="#ejemplo" title="Permanent link">&para;</a></h4>
 <p>Para este ejemplo, nos vamos a basar en el mismo ejemplo que hemos utilizado en el apartado de <a href="#notacion">Notación</a>, donde un <code>AUTOR</code> escribe muchos <code>LIBRO</code>, pero un <code>LIBRO</code> sólo lo escribe un <code>AUTOR</code>.</p>
-<p>Para documentar el diccionario de datos, se utiliza una estructura de tabla con el nombre de la columna, el tipo de datos y una descripción del campo:</p>
+<p>Para documentar el diccionario de datos, se utiliza una estructura de tabla con el nombre de la columna, el tipo de datos, las restricciones y una descripción del campo:</p>
 <ul>
 <li>
 <p>Tabla <code>AUTOR</code></p>
@@ -2658,28 +2658,33 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <tr>
 <th><strong>Columna</strong></th>
 <th><strong>Tipo de Datos</strong></th>
+<th><strong>Restricción</strong></th>
 <th><strong>Descripción</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>codigo</code></td>
-<td><code>INT</code></td>
-<td>Clave primaria. Identificador único del autor.</td>
+<td><code>INT auto_increment</code></td>
+<td><abbr title="Primary Key / Clave primaria">PK</abbr></td>
+<td>Identificador único del autor.</td>
 </tr>
 <tr>
 <td><code>nombre</code></td>
 <td><code>VARCHAR(64)</code></td>
+<td></td>
 <td>Nombre del autor.</td>
 </tr>
 <tr>
 <td><code>fnac</code></td>
 <td><code>DATE</code></td>
+<td></td>
 <td>Fecha de nacimiento del autor.</td>
 </tr>
 <tr>
 <td><code>pais</code></td>
 <td><code>VARCHAR(32)</code></td>
+<td></td>
 <td>País de nacimiento del autor.</td>
 </tr>
 </tbody>
@@ -2692,6 +2697,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <tr>
 <th><strong>Columna</strong></th>
 <th><strong>Tipo de Datos</strong></th>
+<th><strong>Restricción</strong></th>
 <th><strong>Descripción</strong></th>
 </tr>
 </thead>
@@ -2699,36 +2705,39 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <tr>
 <td><code>isbn</code></td>
 <td><code>INT</code></td>
-<td>Clave primaria. Identificador único del libro.</td>
+<td><abbr title="Primary Key / Clave primaria">PK</abbr></td>
+<td>Identificador único del libro.</td>
 </tr>
 <tr>
 <td><code>titulo</code></td>
 <td><code>VARCHAR(64)</code></td>
+<td></td>
 <td>Título del libro.</td>
 </tr>
 <tr>
 <td><code>autor</code></td>
 <td><code>INT</code></td>
-<td>Clave foránea que referencia a <code>AUTOR.codigo</code>. Indica el autor del libro.</td>
+<td><abbr title="Foreign Key / Clave ajena">FK</abbr></td>
+<td>Indica el autor del libro, referenciando a <code>AUTOR.codigo</code>.</td>
 </tr>
 <tr>
 <td><code>editorial</code></td>
 <td><code>VARCHAR(32)</code></td>
+<td></td>
 <td>Editorial que publica el libro.</td>
 </tr>
 <tr>
 <td><code>pvp</code></td>
 <td><code>DECIMAL(10,2)</code></td>
+<td></td>
 <td>Precio de venta al público del libro.</td>
 </tr>
 </tbody>
 </table>
 </li>
 </ul>
-<p>A continuación, indicamos las relaciones y restricciones</p>
+<p>A continuación, indicamos las relaciones y restricciones de las claves ajenas:</p>
 <ul>
-<li><strong>Clave primaria en <code>AUTOR</code></strong>: <code>codigo</code></li>
-<li><strong>Clave primaria en <code>LIBRO</code></strong>: <code>isbn</code></li>
 <li><strong>Clave ajena en <code>LIBRO</code></strong>: <code>autor</code> referencia a <code>codigo</code> en la tabla <code>AUTOR</code>, indicando la relación entre un libro y su autor.<ul>
 <li>Restricción de borrado: rechazar.</li>
 <li>Restricción de modificación: propagar.</li>
@@ -2926,17 +2935,17 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <p>Si revisamos las dependencia funcionales, hemos de comprobar que  todos los atributos no clave dependan de toda la clave primaria. Para ello, necesitamos crear al menos tres tablas:</p>
 <p><code>
 <strong>COMERCIAL</strong> (<ins>comercialID</ins>, comercialNom, estadoID, estadoDesc)<br />
-· PK: (codigo)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (codigo)
 </code></p>
 <p><code>
 <strong>CIUDAD</strong> (<ins>ciudad</ins>, <ins>provincia</ins>, ciudadPob, provinciaPob)<br />
-· PK: (ciudad)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (ciudad)
 </code></p>
 <p><code>
 <strong>REGISTRO</strong> (<ins>comercialID</ins><code>*</code>, <ins>ciudad</ins><code>*</code>, <ins>provincia</ins><code>*</code>, ventas)<br />
-· PK: (comercialID, ciudad, provincia)<br />
-· FK: (comercialID) → COMERCIAL<br />
-· FK: (ciudad, provincia) → CIUDAD<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (comercialID, ciudad, provincia)<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (comercialID) → COMERCIAL<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (ciudad, provincia) → CIUDAD<br />
 </code></p>
 <p>Dando como resultado las siguientes tablas con datos:</p>
 <ul>
@@ -3122,27 +3131,27 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <p>Así pues, para deshacer las dependencias funcionales transitivas dividimos las tablas <code>COMERCIAL</code> y <code>CIUDAD</code> en dos nuevas tablas (<code>ESTADO</code>y <code>PROVINCIA</code>):</p>
 <p><code>
 <strong>ESTADO</strong> (<ins>estadoID</ins>, estadoDesc)<br />
-· PK: (codigo)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (codigo)
 </code></p>
 <p><code>
 <strong>COMERCIAL</strong> (<ins>comercialID</ins>, comercialNom, estadoID<code>*</code>)<br />
-· PK: (codigo)<br />
-· FK: (estadoID) → ESTADO<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (codigo)<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (estadoID) → ESTADO<br />
 </code></p>
 <p><code>
 <strong>PROVINCIA</strong> (<ins>provincia</ins>, provinciaPob)<br />
-· PK: (provincia)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (provincia)
 </code></p>
 <p><code>
 <strong>CIUDAD</strong> (<ins>ciudad</ins>, <ins>provincia</ins><code>*</code>, ciudadPob)<br />
-· PK: (ciudad)<br />
-· FK: (provincia) → PROVINCIA<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (ciudad)<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (provincia) → PROVINCIA<br />
 </code></p>
 <p><code>
 <strong>REGISTRO</strong> (<ins>comercialID</ins><code>*</code>, <ins>ciudad</ins><code>*</code>, <ins>provincia</ins><code>*</code>, ventas)<br />
-· PK: (comercialID, ciudad, provincia)<br />
-· FK: (comercialID) → COMERCIAL<br />
-· FK: (ciudad, provincia) → CIUDAD<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (comercialID, ciudad, provincia)<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (comercialID) → COMERCIAL<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (ciudad, provincia) → CIUDAD<br />
 </code></p>
 <p>Dando como resultado las siguientes tablas con datos:</p>
 <div class="grid cards" markdown>
@@ -3474,22 +3483,22 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <p>Como los atributos <code>nomAlumno</code>, <code>nomAsignatura</code>, <code>nomProfesor</code> tienen no tienen una <abbr title="Dependencia funcional completa">DFC</abbr> de la clave <code>(codAlumno, codAsignatura, codProfesor)</code> (ya que la tienen de un subconjunto de la clave, por ejemplo, el nombre del alumno depende funcionalmente de su código), necesitamos descomponer la relación en las siguientes tablas:</p>
 <p><code>
 <strong>ALUMNO</strong> (<ins>codAlumno</ins>, nomAlumno)<br />
-· PK: (codAlumno)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (codAlumno)
 </code></p>
 <p><code>
 <strong>ASIGNATURA</strong> (<ins>codAsignatura</ins>, nomAsignatura)<br />
-· PK: (codAsignatura)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (codAsignatura)
 </code></p>
 <p><code>
 <strong>PROFESOR</strong> (<ins>codProfesor</ins>, nomProfesor)<br />
-· PK: (codProfesor)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (codProfesor)
 </code></p>
 <p><code>
 <strong>CALIFICAR</strong> (<ins>codAlumno</ins><code>*</code>, <ins>codAlumno</ins><code>*</code>, <ins>codAlumno</ins><code>*</code>, nota)<br />
-· PK: (codAlumno, codAsignatura, codProfesor)<br />
-· FK: (codAlumno) → ALUMNO<br />
-· FK: (codAsignatura) → ASIGNATURA<br />
-· FK: (codProfesor) → PROFESOR<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (codAlumno, codAsignatura, codProfesor)<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (codAlumno) → ALUMNO<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (codAsignatura) → ASIGNATURA<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (codProfesor) → PROFESOR<br />
 </code></p>
 </li>
 <li>
@@ -3506,7 +3515,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <ul>
 <li>
 <p><code><strong>ALUMNO</strong> (<ins>codAlumno</ins>, nomAlumno)<br />
-    · PK: (codAlumno)</code></p>
+    · <abbr title="Primary Key / Clave primaria">PK</abbr>: (codAlumno)</code></p>
 <table>
 <thead>
 <tr>
@@ -3532,7 +3541,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </li>
 <li>
 <p><code><strong>ASIGNATURA</strong> (<ins>codAsignatura</ins>, nomAsignatura)<br />
-    · PK: (codAsignatura)</code></p>
+    · <abbr title="Primary Key / Clave primaria">PK</abbr>: (codAsignatura)</code></p>
 <table>
 <thead>
 <tr>
@@ -3558,7 +3567,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </li>
 <li>
 <p><code><strong>PROFESOR</strong> (<ins>codProfesor</ins>, nomProfesor)<br />
-    · PK: (codProfesor)</code></p>
+    · <abbr title="Primary Key / Clave primaria">PK</abbr>: (codProfesor)</code></p>
 <table>
 <thead>
 <tr>
@@ -3580,10 +3589,10 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </li>
 <li>
 <p><code><strong>CALIFICAR</strong> (<ins>codAlumno</ins><code>*</code>, <ins>codAlumno</ins><code>*</code>, <ins>codAlumno</ins><code>*</code>, nota)<br />
-    · PK: (codAlumno, codAsignatura, codProfesor)<br />
-    · FK: (codAlumno) → ALUMNO<br />
-    · FK: (codAsignatura) → ASIGNATURA<br />
-    · FK: (codProfesor) → PROFESOR</code></p>
+    · <abbr title="Primary Key / Clave primaria">PK</abbr>: (codAlumno, codAsignatura, codProfesor)<br />
+    · <abbr title="Foreign Key / Clave ajena">FK</abbr>: (codAlumno) → ALUMNO<br />
+    · <abbr title="Foreign Key / Clave ajena">FK</abbr>: (codAsignatura) → ASIGNATURA<br />
+    · <abbr title="Foreign Key / Clave ajena">FK</abbr>: (codProfesor) → PROFESOR</code></p>
 <table>
 <thead>
 <tr>
@@ -3747,7 +3756,7 @@ relación.</li>
 <p><a name="AC303"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC303</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir de los datos de las siguientes tablas, identifica todos los problemas con las restricciones semánticas asociadas al modelo relacional y aporta soluciones de cómo resolverlas, sabiendo que las PK son <code>PRODUCTO.codigo</code>y <code>CATEGORIA.codigo</code>, y tenemos una clave ajena de <code>PRODUCTO.categoria</code> que apunta a <code>CATEGORIA</code>.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC303</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir de los datos de las siguientes tablas, identifica todos los problemas con las restricciones semánticas asociadas al modelo relacional y aporta soluciones de cómo resolverlas, sabiendo que las <abbr title="Primary Key / Clave primaria">PK</abbr> son <code>PRODUCTO.codigo</code>y <code>CATEGORIA.codigo</code>, y tenemos una clave ajena de <code>PRODUCTO.categoria</code> que apunta a <code>CATEGORIA</code>.</p>
 <ul>
 <li>
 <p><code>PRODUCTO</code></p>
@@ -3923,15 +3932,15 @@ relación.</li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC305</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr> // 3p) Crea las tablas necesarias con datos ficticios (con al menos 5 registros cada tabla) que respete las restricciones semánticas del modelo relacional a partir del siguiente esquema relacional:</p>
 <p><code>
 <strong>EMPLEADO</strong> (<ins>nif</ins>, nombre, direccion, cargo)<br />
-· PK: (nif)<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (nif)<br />
 · VNN: (nombre)
 </code></p>
 <p><code>
 <strong>VEHICULO</strong> (<ins>matricula</ins>, codigo, marca, modelo, empleado<code>*</code>)<br />
-· PK: (matricula)<br />
-· FK: (empleado) → EMPLEADO<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (matricula)<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (empleado) → EMPLEADO<br />
 · VNN: (empleado)<br />
-· UK: (codigo)
+· <abbr title="Unique Key / Clave única">UK</abbr>: (codigo)
 </code></p>
 <p>Para mostrar las diferentes restricciones del modelo debes tener en cuenta las cardinalidades de la relación, los posibles valores repetidos o nulos de los campos, etc...</p>
 <p>Una vez realizado, dibuja a mano un diagrama que represente el modelo relacional. A continuación, utiliza <a href="https://erdplus.com/">https://erdplus.com/</a> o <a href="https://dbdiagram.io/">https://dbdiagram.io/</a> para pasarlo a digital. En la entrega en <em>Aules</em>, adjunta ambos diagramas.</p>
@@ -3943,17 +3952,17 @@ relación.</li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP306</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr> // 3p)  A partir del siguiente esquema relacional, crea tres tablas con datos ficticios, y explica el tipo de relación existente entre los campos y las tablas relacionadas (cardinalidad):</p>
 <p><code>
 <strong>CONDUCTOR</strong> (<ins>nif</ins>, nombre, fAlta)<br />
-· PK: (nif)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (nif)
 </code></p>
 <p><code>
 <strong>CONDUCIR</strong> (<ins>nif</ins><code>*</code>, <ins>matricula</ins><code>*</code>, cantidad)<br />
-· PK: (nif, matricula)<br />
-· FK: (nif) → CONDUCTOR<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (nif, matricula)<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (nif) → CONDUCTOR<br />
 &emsp;&emsp;&emsp;&emsp;(matricula) → AUTOBUS
 </code></p>
 <p><code>
 <strong>AUTOBUS</strong> (<ins>matricula</ins>, tipo, numPlazas)<br />
-· PK: (matricula)<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (matricula)<br />
 · VNN: (numPlazas)
 </code></p>
 <p>Para mostrar las diferentes restricciones del modelo debes tener en cuenta las cardinalidades de la relación, los posibles valores repetidos o nulos de los campos, etc...</p>
@@ -4232,17 +4241,17 @@ salario, nomDpto, jefeDpto, puntos)</code></p>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC315</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) A partir del siguiente esquema relacional de una librería, desnormalízalo para simplificar su estructura:</p>
 <p><code>
 <strong>LIBRO</strong> (<ins>isbn</ins>, titulo, autor<code>*</code>, editorial<code>*</code>, numPaginas)<br />
-· PK: (nif)<br />
-· FK: (autor) → ESCRITOR<br />
-· FK: (editorial) → EDITORIAL<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (nif)<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (autor) → ESCRITOR<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (editorial) → EDITORIAL<br />
 </code></p>
 <p><code>
 <strong>ESCRITOR</strong> (<ins>nif</ins><code>*</code>, nombre, pais)<br />
-· PK: (nif)<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (nif)<br />
 </code></p>
 <p><code>
 <strong>EDITORIAL</strong> (<ins>codigo</ins><code>*</code>, nombre, pais)<br />
-· PK: (codigo)<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (codigo)<br />
 </code></p>
 </li>
 </ul>
@@ -4326,18 +4335,18 @@ salario, nomDpto, jefeDpto, puntos)</code></p>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP317</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p)  A partir del siguiente esquema relacional, se nos pide optimizar el modelo aplicando desnormalización, ya que, para cada artista, se quieren recuperar las 5 canciones primeras canciones, y con el diseño actual, la consulta es muy lenta: </p>
 <p><code>
 <strong>ARTISTA</strong> (<ins>id</ins>, nombre, foto)<br />
-· PK: (id)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (id)
 </code></p>
 <p><code>
 <strong>ALBUM</strong> (<ins>id</ins><code>*</code>, nombre, foto, <ins>artista_id</ins><code>*</code>)<br />
-· PK: (id)<br />
-· FK: (artista_id) → ARTISTA<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (id)<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (artista_id) → ARTISTA<br />
 · VNN: (artista_id)
 </code></p>
 <p><code>
 <strong>CANCION</strong> (<ins>id</ins>, nombre, letra, <ins>album_id</ins><code>*</code>)<br />
-· PK: (id)<br />
-· FK: (album_id) → ARTISTA<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (id)<br />
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (album_id) → ARTISTA<br />
 · VNN: (album_id)
 </code></p>
 <p>¿Qué has hecho para mejorar el rendimiento? ¿En qué forma normal se encuentra ahora el modelo relacional? Justifica tu respuesta.</p>
