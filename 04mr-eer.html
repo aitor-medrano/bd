@@ -2168,7 +2168,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p>Supongamos el siguiente diagrama donde tenemos que un producto puede ser el sustituto de uno o más productos de un almacén. Además, cada producto se identifica mediante un atributo compuesto que dará lugar a una clave primaria compuesta.</p>
 <p>Así pues, el modelo relacional sería:</p>
 <p><code>
-<strong>PRODUCTO</strong> (<ins>dpto</ins>, <ins>numero</ins>, nombre, pvp, <ins>dptoS</ins><code>*</code>, <ins>numeroS</ins><code>*</code>, fecha)<br />
+<strong>PRODUCTO</strong> (<ins>dpto</ins>, <ins>numero</ins>, nombre, pvp, dptoS<code>*</code>, numeroS<code>*</code>, fecha)<br />
 · PK: (dpto, numero)<br />
 · FK: (dptoS, numeroS) → PRODUCTO
 </code></p>
