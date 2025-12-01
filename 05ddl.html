@@ -19,11 +19,8 @@
         <link rel="next" href="06sql.html">
       
       
-        
-      
-      
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -31,10 +28,10 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.d7758b05.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,7 +39,7 @@
   
   
   
-  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M22%2012a10%2010%200%200%201-10%2010A10%2010%200%200%201%202%2012%2010%2010%200%200%201%2012%202a10%2010%200%200%201%2010%2010M6%2013h8l-3.5%203.5%201.42%201.42L17.84%2012l-5.92-5.92L10.5%207.5%2014%2011H6z%22/%3E%3C/svg%3E');}</style>
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6z"/></svg>');}</style>
 
 
     
@@ -77,20 +74,34 @@
 
     
     
-  
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Modelo Físico - SQL - Instrucciones DDL y DML - Bases de datos" />
-<meta property="og:description" content="Conceptos y actividades sobre la definición de las estructuras de una base de datos (DDL) y sus operaciones (DML) para insertar, modificar y eliminar datos." />
-<meta property="og:image" content="https://aitor-medrano.github.io/bd/assets/images/social/05ddl.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://aitor-medrano.github.io/bd/05ddl.html" />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:title" content="Modelo Físico - SQL - Instrucciones DDL y DML - Bases de datos" />
-<meta property="twitter:description" content="Conceptos y actividades sobre la definición de las estructuras de una base de datos (DDL) y sus operaciones (DML) para insertar, modificar y eliminar datos." />
-<meta property="twitter:image" content="https://aitor-medrano.github.io/bd/assets/images/social/05ddl.png" />
-</head>
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Modelo Físico - SQL - Instrucciones DDL y DML - Bases de datos" >
+      
+        <meta  property="og:description"  content="Conceptos y actividades sobre la definición de las estructuras de una base de datos (DDL) y sus operaciones (DML) para insertar, modificar y eliminar datos." >
+      
+        <meta  property="og:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/05ddl.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://aitor-medrano.github.io/bd/05ddl.html" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Modelo Físico - SQL - Instrucciones DDL y DML - Bases de datos" >
+      
+        <meta  name="twitter:description"  content="Conceptos y actividades sobre la definición de las estructuras de una base de datos (DDL) y sus operaciones (DML) para insertar, modificar y eliminar datos." >
+      
+        <meta  name="twitter:image"  content="https://aitor-medrano.github.io/bd/assets/images/social/05ddl.png" >
+      
+    
+    
+  </head>
   
   
     
@@ -182,13 +193,11 @@
     
     
     
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -220,7 +229,6 @@
     </div>
   </div>
 </div>
-      
     
     
   </nav>
@@ -268,16 +276,10 @@
       <a href="index.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Inicio
-  
-
     
   </span>
-  
   
 
       </a>
@@ -295,16 +297,10 @@
       <a href="01intro.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     1.- Sistemas de almacenamiento
-  
-
     
   </span>
-  
   
 
       </a>
@@ -322,19 +318,13 @@
       <a href="02er.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     2.- Diseño conceptual: Modelo Entidad/Relación
-  
-
     
       <br>
       <small>EER Extendido</small>
     
   </span>
-  
   
 
       </a>
@@ -352,19 +342,13 @@
       <a href="03mr.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     3.- Diseño lógico: Modelo Relacional
-  
-
     
       <br>
       <small>Normalización</small>
     
   </span>
-  
   
 
       </a>
@@ -382,19 +366,13 @@
       <a href="04mr-eer.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     4.- Diseño lógico: Transformación
-  
-
     
       <br>
       <small>De ER a MR</small>
     
   </span>
-  
   
 
       </a>
@@ -421,16 +399,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
-  
   <span class="md-ellipsis">
-    
-  
     5.- Diseño físico: DDL y DML
-  
-
     
   </span>
-  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -439,16 +411,10 @@
       <a href="05ddl.html" class="md-nav__link md-nav__link--active">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     5.- Diseño físico: DDL y DML
-  
-
     
   </span>
-  
   
 
       </a>
@@ -471,9 +437,7 @@
         <li class="md-nav__item">
   <a href="#propuesta-didactica" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Propuesta didáctica
-      
+      Propuesta didáctica
     </span>
   </a>
   
@@ -483,9 +447,7 @@
           <li class="md-nav__item">
   <a href="#criterios-de-evaluacion" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Criterios de evaluación
-      
+      Criterios de evaluación
     </span>
   </a>
   
@@ -494,20 +456,16 @@
           <li class="md-nav__item">
   <a href="#contenidos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Contenidos
-      
+      Contenidos
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-11h" class="md-nav__link">
+  <a href="#programacion-de-aula-13h" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Programación de Aula (11h)
-      
+      Programación de Aula (13h)
     </span>
   </a>
   
@@ -521,9 +479,7 @@
         <li class="md-nav__item">
   <a href="#modelo-fisico" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Modelo físico
-      
+      Modelo físico
     </span>
   </a>
   
@@ -532,9 +488,7 @@
         <li class="md-nav__item">
   <a href="#sql" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        SQL
-      
+      SQL
     </span>
   </a>
   
@@ -544,9 +498,7 @@
           <li class="md-nav__item">
   <a href="#sintaxis" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Sintaxis
-      
+      Sintaxis
     </span>
   </a>
   
@@ -560,9 +512,7 @@
         <li class="md-nav__item">
   <a href="#ddl" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        DDL
-      
+      DDL
     </span>
   </a>
   
@@ -572,9 +522,7 @@
           <li class="md-nav__item">
   <a href="#puesta-en-marcha" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Puesta en marcha
-      
+      Puesta en marcha
     </span>
   </a>
   
@@ -583,9 +531,7 @@
           <li class="md-nav__item">
   <a href="#bases-de-datos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Bases de datos
-      
+      Bases de datos
     </span>
   </a>
   
@@ -594,9 +540,7 @@
           <li class="md-nav__item">
   <a href="#almacenamiento" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Almacenamiento
-      
+      Almacenamiento
     </span>
   </a>
   
@@ -606,9 +550,7 @@
           <li class="md-nav__item">
   <a href="#jerarquia-logica-de-una-bd" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Jerarquía lógica de una BD
-      
+      Jerarquía lógica de una BD
     </span>
   </a>
   
@@ -617,9 +559,7 @@
           <li class="md-nav__item">
   <a href="#motores-de-almacenamiento" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Motores de almacenamiento
-      
+      Motores de almacenamiento
     </span>
   </a>
   
@@ -628,9 +568,7 @@
           <li class="md-nav__item">
   <a href="#juegos-de-caracteres" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Juegos de caracteres
-      
+      Juegos de caracteres
     </span>
   </a>
   
@@ -644,9 +582,7 @@
           <li class="md-nav__item">
   <a href="#tipos-de-datos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Tipos de datos
-      
+      Tipos de datos
     </span>
   </a>
   
@@ -656,9 +592,7 @@
           <li class="md-nav__item">
   <a href="#cadenas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Cadenas
-      
+      Cadenas
     </span>
   </a>
   
@@ -667,9 +601,7 @@
           <li class="md-nav__item">
   <a href="#numericos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Numéricos
-      
+      Numéricos
     </span>
   </a>
   
@@ -678,9 +610,7 @@
           <li class="md-nav__item">
   <a href="#temporales" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Temporales
-      
+      Temporales
     </span>
   </a>
   
@@ -689,9 +619,7 @@
           <li class="md-nav__item">
   <a href="#enumeraciones" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Enumeraciones
-      
+      Enumeraciones
     </span>
   </a>
   
@@ -700,9 +628,7 @@
           <li class="md-nav__item">
   <a href="#creando-tipos-y-dominios" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Creando tipos y dominios
-      
+      Creando tipos y dominios
     </span>
   </a>
   
@@ -716,9 +642,7 @@
           <li class="md-nav__item">
   <a href="#tablas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Tablas
-      
+      Tablas
     </span>
   </a>
   
@@ -728,9 +652,7 @@
           <li class="md-nav__item">
   <a href="#a-partir-de-consultas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        A partir de consultas
-      
+      A partir de consultas
     </span>
   </a>
   
@@ -739,9 +661,7 @@
           <li class="md-nav__item">
   <a href="#clave-primaria" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Clave primaria
-      
+      Clave primaria
     </span>
   </a>
   
@@ -750,9 +670,7 @@
           <li class="md-nav__item">
   <a href="#modificando-tablas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Modificando tablas
-      
+      Modificando tablas
     </span>
   </a>
   
@@ -761,9 +679,7 @@
           <li class="md-nav__item">
   <a href="#eliminando-tablas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Eliminando tablas
-      
+      Eliminando tablas
     </span>
   </a>
   
@@ -777,9 +693,7 @@
           <li class="md-nav__item">
   <a href="#restricciones" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Restricciones
-      
+      Restricciones
     </span>
   </a>
   
@@ -789,9 +703,7 @@
           <li class="md-nav__item">
   <a href="#claves-unicas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Claves únicas
-      
+      Claves únicas
     </span>
   </a>
   
@@ -800,9 +712,7 @@
           <li class="md-nav__item">
   <a href="#claves-ajenas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Claves ajenas
-      
+      Claves ajenas
     </span>
   </a>
   
@@ -811,9 +721,7 @@
           <li class="md-nav__item">
   <a href="#propagacion" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Propagación
-      
+      Propagación
     </span>
   </a>
   
@@ -822,9 +730,7 @@
           <li class="md-nav__item">
   <a href="#validaciones" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Validaciones
-      
+      Validaciones
     </span>
   </a>
   
@@ -833,9 +739,7 @@
           <li class="md-nav__item">
   <a href="#gestionando" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Gestionando
-      
+      Gestionando
     </span>
   </a>
   
@@ -849,9 +753,7 @@
           <li class="md-nav__item">
   <a href="#supuesto-ddl" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Supuesto DDL
-      
+      Supuesto DDL
     </span>
   </a>
   
@@ -865,9 +767,7 @@
         <li class="md-nav__item">
   <a href="#cargando-datos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Cargando datos
-      
+      Cargando datos
     </span>
   </a>
   
@@ -877,9 +777,7 @@
           <li class="md-nav__item">
   <a href="#ejecutando-un-script" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Ejecutando un script
-      
+      Ejecutando un script
     </span>
   </a>
   
@@ -888,9 +786,7 @@
           <li class="md-nav__item">
   <a href="#cargando-datos-desde-archivos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Cargando datos desde archivos
-      
+      Cargando datos desde archivos
     </span>
   </a>
   
@@ -904,9 +800,7 @@
         <li class="md-nav__item">
   <a href="#dml" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        DML
-      
+      DML
     </span>
   </a>
   
@@ -916,9 +810,7 @@
           <li class="md-nav__item">
   <a href="#inserciones" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Inserciones
-      
+      Inserciones
     </span>
   </a>
   
@@ -928,9 +820,7 @@
           <li class="md-nav__item">
   <a href="#supuesto-dml" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Supuesto DML
-      
+      Supuesto DML
     </span>
   </a>
   
@@ -944,9 +834,7 @@
           <li class="md-nav__item">
   <a href="#modificaciones" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Modificaciones
-      
+      Modificaciones
     </span>
   </a>
   
@@ -955,9 +843,7 @@
           <li class="md-nav__item">
   <a href="#borrados" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Borrados
-      
+      Borrados
     </span>
   </a>
   
@@ -966,9 +852,7 @@
           <li class="md-nav__item">
   <a href="#operaciones-en-cascada" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Operaciones en cascada
-      
+      Operaciones en cascada
     </span>
   </a>
   
@@ -977,9 +861,7 @@
           <li class="md-nav__item">
   <a href="#fusionando-datos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Fusionando datos
-      
+      Fusionando datos
     </span>
   </a>
   
@@ -993,9 +875,7 @@
         <li class="md-nav__item">
   <a href="#reto-ii-creamos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Reto II - Creamos
-      
+      Reto II - Creamos
     </span>
   </a>
   
@@ -1004,9 +884,7 @@
         <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Referencias
-      
+      Referencias
     </span>
   </a>
   
@@ -1015,9 +893,7 @@
         <li class="md-nav__item">
   <a href="#actividades" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Actividades
-      
+      Actividades
     </span>
   </a>
   
@@ -1041,19 +917,13 @@
       <a href="06sql.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     6.- Consultas sencillas
-  
-
     
       <br>
       <small>Funciones. Joins</small>
     
   </span>
-  
   
 
       </a>
@@ -1071,19 +941,13 @@
       <a href="07sql-group.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     7.- Consultas agregadas
-  
-
     
       <br>
       <small>Funciones ventana. Vistas</small>
     
   </span>
-  
   
 
       </a>
@@ -1101,19 +965,13 @@
       <a href="08sql-subquerys.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     8.- Subconsultas. Optimización
-  
-
     
       <br>
       <small>CTE. Índices</small>
     
   </span>
-  
   
 
       </a>
@@ -1131,19 +989,13 @@
       <a href="09dcl-tcl.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     9.- DCL y TCL
-  
-
     
       <br>
       <small>Usuarios, permisos y transacciones</small>
     
   </span>
-  
   
 
       </a>
@@ -1161,19 +1013,13 @@
       <a href="10plsql.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     10.- Programación SQL
-  
-
     
       <br>
       <small>Procedimientos y funciones</small>
     
   </span>
-  
   
 
       </a>
@@ -1191,19 +1037,13 @@
       <a href="11triggers.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     11.- PL/SQL Avanzado
-  
-
     
       <br>
       <small>Eventos, disparadores y cursores</small>
     
   </span>
-  
   
 
       </a>
@@ -1227,7 +1067,6 @@
     
     
     
-    
     <li class="md-nav__item md-nav__item--nested">
       
         
@@ -1238,16 +1077,10 @@
           <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
             
   
-  
   <span class="md-ellipsis">
-    
-  
     12.- NoSQL y Big Data
-  
-
     
   </span>
-  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1256,11 +1089,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_13">
             <span class="md-nav__icon md-icon"></span>
-            
-  
-    12.- NoSQL y Big Data
-  
-
+            12.- NoSQL y Big Data
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1274,16 +1103,10 @@
       <a href="12nosql.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     12.1.- Fundamentos NoSQL
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1302,16 +1125,10 @@
       <a href="12redis.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     12.2.- Redis
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1337,16 +1154,10 @@
       <a href="13mongodb.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     13.- MongoDB
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1378,7 +1189,6 @@
     
     
     
-    
     <li class="md-nav__item md-nav__item--nested">
       
         
@@ -1389,16 +1199,10 @@
           <label class="md-nav__link" for="__nav_15" id="__nav_15_label" tabindex="0">
             
   
-  
   <span class="md-ellipsis">
-    
-  
     Anexos
-  
-
     
   </span>
-  
   
 
             <span class="md-nav__icon md-icon"></span>
@@ -1407,11 +1211,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_15_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_15">
             <span class="md-nav__icon md-icon"></span>
-            
-  
-    Anexos
-  
-
+            Anexos
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1425,16 +1225,10 @@
       <a href="anexos/jerarquicas.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Consultas jerárquicas
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1453,16 +1247,10 @@
       <a href="00entorno.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Entorno
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1481,16 +1269,10 @@
       <a href="validacion.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Validación CE
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1509,16 +1291,10 @@
       <a href="relacion.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Relación con otros módulos profesionales
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1537,16 +1313,10 @@
       <a href="satisfaccion.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Autoevaluación
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1565,16 +1335,10 @@
       <a href="vocabulari.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     <em>Vocabulari</em>
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1600,16 +1364,10 @@
       <a href="tags.html" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     Tags
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1646,9 +1404,7 @@
         <li class="md-nav__item">
   <a href="#propuesta-didactica" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Propuesta didáctica
-      
+      Propuesta didáctica
     </span>
   </a>
   
@@ -1658,9 +1414,7 @@
           <li class="md-nav__item">
   <a href="#criterios-de-evaluacion" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Criterios de evaluación
-      
+      Criterios de evaluación
     </span>
   </a>
   
@@ -1669,20 +1423,16 @@
           <li class="md-nav__item">
   <a href="#contenidos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Contenidos
-      
+      Contenidos
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#programacion-de-aula-11h" class="md-nav__link">
+  <a href="#programacion-de-aula-13h" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Programación de Aula (11h)
-      
+      Programación de Aula (13h)
     </span>
   </a>
   
@@ -1696,9 +1446,7 @@
         <li class="md-nav__item">
   <a href="#modelo-fisico" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Modelo físico
-      
+      Modelo físico
     </span>
   </a>
   
@@ -1707,9 +1455,7 @@
         <li class="md-nav__item">
   <a href="#sql" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        SQL
-      
+      SQL
     </span>
   </a>
   
@@ -1719,9 +1465,7 @@
           <li class="md-nav__item">
   <a href="#sintaxis" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Sintaxis
-      
+      Sintaxis
     </span>
   </a>
   
@@ -1735,9 +1479,7 @@
         <li class="md-nav__item">
   <a href="#ddl" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        DDL
-      
+      DDL
     </span>
   </a>
   
@@ -1747,9 +1489,7 @@
           <li class="md-nav__item">
   <a href="#puesta-en-marcha" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Puesta en marcha
-      
+      Puesta en marcha
     </span>
   </a>
   
@@ -1758,9 +1498,7 @@
           <li class="md-nav__item">
   <a href="#bases-de-datos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Bases de datos
-      
+      Bases de datos
     </span>
   </a>
   
@@ -1769,9 +1507,7 @@
           <li class="md-nav__item">
   <a href="#almacenamiento" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Almacenamiento
-      
+      Almacenamiento
     </span>
   </a>
   
@@ -1781,9 +1517,7 @@
           <li class="md-nav__item">
   <a href="#jerarquia-logica-de-una-bd" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Jerarquía lógica de una BD
-      
+      Jerarquía lógica de una BD
     </span>
   </a>
   
@@ -1792,9 +1526,7 @@
           <li class="md-nav__item">
   <a href="#motores-de-almacenamiento" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Motores de almacenamiento
-      
+      Motores de almacenamiento
     </span>
   </a>
   
@@ -1803,9 +1535,7 @@
           <li class="md-nav__item">
   <a href="#juegos-de-caracteres" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Juegos de caracteres
-      
+      Juegos de caracteres
     </span>
   </a>
   
@@ -1819,9 +1549,7 @@
           <li class="md-nav__item">
   <a href="#tipos-de-datos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Tipos de datos
-      
+      Tipos de datos
     </span>
   </a>
   
@@ -1831,9 +1559,7 @@
           <li class="md-nav__item">
   <a href="#cadenas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Cadenas
-      
+      Cadenas
     </span>
   </a>
   
@@ -1842,9 +1568,7 @@
           <li class="md-nav__item">
   <a href="#numericos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Numéricos
-      
+      Numéricos
     </span>
   </a>
   
@@ -1853,9 +1577,7 @@
           <li class="md-nav__item">
   <a href="#temporales" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Temporales
-      
+      Temporales
     </span>
   </a>
   
@@ -1864,9 +1586,7 @@
           <li class="md-nav__item">
   <a href="#enumeraciones" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Enumeraciones
-      
+      Enumeraciones
     </span>
   </a>
   
@@ -1875,9 +1595,7 @@
           <li class="md-nav__item">
   <a href="#creando-tipos-y-dominios" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Creando tipos y dominios
-      
+      Creando tipos y dominios
     </span>
   </a>
   
@@ -1891,9 +1609,7 @@
           <li class="md-nav__item">
   <a href="#tablas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Tablas
-      
+      Tablas
     </span>
   </a>
   
@@ -1903,9 +1619,7 @@
           <li class="md-nav__item">
   <a href="#a-partir-de-consultas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        A partir de consultas
-      
+      A partir de consultas
     </span>
   </a>
   
@@ -1914,9 +1628,7 @@
           <li class="md-nav__item">
   <a href="#clave-primaria" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Clave primaria
-      
+      Clave primaria
     </span>
   </a>
   
@@ -1925,9 +1637,7 @@
           <li class="md-nav__item">
   <a href="#modificando-tablas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Modificando tablas
-      
+      Modificando tablas
     </span>
   </a>
   
@@ -1936,9 +1646,7 @@
           <li class="md-nav__item">
   <a href="#eliminando-tablas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Eliminando tablas
-      
+      Eliminando tablas
     </span>
   </a>
   
@@ -1952,9 +1660,7 @@
           <li class="md-nav__item">
   <a href="#restricciones" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Restricciones
-      
+      Restricciones
     </span>
   </a>
   
@@ -1964,9 +1670,7 @@
           <li class="md-nav__item">
   <a href="#claves-unicas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Claves únicas
-      
+      Claves únicas
     </span>
   </a>
   
@@ -1975,9 +1679,7 @@
           <li class="md-nav__item">
   <a href="#claves-ajenas" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Claves ajenas
-      
+      Claves ajenas
     </span>
   </a>
   
@@ -1986,9 +1688,7 @@
           <li class="md-nav__item">
   <a href="#propagacion" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Propagación
-      
+      Propagación
     </span>
   </a>
   
@@ -1997,9 +1697,7 @@
           <li class="md-nav__item">
   <a href="#validaciones" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Validaciones
-      
+      Validaciones
     </span>
   </a>
   
@@ -2008,9 +1706,7 @@
           <li class="md-nav__item">
   <a href="#gestionando" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Gestionando
-      
+      Gestionando
     </span>
   </a>
   
@@ -2024,9 +1720,7 @@
           <li class="md-nav__item">
   <a href="#supuesto-ddl" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Supuesto DDL
-      
+      Supuesto DDL
     </span>
   </a>
   
@@ -2040,9 +1734,7 @@
         <li class="md-nav__item">
   <a href="#cargando-datos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Cargando datos
-      
+      Cargando datos
     </span>
   </a>
   
@@ -2052,9 +1744,7 @@
           <li class="md-nav__item">
   <a href="#ejecutando-un-script" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Ejecutando un script
-      
+      Ejecutando un script
     </span>
   </a>
   
@@ -2063,9 +1753,7 @@
           <li class="md-nav__item">
   <a href="#cargando-datos-desde-archivos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Cargando datos desde archivos
-      
+      Cargando datos desde archivos
     </span>
   </a>
   
@@ -2079,9 +1767,7 @@
         <li class="md-nav__item">
   <a href="#dml" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        DML
-      
+      DML
     </span>
   </a>
   
@@ -2091,9 +1777,7 @@
           <li class="md-nav__item">
   <a href="#inserciones" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Inserciones
-      
+      Inserciones
     </span>
   </a>
   
@@ -2103,9 +1787,7 @@
           <li class="md-nav__item">
   <a href="#supuesto-dml" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Supuesto DML
-      
+      Supuesto DML
     </span>
   </a>
   
@@ -2119,9 +1801,7 @@
           <li class="md-nav__item">
   <a href="#modificaciones" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Modificaciones
-      
+      Modificaciones
     </span>
   </a>
   
@@ -2130,9 +1810,7 @@
           <li class="md-nav__item">
   <a href="#borrados" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Borrados
-      
+      Borrados
     </span>
   </a>
   
@@ -2141,9 +1819,7 @@
           <li class="md-nav__item">
   <a href="#operaciones-en-cascada" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Operaciones en cascada
-      
+      Operaciones en cascada
     </span>
   </a>
   
@@ -2152,9 +1828,7 @@
           <li class="md-nav__item">
   <a href="#fusionando-datos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Fusionando datos
-      
+      Fusionando datos
     </span>
   </a>
   
@@ -2168,9 +1842,7 @@
         <li class="md-nav__item">
   <a href="#reto-ii-creamos" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Reto II - Creamos
-      
+      Reto II - Creamos
     </span>
   </a>
   
@@ -2179,9 +1851,7 @@
         <li class="md-nav__item">
   <a href="#referencias" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Referencias
-      
+      Referencias
     </span>
   </a>
   
@@ -2190,9 +1860,7 @@
         <li class="md-nav__item">
   <a href="#actividades" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Actividades
-      
+      Actividades
     </span>
   </a>
   
@@ -2208,7 +1876,6 @@
           
           
             <div class="md-content" data-md-component="content">
-              
               <article class="md-content__inner md-typeset">
                 
                   
@@ -2218,11 +1885,9 @@
       
       
       
-      
         <a href="tags.html#tag:modelo-físico" class="md-tag">Modelo Físico</a>
       
     
-      
       
       
       
@@ -2232,11 +1897,9 @@
       
       
       
-      
         <a href="tags.html#tag:ra4" class="md-tag">RA4</a>
       
     
-      
       
       
       
@@ -2246,11 +1909,9 @@
       
       
       
-      
         <a href="tags.html#tag:sql---ddl" class="md-tag">SQL - DDL</a>
       
     
-      
       
       
       
@@ -2308,7 +1969,7 @@
 <li>¿Qué sucede si omitimos el <code>WHERE</code> en un <code>DELETE FROM</code>?</li>
 </ol>
 </div>
-<h3 id="programacion-de-aula-11h">Programación de Aula (11h)<a class="headerlink" href="#programacion-de-aula-11h" title="Permanent link">&para;</a></h3>
+<h3 id="programacion-de-aula-13h">Programación de Aula (13h)<a class="headerlink" href="#programacion-de-aula-13h" title="Permanent link">&para;</a></h3>
 <p>Esta unidad es la quinta, con lo que se imparte en la primera evaluación, a finales del mes de noviembre, con una duración estimada de 11 sesiones lectivas:</p>
 <table>
 <thead>
@@ -2359,32 +2020,44 @@
 <tr>
 <td>7</td>
 <td>DML. <a href="#inserciones">Inserciones</a></td>
-<td><a href="#AC510">AC510</a></td>
+<td><a href="#AC511">AC511</a></td>
 <td><abbr title="Se han identificado las herramientas y sentencias para modificar el contenido de la base de datos.">CE4a</abbr>, <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr></td>
 </tr>
 <tr>
 <td>8</td>
 <td>DML. <a href="#modificaciones">Actualizaciones</a> y <a href="#borrados">Borrados</a></td>
-<td><a href="#AC511">AC511</a></td>
+<td><a href="#AC512">AC512</a></td>
 <td><abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr></td>
 </tr>
 <tr>
 <td>9</td>
 <td>Supuesto DDL-DML I</td>
-<td><a href="#AC514">AC514</a></td>
+<td><a href="#AC515">AC515</a></td>
 <td><abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr></td>
 </tr>
 <tr>
 <td>10</td>
 <td>Supuesto DDL-DML II</td>
-<td><a href="#AC515">AC515</a></td>
+<td><a href="#AC516">AC516</a></td>
 <td><abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr></td>
 </tr>
 <tr>
 <td>11</td>
+<td>Prueba objetiva</td>
+<td><a href="#PO517">PO517</a></td>
+<td>RA2, RA4</td>
+</tr>
+<tr>
+<td>12</td>
 <td>Reto - Diseño físico</td>
-<td><a href="#PY516">PY516</a></td>
-<td><abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr>, <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr>, <abbr title="Se han identificado las herramientas y sentencias para modificar el contenido de la base de datos.">CE4a</abbr>, <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr></td>
+<td><a href="#PY518">PY518</a></td>
+<td>RA2, RA4</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Reto - Exposiciones</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -3292,26 +2965,27 @@ Si vives en España y tus amigos de Chile quieren informarte de su hora local si
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">MariaDB</label><label for="__tabbed_8_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">USUARIO_UUID</span><span class="w"> </span><span class="p">(</span>
-<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">UUID</span><span class="p">(),</span>
-</span><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">fecha_creacion</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="p">);</span>
-<span class="linenos" data-linenos=" 7 "></span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- 3. Insertar datos (UUID se genera automáticamente)</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">USUARIO_UUID</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span><span class="w"> </span>
-<span class="linenos" data-linenos="10 "></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Ana Martínez&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ana@ejemplo.com&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="11 "></span>
-<span class="linenos" data-linenos="12 "></span><span class="c1">-- 4. Insertar con UUID específico usando el tipo nativo</span>
-<span class="linenos" data-linenos="13 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">USUARIO_UUID</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span><span class="w"> </span>
-<span class="linenos" data-linenos="14 "></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;550e8400-e29b-41d4-a716-446655440000&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Luis Rodríguez&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;luis@ejemplo.com&#39;</span><span class="p">);</span><span class="w">        </span>
-<span class="linenos" data-linenos="15 "></span>
-<span class="linenos" data-linenos="16 "></span><span class="c1">-- 5. Consultar datos</span>
-<span class="linenos" data-linenos="17 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">USUARIO_UUID</span><span class="p">;</span>
-<span class="linenos" data-linenos="18 "></span>
-<span class="linenos" data-linenos="19 "></span><span class="c1">-- 6. Generar UUID manualmente</span>
-<span class="hll"><span class="linenos" data-linenos="20 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">UUID</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">nuevo_uuid</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- 1. Creamos la tabla y a la clave le ponemos el tipo UUID y su valor por defecto</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">USUARIO_UUID</span><span class="w"> </span><span class="p">(</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="n">UUID</span><span class="p">(),</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">fecha_creacion</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="p">);</span>
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- 2. Insertar datos (UUID se genera automáticamente)</span>
+<span class="linenos" data-linenos="10 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">USUARIO_UUID</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos" data-linenos="11 "></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Ana Martínez&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ana@ejemplo.com&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- 3. Insertar con UUID específico usando el tipo nativo</span>
+<span class="linenos" data-linenos="14 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">USUARIO_UUID</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span><span class="w"> </span>
+<span class="linenos" data-linenos="15 "></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;550e8400-e29b-41d4-a716-446655440000&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Luis Rodríguez&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;luis@ejemplo.com&#39;</span><span class="p">);</span><span class="w">        </span>
+<span class="linenos" data-linenos="16 "></span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- 4. Consultar datos</span>
+<span class="linenos" data-linenos="18 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">USUARIO_UUID</span><span class="p">;</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">-- 5. Generar UUID manualmente</span>
+<span class="hll"><span class="linenos" data-linenos="21 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">UUID</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">nuevo_uuid</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -4740,17 +4414,86 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 </ul>
 <p><a name="AR508"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR508</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr>  // 3p) A partir de la actividad <a href="04mr-eer.html#AC408">AC408</a> (que a su vez se basa en la <a href="02er.html#AC203">AC203</a>), crea las instrucciones DDL necesarias para crear el modelo físico.</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR508</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr>  // 3p) A partir de la actividad <a href="04mr-eer.html#AC408">AC408</a> (que a su vez se basa en la <a href="02er.html#AC203">AC203</a>), crea las instrucciones DDL necesarias para crear el modelo físico. Para ello, decide cuales son los tipos de datos idóneos, sabiendo que todos los códigos deben hacer uso de UUID.</li>
 </ul>
 <p><a name="AP509"></a></p>
-<!-- Carga de datos -->
-<ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP509</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han identificado las herramientas y sentencias para modificar el contenido de la base de datos.">CE4a</abbr> // 3p) Haciendo uso de <em>MariaDB</em> y del cliente <code>mariadb</code>, a partir del siguiente <a href="resources/ap509.sql"><em>script</em></a> con las instrucciones para crear una base de datos, carga los datos que tienes disponibles en <a href="resources/ap509.zip">ap509.zip</a> haciendo uso de las instrucciones <code>LOAD DATA</code>. Finalmente, mediante <code>mysqldump</code> realiza una exportación de toda la base de datos (con los datos cargados), y adjunta tanto los comandos empleados como el resultado de la exportación.</li>
-</ul>
-<p><a name="AC510"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC510</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han identificado las herramientas y sentencias para modificar el contenido de la base de datos.">CE4a</abbr>, <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr> // 3p) A partir de la actividad <a href="#AC504">AC504</a>, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP509</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr> // 3p) A partir del siguiente modelo conceptual:</p>
+<p><figure style="align: center;">
+    <img src="images/05ap509.jpg" width="848" title="AP 509">
+    <figcaption>AP 509</figcaption>
+</figure></p>
+<p>y teniendo en cuenta las siguientes definiciones y restricciones:</p>
+<ul>
+<li><code>Cod_Alu</code>: Entero.</li>
+<li><code>Dni</code>: Cadena de 9 caracteres. No puede estar vacío</li>
+<li><code>Nombre</code>: Cadena de 25 caracteres. No puede estar vacío</li>
+<li><code>Apellidos</code>: Cadena de 40 caracteres. No puede estar vacío</li>
+<li><code>Fecha_Nac</code>: Tipo fecha.</li>
+<li><code>Año</code>: Entero. No puede estar vacío. Es el año en que se realiza la matrícula. Por ejemplo, si una persona se matricula en un módulo en el curso 2025/2026, el Año será 2025.</li>
+<li><code>Nota_Final</code>: Entero. Entre 1 y 10, pero puede estar vacío.</li>
+<li><code>Cod_Modulo</code>: Entero.</li>
+<li><code>Nombre_Mod</code>: Cadena de 40 caracteres. No puede estar vacío.</li>
+<li><code>Horas</code>: Entero. Mayor que 1, pero puede estar vacío.</li>
+<li><code>Cod_Titulo</code>: Entero.</li>
+<li><code>Nombre_Titulo</code>: Cadena de 40 caracteres. No puede estar vacío.</li>
+<li><code>Grado</code>: Caracter. Puede tomar los valores "B", "M", "S" o "E". No puede estar vacío.</li>
+<li><code>Cod_Familia</code>: Entero.</li>
+<li><code>Nombre_Familia</code>: Cadena de 40 caracteres. No puede estar vacío.</li>
+<li>Un alumno no puede estar matriculado en un mismo módulo y en un mismo año más de una vez.</li>
+</ul>
+<p>Se pide detallar las sentencias SQL necesarias para crear las tablas de la base de datos que implemente el modelo anterior.</p>
+</li>
+</ul>
+<!--
+Table ALUMNO {
+  Cod_Alu   tipo     [pk]
+  Dni tipo
+  Nombre tipo
+  Apellidos tipo
+  Fecha_Nac tipo
+}
+
+Table MODULO {
+  Cod_Modulo tipo    [pk]
+  Nombre_Mod tipo
+  Horas tipo
+  Titulo tipo [not null, ref:>TITULO.Cod_Titulo]
+}
+
+Table MATRICULAR {
+  Cod_Alu tipo         [ref: > ALUMNO.Cod_Alu]
+  Cod_Modulo tipo     [ref: > MODULO.Cod_Modulo]
+  Año tipo
+  Nota_Final tipo
+  indexes {
+    (Cod_Alu, Cod_Modulo) [pk] 
+  }
+}
+
+Table TITULO {
+  Cod_Titulo tipo     [pk]
+  Nombre_Titulo tipo
+  Grado tipo
+  Familia tipo     [not null,  ref: > FAMILIA.Cod_Familia]
+}
+
+Table FAMILIA {
+  Cod_Familia tipo      [pk]
+  Nombre_Familia tipo
+}
+-->
+
+<p><a name="AP510"></a></p>
+<!-- Carga de datos -->
+<ul>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP510</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han identificado las herramientas y sentencias para modificar el contenido de la base de datos.">CE4a</abbr> // 3p) Haciendo uso de <em>MariaDB</em> y del cliente <code>mariadb</code>, a partir del siguiente <a href="resources/ap510.sql"><em>script</em></a> con las instrucciones para crear una base de datos, carga los datos que tienes disponibles en <a href="resources/ap510.zip">ap510.zip</a> haciendo uso de las instrucciones <code>LOAD DATA</code>. Finalmente, mediante <code>mysqldump</code> realiza una exportación de toda la base de datos (con los datos cargados), y adjunta tanto los comandos empleados como el resultado de la exportación.</li>
+</ul>
+<p><a name="AC511"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC511</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han identificado las herramientas y sentencias para modificar el contenido de la base de datos.">CE4a</abbr>, <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr> // 3p) A partir de la actividad <a href="#AC504">AC504</a>, se pide:</p>
 <ul>
 <li>Modifica el <em>charset</em> de la tabla <code>FABRICANTE</code> a<code>utf8mb4</code>.</li>
 <li>
@@ -4853,14 +4596,14 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 </ul>
 </li>
 </ul>
-<p><a name="AC511"></a></p>
+<p><a name="AC512"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC511</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr> // 3p) Carga el siguiente <a href="resources/ac511.sql">script de datos</a> sobre las tablas de la <a href="#AC507">AC507</a>, y realiza las siguientes modificaciones:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC512</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr> // 3p) Carga el siguiente <a href="resources/ac512.sql">script de datos</a> sobre las tablas de la <a href="#AC507">AC507</a>, y realiza las siguientes modificaciones:</p>
 <ol>
 <li>Añade un nuevo departamento llamado <code>Formación</code>.</li>
 <li>Renombra el departamento <code>IT</code> por <code>Informática</code>.</li>
-<li>Añade el campo <code>email</code> al final de la tabla <code>DEPARTAMENTO</code>, y rellénalos todos con <code>email@ac510.com</code>.</li>
+<li>Añade el campo <code>email</code> al final de la tabla <code>DEPARTAMENTO</code>, y rellénalos todos con <code>email@ac512.com</code>.</li>
 <li>Incrementa el salario de todos los empleados del departamento de informática en 300€.</li>
 <li>Inserta un nuevo empleado con tus datos en el departamento <code>Formación</code>.</li>
 <li>Cambia al empleado <code>12345678A</code> al departamento de <code>Formación</code>.</li>
@@ -4869,17 +4612,17 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 </ol>
 </li>
 </ul>
-<p><a name="AP512"></a></p>
+<p><a name="AP513"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span>  <strong>AP512</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr> // 3p) Sobre la actividad <a href="#AC510">AC510</a>, añade una nueva tabla <code>DIETAS</code> donde podamos anotar los gastos ocasionados por las dietas de los empleados, como son la fecha, el coste y una descripción de la misma. A continuación, inserta 10 dietas de diferentes empleados.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span>  <strong>AP513</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr> // 3p) Sobre la actividad <a href="#AC507">AC507</a>, añade una nueva tabla <code>DIETAS</code> donde podamos anotar los gastos ocasionados por las dietas de los empleados, como son la fecha, el coste y una descripción de la misma. A continuación, inserta 10 dietas de diferentes empleados.</p>
 <p>Debes tener en cuenta que si eliminamos un empleado, no debe permitir realizar la operación ni eliminar las dietas, ya que, si no, luego no nos cuadraría la contabilidad. ¿Cómo solucionamos dar de baja a un empleado pero no eliminarlo del sistema?</p>
 </li>
 </ul>
-<p><a name="AR513"></a></p>
+<p><a name="AR514"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR513</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr> // 3p) Carga el <em>script</em> <a href="resources/ar513.sql"><code>ar513.sql</code></a> con el DDL sobre una base de datos de libros y préstamos, y realiza las siguientes operaciones:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR514</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr> // 3p) Carga el <em>script</em> <a href="resources/ar514.sql"><code>ar514.sql</code></a> con el DDL sobre una base de datos de libros y préstamos, y realiza las siguientes operaciones:</p>
 <ol>
 <li>
 <p>Inserta los siguientes valores en las tablas:</p>
@@ -4962,10 +4705,10 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 </ol>
 </li>
 </ul>
-<p><a name="AC514"></a></p>
+<p><a name="AC515"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC514</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr>, <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr> // 3p) A partir del siguiente modelo relacional, genera el script DDL (<code>ac513.sql</code>) para la creación de las tablas mediante <em>MariaDB</em> en una base de datos denominada <code>ac513</code> (el <em>script</em> debe poder ejecutarse una y otra vez, de manera que si ya existe la base de datos debe borrarla, y para crear cada tabla, debe comprobar que no exista previamente).</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC515</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr>, <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr> // 3p) A partir del siguiente modelo relacional, genera el script DDL (<code>ac515.sql</code>) para la creación de las tablas mediante <em>MariaDB</em> en una base de datos denominada <code>ac515</code> (el <em>script</em> debe poder ejecutarse una y otra vez, de manera que si ya existe la base de datos debe borrarla, y para crear cada tabla, debe comprobar que no exista previamente).</p>
 <p>El diccionario de datos es el siguiente:</p>
 <table>
 <thead>
@@ -5085,10 +4828,10 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 </ol>
 </li>
 </ul>
-<p><a name="AC515"></a></p>
+<p><a name="AC516"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC515</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr> // 3p) Continua la actividad anterior, y crea el script <code>ac514.sql</code> donde insertes los siguientes datos para el alumnado y los cursos mediante instrucciones <code>INSERT</code>:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC516</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr> // 3p) Continua la actividad anterior, y crea el script <code>ac516.sql</code> donde insertes los siguientes datos para el alumnado y los cursos mediante instrucciones <code>INSERT</code>:</p>
 <ul>
 <li>
 <p><code>ALUMNO</code></p>
@@ -5269,10 +5012,21 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 <p>Recuerda que para comprobar los datos que contiene una tabla puedes ejecutar en el cliente <code>SELECT * FROM tabla</code>;</p>
 </li>
 </ul>
-<p><a name="PY516"></a></p>
+<p><a name="PO517"></a></p>
+<!-- prueba objetiva -->
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg></span> <strong>PY516</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr>, <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr>, <abbr title="Se han identificado las herramientas y sentencias para modificar el contenido de la base de datos.">CE4a</abbr>, <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr> // 5p + 5p) A partir del modelo diseñado en la actividad <a href="04mr-eer.html#PY417">PY417</a> asociada al primer reto de diseño de la base de datos, ahora nos vamos a centrar en crear el modelo físico y cargar datos para trabajar con él. Para ello, como equipo, deberéis decantaros por un SGBD en concreto.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> <strong>PO517</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // todos los CE // 30p + 30p) La prueba objetiva agrupa los resultados de aprendizaje asociados al DDL (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>) y al DML (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr>), consistiendo en:</p>
+<ul>
+<li>Crear y/o modificar una estructura de una base de datos</li>
+<li>Insertar/modificar/eliminar datos de una base de datos</li>
+</ul>
+</li>
+</ul>
+<p><a name="PY518"></a></p>
+<ul>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg></span> <strong>PY518</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr>, <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr>, <abbr title="Se han identificado las herramientas y sentencias para modificar el contenido de la base de datos.">CE4a</abbr>, <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr> // 5p + 5p) A partir del modelo diseñado en la actividad <a href="04mr-eer.html#PY417">PY417</a> asociada al primer reto de diseño de la base de datos, ahora nos vamos a centrar en crear el modelo físico y cargar datos para trabajar con él. Para ello, como equipo, deberéis decantaros por un SGBD en concreto.</p>
 <p>Para ello, se pide:</p>
 <ul>
 <li>Informe con el modelo ER, el modelo MR y justificación de las decisiones tomadas respecto a las restricciones incluidas en el modelo físico.</li>
@@ -5292,9 +5046,9 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 </ul>
 </li>
 </ul>
-<p><a name="AR517"></a></p>
+<p><a name="AR519"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR517</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr>, <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr>, <abbr title="Se han identificado las herramientas y sentencias para modificar el contenido de la base de datos.">CE4a</abbr>, <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR519</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha analizado el formato de almacenamiento de la información.">CE2a</abbr>, <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han seleccionado los tipos de datos adecuados.">CE2c</abbr>, <abbr title="Se han definido los campos clave en las tablas.">CE2d</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr>, <abbr title="Se han identificado las herramientas y sentencias para modificar el contenido de la base de datos.">CE4a</abbr>, <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr> // 3p) Una vez finalizada la unidad, responde todas las preguntas del cuestionario inicial, con al menos un par de líneas para cada una de las cuestiones.</li>
 </ul>
 <!--
 * https://mariadb.com/kb/en/create-table/#create-table-like
@@ -5457,22 +5211,12 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
               
                 
               
-              
-              
-                
-                
-              
               Gracias por tu tiempo. Si quieres me puedes <a href='https://ko-fi.com/T6T8GWT9N'>invitar a un café en ko-fi</a>.
             </div>
           
             <div data-md-value="0" hidden>
               
               
-                
-              
-              
-              
-                
                 
               
               ¡Gracias por tu colaboración! Ayúdame a mejorar los apuntes enviándome un mail a <a href="mailto:a.medrano@edu.gva.es">a.medrano@edu.gva.es</a> con tus comentarios.
@@ -5558,8 +5302,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
   
 </div>
       
-        
-<div class="md-social">
+        <div class="md-social">
   
     
     
@@ -5580,7 +5323,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
       
     
     <a href="https://aitor-medrano.github.io/blog" target="_blank" rel="noopener" title="aitor-medrano.github.io" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224 24c0-13.3 10.7-24 24-24 145.8 0 264 118.2 264 264 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-119.3-96.7-216-216-216-13.3 0-24-10.7-24-24M80 96c26.5 0 48 21.5 48 48v224c0 26.5 21.5 48 48 48s48-21.5 48-48-21.5-48-48-48c-8.8 0-16-7.2-16-16v-64c0-8.8 7.2-16 16-16 79.5 0 144 64.5 144 144s-64.5 144-144 144S32 447.5 32 368V144c0-26.5 21.5-48 48-48m168 0c92.8 0 168 75.2 168 168 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-66.3-53.7-120-120-120-13.3 0-24-10.7-24-24s10.7-24 24-24"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M192 32c0 17.7 14.3 32 32 32 123.7 0 224 100.3 224 224 0 17.7 14.3 32 32 32s32-14.3 32-32C512 128.9 383.1 0 224 0c-17.7 0-32 14.3-32 32m0 96c0 17.7 14.3 32 32 32 70.7 0 128 57.3 128 128 0 17.7 14.3 32 32 32s32-14.3 32-32c0-106-86-192-192-192-17.7 0-32 14.3-32 32m-96 16c0-26.5-21.5-48-48-48S0 117.5 0 144v224c0 79.5 64.5 144 144 144s144-64.5 144-144-64.5-144-144-144h-16v96h16c26.5 0 48 21.5 48 48s-21.5 48-48 48-48-21.5-48-48z"/></svg>
     </a>
   
     
@@ -5591,7 +5334,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
       
     
     <a href="https://bsky.app/profile/aitormedrano.bsky.social" target="_blank" rel="noopener" title="bsky.app" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3 3.4.4 6.7.9 10 1.3M288 227.1c-26.1-50.7-97.1-145.2-163.1-191.8C61.6-9.4 37.5-1.7 21.6 5.5 3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7 3.3-.5 6.6-.9 10-1.4-3.3.5-6.6 1-10 1.4-93.9 14-177.3 48.2-67.9 169.9C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4 102.4-103.4 28.1-156-65.8-169.9-3.3-.4-6.7-.8-10-1.3 3.4.4 6.7.9 10 1.3 64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M111.8 62.2C170.2 105.9 233 194.7 256 242.4c23-47.6 85.8-136.4 144.2-180.2 42.1-31.6 110.3-56 110.3 21.8 0 15.5-8.9 130.5-14.1 149.2-18.2 64.8-84.4 81.4-143.3 71.3C456 322 482.2 380 425.6 438c-107.4 110.2-154.3-27.6-166.3-62.9-1.7-4.9-2.6-7.8-3.3-7.8s-1.6 3-3.3 7.8c-12 35.3-59 173.1-166.3 62.9-56.5-58-30.4-116 72.5-133.5C100 314.6 33.8 298 15.7 233.1 10.4 214.4 1.5 99.4 1.5 83.9c0-77.8 68.2-53.4 110.3-21.8z"/></svg>
     </a>
   
     
@@ -5602,7 +5345,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
       
     
     <a href="https://x.com/aitormedrano" target="_blank" rel="noopener" title="x.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M357.2 48h70.6L273.6 224.2 455 464H313L201.7 318.6 74.5 464H3.8l164.9-188.5L-5.2 48h145.6l100.5 132.9zm-24.8 373.8h39.1L119.1 88h-42z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z"/></svg>
     </a>
   
     
@@ -5610,7 +5353,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
     
     
     <a href="mailto:<a.medrano@edu.gva.es>" target="_blank" rel="noopener" title="" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l217.6 163.2c11.4 8.5 27 8.5 38.4 0l217.6-163.2c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 176v208c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V176L294.4 339.2a63.9 63.9 0 0 1-76.8 0z"/></svg>
     </a>
   
 </div>
@@ -5631,6 +5374,12 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
           <form class="md-consent__form md-grid md-typeset" name="consent">
             
 
+  
+    
+  
+
+
+
 
   
 
@@ -5641,27 +5390,18 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <div class="md-consent__settings">
   <ul class="task-list">
     
-    
+      
       
         
-  
-  
-    
-    
-  
-  <li class="task-list-item">
-    <label class="task-list-control">
-      <input type="checkbox" name="analytics" checked>
-      <span class="task-list-indicator"></span>
-      Google Analytics
-    </label>
-  </li>
-
+        
       
-    
-    
-      
-    
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
     
   </ul>
 </div>
@@ -5685,13 +5425,10 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    
-      
-      
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="assets/javascripts/bundle.f13b1293.min.js"></script>
       
         <script src="js/print-site.js"></script>
       
