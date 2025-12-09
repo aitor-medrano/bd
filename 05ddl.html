@@ -3901,6 +3901,14 @@ Hacer una actividad donde hagan CHECK y comparen con otra implementación median
 </code></pre></div>
 </li>
 </ul>
+<p>Finalmente, si queremos añadir una columna generada sobre una tabla existente, la sintaxis es similar a:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombre_tabla</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">nombre_columna</span><span class="w"> </span><span class="n">tipo</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="p">[</span><span class="k">GENERATED</span><span class="w"> </span><span class="n">ALWAYS</span><span class="p">]</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="n">expresion</span><span class="p">)</span><span class="w"> </span><span class="p">[</span><span class="n">VIRTUAL</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">STORED</span><span class="p">];</span>
+</code></pre></div>
+<p>Por ejemplo, si tuviésemos una tabla con los datos de personas que tienen un campo de fecha de nacimiento, podríamos añadir un campo con su edad mediante:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PERSONA</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">edad</span><span class="w"> </span><span class="nb">int</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="n">TIMESTAMPDIFF</span><span class="p">(</span><span class="k">YEAR</span><span class="p">,</span><span class="w"> </span><span class="n">fecha_nacimiento</span><span class="p">,</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="p">))</span><span class="w"> </span><span class="n">VIRTUAL</span><span class="p">;</span>
+</code></pre></div>
 <h3 id="supuesto-ddl">Supuesto DDL<a class="headerlink" href="#supuesto-ddl" title="Permanent link">&para;</a></h3>
 <p>Para integrar todos los conceptos planteados, vamos a realizar un supuesto que partiendo de unas tablas con datos, generemos el DDL y sus restricciones.</p>
 <p>Así pues, dadas las siguientes tablas de una base de datos: </p>
