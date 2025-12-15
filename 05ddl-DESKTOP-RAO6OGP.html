@@ -6,11 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Conceptos y actividades sobre la definición de las estructuras de una base de datos (DDL) y sus operaciones (DML) para insertar, modificar y eliminar datos.">
+        <meta name="description" content="Apuntes y actividades sobre la definición de las estructuras de una base de datos (DDL) y sus operaciones (DML) para insertar, modificar y eliminar datos.">
       
       
       
-        <link rel="canonical" href="https://aitor-medrano.github.io/bd/05ddl-aitor-medrano.html">
+        <link rel="canonical" href="https://aitor-medrano.github.io/bd/05ddl-DESKTOP-RAO6OGP.html">
       
       
       
@@ -76,16 +76,16 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Modelo Físico - SQL - Instrucciones DDL y DML - Bases de datos" />
-<meta property="og:description" content="Conceptos y actividades sobre la definición de las estructuras de una base de datos (DDL) y sus operaciones (DML) para insertar, modificar y eliminar datos." />
-<meta property="og:image" content="https://aitor-medrano.github.io/bd/assets/images/social/05ddl-aitor-medrano.png" />
+<meta property="og:description" content="Apuntes y actividades sobre la definición de las estructuras de una base de datos (DDL) y sus operaciones (DML) para insertar, modificar y eliminar datos." />
+<meta property="og:image" content="https://aitor-medrano.github.io/bd/assets/images/social/05ddl-DESKTOP-RAO6OGP.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:url" content="https://aitor-medrano.github.io/bd/05ddl-aitor-medrano.html" />
+<meta property="og:url" content="https://aitor-medrano.github.io/bd/05ddl-DESKTOP-RAO6OGP.html" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Modelo Físico - SQL - Instrucciones DDL y DML - Bases de datos" />
-<meta property="twitter:description" content="Conceptos y actividades sobre la definición de las estructuras de una base de datos (DDL) y sus operaciones (DML) para insertar, modificar y eliminar datos." />
-<meta property="twitter:image" content="https://aitor-medrano.github.io/bd/assets/images/social/05ddl-aitor-medrano.png" />
+<meta property="twitter:description" content="Apuntes y actividades sobre la definición de las estructuras de una base de datos (DDL) y sus operaciones (DML) para insertar, modificar y eliminar datos." />
+<meta property="twitter:image" content="https://aitor-medrano.github.io/bd/assets/images/social/05ddl-DESKTOP-RAO6OGP.png" />
 </head>
   
   
@@ -2774,14 +2774,14 @@ Si vives en España y tus amigos de Chile quieren informarte de su hora local si
 <span class="linenos" data-linenos=" 8 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">USUARIO_UUID</span><span class="w"> </span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span><span class="w"> </span>
 <span class="linenos" data-linenos=" 9 "></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Juan Pérez&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;juan@ejemplo.com&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos="10 "></span>
-<span class="linenos" data-linenos="11 "></span><span class="c1">-- 4. Insertar con UUID específico</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- 1. Insertar con UUID específico</span>
 <span class="linenos" data-linenos="12 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">USUARIO_UUID</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">)</span><span class="w"> </span>
 <span class="linenos" data-linenos="13 "></span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;550e8400-e29b-41d4-a716-446655440000&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;María García&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;maria@ejemplo.com&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos="14 "></span>
-<span class="linenos" data-linenos="15 "></span><span class="c1">-- 5. Consultar datos</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- 2. Consultar datos</span>
 <span class="linenos" data-linenos="16 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">USUARIO_UUID</span><span class="p">;</span>
 <span class="linenos" data-linenos="17 "></span>
-<span class="linenos" data-linenos="18 "></span><span class="c1">-- 6. Generar UUID manualmente</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- 3. Generar UUID manualmente</span>
 <span class="hll"><span class="linenos" data-linenos="19 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">gen_random_uuid</span><span class="p">()</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">nuevo_uuid</span><span class="p">;</span>
 </span></code></pre></div>
 </div>
@@ -2834,8 +2834,18 @@ FIXME: probar y pegar resultados.. cambiar comentarios
 <p>Un caso particular de las operaciones de modificación es renombrar una tabla. Para ello, usaremos la opción <code>RENAME TO</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTablaViejo</span><span class="w"> </span><span class="k">RENAME</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">nombreNuevo</span><span class="p">;</span>
 </code></pre></div>
-<p>Finalmente, si queremos <a href="https://mariadb.com/kb/en/setting-character-sets-and-collations/">cambiar el juego de caracteres</a> (y la colación) de una tabla concreta, haremos:</p>
+<p>También, podemos <a href="https://mariadb.com/kb/en/setting-character-sets-and-collations/">cambiar el juego de caracteres</a> (y la colación) de una tabla concreta, mediante:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="k">CONVERT</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="nb">CHARACTER</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">nuevoJuego</span><span class="w"> </span><span class="p">[</span><span class="k">COLLATE</span><span class="w"> </span><span class="n">nuevaColacion</span><span class="p">];</span>
+</code></pre></div>
+<p>Finalmente, conviene destacar cómo se gestiona la modificación de una clave primaria. Las claves primarias no se pueden modificar, por lo tanto, si queremos cambiar, necesitamos primero eliminarla mediante <a href="https://mariadb.com/docs/server/reference/sql-statements/data-definition/alter/alter-table#drop-primary-key"><code>DROP PRIMARY KEY</code></a>, y luego volverla a crear.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">PK_nombreTabla</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">campo1</span><span class="p">[,</span><span class="n">campo2</span><span class="p">]);</span>
+</code></pre></div>
+<p>Si hacia la clave primaria, o desde la clave primaria, tenemos alguna clave ajena, al eliminar la clave primaria obtendremos un error, ya que considera que hay dependencias entre los campos. Para evitarlo, primero hemos de deshabilitar las claves, volver a eliminar la primaria y crearla de nueva, y finalmente habilitar de nuevos las claves ajenas:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="n">DISABLE</span><span class="w"> </span><span class="n">KEYS</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">nombreTabla</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">PK_nombreTabla</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">campo1</span><span class="p">[,</span><span class="n">campo2</span><span class="p">]);</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="n">ENABLE</span><span class="w"> </span><span class="n">KEYS</span><span class="p">;</span>
 </code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">Autoevaluación</p>
@@ -2904,6 +2914,14 @@ FIXME: probar y pegar resultados.. cambiar comentarios
 <span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
 <span class="hll"><span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">5000</span><span class="p">);</span>
 </span></code></pre></div>
+<p>Si ya tenemos una tabla creada, y queremos añadir o quitar un valor por defecto, bien podemos volver a definir de nuevo toda la columna con <code>ALTER TABLE nombreTabla MODIFY nombreCampo tipoCampo [restricciones]</code>, o mejor usar la cláusula <a href="https://mariadb.com/docs/server/reference/sql-statements/data-definition/alter/alter-table#alter-column"><code>ALTER COLUMN</code></a> para añadir con <code>SET</code> o eliminar con <code>DROP</code> el valor por defecto:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CIUDAD</span><span class="w"> </span><span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">poblacion</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="mi">666</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PROVINCIA</span><span class="w"> </span><span class="k">ALTER</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">poblacion</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="p">;</span>
+</code></pre></div>
+<p>En el caso de los campos que admiten o no valores nulos, únicamente podemos indicarlos o eliminar la restricción mediante la claúsula <code>MODIFY</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PROVINCIA</span><span class="w"> </span><span class="k">MODIFY</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">poblacion</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CIUDAD</span><span class="w"> </span><span class="k">MODIFY</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">codigoPostal</span><span class="w"> </span><span class="nb">CHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</code></pre></div>
 <p>Cabe destacar que en el caso de campos de <a href="#temporales">tipo fecha</a>, podemos emplear las clausulas <a href="https://mariadb.com/docs/server/reference/sql-functions/date-time-functions/current_timestamp"><code>CURRENT_TIMESTAMP</code></a> para campos de tipo <code>DATETIME</code>o <code>TIMESTAMP</code>, <a href="https://mariadb.com/docs/server/reference/sql-functions/date-time-functions/current_date"><code>CURRENT_DATE</code></a> para tipos <code>DATE</code> y <a href="https://mariadb.com/docs/server/reference/sql-functions/date-time-functions/current_time"><code>CURRENT_TIME</code></a> para el tipo <code>TIME</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">PRESTAMO</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span>
@@ -2915,15 +2933,15 @@ FIXME: probar y pegar resultados.. cambiar comentarios
 <span class="hll"><span class="linenos" data-linenos="8 "></span><span class="w">    </span><span class="n">hora_entrada</span><span class="w"> </span><span class="k">TIME</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIME</span>
 </span><span class="linenos" data-linenos="9 "></span><span class="p">);</span>
 </code></pre></div>
-<p>Por último, cuando tenemos un campo fecha y queremos que además de con las inserciones, con las modificaciones se modifique su valor, hemos de emplear también la clausula <code>ON UPDATE</code>:</p>
+<p>Por último, cuando tenemos un campo fecha y queremos que, además de al realizar una inserción, con las modificaciones se modifique su valor, hemos de emplear también la clausula <code>ON UPDATE</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">EVENTO</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="p">,</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
 <span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="c1">-- Se inserta automáticamente la fecha/hora actual si no se especifica valor</span>
 <span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="n">fecha_creacion</span><span class="w"> </span><span class="n">DATETIME</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
 <span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="c1">-- Se actualiza automáticamente cada vez que se modifica el registro</span>
-<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="n">fecha_modificacion</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span>
-<span class="linenos" data-linenos="8 "></span><span class="p">);</span>
+<span class="hll"><span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="n">fecha_modificacion</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span>
+</span><span class="linenos" data-linenos="8 "></span><span class="p">);</span>
 </code></pre></div>
 <h4 id="claves-unicas">Claves únicas<a class="headerlink" href="#claves-unicas" title="Permanent link">&para;</a></h4>
 <p>Cuando marcamos en el modelo relacional una propiedad como <code>UK</code>, es decir, clave única o alternativa, estamos indicando que dicho atributo no permite repetidos. Para ello, en el modelo físico y mediante SQL, ahora usaremos la propiedad <strong><code>UNIQUE</code></strong>, que provocará la creación de un índice (los índices los estudiaremos en la unidad 9).</p>
@@ -3131,17 +3149,20 @@ Hacer una actividad donde hagan CHECK y comparen con otra implementación median
 <span class="linenos" data-linenos="7 "></span><span class="c1">-- La volvemos a crear</span>
 <span class="linenos" data-linenos="8 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">INGRESO3</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">CONSTRAINT</span><span class="w"> </span><span class="n">CK_INGRESO_NUEVA</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">importe</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">importe</span><span class="o">&lt;</span><span class="n">importeMax</span><span class="p">));</span>
 </code></pre></div>
-<p>Debes tener en cuenta que para eliminar una clave primaria, no debe haber ninguna clave ajena apuntando a ella. Además, si la clave primaria ya es clave ajena, antes de poder borrar la clave, deberemos borrar las claves ajenas que formen parte de la clave primaria y luego borrar sus índices. Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">PK_MUCHOS_N</span><span class="p">;</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">PK_MUCHOS_M</span><span class="p">;</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">FK_MUCHO_N</span><span class="p">;</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">FK_MUCHO_M</span><span class="p">;</span>
-<span class="linenos" data-linenos="5 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">;</span>
-</code></pre></div>
 <p>Respecto a las claves, si queremos deshabilitarlas para hacer algún tipo de modificación, haremos uso de las opciones <code>ENABLE</code> o <code>DISABLE</code> según convenga:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="n">ENABLE</span><span class="w"> </span><span class="n">KEYS</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">tabla</span><span class="w"> </span><span class="n">DISABLE</span><span class="w"> </span><span class="n">KEYS</span><span class="p">;</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Recuerda cómo se gestiona la PK</p>
+<p>Debes tener en cuenta que para eliminar una clave primaria, no debe haber ninguna clave ajena apuntando a ella. Además, si la clave primaria ya es clave ajena, antes de poder borrar la clave, deberemos borrar las claves ajenas que formen parte de la clave primaria y luego borrar sus índices. Por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">PK_MUCHOS_N</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">PK_MUCHOS_M</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">FK_MUCHO_N</span><span class="p">;</span><span class="w"> </span><span class="c1">-- Si tuviésemos algún índice</span>
+<span class="linenos" data-linenos="4 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">FK_MUCHO_M</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">ALTER</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">relacionNM</span><span class="w"> </span><span class="k">DROP</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">;</span>
+</code></pre></div>
+</div>
 <p>Finalmente, si queremos comprobar todas las restricciones que tiene una tabla, podemos ejecutar la sentencia <code>SHOW CREATE TABLE</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">SHOW</span><span class="w"> </span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">CURSAR</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
@@ -4405,7 +4426,7 @@ https://jorgesanchez.net/manuales/sql/intro-sql-sql2016.html
 </ul>
 <p>A continuación, mediante operaciones <code>ALTER TABLE</code> añade las siguientes restricciones:</p>
 <ul>
-<li>La columna <code>PRODUCTO.categoria</code> no puede admitir valores nulos.</li>
+<li>La columna <code>PIEZA.categoria</code> no puede admitir valores nulos.</li>
 <li>El <code>peso</code> debe ser superior o igual a 1.00.</li>
 </ul>
 </li>
@@ -4963,7 +4984,7 @@ Table FAMILIA {
 <td>666</td>
 <td>Humor</td>
 <td><code>NULL</code></td>
-<td>11</td>
+<td>12</td>
 </tr>
 <tr>
 <td><code>NULL</code></td>
@@ -4992,28 +5013,28 @@ Table FAMILIA {
 <td>1</td>
 <td>20/12/20</td>
 <td>7,2</td>
-<td>0.0</td>
+<td><code>NULL</code></td>
 </tr>
 <tr>
 <td>1</td>
 <td>666</td>
 <td>20/12/20</td>
 <td>9,9</td>
-<td>0.0</td>
+<td><code>NULL</code></td>
 </tr>
 <tr>
 <td>2</td>
 <td>667</td>
 <td>10/1/21</td>
 <td>5</td>
-<td>0.0</td>
+<td><code>NULL</code></td>
 </tr>
 <tr>
 <td>2</td>
 <td>666</td>
 <td>10/1/21</td>
 <td>7</td>
-<td>0.0</td>
+<td><code>NULL</code></td>
 </tr>
 <tr>
 <td>3</td>
@@ -5046,11 +5067,11 @@ Table FAMILIA {
 <li>
 <p>Eliminar:</p>
 <ol>
-<li>Borra las calificaciones inferiores a 4. ¿Has podido? ¿Cuántas calificaciones quedan?</li>
-<li>Borra la información de <code>Johnny Mentero</code>. ¿Has podido? ¿Cuántos calificaciones quedan?</li>
-<li>Elimina el curso de cocina. ¿Has podido? ¿Cuántas asignaturas quedan?</li>
-<li>Elimina los alumnos que no tengan teléfono. ¿Has podido? ¿Cuántos alumnos quedan? ¿Cuántas calificaciones quedan?</li>
-<li>Elimina todos los alumnos. ¿Has podido? ¿Cuántos alumnos quedan? ¿Cuántas calificaciones quedan?</li>
+<li>Borra las calificaciones inferiores a 4. ¿has podido? ¿cuantas calificaciones quedan?</li>
+<li>Borra la información de <code>Johnny Mentero</code>. ¿has podido? ¿cuantos calificaciones quedan?</li>
+<li>Elimina el curso de cocina ¿has podido? ¿cuantas asignaturas quedan?</li>
+<li>Elimina los alumnos que no tengan teléfono ¿has podido? ¿cuantos alumnos quedan? ¿cuantas calificaciones quedan?</li>
+<li>Elimina todos los alumnos ¿has podido? ¿cuantos alumnos quedan? ¿cuantas calificaciones quedan?</li>
 </ol>
 </li>
 </ol>
@@ -5061,7 +5082,7 @@ Table FAMILIA {
 <!-- prueba objetiva -->
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> <strong>PO517</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // todos los CE // 30p + 30p) La prueba objetiva agrupa los resultados de aprendizaje asociados al DDL (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>) y al DML (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr>), consistiendo en:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> <strong>PO517</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // todos los CE // 40p + 20p) La prueba objetiva agrupa los resultados de aprendizaje asociados al DDL (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>) y al DML (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr>), consistiendo en:</p>
 <ul>
 <li>Crear y/o modificar una estructura de una base de datos</li>
 <li>Insertar/modificar/eliminar datos de una base de datos</li>
