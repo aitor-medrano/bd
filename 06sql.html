@@ -2903,9 +2903,9 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- | 4_VENZS       |</span>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- +---------------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
-<span class="hll"><span class="linenos" data-linenos="18 "></span>
-</span><span class="linenos" data-linenos="19 "></span><span class="k">select</span><span class="w"> </span><span class="k">UPPER</span><span class="p">(</span><span class="n">NomEmp</span><span class="p">),</span><span class="w"> </span><span class="k">LEFT</span><span class="p">(</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="k">LEFT</span><span class="p">(</span><span class="k">RIGHT</span><span class="p">(</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-<span class="linenos" data-linenos="20 "></span><span class="c1">-- +-----------------------------+-----------------+--------------------------+</span>
+<span class="linenos" data-linenos="18 "></span>
+<span class="hll"><span class="linenos" data-linenos="19 "></span><span class="k">select</span><span class="w"> </span><span class="k">UPPER</span><span class="p">(</span><span class="n">NomEmp</span><span class="p">),</span><span class="w"> </span><span class="k">LEFT</span><span class="p">(</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="k">LEFT</span><span class="p">(</span><span class="k">RIGHT</span><span class="p">(</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="20 "></span><span class="c1">-- +-----------------------------+-----------------+--------------------------+</span>
 <span class="linenos" data-linenos="21 "></span><span class="c1">-- | UPPER(NomEmp)               | LEFT(NomEmp, 2) | LEFT(RIGHT(NomEmp, 2),1) |</span>
 <span class="linenos" data-linenos="22 "></span><span class="c1">-- +-----------------------------+-----------------+--------------------------+</span>
 <span class="linenos" data-linenos="23 "></span><span class="c1">-- | SALADINO MANDAMÁS, AUGUSTO  | Sa              | t                        |</span>
@@ -2923,16 +2923,16 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 </code></pre></div>
 <p>Otras funciones que podemos utilizar son <code>CHAR_LENGTH(cadena)</code> para obtener el tamaño, <a href="https://mariadb.com/kb/en/locate/"><code>LOCATE(subcadena, cadena)</code></a> para encontrar una subcadena en una cadena, REPLACE(cadena, cadenaOrigen, cadenaDestino)<code>para sustituir una subcadena por otra o</code>REVERSE(cadena)` para invertir una cadena.</p>
 <h4 id="fecha-hora">Fecha / Hora<a class="headerlink" href="#fecha-hora" title="Permanent link">&para;</a></h4>
-<p>Si trabajamos con campos de tipo fecha, podemos emplear las siguientes <a href="https://mariadb.com/kb/en/date-time-functions/">funciones</a>:</p>
+<p>Si trabajamos con campos de tipo fecha, podemos emplear las siguientes funciones en <a href="https://mariadb.com/kb/en/date-time-functions/">MariaDB</a> o <a href="https://www.postgresql.org/docs/current/functions-datetime.html">PostgreSQL</a>:</p>
 <ul>
 <li><a href="https://mariadb.com/kb/en/now/"><code>NOW()</code> / <code>CURRENT_TIMESTAMP</code></a>: fecha y hora actual del sistema.</li>
-<li><a href="https://mariadb.com/kb/en/curdate/"><code>CURDATE()</code></a>: fecha actual en formato <code>yyyy-mm-dd</code> o <code>yyyymmdd</code>.</li>
-<li><a href="https://mariadb.com/kb/en/datediff/"><code>DATEDIFF(fecha1, fecha2)</code></a>: diferencia de días entre dos fechas.</li>
+<li><a href="https://mariadb.com/kb/en/curdate/"><code>CURDATE()</code> / <code>CURRENT_DATE</code></a>: fecha actual en formato <code>yyyy-mm-dd</code> o <code>yyyymmdd</code>.</li>
+<li><a href="https://mariadb.com/kb/en/datediff/"><code>DATEDIFF(fecha1, fecha2)</code></a> en <em>MariaDB</em>, o <code>AGE(fecha1, fecha2)</code> en <em>PostgreSQL</em>: diferencia de días entre dos fechas. También se puede restar fechas directamente (<code>fecha1 - fecha2</code>) siempre y cuando ambos campos sean de tipo <code>DATE</code>.</li>
 <li><a href="https://mariadb.com/kb/en/timestampdiff/"><code>TIMESTAMPDIFF(unidad, fecha1, fecha2)</code></a>: diferencia medida en <code>unidad</code> entre dos fechas.</li>
 <li><a href="https://mariadb.com/kb/en/date_add/"><code>DATE_ADD(fecha, INTERVAL expresión Tipo)</code></a> / <a href="https://mariadb.com/kb/en/date_sub/"><code>DATE_SUB</code></a>, pudiendo utilizar los siguientes <a href="https://mariadb.com/kb/en/date-and-time-units/">tipos</a>.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- fecha y hora actual (en el momento de crear los apuntes)</span>
-<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span><span class="w"> </span><span class="n">CURDATE</span><span class="p">();</span>
+<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span><span class="w"> </span><span class="n">CURDATE</span><span class="p">(),</span><span class="w"> </span><span class="k">CURRENT_DATE</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +---------------------+---------------------+------------+</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | NOW()               | CURRENT_TIMESTAMP   | CURDATE()  |</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +---------------------+---------------------+------------+</span>
@@ -2949,14 +2949,24 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- +-------------------------------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 <span class="linenos" data-linenos="18 "></span>
-<span class="linenos" data-linenos="19 "></span><span class="c1">-- fecha de hoy y dentro de 3 meses</span>
-<span class="hll"><span class="linenos" data-linenos="20 "></span><span class="k">select</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="n">DATE_ADD</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="o">+</span><span class="mi">3</span><span class="w"> </span><span class="k">MONTH</span><span class="p">)</span>
-</span><span class="linenos" data-linenos="21 "></span><span class="c1">-- +---------------------+------------------------------------+</span>
-<span class="linenos" data-linenos="22 "></span><span class="c1">-- | NOW()               | DATE_ADD(NOW(), INTERVAL +3 MONTH) |</span>
-<span class="linenos" data-linenos="23 "></span><span class="c1">-- +---------------------+------------------------------------+</span>
-<span class="linenos" data-linenos="24 "></span><span class="c1">-- | 2024-11-17 17:35:08 | 2025-02-17 17:35:08                |</span>
-<span class="linenos" data-linenos="25 "></span><span class="c1">-- +---------------------+------------------------------------+</span>
-<span class="linenos" data-linenos="26 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
+<span class="hll"><span class="linenos" data-linenos="19 "></span><span class="k">select</span><span class="w"> </span><span class="n">DATEDIFF</span><span class="p">(</span><span class="s1">&#39;2026-01-12&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-01-01&#39;</span><span class="p">);</span>
+</span><span class="linenos" data-linenos="20 "></span><span class="c1">-- SELECT DATE &#39;2026-01-12&#39; - DATE &#39;2026-01-01&#39;;</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">-- SELECT AGE(DATE &#39;2026-01-12&#39;, DATE &#39;2026-01-01&#39;);  -- PostgreSQL</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">-- +--------------------------------------+</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">-- | DATEDIFF(&#39;2026-01-12&#39;, &#39;2026-01-01&#39;) |</span>
+<span class="linenos" data-linenos="24 "></span><span class="c1">-- +--------------------------------------+</span>
+<span class="linenos" data-linenos="25 "></span><span class="c1">-- |                                   11 |</span>
+<span class="linenos" data-linenos="26 "></span><span class="c1">-- +--------------------------------------+</span>
+<span class="linenos" data-linenos="27 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
+<span class="linenos" data-linenos="28 "></span>
+<span class="linenos" data-linenos="29 "></span><span class="c1">-- fecha de hoy y dentro de 3 meses</span>
+<span class="hll"><span class="linenos" data-linenos="30 "></span><span class="k">select</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="n">DATE_ADD</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="o">+</span><span class="mi">3</span><span class="w"> </span><span class="k">MONTH</span><span class="p">)</span>
+</span><span class="linenos" data-linenos="31 "></span><span class="c1">-- +---------------------+------------------------------------+</span>
+<span class="linenos" data-linenos="32 "></span><span class="c1">-- | NOW()               | DATE_ADD(NOW(), INTERVAL +3 MONTH) |</span>
+<span class="linenos" data-linenos="33 "></span><span class="c1">-- +---------------------+------------------------------------+</span>
+<span class="linenos" data-linenos="34 "></span><span class="c1">-- | 2024-11-17 17:35:08 | 2025-02-17 17:35:08                |</span>
+<span class="linenos" data-linenos="35 "></span><span class="c1">-- +---------------------+------------------------------------+</span>
+<span class="linenos" data-linenos="36 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 </code></pre></div>
 <p>Por otro lado, además de operaciones sobre campos fecha, también podemos realizar transformaciones sobre fecha para obtener una parte o información relativa a la misma:</p>
 <ul>
