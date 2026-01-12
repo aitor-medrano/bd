@@ -12817,7 +12817,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <tbody>
 <tr>
 <td><a href="https://mariadb.com/kb/en/concat/"><code>CONCAT(cadena1, cadena2, …)</code></a></td>
-<td><a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTIONS-STRING-SQL"><code>CONCAT(cadena1, cadena2, …)</code></a> o <a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTIONS-STRING-SQL"><code>cadena1 \|\| cadena2</code></a></td>
+<td><a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTIONS-STRING-SQL"><code>CONCAT(cadena1, cadena2, …)</code></a> o <a href="https://www.postgresql.org/docs/current/functions-string.html#FUNCTIONS-STRING-SQL"><code>cadena1 || cadena2</code></a></td>
 <td>Permite unir/concatenar cadenas</td>
 </tr>
 <tr>
@@ -12844,38 +12844,39 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 </table>
 <p>Algunos ejemplos de su uso:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">CodEmp</span><span class="p">,</span><span class="s1">&#39;_&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">concatenacion</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-</span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +---------------+</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | concatenacion |</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +---------------+</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | 5_ADMZS       |</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | 1_DIRGE       |</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | 2_IN&amp;DI       |</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | 6_JEFZS       |</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | 7_PROZS       |</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">-- | 8_PROZS       |</span>
-<span class="linenos" data-linenos="11 "></span><span class="c1">-- | 9_PROZS       |</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1">-- | 10_PROZS      |</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">-- | 3_VENZS       |</span>
-<span class="linenos" data-linenos="14 "></span><span class="c1">-- | 4_VENZS       |</span>
-<span class="linenos" data-linenos="15 "></span><span class="c1">-- +---------------+</span>
-<span class="linenos" data-linenos="16 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
-<span class="linenos" data-linenos="17 "></span>
-<span class="hll"><span class="linenos" data-linenos="18 "></span><span class="k">select</span><span class="w"> </span><span class="k">UPPER</span><span class="p">(</span><span class="n">NomEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-</span><span class="linenos" data-linenos="19 "></span><span class="c1">-- +-----------------------------+</span>
-<span class="linenos" data-linenos="20 "></span><span class="c1">-- | UPPER(NomEmp)               |</span>
-<span class="linenos" data-linenos="21 "></span><span class="c1">-- +-----------------------------+</span>
-<span class="linenos" data-linenos="22 "></span><span class="c1">-- | SALADINO MANDAMÁS, AUGUSTO  |</span>
-<span class="linenos" data-linenos="23 "></span><span class="c1">-- | MANRIQUE BACTERIO, LUISA    |</span>
-<span class="linenos" data-linenos="24 "></span><span class="c1">-- | MONFORTE CID, ROLDÁN        |</span>
-<span class="linenos" data-linenos="25 "></span><span class="c1">-- | TOPAZ ILLÁN, CARLOS         |</span>
-<span class="linenos" data-linenos="26 "></span><span class="c1">-- | ALADA VERAZ, JUANA          |</span>
-<span class="linenos" data-linenos="27 "></span><span class="c1">-- | GOZQUE ALTANERO, CÁNDIDO    |</span>
-<span class="linenos" data-linenos="28 "></span><span class="c1">-- | FORZADO LÓPEZ, GALEOTE      |</span>
-<span class="linenos" data-linenos="29 "></span><span class="c1">-- | MASCULLAS ALTO, ELOÍSA      |</span>
-<span class="linenos" data-linenos="30 "></span><span class="c1">-- | MANDO CORREA, ROSA          |</span>
-<span class="linenos" data-linenos="31 "></span><span class="c1">-- | MOSC AMUERTA, MARIO         |</span>
-<span class="linenos" data-linenos="32 "></span><span class="c1">-- +-----------------------------+</span>
-<span class="linenos" data-linenos="33 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- select CodEmp || &#39;_&#39; || CodDep as concatenacion from empleado;  -- PostgreSQL</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +---------------+</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | concatenacion |</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +---------------+</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | 5_ADMZS       |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | 1_DIRGE       |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | 2_IN&amp;DI       |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | 6_JEFZS       |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | 7_PROZS       |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- | 8_PROZS       |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | 9_PROZS       |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | 10_PROZS      |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- | 3_VENZS       |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- | 4_VENZS       |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- +---------------+</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
+<span class="hll"><span class="linenos" data-linenos="18 "></span>
+</span><span class="linenos" data-linenos="19 "></span><span class="k">select</span><span class="w"> </span><span class="k">UPPER</span><span class="p">(</span><span class="n">NomEmp</span><span class="p">),</span><span class="w"> </span><span class="k">LEFT</span><span class="p">(</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="k">LEFT</span><span class="p">(</span><span class="k">RIGHT</span><span class="p">(</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">-- +-----------------------------+-----------------+--------------------------+</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">-- | UPPER(NomEmp)               | LEFT(NomEmp, 2) | LEFT(RIGHT(NomEmp, 2),1) |</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">-- +-----------------------------+-----------------+--------------------------+</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">-- | SALADINO MANDAMÁS, AUGUSTO  | Sa              | t                        |</span>
+<span class="linenos" data-linenos="24 "></span><span class="c1">-- | MANRIQUE BACTERIO, LUISA    | Ma              | s                        |</span>
+<span class="linenos" data-linenos="25 "></span><span class="c1">-- | MONFORTE CID, ROLDÁN        | Mo              | á                        |</span>
+<span class="linenos" data-linenos="26 "></span><span class="c1">-- | TOPAZ ILLÁN, CARLOS         | To              | o                        |</span>
+<span class="linenos" data-linenos="27 "></span><span class="c1">-- | ALADA VERAZ, JUANA          | Al              | n                        |</span>
+<span class="linenos" data-linenos="28 "></span><span class="c1">-- | GOZQUE ALTANERO, CÁNDIDO    | Go              | d                        |</span>
+<span class="linenos" data-linenos="29 "></span><span class="c1">-- | FORZADO LÓPEZ, GALEOTE      | Fo              | t                        |</span>
+<span class="linenos" data-linenos="30 "></span><span class="c1">-- | MASCULLAS ALTO, ELOÍSA      | Ma              | s                        |</span>
+<span class="linenos" data-linenos="31 "></span><span class="c1">-- | MANDO CORREA, ROSA          | Ma              | s                        |</span>
+<span class="linenos" data-linenos="32 "></span><span class="c1">-- | MOSC AMUERTA, MARIO         | Mo              | i                        |</span>
+<span class="linenos" data-linenos="33 "></span><span class="c1">-- +-----------------------------+-----------------+--------------------------+</span>
+<span class="linenos" data-linenos="34 "></span><span class="c1">-- 10 rows in set (0.002 sec)</span>
 </code></pre></div>
 <p>Otras funciones que podemos utilizar son <code>CHAR_LENGTH(cadena)</code> para obtener el tamaño, <a href="https://mariadb.com/kb/en/locate/"><code>LOCATE(subcadena, cadena)</code></a> para encontrar una subcadena en una cadena, REPLACE(cadena, cadenaOrigen, cadenaDestino)<code>para sustituir una subcadena por otra o</code>REVERSE(cadena)` para invertir una cadena.</p>
 <h4 id="06sql-fecha-hora">Fecha / Hora<a class="headerlink" href="#06sql-fecha-hora" title="Permanent link">&para;</a></h4>
