@@ -13368,12 +13368,37 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +--------+---------------------------+</span>
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- 4 rows in set (0.000 sec)</span>
 </code></pre></div>
-<!--
-FIXME: el mejor / crear apartado nuevo
-DESEMPATES: https://mariadb.com/kb/en/select-offset-fetch/
-FETCH FIRST 1 ROW WITH TIES;
--->
-
+<div class="admonition tip">
+<p class="admonition-title">Empates</p>
+<p>¿Qué sucede si al ordenar hay varios registros que empatan en la primera/última posición? Por ejemplo, si ordenamos por salario y los dos últimos empleados tienen el mismo salario, ¿cuál de los dos se mostrará?</p>
+<p>Es muy común realizar consultas donde queremos recuperar el mejor/peor elemento que cumple un criterio, y en ocasiones, hay empates y la técnica de ordenar y recuperar un elemento mediante <code>ORDER BY campo LIMIT 1</code> no funciona.</p>
+<p>Para resolver estos casos, <em>MariaDB</em> soporta la cláusula <a href="https://mariadb.com/docs/server/reference/sql-statements/data-manipulation/selecting-data/select-offset-fetch"><code>FETCH FIRST n ROWS WITH TIES</code></a> que permite recuperar todas las filas que empatan en una posición. <em>PostgreSQL</em> no soporta esta cláusula, pero se puede simular mediante una subconsulta o utilizando <code>DISTINCT ON</code>.</p>
+<p>Por ejemplo, para recuperar los empleados con salarios más bajos, haríamos:</p>
+<p>``` sql sql hl_lines="3"
+-- Recuperar los empleados con el salario más bajo
+select NomEmp, SalEmp from empleado
+    ORDER BY SalEmp ASC
+    FETCH FIRST 1 ROW WITH TIES;
+-- +-------------------------+------------+
+-- | NomEmp                  | SalEmp     |
+-- +-------------------------+------------+
+-- | Mosc Amuerta, Mario     | 1300000.00 |
+-- +-------------------------+------------+
+-- 1 row in set (0.000 sec)</p>
+<p>-- Recuperar los empleados con los dos salarios más bajos
+select NomEmp, SalEmp from empleado
+    ORDER BY SalEmp ASC
+    FETCH FIRST 2 ROWS WITH TIES;
+-- +-------------------------+------------+
+-- | NomEmp                  | SalEmp     |
+-- +-------------------------+------------+
+-- | Mosc Amuerta, Mario     | 1300000.00 |
+-- | Mascullas Alto, Eloísa  | 1600000.00 |
+-- | Forzado López, Galeote  | 1600000.00 |
+-- +-------------------------+------------+
+-- 3 rows in set (0.000 sec)
+```</p>
+</div>
 <h3 id="06sql-seleccion">Selección<a class="headerlink" href="#06sql-seleccion" title="Permanent link">&para;</a></h3>
 <p>La selección en SQL permite filtrar filas de una tabla en función de condiciones específicas. Esto se logra mediante la cláusula <code>WHERE</code>, que define los criterios de filtrado.</p>
 <p>Para filtrar los datos y realizar una selección de tuplas, podemos emplear tanto <a href="https://mariadb.com/kb/en/function-and-operator-reference/">funciones como operadores</a> dentro del <code>WHERE</code>. Para realizar las comparaciones, se expresan mediante <code>expresion1 operador expresion2</code>, pudiendo utilizar los  operadores relacionales <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>!=</code>, así como los operadores lógicos como <code>and</code>, <code>or</code>, <code>not</code>, etc...</p>
@@ -14276,7 +14301,7 @@ b) Fueron contratados en 1994.</p>
 <li>Recupera el nombre de los departamentos que han vendido algún producto a un cliente que vive en <code>Phoenix</code>.</li>
 <li>Recupera todos los productos cuya categoría contenga la palabra <code>Golf</code>.</li>
 <li>Para todos los elementos de pedido, comprueba si el valor del subtotal cuadra con el producto del precio por su cantidad.</li>
-<li>Recupera todos los clientes que no han hecho ningún pedido.</li>
+<li>Recupera todos los clientes que no han realizado ningún pedido.</li>
 <li>Recupera todas las categorías que no tienen productos (usando combinaciones externas)</li>
 </ol>
 </li>
