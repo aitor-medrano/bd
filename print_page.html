@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1246,6 +1246,14 @@
           
           
             <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
               
               <article class="md-content__inner md-typeset">
                 
@@ -13374,30 +13382,30 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <p>Es muy común realizar consultas donde queremos recuperar el mejor/peor elemento que cumple un criterio, y en ocasiones, hay empates y la técnica de ordenar y recuperar un elemento mediante <code>ORDER BY campo LIMIT 1</code> no funciona.</p>
 <p>Para resolver estos casos, <em>MariaDB</em> soporta la cláusula <a href="https://mariadb.com/docs/server/reference/sql-statements/data-manipulation/selecting-data/select-offset-fetch"><code>FETCH FIRST n ROWS WITH TIES</code></a> que permite recuperar todas las filas que empatan en una posición. <em>PostgreSQL</em> no soporta esta cláusula, pero se puede simular mediante una subconsulta o utilizando <code>DISTINCT ON</code>.</p>
 <p>Por ejemplo, para recuperar los empleados con salarios más bajos, haríamos:</p>
-<p>``` sql sql hl_lines="3"
--- Recuperar los empleados con el salario más bajo
-select NomEmp, SalEmp from empleado
-    ORDER BY SalEmp ASC
-    FETCH FIRST 1 ROW WITH TIES;
--- +-------------------------+------------+
--- | NomEmp                  | SalEmp     |
--- +-------------------------+------------+
--- | Mosc Amuerta, Mario     | 1300000.00 |
--- +-------------------------+------------+
--- 1 row in set (0.000 sec)</p>
-<p>-- Recuperar los empleados con los dos salarios más bajos
-select NomEmp, SalEmp from empleado
-    ORDER BY SalEmp ASC
-    FETCH FIRST 2 ROWS WITH TIES;
--- +-------------------------+------------+
--- | NomEmp                  | SalEmp     |
--- +-------------------------+------------+
--- | Mosc Amuerta, Mario     | 1300000.00 |
--- | Mascullas Alto, Eloísa  | 1600000.00 |
--- | Forzado López, Galeote  | 1600000.00 |
--- +-------------------------+------------+
--- 3 rows in set (0.000 sec)
-```</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Recuperar los empleados con el salario más bajo</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">ASC</span>
+<span class="hll"><span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="k">FIRST</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ROW</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">TIES</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +-------------------------+------------+</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | NomEmp                  | SalEmp     |</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- +-------------------------+------------+</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- | Mosc Amuerta, Mario     | 1300000.00 |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +-------------------------+------------+</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- Recuperar los empleados con los dos salarios más bajos</span>
+<span class="linenos" data-linenos="13 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">ASC</span>
+<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="k">FIRST</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">ROWS</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">TIES</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="16 "></span><span class="c1">-- +-------------------------+------------+</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- | NomEmp                  | SalEmp     |</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- +-------------------------+------------+</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">-- | Mosc Amuerta, Mario     | 1300000.00 |</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">-- | Mascullas Alto, Eloísa  | 1600000.00 |</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">-- | Forzado López, Galeote  | 1600000.00 |</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">-- +-------------------------+------------+</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
+</code></pre></div>
 </div>
 <h3 id="06sql-seleccion">Selección<a class="headerlink" href="#06sql-seleccion" title="Permanent link">&para;</a></h3>
 <p>La selección en SQL permite filtrar filas de una tabla en función de condiciones específicas. Esto se logra mediante la cláusula <code>WHERE</code>, que define los criterios de filtrado.</p>
@@ -13600,7 +13608,7 @@ select NomEmp, SalEmp from empleado
 </ul>
 </div>
 <h2 id="06sql-uniendo-tablas">Uniendo Tablas<a class="headerlink" href="#06sql-uniendo-tablas" title="Permanent link">&para;</a></h2>
-<p>Hasta ahora nos hemos dedicaod a realizar consultas sobre uno o más atributos de una determinada tabla. El modelo relacional se basa en la relación de una o más tablas, y por lo tanto, necesitamos de un mecanismo que nos permite obtener información de tablas que están relacionadas.</p>
+<p>Hasta ahora nos hemos dedicado a realizar consultas sobre uno o más atributos de una determinada tabla. El modelo relacional se basa en la relación de una o más tablas, y por lo tanto, necesitamos de un mecanismo que nos permite obtener información de tablas que están relacionadas.</p>
 <p>Dicho esto, para unir varias tablas (realizar un <a href="https://mariadb.com/kb/en/join-syntax/"><em>join</em></a>) tenemos diferentes <a href="https://mariadb.com/kb/en/join-syntax/">formas</a> de hacerlo:</p>
 <ul>
 <li><em>cross join</em>: producto cartesiano entre dos tablas</li>
@@ -17671,28 +17679,28 @@ cambiar simultáneamente los datos.</p>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
 <td><code>READ_COMMITTED</code></td>
 <td>-</td>
 <td>-</td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
 <td><code>REPEATABLE_READ</code></td>
 <td>-</td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
 <td><code>SERIALIZABLE</code></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 </tbody>
 </table>
@@ -26727,10 +26735,10 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/bd/", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "/bd/", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "navigation.path", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="js/print-site.js"></script>
       
