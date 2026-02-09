@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
@@ -2021,7 +2021,12 @@
 </span></code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">¿Empleado que más cobra?</p>
-<p>En el ejemplo anterior, hemos recuperado de la tabla <code>empleado</code> aquellos empleados cuyo salario sea igual al mayor salario. La pregunta es, ¿Cuantos empleados habrá recuperado?</p>
+<p>En el ejemplo anterior, hemos recuperado de la tabla <code>empleado</code> aquellos empleados cuyo salario sea igual al mayor salario. La pregunta es, ¿Cuantos empleados habrá recuperado?m ¿Sería correcto decir que es el empleado que más cobra? ¿Qué pasaría si hubiera dos empleados con el mismo salario más alto? ¿Cómo podríamos recuperar ambos empleados?</p>
+<p>Si recuerdas, cuando aprendimos a ordenar y restringir la cantidad de resultados, vimos cómo podemos deshacer los empates haciendo uso de la cláusula <a href="https://mariadb.com/docs/server/reference/sql-statements/data-manipulation/selecting-data/select-offset-fetch"><code>FETCH FIRST n ROWS WITH TIES</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">ASC</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">FETCH</span><span class="w"> </span><span class="k">FIRST</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ROW</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">TIES</span><span class="p">;</span>
+</code></pre></div>
 </div>
 <p>O los empleados que tienen más hijos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Cantidad de hijos máximo</span>
@@ -2852,8 +2857,8 @@ FIXME: Revisar y completar
 <li>Recupera el nombre de los departamentos cuyo presupuesto anual sea superior al presupuesto medio de todos los centros (el presupuesto de un centro se obtiene a partir de la suma de los presupuestos de sus departamentos).</li>
 <li>Recupera las habilidades que no tienen empleados asignados (sin subconsultas).</li>
 <li>Recupera las habilidades que no tienen empleados asignados (con subconsultas).</li>
-<li>Recupera el nombre del empleado que más cobra (sin subconsultas).</li>
-<li>Recupera el nombre del empleado que más cobra (con subconsultas).</li>
+<li>Recupera el nombre del empleado que menos cobra (sin subconsultas).</li>
+<li>Recupera el nombre del empleado que menos cobra (con subconsultas).</li>
 </ol>
 </li>
 </ul>
@@ -3422,10 +3427,10 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "navigation.path", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "navigation.path", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="js/print-site.js"></script>
       
