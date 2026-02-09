@@ -15739,7 +15739,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </ol>
 </div>
 <h3 id="08sql-subquerys-programacion-de-aula-13h">Programación de Aula (13h)<a class="headerlink" href="#08sql-subquerys-programacion-de-aula-13h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la octava, siendo la última del bloque de consultas, impartiéndose al mediados de la segunda evaluación, a finales de enero, con una duración estimada de 13 sesiones lectivas:</p>
+<p>Esta unidad es la octava, siendo la última del bloque de consultas, impartiéndose a mediados de la segunda evaluación, a finales de enero, con una duración estimada de 13 sesiones lectivas:</p>
 <table>
 <thead>
 <tr>
@@ -15864,7 +15864,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </span></code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">¿Empleado que más cobra?</p>
-<p>En el ejemplo anterior, hemos recuperado de la tabla <code>empleado</code> aquellos empleados cuyo salario sea igual al mayor salario. La pregunta es, ¿Cuantos empleados habrá recuperado?m ¿Sería correcto decir que es el empleado que más cobra? ¿Qué pasaría si hubiera dos empleados con el mismo salario más alto? ¿Cómo podríamos recuperar ambos empleados?</p>
+<p>En el ejemplo anterior, hemos recuperado de la tabla <code>empleado</code> aquellos empleados cuyo salario sea igual al mayor salario. La pregunta es, ¿Cuántos empleados habrá recuperado?m ¿Sería correcto decir que es el empleado que más cobra? ¿Qué pasaría si hubiera dos empleados con el mismo salario más alto? ¿Cómo podríamos recuperar ambos empleados?</p>
 <p>Si recuerdas, cuando aprendimos a ordenar y restringir la cantidad de resultados, vimos cómo podemos deshacer los empates haciendo uso de la cláusula <a href="https://mariadb.com/docs/server/reference/sql-statements/data-manipulation/selecting-data/select-offset-fetch"><code>FETCH FIRST n ROWS WITH TIES</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">ASC</span>
@@ -15884,7 +15884,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="2 "></span><span class="k">where</span><span class="w"> </span><span class="n">NumHi</span><span class="w"> </span><span class="o">&lt;</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">NumHi</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Saladino Mandamás, Augusto&quot;</span><span class="p">);</span>
 </span></code></pre></div>
-<p>Por supuesto, también podemos realizar la subconsulta dentro de la cláusula <code>HAVING</code>, obteniendo el nombre y el gasto en nómina de sus empleados de aquellos departamentos que el gasto en nóminas sea superior al del empleado que más cobra en toda la empresa:</p>
+<p>Por supuesto, también podemos realizar la subconsulta dentro de la cláusula <code>HAVING</code>, obteniendo el nombre y el gasto en nómina de sus empleados de aquellos departamentos en los que el gasto en nóminas sea superior al del empleado que más cobra en toda la empresa:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="p">)</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span>
@@ -15930,7 +15930,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </span><span class="hll"><span class="linenos" data-linenos="3 "></span><span class="w">                </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">PreAnu</span><span class="w"> </span><span class="k">desc</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
 </span></code></pre></div>
 <h3 id="08sql-subquerys-de-fila">De fila<a class="headerlink" href="#08sql-subquerys-de-fila" title="Permanent link">&para;</a></h3>
-<p>Las <a href="https://mariadb.com/kb/en/subqueries-row-subqueries/">subconsultas de fila</a> son aquellas que devuelven una única columna de una fila.</p>
+<p>Las <a href="https://mariadb.com/kb/en/subqueries-row-subqueries/">subconsultas de fila</a> son aquellas que devuelven una única columnas de una o más filas.</p>
 <p>Para ello, emplea los operadores <code>IN</code>, <code>ANY</code>, <code>ALL</code> o <code>EXISTS</code>.</p>
 <h4 id="08sql-subquerys-in"><code>IN</code><a class="headerlink" href="#08sql-subquerys-in" title="Permanent link">&para;</a></h4>
 <p>Si quisiéramos recuperar los departamentos que hay en Murcia podríamos hacer un <em>join</em> para recuperar la información. Si queremos utilizar una subconsulta, podríamos pensar que podríamos por un lado recuperar los códigos de centro de <code>Murcia</code>, y luego obtener los nombres de sus departamentos:</p>
@@ -15981,7 +15981,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- 4 rows in set (0.002 sec)</span>
 </code></pre></div>
 <p>Cabe destacar que estamos enlazando la consulta interna (la subconsulta) con la consulta externa para que muestre los empleados que tienen el mismo departamento.</p>
-<p>Si comparamos el resultado con todos los empleados, podemos ver que únicamente ha seleccionado a aquellos empleados que tienen algún compañero que cobra menos que ellos,descartando aquellos departamentos que sólo tienen un empleado:</p>
+<p>Si comparamos el resultado con todos los empleados, podemos ver que únicamente ha seleccionado a aquellos empleados que tienen algún compañero que cobra menos que ellos, descartando aquellos departamentos que sólo tienen un empleado:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+--------+------------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | CodDep | SalEmp     |</span>
@@ -16410,12 +16410,12 @@ EXPLAIN.
 </code></pre></div>
 <p>Los campos más destacables son:</p>
 <ul>
-<li>Identificador de la consulta (<code>id</code>): si comparten valor, forman parte de la misma consulta</li>
-<li>Tipo de consulta (<code>select_type</code>): el valor <code>SIMPLE</code> indica que es una consulta sencilla, sin subconsultas o uniones complicadas</li>
+<li>Identificador de la consulta (<code>id</code>): si comparten valor, forman parte de la misma consulta.</li>
+<li>Tipo de consulta (<code>select_type</code>): el valor <code>SIMPLE</code> indica que es una consulta sencilla, sin subconsultas o uniones complicadas.</li>
 <li>
 <p>El tipo de acceso (<code>type</code>), cuyos valores pueden ser:</p>
 <ul>
-<li><code>ALL</code> (<em>full scan</em>): a evitar, lee todos los registros</li>
+<li><code>ALL</code> (<em>full scan</em>): a evitar, lee todos los registros.</li>
 <li><code>INDEX</code> <em>full index scan</em>:  aunque es mejor que un escaneo completo, si es posible, debemos evitarlo, ya que se utilizan todos los accesos de un índice. Es decir, recorre un índice completo, no la tabla entera, lo cual es  mejor pero no lo más eficiente.</li>
 <li><code>ref</code>: utiliza un índice con referencia a otra tabla para filtrar datos (específicamente útil en <em>joins</em>).</li>
 </ul>
@@ -16481,7 +16481,7 @@ EXPLAIN.
 <div class="admonition warning">
 <p class="admonition-title">No abusar de los índices</p>
 <p>No es conveniente crear un índice para cada una de las columnas de una tabla.</p>
-<p>El exceso de índices innecesarios pueden provocar un incremento del espacio de     almacenamiento y una penalización en el rendimiento ya que el SGBD debe decidir qué  índices necesita utilizar.</p>
+<p>El exceso de índices innecesarios pueden provocar un incremento del espacio de almacenamiento y una penalización en el rendimiento ya que el SGBD debe decidir qué  índices necesita utilizar.</p>
 <p>Además añaden una sobrecarga a las operaciones de inserción, actualización y  borrado, porque cada índice tiene que ser actualizado después de realizar cada una de  estas operaciones.</p>
 </div>
 <h4 id="08sql-subquerys-tipos">Tipos<a class="headerlink" href="#08sql-subquerys-tipos" title="Permanent link">&para;</a></h4>
@@ -16489,7 +16489,7 @@ EXPLAIN.
 <ul>
 <li><code>PRIMARY KEY</code>: índice primario que no admite nulos ni valores repetidos. Sólo puede haber uno por tabla y se crea automáticamente al definir la clave primaria de una tabla.</li>
 <li><code>UNIQUE</code>: índice único que no permite valores repetidos pero sí nulos.</li>
-<li><code>INDEX</code>: indices normales que mejoran el rendimiento de las consultas (se pueden usar con columnas que admiten valores duplicados)</li>
+<li><code>INDEX</code>: indices normales que mejoran el rendimiento de las consultas (se pueden usar con columnas que admiten valores duplicados).</li>
 <li>
 <p><code>FULLTEXT</code>: índices de texto completo, utilizados para optimizar las búsquedas de texto en columnas  de tipo <code>TEXT</code> o <code>VARCHAR</code>.</p>
 <div class="admonition tip">
@@ -16583,21 +16583,21 @@ EXPLAIN.
 <p>En ocasiones, si queremos <a href="https://mariadb.com/kb/en/index-hints-how-to-force-query-plans/">forzar</a> a que el SGBD se comporte de una determinada manera, podemos emplear</p>
 <ul>
 <li>
-<p><code>STRAIGHT_JOIN</code>: fuerza el orden de unión de las tablas (la izquierda se lee antes que la derecha)</p>
+<p><code>STRAIGHT_JOIN</code>: fuerza el orden de unión de las tablas (la izquierda se lee antes que la derecha).</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span>
 <span class="hll"><span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="n">STRAIGHT_JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span>
 </span><span class="linenos" data-linenos="3 "></span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
-<p><a href="https://mariadb.com/kb/en/use-index/"><code>USE INDEX</code></a> /  <a href="https://mariadb.com/kb/en/force-index/"><code>FORCE INDEX</code></a> : propone o fuerza que se utilice un índice determinado. Se pone después de la tabla que contiene el índice</p>
+<p><a href="https://mariadb.com/kb/en/use-index/"><code>USE INDEX</code></a> /  <a href="https://mariadb.com/kb/en/force-index/"><code>FORCE INDEX</code></a> : propone o fuerza que se utilice un índice determinado. Se pone después de la tabla que contiene el índice.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span>
 <span class="hll"><span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="n">USE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="p">(</span><span class="k">PRIMARY</span><span class="p">)</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span>
 </span><span class="linenos" data-linenos="3 "></span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
-<p><a href="https://mariadb.com/kb/en/ignore-index/"><code>IGNORE INDEX</code></a>: fuerza que <strong>no</strong> se utilice un índice</p>
+<p><a href="https://mariadb.com/kb/en/ignore-index/"><code>IGNORE INDEX</code></a>: fuerza que <strong>no</strong> se utilice un índice.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span>
 <span class="hll"><span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">IGNORE</span><span class="w"> </span><span class="k">INDEX</span><span class="p">(</span><span class="k">PRIMARY</span><span class="p">)</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span>
 </span><span class="linenos" data-linenos="3 "></span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span><span class="p">;</span>
@@ -16830,7 +16830,7 @@ FIXME: Revisar y completar
 <span class="linenos" data-linenos="3 "></span><span class="k">join</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">oi</span><span class="p">.</span><span class="n">order_item_order_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span>
 <span class="linenos" data-linenos="4 "></span><span class="k">where</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;COMPLETE&quot;</span><span class="p">;</span>
 </code></pre></div>
-<p>Mediante el plan de ejecución, averigua si utilizan índices, cuáles son y cuantos documentos recorren.</p>
+<p>Mediante el plan de ejecución, averigua si utilizan índices, cuáles son y cuántos documentos recorren.</p>
 <p>A continuación crea un índice sobre la columna <code>order_status</code>. Vuelve a ejecutar la consulta y compara el resultado</p>
 </li>
 <li>
