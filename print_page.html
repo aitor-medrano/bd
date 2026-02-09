@@ -16710,19 +16710,19 @@ FIXME: Revisar y completar
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC802</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas con subconsultas.">CE3f</abbr> // 3p) Sobre la base de datos <code>empresa</code>, utilizando todo tipo de subconsultas, recupera:</p>
 <ol>
-<li>Empleados que ganan más que algún empleado del departamento <code>JEFZS</code></li>
-<li>Empleados que ganan más que todos los empleados del departamento <code>VENZS</code></li>
-<li>Centros que tienen al menos un departamento con presupuesto superior a 20.000.000 €</li>
-<li>Departamentos que no tienen empleados (sin subconsultas)</li>
-<li>Departamentos que no tienen empleados (usando <code>NOT IN</code>)</li>
-<li>Departamentos que no tienen empleados (usando <code>NOT EXISTS</code>)</li>
+<li>Empleados que ganan más que algún empleado del departamento <code>JEFZS</code>.</li>
+<li>Empleados que ganan más que todos los empleados del departamento <code>VENZS</code>.</li>
+<li>Centros que tienen al menos un departamento con presupuesto superior a 20.000.000 €.</li>
+<li>Departamentos que no tienen empleados (sin subconsultas).</li>
+<li>Departamentos que no tienen empleados (usando <code>NOT IN</code>).</li>
+<li>Departamentos que no tienen empleados (usando <code>NOT EXISTS</code>).</li>
 <li>Centros donde todos los departamentos tienen un presupuesto superior a 20.000.000 €</li>
-<li>Empleados que trabajan en el mismo departamento que algún empleado con salario mayor a 2.000.000 €</li>
+<li>Empleados que trabajan en el mismo departamento que algún empleado con salario mayor a 2.000.000 €.</li>
 <li>Último empleado incorporado a la empresa (usando <code>NOT EXISTS</code>).</li>
 <li>Departamentos cuyo presupuesto es mayor que el presupuesto medio de todos los centros.</li>
 <li>Departamentos cuyo presupuesto es mayor que al menos un presupuesto de los centros.</li>
 <li>Departamentos con más de un empleado que tienen presupuesto superior a algún centro.</li>
-<li>Centros donde ningún departamento tiene presupuesto inferior a 1.000.000 €</li>
+<li>Centros donde ningún departamento tiene presupuesto inferior a 1.000.000 €.</li>
 </ol>
 </li>
 </ul>
@@ -16732,10 +16732,10 @@ FIXME: Revisar y completar
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC803</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas con subconsultas.">CE3f</abbr>, <abbr title="Se han realizado consultas que implican múltiples selecciones.">CE3g</abbr> // 3p) Sobre la base de datos <code>empresa</code>, realiza las siguientes consultas utilizando tablas derivadas o CTE:</p>
 <ol>
 <li>Empleado que más gana en cada departamento.</li>
-<li>Empleados cuyo salario es mayor al promedio de su departamento</li>
-<li>Centros cuyo presupuesto total es superior al promedio global</li>
-<li>Departamentos cuyo presupuesto supera el promedio del centro al que pertenecen</li>
-<li>Empleado con mayor salario por centro</li>
+<li>Empleados cuyo salario es mayor al promedio de su departamento.</li>
+<li>Centros cuyo presupuesto total es superior al promedio global.</li>
+<li>Departamentos cuyo presupuesto supera el promedio del centro al que pertenecen.</li>
+<li>Empleado con mayor salario por centro.</li>
 <li>Recupera el nombre del empleado que tiene el salario más alto, perteneciendo al departamento que tiene más empleados.</li>
 <li>Recupera el código y el nombre del empleado que tiene el salario más alto, cuyo departamento pertenece al centro que tiene más empleados.</li>
 <li>Recupera el nombre y la fecha de nacimiento del empleado más joven de entre aquellos que trabajan en el departamento que tiene mayor presupuesto anual.</li>
@@ -16818,20 +16818,20 @@ FIXME: Revisar y completar
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC809</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han aplicado criterios de optimización de consultas.">CE3h</abbr> // 3p) Sobre la base de datos <code>retail</code>,</p>
 <ul>
 <li>
-<p>Averigua qué indices existen en las diferentes tablas</p>
+<p>Averigua qué indices existen en las diferentes tablas.</p>
 </li>
 <li>
 <p>Ejecuta las siguiente consultas analizando su plan de ejecución:</p>
 <ol>
 <li>
-<p>Productos de pedidos completados</p>
+<p>Productos de pedidos completados:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_name</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_price</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">order_items</span><span class="w"> </span><span class="n">oi</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">product_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oi</span><span class="p">.</span><span class="n">order_item_product_id</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">join</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="n">o</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">oi</span><span class="p">.</span><span class="n">order_item_order_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_id</span>
 <span class="linenos" data-linenos="4 "></span><span class="k">where</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;COMPLETE&quot;</span><span class="p">;</span>
 </code></pre></div>
 <p>Mediante el plan de ejecución, averigua si utilizan índices, cuáles son y cuántos documentos recorren.</p>
-<p>A continuación crea un índice sobre la columna <code>order_status</code>. Vuelve a ejecutar la consulta y compara el resultado</p>
+<p>A continuación crea un índice sobre la columna <code>order_status</code>. Vuelve a ejecutar la consulta y compara el resultado.</p>
 </li>
 <li>
 <p>Productos de pedidos cancelados de clientes que viven en <code>Caguas</code>:</p>
@@ -16842,7 +16842,7 @@ FIXME: Revisar y completar
 <span class="linenos" data-linenos="5 "></span><span class="k">where</span><span class="w"> </span><span class="n">o</span><span class="p">.</span><span class="n">order_status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;CANCELED&quot;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">customer_city</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Caguas&quot;</span><span class="p">;</span>
 </code></pre></div>
 <p>Averigua si utilizan índices, cuáles son y cuantos documentos recorren.</p>
-<p>A continuación crea un índice sobre la columna <code>customer_city</code>. Vuelve a ejecutar la consulta y compara el resultado</p>
+<p>A continuación crea un índice sobre la columna <code>customer_city</code>. Vuelve a ejecutar la consulta y compara el resultado.</p>
 </li>
 <li>
 <p>Categoría y cantidad económica de los productos de pedidos pendientes de clientes que viven en el estado de California (<code>CA</code>):</p>
@@ -16855,7 +16855,7 @@ FIXME: Revisar y completar
 <span class="linenos" data-linenos="7 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">ca</span><span class="p">.</span><span class="n">category_name</span><span class="p">;</span>
 </code></pre></div>
 <!-- TODO: revisar pq ponía order by en vez de group by - índice para ordenar??? -->
-<p>Analiza el plan de ejecución y compáralo con la consulta anterior. A continuación crea los índices que consideres oportunos para mejorar la consulta todo lo que se pueda. Vuelve a ejecutar la consulta y compara el resultado</p>
+<p>Analiza el plan de ejecución y compáralo con la consulta anterior. A continuación crea los índices que consideres oportunos para mejorar la consulta todo lo que se pueda. Vuelve a ejecutar la consulta y compara el resultado.</p>
 </li>
 </ol>
 </li>
@@ -16881,10 +16881,10 @@ FIXME: Revisar y completar
 <p>Para ello, se pide un informe que detalle:</p>
 <ul>
 <li>Definición de 5 consultas que utilicen subconsultas, tanto escalares, como fila y de tabla.</li>
-<li>Definición de 2 consultas que utilicen CTE</li>
+<li>Definición de 2 consultas que utilicen CTE.</li>
 <li>Creación de una tabla a partir del resultado de una consulta <em>compleja</em>.</li>
-<li>Definición de dos índices que mejoren el rendimiento de las consultas ya definidas</li>
-<li>Planes de ejecución, antes y después de la creación de los índices, comprobando su uso</li>
+<li>Definición de dos índices que mejoren el rendimiento de las consultas ya definidas.</li>
+<li>Planes de ejecución, antes y después de la creación de los índices, comprobando su uso.</li>
 <li>Resolución mediante SQL de cada una de las consultas.</li>
 <li>Resultados de su ejecución sobre el modelo físico.</li>
 </ul>
@@ -16905,11 +16905,11 @@ FIXME: Revisar y completar
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> <strong>PO814</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han creado vistas.">CE2f</abbr>, todos los CE del RA3, <abbr title="Se ha incluido en una tabla la información resultante de la ejecución de una consulta.">CE4c</abbr> // 60p) La prueba objetiva agrupa todo el resultado de aprendizaje asociado a las consultas (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr>), es decir, todo lo trabajado desde la unidad 6 a la unidad 8, consistiendo en, sobre una base de datos ya cargada previamente con datos:</p>
 <ul>
-<li>Realizar consultas sencillas</li>
-<li>Realizar consultas con varias tablas</li>
-<li>Realizar consultas agregadas</li>
-<li>Realizar subconsultas</li>
-<li>Optimizar consultas</li>
+<li>Realizar consultas sencillas.</li>
+<li>Realizar consultas con varias tablas.</li>
+<li>Realizar consultas agregadas.</li>
+<li>Realizar subconsultas.</li>
+<li>Optimizar consultas.</li>
 </ul>
 </li>
 </ul>
