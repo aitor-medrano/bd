@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
@@ -16173,7 +16173,32 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </span><span class="linenos" data-linenos="10 "></span><span class="k">where</span><span class="w"> </span><span class="n">otras_condiciones</span><span class="p">;</span>
 </code></pre></div>
 <p>En cuanto a su duración, su vida útil está limitada a la consulta en la que se define; no persiste más allá de esa ejecución. Podríamos pensar que es como una vista que se crea para ejecutar la consulta y luego se elimina.</p>
-<p>Por ejemplo, si queremos recuperar los empleados que tienen el salario más alto en cada departamento mediante CTEs, podríamos hacer:</p>
+<p>Comencemos con un ejemplo muy sencillo. Vamos a recuperar los departamentos que tienen más de un empleado. Para ello, podríamos crear una CTE que cuente el número de empleados por departamento, y a continuación, recuperar únicamente aquellos departamentos que tengan más de un empleado (sí, podríamos haberlo hecho en una única consulta mediante <code>GROUP BY</code> y <code>HAVING</code>, pero lo hacemos con CTEs para mostrar su uso):</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="k">WITH</span><span class="w"> </span><span class="n">cantidad_empleados_departamento</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CodDep</span>
+<span class="linenos" data-linenos="5 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+<span class="hll"><span class="linenos" data-linenos="8 "></span><span class="k">from</span><span class="w"> </span><span class="n">cantidad_empleados_departamento</span>
+</span><span class="linenos" data-linenos="9 "></span><span class="k">where</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span>
+</code></pre></div>
+<p>Por poder, podríamos haber creado otro CTE para simplificar más la consulta:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">WITH</span><span class="w"> </span><span class="n">cantidad_empleados_departamento</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CodDep</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="p">),</span>
+<span class="hll"><span class="linenos" data-linenos=" 6 "></span><span class="n">departamentos_grandes</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
+</span><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="o">*</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">cantidad_empleados_departamento</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span>
+<span class="linenos" data-linenos="10 "></span><span class="p">)</span>
+<span class="linenos" data-linenos="11 "></span>
+<span class="hll"><span class="linenos" data-linenos="12 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamentos_grandes</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Veamos otro ejemplo más complejo. Si queremos recuperar los empleados que tienen el salario más alto en cada departamento mediante CTEs, podríamos hacer:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="08sql-subquerys-__tabbed_1_1" name="08sql-subquerys-__tabbed_1" type="radio" /><input id="08sql-subquerys-__tabbed_1_2" name="08sql-subquerys-__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="08sql-subquerys-__tabbed_1_1">CTE</label><label for="08sql-subquerys-__tabbed_1_2">Tabla derivada</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -16198,7 +16223,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </div>
 </div>
 </div>
-<p>Si nos centramos en el segundo caso del apartado anterior, podemos definir una CTE con la tabla derivada, y a continuación, realizar la agregación, de manera que se facilita la legibilidad de la consulta:</p>
+<p>Si nos centramos en el segundo caso del apartado anterior, donde recuperábamos el empleado que tiene más habilidades, podemos definir una CTE con la tabla derivada, y a continuación, realizar la agregación, de manera que se facilita la legibilidad de la consulta:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="08sql-subquerys-__tabbed_2_1" name="08sql-subquerys-__tabbed_2" type="radio" /><input id="08sql-subquerys-__tabbed_2_2" name="08sql-subquerys-__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="08sql-subquerys-__tabbed_2_1">CTE</label><label for="08sql-subquerys-__tabbed_2_2">Tabla derivada</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -16344,7 +16369,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>Es importante tener en cuenta que algunos SGBD no permiten modificar/eliminar los datos que se están leyenda en la subconsulta.</p>
 <div class="admonition warning">
 <p class="admonition-title">CTE y modificaciones</p>
-<p>Cabe destacar que MariaDB todavía no soporta CTE para el DML, sólo para hacer <code>SELECT</code> tras el <code>WITH</code>.</p>
+<p>Cabe destacar que <em>MariaDB</em> todavía no soporta CTE para el DML, sólo para hacer <code>SELECT</code> tras el <code>WITH</code>.</p>
 <p>Si estuviéramos utilizando otro SGBD como <em>PostgreSQL</em> podríamos emplear CTEs para modificar o eliminar datos. Por ejemplo, podemos a cambiar el tipo de directivo de <code>F</code> a <code>P</code> en la tabla <code>directivo</code> a aquellos empleados que siendo <code>F</code> tengan hijos. Para ello, primero hacemos la consulta que recupera los directivos con hijos, y luego modificamos los departamento:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">WITH</span><span class="w"> </span><span class="n">directivosConHijos</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">TiDir</span>
@@ -17740,28 +17765,28 @@ cambiar simultáneamente los datos.</p>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
 <td><code>READ_COMMITTED</code></td>
 <td>-</td>
 <td>-</td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
 <td><code>REPEATABLE_READ</code></td>
 <td>-</td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
 <td><code>SERIALIZABLE</code></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 </tbody>
 </table>
@@ -26796,10 +26821,10 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/bd/", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "navigation.path", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "/bd/", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "navigation.path", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="js/print-site.js"></script>
       
