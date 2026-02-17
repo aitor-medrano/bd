@@ -14751,7 +14751,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </code></pre></div>
 <h4 id="07sql-group-select-n-group-by-n"><code>SELECT</code> N - <code>GROUP BY</code> N<a class="headerlink" href="#07sql-group-select-n-group-by-n" title="Permanent link">&para;</a></h4>
 <p>Es importante destacar que al menos la cantidad y datos que utilizamos en la proyección (<code>SELECT</code>) que agrupan, también hemos de utilizarlos dentro del <code>GROUP BY</code>. Dicho de otro modo, si en el <code>SELECT</code> ponemos tres columnas y dos cálculos, en el <code>GROUP BY</code> deberemos poner las tres mismas columnas.</p>
-<p>Es decir, <strong>no debemos hacer esto</strong> (dos en <code>SELECT</code>, uno en <code>GROUP BY</code>), ya que no estaría mostrando la información que queremos. Si repetimos el ejemplo anterior, obtenemos un resultado en <em>MariaDB</em> , pero lo que obtenemos no es correcto (en <em>PosgreSQL</em> directamente obtenedremos un error):</p>
+<p>Es decir, <strong>no debemos hacer esto</strong> (dos en <code>SELECT</code>, uno en <code>GROUP BY</code>), ya que no estaría mostrando la información que queremos. Si repetimos el ejemplo anterior, obtenemos un resultado en <em>MariaDB</em> , pero lo que obtenemos no es correcto (en <em>PosgreSQL</em> directamente obtendremos un error):</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="p">)</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span>
@@ -16433,7 +16433,7 @@ EXPLAIN.
 <span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |    1 | SIMPLE      | d     | index | PRIMARY       | NomDep     | 122     | NULL             | 6    | Using index |</span>
 </span><span class="hll"><span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |    1 | SIMPLE      | e     | ref   | fk_emp_dep    | fk_emp_dep | 16      | empresa.d.CodDep | 1    |             |</span>
 </span><span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +------+-------------+-------+-------+---------------+------------+---------+------------------+------+-------------+</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">-- 2 rows in set (0.052 sec)</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- 2 rows in set (0.001 sec)</span>
 </code></pre></div>
 <p>Los campos más destacables son:</p>
 <ul>
@@ -16450,22 +16450,67 @@ EXPLAIN.
 <li>
 <p>Claves (<code>possible_keys</code>) y (<code>key</code>): muestra los índices o claves candidatas, y el índice efectivamente utilizado. </p>
 </li>
-<li>Cantidad de filas a procesar (<code>rows</code>): en nuestro ejemplo, 6 filas en la tabla <code>d</code> y 1 fila en la tabla <code>e</code>.</li>
+<li>Cantidad de filas a procesar (<code>rows</code>): en nuestro ejemplo, 10 filas en la tabla <code>e</code> (los empleados existentes) y 1 fila en la tabla <code>e</code> (una fila por cada empleado).</li>
 </ul>
 <p>Como en el plan nos han aparecido dos filas, el plan ejecuta dos etapas:</p>
 <ol>
 <li>Primera etapa: tabla d (<code>departamento</code>)<ul>
 <li>Se accede a la tabla utilizando el índice <code>NomDep</code>, ya que en el DDL marcamos dicho campo como único, y <em>MariaDB</em> automáticamente creó un índice para dicha columna.</li>
 <li>No se recorren todas las filas de la tabla (<code>index</code>), sino que se leen únicamente los datos necesarios del índice.</li>
-<li>Solo se procesan <code>6</code> filas.</li>
+<li>Solo se procesan <code>6</code> filas (los 6 departamentos existentes)</li>
 </ul>
 </li>
 <li>Segunda etapa: tabla e (<code>empleado</code>)<ul>
 <li>Se accede a la tabla e mediante un índice referenciado (<code>fk_emp_dep</code>) que conecta con la tabla <code>d</code> a través de la columna <code>CodDep</code>.</li>
-<li>Solo se procesa una fila gracias al filtro que aplica la relación entre las dos tablas.</li>
+<li>Solo se estima una fila gracias al filtro que aplica la relación entre las dos tablas. El optimizador estima que hay ~1 empleado por departamento.</li>
 </ul>
 </li>
 </ol>
+<p>Si quieres obtener un plan detallado con tiempos reales y cantidad de registros obtenidos, usaremos <code>EXPLAIN EXTENDED</code> o <code>EXPLAIN FORMAT=JSON</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">EXPLAIN</span><span class="w"> </span><span class="n">FORMAT</span><span class="o">=</span><span class="n">JSON</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">EXPLAIN</span><span class="w"> </span><span class="n">EXTENDED</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">ANALYZE</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">USING</span><span class="p">(</span><span class="n">CodDep</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">--</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- {  &quot;query_block&quot;: {</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">--     &quot;select_id&quot;: 1,</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">--     &quot;cost&quot;: 0.0222484,</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">--     &quot;nested_loop&quot;: [</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">--       {</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">--         &quot;table&quot;: {</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">--           &quot;table_name&quot;: &quot;e&quot;,</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">--           &quot;access_type&quot;: &quot;ALL&quot;,</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">--           &quot;possible_keys&quot;: [&quot;fk_emp_dep&quot;],</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">--           &quot;loops&quot;: 1,</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">--           &quot;rows&quot;: 10,</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">--           &quot;cost&quot;: 0.0124848,</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">--           &quot;filtered&quot;: 100,</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">--           &quot;attached_condition&quot;: &quot;e.CodDep is not null&quot;</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">--         }</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">--       },</span>
+<span class="linenos" data-linenos="24 "></span><span class="c1">--       {</span>
+<span class="linenos" data-linenos="25 "></span><span class="c1">--         &quot;table&quot;: {</span>
+<span class="linenos" data-linenos="26 "></span><span class="c1">--           &quot;table_name&quot;: &quot;d&quot;,</span>
+<span class="linenos" data-linenos="27 "></span><span class="c1">--           &quot;access_type&quot;: &quot;eq_ref&quot;,</span>
+<span class="linenos" data-linenos="28 "></span><span class="c1">--           &quot;possible_keys&quot;: [&quot;PRIMARY&quot;],</span>
+<span class="linenos" data-linenos="29 "></span><span class="c1">--           &quot;key&quot;: &quot;PRIMARY&quot;,</span>
+<span class="linenos" data-linenos="30 "></span><span class="c1">--           &quot;key_length&quot;: &quot;15&quot;,</span>
+<span class="linenos" data-linenos="31 "></span><span class="c1">--           &quot;used_key_parts&quot;: [&quot;CodDep&quot;],</span>
+<span class="linenos" data-linenos="32 "></span><span class="c1">--           &quot;ref&quot;: [&quot;empresa.e.CodDep&quot;],</span>
+<span class="linenos" data-linenos="33 "></span><span class="c1">--           &quot;loops&quot;: 10,</span>
+<span class="linenos" data-linenos="34 "></span><span class="c1">--           &quot;rows&quot;: 1,</span>
+<span class="linenos" data-linenos="35 "></span><span class="c1">--           &quot;cost&quot;: 0.0097636,</span>
+<span class="linenos" data-linenos="36 "></span><span class="c1">--           &quot;filtered&quot;: 100</span>
+<span class="linenos" data-linenos="37 "></span><span class="c1">--         }</span>
+<span class="linenos" data-linenos="38 "></span><span class="c1">--       }</span>
+<span class="linenos" data-linenos="39 "></span><span class="c1">--     ]</span>
+<span class="linenos" data-linenos="40 "></span><span class="c1">--   }</span>
+<span class="linenos" data-linenos="41 "></span><span class="c1">-- } |</span>
+</code></pre></div>
+<p>Mediante <a href="https://mariadb.com/docs/server/reference/sql-statements/administrative-sql-statements/analyze-and-explain-statements/analyze-statement"><code>ANALYZE consulta</code></a> se ejecutará la consulta y devolverá la información sobre el plan de ejecución, con información más cercana a la realidad.</p>
+<hr />
 <p>Veamos otro ejemplo. Supongamos que solo nos interesa los mismos datos pero del centro <code>DIGE</code>. Así pues, obtenemos su plan de ejecución:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">EXPLAIN</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span>
@@ -16479,20 +16524,20 @@ EXPLAIN.
 </span><span class="linenos" data-linenos="10 "></span><span class="c1">-- +------+-------------+-------+------+--------------------+------------+---------+------------------+------+-----------------------+</span>
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- 2 rows in set (0.057 sec)</span>
 </code></pre></div>
-<p>Si comparamos los planes de ejecución, vemos que sobre la tabla de departamento, entre las claves primaria y la clave ajena a centro, utiliza esta última para restringir la cantidad de centros que recupera, quedándose con 2 registros. Es decir, está en todo momento obteniendo la cantidad mínima de registros.</p>
+<p>Si comparamos los planes de ejecución, vemos que sobre la tabla de <code>departamento</code>, entre las claves primaria y la clave ajena a centro, utiliza esta última para restringir la cantidad de centros que recupera, quedándose con 2 registros. Es decir, está en todo momento obteniendo la cantidad mínima de registros.</p>
 <p>Por último, veamos qué sucede cuando filtramos por una columna que no tienen ninguna clave ni índice. Si recuperamos los datos de los empleados y sus departamentos de aquellos que tienen un directivo de tipo <code>P</code> tendremos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">EXPLAIN</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="o">=</span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">TiDir</span><span class="o">=</span><span class="ss">&quot;P&quot;</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 5 "></span>
-<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +------+-------------+-------+------+---------------+------+---------+------+------+-------------------------------------------------+</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | id   | select_type | table | type | possible_keys | key  | key_len | ref  | rows | Extra                                           |</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- +------+-------------+-------+------+---------------+------+---------+------+------+-------------------------------------------------+</span>
-<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |    1 | SIMPLE      | d     | ALL  | PRIMARY       | NULL | NULL    | NULL |    6 | Using where                                     |</span>
-</span><span class="hll"><span class="linenos" data-linenos="10 "></span><span class="c1">-- |    1 | SIMPLE      | e     | ALL  | fk_emp_dep    | NULL | NULL    | NULL |   10 | Using where; Using join buffer (flat, BNL join) |</span>
-</span><span class="linenos" data-linenos="11 "></span><span class="c1">-- +------+-------------+-------+------+---------------+------+---------+------+------+-------------------------------------------------+</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1">-- 2 rows in set (0,001 sec)</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +------+-------------+-------+--------+---------------+---------+---------+------------------+------+-------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | id   | select_type | table | type   | possible_keys | key     | key_len | ref              | rows | Extra       |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- +------+-------------+-------+--------+---------------+---------+---------+------------------+------+-------------+</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |    1 | SIMPLE      | e     | ALL    | fk_emp_dep    | NULL    | NULL    | NULL             | 10   | Using where |</span>
+</span><span class="hll"><span class="linenos" data-linenos="10 "></span><span class="c1">-- |    1 | SIMPLE      | d     | eq_ref | PRIMARY       | PRIMARY | 15      | empresa.e.CodDep | 1    | Using where |</span>
+</span><span class="linenos" data-linenos="11 "></span><span class="c1">-- +------+-------------+-------+--------+---------------+---------+---------+------------------+------+-------------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- 2 rows in set (0.001 sec)</span>
 </code></pre></div>
 <p>En este caso, vemos que ha tenido que realizar un escaneo completo (<code>ALL</code>) lo cual nos índica que no ha podido utilizar ninguna clave ni índice para el filtrado (de hecho aparece <code>NULL</code> en la columna <code>key</code>), y por tanto, le toca recorrer todo el resultado del <em>join</em> para buscar la condición del tipo de director.</p>
 <h3 id="08sql-subquerys-indices">Índices<a class="headerlink" href="#08sql-subquerys-indices" title="Permanent link">&para;</a></h3>
@@ -16573,6 +16618,7 @@ EXPLAIN.
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- +------+-------------+-------+------+-----------------------+---------------+---------+------------------+------+-----------------------+</span>
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- 2 rows in set (0.017 sec)</span>
 </code></pre></div>
+<p>En este caso, empieza por el departamento utilizando el índice recién creado para filtrar por el tipo de director. Luego accede al empleado mediante el <em>join</em> para recuperar su nombre, estimando que hay un empleado por departamento.</p>
 </li>
 <li>
 <p>Obtener los índices de una tabla, mediante <a href="https://mariadb.com/kb/en/show-index"><code>SHOW INDEX</code></a>:</p>
