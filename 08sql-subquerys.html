@@ -2625,46 +2625,44 @@ EXPLAIN.
 </ol>
 <p>Si quieres obtener un plan detallado con tiempos reales y cantidad de registros obtenidos, usaremos <code>EXPLAIN EXTENDED</code> o <code>EXPLAIN FORMAT=JSON</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">EXPLAIN</span><span class="w"> </span><span class="n">FORMAT</span><span class="o">=</span><span class="n">JSON</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="k">EXPLAIN</span><span class="w"> </span><span class="n">EXTENDED</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="k">ANALYZE</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="k">JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">USING</span><span class="p">(</span><span class="n">CodDep</span><span class="p">);</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">--</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- {  &quot;query_block&quot;: {</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1">--     &quot;select_id&quot;: 1,</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">--     &quot;cost&quot;: 0.0222484,</span>
-<span class="linenos" data-linenos="11 "></span><span class="c1">--     &quot;nested_loop&quot;: [</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1">--       {</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">--         &quot;table&quot;: {</span>
-<span class="linenos" data-linenos="14 "></span><span class="c1">--           &quot;table_name&quot;: &quot;e&quot;,</span>
-<span class="linenos" data-linenos="15 "></span><span class="c1">--           &quot;access_type&quot;: &quot;ALL&quot;,</span>
-<span class="linenos" data-linenos="16 "></span><span class="c1">--           &quot;possible_keys&quot;: [&quot;fk_emp_dep&quot;],</span>
-<span class="linenos" data-linenos="17 "></span><span class="c1">--           &quot;loops&quot;: 1,</span>
-<span class="linenos" data-linenos="18 "></span><span class="c1">--           &quot;rows&quot;: 10,</span>
-<span class="linenos" data-linenos="19 "></span><span class="c1">--           &quot;cost&quot;: 0.0124848,</span>
-<span class="linenos" data-linenos="20 "></span><span class="c1">--           &quot;filtered&quot;: 100,</span>
-<span class="linenos" data-linenos="21 "></span><span class="c1">--           &quot;attached_condition&quot;: &quot;e.CodDep is not null&quot;</span>
-<span class="linenos" data-linenos="22 "></span><span class="c1">--         }</span>
-<span class="linenos" data-linenos="23 "></span><span class="c1">--       },</span>
-<span class="linenos" data-linenos="24 "></span><span class="c1">--       {</span>
-<span class="linenos" data-linenos="25 "></span><span class="c1">--         &quot;table&quot;: {</span>
-<span class="linenos" data-linenos="26 "></span><span class="c1">--           &quot;table_name&quot;: &quot;d&quot;,</span>
-<span class="linenos" data-linenos="27 "></span><span class="c1">--           &quot;access_type&quot;: &quot;eq_ref&quot;,</span>
-<span class="linenos" data-linenos="28 "></span><span class="c1">--           &quot;possible_keys&quot;: [&quot;PRIMARY&quot;],</span>
-<span class="linenos" data-linenos="29 "></span><span class="c1">--           &quot;key&quot;: &quot;PRIMARY&quot;,</span>
-<span class="linenos" data-linenos="30 "></span><span class="c1">--           &quot;key_length&quot;: &quot;15&quot;,</span>
-<span class="linenos" data-linenos="31 "></span><span class="c1">--           &quot;used_key_parts&quot;: [&quot;CodDep&quot;],</span>
-<span class="linenos" data-linenos="32 "></span><span class="c1">--           &quot;ref&quot;: [&quot;empresa.e.CodDep&quot;],</span>
-<span class="linenos" data-linenos="33 "></span><span class="c1">--           &quot;loops&quot;: 10,</span>
-<span class="linenos" data-linenos="34 "></span><span class="c1">--           &quot;rows&quot;: 1,</span>
-<span class="linenos" data-linenos="35 "></span><span class="c1">--           &quot;cost&quot;: 0.0097636,</span>
-<span class="linenos" data-linenos="36 "></span><span class="c1">--           &quot;filtered&quot;: 100</span>
-<span class="linenos" data-linenos="37 "></span><span class="c1">--         }</span>
-<span class="linenos" data-linenos="38 "></span><span class="c1">--       }</span>
-<span class="linenos" data-linenos="39 "></span><span class="c1">--     ]</span>
-<span class="linenos" data-linenos="40 "></span><span class="c1">--   }</span>
-<span class="linenos" data-linenos="41 "></span><span class="c1">-- } |</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">USING</span><span class="p">(</span><span class="n">CodDep</span><span class="p">);</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">--</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- {  &quot;query_block&quot;: {</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">--     &quot;select_id&quot;: 1,</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">--     &quot;cost&quot;: 0.0222484,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">--     &quot;nested_loop&quot;: [</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">--       {</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">--         &quot;table&quot;: {</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">--           &quot;table_name&quot;: &quot;e&quot;,</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">--           &quot;access_type&quot;: &quot;ALL&quot;,</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">--           &quot;possible_keys&quot;: [&quot;fk_emp_dep&quot;],</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">--           &quot;loops&quot;: 1,</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">--           &quot;rows&quot;: 10,</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">--           &quot;cost&quot;: 0.0124848,</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">--           &quot;filtered&quot;: 100,</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">--           &quot;attached_condition&quot;: &quot;e.CodDep is not null&quot;</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">--         }</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">--       },</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">--       {</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">--         &quot;table&quot;: {</span>
+<span class="linenos" data-linenos="24 "></span><span class="c1">--           &quot;table_name&quot;: &quot;d&quot;,</span>
+<span class="linenos" data-linenos="25 "></span><span class="c1">--           &quot;access_type&quot;: &quot;eq_ref&quot;,</span>
+<span class="linenos" data-linenos="26 "></span><span class="c1">--           &quot;possible_keys&quot;: [&quot;PRIMARY&quot;],</span>
+<span class="linenos" data-linenos="27 "></span><span class="c1">--           &quot;key&quot;: &quot;PRIMARY&quot;,</span>
+<span class="linenos" data-linenos="28 "></span><span class="c1">--           &quot;key_length&quot;: &quot;15&quot;,</span>
+<span class="linenos" data-linenos="29 "></span><span class="c1">--           &quot;used_key_parts&quot;: [&quot;CodDep&quot;],</span>
+<span class="linenos" data-linenos="30 "></span><span class="c1">--           &quot;ref&quot;: [&quot;empresa.e.CodDep&quot;],</span>
+<span class="linenos" data-linenos="31 "></span><span class="c1">--           &quot;loops&quot;: 10,</span>
+<span class="linenos" data-linenos="32 "></span><span class="c1">--           &quot;rows&quot;: 1,</span>
+<span class="linenos" data-linenos="33 "></span><span class="c1">--           &quot;cost&quot;: 0.0097636,</span>
+<span class="linenos" data-linenos="34 "></span><span class="c1">--           &quot;filtered&quot;: 100</span>
+<span class="linenos" data-linenos="35 "></span><span class="c1">--         }</span>
+<span class="linenos" data-linenos="36 "></span><span class="c1">--       }</span>
+<span class="linenos" data-linenos="37 "></span><span class="c1">--     ]</span>
+<span class="linenos" data-linenos="38 "></span><span class="c1">--   }</span>
+<span class="linenos" data-linenos="39 "></span><span class="c1">-- } |</span>
 </code></pre></div>
 <p>Mediante <a href="https://mariadb.com/docs/server/reference/sql-statements/administrative-sql-statements/analyze-and-explain-statements/analyze-statement"><code>ANALYZE consulta</code></a> se ejecutará la consulta y devolverá la información sobre el plan de ejecución, con información más cercana a la realidad.</p>
 <hr />
