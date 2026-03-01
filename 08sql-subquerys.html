@@ -3151,6 +3151,42 @@ TODO: Añadir un ejercicio AR y un AP de subconsultas sobre retail
 -->
 
 <!--
+<a name="PR816"></a>
+
+* :simple-neutralinojs: **PR816**. (RABD.3 // CE3f, CE3g // 10p) Sobre la base de datos `retail`, realiza las siguientes consultas. Todas ellas deben involucrar al menos dos tablas mediante `JOIN`; en aquellas donde se indique, utiliza también `GROUP BY` y/o `HAVING`:
+
+    1. Subconsulta escalar: recupera el nombre de la categoría, el departamento al que pertenece y su facturación total (`order_item_subtotal`), para aquellas categorías cuya facturación total supera la facturación media por categoría.
+
+    1. Subconsulta escalar: obtén el nombre de cada departamento y el número de pedidos `COMPLETE` asociados a sus productos, mostrando únicamente los departamentos que superen la media de pedidos completados por departamento.
+
+    1. Subconsulta escalar: lista los estados (`customer_state`) y el gasto medio por cliente en ese estado, mostrando solo aquellos estados donde dicho gasto medio supera el gasto medio global de todos los clientes.
+
+    1. Subconsulta de fila: muestra el nombre del producto más vendido de toda la BD (el que acumula mayor cantidad total en `order_item_quantity`), junto con la categoría a la que pertenece y la cantidad total vendida.
+
+    1. Subconsulta de fila: obtén la ciudad (`customer_city`) con mayor número de clientes distintos que hayan realizado al menos un pedido `COMPLETE`, indicando también cuántos clientes distintos son.
+
+    1. Subconsulta con `ANY`: lista el nombre de las categorías cuya facturación media por línea de pedido (`order_item_subtotal`) es mayor que la facturación media de **alguna** de las categorías pertenecientes al departamento `Outdoors`. Muestra también la media de cada categoría.
+
+    1. Subconsulta con `ALL`: recupera el nombre del producto, la categoría y el precio de aquellos productos cuyo precio supera el de **todos** los productos de la categoría con menor precio medio.
+
+    1. Subconsulta con `IN`: obtén el nombre completo de los clientes que tienen pedidos tanto en estado `PENDING` como en estado `COMPLETE`, indicando cuántos pedidos tienen en cada uno de esos estados.
+
+    1. Subconsulta con `NOT IN`: lista el nombre de las categorías y el departamento al que pertenecen, para aquellas categorías que **no** tienen ninguna venta registrada en pedidos con estado `COMPLETE`.
+
+    1. Subconsulta con `EXISTS`: muestra el nombre de cada departamento y cuántas categorías dentro de ese departamento han generado una facturación total superior a 500.000 €, mostrando solo departamentos donde **exista** al menos una de esas categorías.
+
+    1. Subconsulta con `NOT EXISTS`: recupera el nombre completo, ciudad y estado de los clientes para los que **no existe** ningún pedido en estado `CANCELED`.
+
+    1. CTE simple: define una CTE que calcule la facturación total por departamento (a través de las relaciones `departments → categories → products → order_items`). A continuación, muestra el nombre del departamento, el número de categorías y el total facturado, filtrando únicamente aquellos cuya facturación supera el doble de la media global de facturación por departamento.
+
+    1. CTE simple: define una CTE que calcule, por cliente, el número de pedidos `COMPLETE` y el gasto total acumulado. Muestra los 5 clientes con mayor gasto total entre aquellos que tengan más de 3 pedidos completados, incluyendo nombre completo, ciudad, número de pedidos y gasto total.
+
+    1. CTEs múltiples: usando al menos dos CTEs encadenadas —una que calcule la facturación total por categoría y otra que calcule la facturación media por departamento— obtén las categorías cuya facturación supera la media de su departamento. Muestra el nombre de la categoría, el departamento, el número de productos distintos vendidos y la facturación total.
+
+    1. Subconsulta correlacionada en `SELECT`: para cada departamento, muestra su nombre, el número de categorías que tiene, el total de unidades vendidas en pedidos `COMPLETE` y, mediante una subconsulta correlacionada en el `SELECT`, el nombre del producto más caro de ese departamento. Ordena el resultado por total de unidades descendentemente.
+-->
+
+<!--
 Contenidos básicos:
 
 Almacenamiento de la información:

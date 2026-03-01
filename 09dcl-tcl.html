@@ -1934,7 +1934,7 @@
 <span class="linenos" data-linenos="2 "></span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;usuario1&#39;</span><span class="w"> </span>
 <span class="linenos" data-linenos="3 "></span><span class="k">AND</span><span class="w"> </span><span class="n">password_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SHA2</span><span class="p">(</span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;mi_password&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">salt</span><span class="p">),</span><span class="w"> </span><span class="mi">256</span><span class="p">);</span>
 </code></pre></div>
-<p>Dicho esto, los algoritmos <em>MD5</em> y <em>SHA2</em>, a día de hoy, están obsoletos (se consideran criptográficamente rotos), y por ello, en vez de basarse en las funciones de encriptación que ofrece el SGBD, es mejor hacer uso de los algoritmos <a href="https://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>, <a href="https://en.wikipedia.org/wiki/scrypt">scrypt</a> o <a href="https://en.wikipedia.org/wiki/Argon2">argon2</a> desde el lenguaje de programación que utilice el SGBD, ya sea Java, PHP o Python.</p>
+<p>Dicho esto, los algoritmos <em>MD5</em> y <em>SHA2</em>, a día de hoy, están obsoletos (se consideran criptográficamente rotos o son fácilmente <em>hackeables</em> por fuerza bruta), y por ello, en vez de basarse en las funciones de encriptación que ofrece el SGBD, es mejor hacer uso de los algoritmos <a href="https://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>, <a href="https://en.wikipedia.org/wiki/scrypt">scrypt</a> o <a href="https://en.wikipedia.org/wiki/Argon2">argon2</a> desde el lenguaje de programación que utilice el SGBD, ya sea <em>Java</em>, <em>PHP</em> o <em>Python</em>.</p>
 <h2 id="dcl">DCL<a class="headerlink" href="#dcl" title="Permanent link">&para;</a></h2>
 <p>El <em>Data Control Language</em> (DCL- Lenguaje de control de datos) se emplea para gestionar los permisos y privilegios de acceso a los objetos dentro de una base de datos, estableciendo políticas de seguridad que determinan qué usuarios o roles pueden interactuar con los datos y de qué manera.</p>
 <p>A través del DCL, los administradores de bases de datos pueden otorgar o revocar permisos, asegurando que cada usuario solo pueda realizar las acciones que le han sido expresamente autorizadas. Este control es esencial para proteger la información sensible, evitar accesos no autorizados y mantener la integridad de los datos.</p>
@@ -1948,7 +1948,7 @@
 <p>Además, en <em>MariaDB</em>, podemos especificar el <em>host</em> desde donde se permite la conexión:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;nombre_usuario&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;contraseña&#39;</span><span class="p">;</span>
 </code></pre></div>
-<p>Recuerda que cuando empezates a usar <em>MariaDB</em>, el usuario se creó desde <em>Docker</em>, pero podemos crear uno nuevo mediante:</p>
+<p>Recuerda que cuando empezasteis a usar <em>MariaDB</em>, el usuario se creó desde <em>Docker</em>, pero podemos crear uno nuevo mediante:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">s8abd</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;s8a&#39;</span><span class="p">;</span>
 </code></pre></div>
 <div class="admonition info">
@@ -1970,7 +1970,7 @@
 </code></pre></div>
 <p>La columna <code>host</code> indica desde dónde nos podemos conectar a la base de datos, de manera que mediante <code>root</code> sólo nos podemos conectar desde la propia máquina (<code>localhost</code>), mientras que los usuarios <code>s8a</code> y <code>s8abd</code> pueden conectarse desde cualquier lugar (<code>%</code> hace la función de comodín).</p>
 </div>
-<p>Si hubiéramos querido que nuestro usuario sólo pudiera conectarse desde <em>localhost</em> (o cualquier otro <em>host</em>), hemos de indicarlo indicando <code>nombre_usuario@host</code>:</p>
+<p>Si hubiéramos querido que nuestro usuario sólo pudiera conectarse desde <em>localhost</em> (o cualquier otro <em>host</em>), hemos de indicarlo mediante <code>nombre_usuario@host</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">s8abd</span><span class="o">@</span><span class="n">localhost</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;s8a&#39;</span><span class="p">;</span>
 </code></pre></div>
 <p>Si necesitamos <strong>cambiar</strong> la contraseña o actualizar las propiedades de un usuario existente, utilizaremos la instrucción <a href="https://mariadb.com/kb/en/alter-user/"><code>ALTER USER</code></a>, con la sintaxis:</p>
@@ -2011,13 +2011,13 @@
 <p>Tras crear un usuario, es necesario asignar permisos mediante el DCL con <code>GRANT</code> y retirarlos con <code>REVOKE</code>.  </p>
 <h4 id="otorgando-permisos">Otorgando permisos<a class="headerlink" href="#otorgando-permisos" title="Permanent link">&para;</a></h4>
 <p>Así pues, mediante la sentencia <a href="https://mariadb.com/kb/en/grant/">GRANT</a> daremos privilegios a un usuario sobre uno o más objetos, mediante la siguiente sintaxis:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="n">privilegio</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">objeto</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="p">[</span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTIONS</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="n">privilegio</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">objeto</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="p">[</span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">]</span>
 </code></pre></div>
 <p>Los posibles privilegios (los cuales podemos consultar con el comando <a href="https://mariadb.com/kb/en/show-privileges/"><code>SHOW PRIVILEGES</code></a>) más comunes son:</p>
 <ul>
-<li><code>USAGE</code>: para usar un objeto específico de la base de datos.</li>
+<li><code>USAGE</code>: permite que el usuario exista y se conecte, pero sin ningún permiso de acceso a datos.</li>
 <li><code>SELECT</code>: para acceder a tablas o vistas.</li>
-<li><code>INSERT[(nombre_columna)]:</code> Si se especifica el <code>nombre_columna</code>, se otorga permiso para insertar en la columna especificada. Si se omite entonces se permite insertar valores en todas las columnas.</li>
+<li><code>INSERT[(nombre_columna)]:</code> Si se especifica el <code>nombre_columna</code>, se otorga permiso para insertar en la columna especificada. Si se omite, se permite insertar valores en todas las columnas.</li>
 <li><code>UPDATE[(nombre_columna)]</code>: Lo mismo que <code>INSERT</code> para modificar.</li>
 <li><code>DELETE</code>: para eliminar registros de una tabla o vista.</li>
 <li><code>GRANT OPTION</code>: permite dar permisos a otro usuario.</li>
@@ -2046,7 +2046,7 @@
 </code></pre></div>
 <p>Así pues, si quisiéramos crear un nuevo usuario <code>administrador</code> que pueda hacer de todo, e incluso dar nuevos permisos, haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">administrador</span><span class="o">@</span><span class="n">localhost</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;admin&#39;</span><span class="p">;</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">administrador</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">administrador</span><span class="o">@</span><span class="n">localhost</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Consejos seguridad</p>
@@ -2123,7 +2123,7 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <pre class="mermaid"><code>sequenceDiagram
     autonumber
     Usuario-&gt;&gt;BD: Inicia TX
-    BD--&gt;&gt;Usuario: Realiza operaciones
+    Usuario-&gt;&gt;BD: Realiza operaciones
     Usuario-&gt;&gt;BD: Finaliza TX
     BD--&gt;&gt;Usuario: Confirma</code></pre>
 <p>Para finalizar las transacciones, podemos hacerlo mediante:</p>
@@ -2177,7 +2177,7 @@ flowchart LR
     E --&gt; F([Estado final])</code></pre>
 </li>
 <li>
-<p>Si durante las operaciones ocurre algún error y no queremos aplicar los cambios realizados, podemos deshacerlos → <code>ROLLBACK</code>. Al hacer <em>rollback</em> se abandona la transacción y se cancela todos los cambios realizados previamente por la transacción, volviendo al estado inicial previo al inicio de la transacción.</p>
+<p>Si durante las operaciones ocurre algún error y no queremos aplicar los cambios realizados, podemos deshacerlos → <code>ROLLBACK</code>. Al hacer <em>rollback</em> se abandona la transacción y se cancelan todos los cambios realizados previamente por la transacción, volviendo al estado inicial previo al inicio de la transacción.</p>
 <pre class="mermaid"><code>---
 config:
     look: handDrawn
@@ -2271,7 +2271,7 @@ flowchart LR
 <span class="linenos" data-linenos="4 "></span><span class="k">COMMIT</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="puntos-de-parada">Puntos de parada<a class="headerlink" href="#puntos-de-parada" title="Permanent link">&para;</a></h3>
-<p>Los puntos de parada posicionan paradas entre los pasos de una transacción, de forma que si se efectúa <code>ROLLBACK</code> éste pueda ser total (toda la transacción) o hasta uno de los puntos de control de la transacción.</p>
+<p>Los puntos de parada definen puntos de control intermedios dentro de una transacción, de forma que si se efectúa <code>ROLLBACK</code> éste pueda ser total (toda la transacción) o hasta uno de los puntos de control de la transacción.</p>
 <p>Para ello, primero los definiremos mediante la etiqueta <a href="https://mariadb.com/kb/en/savepoint/"><code>SAVEPOINT</code></a> dentro de una transacción.</p>
 <p>Posteriormente, al ocurrir un error, podemos indicar que realice un <code>ROLLBACK TO [SAVEPOINT] etiqueta</code>, deshaciendo sólo las instrucciones que se han ejecutado hasta el punto de parada indicado.</p>
 <p>Si queremos eliminar un punto de parada, necesitaremos hacerlo mediante <code>RELEASE SAVEPOINT etiqueta</code></p>
@@ -2399,7 +2399,7 @@ flowchart LR
 <div class="grid cards">
 <ul>
 <li>
-<p><strong>Lectura fantasma</strong> (<em>Phantom Read</em>): Se trata de una variación de lecturas no repetibles. Este error ocurre cuando una transacción ejecuta dos veces una consulta que devuelve un conjunto de filas y en la segunda ejecución de la consulta aparecen/desaparecen nuevas filas en el conjunto que no existían cuando se inició lo transacción.</p>
+<p><strong>Lectura fantasma</strong> (<em>Phantom Read</em>): Se trata de una variación de lecturas no repetibles. Este error ocurre cuando una transacción ejecuta dos veces una consulta que devuelve un conjunto de filas y en la segunda ejecución de la consulta aparecen/desaparecen nuevas filas en el conjunto que no existían cuando se inició la transacción.</p>
 <p>El usuario 1 comprueba los asientos disponibles. A la vez, el usuario 2 elimina el asiento 33 ya que se ha roto y no debe aparecer entre los asientos existentes. Cuando el usuario 1 vuelve a comprobar los asientos existentes, comprueba su estado y el asiento no aparece, cuando antes sí aparecía (de ahí que sea una lectura fantasma).</p>
 <table>
 <thead>
@@ -2476,10 +2476,10 @@ flowchart LR
 <h5 id="bloqueos-explicitos-de-filas">Bloqueos explícitos de filas<a class="headerlink" href="#bloqueos-explicitos-de-filas" title="Permanent link">&para;</a></h5>
 <p>Este tipo de bloqueos se produce cuando modificamos campos de una fila (o se borran o marcan para ser modificados). El caso de uso más común es cuando necesitamos bloquear un número de filas antes de hacer cambios (como ciertas entradas o asientos). De esta manera, podemos prevenir el conjunto de filas que puedes ser modificadas y asegurarnos que no habrá ningún conflicto con otras transacciones.</p>
 <p>Para ello, usaremos la sentencia <a href="https://mariadb.com/kb/en/for-update/"><code>SELECT ... FOR UPDATE</code></a>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">BEGIN</span><span class="w"> </span><span class="k">TRANSACTION</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodEmp</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NumHi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">UPDATE</span><span class="p">;</span>
 </code></pre></div>
-<p>De este modo, se bloquearán todos los empleados sin hijos, y desde otras sesiones si intentan modificar cualquier de ellos, la transacción se quedará bloqueada hasta que esta termine.</p>
+<p>De este modo, se bloquearán todos los empleados sin hijos, y desde otras sesiones si intentan modificar cualquiera de ellos, la transacción se quedará bloqueada hasta que esta termine.</p>
 <p>Los bloqueos a nivel de fila no afectan a los datos consultados, únicamente se utilizan para bloquear las escrituras en la misma fila.</p>
 <h5 id="bloqueos-explicitos-de-tablas">Bloqueos explícitos de tablas<a class="headerlink" href="#bloqueos-explicitos-de-tablas" title="Permanent link">&para;</a></h5>
 <p>Cuando el bloqueo automático no es suficiente, y necesitamos tener un mayor control con acceso exclusivo a ciertas tablas y vistas en sesiones paralelas (o concurrentes), es posible bloquear el acceso a las tablas.</p>
@@ -2509,7 +2509,7 @@ cambiar simultáneamente los datos.</p>
 <ul>
 <li><strong><em>Read Uncommitted</em></strong> - <code>READ UNCOMMITTED</code> (lectura no confirmada/no acometida/no comprometida). En este nivel no se realiza ningún bloqueo, por lo tanto, permite que sucedan los tres problemas. Todas las consultas se realizan sin bloqueos, de manera que los cambios hechos por una transacción pueden verlos las otras.</li>
 <li><strong><em>Read Committed</em></strong> - <code>READ COMMITTED</code> (lectura confirmada / acometida / comprometida). En este caso los datos leídos por una transacción pueden ser modificados por otras transacciones, por lo tanto, se pueden darse tanto la lectura no repetible como las lecturas fantasmas.</li>
-<li><strong><em>Repeatable Read</em></strong> - <code>REPEATABLE READ</code> (lectura repetible). En este nivel ningún registro recuperado mediante   un <code>SELECT</code> puede modificarlo otra transacción, por lo tanto, sólo pueden ocurrir lecturas fantasmas. Es el nivel de aislamiento por defecto que utiliza <em>InnoDB</em>.</li>
+<li><strong><em>Repeatable Read</em></strong> - <code>REPEATABLE READ</code> (lectura repetible). En este nivel ningún registro recuperado mediante un <code>SELECT</code> puede modificarlo otra transacción, por lo tanto, sólo pueden ocurrir lecturas fantasmas. Es el nivel de aislamiento por defecto que utiliza <em>InnoDB</em>.</li>
 <li><strong><em>Serializable</em></strong> - <code>SERIALIZABLE</code>. En este caso las transacciones se ejecutan unas detrás de otras, sin que exista la posibilidad de concurrencia, a no ser que el SGBD pueda asegurar que no hay conflicto con el acceso a los datos.</li>
 </ul>
 <p>En resumen, los problemas que cubren los diferentes niveles de aislamiento, son:</p>
@@ -2525,21 +2525,21 @@ cambiar simultáneamente los datos.</p>
 </thead>
 <tbody>
 <tr>
-<td><code>READ_UNCOMMITTED</code></td>
+<td><code>READ UNCOMMITTED</code></td>
 <td>-</td>
 <td>-</td>
 <td>-</td>
 <td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
-<td><code>READ_COMMITTED</code></td>
+<td><code>READ COMMITTED</code></td>
 <td>-</td>
 <td>-</td>
 <td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 <td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
-<td><code>REPEATABLE_READ</code></td>
+<td><code>REPEATABLE READ</code></td>
 <td>-</td>
 <td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 <td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
@@ -2567,7 +2567,7 @@ cambiar simultáneamente los datos.</p>
 <p>Por ejemplo, podríamos hacer una transacción <em>serializable</em> del siguiente modo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SET</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="w"> </span><span class="k">ISOLATION</span><span class="w"> </span><span class="k">LEVEL</span><span class="w"> </span><span class="k">SERIALIZABLE</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodEmp</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">@</span><span class="n">jefazo</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;DIRGE&quot;</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodEmp</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="o">@</span><span class="n">jefazo</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;DIRGE&quot;</span><span class="p">;</span>
 <span class="linenos" data-linenos="4 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">@</span><span class="n">jefazo</span><span class="p">;</span>
 <span class="linenos" data-linenos="5 "></span><span class="k">COMMIT</span><span class="p">;</span>
 </code></pre></div>
@@ -2597,7 +2597,7 @@ cambiar simultáneamente los datos.</p>
 <ol>
 <li>Comprueba los usuarios existentes en nuestro SGBD.</li>
 <li>Crea un usuario <code>ac901local</code> con contraseña <code>s8a</code> que sólo pueda conectarse desde <code>localhost</code>. Comprueba que puedes acceder con el nuevo usuario.</li>
-<li>Crea un usuario <code>ac901remoto</code> con contraseña<code>s8a</code> que pueda conectarse desde cualquier lugar. Comprueba que puedes acceder con el nuevo usuario.</li>
+<li>Crea un usuario <code>ac901remoto</code> con contraseña <code>s8a</code> que pueda conectarse desde cualquier lugar. Comprueba que puedes acceder con el nuevo usuario.</li>
 <li>Modifica la contraseña del usuario <code>ac901remoto</code> para que sea <code>severo</code>. Comprueba que puedes acceder con la nueva contraseña.</li>
 <li>Vuelve a comprobar los usuarios existentes en nuestro SGBD.</li>
 <li>Elimina el usuario <code>ac901remoto</code>.</li>
@@ -2693,7 +2693,7 @@ cambiar simultáneamente los datos.</p>
 <p><a name="AC905"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC905</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr> // 3p) A partir del siguiente fragmento de código que realiza transacciones, sin ejecutar el código, índica el resultado de las consultas realizadas en las líneas 11 y 20, justificando tu respuesta:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC905</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr> // 3p) A partir del siguiente fragmento de código que realiza transacciones, sin ejecutar el código, indica el resultado de las consultas realizadas en las líneas 11 y 20, justificando tu respuesta:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">producto</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
@@ -2723,7 +2723,7 @@ cambiar simultáneamente los datos.</p>
 <li>Inserta el producto 11 con nombre <code>Onze</code> y con 100€ de precio.</li>
 <li>Coloca un punto de guardado nombrado <code>SP3</code></li>
 <li>Modifica el precio de <code>Onze</code> para que sea de 11€.</li>
-<li>Cancela las operaciones posteriores a <code>SP3</code>b y confirma la transacción.</li>
+<li>Cancela las operaciones posteriores a <code>SP3</code> y confirma la transacción.</li>
 <li>Muestra el resultado de la tabla <code>producto</code> y justifica los registros que aparecen.</li>
 </ol>
 </li>
@@ -2960,7 +2960,7 @@ cambiar simultáneamente los datos.</p>
 <p><a name="AP910"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP910</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr>, <abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p) Abre dos sesiones contra el SGBD con dos usuarios distintos (por ejemplos, <code>s8a</code> y <code>root</code>) en dos terminales. Con uno de ellos, ejecuta las siguiente sentencias:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP910</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr>, <abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p) Abre dos sesiones contra el SGBD con dos usuarios distintos (por ejemplo, <code>s8a</code> y <code>root</code>) en dos terminales. Con uno de ellos, ejecuta las siguiente sentencias:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
