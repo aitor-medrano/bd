@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
@@ -14600,6 +14600,10 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 </code></pre></div>
 <p>Aquí podemos observar cómo de las 7 extensiones telefónicas que teníamos, ninguna se repite. Pero en cambio, sabemos que todos los empleados tienen la cantidad de hijos anotados y que tenemos 3 posibles valores (<code>0</code>, <code>1</code> y <code>2</code> hijos)</p>
+<div class="admonition warning">
+<p class="admonition-title">Funciones de agregación anidadas</p>
+<p><strong>No es posible anidar funciones de agregación</strong>. Por ejemplo, no podemos hacer <code>SUM(COUNT(*))</code> o <code>MAX(SUM(SalEmp))</code>. Si queremos realizar este tipo de cálculos, deberemos hacerlo en varias consultas haciendo uso de subconsultas o CTE (las estudiaremos en la <a href="#08sql-subquerys">siguiente unidad</a>) o utilizando <a href="#07sql-group-funciones-ventana">funciones ventana</a>.</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">COUNT(*) FILTER</p>
 <p>En <em>PostreSQL</em> podemos utilizar <a href="https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-AGGREGATES">expresiones agregadas</a> sobre las funciones de agregación. Una de las expresiones más utilizadas es <a href="https://www.datacamp.com/doc/postgresql/filter"><code>FILTER</code></a>. Por ejemplo, podemos filtrar los elementos que queremos contar de una determinada expresión:</p>
@@ -15530,7 +15534,7 @@ You cannot associate a trigger with a view.
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC709</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado vistas.">CE2f</abbr> // 3p) Sobre la base de datos <code>empresa</code> se pide crear las siguientes vistas (para los campos nuevos, se indica el nombre que debe tener):</p>
 <ol>
 <li><code>empleado_anyos</code>: Para cada empleado, mostrar, además de su código y nombre, su edad (<code>EdadEmp</code>) y los años de antigüedad en la empresa (<code>AntEmp</code>).</li>
-<li><code>centro_presupuesto</code>: Para cada centro, además de su código y nombre, mostrar su presupuesto anual (<code>CenPreAnu</code>), y el código (<code>CodDir</code>) y el nombre (<code>NomDir</code>) de su director.</li>
+<li><code>centro_presupuesto</code>: Para cada centro, además de su código y nombre, mostrar su presupuesto anual (<code>CenPreAnu</code>, sumando los presupuestos de sus departamentos), y el código (<code>CodDir</code>) y el nombre (<code>NomDir</code>) de su director (a partir del campo <code>centro.CodEmpDir</code>).</li>
 <li><code>empleado_habilidades_total</code>: Para cada empleado, además de su código y nombre, el código y nombre de su departamento, y muestre una columna con el total de habilidades de dicho empleado (<code>NumHab</code>) (si no tiene habilidades, debe aparecer el empleado, pero con dicho valor a 0).</li>
 <li><code>departamento_jerarquia</code>: Para cada departamento, además del código y el nombre, muestre el código (<code>CodDepSup</code>) y el nombre (<code>NomDepSup</code>) de su departamento superior si lo tienen (deben aparecer todos los departamentos).</li>
 </ol>
@@ -16095,10 +16099,37 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+----------------------------+</span>
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- 4 rows in set (0.001 sec)</span>
 </code></pre></div>
+<!--
+TODO: Hacer otro ejemplo de lógica negativa con ALL, para recuperar todos los elementos que no cumplen la condición, por ejemplo, recuperar los empleados que no tienen un salario superior a ningún compañero de departamento, es decir, aquellos empleados cuyo salario es menor o igual al resto de salarios de sus compañeros de departamento, lo que implica que no sea el salario más alto:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="n">SalEmp</span><span class="p">,</span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span>
+<span class="hll"><span class="linenos" data-linenos="2 "></span><span class="k">where</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="k">ALL</span>
+</span><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="p">);</span>
+</code></pre></div>
+
+y otro donde se compare con un valor concreto, por ejemplo, recuperar los empleados cuyo salario es menor o igual a 3100000.00:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="n">SalEmp</span><span class="p">,</span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span>
+<span class="hll"><span class="linenos" data-linenos="2 "></span><span class="k">where</span><span class="w"> </span><span class="mi">3100000</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="k">ALL</span>
+</span><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="p">);</span>
+</code></pre></div>
+-->
+
+<!--
+TODO: Hacer algún ejemplo con dos subconsultas, por ejemplo, recuperar los empleados cuyo salario es mayor que el salario medio de su departamento pero menor que el salario medio de toda la empresa:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="n">SalEmp</span><span class="p">,</span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span>
+<span class="hll"><span class="linenos" data-linenos="2 "></span><span class="k">where</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span>
+</span><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="p">)</span><span class="w"> </span><span class="k">and</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">avg</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">);</span>
+</code></pre></div>
+-->
+
 <h4 id="08sql-subquerys-exists"><code>EXISTS</code><a class="headerlink" href="#08sql-subquerys-exists" title="Permanent link">&para;</a></h4>
 <p>Las subconsultas que utilizan <code>[NOT] EXISTS</code> devuelven verdadero si la subconsulta obtiene algún resultado (alguna fila).</p>
 <p>Así pues, este operador no evalúa ninguna comparación, con lo que las columnas que recupera no importan.</p>
-<p>Como regla general, las subconsultas con <code>EXISTS</code> siempre van a enlazar la consulta principal con la subconsulta.</p>
+<p>Como regla general, las subconsultas con <code>EXISTS</code> siempre van a enlazar la consulta principal con la subconsulta, es decir, siempre se deben correlacionar.</p>
 <p>Por ejemplo, mediante la siguiente consulta obtenemos el nombre y  departamento de los empleados para los que exista otro empleado que se haya incorporado a la empresa antes que ellos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span>
 <span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">where</span><span class="w"> </span><span class="k">EXISTS</span>
@@ -16129,6 +16160,16 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="8 "></span><span class="c1">-- +-----------------------------+--------+</span>
 <span class="linenos" data-linenos="9 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 </code></pre></div>
+<!--
+TODO: Explicar el uso de select 1 al usar EXISTS, ya que no importa lo que se recupere, lo importante es si se recupera algo o no. Por ejemplo:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span>
+<span class="hll"><span class="linenos" data-linenos="2 "></span><span class="k">where</span><span class="w"> </span><span class="k">EXISTS</span>
+</span><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">FecInEmp</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">FecInEmp</span><span class="p">);</span>
+</code></pre></div>
+
+-->
+
 <h3 id="08sql-subquerys-de-tabla">De tabla<a class="headerlink" href="#08sql-subquerys-de-tabla" title="Permanent link">&para;</a></h3>
 <p>Las <strong>tablas derivadas</strong>, también conocidas como subconsultas de tabla, se localizan dentro de la cláusula <code>FROM</code> de la consulta externa.</p>
 <p>Si retomamos la consulta que recupera aquellos empleados que más ganan en cada departamento, la podemos definir mediante una subconsulta correlacionada:</p>
@@ -16383,13 +16424,34 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+-----------------------------+--------+----------------------------+-------+</span>
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- 6 rows in set (0.001 sec)</span>
 </code></pre></div>
+<!-- TODO: 
+El apartado d) requería un INSERT INTO ... SELECT que combinase columnas de dos tablas diferentes (hijo + empleado) mapeándolas a la estructura de la tabla destino. En los apuntes, el ejemplo de INSERT ... SELECT es directo: la consulta devuelve exactamente las mismas columnas que la tabla destino porque se creó con esa misma consulta. No hay ningún ejemplo donde las columnas de origen y destino sean distintas y haya que "traducir" (poner NULLs, literales, mezclar campos de varias tablas). Ese es exactamente el escenario que les ha costado tanto, y tiene sentido: no lo habían visto.
+Yo añadiría un ejemplo del tipo:
+sql-- Insertar en directivo registros nuevos combinando datos
+-- de diferentes tablas y añadiendo valores literales/NULL
+INSERT INTO directivo (CodEmp, NomEmp, CodDep, NomDep, TiDir)
+SELECT e.CodEmp, e.NomEmp, d.CodDep, d.NomDep, 'F'
+    FROM empleado e 
+    JOIN departamento d ON e.CodDep = d.CodDep
+    WHERE e.NumHi = 0;
+-->
+
 <p>De forma semejante, podemos modificar o borrar datos a partir de una consulta utilizando una subconsulta dentro de la cláusula <code>WHERE</code>. Por ejemplo, si queremos eliminar los directivos que no tienen hijos, podemos hacer:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DELETE</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">directivo</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodEmp</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodEmp</span><span class="w"> </span><span class="k">in</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">NumHi</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
 <span class="linenos" data-linenos="4 "></span><span class="c1">-- Query OK, 5 rows affected (0.006 sec)</span>
 </code></pre></div>
-<p>Es importante tener en cuenta que algunos SGBD no permiten modificar/eliminar los datos que se están leyenda en la subconsulta.</p>
+<!--
+TODO: Falta un ejemplo de UPDATE ... SET campo = (SELECT ...) WHERE ... con subconsulta, para modificar datos a partir de una consulta. Por ejemplo, si queremos cambiar el tipo de directivo de `F` a `P` en la tabla `directivo` a aquellos empleados que siendo `F` tengan hijos, podríamos hacer:
+
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">directivo</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">TiDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;P&#39;</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">in</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">directivo</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">TiDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;F&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+-->
+
+<p>Es importante tener en cuenta que algunos SGBD no permiten modificar/eliminar los datos que se están leyendo en la subconsulta.</p>
 <div class="admonition warning">
 <p class="admonition-title">CTE y modificaciones</p>
 <p>Cabe destacar que <em>MariaDB</em> todavía no soporta CTE para el DML, sólo para hacer <code>SELECT</code> tras el <code>WITH</code>.</p>
@@ -16807,16 +16869,15 @@ FIXME: Revisar y completar
 <li>Empleados que ganan más que algún empleado del departamento <code>JEFZS</code>.</li>
 <li>Empleados que ganan más que todos los empleados del departamento <code>VENZS</code>.</li>
 <li>Centros que tienen al menos un departamento con presupuesto superior a 20.000.000 €.</li>
-<li>Departamentos que no tienen empleados (sin subconsultas).</li>
-<li>Departamentos que no tienen empleados (usando <code>NOT IN</code>).</li>
-<li>Departamentos que no tienen empleados (usando <code>NOT EXISTS</code>).</li>
+<li>Departamentos que no tienen empleados, sin utilizar subconsultas.</li>
+<li>Departamentos que no tienen empleados, usando <code>NOT IN</code>.</li>
+<li>Departamentos que no tienen empleados, usando <code>NOT EXISTS</code>.</li>
 <li>Centros donde todos los departamentos tienen un presupuesto superior a 20.000.000 €</li>
 <li>Empleados que trabajan en el mismo departamento que algún empleado con salario mayor a 2.000.000 €.</li>
-<li>Último empleado incorporado a la empresa (usando <code>NOT EXISTS</code>).</li>
-<li>Departamentos cuyo presupuesto es mayor que el presupuesto medio de todos los centros.</li>
-<li>Departamentos cuyo presupuesto es mayor que al menos un presupuesto de los centros.</li>
-<li>Departamentos con más de un empleado que tienen presupuesto superior a algún centro.</li>
-<li>Centros donde ningún departamento tiene presupuesto inferior a 1.000.000 €.</li>
+<li>Último empleado incorporado a la empresa, usando <code>NOT EXISTS</code> (el resultado debe ser <code>Mascullas Alto, Eloísa</code>).</li>
+<li>Departamentos cuyo presupuesto es mayor que al menos el presupuesto de uno de los centros (recuerda que el presupuesto de un centro se obtiene a partir de la suma de los presupuestos de sus departamentos).</li>
+<li>Departamentos con más de un empleado cuyo presupuesto es superior al de algún centro.</li>
+<li>Centros donde ningún departamento tiene un presupuesto inferior a 1.000.000 €.</li>
 </ol>
 </li>
 </ul>
@@ -16869,11 +16930,23 @@ FIXME: Revisar y completar
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC807</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha incluido en una tabla la información resultante de la ejecución de una consulta.">CE4c</abbr> // 3p) Sobre la base de datos <code>empresa</code>, realiza las siguientes operaciones DDL o DML:</p>
 <ol>
-<li>Crea una tabla <code>empleadosConHijos</code> con aquellos empleados que tienen hijos, añadiendo un campo <code>TipEmp</code> para indicar el tipo de empleado. Todos estos empleados serán del tipo <code>Ordinario</code>.</li>
+<li>Crea la tabla <code>empleadosConHijos</code> (mediante una única instrucción) con aquellos empleados que tienen hijos, añadiendo un campo <code>TipEmp</code> para indicar el tipo de empleado. Todos estos empleados serán del tipo <code>Ordinario</code>.</li>
 <li>Modifica el <code>TipEmp</code> de aquellos empleados de la tabla <code>empleadoConHijos</code> que sean directivos de un departamento con el valor <code>DirDept</code>.</li>
 <li>Modifica el <code>TipEmp</code> de aquellos empleados de la tabla <code>empleadoConHijos</code> que sean directivos de un centro con el valor <code>DirCen</code>.</li>
-<li>Añade tanto registros a <code>empleadosConHijos</code> como registros haya en la tabla <code>hijo</code>, y en el tipo asigna el valor <code>Becario</code>. Los hijos deben trabajar en el mismo departamento que sus padres, su salario será 0 y se incorporarán a la empresa el <code>1/1/25</code>.</li>
-<li>Asigna al becario más mayor el mismo salario que el empleado que menos cobre.</li>
+<li>
+<p>Queremos guardar la información de los hijos de los empleados. Para ello, añade tantos registros a <code>empleadosConHijos</code> como registros haya en la tabla <code>hijo</code>, asignándoles el tipo <code>Becario</code>, teniendo en cuenta que:</p>
+<ul>
+<li>El nombre del hijo (<code>NomHi</code>) se usará como <code>NomEmp</code>.</li>
+<li>La fecha de nacimiento del hijo (<code>FecNaHi</code>) será su <code>FecNaEmp</code>.</li>
+<li>El departamento (<code>CodDep</code>) será el mismo que el de su padre/madre en la tabla empleado.</li>
+<li>La fecha de incorporación (FecInEmp) será <code>2025-01-01</code>.</li>
+<li>Tanto el salario (<code>SalEmp</code>) como el número de hijos (<code>NumHi</code>) será 0 (no tienen hijos propios).</li>
+<li>El resto de campos serán <code>NULL</code> (no tienen teléfono, ni NIF, ni código de empleado).</li>
+</ul>
+</li>
+<li>
+<p>Asigna al becario más mayor el mismo salario que el empleado que menos cobre.</p>
+</li>
 <li>Elimina a todos los empleados en <code>empleadosConHijos</code> que sean del tipo <code>Ordinario</code>.</li>
 </ol>
 </li>
@@ -17869,28 +17942,28 @@ cambiar simultáneamente los datos.</p>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
 <td><code>READ COMMITTED</code></td>
 <td>-</td>
 <td>-</td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
 <td><code>REPEATABLE READ</code></td>
 <td>-</td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
 <td><code>SERIALIZABLE</code></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 </tbody>
 </table>
@@ -26925,10 +26998,10 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/bd/", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "navigation.path", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "/bd/", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "navigation.path", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="js/print-site.js"></script>
       
