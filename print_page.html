@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
@@ -14918,6 +14918,8 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <h3 id="07sql-group-errores-comunes">Errores comunes<a class="headerlink" href="#07sql-group-errores-comunes" title="Permanent link">&para;</a></h3>
 <!--
 FIXME: Revisar JJS + formatear
+Poner que no se pueden utilizar dos funciones agregadas SUM(COUNT(*)) o MAX(SUM(SalEmp)) y que para ello se pueden hacer varias consultas o utilizar funciones ventana
+en el Having, dejar un cálculo sin comparación ... HAVING MAX(SalEmp) ... y que no se puede utilizar en el WHERE ... WHERE MAX(SalEmp) ... y que para ello se pueden hacer varias consultas o utilizar funciones ventana
 -->
 
 <p>De forma general, los errores más comunes a la hora de realizar consultas son:</p>
@@ -17222,7 +17224,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>Bases de datos relacionales:</p>
 <ul>
 <li>Usuarios. Privilegios.</li>
-<li>Lenguaje de control de datos (DCL).</li>
+<li>Lenguaje de control de datos (<abbr title="Data Control Language">DCL</abbr>).</li>
 </ul>
 <p>Tratamiento de datos:</p>
 <ul>
@@ -17232,10 +17234,10 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <div class="admonition question">
 <p class="admonition-title">Cuestionario inicial</p>
 <ol>
-<li>¿Qué mecanismos de control de acceso implementan los SGBD?</li>
+<li>¿Qué mecanismos de control de acceso implementan los <abbr title="Sistema gestor de bases de datos">SGBD</abbr>?</li>
 <li>¿Qué sublenguaje de SQL se encarga de gestionar el control de acceso de los usuarios?</li>
-<li>¿Cómo puedo crear un usuario en <em>MariaDB</em>?</li>
-<li>A la hora de crear un usuario, ¿Puedo indicar desde qué <em>hosts</em> se puede conectar? ¿De qué manera?</li>
+<li>¿Cómo podemos crear un usuario en <em>MariaDB</em>?</li>
+<li>A la hora de crear un usuario, ¿Podemos indicar desde qué <em>hosts</em> se puede conectar? ¿De qué manera?</li>
 <li>¿Qué tipo de permisos se le pueden dar a un usuario sobre un recurso?</li>
 <li>¿Qué cláusula es necesaria incluir a la hora de crear un usuario para que el nuevo usuario pueda dar permisos a otros usuarios?</li>
 <li>¿Qué sublenguaje de SQL se encarga de gestionar el control de las transacciones?</li>
@@ -17243,13 +17245,13 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <li>¿Cuáles son los pasos básicos en la ejecución de una transacción?  </li>
 <li>¿Qué diferencia hay entre los comandos <code>COMMIT</code> y <code>ROLLBACK</code>?  </li>
 <li>¿Cuáles son las propiedades ACID y qué garantiza cada una de ellas?  </li>
-<li>¿Qué efecto tiene activar o desactivar el <em>autocommit</em> en un SGBD?  </li>
+<li>¿Qué efecto tiene activar o desactivar el <em>autocommit</em> en un <abbr title="Sistema gestor de bases de datos">SGBD</abbr>?  </li>
 <li>Explica la utilidad de los puntos de control (<code>SAVEPOINT</code>) en una transacción.  </li>
-<li>¿Cuáles son los principales problemas de concurrencia que pueden surgir en un SGBD?  </li>
+<li>¿Cuáles son los principales problemas de concurrencia que pueden surgir en un <abbr title="Sistema gestor de bases de datos">SGBD</abbr>?  </li>
 <li>Explica la diferencia entre una lectura sucia y una lectura no repetible.  </li>
 <li>¿Qué es el control de concurrencia y qué mecanismos existen para gestionarlo?  </li>
 <li>¿Cuáles son los niveles de aislamiento de transacciones y qué problemas evitan?</li>
-<li>¿Qué tipos de bloqueos se pueden dar en un SGBD? ¿Mediante qué sentencias SQL?</li>
+<li>¿Qué tipos de bloqueos se pueden dar en un <abbr title="Sistema gestor de bases de datos">SGBD</abbr>? ¿Mediante qué sentencias SQL?</li>
 </ol>
 </div>
 <h3 id="09dcl-tcl-programacion-de-aula-7h">Programación de Aula (7h)<a class="headerlink" href="#09dcl-tcl-programacion-de-aula-7h" title="Permanent link">&para;</a></h3>
@@ -17266,7 +17268,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <tbody>
 <tr>
 <td>1</td>
-<td>DCL. Gestión de <a href="#09dcl-tcl-usuarios">usuarios</a></td>
+<td><abbr title="Data Control Language">DCL</abbr>. Gestión de <a href="#09dcl-tcl-usuarios">usuarios</a></td>
 <td><a href="#09dcl-tcl-AC901">AC901</a></td>
 <td><abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr></td>
 </tr>
@@ -17309,21 +17311,22 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </tbody>
 </table>
 <h2 id="09dcl-tcl-seguridad">Seguridad<a class="headerlink" href="#09dcl-tcl-seguridad" title="Permanent link">&para;</a></h2>
-<p>La seguridad en un SGBD es fundamental para proteger la integridad, confidencialidad y disponibilidad de la información almacenada.</p>
+<p>La seguridad en un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> es fundamental para proteger la integridad, confidencialidad y disponibilidad de la información almacenada.</p>
 <p>Para ello, se implementan <strong>mecanismos de control de acceso</strong> mediante la gestión de usuarios y la asignación de privilegios. Este control permite definir qué operaciones puede realizar cada usuario o rol sobre los distintos objetos de la base de datos, limitando el acceso a información sensible y previniendo acciones no autorizadas.</p>
-<p>En SQL, dentro del DCL, las sentencias como <code>GRANT</code> y <code>REVOKE</code> permiten otorgar o revocar permisos de acceso y modificación sobre los datos. De esta forma, se establece un entorno seguro donde cada usuario tiene acceso únicamente a los recursos necesarios para sus funciones.</p>
-<p>Además del control de acceso, la seguridad de un SGBD también se refuerza mediante el <strong>uso de transacciones y políticas de bloqueo y concurrencia</strong>. Las transacciones garantizan que las operaciones sobre la base de datos se ejecuten de manera atómica, consistente, aislada y duradera (propiedades ACID), lo que previene inconsistencias en caso de errores o fallos del sistema.</p>
-<p>Para manejar el acceso concurrente de múltiples usuarios, los SGBD implementan mecanismos de bloqueo que evitan conflictos y garantizan la integridad de los datos. Estos bloqueos, combinados con estrategias de control de concurrencia, aseguran que las transacciones se gestionen de forma ordenada y segura, minimizando riesgos como condiciones de carrera, lecturas sucias o actualizaciones perdidas. Todo esto contribuye a mantener la coherencia y fiabilidad de la base de datos frente a accesos simultáneos y posibles fallos.</p>
+<p>En SQL, dentro del <abbr title="Data Control Language">DCL</abbr>, las sentencias como <code>GRANT</code> y <code>REVOKE</code> permiten otorgar o revocar permisos de acceso y modificación sobre los datos. De esta forma, se establece un entorno seguro donde cada usuario tiene acceso únicamente a los recursos necesarios para sus funciones.</p>
+<p>Además del control de acceso, la seguridad de un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> también se refuerza mediante el <strong>uso de transacciones y políticas de bloqueo y concurrencia</strong>. Las transacciones garantizan que las operaciones sobre la base de datos se ejecuten de manera atómica, consistente, aislada y duradera (propiedades ACID), lo que previene inconsistencias en caso de errores o fallos del sistema.</p>
+<p>Para manejar el acceso concurrente de múltiples usuarios, los <abbr title="Sistema gestor de bases de datos">SGBD</abbr> implementan mecanismos de bloqueo que evitan conflictos y garantizan la integridad de los datos. Estos bloqueos, combinados con estrategias de control de concurrencia, aseguran que las transacciones se gestionen de forma ordenada y segura, minimizando riesgos como condiciones de carrera, lecturas sucias o actualizaciones perdidas. Todo esto contribuye a mantener la coherencia y fiabilidad de la base de datos frente a accesos simultáneos y posibles fallos.</p>
 <h3 id="09dcl-tcl-uso-de-contrasenas">Uso de contraseñas<a class="headerlink" href="#09dcl-tcl-uso-de-contrasenas" title="Permanent link">&para;</a></h3>
-<p>Independientemente de la gestión de seguridad de los SGBD, las aplicaciones que desarrollemos normalmente utilizarán una base de datos donde se almacene la contraseña de los usuarios. Ni que decir tiene que almacenar las contraseñas en texto plano es un agujero de seguridad, ya que si la base de datos se compromete, las contraseñas de todos los usuarios quedarán expuestas.</p>
-<p>Si tenemos una tabla que almacena la información de los usuarios con la siguiente estructura:</p>
+<p>Independientemente de la gestión de seguridad de los <abbr title="Sistema gestor de bases de datos">SGBD</abbr>, las aplicaciones que desarrollemos normalmente utilizarán una base de datos donde se almacene la contraseña de los usuarios. Ni que decir tiene que almacenar las contraseñas en texto plano es un agujero de seguridad, ya que si la base de datos se compromete, las contraseñas de todos los usuarios quedarán expuestas.</p>
+<p>Una forma de proteger las contraseñas es almacenarlas encriptadas, de manera que aunque la base de datos se vea comprometida, los atacantes no podrán recuperar las contraseñas originales. Para ello, se emplean algoritmos de encriptación <em>hash</em> que generan un valor único e irreversible a partir de la contraseña original.</p>
+<p>Un ejemplo de tabla de usuarios con contraseñas encriptadas podría ser la siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">usuarios</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">username</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">email</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">UNIQUE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">password_hash</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">salt</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="n">password_hash</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="n">salt</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+</span><span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">updated_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">UPDATE</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="n">esta_activo</span><span class="w"> </span><span class="nb">BOOLEAN</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">TRUE</span>
 <span class="linenos" data-linenos="10 "></span><span class="p">);</span>
@@ -17347,13 +17350,17 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="2 "></span><span class="k">WHERE</span><span class="w"> </span><span class="n">username</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;usuario1&#39;</span><span class="w"> </span>
 <span class="linenos" data-linenos="3 "></span><span class="k">AND</span><span class="w"> </span><span class="n">password_hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SHA2</span><span class="p">(</span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;mi_password&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">salt</span><span class="p">),</span><span class="w"> </span><span class="mi">256</span><span class="p">);</span>
 </code></pre></div>
-<p>Dicho esto, los algoritmos <em>MD5</em> y <em>SHA2</em>, a día de hoy, están obsoletos (se consideran criptográficamente rotos o son fácilmente <em>hackeables</em> por fuerza bruta), y por ello, en vez de basarse en las funciones de encriptación que ofrece el SGBD, es mejor hacer uso de los algoritmos <a href="https://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>, <a href="https://en.wikipedia.org/wiki/scrypt">scrypt</a> o <a href="https://en.wikipedia.org/wiki/Argon2">argon2</a> desde el lenguaje de programación que utilice el SGBD, ya sea <em>Java</em>, <em>PHP</em> o <em>Python</em>.</p>
-<h2 id="09dcl-tcl-dcl">DCL<a class="headerlink" href="#09dcl-tcl-dcl" title="Permanent link">&para;</a></h2>
-<p>El <em>Data Control Language</em> (DCL- Lenguaje de control de datos) se emplea para gestionar los permisos y privilegios de acceso a los objetos dentro de una base de datos, estableciendo políticas de seguridad que determinan qué usuarios o roles pueden interactuar con los datos y de qué manera.</p>
-<p>A través del DCL, los administradores de bases de datos pueden otorgar o revocar permisos, asegurando que cada usuario solo pueda realizar las acciones que le han sido expresamente autorizadas. Este control es esencial para proteger la información sensible, evitar accesos no autorizados y mantener la integridad de los datos.</p>
+<p>Dicho esto, los algoritmos <em>MD5</em> y <em>SHA2</em>, a día de hoy, están obsoletos (se consideran criptográficamente rotos o son fácilmente <em>hackeables</em> por fuerza bruta), y por ello, en vez de basarse en las funciones de encriptación que ofrece el <abbr title="Sistema gestor de bases de datos">SGBD</abbr>, es mejor hacer uso de los algoritmos <a href="https://en.wikipedia.org/wiki/Bcrypt">bcrypt</a>, <a href="https://en.wikipedia.org/wiki/scrypt">scrypt</a> o <a href="https://en.wikipedia.org/wiki/Argon2">argon2</a> desde el lenguaje de programación que utilice el <abbr title="Sistema gestor de bases de datos">SGBD</abbr>, ya sea <em>Java</em>, <em>PHP</em> o <em>Python</em>.</p>
+<!--
+TODO: Sacar a un anexo y crear una nueva sección de seguridad en el curso, donde se explique cómo almacenar contraseñas de forma segura, y se explique el uso de *salt* y *hash* con algoritmos más seguros como *bcrypt*, *scrypt* o *argon2*, poniendo ejemplos mediante Python y Java
+-->
+
+<h2 id="09dcl-tcl-dcl"><abbr title="Data Control Language">DCL</abbr><a class="headerlink" href="#09dcl-tcl-dcl" title="Permanent link">&para;</a></h2>
+<p>El <em>Data Control Language</em> (<abbr title="Data Control Language">DCL</abbr> - Lenguaje de control de datos) se emplea para gestionar los permisos y privilegios de acceso a los objetos dentro de una base de datos, estableciendo políticas de seguridad que determinan qué usuarios o roles pueden interactuar con los datos y de qué manera.</p>
+<p>A través del <abbr title="Data Control Language">DCL</abbr>, los administradores de bases de datos pueden otorgar o revocar permisos, asegurando que cada usuario solo pueda realizar las acciones que le han sido expresamente autorizadas. Este control es esencial para proteger la información sensible, evitar accesos no autorizados y mantener la integridad de los datos.</p>
 <h3 id="09dcl-tcl-usuarios">Usuarios<a class="headerlink" href="#09dcl-tcl-usuarios" title="Permanent link">&para;</a></h3>
 <p>Así pues, el primer paso es la creación de usuarios y sus credenciales.</p>
-<p>SQL proporciona comandos específicos para crear, modificar y eliminar usuarios, aunque la sintaxis puede variar ligeramente según el SGBD (como <em>MariaDB</em>, <em>PostgreSQL</em> u <em>Oracle</em>).</p>
+<p>SQL proporciona comandos específicos para crear, modificar y eliminar usuarios, aunque la sintaxis puede variar ligeramente según el <abbr title="Sistema gestor de bases de datos">SGBD</abbr> (como <em>MariaDB</em>, <em>PostgreSQL</em> u <em>Oracle</em>).</p>
 <p>Para <strong>crear</strong> un nuevo usuario se realiza con la sentencia <a href="https://mariadb.com/kb/en/create-user/">CREATE USER</a>, mediante la sintaxis</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="n">nombre_usuario</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;contraseña&#39;</span><span class="p">;</span>
 </code></pre></div>
@@ -17395,7 +17402,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </code></pre></div>
 <p>Es recomendable revocar previamente los permisos asignados para asegurar una gestión ordenada.</p>
 <h3 id="09dcl-tcl-permisos">Permisos<a class="headerlink" href="#09dcl-tcl-permisos" title="Permanent link">&para;</a></h3>
-<p>Hemos comentado previamente que los usuarios tendrán diferentes permisos sobre los recursos de una base de datos.  Para ello, las principales sentencias del DCL son <strong><code>GRANT</code></strong> y <strong><code>REVOKE</code></strong>.</p>
+<p>Hemos comentado previamente que los usuarios tendrán diferentes permisos sobre los recursos de una base de datos.  Para ello, las principales sentencias del <abbr title="Data Control Language">DCL</abbr> son <strong><code>GRANT</code></strong> y <strong><code>REVOKE</code></strong>.</p>
 <p>La instrucción <code>GRANT</code> permite asignar permisos específicos a usuarios o roles, como la capacidad de consultar (<code>SELECT</code>), insertar (<code>INSERT</code>), actualizar (<code>UPDATE</code>) o eliminar (<code>DELETE</code>) datos en tablas o vistas. También se pueden otorgar privilegios sobre procedimientos almacenados o esquemas completos.</p>
 <p>Por otro lado, la sentencia <code>REVOKE</code> se utiliza para retirar esos permisos cuando ya no son necesarios o cuando se detecta un posible riesgo de seguridad.</p>
 <p>Además, algunos sistemas permiten incluir la opción <strong><code>WITH GRANT OPTION</code></strong>, que autoriza a un usuario a conceder los privilegios que ha recibido a otros usuarios. Esta gestión granular de permisos es clave para implementar políticas de seguridad robustas, evitando accesos indebidos y minimizando el riesgo de errores o ataques malintencionados.</p>
@@ -17421,7 +17428,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.003 sec)</span>
 </code></pre></div>
 </div>
-<p>Tras crear un usuario, es necesario asignar permisos mediante el DCL con <code>GRANT</code> y retirarlos con <code>REVOKE</code>.  </p>
+<p>Tras crear un usuario, es necesario asignar permisos mediante el <abbr title="Data Control Language">DCL</abbr> con <code>GRANT</code> y retirarlos con <code>REVOKE</code>.  </p>
 <h4 id="09dcl-tcl-otorgando-permisos">Otorgando permisos<a class="headerlink" href="#09dcl-tcl-otorgando-permisos" title="Permanent link">&para;</a></h4>
 <p>Así pues, mediante la sentencia <a href="https://mariadb.com/kb/en/grant/">GRANT</a> daremos privilegios a un usuario sobre uno o más objetos, mediante la siguiente sintaxis:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="n">privilegio</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">objeto</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="n">usuario</span><span class="w"> </span><span class="p">[</span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">]</span>
@@ -17473,7 +17480,8 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">REVOKE</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">empresa</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="s1">&#39;s8abd&#39;</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="09dcl-tcl-roles">Roles<a class="headerlink" href="#09dcl-tcl-roles" title="Permanent link">&para;</a></h3>
-<p>Si queremos aplicarle los mismos permisos a varios usuarios, podemos hacer uso de los roles. Para ello, usaremos la sentencia <a href="https://mariadb.com/kb/en/create-role/"><code>CREATE ROLE</code></a>, por ejemplo, para crear un rol desarrollador</p>
+<p>Si queremos aplicarle los mismos permisos a varios usuarios, podemos hacer uso de los roles. Formalmente, un rol es un conjunto de privilegios que se pueden asignar a uno o más usuarios. Mediante los roles, se simplifica la gestión de permisos, ya que en lugar de asignar privilegios individualmente a cada usuario, se pueden agrupar en un rol y luego asignar ese rol a los usuarios correspondientes. </p>
+<p>Para ello, usaremos la sentencia <a href="https://mariadb.com/kb/en/create-role/"><code>CREATE ROLE</code></a>, por ejemplo, para crear un rol desarrollador</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">ROLE</span><span class="w"> </span><span class="n">desarrollador</span><span class="p">;</span>
 </code></pre></div>
 <p>Una vez creado un rol, le daremos permisos mediante <code>GRANT</code> o se los quitaremos mediante <code>REVOKE</code>, y finalmente le asignaremos el rol a uno o más usuarios mediante <code>GRANT rol TO usuario</code>.</p>
@@ -17508,7 +17516,7 @@ TODO: Gestión de roles es PostgreSQL - Libro Just Use PostgreSQL - Cap 2
 -->
 
 <h3 id="09dcl-tcl-phpmyadmin">PhpMyAdmin<a class="headerlink" href="#09dcl-tcl-phpmyadmin" title="Permanent link">&para;</a></h3>
-<p>Si queremos comprobar los usuarios existentes mediante PhpMyAdmin, podemos entrar a la opción <em>Cuentas de usuario</em> y crear, modificar o eliminar los usuarios del sistema.</p>
+<p>Si queremos comprobar los usuarios existentes mediante <em>PhpMyAdmin</em>, podemos entrar a la opción <em>Cuentas de usuario</em> y crear, modificar o eliminar los usuarios del sistema.</p>
 <figure style="align: center;">
     <img src="images/09users-phpmyadmin.png" width="730" title="Cuentas de usuario en PhpMyAdmin">
     <figcaption>Cuentas de usuario en PhpMyAdmin</figcaption>
@@ -17543,13 +17551,13 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <ul>
 <li><a href="https://mariadb.com/kb/en/commit/"><code>COMMIT</code></a>: aceptamos todos los cambios</li>
 <li><a href="https://mariadb.com/kb/en/rollback/"><code>ROLLBACK</code></a>: deshacemos las operaciones</li>
-<li>Un comando DDL, DCL, al finalizar una sesión de trabajo o al producirse un fallo o caída del sistema.</li>
+<li>Un comando DDL, <abbr title="Data Control Language">DCL</abbr>, al finalizar una sesión de trabajo o al producirse un fallo o caída del sistema.</li>
 </ul>
-<p>La gestión de transacciones forma parte del sublenguaje TCL (<em>Transaction Control Language</em>), el cual incluye los comandos <code>COMMIT</code>, <code>ROLLBACK</code> y <a href="https://mariadb.com/kb/en/savepoint/"><code>SAVEPOINT</code></a>.</p>
-<p>En cuanto a los SGBD, la gran mayoría de los sistemas existentes en el mercado ofrece soporte transaccional, con diferentes políticas de bloqueo. Por ejemplo, <em>MariaDB</em> sólo permite realizar transacciones con el motor de almacenamiento <em>InnoDB</em>.</p>
-<p>Pese a realizar las operaciones de forma segura, el uso de TCL implica un procesamiento adicional que penaliza el rendimiento.</p>
+<p>La gestión de transacciones forma parte del sublenguaje <abbr title="Transaction Control Language">TCL</abbr> (<em>Transaction Control Language</em>), el cual incluye los comandos <code>COMMIT</code>, <code>ROLLBACK</code> y <a href="https://mariadb.com/kb/en/savepoint/"><code>SAVEPOINT</code></a>.</p>
+<p>En cuanto a los <abbr title="Sistema gestor de bases de datos">SGBD</abbr>, la gran mayoría de los sistemas existentes en el mercado ofrece soporte transaccional, con diferentes políticas de bloqueo. Por ejemplo, <em>MariaDB</em> sólo permite realizar transacciones con el motor de almacenamiento <em>InnoDB</em>.</p>
+<p>Pese a realizar las operaciones de forma segura, el uso de <abbr title="Transaction Control Language">TCL</abbr> implica un procesamiento adicional que penaliza el rendimiento.</p>
 <h3 id="09dcl-tcl-acid">ACID<a class="headerlink" href="#09dcl-tcl-acid" title="Permanent link">&para;</a></h3>
-<p>Todo SGBD que se considera transaccional debe cumplir con las propiedades ACID:</p>
+<p>Todo <abbr title="Sistema gestor de bases de datos">SGBD</abbr> que se considera transaccional debe cumplir con las propiedades ACID:</p>
 <ul>
 <li><strong>A</strong>tomicidad: La transacción es indivisible. Esto quiere decir que o se ejecutan todas las sentencias o no se ejecuta ninguna.</li>
 <li><strong>C</strong>onsistencia: Después de una transacción, la base de datos estará en un estado válido y consistente.</li>
@@ -17557,7 +17565,7 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <li><strong>D</strong>urabilidad: Los cambios que realiza una transacción sobre la base de datos son permanentes.</li>
 </ul>
 <h3 id="09dcl-tcl-autocommit">Autocommit<a class="headerlink" href="#09dcl-tcl-autocommit" title="Permanent link">&para;</a></h3>
-<p>Por defecto, los SGBD tienen activo el modo <a href="https://mariadb.com/kb/en/server-system-variables/#autocommit"><code>autocommit</code></a>, indicando que se aceptan automáticamente todos los cambios realizados y no es posible deshacerlos. De esta manera, cada operación individual se considera una transacción. </p>
+<p>Por defecto, los <abbr title="Sistema gestor de bases de datos">SGBD</abbr> tienen activo el modo <a href="https://mariadb.com/kb/en/server-system-variables/#autocommit"><code>autocommit</code></a>, indicando que se aceptan automáticamente todos los cambios realizados y no es posible deshacerlos. De esta manera, cada operación individual se considera una transacción. </p>
 <p>Para consultar el nivel del <em>autocommit</em>, necesitamos realizar una consulta sobre la propiedad <code>@@AUTOCOMMIT</code></p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">@@</span><span class="n">AUTOCOMMIT</span><span class="p">;</span>
 </code></pre></div>
@@ -17569,9 +17577,9 @@ http://di002.edv.uniovi.es/~fcano/bdatos/materiales/transpa/Cap16Fcano20092010.p
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SET</span><span class="w"> </span><span class="n">AUTOCOMMIT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="09dcl-tcl-pasos">Pasos<a class="headerlink" href="#09dcl-tcl-pasos" title="Permanent link">&para;</a></h3>
-<p>Para realizar una <a href="https://mariadb.com/kb/es/start-transaction/">transacción</a>, tal como hemos visto previamente, el primer paso es iniciarla y ejecutar una serie de operaciones:</p>
+<p>Aunque el <em>autocommit</em> esté activo, es posible realizar transacciones explícitas, y realmente, es la forma recomendada de trabajar, ya que nos permite controlar mejor el proceso. Para ello, para realizar una <a href="https://mariadb.com/kb/es/start-transaction/">transacción</a>, tal como hemos visto previamente, el primer paso es iniciarla y ejecutar una serie de operaciones:</p>
 <ol>
-<li>Indicar que vamos a realizar una transacción con la sentencia <code>START TRANSACTION</code>, <code>BEGIN</code> o <code>BEGIN WORK</code>. Al iniciar la transacción, el <code>AUTOCOMMIT</code> se deshabilita automáticamente.</li>
+<li>Indicar que vamos a realizar una transacción con la sentencia <code>START TRANSACTION</code> ( o<code>BEGIN</code>, <code>BEGIN WORK</code>, que siendo comandos equivalentes, se mantienen por compatibilidad con otros sistemas como <em>PostgreSQL</em>). Al iniciar la transacción, el <code>AUTOCOMMIT</code> se deshabilita automáticamente.</li>
 <li>Realizar las operaciones de manipulación de datos sobre la base datos (insertar, actualizar o borrar filas).</li>
 <li>
 <p>Dos posibilidades:</p>
@@ -17618,10 +17626,10 @@ flowchart LR
 </code></pre></div>
 <p>A continuación, podemos realizar diferentes operaciones dentro de una única transacción:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;José Manuel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Andreu&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Marina&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos="4 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="5 "></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Andreu&#39;</span><span class="p">;</span>
 <span class="hll"><span class="linenos" data-linenos="6 "></span><span class="k">COMMIT</span><span class="p">;</span>
 </span></code></pre></div>
 <p>De esta manera, las tres inserciones y el borrado se ejecutan como una única operación. Si abrimos dos terminales y entramos con dos sesiones diferentes, y ejecutamos el siguiente flujo, obtendremos:</p>
@@ -17636,28 +17644,28 @@ flowchart LR
 </thead>
 <tbody>
 <tr>
-<td><code class="highlight"><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span></code><br ><code class="highlight"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;José Manuel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span></code><br ><code class="highlight"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Marina&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span></code></td>
+<td><code class="highlight"><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span></code><br ><code class="highlight"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Andreu&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span></code><br ><code class="highlight"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Marina&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span></code></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">CLIENTE</span><span class="p">;</span></code></td>
-<td><code>1, José Manuel, Elche</code><br><code>2, Marina, Elche</code></td>
+<td><code>1, Andreu, Elche</code><br><code>2, Marina, Elche</code></td>
 <td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">CLIENTE</span><span class="p">;</span></code></td>
 <td>-</td>
 </tr>
 <tr>
-<td><code class="highlight"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span></code><br ><code class="highlight"><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">;</span></code><br ><code class="highlight"><span class="k">COMMIT</span><span class="p">;</span></code></td>
+<td><code class="highlight"><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span></code><br ><code class="highlight"><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Andreu&#39;</span><span class="p">;</span></code><br ><code class="highlight"><span class="k">COMMIT</span><span class="p">;</span></code></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">CLIENTE</span><span class="p">;</span></code></td>
-<td><code>1, José Manuel, Elche</code><br><code>2, Marina, Elche</code></td>
+<td><code>2, Marina, Elche</code><br><code>33, Pedro, Elche</code></td>
 <td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">CLIENTE</span><span class="p">;</span></code></td>
-<td><code>1, José Manuel, Elche</code><br><code>2, Marina, Elche</code></td>
+<td><code>2, Marina, Elche</code><br><code>33, Pedro, Elche</code></td>
 </tr>
 </tbody>
 </table>
@@ -17665,24 +17673,29 @@ flowchart LR
 <p class="admonition-title">Autoevaluación</p>
 <p>Si en cambio ejecutásemos el siguiente fragmento, tras haber acabado de crear la tabla:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;José Manuel&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Andreu&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">COMMIT</span><span class="p">;</span>
 <span class="linenos" data-linenos="4 "></span><span class="k">SET</span><span class="w"> </span><span class="n">AUTOCOMMIT</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 <span class="linenos" data-linenos="5 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Marina&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span>
 <span class="linenos" data-linenos="6 "></span><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Elche&#39;</span><span class="p">);</span>
-<span class="linenos" data-linenos="7 "></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Pedro&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="7 "></span><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">cliente</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Andreu&#39;</span><span class="p">;</span>
 </code></pre></div>
 <ol>
 <li>¿Qué contendría la tabla <code>cliente</code>? <sup id="fnref:1"><a class="footnote-ref" href="#09dcl-tcl-fn:1">1</a></sup></li>
 <li>Y si tras hacer el borrado, ejecutamos <code>ROLLBACK</code> ¿Qué contendrá ahora la tabla? <sup id="fnref:2"><a class="footnote-ref" href="#09dcl-tcl-fn:2">2</a></sup></li>
 </ol>
 </div>
-<p>Veamos otro ejemplo. Supongamos que tenemos una <code>tablaResumen</code> que agrupa ciertas estadísticas, y que queremos actualizar haciendo uso de una transacción (recuerda que mediante <code>@variable</code> podemos definir o referenciar a una variable, y asignarle un valor mediante <code>:=</code>):</p>
+<!--
+Veamos otro ejemplo. Supongamos que tenemos una `tablaResumen` que agrupa ciertas estadísticas, y que queremos actualizar haciendo uso de una transacción (recuerda que mediante `@variable` podemos definir o referenciar a una variable, y asignarle un valor mediante `:=`):
+
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">A</span><span class="p">:</span><span class="o">=</span><span class="k">SUM</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NumHi</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">tablaResumen</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">SalarioTotal</span><span class="o">=@</span><span class="n">A</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NumHi</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
 <span class="linenos" data-linenos="4 "></span><span class="k">COMMIT</span><span class="p">;</span>
 </code></pre></div>
+
+-->
+
 <h3 id="09dcl-tcl-puntos-de-parada">Puntos de parada<a class="headerlink" href="#09dcl-tcl-puntos-de-parada" title="Permanent link">&para;</a></h3>
 <p>Los puntos de parada definen puntos de control intermedios dentro de una transacción, de forma que si se efectúa <code>ROLLBACK</code> éste pueda ser total (toda la transacción) o hasta uno de los puntos de control de la transacción.</p>
 <p>Para ello, primero los definiremos mediante la etiqueta <a href="https://mariadb.com/kb/en/savepoint/"><code>SAVEPOINT</code></a> dentro de una transacción.</p>
@@ -17703,7 +17716,7 @@ flowchart LR
 <span class="linenos" data-linenos="13 "></span><span class="k">COMMIT</span><span class="p">;</span><span class="w">                 </span><span class="c1">-- Sólo quedará guardado José Manuel</span>
 </code></pre></div>
 <h2 id="09dcl-tcl-concurrencia">Concurrencia<a class="headerlink" href="#09dcl-tcl-concurrencia" title="Permanent link">&para;</a></h2>
-<p>En el contexto de bases de datos, el término concurrencia se refiere a la capacidad de un sistema de bases de datos para permitir que múltiples usuarios o procesos accedan y manipulen los datos al mismo tiempo, sin que esto afecte la integridad, consistencia o el rendimiento del sistema.</p>
+<p>En el contexto de bases de datos, el término concurrencia se refiere a la capacidad de un sistema de bases de datos para permitir que múltiples usuarios o procesos accedan y manipulen los datos al mismo tiempo, sin que esto afecte a la integridad, consistencia o el rendimiento del sistema.</p>
 <p>Cuando se utilizan transacciones, pueden darse problemas de concurrencia en el acceso a los datos, es decir, problemas ocasionados por el acceso al mismo dato de dos transacciones distintas. Cuando diferentes usuarios realizan cambios en el mismo recurso de una base de datos al mismo tiempo se produce un bloqueo.</p>
 <p>Un caso de uso muy común es la compra de entradas para eventos (cine, teatro, conciertos,...) donde en un primer paso se selecciona el asiento y posteriormente se realiza la operación. Cuando un usuario selecciona un asiento, éste se bloquea para que ningún usuario pueda adquirirlo, pero ¿y si dos usuarios seleccionan el mismo asiento, pero uno es más rápido que el otro a la hora de confirmar la compra?</p>
 <p>Pensemos en otro ejemplo. Cuando realizamos un <em>bizum</em> o una transferencia bancaria entre dos usuarios, la cantidad se resta de la cuenta bancaria de origen y se suma en la de destino. Entre una operación y otra pueden pasar muchas cosas ¿Y si se va la luz? ¿Y si el usuario origen no tiene saldo? ¿Restamos y luego sumamos?</p>
@@ -17840,21 +17853,21 @@ flowchart LR
 </ul>
 </div>
 <h3 id="09dcl-tcl-mecanismos">Mecanismos<a class="headerlink" href="#09dcl-tcl-mecanismos" title="Permanent link">&para;</a></h3>
-<p>Los sistemas gestores de bases de datos (SGBD) implementan diferentes técnicas para garantizar la consistencia y aislamiento de las transacciones:</p>
+<p>Los sistemas gestores de bases de datos (<abbr title="Sistema gestor de bases de datos">SGBD</abbr>) implementan diferentes técnicas para garantizar la consistencia y aislamiento de las transacciones:</p>
 <ul>
 <li>Control de concurrencia mediante <strong>bloqueos</strong> (<em>Locks</em>). Los bloqueos son mecanismos que previenen conflictos entre las transacciones que acceden a los mismos recursos, bien sea a estructuras de datos compartidas o a un registro del diccionario de datos.</li>
-<li><strong>Versionado de datos</strong> (MVCC, <em>Multi-Version Concurrency Control</em>): Permite que cada transacción trabaje con su propia copia de los datos, evitando bloqueos y mejorando el rendimiento en sistemas con alta concurrencia. Cuando hay una modificación de datos, en lugar de sobrescribir una fila en actualizaciones, se almacena una nueva versión de la fila mientras se mantiene la versión anterior hasta que ya no sea necesaria (las transacciones que la usan han finalizado). Las versiones anteriores de una fila se almacenan en el espacio de "deshacer" (undo space) para permitir transacciones y lecturas consistentes.</li>
+<li><strong>Versionado de datos</strong> (<abbr title="Multi-Version Concurrency Control">MVCC</abbr>, <em>Multi-Version Concurrency Control</em>): Permite que cada transacción trabaje con su propia copia de los datos, evitando bloqueos y mejorando el rendimiento en sistemas con alta concurrencia. Cuando hay una modificación de datos, en lugar de sobrescribir una fila en actualizaciones, se almacena una nueva versión de la fila mientras se mantiene la versión anterior hasta que ya no sea necesaria (las transacciones que la usan han finalizado). Las versiones anteriores de una fila se almacenan en el espacio de "deshacer" (undo space) para permitir transacciones y lecturas consistentes.</li>
 <li>Protocolos de <strong>serialización</strong>: Garantizan que las transacciones se ejecuten de manera que los resultados sean equivalentes a ejecutarlas en secuencia, evitando interferencias.</li>
 <li><strong>Niveles de aislamiento</strong>: Establecen reglas sobre cómo se gestionan las interacciones entre transacciones (<code>READ UNCOMMITTED</code>, <code>READ COMMITTED</code>, <code>REPEATABLE READ</code>, <code>SERIALIZABLE</code>) para dar solución a los problemas de concurrencia comentados anteriormente.</li>
 </ul>
 <h4 id="09dcl-tcl-bloqueos">Bloqueos<a class="headerlink" href="#09dcl-tcl-bloqueos" title="Permanent link">&para;</a></h4>
-<p>Cuando un SGBD aísla las transacciones de usuario, utiliza los bloqueos para restringir el acceso de otros usuarios a dichos datos.</p>
+<p>Cuando un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> aísla las transacciones de usuario, utiliza los bloqueos para restringir el acceso de otros usuarios a dichos datos.</p>
 <p>Los bloqueos pueden ser:</p>
 <ul>
 <li><strong>Compartidos</strong> (<em>Shared</em>): Permiten que varios procesos lean los mismos datos, pero no los modifiquen. Múltiples usuarios leyendo datos pueden compartirlos, manteniendo bloqueos para prevenir accesos concurrentes por una escritura.</li>
 <li><strong>Exclusivos</strong> (<em>Exclusive</em>): Restringen el acceso a los datos a un solo proceso para lecturas y escrituras. La primera transacción que bloquea el recurso es la única que puede alterarlo hasta liberar el bloqueo.</li>
 </ul>
-<p>Cuando se produce una condición de carrera, dependiendo del nivel de aislamiento, el SGBD actuará de una manera u otra, lo que impacta directamente en el rendimiento y la cantidad de bloqueos necesarios.</p>
+<p>Cuando se produce una condición de carrera, dependiendo del nivel de aislamiento, el <abbr title="Sistema gestor de bases de datos">SGBD</abbr> actuará de una manera u otra, lo que impacta directamente en el rendimiento y la cantidad de bloqueos necesarios.</p>
 <p>Si retomamos el ejemplo de los clientes y tenemos dos usuarios que trabajan sobre los mismos datos, y un usuario en una transacción modifica un registro, y no termina de hacer commit ni rollback, cuando un segundo usuario intenta acceder al mismo registro, se producirá un bloqueo:</p>
 <table>
 <thead>
@@ -17885,7 +17898,7 @@ flowchart LR
 <p>En este punto el usuario 2 se queda <em>colgado</em> esperando a que se resuelva la transacción del usuario 1. Finalmente obtendrá un error tras un tiempo de espera:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>ERROR 1205 (HY000): Lock wait timeout exceeded; try restarting transaction
 </code></pre></div>
-<p>A medida que ajustamos el comportamiento del SGBD como el idóneo para nuestro negocio, podremos llegar a un estado donde el número de bloqueos necesario aumenta, y por lo tanto, disminuye la concurrencia entre los diferentes usuarios, implicando una caída del rendimiento general. En dicho punto, podemos hacer una gestión explícita de los bloqueos o que se encargue el SGBD, pudiendo configurar nosotros los diferentes niveles de aislamiento.</p>
+<p>A medida que ajustamos el comportamiento del <abbr title="Sistema gestor de bases de datos">SGBD</abbr> como el idóneo para nuestro negocio, podremos llegar a un estado donde el número de bloqueos necesario aumenta, y por lo tanto, disminuye la concurrencia entre los diferentes usuarios, implicando una caída del rendimiento general. En dicho punto, podemos hacer una gestión explícita de los bloqueos o que se encargue el <abbr title="Sistema gestor de bases de datos">SGBD</abbr>, pudiendo configurar nosotros los diferentes niveles de aislamiento.</p>
 <h5 id="09dcl-tcl-bloqueos-explicitos-de-filas">Bloqueos explícitos de filas<a class="headerlink" href="#09dcl-tcl-bloqueos-explicitos-de-filas" title="Permanent link">&para;</a></h5>
 <p>Este tipo de bloqueos se produce cuando modificamos campos de una fila (o se borran o marcan para ser modificados). El caso de uso más común es cuando necesitamos bloquear un número de filas antes de hacer cambios (como ciertas entradas o asientos). De esta manera, podemos prevenir el conjunto de filas que pueden ser modificadas y asegurarnos que no habrá ningún conflicto con otras transacciones.</p>
 <p>Para ello, usaremos la sentencia <a href="https://mariadb.com/kb/en/for-update/"><code>SELECT ... FOR UPDATE</code></a>:</p>
@@ -17911,19 +17924,19 @@ cambiar simultáneamente los datos.</p>
 <span class="linenos" data-linenos="5 "></span><span class="c1">-- Muestra el listado de empleados</span>
 </code></pre></div>
 <p>Cuando se ejecuta <code>LOCK TABLES</code> se hace un <code>COMMIT</code> implícito, por lo tanto, si había alguna transacción abierta, esta acaba. Si la conexión finaliza (normalmente o anormalmente) antes de desbloquear las tablas, automáticamente se desbloquean las tablas.</p>
-<p>Otro caso de uso muy común es bloquear todas las tablas de todas las bases de datos del SGBD, para hacer, por ejemplo, copias de seguridad, mediante un <a href="https://mariadb.com/kb/en/flush/"><code>FLUSH</code></a>:</p>
+<p>Otro caso de uso muy común es bloquear todas las tablas de todas las bases de datos del <abbr title="Sistema gestor de bases de datos">SGBD</abbr>, para hacer, por ejemplo, copias de seguridad, mediante un <a href="https://mariadb.com/kb/en/flush/"><code>FLUSH</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">FLUSH</span><span class="w"> </span><span class="n">TABLES</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">READ</span><span class="w"> </span><span class="k">LOCK</span><span class="p">;</span>
 </code></pre></div>
 <p>Para desbloquear las tablas (todas las que estuvieran bloqueadas), haremos un <a href="https://mariadb.com/kb/en/transactions-unlock-tables/"><code>UNLOCK</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">UNLOCK</span><span class="w"> </span><span class="n">TABLES</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="09dcl-tcl-niveles-de-aislamiento">Niveles de aislamiento<a class="headerlink" href="#09dcl-tcl-niveles-de-aislamiento" title="Permanent link">&para;</a></h4>
-<p>Acabamos de estudiar que cuando se trabaja con transacciones, el SGBD puede bloquear conjuntos de datos para evitar o permitir que sucedan estos problemas. Según el nivel de concurrencia que se desee, podemos utilizar cuatro niveles de aislamiento, definiendo cómo los cambios hechos por una transacción son visibles a otras transacciones:</p>
+<p>Acabamos de estudiar que cuando se trabaja con transacciones, el <abbr title="Sistema gestor de bases de datos">SGBD</abbr> puede bloquear conjuntos de datos para evitar o permitir que sucedan estos problemas. Según el nivel de concurrencia que se desee, podemos utilizar cuatro niveles de aislamiento, definiendo cómo los cambios hechos por una transacción son visibles a otras transacciones:</p>
 <ul>
 <li><strong><em>Read Uncommitted</em></strong> - <code>READ UNCOMMITTED</code> (lectura no confirmada/no acometida/no comprometida). En este nivel no se realiza ningún bloqueo, por lo tanto, permite que sucedan los tres problemas. Todas las consultas se realizan sin bloqueos, de manera que los cambios hechos por una transacción pueden verlos las otras.</li>
 <li><strong><em>Read Committed</em></strong> - <code>READ COMMITTED</code> (lectura confirmada / acometida / comprometida). En este caso los datos leídos por una transacción pueden ser modificados por otras transacciones, por lo tanto, se pueden dar tanto la lectura no repetible como las lecturas fantasmas.</li>
 <li><strong><em>Repeatable Read</em></strong> - <code>REPEATABLE READ</code> (lectura repetible). En este nivel ningún registro recuperado mediante un <code>SELECT</code> puede modificarlo otra transacción, por lo tanto, sólo pueden ocurrir lecturas fantasmas. Es el nivel de aislamiento por defecto que utiliza <em>InnoDB</em>.</li>
-<li><strong><em>Serializable</em></strong> - <code>SERIALIZABLE</code>. En este caso las transacciones se ejecutan unas detrás de otras, sin que exista la posibilidad de concurrencia, a no ser que el SGBD pueda asegurar que no hay conflicto con el acceso a los datos.</li>
+<li><strong><em>Serializable</em></strong> - <code>SERIALIZABLE</code>. En este caso las transacciones se ejecutan unas detrás de otras, sin que exista la posibilidad de concurrencia, a no ser que el <abbr title="Sistema gestor de bases de datos">SGBD</abbr> pueda asegurar que no hay conflicto con el acceso a los datos.</li>
 </ul>
 <p>En resumen, los problemas que cubren los diferentes niveles de aislamiento, son:</p>
 <table>
@@ -17942,32 +17955,32 @@ cambiar simultáneamente los datos.</p>
 <td>-</td>
 <td>-</td>
 <td>-</td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
 <td><code>READ COMMITTED</code></td>
 <td>-</td>
 <td>-</td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
 <td><code>REPEATABLE READ</code></td>
 <td>-</td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 <tr>
 <td><code>SERIALIZABLE</code></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
-<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
+<td><img alt="👍" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f44d.svg" title=":thumbsup:" /></td>
 </tr>
 </tbody>
 </table>
-<p>Para configurar uno u otro nivel, por ejemplo, en <em>MariaDB</em>, podemos cambiar el <a href="https://mariadb.com/kb/en/set-transaction/#isolation-levels">nivel de aislamiento</a> del SGBD en el fichero de configuración con la propiedad <code>transaction-isolation</code> (desde <em>MariaDB</em> 11.1.1):</p>
+<p>Para configurar uno u otro nivel, por ejemplo, en <em>MariaDB</em>, podemos cambiar el <a href="https://mariadb.com/kb/en/set-transaction/#isolation-levels">nivel de aislamiento</a> del <abbr title="Sistema gestor de bases de datos">SGBD</abbr> en el fichero de configuración con la propiedad <code>transaction-isolation</code> (desde <em>MariaDB</em> 11.1.1):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>transaction-isolation = &#39;READ COMMITTED&#39;
 </code></pre></div>
 <p>También podemos hacerlo para la sesión activa desde el cliente de <em>MariaDB</em> mediante <a href="https://mariadb.com/kb/en/set-transaction/"><code>SET SESSION TRANSACTION</code></a>:</p>
@@ -17996,9 +18009,9 @@ cambiar simultáneamente los datos.</p>
 <p>Materiales sobre el módulo de BD:</p>
 <ul>
 <li><em><a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u6/a1/continguts.html">Gestió d'usuaris i privilegis</a></em> i <em><a href="https://ioc.xtec.cat/materials/FP/Recursos/fp_dam_m02_/web/fp_dam_m02_htmlindex/WebContent/u5/a3/continguts.html">Control de transaccions i concurrencia</a></em> - <em>Institut Obert de Catalunya</em>.</li>
-<li><a href="https://josejuansanchez.org/bd/unidad-dcl-sql-teoria/index.html">Lenguaje de control de datos (DCL)</a> y <a href="https://josejuansanchez.org/bd/unidad-11-teoria/index.html#transacciones">Transacciones</a> de <em>José Juan Sánchez</em>.</li>
-<li><a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut3/recopila.html">Implementación de bases de datos relacionales / Apartado 12.- Lenguaje de control de datos (DCL).</a> de <em>Javier Gutiérrez</em>.</li>
-<li><a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema6/index.html">Seguridad de los datos. DCL</a> de gestionbasesdatos.readthedocs.io</li>
+<li><a href="https://josejuansanchez.org/bd/unidad-dcl-sql-teoria/index.html">Lenguaje de control de datos (<abbr title="Data Control Language">DCL</abbr>)</a> y <a href="https://josejuansanchez.org/bd/unidad-11-teoria/index.html#transacciones">Transacciones</a> de <em>José Juan Sánchez</em>.</li>
+<li><a href="https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut3/recopila.html">Implementación de bases de datos relacionales / Apartado 12.- Lenguaje de control de datos (<abbr title="Data Control Language">DCL</abbr>).</a> de <em>Javier Gutiérrez</em>.</li>
+<li><a href="https://gestionbasesdatos.readthedocs.io/es/latest/Tema6/index.html">Seguridad de los datos. <abbr title="Data Control Language">DCL</abbr></a> de gestionbasesdatos.readthedocs.io</li>
 </ul>
 </li>
 </ul>
@@ -18008,11 +18021,11 @@ cambiar simultáneamente los datos.</p>
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC901</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr> // 2p) Sobre la instalación de <em>MariaDB</em> que utilizas normalmente, realiza las siguientes operaciones, indicando los comandos necesarios y adjuntando capturas de pantalla de los resultados obtenidos:</p>
 <ol>
-<li>Comprueba los usuarios existentes en nuestro SGBD.</li>
+<li>Comprueba los usuarios existentes en nuestro <abbr title="Sistema gestor de bases de datos">SGBD</abbr>.</li>
 <li>Crea un usuario <code>ac901local</code> con contraseña <code>s8a</code> que sólo pueda conectarse desde <code>localhost</code>. Comprueba que puedes acceder con el nuevo usuario.</li>
 <li>Crea un usuario <code>ac901remoto</code> con contraseña <code>s8a</code> que pueda conectarse desde cualquier lugar. Comprueba que puedes acceder con el nuevo usuario.</li>
 <li>Modifica la contraseña del usuario <code>ac901remoto</code> para que sea <code>severo</code>. Comprueba que puedes acceder con la nueva contraseña.</li>
-<li>Vuelve a comprobar los usuarios existentes en nuestro SGBD.</li>
+<li>Vuelve a comprobar los usuarios existentes en nuestro <abbr title="Sistema gestor de bases de datos">SGBD</abbr>.</li>
 <li>Elimina el usuario <code>ac901remoto</code>.</li>
 </ol>
 </li>
@@ -18047,7 +18060,7 @@ cambiar simultáneamente los datos.</p>
 </ul>
 <p><a name="AP903"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP903</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr> // 3p) Realiza las actividades del apartado 1.4 de <em>DCL</em>, que podemos encontrar en las <a href="https://josejuansanchez.org/bd/unidad-dcl-sql-teoria/index.html#ejercicios">actividades propuestas</a> en los apuntes del docente <em>José Juan Sánchez</em>.</li>
+<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP903</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr> // 3p) Realiza las actividades del apartado 1.4 de <em><abbr title="Data Control Language">DCL</abbr></em>, que podemos encontrar en las <a href="https://josejuansanchez.org/bd/unidad-dcl-sql-teoria/index.html#ejercicios">actividades propuestas</a> en los apuntes del docente <em>José Juan Sánchez</em>.</li>
 </ul>
 <p><a name="AC904"></a></p>
 <ul>
@@ -18081,7 +18094,7 @@ cambiar simultáneamente los datos.</p>
 <span class="linenos" data-linenos="23 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="linenos" data-linenos="24 "></span><span class="k">UPDATE</span><span class="w"> </span><span class="n">cuentas</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">saldo</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <span class="linenos" data-linenos="25 "></span><span class="k">COMMIT</span><span class="p">;</span>
-<span class="hll"><span class="linenos" data-linenos="26 "></span><span class="c1">-- ¿Y si una cuenta no tiene saldo? ¿Se han modificado ambos los saldos?</span>
+<span class="hll"><span class="linenos" data-linenos="26 "></span><span class="c1">-- ¿Y si una cuenta no tiene saldo? ¿Se han modificado ambos saldos?</span>
 </span></code></pre></div>
 </li>
 <li>
@@ -18168,7 +18181,7 @@ cambiar simultáneamente los datos.</p>
 <p><a name="AC907"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC907</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr>, <abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p) Abre dos sesiones contra el SGBD con dos usuarios distintos (por ejemplo, <code>s8a</code> y <code>root</code>) en dos terminales. Con uno de ellos, ejecuta las siguientes sentencias:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC907</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr>, <abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p) Abre dos sesiones contra el <abbr title="Sistema gestor de bases de datos">SGBD</abbr> con dos usuarios distintos (por ejemplo, <code>s8a</code> y <code>root</code>) en dos terminales. Con uno de ellos, ejecuta las siguientes sentencias:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
@@ -18289,7 +18302,7 @@ cambiar simultáneamente los datos.</p>
 <p><a name="AC908"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC908</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr>, <abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p) Abre dos sesiones contra el SGBD con dos usuarios distintos (por ejemplo, <code>s8a</code> y <code>root</code>) en dos terminales. Con uno de ellos, ejecuta las siguientes sentencias:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC908</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr>, <abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p) Abre dos sesiones contra el <abbr title="Sistema gestor de bases de datos">SGBD</abbr> con dos usuarios distintos (por ejemplo, <code>s8a</code> y <code>root</code>) en dos terminales. Con uno de ellos, ejecuta las siguientes sentencias:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">persona</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w">    </span><span class="p">);</span>
@@ -18373,7 +18386,7 @@ cambiar simultáneamente los datos.</p>
 <p><a name="AP910"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP910</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr>, <abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p) Abre dos sesiones contra el SGBD con dos usuarios distintos (por ejemplo, <code>s8a</code> y <code>root</code>) en dos terminales. Con uno de ellos, ejecuta las siguiente sentencias:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP910</strong>. (<abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se ha reconocido el funcionamiento de las transacciones.">CE4e</abbr>, <abbr title="Se han anulado parcial o totalmente los cambios producidos por una transacción.">CE4f</abbr>, <abbr title="Se han identificado los efectos de las distintas políticas de bloqueo de registros.">CE4g</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p) Abre dos sesiones contra el <abbr title="Sistema gestor de bases de datos">SGBD</abbr> con dos usuarios distintos (por ejemplo, <code>s8a</code> y <code>root</code>) en dos terminales. Con uno de ellos, ejecuta las siguiente sentencias:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="k">REPLACE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">UNSIGNED</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="n">nombre</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
@@ -18558,10 +18571,10 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <hr />
 <ol>
 <li id="09dcl-tcl-fn:1">
-<p>Si estamos en la misma sesión, contendrá a <code>José Manuel</code> y a <code>Marina</code>. En cambio, si desde otra sesión comprobamos la tabla, sólo aparecerá <code>José Manuel</code>, ya que el resto de instrucciones no se han confirmado mediante <code>COMMIT</code>.&#160;<a class="footnote-backref" href="#09dcl-tcl-fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Si estamos en la misma sesión, contendrá a <code>Marina</code> y a <code>Pedro</code>. En cambio, si desde otra sesión comprobamos la tabla, sólo aparecerá <code>Andreu</code>, ya que el resto de instrucciones no se han confirmado mediante <code>COMMIT</code>.&#160;<a class="footnote-backref" href="#09dcl-tcl-fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="09dcl-tcl-fn:2">
-<p>Ahora tanto el usuario local a la transacción como el resto de usuarios sólo verán a <code>José Manuel</code>.&#160;<a class="footnote-backref" href="#09dcl-tcl-fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>Ahora tanto el usuario local a la transacción como el resto de usuarios sólo verán a <code>Andreu</code>.&#160;<a class="footnote-backref" href="#09dcl-tcl-fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div></section><section class="print-page" id="10plsql" heading-number="11"><nav class='md-tags'><span class='md-tag'>RA5</span><span class='md-tag'>PL/SQL</span><span class='md-tag'>SQL</span><span class='md-tag'>SQL - TCL</span></nav><h1 id="programacion-en-bases-de-datos">Programación en bases de datos<a class="headerlink" href="#10plsql-programacion-en-bases-de-datos" title="Permanent link">&para;</a></h1>
@@ -26998,10 +27011,10 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/bd/", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "navigation.path", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "/bd/", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "navigation.path", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="js/print-site.js"></script>
       
