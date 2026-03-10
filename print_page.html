@@ -18068,7 +18068,29 @@ cambiar simultáneamente los datos.</p>
 </ul>
 <p><a name="AP903"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP903</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr> // 3p) Realiza las actividades del apartado 1.4 de <em><abbr title="Data Control Language">DCL</abbr></em>, que podemos encontrar en las <a href="https://josejuansanchez.org/bd/unidad-dcl-sql-teoria/index.html#ejercicios">actividades propuestas</a> en los apuntes del docente <em>José Juan Sánchez</em>.</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP903</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr> // <abbr title="Se han creado los usuarios y se les han asignado privilegios.">CE2g</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr> // 3p) Una clínica se pone en contacto con nosotros para que les ayudemos a organizar su sistema de gestión de bases de datos. Actualmente, tienen tres bases de datos: <code>administracion</code>, <code>historiales</code> y <code>farmacia</code>, y necesitan una estructura de permisos adecuada que refleje el siguiente organigrama:</p>
+<ul>
+<li><code>rol_recepcion</code>: <code>SELECT</code> en <code>administracion.*</code>, <code>INSERT</code> en <code>administracion.citas</code></li>
+<li><code>rol_medico</code>: <code>SELECT</code>, <code>UPDATE</code> en <code>historiales.*</code>; <code>SELECT</code> en <code>farmacia.medicamentos</code></li>
+<li><code>rol_farmaceutico</code>: <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code> en <code>farmacia.*</code></li>
+<li><code>rol_admin_bd</code>: <code>ALL</code> en las tres bases de datos + <code>WITH GRANT OPTION</code></li>
+</ul>
+<p>Tras crear los roles anteriores, se pide realizar las siguientes tareas, indicando los comandos necesarios y adjuntando capturas de pantalla de los resultados obtenidos:</p>
+<ol>
+<li>Crea un usuario por cada rol y asígnaselo. Verifica con <code>SHOW GRANTS</code> que todo es correcto.</li>
+<li>Crea un nuevo usuario <code>dr_garcia</code> con contraseña <code>s8a</code> y asígnale el rol de médico.</li>
+<li>El médico <code>dr_garcia</code> asciende y necesita también poder insertar en historiales. En lugar de tocar el rol (que afectaría a todos), añade el permiso directamente a su usuario. Comprueba los permisos del médico y analiza cómo conviven permisos de rol y permisos directos.</li>
+<li>
+<p>Por último, el otro médico que creaste antes deja la clínica. Desde el departamento TIC nos indican el proceso completo y seguro para revocar accesos:</p>
+<ol>
+<li>Quitar el rol</li>
+<li>Verificar que no quedan permisos residuales</li>
+<li>Eliminar el usuario.</li>
+</ol>
+</li>
+</ol>
+</li>
 </ul>
 <p><a name="AC904"></a></p>
 <ul>
