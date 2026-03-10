@@ -17819,10 +17819,10 @@ Veamos otro ejemplo. Supongamos que tenemos una `tablaResumen` que agrupa cierta
 </tr>
 <tr>
 <td></td>
-<td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">asientos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span></code><br /></td>
+<td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">asientos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="p">;</span></code><br /></td>
 </tr>
 <tr>
-<td><code class="highlight"><span class="k">ROLLBACK</span></code></td>
+<td><code class="highlight"><span class="k">ROLLBACK</span><span class="p">;</span></code></td>
 <td></td>
 </tr>
 </tbody>
@@ -17849,7 +17849,7 @@ Veamos otro ejemplo. Supongamos que tenemos una `tablaResumen` que agrupa cierta
 </tr>
 <tr>
 <td></td>
-<td><code class="highlight"><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">asientos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span></code><br /><code class="highlight"><span class="k">COMMIT</span><span class="p">;</span></code></td>
+<td><code class="highlight"><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">asientos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="p">;</span></code><br /><code class="highlight"><span class="k">COMMIT</span><span class="p">;</span></code></td>
 </tr>
 <tr>
 <td><code class="highlight"><span class="k">SELECT</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">asientos</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;libre&quot;</span><span class="p">;</span></code></td>
