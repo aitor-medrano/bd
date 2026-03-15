@@ -1841,6 +1841,7 @@
 <span class="linenos" data-linenos="4 "></span><span class="p">[</span><span class="w"> </span><span class="k">EXCEPTION</span><span class="w"> </span><span class="c1">-- tratamiento de excepciones ]</span>
 <span class="linenos" data-linenos="5 "></span><span class="k">END</span><span class="p">;</span>
 </code></pre></div>
+<p>A lo largo de esta unidad aprenderemos a utilizar PL/SQL para crear procedimientos almacenados, funciones de usuario, así como a utilizar estructuras de control de flujo para dotar de lógica a nuestros procedimientos y funciones. En la siguiente unidad, veremos el uso de excepciones para gestionar los errores que puedan surgir durante la ejecución de nuestros procedimientos y funciones.</p>
 <h2 id="procedimientos">Procedimientos<a class="headerlink" href="#procedimientos" title="Permanent link">&para;</a></h2>
 <p>Un procedimiento almacenado (<em>Stored Procedure</em>) es un fragmento de código que vamos a poder reutilizar. Es como si a un bloque de código le pusiéramos un nombre para poder invocarlo conforme necesitemos.</p>
 <p>Aunque veremos las funciones más adelante, su principal diferencia es que un procedimiento no devuelve datos, mientras que una función sí. Dicho esto, podemos pasarle parámetros de salida que van a permitir al procedimiento devolver información. Y esta es una de las principales ventajas de los procedimientos almacenados respecto a, por ejemplo, una vista, y es el hecho de poder recibir parámetros para darle comportamiento específico a partir de uno o más datos de entrada.</p>
@@ -2019,7 +2020,7 @@
 <span class="linenos" data-linenos="34 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
 </code></pre></div>
 <h3 id="uso-de-variables">Uso de variables<a class="headerlink" href="#uso-de-variables" title="Permanent link">&para;</a></h3>
-<p>Dentro de nuestros bloques de código, podemos declarar y utilizar variables, las cuales se consideran locales al bloque. Éstas se declaran  tras abrir un bloque mediante <a href="https://mariadb.com/kb/en/declare-variable/"><code>DECLARE variable tipo</code></a>. </p>
+<p>Dentro de nuestros bloques de código, podemos declarar y utilizar variables, las cuales se consideran locales al bloque. Éstas se declaran tras abrir un bloque mediante <a href="https://mariadb.com/kb/en/declare-variable/"><code>DECLARE variable tipo</code></a>. </p>
 <p>Para asignar un valor a una variable o parámetros usaremos <a href="https://mariadb.com/kb/en/set-variable/"><code>SET variable = valor</code></a>.</p>
 <p>Si retomamos el ejemplo anterior, ahora definimos una variable de entrada/salida, además de otra de entrada y una tercera de salida, y utilizaremos una variable para almacenar una operación intermedia:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">delimiter</span><span class="w"> </span><span class="o">//</span>
@@ -2027,7 +2028,7 @@
 <span class="linenos" data-linenos=" 3 "></span><span class="w">                             </span><span class="k">IN</span><span class="w"> </span><span class="n">apellido</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="w">                             </span><span class="k">OUT</span><span class="w"> </span><span class="n">saludo</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">))</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="k">begin</span>
-<span class="hll"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span>
+<span class="hll"><span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">256</span><span class="p">);</span><span class="w"> </span><span class="c1">-- variable local</span>
 </span><span class="linenos" data-linenos=" 7 "></span>
 <span class="hll"><span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">concat</span><span class="p">(</span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot; &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">apellido</span><span class="p">);</span>
 </span><span class="linenos" data-linenos=" 9 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">nombre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nombreCompleto</span><span class="p">;</span>
@@ -2091,6 +2092,13 @@
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">),</span><span class="w"> </span><span class="k">min</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="o">@</span><span class="n">mayor</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">menor</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">¿Qué sucede si la consulta devuelve más de un valor?</p>
+<p>Si la consulta devuelve más de un valor, se producirá un error, ya que <code>SELECT INTO</code> espera que la consulta devuelva exactamente un únio valor. Por ejemplo, si intentamos almacenar el nombre de los empleados en una variable, obtendremos el error <code>1172</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="o">@</span><span class="n">nombre</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">-- ERROR 1172 (42000): Result consisted of more than one row</span>
+</code></pre></div>
+</div>
 <h3 id="consideraciones">Consideraciones<a class="headerlink" href="#consideraciones" title="Permanent link">&para;</a></h3>
 <p>A la hora de diseñar y programar procedimientos almacenados, debes tener en cuenta una serie de consideraciones:</p>
 <ul>
@@ -2100,6 +2108,82 @@
 <li>Igualmente, si definimos variables, sus tipos deben ser semejantes a los parámetros y a los campos que van a evaluar.</li>
 <li>Como los procedimientos, normalmente, van a contener diversas consultas y el código de puede complicar, es muy recomendable incluir comentarios claros y descriptivos que faciliten su comprensión y mantenimiento.</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Variables locales vs variables de usuario</p>
+<p>A modo de resumen, si comparamos las variables locales con las variables de usuario, podemos observar las siguientes diferencias:</p>
+<table>
+<thead>
+<tr>
+<th>Característica</th>
+<th>Variable local</th>
+<th>Variable de usuario</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sintaxis</td>
+<td><code>DECLARE nombre tipo [DEFAULT valor];</code></td>
+<td><code>@nombre</code></td>
+</tr>
+<tr>
+<td>Declaración</td>
+<td>Obligatoria con <code>DECLARE</code> dentro de un bloque <code>BEGIN-END</code></td>
+<td>No requiere declaración previa; se crea al asignarla</td>
+</tr>
+<tr>
+<td>Asignación</td>
+<td><code>SET nombre = valor;</code> o <code>SELECT ... INTO nombre</code></td>
+<td><code>SET @nombre = valor;</code> o <code>SELECT ... INTO @nombre</code></td>
+</tr>
+<tr>
+<td>Prefijo <code>@</code></td>
+<td>No lleva</td>
+<td>Siempre lleva <code>@</code></td>
+</tr>
+<tr>
+<td>Ámbito</td>
+<td>El bloque <code>BEGIN-END</code> donde se declara</td>
+<td>Toda la sesión del usuario</td>
+</tr>
+<tr>
+<td>Visibilidad entre procedimientos</td>
+<td>No visible fuera de su bloque</td>
+<td>Visible desde cualquier procedimiento, función o consulta de la misma sesión</td>
+</tr>
+<tr>
+<td>Ciclo de vida</td>
+<td>Se destruye al finalizar el bloque</td>
+<td>Persiste hasta que se cierra la conexión</td>
+</tr>
+<tr>
+<td>Tipo de dato</td>
+<td>Explícito, definido en <code>DECLARE</code></td>
+<td>Implícito, determinado por el valor asignado</td>
+</tr>
+<tr>
+<td>Valor por defecto</td>
+<td><code>NULL</code> (o el indicado con <code>DEFAULT</code>)</td>
+<td><code>NULL</code> hasta que se le asigne un valor</td>
+</tr>
+<tr>
+<td>Uso en consultas fuera de un bloque</td>
+<td>No se puede usar</td>
+<td>Sí, por ejemplo <code>SELECT @nombre;</code></td>
+</tr>
+<tr>
+<td>Ejemplo</td>
+<td><code>DECLARE total INT DEFAULT 0;</code></td>
+<td><code>SET @total = 0;</code></td>
+</tr>
+</tbody>
+</table>
+<p>Entonces, ¿cuándo debo usar cada tipo?</p>
+<ul>
+<li><strong>Variable local</strong>: cuando el dato sólo tiene sentido dentro de un procedimiento o función concreto. Es la opción preferida porque limita el ámbito y evita efectos secundarios.</li>
+<li><strong>Variable de usuario</strong>: cuando necesitas pasar información entre procedimientos sin usar parámetros, almacenar el resultado de un <code>CALL</code> con parámetro <code>OUT</code>, o conservar un valor para usarlo en consultas posteriores dentro de la misma sesión.</li>
+</ul>
+<p>Debes tener mucha precaución al usar variables de usuario, ya que su valor persiste durante toda la sesión y puede ser modificado por cualquier procedimiento o consulta, lo que puede llevar a resultados inesperados si no se gestionan adecuadamente, por ejemplo, sobreescribiendo inadvertidamente el valor asignado desde otro lugar. Por ello, es recomendable utilizar variables locales siempre que sea posible para evitar conflictos y mejorar la claridad del código.</p>
+</div>
 <h2 id="estructuras-de-control">Estructuras de control<a class="headerlink" href="#estructuras-de-control" title="Permanent link">&para;</a></h2>
 <p>Para cambiar el flujo de un procedimiento y añadir lógica, haremos uso de instrucciones condicionales.</p>
 <h3 id="condicionales">Condicionales<a class="headerlink" href="#condicionales" title="Permanent link">&para;</a></h3>
@@ -2353,6 +2437,39 @@
 <span class="linenos" data-linenos="19 "></span>
 <span class="linenos" data-linenos="20 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">ejemploLoop</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">resultado</span><span class="p">);</span>
 <span class="linenos" data-linenos="21 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">resultado</span><span class="p">;</span>
+</code></pre></div>
+<p>Por último, mediante la etiqueta <a href="https://mariadb.com/docs/server/reference/sql-statements/programmatic-compound-statements/iterate"><code>ITERATE</code></a> podemos saltar a la siguiente iteración del bucle, sin salir del mismo:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">etiqueta</span><span class="p">:</span><span class="w"> </span><span class="n">LOOP</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="n">sentencias</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">IF</span><span class="w"> </span><span class="n">condicion</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">        </span><span class="k">ITERATE</span><span class="w"> </span><span class="n">etiqueta</span><span class="p">;</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">END</span><span class="w"> </span><span class="n">LOOP</span>
+</code></pre></div>
+<p>A diferencia de <code>LEAVE</code>, <code>ITERATE</code> no rompe el bucle, sino que salta a la siguiente iteración, lo que puede ser útil para evitar ejecutar ciertas sentencias dentro del bucle bajo determinadas condiciones. En otros lenguajes, esta funcionalidad se suele representar con la palabra clave <code>CONTINUE</code>, mientras que <code>LEAVE</code> se suele representar con <code>BREAK</code>.</p>
+<p>Si refactorizamos el ejemplo anterior para que, en lugar de sumar todos los números, sólo sume los pares, podríamos hacer:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">DROP</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ejemploIterate</span><span class="w"> </span><span class="o">//</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="n">ejemploIterate</span><span class="p">(</span><span class="k">IN</span><span class="w"> </span><span class="n">tope</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="k">OUT</span><span class="w"> </span><span class="n">suma</span><span class="w"> </span><span class="nb">INT</span><span class="p">)</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">DECLARE</span><span class="w"> </span><span class="n">contador</span><span class="w"> </span><span class="nb">INT</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="k">SET</span><span class="w"> </span><span class="n">suma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="n">bucle</span><span class="p">:</span><span class="w"> </span><span class="n">LOOP</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="n">contador</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">tope</span><span class="w"> </span><span class="k">THEN</span>
+</span><span class="linenos" data-linenos="10 "></span><span class="w">            </span><span class="n">LEAVE</span><span class="w"> </span><span class="n">bucle</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="w">        </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="12 "></span><span class="w">        </span><span class="k">IF</span><span class="w"> </span><span class="n">contador</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">THEN</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">            </span><span class="k">ITERATE</span><span class="w"> </span><span class="n">bucle</span><span class="p">;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="k">END</span><span class="w"> </span><span class="k">IF</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">suma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">suma</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">contador</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="k">SET</span><span class="w"> </span><span class="n">contador</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contador</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="n">LOOP</span><span class="p">;</span>
+<span class="linenos" data-linenos="18 "></span><span class="k">END</span>
+<span class="linenos" data-linenos="19 "></span><span class="o">//</span>
+<span class="linenos" data-linenos="20 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
+<span class="linenos" data-linenos="21 "></span><span class="k">CALL</span><span class="w"> </span><span class="n">ejemploIterate</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">resultado</span><span class="p">);</span>
+<span class="linenos" data-linenos="22 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">resultado</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="funciones">Funciones<a class="headerlink" href="#funciones" title="Permanent link">&para;</a></h2>
 <p>Las funciones son similares a un procedimiento, pero devuelven un único valor mediante la sentencia <code>RETURN</code>, y se pueden usar dentro de consultas <code>SELECT</code>. Normalmente se utilizan para realizar cálculos o funciones auxiliares.</p>

@@ -1865,7 +1865,7 @@
 </ol>
 </div>
 <h3 id="programacion-de-aula-14h">Programación de Aula (14h)<a class="headerlink" href="#programacion-de-aula-14h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la onceava, impartiéndose a mediados de la tercera evaluación, a mitad de marzo, con una duración estimada de 14 sesiones lectivas:</p>
+<p>Esta unidad es la undécima, impartiéndose a mediados de la tercera evaluación, a mitad de marzo, con una duración estimada de 14 sesiones lectivas:</p>
 <table>
 <thead>
 <tr>
@@ -2070,7 +2070,7 @@
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="n">EVENT</span><span class="w"> </span><span class="n">evento_recurrente_con_inicio_fin</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">ON</span><span class="w"> </span><span class="n">SCHEDULE</span><span class="w"> </span><span class="k">EVERY</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">DAY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="n">HOUR</span><span class="w"> </span><span class="n">STARTS</span><span class="w"> </span><span class="s1">&#39;2025-03-01 00:00:00&#39;</span><span class="w"> </span><span class="n">ENDS</span><span class="w"> </span><span class="s1">&#39;2025-12-31 23:59:59&#39;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">ON</span><span class="w"> </span><span class="n">SCHEDULE</span><span class="w"> </span><span class="k">EVERY</span><span class="w"> </span><span class="mi">36</span><span class="w"> </span><span class="n">HOUR</span><span class="w"> </span><span class="n">STARTS</span><span class="w"> </span><span class="s1">&#39;2025-03-01 00:00:00&#39;</span><span class="w"> </span><span class="n">ENDS</span><span class="w"> </span><span class="s1">&#39;2025-12-31 23:59:59&#39;</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">DO</span>
 <span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="k">CALL</span><span class="w"> </span><span class="n">actualizar_inventario</span><span class="p">();</span>
 </code></pre></div>
@@ -2121,12 +2121,12 @@ TODO: Eventos: https://wiki.cifprodolfoucha.es/index.php?title=Mod_BD_UD8_ADMINI
 <div class="admonition tip">
 <p class="admonition-title">Consideraciones</p>
 <p>Cuando un desarrollador se adentra en el mundo de los eventos en <em>MariaDB</em>, debe tener en cuenta varias consideraciones importantes para asegurar que estos procesos automatizados funcionen de manera óptima. Ante todo, es fundamental verificar que el <em>Event Scheduler</em> esté activado en el sistema. Si se reinicia el servidor, dependiendo de la configuración, puede ser que el programador de eventos esté deshabilitado.</p>
-<p>Otro aspecto crucial es el manejo de los errores (lo estudiaremos más adelante en esta unidad) capturando excepciones y registrando la información relevante en tablas de <em>logs</em>, ofreciendo mecanismos para monitorizar los eventos en ejecución y cuál ha sido su estado de ejecución, mediante alguna tabla específica que registre información detallada sobre la ejecución de cada evento (incluyendo tiempos, resultados y cualquier anomalía), lo que nos proporcionará una ayuda invaluable cuando surjan los problemas (que tarde o temprano, sucederán).</p>
+<p>Otro aspecto crucial es el manejo de los errores (lo estudiaremos más adelante en esta unidad) capturando excepciones y registrando la información relevante en tablas de <em>logs</em>, ofreciendo mecanismos para monitorizar los eventos en ejecución y cuál ha sido su estado de ejecución, mediante alguna tabla específica que registre información detallada sobre la ejecución de cada evento (incluyendo tiempos, resultados y cualquier anomalía), lo que nos proporcionará una ayuda de un valor incalculable cuando surjan los problemas (que tarde o temprano, sucederán).</p>
 <p>Finalmente, siempre deberemos controlar los tiempos de ejecución, para evitar operaciones muy largas, así como evitar solapamientos entre diferentes eventos que sobrescriban la misma información.</p>
 </div>
 <h2 id="triggers">Triggers<a class="headerlink" href="#triggers" title="Permanent link">&para;</a></h2>
 <p>Directamente relacionados con los eventos, tenemos los <strong>disparadores</strong> (<strong><em>triggers</em></strong>) que son fragmentos de código que se activan automáticamente en respuesta a operaciones específicas sobre las tablas, tales como inserciones, actualizaciones o eliminaciones.</p>
-<p>Estos mecanismos permiten insertar lógica personalizada que se ejecuta antes (<em>before</em>) o después (<em>after</em>) de que se realice la orden SQL que provoca su ejecución, lo que es fundamental para garantizar la integridad de los datos, validar condiciones de negocio y llevar a cabo auditorías automáticas. Por ejemplo, un disparador puede registrar cada cambio en una tabla de auditoría o prevenir modificaciones que no cumplan con ciertos criterios, asegurando así la consistencia y confiabilidad de la información almacenada.</p>
+<p>Estos mecanismos permiten inyectar lógica personalizada que se ejecuta antes (<em>before</em>) o después (<em>after</em>) de que se realice la orden SQL que provoca su ejecución, lo que es fundamental para garantizar la integridad de los datos, validar condiciones de negocio y llevar a cabo auditorías automáticas. Por ejemplo, un disparador puede registrar cada cambio en una tabla de auditoría o prevenir modificaciones que no cumplan con ciertos criterios, asegurando así la consistencia y confiabilidad de la información almacenada.</p>
 <p>Los posibles eventos que podemos asociar a un disparador son:</p>
 <ul>
 <li><code>INSERT</code>: El <em>trigger</em> se activa cuando se inserta una nueva fila sobre la tabla asociada.</li>
@@ -2528,7 +2528,7 @@ EXECUTE FUNCTION update_order_total();
 <li>Las acciones pueden ser <code>CONTINUE</code> para continuar con la ejecución normal, o <code>EXIT</code> que lanza el manejador y finaliza el bloque <code>BEGIN-END</code> actual.</li>
 <li>Al lanzarse, se puede ejecutar una única instrucción (por ejemplo <code>set x=5;</code>) o un bloque de instrucciones (entre <code>BEGIN</code> y <code>END</code>).</li>
 <li>Los manejadores se deben declarar después de las variables locales.</li>
-<li>Dentro de un manejador no podemos declarar variables. Sí que podemos usar variables de usuario (comienzan por <code>@</code>), o utilizar las variables declaradas antes de los manejadores.</li>
+<li>Dentro del cuerpo de un manejador no se pueden declarar variables locales con <code>DECLARE</code>. En cambio, sí que podemos usar variables de usuario (recuerda que comienzan por <code>@</code>), o utilizar las variables declaradas antes de los manejadores.</li>
 </ul>
 <p>Los manejadores se asocian mediante <code>FOR</code> a códigos de error, estados de SQL (los cuales son cadenas y por tanto van entre comillas) o a las condiciones predefinidas a cualquier condición que hayamos creado anteriormente.</p>
 <p>Por ejemplo, podemos definir un par que manejadores del siguiente modo:</p>
@@ -2585,7 +2585,7 @@ EXECUTE FUNCTION update_order_total();
 </code></pre></div>
 <ul>
 <li>¿Cuánto valdrá <code>@salida</code> en la línea 18? <!-- 3 --></li>
-<li>Si cambiamos el manejador de <code>CONTINUE</code> a <code>EXIT</code>, ¿Cuánto valdría <code>resultado</code>? <!-- 1 --></li>
+<li>Si cambiamos el manejador de <code>EXIT</code> a <code>CONTINUE</code>, ¿Cuánto valdría <code>resultado</code>? <!-- 1 --></li>
 </ul>
 </div>
 <h4 id="manejadores-en-eventos">Manejadores en Eventos<a class="headerlink" href="#manejadores-en-eventos" title="Permanent link">&para;</a></h4>
@@ -3030,13 +3030,13 @@ flowchart TD
 <p class="admonition-title">Pensando en conjuntos</p>
 <p>Desde el principio del bloque de consultas, hemos aprendido a trabajar con datos pensando en conjuntos de datos completos, ya que le decimos al SGBD lo que queremos recuperar o evaluar, y el motor de consultas averigua la mejor manera de completar la consulta.</p>
 <p>Cuando en la unidad anterior empezamos a utilizar las estructuras de control dentro de los procedimientos almacenados, empleamos un enfoque imperativo, al indicarle al SGBD cómo realizar las operaciones.</p>
-<p>El motivo por el que lo cursores se siguen utilizando es que en ocasiones es necesario indicarle al SGBD los pasos que queremos realizar. Dicho esto, este enfoque imperativo normalmente supone un peor rendimiento al realizar un bloqueo excesivo y hacer un mayor consumo de los recursos del motor de base de datos que si hiciéramos un enfoque basado en conjuntos.</p>
+<p>El motivo por el que los cursores se siguen utilizando es que en ocasiones es necesario indicarle al SGBD los pasos que queremos realizar. Dicho esto, este enfoque imperativo normalmente supone un peor rendimiento al realizar un bloqueo excesivo y hacer un mayor consumo de los recursos del motor de base de datos que si hiciéramos un enfoque basado en conjuntos.</p>
 <p>Dicho esto, siempre que sea posible, tendrá mejor rendimiento una o más consultas que el uso de cursores, aunque en contadas ocasiones necesitarás evaluar cada fila de un conjunto de forma individual y necesitarás el uso de cursores.</p>
 </div>
 <p>Una vez que ya sabemos cómo se crean, veamos un ejemplo sobre nuestra base de datos <code>empresa</code>. La empresa se está planteando ampliar la cantidad de departamentos para fomentar la conciliación familiar. De esta manera, aquellos departamentos que tengan más de 2 trabajadores con hijos se dividirán en dos, y sus empleados se repartirán entre ellos. Para ello, en una nueva tabla <code>departamentoFamiliar</code> almacenaremos una copia de los departamentos, junto a las nuevas versiones familiares. Para crear una tabla con la misma estructura, haciendo uso de <a href="https://mariadb.com/kb/en/create-table/#create-table-like"><code>CREATE TABLE ... LIKE</code></a> podemos crear una tabla que copia la estructura de otra:</p>
 <div class="admonition tip">
 <p class="admonition-title">ROW TYPE OF</p>
-<p>Cuando queremos recuperar todos los campos de un registro, en vez de definir una variable por cada campo, podemos declarar una variable cuyo tipo será un registro de una tabla. Para ello, declararemos una variable mediante <a href="https://mariadb.com/kb/en/declare-variable/#type-of-row-type-of"><code>DECLARE ... ROW TYPE OF</code></a>:</p>
+<p>Cuando queremos recuperar todos los campos de un registro, en vez de definir una variable por cada campo, podemos declarar una variable cuyo tipo será una fila de una tabla. Para ello, declararemos una variable mediante <a href="https://mariadb.com/kb/en/declare-variable/#type-of-row-type-of"><code>DECLARE ... ROW TYPE OF</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">rowDep</span><span class="w"> </span><span class="k">ROW</span><span class="w"> </span><span class="k">TYPE</span><span class="w"> </span><span class="k">OF</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
 </code></pre></div>
 <p>Y posteriormente accederemos a los campos mediante la notación <code>.</code>:</p>

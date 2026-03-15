@@ -3140,7 +3140,7 @@ cambiar simultáneamente los datos.</p>
 <li>Tras restar <code>saldo</code> en la cuenta de origen, crear el punto de guardado <code>sp_resta</code>.</li>
 <li>Sumar saldo en la cuenta de destino.</li>
 <li>Si todo va bien, actualizar el movimiento a <code>completado</code> y hacer <code>COMMIT</code>.</li>
-<li>Si falla la suma, por ejemplo, por saldo insuficiente, deshacer la opción al punto de guardado <code>sp_movimiento</code> y actualizar el estado a <code>anulado</code>. &lt;!-- TODO: Quitar este apartado&gt;</li>
+<li>Si falla la suma, por ejemplo, por saldo insuficiente, deshacer la opción al punto de guardado <code>sp_movimiento</code> y actualizar el estado a <code>anulado</code>. </li>
 <li>Finaliza la transacción.</li>
 </ul>
 </li>
@@ -3159,6 +3159,7 @@ cambiar simultáneamente los datos.</p>
 <!--
 TODO:
 -->
+
 <!--
 Contenidos básicos:
 
