@@ -19076,7 +19076,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">¿Qué sucede si la consulta devuelve más de un valor?</p>
-<p>Si la consulta devuelve más de un valor, se producirá un error, ya que <code>SELECT INTO</code> espera que la consulta devuelva exactamente un únio valor. Por ejemplo, si intentamos almacenar el nombre de los empleados en una variable, obtendremos el error <code>1172</code>:</p>
+<p>Si la consulta devuelve más de un valor, se producirá un error, ya que <code>SELECT INTO</code> espera que la consulta devuelva exactamente un único valor. Por ejemplo, si intentamos almacenar el nombre de los empleados en una variable, obtendremos el error <code>1172</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="o">@</span><span class="n">nombre</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1">-- ERROR 1172 (42000): Result consisted of more than one row</span>
 </code></pre></div>
