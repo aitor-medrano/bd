@@ -10906,9 +10906,9 @@ PROYECTO ||--o{ ASIGNACION : "incluir"</code></pre>
 <p>Al usar <code>INSERT ... ON DUPLICATE KEY UPDATE</code>, <em>MariaDB</em> devuelve un contador
 de filas afectadas que puede resultar confuso:</p>
 <ul>
-<li><strong>1 fila afectada</strong>: se ha insertado un registro nuevo.</li>
-<li><strong>2 filas afectadas</strong>: se ha actualizado un registro existente.</li>
-<li><strong>0 filas afectadas</strong>: existía el registro, pero los valores ya eran los mismos.</li>
+<li>1 fila afectada: se ha insertado un registro nuevo.</li>
+<li>2 filas afectadas: se ha actualizado un registro existente.</li>
+<li>0 filas afectadas: existía el registro, pero los valores ya eran los mismos.</li>
 </ul>
 </div>
 <hr />
@@ -13126,7 +13126,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="33 "></span><span class="c1">-- +-----------------------------+-----------------+--------------------------+</span>
 <span class="linenos" data-linenos="34 "></span><span class="c1">-- 10 rows in set (0.002 sec)</span>
 </code></pre></div>
-<p>Otras funciones que podemos utilizar son <code>CHAR_LENGTH(cadena)</code> para obtener el tamaño, <a href="https://mariadb.com/kb/en/locate/"><code>LOCATE(subcadena, cadena)</code></a> para encontrar una subcadena en una cadena, REPLACE(cadena, cadenaOrigen, cadenaDestino)<code>para sustituir una subcadena por otra o</code>REVERSE(cadena)` para invertir una cadena.</p>
+<p>Otras funciones que podemos utilizar son <a href="https://mariadb.com/docs/server/reference/sql-functions/string-functions/char_length"><code>CHAR_LENGTH(cadena)</code></a> para obtener el tamaño, <a href="https://mariadb.com/docs/server/reference/sql-functions/string-functions/locate"><code>LOCATE(subcadena, cadena)</code></a> para encontrar una subcadena en una cadena, <a href="https://mariadb.com/docs/server/reference/sql-functions/string-functions/replace-function"><code>REPLACE(cadena, cadenaOrigen, cadenaDestino)</code></a> para sustituir una subcadena por otra o <a href="https://mariadb.com/docs/server/reference/sql-functions/string-functions/reverse"><code>REVERSE(cadena)</code></a> para invertir una cadena.</p>
 <h4 id="06sql-fecha-hora">Fecha / Hora<a class="headerlink" href="#06sql-fecha-hora" title="Permanent link">&para;</a></h4>
 <p>Si trabajamos con campos de tipo fecha, podemos emplear las siguientes funciones en <a href="https://mariadb.com/kb/en/date-time-functions/">MariaDB</a> o <a href="https://www.postgresql.org/docs/current/functions-datetime.html">PostgreSQL</a>:</p>
 <ul>
