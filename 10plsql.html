@@ -2762,7 +2762,7 @@ $$ LANGUAGE sql;
 <li>El procedimiento <code>ac1006habilidad</code> que reciba como entrada un código de habilidad y una descripción, y la inserte en la tabla <code>habilidad</code>.</li>
 <li>
 <p>El procedimiento <code>ac1006habilidades</code> que reciba como entrada un entero con una cantidad, e inserte tantas habilidades como el parámetro recibido, asignando como código <code>BD-NNN</code> y descripción <code>Habilidad NNN</code>, sustituyendo <code>NNN</code> por un número entero secuencial.</p>
-<p>Si el parámetro es <code>3</code>, insertará las habilidades <code>BD-1</code>, <code>BD-2</code> y <code>BD-3</code> y las descripciones <code>Habilidad 1</code>, <code>Habilidad 2</code> y <code>Habilidad 3</code>.</p>
+<p>Por ejemplo, si el parámetro es <code>3</code>, insertará las habilidades <code>BD-1</code>, <code>BD-2</code> y <code>BD-3</code> y las descripciones <code>Habilidad 1</code>, <code>Habilidad 2</code> y <code>Habilidad 3</code>.</p>
 </li>
 <li>
 <p>El procedimiento <code>ac1006habilidadesInicioFin</code> que reciba como entrada un entero que indique el número de inicio y otro con el tope (o fin), e inserte habilidades cuyos valores vayan desde <code>inicio</code> hasta <code>fin</code>, con la misma nomenclatura que el apartado anterior.</p>
@@ -2853,7 +2853,7 @@ $$ LANGUAGE sql;
 </li>
 <li>
 <p>Crea el procedimiento <code>pr1011actualizaInforme</code> que, a partir de un código de departamento (parámetro de entrada), actualice la fila correspondiente en <code>informe_salarial</code> con la cantidad de empleados, el salario medio y la categoría salarial. Este procedimiento debe invocar a <code>pr1011mediaSalarial</code> y a <code>pr1011categoriaDepartamento</code>.</p>
-<p>Comprueba su funcionamiento insertando manualmente una fila en <code>informe_salarial</code> para el departamento 'PROZS' (solo con CodDep y NomDep), invocando al procedimiento y verificando que se han rellenado el resto de columnas.</p>
+<p>Comprueba su funcionamiento insertando manualmente una fila en <code>informe_salarial</code> para el departamento <code>PROZS</code> (solo con <code>CodDep</code> y <code>NomDep</code>), invocando al procedimiento y verificando que se han rellenado el resto de columnas.</p>
 </li>
 <li>
 <p>Crea el procedimiento <code>pr1011informeCentro</code> que, a partir de un código de centro (parámetro de entrada), genere el informe completo: primero insertará en <code>informe_salarial</code> los datos base de todos los departamentos del centro (código y nombre), y después recorrerá cada fila mediante un bucle invocando a <code>pr1011actualizaInforme</code> para completar los datos.</p>
