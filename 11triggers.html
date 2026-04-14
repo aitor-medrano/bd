@@ -2403,6 +2403,27 @@ EXECUTE FUNCTION update_order_total();
 <span class="linenos" data-linenos="19 "></span><span class="c1">-- +------------------------------+--------+-------------+------------------------------------------------------------------------------------------------------------------------+--------+------------------------+-------------------------------------------------------------------------------------------+---------------+----------------------+----------------------+-----------------------+</span>
 <span class="linenos" data-linenos="20 "></span><span class="c1">-- 2 rows in set (0.003 sec)</span>
 </code></pre></div>
+<hr />
+<p>Además de <code>SHOW TRIGGERS</code>, podemos consultar la tabla del catálogo <a href="https://mariadb.com/kb/en/information-schema-triggers-table/"><code>information_schema.TRIGGERS</code></a> para obtener información más detallada o filtrada:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Triggers de la tabla estudiantes</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">TRIGGER_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">EVENT_MANIPULATION</span><span class="p">,</span><span class="w"> </span><span class="n">ACTION_TIMING</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">TRIGGERS</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="k">WHERE</span><span class="w"> </span><span class="k">TRIGGER_SCHEMA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;pruebas&#39;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">AND</span><span class="w"> </span><span class="n">EVENT_OBJECT_TABLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;estudiantes&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +------------------------------+--------------------+---------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | TRIGGER_NAME                 | EVENT_MANIPULATION | ACTION_TIMING |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- +------------------------------+--------------------+---------------+</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- | triggerCheckNotaBeforeInsert | INSERT             | BEFORE        |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | triggerCheckNotaBeforeUpdate | UPDATE             | BEFORE        |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- +------------------------------+--------------------+---------------+</span>
+<span class="linenos" data-linenos="12 "></span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- Todos los triggers BEFORE de la base de datos actual</span>
+<span class="linenos" data-linenos="14 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">TRIGGER_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">EVENT_OBJECT_TABLE</span><span class="p">,</span><span class="w"> </span><span class="n">EVENT_MANIPULATION</span>
+<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">information_schema</span><span class="p">.</span><span class="n">TRIGGERS</span>
+</span><span class="linenos" data-linenos="16 "></span><span class="k">WHERE</span><span class="w"> </span><span class="k">TRIGGER_SCHEMA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">DATABASE</span><span class="p">()</span>
+<span class="linenos" data-linenos="17 "></span><span class="k">AND</span><span class="w"> </span><span class="n">ACTION_TIMING</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;BEFORE&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>Esta tabla resulta especialmente útil cuando necesitamos comprobar la existencia de un <em>trigger</em> desde un procedimiento almacenado o generar documentación automática del esquema.</p>
 </li>
 <li>
 <p><a href="https://mariadb.com/kb/en/show-create-trigger/">SHOW CREATE TRIGGER nombreTrigger</a>: muestra el código fuente de un determinado disparador</p>
@@ -2421,22 +2442,48 @@ EXECUTE FUNCTION update_order_total();
 <span class="linenos" data-linenos="13 "></span><span class="c1">-- END | utf8mb3              | utf8mb3_general_ci   | utf8mb4_uca1400_ai_ci | 2025-02-23 18:36:51.74 |</span>
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- +------------------------------+-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+-----------------------+------------------------+</span>
 </code></pre></div>
-<p>Si queremos obtener el código de todos los disparadores, podríamos usar un <code>SHOW CREATE TRIGGER</code> para cada uno de ellos, o bien, como alternativa más potente a <code>SHOW TRIGGERS</code>, también podemos realizar una consulta a <code>INFORMATION_SCHEMA.TRIGGERS</code>, que permite filtrar por tabla, evento, etc.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">INFORMATION_SCHEMA</span><span class="p">.</span><span class="n">TRIGGERS</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="k">TRIGGER_SCHEMA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;pruebas&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">EVENT_OBJECT_TABLE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;estudiantes&#39;</span><span class="p">;</span>
-</code></pre></div>
-<p>De estas operaciones podemos deducir que los disparadores no se pueden modificar; es necesario borrarlos y volverlos a crear.</p>
+<p>Si queremos obtener el código de todos los disparadores, podríamos usar un <code>SHOW CREATE TRIGGER</code> para cada uno de ellos, o bien, como alternativa más potente a <code>SHOW TRIGGERS</code>, también podemos realizar una consulta a <code>INFORMATION_SCHEMA.TRIGGERS</code>.</p>
 </li>
 </ul>
+<p>De estas operaciones podemos deducir que los disparadores no se pueden modificar; es necesario borrarlos y volverlos a crear.</p>
 <h3 id="consideraciones">Consideraciones<a class="headerlink" href="#consideraciones" title="Permanent link">&para;</a></h3>
 <p>Al igual que con los eventos, a la hora de programar disparadores, es fundamental tener en cuenta una serie de consideraciones.</p>
 <p>Respecto a la <strong>gestión de errores</strong>, debemos distinguir entre dos situaciones: los errores que queremos que detengan la operación (por ejemplo, un <code>SIGNAL</code> que impide una inserción que no cumple una regla de negocio) y los errores inesperados que conviene registrar sin enmascarar. Para el segundo caso, es recomendable utilizar manejadores que registren la información relevante en una tabla de <em>logs</em>.</p>
 <p>Además, debemos tener en cuenta las siguientes <strong>limitaciones</strong>:</p>
 <ul>
-<li>Dentro de un <em>trigger</em> no se pueden usar <code>COMMIT</code>, <code>ROLLBACK</code> ni <code>START TRANSACTION</code>. Tampoco se puede invocar a procedimientos que contengan transacciones. Si un <em>trigger</em> falla, <em>MariaDB</em> deshace automáticamente la operación que lo activó.</li>
+<li>Dentro de un <em>trigger</em> no se pueden usar transacciones, es decir, ni <code>COMMIT</code>, <code>ROLLBACK</code> ni <code>START TRANSACTION</code>. Tampoco se puede invocar a procedimientos que contengan transacciones. Si un <em>trigger</em> falla, <em>MariaDB</em> deshace automáticamente la operación que lo activó.</li>
 <li>Un <em>trigger</em> no puede modificar la misma tabla que lo disparó, ya que esto provocaría una llamada recursiva. Si necesitamos modificar datos de la propia tabla, debemos hacerlo a través de los alias <code>NEW</code> y <code>OLD</code> dentro del propio cuerpo del disparador (solo en <em>triggers</em> <code>BEFORE</code>).</li>
 <li>Si dentro de un <em>trigger</em> se ejecutan sentencias DML sobre <strong>otras</strong> tablas, los disparadores asociados a esas tablas sí se activarán (<em>triggers</em> en cascada). Hay que tener precaución con las cadenas largas de disparadores, ya que dificultan la depuración y pueden afectar al rendimiento.</li>
-<li>Es recomendable que el código de los disparadores sea lo más breve y eficiente posible, evitando consultas complejas o que afecten a grandes volúmenes de datos, ya que se ejecutan <strong>una vez por cada fila</strong> afectada por la operación.</li>
+<li><code>TRUNCATE</code> no dispara <em>triggers</em>: la sentencia <code>TRUNCATE TABLE</code> es una operación DDL, no DML, por lo que no activa los disparadores asociados a <code>DELETE</code>.</li>
+<li>No se puede devolver un resultado al cliente: no se permite ejecutar un <code>SELECT</code> que devuelva filas. Si necesitamos consultar datos, debemos usar <code>SELECT ... INTO</code> para almacenarlos en variables.</li>
+<li>
+<p>Los procedimientos invocados desde un <em>trigger</em> heredan sus restricciones: si un <em>trigger</em> llama a un procedimiento mediante <code>CALL</code>, dicho procedimiento tampoco podrá usar transacciones ni devolver resultados al cliente.</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Esto NO funciona dentro de un trigger:</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TRIGGER</span><span class="w"> </span><span class="n">trg_ejemplo</span><span class="w"> </span><span class="k">BEFORE</span><span class="w"> </span><span class="k">INSERT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">estudiantes</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">EACH</span><span class="w"> </span><span class="k">ROW</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="c1">-- ✗ Error: no se puede devolver un resultado al cliente</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">estudiantes</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 6 "></span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="c1">-- ✗ Error: tabla mutante</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">    </span><span class="k">UPDATE</span><span class="w"> </span><span class="n">estudiantes</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">nota</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="c1">-- ✗ Error: no se permiten transacciones</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="k">START</span><span class="w"> </span><span class="k">TRANSACTION</span><span class="p">;</span>
+<span class="linenos" data-linenos="12 "></span><span class="k">END</span><span class="p">;</span>
+</code></pre></div>
+</li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Buenas prácticas con triggers</p>
+<p>Al igual que con los eventos, conviene tener en cuenta algunas consideraciones a la hora de diseñar y utilizar <em>triggers</em>:</p>
+<ul>
+<li>Mantener la lógica breve: un <em>trigger</em> se ejecuta <strong>por cada fila afectada</strong>. Si una sentencia <code>UPDATE</code> modifica 10.000 filas, el <em>trigger</em> se ejecutará 10.000 veces. Un <em>trigger</em> pesado (con múltiples consultas o inserciones) puede degradar seriamente el rendimiento.</li>
+<li>Evitar <em>triggers</em> en cascada: un <em>trigger</em> que modifica otra tabla puede disparar a su vez otro <em>trigger</em>, y así sucesivamente. Estas cadenas son difíciles de depurar y pueden provocar comportamientos inesperados. Si la lógica es compleja, es preferible encapsularla en un procedimiento almacenado.</li>
+<li>Documentar su existencia: los <em>triggers</em> son "invisibles" para quien ejecuta un simple <code>INSERT</code> o <code>UPDATE</code>. Un desarrollador que desconoce su existencia puede perder mucho tiempo depurando un comportamiento inesperado. Es recomendable documentar en el propio DDL o en un fichero aparte qué <em>triggers</em> existen y qué hacen.</li>
+<li>No sustituir restricciones por <em>triggers</em>: si una validación puede expresarse como un <code>CHECK</code>, <code>NOT NULL</code>, <code>UNIQUE</code> o clave ajena, es preferible usar la restricción declarativa. Los <em>triggers</em> deben reservarse para validaciones que no se pueden expresar de forma declarativa (reglas de negocio complejas, auditoría, cálculos derivados...).</li>
+<li>Probar con operaciones masivas: muchos <em>triggers</em> funcionan correctamente con inserciones individuales pero revelan problemas de rendimiento o lógica cuando se prueban con <code>INSERT ... SELECT</code> o <code>UPDATE</code> sin <code>WHERE</code> restrictivo.</li>
+</ul>
+</div>
 <h2 id="gestion-de-errores">Gestión de Errores<a class="headerlink" href="#gestion-de-errores" title="Permanent link">&para;</a></h2>
 <p>Hasta ahora hemos supuesto que nuestros fragmentos de código nunca fallan. Pero ¿qué sucede cuando un procedimiento o un evento tienen un error? Ya sea porque no encuentra una tabla, accedemos erróneamente a un campo que no existe, etc..</p>
 <p>Una gestión de errores efectiva en <em>MariaDB</em> mejora significativamente la robustez y mantenibilidad de las aplicaciones. Para ello, <em>MariaDB</em> ofrece varios mecanismos para la gestión de errores, que incluyen señales, manejadores, códigos de error y excepciones, que permiten:</p>
@@ -3351,7 +3398,7 @@ comprobación interna, y el <code>CLOSE</code>. , </p>
 <p>Crea un <em>trigger</em> (<code>ac1103triggerCrearEmailBeforeInsert</code>) sobre la tabla <code>alumnado</code>, para que si el email a insertar es nulo, le asigne uno automáticamente. Debes utilizar la función <code>crearEmail</code>.</p>
 </li>
 <li>
-<p>Crea un <em>trigger</em> (<code>ac1103triggerGuardarEmailAfterUpdate</code>) sobre la tabla <code>alumnado</code>, para que cada vez que se modifica el email, inserte un nuevo registro en la tabla <code>logCambiosEmail</code>, cuyos campos son:</p>
+<p>Crea un <em>trigger</em> (<code>ac1103triggerGuardarEmailAfterUpdate</code>) sobre la tabla <code>alumnado</code>, para que cada vez que se modifica el email (sólo si el email realmente ha cambiado), inserte un nuevo registro en la tabla <code>logCambiosEmail</code>, cuyos campos son:</p>
 <ul>
 <li><code>id</code>: clave primaria (entero autonumérico)</li>
 <li><code>idAlumno</code>: id del alumno (entero)</li>
@@ -3390,7 +3437,7 @@ comprobación interna, y el <code>CLOSE</code>. , </p>
 </ul>
 </li>
 </ol>
-<p>Además del código de los disparadores, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente, mostrando el contenido de las tablas antes y después de las operaciones.</p>
+<p>Además del código de los disparadores, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente, mostrando el contenido de las tablas antes y después de las operaciones. Finalmente, debes contestar a estas preguntas: ¿Qué ocurre si el primer <em>trigger</em> falla? ¿Se ejecuta el segundo?</p>
 </li>
 </ul>
 <p><a name="AP1105"></a></p>
