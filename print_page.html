@@ -20727,6 +20727,7 @@ EXECUTE FUNCTION update_order_total();
 </tr>
 </tbody>
 </table>
+<p>Como puedes observar diferentes códigos de error pueden compartir el mismo <code>SQLSTATE</code>.</p>
 <p>Por ejemplo, si intento hacer una consulta sobre una tabla que no existe recibo un mensaje de error con su código:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">tablamala</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1">-- ERROR 1146 (42S02): Table &#39;empresa.tablamala&#39; doesn&#39;t exist</span>
@@ -20752,7 +20753,7 @@ EXECUTE FUNCTION update_order_total();
 </ul>
 </div>
 <h3 id="11triggers-mejorando-la-legibilidad">Mejorando la legibilidad<a class="headerlink" href="#11triggers-mejorando-la-legibilidad" title="Permanent link">&para;</a></h3>
-<p>Dentro de un procedimiento voy a poder capturar los errores, pero si no quiero hacerlo por su código (<code>1050</code>), estado (<code>42S01</code>) o alias genérico (<code>SQLEXCEPTION</code>), puedo hacerlo por un nombre más específico que mejore la legibilidad del código, mediante <a href="https://mariadb.com/kb/en/declare-condition/"><code>DECLARE CONDITION</code></a>:</p>
+<p>Dentro de un procedimiento voy a poder capturar los errores, pero si no quiero hacerlo por su código (<code>1146</code>), estado (<code>42S01</code>) o alias genérico (<code>SQLEXCEPTION</code>), puedo hacerlo por un nombre más específico que mejore la legibilidad del código, mediante <a href="https://mariadb.com/kb/en/declare-condition/"><code>DECLARE CONDITION</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">no_existe_tabla</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">1051</span><span class="p">;</span>
 </code></pre></div>
 <p>De esta manera, después podremos controlar la captura por el nombre asignado y no por el número asociado.</p>
@@ -20866,10 +20867,20 @@ EXECUTE FUNCTION update_order_total();
 <span class="linenos" data-linenos="17 "></span><span class="k">call</span><span class="w"> </span><span class="n">ejemploManejadores</span><span class="p">(</span><span class="o">@</span><span class="n">salida</span><span class="p">);</span>
 <span class="linenos" data-linenos="18 "></span><span class="k">select</span><span class="w"> </span><span class="o">@</span><span class="n">salida</span><span class="p">;</span>
 </code></pre></div>
+<div class="annotate" markdown>
 <ul>
-<li>¿Cuánto valdrá <code>@salida</code> en la línea 18? <!-- 3 --></li>
-<li>Si cambiamos el manejador de <code>EXIT</code> a <code>CONTINUE</code>, ¿Cuánto valdría <code>resultado</code>? <!-- 1 --></li>
+<li>
+<p>¿Cuánto valdrá <code>@salida</code> en la línea 18? (1) </p>
+</li>
+<li>
+<p>Si cambiamos el manejador de <code>EXIT</code> a <code>CONTINUE</code>, ¿Cuánto valdría <code>resultado</code>? (2)</p>
+</li>
 </ul>
+</div>
+<ol>
+<li>Al insertar el segundo valor, en la línea 11, salta el manejador y pone el valor de <code>resultado = 1</code> y termina el procedimiento, por lo que <code>@salida = 1</code></li>
+<li>continuaría con <code>SET resultado = 3</code>, por lo que <code>@salida = 3</code></li>
+</ol>
 </div>
 <h4 id="11triggers-manejadores-en-eventos">Manejadores en Eventos<a class="headerlink" href="#11triggers-manejadores-en-eventos" title="Permanent link">&para;</a></h4>
 <p>Anteriormente estudiamos como podíamos crear <a href="#11triggers-eventos">eventos</a> para ejecutar ciertas acciones en un instante determinado o bien de forma recurrente. Pero ¿Qué sucede cuando se produce un error dentro de un evento? Una práctica muy común es utilizar una tabla de <em>log</em> donde almacenamos el error producido, y así poder monitorizarlos.</p>
