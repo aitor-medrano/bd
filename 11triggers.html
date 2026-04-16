@@ -2575,7 +2575,7 @@ EXECUTE FUNCTION update_order_total();
 </div>
 <h3 id="mejorando-la-legibilidad">Mejorando la legibilidad<a class="headerlink" href="#mejorando-la-legibilidad" title="Permanent link">&para;</a></h3>
 <p>Dentro de un procedimiento voy a poder capturar los errores, pero si no quiero hacerlo por su código (<code>1146</code>), estado (<code>42S01</code>) o alias genérico (<code>SQLEXCEPTION</code>), puedo hacerlo por un nombre más específico que mejore la legibilidad del código, mediante <a href="https://mariadb.com/kb/en/declare-condition/"><code>DECLARE CONDITION</code></a>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">no_existe_tabla</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">1051</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">no_existe_tabla</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="mi">1146</span><span class="p">;</span>
 </code></pre></div>
 <p>De esta manera, después podremos controlar la captura por el nombre asignado y no por el número asociado.</p>
 <p>Ya hemos visto que en la <a href="https://mariadb.com/kb/en/mariadb-error-code-reference/">lista de mensajes de error</a> aparecen dos tipos de errores asociados a cada mensaje:</p>
@@ -3468,9 +3468,10 @@ comprobación interna, y el <code>CLOSE</code>. , </p>
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC1106</strong>. (<abbr title="Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.">RABD.5</abbr> // <abbr title="Se han utilizado excepciones.">CE5j</abbr> // 3p) Siguiendo con la tabla <code>alumnado</code>, se pide:</p>
 <ol>
-<li>
-<p>Crea un procedimiento llamado <code>ac1106insertarAlumno</code> que reciba como entrada los cuatro datos de un alumno (<code>id</code>, <code>nombre</code>, <code>apellidos</code>, <code>curso</code>) como parámetros de entrada y los inserte en la tabla. El procedimiento devolverá como salida un parámetro llamado <code>error</code> que tendrá un valor igual a <code>0</code> si la operación se ha podido realizar con éxito o <code>1</code> en caso contrario. Deberá manejar los errores que puedan ocurrir cuando se intenta insertar una fila que contiene una clave primaria repetida.</p>
-</li>
+<li>Crea un procedimiento llamado <code>ac1106insertarAlumno</code> que reciba como entrada los cuatro datos de un alumno (<code>id</code>, <code>nombre</code>, <code>apellidos</code>, <code>curso</code>) como parámetros de entrada y los inserte en la tabla. Recuerda que el campo <code>email</code> se rellena automáticamente a través del trigger <code>ac1103triggerCrearEmailBeforeInsert</code>.</li>
+</ol>
+<p>El procedimiento devolverá como salida un parámetro llamado <code>error</code> que tendrá un valor igual a <code>0</code> si la operación se ha podido realizar con éxito o <code>1</code> en caso contrario. Deberá manejar los errores que puedan ocurrir cuando se intenta insertar una fila que contiene una clave primaria repetida.</p>
+<ol>
 <li>
 <p>Escribe un procedimiento (<code>ac1106nombreAlumnoIfCount</code>) que muestre el nombre de un alumno dado su código. En caso de que no se encuentre, devolverá <code>Alumn@ no encontrado</code> en un parámetro de salida.</p>
 <ol>
@@ -3512,9 +3513,9 @@ comprobación interna, y el <code>CLOSE</code>. , </p>
 <span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="n">origen</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="linenos" data-linenos="7 "></span><span class="p">);</span>
 </code></pre></div>
-<p>Escribe los triggers <code>ac1107triggerSalariosEmpleadoAfterInsert</code> y <code>ac1107triggerSalariosEmpleadoAfterUpdate</code> que nos permita llevar un control de las modificaciones en los salarios de los empleados. Los disparadores se ejecutarán después de cada inserción o modificación, insertando un registro en la tabla <code>salarios</code>.</p>
+<p>Escribe los triggers <code>ac1107triggerSalariosEmpleadoAfterInsert</code> y <code>ac1107triggerSalariosEmpleadoAfterUpdate</code> que nos permita llevar un control de las modificaciones en los salarios de los empleados. Los disparadores se ejecutarán después de cada inserción o modificación (si ha cambiado el salario), insertando un registro en la tabla <code>salarios</code>.</p>
 <p>Los <em>triggers</em> deben realizar una gestión correcta de los errores de manera que, si sucede algo inesperado, se inserte un registro en <code>log_errores</code>. Para recuperar el código y el mensaje de error debes ejecutar <code>GET DIAGNOSTICS CONDITION 1 @error_msg = MESSAGE_TEXT, @error_code = MYSQL_ERRNO;</code>. Finalmente, la columna <code>origen</code> almacenará el nombre del <em>trigger</em> que ha lanzado el error. </p>
-<p>Además del código de los disparadores, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente, mostrando el contenido de las tablas antes y después de las operaciones.</p>
+<p>Además del código de los disparadores, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente (y también qué sucede cuando no), mostrando el contenido de las tablas antes y después de las operaciones.</p>
 </li>
 </ul>
 <p><a name="AC1108"></a></p>
