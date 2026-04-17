@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -2737,6 +2737,37 @@ EXECUTE FUNCTION update_order_total();
 <span class="linenos" data-linenos="12 "></span><span class="k">END</span><span class="p">;</span>
 </code></pre></div>
 <p>Dicho esto, <em>MariaDB</em> maneja automáticamente las transacciones para los <em>triggers</em>. Es decir, si un <em>trigger</em> falla, la operación que lo activó (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) se deshace completamente. Si un <em>trigger</em> encuentra un error y no lo maneja internamente, el error se propaga a la consulta que activó el trigger.</p>
+<div class="admonition info">
+<p class="admonition-title">Recuperando información del error</p>
+<p>Cuando se produce un error y lo capturamos con un manejador, a menudo necesitamos conocer los detalles de lo que ha ocurrido: el código de error, el mensaje asociado o el estado SQL. Para ello, <em>MariaDB</em> proporciona la sentencia <a href="https://mariadb.com/kb/en/get-diagnostics/"><code>GET DIAGNOSTICS</code></a>, que permite recuperar la información de la última condición de error dentro del cuerpo de un manejador.
+Su sintaxis básica es:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GET</span><span class="w"> </span><span class="k">DIAGNOSTICS</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="n">numCond</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">propCond</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="k">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">propCond</span><span class="p">]</span><span class="w"> </span><span class="p">...;</span>
+</code></pre></div>
+<p>donde:</p>
+<ul>
+<li><code>numCond</code>: indica qué condición queremos consultar. En la mayoría de los casos usaremos 1, ya que nos interesa la primera (y normalmente única) condición generada.</li>
+<li>
+<p><code>propCond</code> puede ser, entre otros:</p>
+<ul>
+<li><code>MESSAGE_TEXT</code>: el mensaje descriptivo del error.</li>
+<li><code>MYSQL_ERRNO</code>: el código de error numérico de <em>MariaDB</em>.</li>
+<li><code>RETURNED_SQLSTATE</code>: el código <code>SQLSTATE</code> de 5 caracteres.</li>
+</ul>
+</li>
+</ul>
+<p>Por ejemplo, dentro de un manejador podemos recuperar tanto el código como el mensaje del error y almacenarlos en variables de usuario:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">DECLARE</span><span class="w"> </span><span class="n">EXIT</span><span class="w"> </span><span class="k">HANDLER</span><span class="w"> </span><span class="k">FOR</span><span class="w"> </span><span class="k">SQLEXCEPTION</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">BEGIN</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">GET</span><span class="w"> </span><span class="k">DIAGNOSTICS</span><span class="w"> </span><span class="n">CONDITION</span><span class="w"> </span><span class="mi">1</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">        </span><span class="o">@</span><span class="n">error_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MYSQL_ERRNO</span><span class="p">,</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">        </span><span class="o">@</span><span class="n">error_msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">MESSAGE_TEXT</span><span class="p">;</span>
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="o">@</span><span class="n">error_code</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">codigo</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">error_msg</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mensaje</span><span class="p">;</span>
+<span class="linenos" data-linenos="8 "></span><span class="k">END</span><span class="p">;</span>
+</code></pre></div>
+<p>Cabe destacar que <code>GET DIAGNOSTICS</code> solo tiene sentido dentro de un manejador, ya que es ahí donde existe una condición de error activa que consultar. Fuera de un manejador, la información diagnóstica puede estar vacía o corresponder a una operación anterior, lo que llevaría a resultados impredecibles.</p>
+</div>
 <h4 id="manejadores-y-senales">Manejadores y Señales<a class="headerlink" href="#manejadores-y-senales" title="Permanent link">&para;</a></h4>
 <p>Ahora que ya sabemos definir manejadores, condiciones y señales, vamos a ver cómo podemos utilizarlos de manera conjunta para hacer nuestro código más robusto.</p>
 <p>Por ejemplo, podemos lanzar una señal con un mensaje más específico asociado a una regla de negocio:</p>
@@ -3514,7 +3545,7 @@ comprobación interna, y el <code>CLOSE</code>. , </p>
 <span class="linenos" data-linenos="7 "></span><span class="p">);</span>
 </code></pre></div>
 <p>Escribe los triggers <code>ac1107triggerSalariosEmpleadoAfterInsert</code> y <code>ac1107triggerSalariosEmpleadoAfterUpdate</code> que nos permita llevar un control de las modificaciones en los salarios de los empleados. Los disparadores se ejecutarán después de cada inserción o modificación (si ha cambiado el salario), insertando un registro en la tabla <code>salarios</code>.</p>
-<p>Los <em>triggers</em> deben realizar una gestión correcta de los errores de manera que, si sucede algo inesperado, se inserte un registro en <code>log_errores</code>. Para recuperar el código y el mensaje de error debes ejecutar <code>GET DIAGNOSTICS CONDITION 1 @error_msg = MESSAGE_TEXT, @error_code = MYSQL_ERRNO;</code>. Finalmente, la columna <code>origen</code> almacenará el nombre del <em>trigger</em> que ha lanzado el error. </p>
+<p>Los <em>triggers</em> deben realizar una gestión correcta de los errores de manera que, si sucede algo inesperado, se inserte un registro en <code>log_errores</code>. Para recuperar el código y el mensaje de error debes ejecutar <code>GET DIAGNOSTICS CONDITION 1 @error_msg = MESSAGE_TEXT, @error_code = MYSQL_ERRNO;</code>. Finalmente, la columna <code>origen</code> de la tabla <code>log_errores</code> almacenará el nombre del <em>trigger</em> que ha lanzado el error. </p>
 <p>Además del código de los disparadores, se deben adjuntar algunas sentencias SQL para comprobar que funcionan correctamente (y también qué sucede cuando no), mostrando el contenido de las tablas antes y después de las operaciones.</p>
 </li>
 </ul>
