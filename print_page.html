@@ -18859,25 +18859,65 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </code></pre></div>
 <p>Además de preparar <em>scripts</em> con un conjunto de instrucciones, para poder crear bloques de instrucciones que encapsulen un conjunto de operaciones, necesitamos de un lenguaje de programación que permita la creación de estos módulos, así como del soporte para la programación estructurada, mediante instrucciones condicionales y de repetición.</p>
 <h2 id="10plsql-lenguajes-de-programacion">Lenguajes de programación<a class="headerlink" href="#10plsql-lenguajes-de-programacion" title="Permanent link">&para;</a></h2>
-<p>PL/SQL (<em>Procedural Language/Structured Query Language</em>) es un lenguaje procedimental que extiende SQL, permitiendo una programación más avanzada y flexible en bases de datos, mediante la creación de pequeños guiones para automatizar tareas.</p>
-<p>Existen diferentes variantes de PL/SQL que dependen del SGBD utilizado, como Oracle PL/SQL, PostgreSQL PL/pgSQL o MariaDB PL/SQL. Este lenguaje permite programar e interactuar con la base de datos mediante SQL, facilitando la manipulación de diferentes tipos de datos. Además, PL/SQL permite invocar funciones y procedimientos almacenados, lo que mejora la modularidad y reutilización del código.</p>
-<p>Una de las características más destacadas de PL/SQL es su capacidad para manejar errores de manera efectiva, proporcionando mecanismos robustos para capturar y gestionar excepciones, lo que contribuye a la creación de aplicaciones de bases de datos más fiables y manejables.</p>
+<p>Los lenguajes de programación de bases de datos son <strong>extensiones procedimentales de SQL</strong> que incorporan variables, estructuras de control, manejo de errores y la posibilidad de encapsular código en procedimientos y funciones. Permiten ir más allá de la consulta declarativa y construir lógica ejecutable dentro del propio SGBD.</p>
+<p>Coloquialmente, es muy común referirse a todos estos lenguajes como <strong>PL/SQL</strong> (<em>Procedural Language/SQL</em>), aunque conviene matizar que este término es, estrictamente, el nombre del dialecto de <em>Oracle</em>. Cada SGBD tiene su propia variante, con sintaxis y capacidades ligeramente distintas:</p>
+<table>
+<thead>
+<tr>
+<th>SGBD</th>
+<th>Dialecto</th>
+<th>Estándar de referencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>Oracle</em></td>
+<td>PL/SQL</td>
+<td>Propio</td>
+</tr>
+<tr>
+<td><em>PostgreSQL</em></td>
+<td>PL/pgSQL</td>
+<td>Propio (inspirado en PL/SQL)</td>
+</tr>
+<tr>
+<td><em>SQL Server</em></td>
+<td>Transact-SQL (T-SQL)</td>
+<td>Propio</td>
+</tr>
+<tr>
+<td><em>MariaDB</em> / <em>MySQL</em></td>
+<td>SQL/PSM</td>
+<td>ISO/IEC 9075-4</td>
+</tr>
+<tr>
+<td><em>DB2</em></td>
+<td>SQL PL</td>
+<td>SQL/PSM</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">SQL/PSM: el estándar</p>
+<p><strong>SQL/PSM</strong> (<em>Persistent Stored Modules</em>) es la parte del estándar SQL que define cómo deben ser los módulos procedimentales almacenados: declaración de variables, control de flujo, manejo de condiciones, cursores, etc. <em>MariaDB</em> y <em>MySQL</em> implementan este estándar con algunas extensiones propias.</p>
+<p>Por eso, aunque a lo largo de esta unidad hablemos de "PL/SQL" de forma genérica por ser el término más extendido, lo que realmente vamos a escribir sigue la sintaxis <em>SQL/PSM</em> de <em>MariaDB</em>. Si en el futuro trabajas con <em>Oracle</em>, verás que el esqueleto es muy parecido, pero con diferencias importantes (uso de <code>:=</code> para asignación, <code>DBMS_OUTPUT.PUT_LINE</code> para imprimir, bloques anónimos, <code>%TYPE</code> y <code>%ROWTYPE</code>, paquetes, etc.).</p>
+</div>
 <p>Sus características principales incluyen:</p>
 <ul>
 <li>Simplificación de tareas administrativas (copias de seguridad, gestión de usuarios, etc.).</li>
-<li>Validación y verificación de usuarios.</li>
-<li>Realización de consultas avanzadas.</li>
+<li>Validación y verificación de datos antes de su inserción o actualización.</li>
+<li>Realización de consultas avanzadas encapsuladas.</li>
 <li>Centralización de la lógica de negocio y del acceso a datos.</li>
-<li>Mayor seguridad, al restringir la modificación de datos exclusivamente a procedimientos almacenados.</li>
+<li>Mayor seguridad, al poder restringir la modificación de datos exclusivamente a través de procedimientos almacenados.</li>
 </ul>
-<p>Todo bloque PL/SQL se va a englobar dentro de un bloque <a href="https://mariadb.com/kb/en/begin-end/"><code>BEGIN</code> - <code>END</code></a>, pudiendo anteponer una declaración de elementos y variables, así como realizar una gestión de excepciones dentro del bloque de código:</p>
+<p>Todo bloque procedimental se va a englobar dentro de un bloque <a href="https://mariadb.com/kb/en/begin-end/"><code>BEGIN</code> - <code>END</code></a>, pudiendo anteponer una declaración de elementos y variables, así como una gestión de excepciones dentro del bloque de código:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">[</span><span class="w"> </span><span class="k">DECLARE</span><span class="w"> </span><span class="c1">-- declaraciones ]</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">BEGIN</span>
 <span class="linenos" data-linenos="3 "></span><span class="c1">-- sentencias ejecutables</span>
 <span class="linenos" data-linenos="4 "></span><span class="p">[</span><span class="w"> </span><span class="k">EXCEPTION</span><span class="w"> </span><span class="c1">-- tratamiento de excepciones ]</span>
 <span class="linenos" data-linenos="5 "></span><span class="k">END</span><span class="p">;</span>
 </code></pre></div>
-<p>A lo largo de esta unidad aprenderemos a utilizar PL/SQL para crear procedimientos almacenados, funciones de usuario, así como a utilizar estructuras de control de flujo para dotar de lógica a nuestros procedimientos y funciones. En la siguiente unidad, veremos el uso de excepciones para gestionar los errores que puedan surgir durante la ejecución de nuestros procedimientos y funciones.</p>
+<p>A lo largo de esta unidad aprenderemos a utilizar SQL/PSM en <em>MariaDB</em> para crear procedimientos almacenados, funciones de usuario, así como a utilizar estructuras de control de flujo para dotar de lógica a nuestros procedimientos y funciones. En la siguiente unidad, veremos el uso de excepciones para gestionar los errores que puedan surgir durante la ejecución de nuestros procedimientos y funciones.</p>
 <h2 id="10plsql-procedimientos">Procedimientos<a class="headerlink" href="#10plsql-procedimientos" title="Permanent link">&para;</a></h2>
 <p>Un procedimiento almacenado (<em>Stored Procedure</em>) es un fragmento de código que vamos a poder reutilizar. Es como si a un bloque de código le pusiéramos un nombre para poder invocarlo conforme necesitemos.</p>
 <p>Aunque veremos las funciones más adelante, su principal diferencia es que un procedimiento no devuelve datos, mientras que una función sí. Dicho esto, podemos pasarle parámetros de salida que van a permitir al procedimiento devolver información. Y esta es una de las principales ventajas de los procedimientos almacenados respecto a, por ejemplo, una vista, y es el hecho de poder recibir parámetros para darle comportamiento específico a partir de uno o más datos de entrada.</p>
@@ -20050,6 +20090,17 @@ Las actividades profesionales asociadas a esta función se aplican en:
 La formación del módulo contribuye a alcanzar los objetivos generales c), e), f), p) y t) del ciclo formativo y las competencias b), c), e), p) y t) del título.
 
 --></section><section class="print-page" id="11triggers" heading-number="12"><nav class='md-tags'><span class='md-tag'>RA5</span><span class='md-tag'>PL/SQL</span><span class='md-tag'>SQL</span><span class='md-tag'>SQL - TCL</span></nav><h1 id="disparadores-y-cursores">Disparadores y Cursores<a class="headerlink" href="#11triggers-disparadores-y-cursores" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Recordatorio: PL/SQL vs SQL/PSM</p>
+<p>Tal como vimos en la <a href="#10plsql-lenguajes-de-programacion">unidad anterior</a>, a lo largo de estos apuntes empleamos el término <em>PL/SQL</em> de forma coloquial, pero lo que realmente escribimos sigue la sintaxis <strong>SQL/PSM</strong> de <em>MariaDB</em>.</p>
+<p>Esta distinción cobra especial relevancia en esta unidad, ya que <strong>los triggers, la gestión de errores y los cursores son las áreas donde más difieren los dialectos entre SGBD</strong>. Por ejemplo:</p>
+<ul>
+<li>En <em>Oracle</em>, los triggers pueden ser <code>FOR EACH STATEMENT</code> además de <code>FOR EACH ROW</code>; en <em>MariaDB</em> solo existe este último.</li>
+<li>El manejo de excepciones en <em>Oracle</em> usa un bloque <code>EXCEPTION ... WHEN</code> al final del bloque; en <em>MariaDB</em> se usa <code>DECLARE ... HANDLER</code> al principio.</li>
+<li>Los cursores en <em>Oracle</em> admiten cursores implícitos y parámetros; en <em>MariaDB</em> son más limitados.</li>
+</ul>
+<p>Si en el futuro trabajas con otro SGBD, ten presente que los conceptos (disparador, manejador, cursor) son los mismos, pero la sintaxis cambiará.</p>
+</div>
 <h2 id="11triggers-propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#11triggers-propuesta-didactica" title="Permanent link">&para;</a></h2>
 <p>En esta UT terminaremos de trabajar el RA5: <strong>Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.</strong></p>
 <h3 id="11triggers-criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#11triggers-criterios-de-evaluacion" title="Permanent link">&para;</a></h3>

@@ -1871,6 +1871,17 @@
 
 
 <h1 id="disparadores-y-cursores">Disparadores y Cursores<a class="headerlink" href="#disparadores-y-cursores" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">Recordatorio: PL/SQL vs SQL/PSM</p>
+<p>Tal como vimos en la <a href="10plsql.html#lenguajes-de-programacion">unidad anterior</a>, a lo largo de estos apuntes empleamos el término <em>PL/SQL</em> de forma coloquial, pero lo que realmente escribimos sigue la sintaxis <strong>SQL/PSM</strong> de <em>MariaDB</em>.</p>
+<p>Esta distinción cobra especial relevancia en esta unidad, ya que <strong>los triggers, la gestión de errores y los cursores son las áreas donde más difieren los dialectos entre SGBD</strong>. Por ejemplo:</p>
+<ul>
+<li>En <em>Oracle</em>, los triggers pueden ser <code>FOR EACH STATEMENT</code> además de <code>FOR EACH ROW</code>; en <em>MariaDB</em> solo existe este último.</li>
+<li>El manejo de excepciones en <em>Oracle</em> usa un bloque <code>EXCEPTION ... WHEN</code> al final del bloque; en <em>MariaDB</em> se usa <code>DECLARE ... HANDLER</code> al principio.</li>
+<li>Los cursores en <em>Oracle</em> admiten cursores implícitos y parámetros; en <em>MariaDB</em> son más limitados.</li>
+</ul>
+<p>Si en el futuro trabajas con otro SGBD, ten presente que los conceptos (disparador, manejador, cursor) son los mismos, pero la sintaxis cambiará.</p>
+</div>
 <h2 id="propuesta-didactica">Propuesta didáctica<a class="headerlink" href="#propuesta-didactica" title="Permanent link">&para;</a></h2>
 <p>En esta UT terminaremos de trabajar el RA5: <strong>Desarrolla procedimientos almacenados evaluando y utilizando las sentencias del lenguaje incorporado en el sistema gestor de bases de datos.</strong></p>
 <h3 id="criterios-de-evaluacion">Criterios de evaluación<a class="headerlink" href="#criterios-de-evaluacion" title="Permanent link">&para;</a></h3>
