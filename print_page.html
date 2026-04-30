@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
@@ -22225,7 +22225,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>Así pues, una <strong>base de datos distribuida</strong> es aquella en la cual existen diversos servidores gestores de bases de datos conectados entre sí formando una única base de datos con un solo esquema lógico.</p>
 <p>Un <strong>sistema gestor de bases de datos distribuidas</strong> (SGBDD) se define como el sistema software que permite la gestión de bases de datos distribuidas y hace la distribución de datos transparente para los usuarios.</p>
 <figure style="align: center;">
-    <img src="images/12distributed-database.gif" width="800px" alt="Bases de Datos Distribuidas">
+    <img src="images/12distributed-database.png" width="800px" alt="Bases de Datos Distribuidas">
     <figcaption>Bases de Datos Distribuidas</figcaption>
 </figure>
 
@@ -22297,7 +22297,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>Dicho esto, las principales arquitecturas de replicación son:</p>
 <ul>
 <li>
-<p><strong>Maestro-esclavo</strong> / Primario-secundario</p>
+<p><strong>Maestro-esclavo</strong> / Primario-secundario (<em>leader-follower</em>)</p>
 <p>Todas las escrituras se realizan en el nodo principal y después se replican a los nodos secundarios. El nodo primario es un SPOF (<em>single point of failure</em>).</p>
 </li>
 <li>
@@ -22326,7 +22326,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <li><strong>Consistencia fuerte</strong>: Garantiza que todas las réplicas tienen los mismos datos antes de confirmar cualquier operación, esto es, que después de que una escritura se complete, todas las lecturas reflejan inmediatamente el valor actualizado. Por ejemplo, los sistemas bancarios y las bases de datos que soportan ACID.</li>
 <li><strong>Consistencia eventual</strong>: Permite cierto desfase temporal entre réplicas, aceptando que los datos se sincronizarán en algún momento, a costa de poder llegar a leer datos desactualizados. Usos típicos serían los <em>likes</em> o comentarios en redes sociales.</li>
 </ul>
-<p>En la práctica, muchos sistemas permiten configurar el modo por operación y el nivel de consistencia, eligiendo el compromiso adecuado entre durabilidad y latencia. Por ejemplo, una aplicación bancaria puede exigir replicación síncrona a la mayoría de nodos para una transferencia (preferimos latencia a perder datos), lo que implica una consistencia fuerte, mientras que el contador de visitas de la misma aplicación se replica de forma asíncrona (preferimos rendimiento a precisión inmediata) consiguiendo consistencia eventual. Esta decisión está íntimamente ligada al <a href="#12nosql-teorema-de-cap">Teorema CAP que veremos más adelante</a>: la replicación síncrona se asocia a sistemas más consistentes (CP), mientras que la asíncrona se asocia a sistemas más disponibles (AP).</p>
+<p>En la práctica, muchos sistemas permiten configurar el modo por operación y el nivel de consistencia, eligiendo el compromiso adecuado entre durabilidad y latencia. Por ejemplo, una aplicación bancaria puede exigir replicación síncrona a la mayoría de nodos para una transferencia (preferimos latencia a perder datos), lo que implica una consistencia fuerte, mientras que el contador de visitas de la misma aplicación se replica de forma asíncrona (preferimos rendimiento a precisión inmediata) consiguiendo consistencia eventual. Esta decisión está íntimamente ligada al <a href="#12nosql-teorema-cap">Teorema CAP que veremos más adelante</a>: la replicación síncrona se asocia a sistemas más consistentes (CP), mientras que la asíncrona se asocia a sistemas más disponibles (AP).</p>
 <h4 id="12nosql-cuando-replicar">Cuando replicar<a class="headerlink" href="#12nosql-cuando-replicar" title="Permanent link">&para;</a></h4>
 <p>La replicación de los datos se utiliza para alcanzar:</p>
 <ul>
@@ -22342,7 +22342,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
     <figcaption>Replicación y particionado - codingexplained.com</figcaption>
 </figure></p>
 </div>
-<h3 id="12nosql-teorema-de-cap">Teorema de CAP<a class="headerlink" href="#12nosql-teorema-de-cap" title="Permanent link">&para;</a></h3>
+<h3 id="12nosql-teorema-cap">Teorema CAP<a class="headerlink" href="#12nosql-teorema-cap" title="Permanent link">&para;</a></h3>
 <p>Propuesto por <em>Eric Brewer</em> en el año 2000, plantea que podemos crear una base de datos distribuida que elija dos de las siguientes tres características:</p>
 <ul>
 <li><strong>C</strong>onsistencia: las escrituras son atómicas y todas las peticiones posteriores obtienen el nuevo valor, independientemente del lugar de la petición.</li>
@@ -22358,15 +22358,6 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>El teorema CAP es útil cuando consideramos el sistema de base de datos que necesitamos, ya que nos permite decidir cuál de las tres características vamos a descartar. La elección realmente se centra entre la disponibilidad y la consistencia, ya que la tolerancia a particiones es una decisión de arquitectura (sea o no distribuida).</p>
 <p>Aunque el teorema dicte que si en un sistema distribuido elegimos disponibilidad no podemos tener consistencia, todavía podemos obtener consistencia eventual. Es decir, cada nodo siempre estará disponible para servir peticiones, aunque estos nodos no puedan asegurar que la información que contienen sea consistente (pero si bastante precisa), en algún momento lo será.</p>
 <p>Algunas bases de datos tolerantes a particiones se pueden ajustar para ser más o menos consistentes o disponibles a nivel de petición (<em>tunable consistency</em>). Por ejemplo, <em>Cassandra</em> permite especificar el nivel de consistencia de cada operación (<code>ONE</code>, <code>QUORUM</code>, <code>ALL</code>), de manera que el cliente decide en tiempo de petición qué compromiso desea entre consistencia y latencia.</p>
-<div class="admonition warning">
-<p class="admonition-title">El Teorema CAP en perspectiva</p>
-<p>El Teorema CAP es un marco conceptual útil, pero conviene matizarlo:</p>
-<ul>
-<li>Es una simplificación: el propio <em>Brewer</em> publicó en 2012 el artículo <a href="https://sites.cs.ucsb.edu/~rich/class/cs293b-cloud/papers/brewer-cap.pdf"><em>CAP twelve years later: How the rules have changed</em></a> aclarando que la elección no es "2 de 3" de manera estricta, sino que en presencia de particiones se debe elegir entre consistencia y disponibilidad, mientras que sin particiones se pueden tener ambas.</li>
-<li>Muchos sistemas son configurables: la mayoría de las bases de datos NoSQL modernas ofrecen <em>tunable consistency</em> (consistencia ajustable) por operación. Por ejemplo, en <em>Cassandra</em> puedes configurar el nivel <code>ONE</code>, <code>QUORUM</code> o <code>ALL</code> en cada lectura/escritura.</li>
-<li>CAP no contempla la latencia: el modelo <strong>PACELC</strong> extiende CAP introduciendo que, <em>aunque no haya particiones</em> (E, <em>Else</em>), hay que elegir entre <strong>L</strong>atencia y <strong>C</strong>onsistencia.</li>
-</ul>
-</div>
 <h4 id="12nosql-clasificacion-segun-cap">Clasificación según CAP<a class="headerlink" href="#12nosql-clasificacion-segun-cap" title="Permanent link">&para;</a></h4>
 <p>El siguiente gráfico muestra cómo dependiendo de estos atributos podemos clasificar los sistemas NoSQL:</p>
 <figure style="align: center;">
@@ -22389,6 +22380,19 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <li><strong>CA</strong>: Consistente y disponible. Aquí es donde situaríamos a los SGDB relacionales tradicionales. Por ejemplo, <em>PostgreSQL</em> es CA, ya que no distribuye los datos de manera nativa y por tanto la partición no es una restricción (aunque ofrece extensiones como <em>Citus</em> para dar soporte al particionado).</li>
 </ul>
 <p>Lo bueno es que la gran mayoría de sistemas permiten configurarse para cambiar su tipo CAP, lo que permite que <em>MongoDB</em> pase de CP a AP, o <em>CouchDB</em> de AP a CP.</p>
+<div class="admonition warning">
+<p class="admonition-title">El Teorema CAP en perspectiva</p>
+<p>El Teorema CAP es un marco conceptual útil, pero conviene matizarlo:</p>
+<ul>
+<li>Se trata de una simplificación. El propio <em>Brewer</em> publicó en 2012 el artículo <a href="https://sites.cs.ucsb.edu/~rich/class/cs293b-cloud/papers/brewer-cap.pdf"><em>CAP twelve years later: How the rules have changed</em></a> aclarando que la elección no es "2 de 3" de manera estricta, sino que en presencia de particiones se debe elegir entre consistencia y disponibilidad, mientras que sin particiones se pueden tener ambas.</li>
+<li>Muchos sistemas son configurables, ya que la mayoría de las bases de datos NoSQL modernas ofrecen <em>tunable consistency</em> (consistencia ajustable) por operación. Por ejemplo, en <em>Cassandra</em> puedes configurar el nivel <code>ONE</code>, <code>QUORUM</code> o <code>ALL</code> en cada lectura/escritura.</li>
+<li>CAP no contempla la latencia. En cambio, el modelo <strong>PACELC</strong> extiende CAP introduciendo que, <em>aunque no haya particiones</em> (E, <em>Else</em>), hay que elegir entre <strong>L</strong>atencia y <strong>C</strong>onsistencia.</li>
+</ul>
+<p><figure style="align: center;">
+    <img src="images/12pacelc_diagram.svg" alt="Diagrama de PACELC" width="600px">
+    <figcaption>Diagrama de PACELC</figcaption>
+</figure></p>
+</div>
 <h3 id="12nosql-base">BASE<a class="headerlink" href="#12nosql-base" title="Permanent link">&para;</a></h3>
 <p>De forma análoga al modelo transaccional <a href="#09dcl-tcl-acid">ACID</a> para las bases de datos relacionales que dan soporte a la transaccionalidad ofreciendo en todo momento un sistema consistente, las bases de datos distribuidas siguen el modelo transaccional BASE, el cual se centra en la alta disponibilidad y significa:</p>
 <ul>
@@ -22401,8 +22405,8 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>Mientras que las bases de datos NoSQL renunciaron a parte de las garantías ACID a cambio de escalabilidad, a partir de 2011 surge una tercera vía: las bases de datos <strong><em>NewSQL</em></strong>, que pretenden combinar la escalabilidad horizontal de los sistemas NoSQL con las garantías ACID y el lenguaje SQL de los sistemas relacionales tradicionales.</p>
 <p>Las soluciones NewSQL más representativas son:</p>
 <ul>
+<li><a href="https://cloud.google.com/spanner">Google Spanner</a>: base de datos relacional distribuida globalmente con consistencia fuerte. Es uno de los pocos sistemas que se aproxima a CP+A gracias a su sincronización mediante relojes atómicos (<em>TrueTime</em>).</li>
 <li><a href="https://www.cockroachlabs.com/">CockroachDB</a>: inspirada en <em>Spanner</em>, es <em>open source</em> y compatible con el dialecto de <em>PostgreSQL</em>.</li>
-<li><a href="https://cloud.google.com/spanner">Google Spanner</a>: base de datos relacional distribuida globalmente con consistencia fuerte. Es uno de los pocos sistemas que se aproxima a CP+A gracias a su sincronización mediante relojes atómicos (TrueTime).</li>
 <li><a href="https://www.pingcap.com/tidb/">TiDB</a>: compatible con el protocolo <em>MySQL</em>, separa el procesamiento de consultas del almacenamiento.</li>
 </ul>
 <p>NewSQL es especialmente interesante en aplicaciones que necesitan consistencia fuerte sobre datos transaccionales (banca, comercio electrónico, sistemas de reservas) pero que han crecido más allá de la capacidad de un servidor único.</p>
@@ -22476,17 +22480,20 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <li>
 <p><em>Reporting</em>: herramientas que permiten crear informes detallados basados en los datos almacenados, como pueden ser <a href="https://www.microsoft.com/es-es/power-platform/products/power-bi">Power BI</a> o <a href="https://www.tableau.com/es-es">Tableau</a>.</p>
 </li>
-<li>Cuadros de mandos: panel visual interactivo que permite monitorizar uno o más <strong><em>KPIs</em></strong> (indicadores clave de rendimiento) y otros aspectos importantes del negocio en tiempo real de un solo vistazo.</li>
-<li>Lago de datos (<em>Data Lake</em>): repositorio centralizado que almacena datos en su formato bruto (estructurados, semiestructurados y no estructurados), a diferencia del <em>data warehouse</em> que solo guarda datos estructurados ya procesados. Productos representativos: <a href="https://aws.amazon.com/es/s3/">Amazon S3</a> + <a href="https://aws.amazon.com/es/lake-formation/">AWS Lake Formation</a>, <a href="https://azure.microsoft.com/es-es/products/storage/data-lake-storage">Azure Data Lake Storage</a>.</li>
-<li><em>Data Lakehouse</em>: arquitectura que combina la flexibilidad del <em>data lake</em> con la fiabilidad transaccional del <em>data warehouse</em>. Suele apoyarse en formatos abiertos como <a href="https://iceberg.apache.org/">Apache Iceberg</a>, <a href="https://delta.io/">Delta Lake</a> o <a href="https://hudi.apache.org/">Apache Hudi</a>. Plataformas representativas: <a href="https://www.databricks.com/">Databricks</a> o <a href="https://www.snowflake.com/">Snowflake</a>.</li>
+<li>
+<p>Cuadros de mandos: panel visual interactivo que permite monitorizar uno o más <strong><em>KPIs</em></strong> (indicadores clave de rendimiento) y otros aspectos importantes del negocio en tiempo real de un solo vistazo.</p>
+<p><figure style="align: center">
+    <img src="images/12dashboard.png" alt="Ejemplo de cuadro de mandos">
+    <figcaption>Ejemplo de cuadro de mandos</figcaption>
+</figure></p>
+</li>
+<li>
+<p>Lago de datos (<em>Data Lake</em>): repositorio centralizado que almacena datos en su formato bruto (estructurados, semiestructurados y no estructurados), a diferencia del <em>data warehouse</em> que solo guarda datos estructurados ya procesados. Los productos más destacables son <a href="https://aws.amazon.com/es/s3/">Amazon S3</a> + <a href="https://aws.amazon.com/es/lake-formation/">AWS Lake Formation</a> y <a href="https://azure.microsoft.com/es-es/products/storage/data-lake-storage">Azure Data Lake Storage</a>.</p>
+</li>
+<li><em>Data Lakehouse</em>: arquitectura que combina la flexibilidad del <em>data lake</em> con la fiabilidad transaccional del <em>data warehouse</em>. Suele apoyarse en formatos abiertos como <a href="https://iceberg.apache.org/">Apache Iceberg</a>, <a href="https://delta.io/">Delta Lake</a> o <a href="https://hudi.apache.org/">Apache Hudi</a>. Se suelen emplear desde plataformas cloud como <a href="https://www.databricks.com/">Databricks</a> o <a href="https://www.snowflake.com/">Snowflake</a>.</li>
 <li>Minería de datos: La minería de datos busca patrones ocultos en grandes volúmenes de datos que pueden tener valor para la toma de decisiones. Se utiliza para identificar patrones de comportamiento del cliente, fraudes, tendencias del mercado, etc.</li>
 </ul>
 <!-- FIXME lago datos y lakehouse : menos IA -->
-
-<figure style="align: center">
-    <img src="images/12dashboard.png" alt="Ejemplo de cuadro de mandos">
-    <figcaption>Ejemplo de cuadro de mandos</figcaption>
-</figure>
 
 <p>Con todo esto, la inteligencia de negocios aporta:</p>
 <ul>
@@ -22525,7 +22532,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <h3 id="12nosql-clasificacion-segun-el-modelo-de-datos">Clasificación según el modelo de datos<a class="headerlink" href="#12nosql-clasificacion-segun-el-modelo-de-datos" title="Permanent link">&para;</a></h3>
 <p>Los diferentes tipos de bases de datos NoSQL existentes se pueden agrupar tradicionalmente en cuatro categorías, a las que recientemente se ha añadido una quinta: las bases de datos vectoriales.</p>
 <figure style="align: center;">
-    <img src="images/12nosql-databases.jpg" alt="Sistemas NoSQL">
+    <img src="images/12infografia-nosql.png" alt="Sistemas NoSQL">
     <figcaption>Sistemas NoSQL</figcaption>
 </figure>
 
@@ -22696,7 +22703,7 @@ con datos estructurados, semi-estructurados y sin estructurar. Casi todas las im
 <p><em>Consistencia eventual</em>: En lugar de seguir el estricto modelo ACID de las bases de datos relacionales, muchas bases de datos NoSQL priorizan la disponibilidad y la tolerancia a particiones, según el teorema CAP. Esto significa que, en algunos casos, los datos pueden no estar sincronizados en todos los nodos de manera inmediata, pero eventualmente alcanzan la consistencia. Este enfoque es útil para aplicaciones distribuidas donde la latencia es más crítica que la consistencia inmediata.</p>
 </li>
 <li>
-<p><em>Almacenamiento distribuido</em>: Pueden operar en entornos de computación en la nube y escalar dinámicamente según la demanda. Gracias a su arquitectura distribuida, son altamente eficientes para manejar datos en infraestructuras descentralizadas y en plataformas de servicios en la nube como AWS, Google Cloud o Azure.</p>
+<p><em>Almacenamiento distribuido</em>: Pueden operar en entornos de computación en la nube y escalar dinámicamente según la demanda. Gracias a su arquitectura distribuida, son altamente eficientes para manejar datos en infraestructuras descentralizadas y en plataformas de servicios en la nube como <em>AWS</em>, <em>Google Cloud</em> o <em>Azure</em>.</p>
 </li>
 </ol>
 <p>Estas características hacen que las bases de datos NoSQL sean ideales para aplicaciones modernas como redes sociales, IoT, análisis de datos y sistemas en tiempo real.</p>
