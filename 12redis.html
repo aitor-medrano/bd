@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -1925,6 +1925,11 @@
 <p><a href="https://redis.io/es/">Redis</a> es una base de datos NoSQL <em>open source</em> en memoria, con un modelo de datos de clave-valor, que permite el cacheo de los datos y funcionar como un <em>broker</em> de mensajería. Soporta estructuras de datos como cadenas, <em>hash</em>, listas, conjuntos, conjuntos ordenados con consultas por rango, así como otras estructuras más específicas como mapas de bit, consultas <em>radius</em>, índices geospaciales, etc...</p>
 <p>El nombre <em>Redis</em> proviene de las iniciales de <strong><em>Remote Dictionary Server</em></strong> (servidor de diccionario remoto), un tipo de servidor apto como memoria rápida para datos, permitiendo su uso como una base de datos en memoria y como de clave-valor.</p>
 <p>También se ofrece como una opción de pago mediante <a href="https://redis.io/pricing/">Redis Lab</a>, ofreciéndola como una solución gestionada donde no tenemos que preocuparnos de la infraestructura.</p>
+<div class="admonition info">
+<p class="admonition-title">Redis y Valkey: el cambio de licencia de 2024</p>
+<p>En marzo de 2024, <em>Redis Labs</em> cambió la licencia de <em>Redis</em> desde <em>BSD</em> a las licencias propietarias <em>SSPL</em> y <em>RSALv2</em>. Como respuesta, la <em>Linux Foundation</em> anunció <a href="https://valkey.io/">Valkey</a>, un <em>fork open source</em> de <em>Redis</em> respaldado por AWS, Google Cloud, Oracle y Ericsson, entre otros. <em>Valkey</em> mantiene compatibilidad de comandos con <em>Redis</em> y es la opción que están adoptando las distribuciones de Linux y los servicios <em>cloud</em> (por ejemplo, AWS <em>ElastiCache</em> ofrece soporte de <em>Valkey</em> desde finales de 2024).</p>
+<p>En estos apuntes seguiremos hablando de <em>Redis</em> por familiaridad, pero todos los comandos que veremos funcionan exactamente igual en <em>Valkey</em>.</p>
+</div>
 <h2 id="caracteristicas">Características<a class="headerlink" href="#caracteristicas" title="Permanent link">&para;</a></h2>
 <p><em>Redis</em> almacena los datos como pares clave-valor, donde:</p>
 <ul>

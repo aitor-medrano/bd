@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -19933,7 +19933,7 @@ $$ LANGUAGE sql;
 <p>Comprueba su funcionamiento insertando manualmente una fila en <code>informe_salarial</code> para el departamento <code>PROZS</code> (solo con <code>CodDep</code> y <code>NomDep</code>), invocando al procedimiento y verificando que se han rellenado el resto de columnas.</p>
 </li>
 <li>
-<p>Crea el procedimiento <code>pr1011informeCentro</code> que, a partir de un código de centro (parámetro de entrada), genere el informe completo: primero insertará en <code>informe_salarial</code> los datos base de todos los departamentos del centro (código y nombre), y después recorrerá cada fila mediante un bucle(usando cursores) invocando a <code>pr1011actualizaInforme</code> para completar los datos.</p>
+<p>Crea el procedimiento <code>pr1011informeCentro</code> que, a partir de un código de centro (parámetro de entrada), genere el informe completo: primero insertará en <code>informe_salarial</code> los datos base de todos los departamentos del centro (código y nombre), y después recorrerá cada fila mediante un bucle (usando cursores) invocando a <code>pr1011actualizaInforme</code> para completar los datos.</p>
 <p>Comprueba el funcionamiento invocando a <code>pr1011informeCentro</code> con el centro <code>FAZS</code> y mostrando el contenido de la tabla <code>informe_salarial</code>.</p>
 </li>
 </ol>
@@ -22166,6 +22166,8 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <li>¿Qué significa el acrónimo NoSQL?</li>
 <li>¿Por qué aparecieron las soluciones NoSQL?</li>
 <li>¿Qué tipos de modelos NoSQL existen? ¿Puedes nombrar una solución <em>software</em> para cada uno de ellos?</li>
+<li>¿Qué son las bases de datos vectoriales y por qué han ganado relevancia recientemente?</li>
+<li>¿Qué diferencia hay entre NoSQL y NewSQL?</li>
 </ol>
 </div>
 <h3 id="12nosql-programacion-de-aula-4h">Programación de Aula (4h)<a class="headerlink" href="#12nosql-programacion-de-aula-4h" title="Permanent link">&para;</a></h3>
@@ -22227,19 +22229,19 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
     <figcaption>Bases de Datos Distribuidas</figcaption>
 </figure>
 
-<p>Los servidores de una base de datos distribuida suelen denominarse nodos y pueden estar físicamente cercanos (mismo edificio o grupo de edificios) y conectados a través de una red de área local, o pueden estar distribuidos geográficamente a grandes distancias y conectados a través de una red de larga distancia.</p>
+<p>Los servidores de una base de datos distribuida suelen denominarse nodos y pueden estar físicamente cercanos (mismo edificio o grupo de edificios) y conectados a través de una red de área local, o pueden estar distribuidos geográficamente a grandes distancias y conectados a través de una red de larga distancia (WAN).</p>
 <p>En comparación con los sistemas centralizados, son más complejos en cuanto a su gestión, y la sincronización y consistencia de los datos es más difícil de garantizar.</p>
 <div class="admonition info">
 <p class="admonition-title">Cloud</p>
 <p>Las soluciones en la nube como AWS o Azure han propiciado la proliferación de soluciones distribuidas, al facilitar el despliegue automático de este tipo de soluciones, permitiendo una configuración elástica de la arquitectura.</p>
 </div>
 <h3 id="12nosql-fragmentacion">Fragmentación<a class="headerlink" href="#12nosql-fragmentacion" title="Permanent link">&para;</a></h3>
-<p>Dado el modo en el que se estructuran las bases de datos relacionales, normalmente escalan verticalmente, esto es, un único servidor cada vez más potente (más RAM, mejor CPU y almacenamiento) que almacena toda la base de datos para asegurar la disponibilidad continua de los datos. Esto se traduce en costes que se incrementan rápidamente, con un límites definidos por el propio hardware, y en un pequeño número de puntos críticos de fallo dentro de la infraestructura de datos.</p>
+<p>Dado el modo en el que se estructuran las bases de datos relacionales, normalmente escalan verticalmente, esto es, un único servidor cada vez más potente (más RAM, mejor CPU y almacenamiento) que almacena toda la base de datos para asegurar la disponibilidad continua de los datos. Esto se traduce en costes que se incrementan rápidamente, con un límites definidos por el propio <em>hardware</em>, y en un pequeño número de puntos críticos de fallo dentro de la infraestructura de datos.</p>
 <p>La solución es <strong>escalar horizontalmente</strong>, añadiendo nuevos servidores en vez de concentrarse en incrementar la capacidad de un único servidor, lo que permite tratar con conjuntos de datos más grandes de lo que sería capaz cualquier máquina por sí sola. Este escalado horizontal se conoce como <strong><em>Sharding</em></strong>, fragmentación o particionado de los datos.</p>
-<p>Si en un sistema relacional queremos particionar los datos, podemos distinguir entre fragmentación:</p>
+<p>Si en un sistema relacional queremos particionar los datos, podemos distinguir entre:</p>
 <ul>
-<li><strong>Horizontal</strong>: diferentes filas en diferentes particiones, por ejemplo, dividir a los clientes por región geográfica.</li>
-<li><strong>Vertical</strong>: diferentes columnas en particiones distintas, por ejemplo, separar los datos de contacto y financieros.</li>
+<li><strong>Fragmentación horizontal</strong>: diferentes filas en diferentes particiones, por ejemplo, dividir a los clientes por región geográfica.</li>
+<li><strong>Fragmentación vertical</strong>: diferentes columnas en particiones distintas, por ejemplo, separar los datos de contacto y financieros. Normalmente, la clave primaria se mantiene en ambas particiones para poder realizar <em>joins</em> entre ellas.</li>
 </ul>
 <figure style="align: center;">
     <img src="images/12sharding01.png" width="600px" alt="Particionado de los datos">
@@ -22308,11 +22310,24 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
     <figcaption>Tipos de replicación - https://berb.github.io/diploma-thesis</figcaption>
 </figure>
 
-<p>Conviene aclarar que cada modelo conlleva que los datos tengan diferente tipo de consistencia:</p>
+<h4 id="12nosql-modos-de-operacion">Modos de operación<a class="headerlink" href="#12nosql-modos-de-operacion" title="Permanent link">&para;</a></h4>
+<p>Más allá de la arquitectura (quién puede escribir y quién no), existe una segunda decisión clave: <ins>cuándo se considera completada una escritura</ins>. Aquí distinguimos dos modos de operación:</p>
+<ul>
+<li>
+<p><strong>Replicación síncrona</strong>: el nodo principal no confirma la escritura al cliente hasta que uno o varios nodos secundarios han recibido y aplicado el cambio. Garantiza que, si el primario cae justo después de confirmar, ningún dato se pierde, pero <ins>incrementa la latencia</ins> de cada operación, ya que se debe esperar a la red y al disco de los secundarios. Es el modo habitual en sistemas que priorizan la consistencia, como las réplicas locales de <em>PostgreSQL</em> o las configuraciones de <em>MongoDB</em> con <code>writeConcern: "majority"</code>.</p>
+</li>
+<li>
+<p><strong>Replicación asíncrona</strong>: el nodo principal confirma la escritura al cliente en cuanto la persiste localmente, y propaga el cambio a los secundarios "en segundo plano". Ofrece <ins>menor latencia y mayor rendimiento de escritura</ins>, pero introduce una ventana de tiempo en la que los secundarios están desactualizados respecto al primario. Si el primario cae durante esa ventana, los datos no replicados se pierden. Es el modo habitual en réplicas geográficamente distantes (por ejemplo, copias entre continentes en AWS) y en sistemas que priorizan la disponibilidad, como <em>Cassandra</em> o <em>DynamoDB</em> con sus configuraciones por defecto.</p>
+</li>
+</ul>
+<h4 id="12nosql-tipos-de-consistencia">Tipos de consistencia<a class="headerlink" href="#12nosql-tipos-de-consistencia" title="Permanent link">&para;</a></h4>
+<p>Además, conviene aclarar que cada modelo conlleva que los datos tengan diferente tipo de consistencia:</p>
 <ul>
 <li><strong>Consistencia fuerte</strong>: Garantiza que todas las réplicas tienen los mismos datos antes de confirmar cualquier operación, esto es, que después de que una escritura se complete, todas las lecturas reflejan inmediatamente el valor actualizado. Por ejemplo, los sistemas bancarios y las bases de datos que soportan ACID.</li>
 <li><strong>Consistencia eventual</strong>: Permite cierto desfase temporal entre réplicas, aceptando que los datos se sincronizarán en algún momento, a costa de poder llegar a leer datos desactualizados. Usos típicos serían los <em>likes</em> o comentarios en redes sociales.</li>
 </ul>
+<p>En la práctica, muchos sistemas permiten configurar el modo por operación y el nivel de consistencia, eligiendo el compromiso adecuado entre durabilidad y latencia. Por ejemplo, una aplicación bancaria puede exigir replicación síncrona a la mayoría de nodos para una transferencia (preferimos latencia a perder datos), lo que implica una consistencia fuerte, mientras que el contador de visitas de la misma aplicación se replica de forma asíncrona (preferimos rendimiento a precisión inmediata) consiguiendo consistencia eventual. Esta decisión está íntimamente ligada al <a href="#12nosql-teorema-de-cap">Teorema CAP que veremos más adelante</a>: la replicación síncrona se asocia a sistemas más consistentes (CP), mientras que la asíncrona se asocia a sistemas más disponibles (AP).</p>
+<h4 id="12nosql-cuando-replicar">Cuando replicar<a class="headerlink" href="#12nosql-cuando-replicar" title="Permanent link">&para;</a></h4>
 <p>La replicación de los datos se utiliza para alcanzar:</p>
 <ul>
 <li><strong>escalabilidad</strong>, incrementando el rendimiento al poder distribuir las consultas en diferentes nodos, y mejorar la redundancia al permitir que cada nodo tenga una copia de los datos.</li>
@@ -22342,7 +22357,16 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 
 <p>El teorema CAP es útil cuando consideramos el sistema de base de datos que necesitamos, ya que nos permite decidir cuál de las tres características vamos a descartar. La elección realmente se centra entre la disponibilidad y la consistencia, ya que la tolerancia a particiones es una decisión de arquitectura (sea o no distribuida).</p>
 <p>Aunque el teorema dicte que si en un sistema distribuido elegimos disponibilidad no podemos tener consistencia, todavía podemos obtener consistencia eventual. Es decir, cada nodo siempre estará disponible para servir peticiones, aunque estos nodos no puedan asegurar que la información que contienen sea consistente (pero si bastante precisa), en algún momento lo será.</p>
-<p>Algunas bases de datos tolerantes a particiones se pueden ajustar para ser más o menos consistentes o disponible a nivel de petición. Por ejemplo, <em>Riak</em> trabaja de esta manera, permitiendo a los clientes decidir en tiempo de petición qué nivel de consistencia necesitan.</p>
+<p>Algunas bases de datos tolerantes a particiones se pueden ajustar para ser más o menos consistentes o disponibles a nivel de petición (<em>tunable consistency</em>). Por ejemplo, <em>Cassandra</em> permite especificar el nivel de consistencia de cada operación (<code>ONE</code>, <code>QUORUM</code>, <code>ALL</code>), de manera que el cliente decide en tiempo de petición qué compromiso desea entre consistencia y latencia.</p>
+<div class="admonition warning">
+<p class="admonition-title">El Teorema CAP en perspectiva</p>
+<p>El Teorema CAP es un marco conceptual útil, pero conviene matizarlo:</p>
+<ul>
+<li>Es una simplificación: el propio <em>Brewer</em> publicó en 2012 el artículo <a href="https://sites.cs.ucsb.edu/~rich/class/cs293b-cloud/papers/brewer-cap.pdf"><em>CAP twelve years later: How the rules have changed</em></a> aclarando que la elección no es "2 de 3" de manera estricta, sino que en presencia de particiones se debe elegir entre consistencia y disponibilidad, mientras que sin particiones se pueden tener ambas.</li>
+<li>Muchos sistemas son configurables: la mayoría de las bases de datos NoSQL modernas ofrecen <em>tunable consistency</em> (consistencia ajustable) por operación. Por ejemplo, en <em>Cassandra</em> puedes configurar el nivel <code>ONE</code>, <code>QUORUM</code> o <code>ALL</code> en cada lectura/escritura.</li>
+<li>CAP no contempla la latencia: el modelo <strong>PACELC</strong> extiende CAP introduciendo que, <em>aunque no haya particiones</em> (E, <em>Else</em>), hay que elegir entre <strong>L</strong>atencia y <strong>C</strong>onsistencia.</li>
+</ul>
+</div>
 <h4 id="12nosql-clasificacion-segun-cap">Clasificación según CAP<a class="headerlink" href="#12nosql-clasificacion-segun-cap" title="Permanent link">&para;</a></h4>
 <p>El siguiente gráfico muestra cómo dependiendo de estos atributos podemos clasificar los sistemas NoSQL:</p>
 <figure style="align: center;">
@@ -22352,9 +22376,17 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 
 <p>Así pues, las bases de datos NoSQL se clasifican en:</p>
 <ul>
-<li><strong>CP</strong>: Consistente y tolerante a particiones. Tanto <em>MongoDB</em> como <em>HBase</em> son CP, ya que dentro de una partición pueden no estar disponibles para responder una determinada consulta (por ejemplo, evitando lecturas en los nodos secundarios), aunque son tolerantes a fallos porque cualquier nodo secundario se puede convertir en principal y asumir el rol del nodo caído.</li>
-<li><strong>AP</strong>: Disponible y tolerante a particiones. <em>DynamoDB</em> permite replicar los datos entre sus nodos, aunque no garantiza la consistencia en ninguno de los sus servidores.</li>
-<li><strong>CA</strong>: Consistente y disponible. Aquí es donde situaríamos a los SGDB relacionales. Por ejemplo, <em>PostgreSQL</em> es CA (aunque ofrece un producto complementario para dar soporte al particionado, como <em>PgCluster</em>), ya que no distribuyen los datos y por tanto la partición no es una restricción.</li>
+<li>
+<p><strong>CP</strong>: Consistente y tolerante a particiones. Tanto <em>MongoDB</em> como <em>HBase</em> se han considerado tradicionalmente CP, ya que dentro de una partición pueden no estar disponibles para responder una determinada consulta (por ejemplo, evitando lecturas en los nodos secundarios), aunque son tolerantes a fallos porque cualquier nodo secundario se puede convertir en principal y asumir el rol del nodo caído.</p>
+<div class="admonition note">
+<p class="admonition-title">MongoDB y ACID</p>
+<p>Desde la versión 4.0 (2018), <em>MongoDB</em> soporta transacciones ACID multi-documento, y desde la 4.2 también en <em>clusters</em> particionados. Esto difumina la clasificación CAP clásica: hoy <em>MongoDB</em> puede comportarse como un sistema fuertemente consistente o ajustarse para priorizar disponibilidad mediante el <code>readPreference</code> y el <code>writeConcern</code>.</p>
+</div>
+</li>
+<li>
+<p><strong>AP</strong>: Disponible y tolerante a particiones. <em>DynamoDB</em> y <em>Cassandra</em> permiten replicar los datos entre sus nodos, aunque no garantizan la consistencia inmediata en todos los servidores (consistencia eventual).</p>
+</li>
+<li><strong>CA</strong>: Consistente y disponible. Aquí es donde situaríamos a los SGDB relacionales tradicionales. Por ejemplo, <em>PostgreSQL</em> es CA, ya que no distribuye los datos de manera nativa y por tanto la partición no es una restricción (aunque ofrece extensiones como <em>Citus</em> para dar soporte al particionado).</li>
 </ul>
 <p>Lo bueno es que la gran mayoría de sistemas permiten configurarse para cambiar su tipo CAP, lo que permite que <em>MongoDB</em> pase de CP a AP, o <em>CouchDB</em> de AP a CP.</p>
 <h3 id="12nosql-base">BASE<a class="headerlink" href="#12nosql-base" title="Permanent link">&para;</a></h3>
@@ -22365,6 +22397,15 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <li>Consistencia eventual (<strong><em>E</em></strong><em>ventual consistency</em>): tras cada escritura, la consistencia de la base de datos sólo se alcanza una vez el cambio ha sido propagado a todos los nodos. Durante el tiempo que tarda en producirse la consistencia, observamos un estado blando de la base de datos.</li>
 </ul>
 <p>Una base de datos que sigue el modelo transaccional BASE prefiere la disponibilidad antes que la consistencia (es decir, desde el punto de vista del Teorema CAP es AP).</p>
+<h3 id="12nosql-newsql">NewSQL<a class="headerlink" href="#12nosql-newsql" title="Permanent link">&para;</a></h3>
+<p>Mientras que las bases de datos NoSQL renunciaron a parte de las garantías ACID a cambio de escalabilidad, a partir de 2011 surge una tercera vía: las bases de datos <strong><em>NewSQL</em></strong>, que pretenden combinar la escalabilidad horizontal de los sistemas NoSQL con las garantías ACID y el lenguaje SQL de los sistemas relacionales tradicionales.</p>
+<p>Las soluciones NewSQL más representativas son:</p>
+<ul>
+<li><a href="https://www.cockroachlabs.com/">CockroachDB</a>: inspirada en <em>Spanner</em>, es <em>open source</em> y compatible con el dialecto de <em>PostgreSQL</em>.</li>
+<li><a href="https://cloud.google.com/spanner">Google Spanner</a>: base de datos relacional distribuida globalmente con consistencia fuerte. Es uno de los pocos sistemas que se aproxima a CP+A gracias a su sincronización mediante relojes atómicos (TrueTime).</li>
+<li><a href="https://www.pingcap.com/tidb/">TiDB</a>: compatible con el protocolo <em>MySQL</em>, separa el procesamiento de consultas del almacenamiento.</li>
+</ul>
+<p>NewSQL es especialmente interesante en aplicaciones que necesitan consistencia fuerte sobre datos transaccionales (banca, comercio electrónico, sistemas de reservas) pero que han crecido más allá de la capacidad de un servidor único.</p>
 <h2 id="12nosql-big-data">Big Data<a class="headerlink" href="#12nosql-big-data" title="Permanent link">&para;</a></h2>
 <p>Aunque parece que todo el mundo debe trabajar con cuantos más datos mejor, no todo es <em>Big Data</em> en el mundo tecnológico.</p>
 <figure style="float: right;">
@@ -22425,11 +22466,23 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>Algunos componentes clave que forman parte del <em>BI</em> son:</p>
 <ul>
 <li>Almacenes de datos (<em>Data warehouse</em>): almacenes centralizados que recogen datos de diferentes fuentes para realizar el análisis y dar soporte a los sistemas de ayuda a la toma de decisiones. Estos sistemas se clasifican como OLAP (<em>On-Line Analytical Processing</em>), en contraposición de los sistemas OLTP (<em>On-Line Transactional Processing</em>) que son los que hemos utilizado hasta ahora y que están orientados a los procesos diarios de la empresa. Se organizan por temas, variables en el tiempo y no volátiles, de manera que los datos no se modifican, sólo se añaden nuevos datos.</li>
-<li>Procesos ETL (ETL = <em>Extract + Transform + Load</em>): son los procesos encargados de extraer datos de diferentes fuentes, transformarlos para adaptarlos a las necesidades del negocio (limpiando los datos y convirtiéndolos en un formato adecuado) y cargarlos en el almacén de datos.</li>
-<li><em>Reporting</em>: herramientas que permiten crear informes detallados basados en los datos almacenados, como pueden ser <a href="https://www.microsoft.com/es-es/power-platform/products/power-bi">Power BI</a> o <a href="https://www.tableau.com/es-es">Tableau</a>.</li>
+<li>
+<p>Procesos ETL/ELT: son los procesos encargados de mover datos entre fuentes y almacenes:</p>
+<ul>
+<li><strong>ETL</strong> (<em>Extract + Transform + Load</em>): extrae los datos, los transforma (limpieza, formato, enriquecimiento) adaptándolos a las necesidades del negocio y los carga ya transformados en el almacén. Es el patrón clásico, asociado a herramientas como <a href="https://www.hitachivantara.com/en-us/products/pentaho-platform.html">Pentaho</a> o <a href="https://www.talend.com/">Talend</a>.</li>
+<li><strong>ELT</strong> (<em>Extract + Load + Transform</em>): en entornos <em>cloud</em>, los datos se cargan en bruto en el almacén (que tiene gran capacidad de cómputo) y se transforman <em>dentro</em> de él. Es el patrón dominante hoy, con herramientas como <a href="https://www.getdbt.com/">dbt</a> o <a href="https://airbyte.com/">Airbyte</a>.</li>
+</ul>
+</li>
+<li>
+<p><em>Reporting</em>: herramientas que permiten crear informes detallados basados en los datos almacenados, como pueden ser <a href="https://www.microsoft.com/es-es/power-platform/products/power-bi">Power BI</a> o <a href="https://www.tableau.com/es-es">Tableau</a>.</p>
+</li>
 <li>Cuadros de mandos: panel visual interactivo que permite monitorizar uno o más <strong><em>KPIs</em></strong> (indicadores clave de rendimiento) y otros aspectos importantes del negocio en tiempo real de un solo vistazo.</li>
+<li>Lago de datos (<em>Data Lake</em>): repositorio centralizado que almacena datos en su formato bruto (estructurados, semiestructurados y no estructurados), a diferencia del <em>data warehouse</em> que solo guarda datos estructurados ya procesados. Productos representativos: <a href="https://aws.amazon.com/es/s3/">Amazon S3</a> + <a href="https://aws.amazon.com/es/lake-formation/">AWS Lake Formation</a>, <a href="https://azure.microsoft.com/es-es/products/storage/data-lake-storage">Azure Data Lake Storage</a>.</li>
+<li><em>Data Lakehouse</em>: arquitectura que combina la flexibilidad del <em>data lake</em> con la fiabilidad transaccional del <em>data warehouse</em>. Suele apoyarse en formatos abiertos como <a href="https://iceberg.apache.org/">Apache Iceberg</a>, <a href="https://delta.io/">Delta Lake</a> o <a href="https://hudi.apache.org/">Apache Hudi</a>. Plataformas representativas: <a href="https://www.databricks.com/">Databricks</a> o <a href="https://www.snowflake.com/">Snowflake</a>.</li>
 <li>Minería de datos: La minería de datos busca patrones ocultos en grandes volúmenes de datos que pueden tener valor para la toma de decisiones. Se utiliza para identificar patrones de comportamiento del cliente, fraudes, tendencias del mercado, etc.</li>
 </ul>
+<!-- FIXME lago datos y lakehouse : menos IA -->
+
 <figure style="align: center">
     <img src="images/12dashboard.png" alt="Ejemplo de cuadro de mandos">
     <figcaption>Ejemplo de cuadro de mandos</figcaption>
@@ -22455,29 +22508,171 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <!--  Hacer un gráfico circular -->
 
 <h2 id="12nosql-nosql">NoSQL<a class="headerlink" href="#12nosql-nosql" title="Permanent link">&para;</a></h2>
-<p>Si definimos <strong>NoSQL</strong> formalmente, podemos decir que se trata de un conjunto de tecnologías que permiten el procesamiento rápido y eficiente de conjuntos de datos dando la <ins>mayor importancia al rendimiento, la fiabilidad y la agilidad</ins>.</p>
+<p>Antes de definir NoSQL, conviene entender <strong>por qué surgió</strong>. A finales de los 2000, empresas como <em>Google</em>, <em>Amazon</em> o <em>Facebook</em> se enfrentaban a problemas que los SGBD relacionales no podían resolver eficientemente:</p>
+<ul>
+<li>Volumen: bases de datos de varios <em>petabytes</em> que no caben en un servidor único.</li>
+<li>Esquemas variables: los productos de un catálogo o los perfiles de usuario evolucionan continuamente y no encajan en un esquema rígido.</li>
+<li>Latencia baja a escala global: usuarios en todo el mundo esperando respuestas de milisegundos.</li>
+<li>Coste: escalar verticalmente con <em>hardware</em> especializado resulta prohibitivo.</li>
+</ul>
+<p>Las publicaciones fundacionales del movimiento NoSQL son <a href="https://research.google/pubs/bigtable-a-distributed-storage-system-for-structured-data/">BigTable</a> (Google, 2006) y <a href="https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf">Dynamo</a> (Amazon, 2007), que inspiraron a buena parte de las soluciones actuales (<em>HBase</em>, <em>Cassandra</em>, <em>DynamoDB</em>…).</p>
+<p>Dicho esto, si definimos <strong>NoSQL</strong> formalmente, podemos decir que se trata de un conjunto de tecnologías que permiten el procesamiento rápido y eficiente de conjuntos de datos dando la <ins>mayor importancia al rendimiento, la fiabilidad y la agilidad</ins>.</p>
 <p>Si nos basamos en el acrónimo, el término da la sensación de que se refiere a cualquier almacén de datos que no sigue un modelo relacional, los datos no son relacionales y por tanto no utilizan SQL como lenguaje de consulta. Realmente implica que el <em>No</em> hace referencia a <em>not only</em>, es decir, que los sistemas NoSQL se centran en sistemas complementarios a los SGBD relacionales, que fijan sus prioridades en la escalabilidad y la disponibilidad en contra de la atomicidad y consistencia de los datos.</p>
 <p>Así pues, la revolución NoSQL se basa en comprender que hay más de una manera de resolver los problemas. Hay vida más allá de los sistemas de bases de datos relacionales, y NoSQL permite elegir la mejor herramienta para cada situación, que en algunas ocasiones será una base de datos relacional, pero en otras no. Por lo tanto, más que sustitutos de los sistemas relacionales, las soluciones NoSQL se plantean como alternativas y complementarias a los sistemas gestores de bases de datos relacionales.</p>
-<p>Los diferentes tipos de bases de datos NoSQL existentes se pueden agrupar en cuatro categorías:</p>
 <ul>
-<li>
-<p><strong>Clave-Valor</strong>: Los almacenes clave-valor son las bases de datos NoSQL más simples. Cada elemento de la base de datos se almacena con un nombre de atributo (o clave) junto a su valor, a modo de diccionario. Los almacenes más conocidos son <a href="https://redis.io">Redis</a>, <a href="https://riak.com">Riak</a> y <a href="https://aws.amazon.com/es/dynamodb/">AWS DynamoDB</a>. Algunos almacenes, como es el caso de <em>Redis</em>, permiten que cada valor tenga un tipo (por ejemplo, <em>integer</em>) lo cual añade funcionalidad extra.</p>
-</li>
-<li>
-<p><strong>Documentales</strong>: Cada clave se asocia a una estructura compleja que se conoce como documento. Este puede contener diferentes pares clave-valor, o pares de clave-array o incluso documentos anidados, como en un documento JSON. Los ejemplos más conocidos son <a href="https://www.mongodb.com">MongoDB</a> y <a href="https://couchdb.apache.org/">CouchDB</a>.</p>
-</li>
-<li>
-<p><strong>Grafos</strong>: Los almacenes de grafos se usan para almacenar información sobre redes, como pueden ser conexiones sociales. Los ejemplos más conocidos son <em>Neo4J</em>, <em>AWS Neptune</em> y <em>ArangoDB</em>.</p>
-</li>
-<li>
-<p><strong>Basados en columnas</strong>: Los almacenes basados en columnas como <em>BigTable</em>, <em>Cassandra</em> y <em>HBase</em> están optimizados para consultas sobre grandes conjuntos de datos, y almacenan los datos como columnas en vez de como filas.</p>
-</li>
+<li><strong>Clave-Valor</strong>: Los almacenes clave-valor son las bases de datos NoSQL más simples. Cada elemento de la base de datos se almacena con un nombre de atributo (o clave) junto a su valor, a modo de diccionario. Los almacenes más conocidos son <a href="https://redis.io">Redis</a>, <a href="https://riak.com">Riak</a> y <a href="https://aws.amazon.com/es/dynamodb/">AWS DynamoDB</a>. Algunos almacenes, como es el caso de <em>Redis</em>, permiten que cada valor tenga un tipo (por ejemplo, <em>integer</em>) lo cual añade funcionalidad extra.</li>
 </ul>
+<h3 id="12nosql-clasificacion-segun-el-modelo-de-datos">Clasificación según el modelo de datos<a class="headerlink" href="#12nosql-clasificacion-segun-el-modelo-de-datos" title="Permanent link">&para;</a></h3>
+<p>Los diferentes tipos de bases de datos NoSQL existentes se pueden agrupar tradicionalmente en cuatro categorías, a las que recientemente se ha añadido una quinta: las bases de datos vectoriales.</p>
 <figure style="align: center;">
     <img src="images/12nosql-databases.jpg" alt="Sistemas NoSQL">
     <figcaption>Sistemas NoSQL</figcaption>
 </figure>
 
+<h4 id="12nosql-clave-valor">Clave-Valor<a class="headerlink" href="#12nosql-clave-valor" title="Permanent link">&para;</a></h4>
+<p>Los almacenes clave-valor son las bases de datos NoSQL más simples. Cada elemento se almacena con un nombre de atributo (o <strong>clave</strong>) junto a su <strong>valor</strong>, a modo de diccionario. La clave es el único criterio de búsqueda, lo que las hace extremadamente rápidas para acceso directo, pero limitadas para consultas complejas.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Elementos</td>
+<td>Clave (string) y valor (string, número, lista, hash, conjunto…)</td>
+</tr>
+<tr>
+<td>Operaciones típicas</td>
+<td><code>GET clave</code>, <code>SET clave valor</code>, <code>DEL clave</code></td>
+</tr>
+<tr>
+<td>Casos de uso</td>
+<td>Caché de aplicaciones, gestión de sesiones, <em>leaderboards</em>, colas de mensajes ligeras</td>
+</tr>
+<tr>
+<td>Productos representativos</td>
+<td><a href="https://redis.io">Redis</a> / <a href="https://valkey.io/">Valkey</a>, <a href="https://aws.amazon.com/es/dynamodb/">AWS DynamoDB</a>, <a href="https://memcached.org/">Memcached</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="12nosql-documentales">Documentales<a class="headerlink" href="#12nosql-documentales" title="Permanent link">&para;</a></h4>
+<p>Cada clave se asocia a una estructura compleja que se conoce como <strong>documento</strong>, normalmente en formato JSON o BSON. Los documentos pueden contener pares clave-valor, arrays e incluso documentos anidados. A diferencia de clave-valor, los motores documentales permiten consultar por el contenido del documento (por cualquier campo, no solo por la clave).</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Elementos</td>
+<td>Documento (≈ fila), colección (≈ tabla), campo (≈ columna)</td>
+</tr>
+<tr>
+<td>Operaciones típicas</td>
+<td><code>insertOne</code>, <code>find</code>, <code>updateMany</code>, <code>aggregate</code></td>
+</tr>
+<tr>
+<td>Casos de uso</td>
+<td>Catálogos de productos, gestión de contenidos (CMS), perfiles de usuario, datos de eventos</td>
+</tr>
+<tr>
+<td>Productos representativos</td>
+<td><a href="https://www.mongodb.com">MongoDB</a>, <a href="https://www.couchbase.com/">Couchbase</a>, <a href="https://firebase.google.com/products/firestore">Firestore</a> (en aplicaciones móviles y web)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="12nosql-basados-en-columnas">Basados en columnas<a class="headerlink" href="#12nosql-basados-en-columnas" title="Permanent link">&para;</a></h4>
+<p>A pesar del nombre, no almacenan los datos columna por columna en el sentido analítico (eso lo hacen los formatos como <em>Parquet</em>), sino que organizan los datos por <strong>familias de columnas</strong>, donde cada fila puede tener un conjunto distinto de columnas dentro de la misma familia. Están optimizados para escrituras masivas y consultas sobre rangos amplios de filas.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Elementos</td>
+<td><em>Keyspace</em> (≈ base de datos), tabla, fila, familia de columnas, columna</td>
+</tr>
+<tr>
+<td>Operaciones típicas</td>
+<td><code>INSERT INTO</code>, <code>SELECT … WHERE partition_key = …</code> (en CQL, lenguaje similar a SQL)</td>
+</tr>
+<tr>
+<td>Casos de uso</td>
+<td>Registros de eventos a gran escala, datos de sensores IoT, <em>time series</em>, mensajería</td>
+</tr>
+<tr>
+<td>Productos representativos</td>
+<td><a href="https://cassandra.apache.org/">Apache Cassandra</a>, <a href="https://hbase.apache.org/">HBase</a>, <a href="https://www.scylladb.com/">ScyllaDB</a>, <a href="https://cloud.google.com/bigtable">Google Bigtable</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="12nosql-grafos">Grafos<a class="headerlink" href="#12nosql-grafos" title="Permanent link">&para;</a></h4>
+<p>Los almacenes de grafos están diseñados para que las relaciones sean tan importantes como los propios datos: se representan como <strong>nodos</strong> (entidades) y <strong>aristas</strong> (relaciones), ambos con propiedades. Son ideales cuando las consultas se basan en navegar las conexiones (¿amigos de amigos?, ¿recomendaciones?, ¿detección de fraude?).</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Elementos</td>
+<td>Nodos, aristas (relaciones dirigidas), propiedades, etiquetas</td>
+</tr>
+<tr>
+<td>Operaciones típicas</td>
+<td>En <em>Cypher</em> (lenguaje de <em>Neo4j</em>): <code>MATCH (a)-[:SIGUE]-&gt;(b) RETURN b</code></td>
+</tr>
+<tr>
+<td>Casos de uso</td>
+<td>Redes sociales, motores de recomendación, detección de fraude, grafos de conocimiento</td>
+</tr>
+<tr>
+<td>Productos representativos</td>
+<td><a href="https://neo4j.com/">Neo4j</a>, <a href="https://aws.amazon.com/es/neptune/">AWS Neptune</a>, <a href="https://memgraph.com/">Memgraph</a>, <a href="https://www.arangodb.com/">ArangoDB</a> (multimodal)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="12nosql-vectoriales">Vectoriales<a class="headerlink" href="#12nosql-vectoriales" title="Permanent link">&para;</a></h4>
+<p>Las bases de datos vectoriales son una categoría que ha emergido con fuerza desde 2022 a raíz del auge de los LLMs y los modelos de <em>embeddings</em>. Almacenan vectores de alta dimensionalidad (típicamente 384, 768 o 1536 dimensiones) y permiten realizar búsquedas por <ins>similitud semántica</ins> mediante algoritmos de vecinos más próximos aproximados (<em>ANN, Approximate Nearest Neighbours</em>).</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Elementos</td>
+<td>Vector (lista de <em>floats</em>), metadatos asociados, índice (HNSW, IVF…)</td>
+</tr>
+<tr>
+<td>Operaciones típicas</td>
+<td><code>upsert(id, vector, metadata)</code>, <code>query(vector, top_k=5)</code></td>
+</tr>
+<tr>
+<td>Casos de uso</td>
+<td>Búsqueda semántica, RAG (<em>Retrieval Augmented Generation</em>) en aplicaciones con LLMs, recomendadores basados en <em>embeddings</em>, búsqueda de imágenes/audio similares</td>
+</tr>
+<tr>
+<td>Productos representativos</td>
+<td><a href="https://www.pinecone.io/">Pinecone</a>, <a href="https://weaviate.io/">Weaviate</a>, <a href="https://www.trychroma.com/">Chroma</a>, <a href="https://qdrant.tech/">Qdrant</a>, <a href="https://milvus.io/">Milvus</a>, o la extensión <a href="https://github.com/pgvector/pgvector">pgvector</a> para <em>PostgreSQL</em></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Bases de datos multimodales</p>
+<p>Cada vez más sistemas combinan varios modelos en un solo producto. <em>MongoDB Atlas</em> incluye <em>Atlas Vector Search</em>, <em>Redis</em> tiene un módulo vectorial, <em>PostgreSQL</em> con <em>pgvector</em> mezcla relacional y vectorial. La frontera entre tipos NoSQL es más difusa que hace 5 años.</p>
+</div>
 <h3 id="12nosql-caracteristicas">Características<a class="headerlink" href="#12nosql-caracteristicas" title="Permanent link">&para;</a></h3>
 <p>Las bases de datos no relacionales (<em>NoSQL</em>) presentan características que las diferencian de las bases de datos relacionales. Sus principales características son:</p>
 <ol>
@@ -22492,7 +22687,7 @@ con datos estructurados, semi-estructurados y sin estructurar. Casi todas las im
 <p><em>Modelos de datos</em> diversos: Pueden organizarse en diferentes tipos de almacenamiento, que resuelven varios problemas que no se plantearon al definir el modelo relacional, como los modelos clave-valor (<em>Redis</em>), documental (<em>MongoDB</em>), columnar (<em>Cassandra</em>) o basada en grafos (<em>Neo4j</em>).</p>
 </li>
 <li>
-<p><em>Alta disponibilidad</em> y tolerancia a fallos: Utilizan replicación y distribución de datos en múltiples nodos para garantizar que el sistema continúe funcionando ante fallos de hardware o red. Algunos sistemas NoSQL implementan modelos de replicación maestro-esclavo o replicación distribuida para asegurar la continuidad del servicio.</p>
+<p><em>Alta disponibilidad</em> y tolerancia a fallos: Utilizan replicación y distribución de datos en múltiples nodos para garantizar que el sistema continúe funcionando ante fallos de hardware o red. Algunos sistemas NoSQL implementan modelos de replicación primario-secundario (también llamado <em>leader-follower</em>, terminología que ha sustituido al clásico <em>master-slave</em>) o replicación distribuida sin nodo principal para asegurar la continuidad del servicio.</p>
 </li>
 <li>
 <p>Optimización para <em>lectura/escritura masiva</em>: Estas bases de datos están diseñadas para gestionar grandes volúmenes de datos y transacciones de alta velocidad. Son ideales para aplicaciones con una carga intensa de escritura, como redes sociales, registros de sensores IoT o análisis de grandes volúmenes de datos en tiempo real.</p>
@@ -22505,6 +22700,7 @@ con datos estructurados, semi-estructurados y sin estructurar. Casi todas las im
 </li>
 </ol>
 <p>Estas características hacen que las bases de datos NoSQL sean ideales para aplicaciones modernas como redes sociales, IoT, análisis de datos y sistemas en tiempo real.</p>
+<p>Dicho esto, a diferencia de las bases de datos relacionales, donde SQL actúa como lenguaje común a casi todos los productos, en NoSQL no existe un lenguaje de consulta universal. Cada familia tiene su propia API o lenguaje: comandos en <em>Redis</em>, <em>aggregation pipeline</em> en <em>MongoDB</em>, CQL en <em>Cassandra</em>, <em>Cypher</em> o <em>Gremlin</em> en bases de grafos, SDKs específicos en bases vectoriales… La elección del tipo de base de datos condiciona profundamente cómo se diseñan las consultas y las estructuras de datos, lo que veremos en detalle en las siguientes unidades con <a href="#12redis"><em>Redis</em></a> y <a href="#13mongodb"><em>MongoDB</em></a>.</p>
 <h2 id="12nosql-referencias">Referencias<a class="headerlink" href="#12nosql-referencias" title="Permanent link">&para;</a></h2>
 <!--
 Tecnologías de Almacenamiento de Datos No Relacionales (2017)
@@ -22779,6 +22975,11 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p><a href="https://redis.io/es/">Redis</a> es una base de datos NoSQL <em>open source</em> en memoria, con un modelo de datos de clave-valor, que permite el cacheo de los datos y funcionar como un <em>broker</em> de mensajería. Soporta estructuras de datos como cadenas, <em>hash</em>, listas, conjuntos, conjuntos ordenados con consultas por rango, así como otras estructuras más específicas como mapas de bit, consultas <em>radius</em>, índices geospaciales, etc...</p>
 <p>El nombre <em>Redis</em> proviene de las iniciales de <strong><em>Remote Dictionary Server</em></strong> (servidor de diccionario remoto), un tipo de servidor apto como memoria rápida para datos, permitiendo su uso como una base de datos en memoria y como de clave-valor.</p>
 <p>También se ofrece como una opción de pago mediante <a href="https://redis.io/pricing/">Redis Lab</a>, ofreciéndola como una solución gestionada donde no tenemos que preocuparnos de la infraestructura.</p>
+<div class="admonition info">
+<p class="admonition-title">Redis y Valkey: el cambio de licencia de 2024</p>
+<p>En marzo de 2024, <em>Redis Labs</em> cambió la licencia de <em>Redis</em> desde <em>BSD</em> a las licencias propietarias <em>SSPL</em> y <em>RSALv2</em>. Como respuesta, la <em>Linux Foundation</em> anunció <a href="https://valkey.io/">Valkey</a>, un <em>fork open source</em> de <em>Redis</em> respaldado por AWS, Google Cloud, Oracle y Ericsson, entre otros. <em>Valkey</em> mantiene compatibilidad de comandos con <em>Redis</em> y es la opción que están adoptando las distribuciones de Linux y los servicios <em>cloud</em> (por ejemplo, AWS <em>ElastiCache</em> ofrece soporte de <em>Valkey</em> desde finales de 2024).</p>
+<p>En estos apuntes seguiremos hablando de <em>Redis</em> por familiaridad, pero todos los comandos que veremos funcionan exactamente igual en <em>Valkey</em>.</p>
+</div>
 <h2 id="12redis-caracteristicas">Características<a class="headerlink" href="#12redis-caracteristicas" title="Permanent link">&para;</a></h2>
 <p><em>Redis</em> almacena los datos como pares clave-valor, donde:</p>
 <ul>
