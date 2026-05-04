@@ -22979,7 +22979,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
     <figcaption>Logo de Redis</figcaption>
 </figure>
 
-<p><a href="https://redis.io/es/">Redis</a> es una base de datos NoSQL <em>open source</em> en memoria, con un modelo de datos de clave-valor, que permite el cacheo de los datos y funcionar como un <em>broker</em> de mensajería. Soporta estructuras de datos como cadenas, <em>hash</em>, listas, conjuntos, conjuntos ordenados con consultas por rango, así como otras estructuras más específicas como mapas de bit, consultas <em>radius</em>, índices geospaciales, etc...</p>
+<p><a href="https://redis.io/es/">Redis</a> es una base de datos NoSQL <em>open source</em> en memoria, con un modelo de datos de clave-valor, que permite el cacheo de los datos y funcionar como un <em>broker</em> de mensajería. Soporta estructuras de datos como cadenas, <em>hash</em>, listas, conjuntos, conjuntos ordenados, consultas por rango, así como otras estructuras más específicas como mapas de bit, consultas <em>radius</em>, índices geoespaciales, etc...</p>
 <p>El nombre <em>Redis</em> proviene de las iniciales de <strong><em>Remote Dictionary Server</em></strong> (servidor de diccionario remoto), un tipo de servidor apto como memoria rápida para datos, permitiendo su uso como una base de datos en memoria y como de clave-valor.</p>
 <p>También se ofrece como una opción de pago mediante <a href="https://redis.io/pricing/">Redis Lab</a>, ofreciéndola como una solución gestionada donde no tenemos que preocuparnos de la infraestructura.</p>
 <div class="admonition info">
@@ -22992,7 +22992,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p><em>Redis</em> almacena los datos como pares clave-valor, donde:</p>
 <ul>
 <li>Cada <strong>clave</strong> (<em>key</em>) es un identificador único (similar a una clave primaria en SQL)</li>
-<li>Cada <strong>valor</strong> (<em>value</em>) puede ser de diferente tipos (número, cadena, lista, <em>hash</em>, etc...)</li>
+<li>Cada <strong>valor</strong> (<em>value</em>) puede ser de diferentes tipos (número, cadena, lista, <em>hash</em>, etc...)</li>
 </ul>
 <p>Este modelo es fundamentalmente diferente del modelo relacional:</p>
 <table>
@@ -23029,7 +23029,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>Cuando decimos que <em>Redis</em> es una base de datos en memoria, estamos indicando que el servidor almacena todos los datos en la memoria principal (RAM), ya que es la manera más rápida para almacenar y recuperar datos.  Esto permite que <em>Redis</em> funcione como memoria caché y también como unidad de memoria principal, con independencia de si los datos permanecen en la base de datos por mucho o poco tiempo. Así pues, en un servidor <em>Redis</em> con su uso principal, los datos no se guardan en el disco duro, sino en la memoria principal.</p>
 <p>Gracias a ser un almacén clave-valor, ofrece un alto rendimiento y puede escalarse fácilmente. Para cada entrada se crea una clave mediante la que se puede volver a solicitar la información en cuestión. Esto implica que las entradas no necesitan estar relacionadas entre sí ni tampoco consultarse con varias tablas diferentes, sino que la información está disponible de manera directa.</p>
 <p>¿Y si falla el servidor o se va la luz? ¿Corremos el riesgo de perder todos los datos? Para evitar que eso ocurra, <em>Redis</em> puede, o bien hacer regularmente un duplicado de todos los datos en un disco duro secundario (persistencia RDB - <em>Redis Database</em>), o bien guardar en un archivo de registro todas las órdenes necesarias para llevar a cabo una reconstrucción (persistencia AOF - <em>Append Only File</em>).</p>
-<p>Finalmente, respecto a la escalabilidad, como solución NoSQL, si toda la información no cabe es un único nodo, el sistema puede escalar horizontalmente añadiendo más nodos. Si cada nodo puede almacenar 64GB RAM, y tenemos 4 servidores, podríamos almacenar hasta 256GB de datos en nuestro servidor <em>Redis</em>.</p>
+<p>Finalmente, respecto a la escalabilidad, como solución NoSQL, si toda la información no cabe en un único nodo, el sistema puede escalar horizontalmente añadiendo más nodos. Si cada nodo puede almacenar 64GB RAM, y tenemos 4 servidores, podríamos almacenar hasta 256GB de datos en nuestro servidor <em>Redis</em>.</p>
 <div class="admonition info">
 <p class="admonition-title">Hablemos de tamaños</p>
 <p>Un millón de cadenas almacenadas en <em>Redis</em> ocupan aproximadamente 85MB de almacenamiento.<br />
@@ -23044,7 +23044,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>redis-cli
 <span class="linenos" data-linenos="2 "></span><span class="c1"># 127.0.0.1:6379&gt;</span>
 </code></pre></div>
-<p>Si queremos conectarnos a una instancia remota, y con un usuario determinado (parámetro <code>-u</code>), realizaremos una conexión similar a la siguiente, donde al conectarnos siempre se nos indicará a que <em>host</em> estamos conectados:</p>
+<p>Si queremos conectarnos a una instancia remota, y con un usuario determinado (parámetro <code>-u</code>), realizaremos una conexión similar a la siguiente, donde al conectarnos siempre se nos indicará a qué <em>host</em> estamos conectados:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>redis-cli<span class="w"> </span>-u<span class="w"> </span>redis://usuario:password@redis-16677.c339.eu-west-3-1.ec2.redns.redis-cloud.com:16677
 <span class="linenos" data-linenos="2 "></span>redis-16677.c339.eu-west-3-1.ec2.redns.redis-cloud.com:16677&gt;
 </code></pre></div>
@@ -23054,7 +23054,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </code></pre></div>
 <p>Si no hubiéramos podido conectarnos, habríamos recibido un mensaje de error. Mediante <code>help</code> aparecerá, además de la versión instalada, una lista de opciones de ayuda, así como la posibilidad de obtener más información de un comando concreto:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="m">127</span>.0.0.1:6379&gt;<span class="w"> </span><span class="nb">help</span>
-<span class="linenos" data-linenos="2 "></span><span class="c1"># redis-cli 7.2.5</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># redis-cli 8.6.2</span>
 <span class="linenos" data-linenos="3 "></span><span class="c1"># To get help about Redis commands type:</span>
 <span class="linenos" data-linenos="4 "></span><span class="c1">#       &quot;help @&lt;group&gt;&quot; to get a list of commands in &lt;group&gt;</span>
 <span class="linenos" data-linenos="5 "></span><span class="c1">#       &quot;help &lt;command&gt;&quot; for help on &lt;command&gt;</span>
@@ -23091,7 +23091,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <div class="admonition tip">
 <p class="admonition-title">SCAN &amp; MATCH</p>
 <p>Aunque <a href="https://redis.io/docs/latest/commands/keys/"><code>KEYS</code></a> permita recuperar todas las claves, el problema es que bloquea el servidor mientras las recorre. Esto puede provocar problemas serios en entornos de producción, ya que mientras <em>Redis</em> ejecuta el comando <code>KEYS</code>, el servidor queda bloqueado para atender otras operaciones. En bases de datos con millones de claves, esto puede significar interrupciones de servicio inaceptables.</p>
-<p>Para evitar esto, se recomienda utilizan <a href="https://redis.io/docs/latest/commands/scan/"><code>SCAN cursor [MATCH patrón] [COUNT cantidad] [TYPE tipo]</code></a>, el cual ofrece una alternativa eficiente, ya que funciona de manera incremental, devolviendo las claves en lotes. Veamos un ejemplo (a lo largo de la sesión iremos creando nuevas claves que ahora aparecen en el ejemplo):</p>
+<p>Para evitar esto, se recomienda utilizar <a href="https://redis.io/docs/latest/commands/scan/"><code>SCAN cursor [MATCH patrón] [COUNT cantidad] [TYPE tipo]</code></a>, el cual ofrece una alternativa eficiente, ya que funciona de manera incremental, devolviendo las claves en lotes. Veamos un ejemplo (a lo largo de la sesión iremos creando nuevas claves que ahora aparecen en el ejemplo):</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">SCAN</span> <span class="mi">0</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># 1) &quot;7&quot;            # El cursor para la siguiente iteración</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1"># 2)  1) &quot;visitas&quot;</span>
@@ -23260,7 +23260,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">EXPIREAT</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span> <span class="mi">1742751722</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="n">PEXPIRE</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span> <span class="mi">30000</span>
 </code></pre></div>
-<p>Si queremos saber cuanto tiempo le queda a una clave, usaremos el comando <a href="https://redis.io/docs/latest/commands/ttl/"><code>TTL clave</code></a>:</p>
+<p>Si queremos saber cuánto tiempo le queda a una clave, usaremos el comando <a href="https://redis.io/docs/latest/commands/ttl/"><code>TTL clave</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">TTL</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span>          <span class="c1"># Comprobamos el tiempo restante</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># (integer) 3283</span>
 <span class="linenos" data-linenos="3 "></span><span class="n">TTL</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
@@ -23285,7 +23285,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <li>Control de <em>rate-limiting</em>: implementar restricciones de uso por usuario con expiración automática.</li>
 </ul>
 <h3 id="12redis-transacciones">Transacciones<a class="headerlink" href="#12redis-transacciones" title="Permanent link">&para;</a></h3>
-<p>De la misma forma que hemos visto en <em>MariaDB</em>, necesitamos de alguna manera poder agrupar dos o más operaciones como si fuera una operación atómica. Para ello, usaremos el comando <a href="https://redis.io/docs/latest/commands/multi/"><code>MULTI</code></a> para inicial el bloque de instrucciones, y <a href="https://redis.io/docs/latest/commands/exec/"><code>EXEC</code></a> para confirmar la transacción. En el caso de querer hacer un <em>rollback</em>, usaremos el comando <a href="https://redis.io/docs/latest/commands/discard/"><code>DISCARD</code></a>:</p>
+<p>De la misma forma que hemos visto en <em>MariaDB</em>, necesitamos de alguna manera poder agrupar dos o más operaciones como si fuera una operación atómica. Para ello, usaremos el comando <a href="https://redis.io/docs/latest/commands/multi/"><code>MULTI</code></a> para iniciar el bloque de instrucciones, y <a href="https://redis.io/docs/latest/commands/exec/"><code>EXEC</code></a> para confirmar la transacción. En el caso de querer hacer un <em>rollback</em>, usaremos el comando <a href="https://redis.io/docs/latest/commands/discard/"><code>DISCARD</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">6379</span><span class="o">&gt;</span> <span class="n">MULTI</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="n">OK</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">6379</span><span class="p">(</span><span class="n">TX</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">SET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">dwes</span> <span class="n">aitor</span><span class="o">-</span><span class="n">medrano</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">dwes2122</span>
@@ -23305,7 +23305,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <ul>
 <li>
 <p><strong>Estructura</strong></p>
-<p>Un mapa o <a href="https://redis.io/docs/latest/develop/data-types/hashes/"><em>Hash</em></a> en <em>Redis</em> es una colección de parejas campo-valor, similar a un documento JSON. Paran evitar confusiones, el concepto clave lo utilizaremos para los elementos de <em>Redis</em>, mientras que campo para las "claves" de los <em>hashes</em>. Además, cabe destacar que sus valores siempre serán cadenas, es decir, no puede anidar otros mapas o conjuntos.</p>
+<p>Un mapa o <a href="https://redis.io/docs/latest/develop/data-types/hashes/"><em>Hash</em></a> en <em>Redis</em> es una colección de parejas campo-valor, similar a un documento JSON. Para evitar confusiones, el concepto clave lo utilizaremos para los elementos de <em>Redis</em>, mientras que campo para las "claves" de los <em>hashes</em>. Además, cabe destacar que sus valores siempre serán cadenas, es decir, no puede anidar otros mapas o conjuntos.</p>
 <p><figure style="align: center;">
     <img src="images/12redis-hash.jpg" alt="Hashes en Redis" width="400px">
     <figcaption>Hashes en Redis</figcaption>
@@ -23331,7 +23331,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">HGET</span> <span class="n">usuario</span><span class="p">:</span><span class="n">aitor</span> <span class="n">nombre</span>
 </span><span class="linenos" data-linenos="10 "></span><span class="c1"># &quot;Aitor Medrano&quot;</span>
 </code></pre></div>
-<p>Otros comandos más específicos son <a href="https://redis.io/docs/latest/commands/hdel/"><code>HDEL</code></a> para elimina campos, <a href="https://redis.io/docs/latest/commands/hincrby/"><code>HINCRBY</code></a> para incrementar un campo cierta cantidad, <a href="https://redis.io/docs/latest/commands/hlen/"><code>HLEN</code></a> para obtener la cantidad de campos, <a href="https://redis.io/docs/latest/commands/hgetall/"><code>HGETALL</code></a> para recuperar todas las claves y valores y <a href="https://redis.io/docs/latest/commands/hsetnx/"><code>HSETNX</code></a> para asignar una valor sólo si la clave no existe (ya que si existe, mediante <code>HSET</code> siempre la sustituye).</p>
+<p>Otros comandos más específicos son <a href="https://redis.io/docs/latest/commands/hdel/"><code>HDEL</code></a> para elimina campos, <a href="https://redis.io/docs/latest/commands/hincrby/"><code>HINCRBY</code></a> para incrementar un campo cierta cantidad, <a href="https://redis.io/docs/latest/commands/hlen/"><code>HLEN</code></a> para obtener la cantidad de campos, <a href="https://redis.io/docs/latest/commands/hgetall/"><code>HGETALL</code></a> para recuperar todas las claves y valores y <a href="https://redis.io/docs/latest/commands/hsetnx/"><code>HSETNX</code></a> para asignar un valor sólo si la clave no existe (ya que si existe, mediante <code>HSET</code> siempre la sustituye).</p>
 </li>
 </ul>
 </div>
@@ -23341,7 +23341,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <li>
 <p><strong>Estructura</strong></p>
 <p>Las <a href="https://redis.io/docs/latest/develop/data-types/lists/">listas</a> en <em>Redis</em> son como un array de cadenas, teniendo en cuenta que los elementos se ordenan por orden de inserción. Es decir, son una estructura que respeta el orden de los elementos. Pueden funcionar como colas FIFO (<em>first in, first out</em>) o como pilas LIFO (<em>last in, first out</em>). Desde un punto de vista terminológico, las inserciones son <em>push</em> y las extracciones son <em>pop</em>.</p>
-<p>Se implementan mediante listas enlazadas, lo que provoca que las operaciones en la cabeza y en la cola tengan con complejidad constante, independientemente del tamaño de la lista. En cambio, acceder a un elemento determinado, supone recorrer la lista elemento por elemento. En este caso, es mejor utilizar <a href="#12redis-conjunto-ordenado">conjuntos ordenados</a>.</p>
+<p>Se implementan mediante listas enlazadas, lo que provoca que las operaciones en la cabeza y en la cola tengan complejidad constante, independientemente del tamaño de la lista. En cambio, acceder a un elemento determinado, supone recorrer la lista elemento por elemento. En este caso, es mejor utilizar <a href="#12redis-conjunto-ordenado">conjuntos ordenados</a>.</p>
 <p>En <em>Redis</em>, la cabeza (<em>head</em>) es el extremo izquierdo y la cola (<em>tail</em>) el derecho.</p>
 <p><figure style="align: center;">
     <img src="images/12redis-list.jpg" alt="Listas en Redis" width="400px">
@@ -23366,7 +23366,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
     <img src="images/12redis-lpush-rpop.png" alt="Operaciones con listas en Redis" width="600px">
     <figcaption>Operaciones con listas en Redis</figcaption>
 </figure></p>
-<p>Si queremos recuperar un elemento concreto usaremos <a href="https://redis.io/docs/latest/commands/lindex/"><code>LINDEX</code></a>. En cambio, si nos interesa un subconjunto de elementos, utilizaremos <a href="https://redis.io/docs/latest/commands/lrange/"><code>LRANGE</code></a>, mientras que para averiguar la longitud de la lista emplearemos <a href="https://redis.io/docs/latest/commands/rpush/"><code>LLEN</code></a>.</p>
+<p>Si queremos recuperar un elemento concreto usaremos <a href="https://redis.io/docs/latest/commands/lindex/"><code>LINDEX</code></a>. En cambio, si nos interesa un subconjunto de elementos, utilizaremos <a href="https://redis.io/docs/latest/commands/lrange/"><code>LRANGE</code></a>, mientras que para averiguar la longitud de la lista emplearemos <a href="https://redis.io/docs/latest/commands/llen/"><code>LLEN</code></a>.</p>
 <p>Supongamos que queremos asignarles a nuestros usuarios una lista de URL favoritas. Para ello, podríamos hacer:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">LPUSH</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="n">aitor</span><span class="o">-</span><span class="n">iabd</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 3</span>
@@ -23399,7 +23399,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <p>Si en cambio queremos que funcione como una pila LIFO, tras insertarlos con <code>LPUSH</code>, utilizaremos <code>LPOP</code> para sacarlos. Estas operaciones tienen un coste computacional constante (lo que significa que el tamaño de la lista no impacta en el rendimiento).</p>
 <p>Si queremos sacar, con un único comando, valores de la cola para insertarla en la cabeza de otra, antiguamente podíamos hacerlo mediante el comando <code>RPOPLPUSH</code> (<em>right pop, left push</em>):</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">RPOPLPUSH</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="n">pedro</span><span class="p">:</span><span class="n">visitados</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="s2">&quot;aitor-iabd&quot;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># &quot;aitor-iabd&quot;</span>
 </code></pre></div>
 <p>Con esta operación el problema es doble. Por un lado, el comando se ha marcado como obsoleto, y por el otro, solo permite sacar por la derecha e insertar por la izquierda. Por suerte, desde la versión 6.2, podemos emplear el comando <a href="https://redis.io/docs/latest/commands/lmove/"><code>LMOVE origen destino &lt;LEFT | RIGHT&gt; &lt;LEFT | RIGHT&gt;</code></a>, el cual es más flexible al permitir sacar el elemento tanto de la izquierda como de la derecha y a su vez, volver a insertarlo a la izquierda o la derecha del destino. Así pues, podemos conseguir el mismo resultado mediante:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">LMOVE</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="n">pedro</span><span class="p">:</span><span class="n">visitados</span> <span class="n">RIGHT</span> <span class="n">LEFT</span>
@@ -23436,7 +23436,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">SMEMBERS</span> <span class="n">noticias</span>   <span class="c1"># Devuelve todos los elementos</span>
 </span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># 1) &quot;elpais.com&quot;</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1"># 2) &quot;eldiario.es&quot;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1"># 3) &quot;xataka.com    </span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># 3) &quot;xataka.com&quot; </span>
 <span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">SISMEMBER</span> <span class="n">noticias</span> <span class="s2">&quot;xataka.com&quot;</span>  <span class="c1"># Comprueba si &quot;xataka.com&quot; está en el conjunto</span>
 </span><span class="linenos" data-linenos="10 "></span><span class="c1"># (integer) 1</span>
 <span class="hll"><span class="linenos" data-linenos="11 "></span><span class="n">SISMEMBER</span> <span class="n">noticias</span> <span class="s2">&quot;eurogamer.es&quot;</span>
@@ -23454,7 +23454,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">SADD</span> <span class="n">tech</span> <span class="n">xataka</span><span class="o">.</span><span class="n">com</span> <span class="n">eurogamer</span><span class="o">.</span><span class="n">es</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 3</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">SINTER</span> <span class="n">noticias</span> <span class="n">tech</span>    <span class="c1"># Enlaces que aparecen en los dos conjuntos</span>
-</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># 1) &quot;xataka.com    </span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># 1) &quot;xataka.com&quot;</span>
 <span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">SDIFF</span> <span class="n">noticias</span> <span class="n">tech</span>     <span class="c1"># Noticias que no son de tecnología</span>
 </span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># 1) &quot;elpais.com&quot;</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1"># 2) &quot;eldiario.es&quot;</span>
@@ -23473,7 +23473,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="linenos" data-linenos="6 "></span><span class="c1"># 3) &quot;xataka.com&quot;</span>
 <span class="linenos" data-linenos="7 "></span><span class="c1"># 4) &quot;eurogamer.es&quot;</span>
 </code></pre></div>
-<p>Igual que usamos <code>LMOVE</code> para mover elementos entre listas, podemos emplear <a href="https://redis.io/docs/latest/commands/smove/"><code>SMOVE</code></a> para mover valores entre conjuntos. Otras operaciones que muy útiles son <a href="https://redis.io/docs/latest/commands/scard/"><code>SCARD clave</code></a> para averiguar su tamaño (cardinalidad), <a href="https://redis.io/docs/latest/commands/spop/"><code>SPOP</code></a> para sacar un elemento cualquiera (al no estar ordenados) o <a href="https://redis.io/docs/latest/commands/srem/"><code>SREM clave valor</code></a> si queremos eliminar un valor concreto.</p>
+<p>Igual que usamos <code>LMOVE</code> para mover elementos entre listas, podemos emplear <a href="https://redis.io/docs/latest/commands/smove/"><code>SMOVE</code></a> para mover valores entre conjuntos. Otras operaciones muy útiles son <a href="https://redis.io/docs/latest/commands/scard/"><code>SCARD clave</code></a> para averiguar su tamaño (cardinalidad), <a href="https://redis.io/docs/latest/commands/spop/"><code>SPOP</code></a> para sacar un elemento cualquiera (al no estar ordenados) o <a href="https://redis.io/docs/latest/commands/srem/"><code>SREM clave valor</code></a> si queremos eliminar un valor concreto.</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SCARD</span> <span class="n">sitiosweb</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># (integer) 4</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">SREM</span> <span class="n">sitiosweb</span> <span class="n">eldiario</span><span class="o">.</span><span class="n">es</span>
@@ -23505,7 +23505,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <ul>
 <li>
 <p><strong>Comandos</strong></p>
-<p>Para añadir elementos a un conjunto ordenado usaremos la operación <a href="https://redis.io/docs/latest/commands/zadd/"><code>ZADD clave puntuación valor</code></a>, <a href="https://redis.io/docs/latest/commands/zrem/"><code>ZREM</code></a> para eliminarlos, <a href="https://redis.io/docs/latest/commands/zscore/"><code>ZSCORE clave miembro</code></a> para recuperar la puntuación de un valor, mientra que mediante <a href="https://redis.io/docs/latest/commands/zrange/"><code>ZRANGE clave inicio fin</code></a> podemos recuperar las claves entre un rango inclusivo (si queremos que no entren inicio o fin en el rango, les pondremos un paréntesis delante) por posición o puntuación (<code>BYSCORE</code>), pudiendo recuperarlo en orden inverso (<code>REV</code>) y/o con su puntuación <code>WITHSCORES</code>:</p>
+<p>Para añadir elementos a un conjunto ordenado usaremos la operación <a href="https://redis.io/docs/latest/commands/zadd/"><code>ZADD clave puntuación valor</code></a>, <a href="https://redis.io/docs/latest/commands/zrem/"><code>ZREM</code></a> para eliminarlos, <a href="https://redis.io/docs/latest/commands/zscore/"><code>ZSCORE clave miembro</code></a> para recuperar la puntuación de un valor, mientras que mediante <a href="https://redis.io/docs/latest/commands/zrange/"><code>ZRANGE clave inicio fin</code></a> podemos recuperar las claves entre un rango inclusivo (si queremos que no entren inicio o fin en el rango, les pondremos un paréntesis delante) por posición o puntuación (<code>BYSCORE</code>), pudiendo recuperarlo en orden inverso (<code>REV</code>) y/o con su puntuación <code>WITHSCORES</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">ZADD</span> <span class="n">visitas</span> <span class="mi">1000</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="mi">5000</span> <span class="n">aitor</span><span class="o">-</span><span class="n">iabd</span> <span class="mi">66</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 3</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">ZSCORE</span> <span class="n">visitas</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
@@ -23529,7 +23529,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="linenos" data-linenos="21 "></span><span class="c1"># 4) &quot;66&quot;</span>
 </code></pre></div>
 <p>Han caído en desuso las operaciones <code>ZREVRANGE</code>, <code>ZRANGEBYSCORE</code>, <code>ZREVRANGEBYSCORE</code>, etc... ya que con <a href="https://redis.io/docs/latest/commands/zrange/"><code>ZRANGE</code></a> y los parámetros adecuados podemos obtener los mismos resultados.</p>
-<p>Si lo que queremos es averiguar cuantos valores tienen una puntuación entre un rango determinado, usaremos <a href="https://redis.io/docs/latest/commands/zincrby/"><code>ZCOUNT clave inicio fin</code></a>:</p>
+<p>Si lo que queremos es averiguar cuántos valores tienen una puntuación entre un rango determinado, usaremos <a href="https://redis.io/docs/latest/commands/zcount/"><code>ZCOUNT clave inicio fin</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">ZCOUNT</span> <span class="n">visitas</span> <span class="mi">50</span> <span class="mi">1500</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># (integer) 2</span>
 </code></pre></div>
@@ -23578,7 +23578,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <p>Si queremos modificar un documento, además de <code>JSON.SET</code> para campos sencillos, podemos emplear <a href="https://redis.io/docs/latest/commands/json.toggle/"><code>JSON.TOGGLE</code></a> para cambiar el estado de un campo <em>booleano</em>, <a href="https://redis.io/docs/latest/commands/json.numincrby/"><code>JSON.NUMINCRBY</code></a> para incrementar un campo numérico, y <a href="https://redis.io/docs/latest/commands/json.arrappend/"><code>JSON.ARRAPPEND</code></a> y <a href="https://redis.io/docs/latest/commands/json.arrinsert/"><code>JSON.ARRINSERT</code></a> para trabajar con <em>arrays</em> para añadir, respectivamente, elementos al final o en una posición determinada:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.altura&#39;</span> <span class="mi">183</span>   <span class="c1"># Modificamos un campo</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># OK</span>
-<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">NUMINCRBY</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.altura&#39;</span> <span class="mi">10</span>   <span class="c1"># Modificamos un campo</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">NUMINCRBY</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.altura&#39;</span> <span class="mi">10</span>   <span class="c1"># Incrementamos un campo</span>
 </span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># &quot;[193]&quot;</span>
 <span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.ciudad&#39;</span> <span class="s1">&#39;&quot;Elche&quot;&#39;</span>   <span class="c1"># Agregamos un nuevo campo</span>
 </span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># OK</span>
@@ -23604,7 +23604,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) &quot;[\&quot;Aitor Medrano\&quot;]&quot;</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="c1"># 2) &quot;[\&quot;Andreu Medrano\&quot;]&quot;</span>
 </span></code></pre></div>
-<p>Finalmente, para eliminar elementos disponemos de <a href="https://redis.io/docs/latest/commands/json.del/"><code>JSON.DEL</code></a> y para vaciarlos <a href="https://redis.io/docs/latest/commands/json.clear/"><code>JSON.CLEAR</code></a> (vacía los arrays y los objetos y pone a cero los valores enteros). En el caso de arrays, podemos emplear <a href="https://redis.io/docs/latest/commands/json.arrpop/"><code>JSON.ARRPOP</code></a> para sacar un elemento de una posición o <a href="https://redis.io/docs/latest/commands/json.arrtrim/"><code>JSON.ARRTRIM</code></a> para recortar el <em>array</em> a una subconjunto de los elementos:</p>
+<p>Finalmente, para eliminar elementos disponemos de <a href="https://redis.io/docs/latest/commands/json.del/"><code>JSON.DEL</code></a> y para vaciarlos <a href="https://redis.io/docs/latest/commands/json.clear/"><code>JSON.CLEAR</code></a> (vacía los arrays y los objetos y pone a cero los valores enteros). En el caso de arrays, podemos emplear <a href="https://redis.io/docs/latest/commands/json.arrpop/"><code>JSON.ARRPOP</code></a> para sacar un elemento de una posición o <a href="https://redis.io/docs/latest/commands/json.arrtrim/"><code>JSON.ARRTRIM</code></a> para recortar el <em>array</em> a un subconjunto de los elementos:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">DEL</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.ciudad&#39;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 1</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">CLEAR</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.altura&#39;</span>         <span class="c1"># Ponemos la altura a 0</span>
@@ -23711,7 +23711,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </div>
 <p>Para nuestras primeras consultas, usaremos los selectores básicos:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$.usuarios[0]&#39;</span>   <span class="c1"># Recuperamos el primer usuario</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="c1"># s&quot;[{\&quot;id\&quot;:1,\&quot;nombre\&quot;:\&quot;Aitor Medrano\&quot;,\&quot;edad\&quot;:21,\&quot;contacto\&quot;:{\&quot;email\&quot;:\&quot;a.medrano@edu.gva.es\&quot;,\&quot;telefonos\&quot;:[\&quot;636 123456\&quot;,\&quot;686 567890\&quot;]},\&quot;hobbies\&quot;:[\&quot;programaci\xc3\xb3n\&quot;,\&quot;m\xc3\xbasica\&quot;,\&quot;viajes\&quot;],\&quot;direcciones\&quot;:[{\&quot;tipo\&quot;:\&quot;casa\&quot;,\&quot;ciudad\&quot;:\&quot;Elche\&quot;},{\&quot;tipo\&quot;:\&quot;trabajo\&quot;,\&quot;ciudad\&quot;:\&quot;Elche\&quot;}]}]&quot;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># &quot;[{\&quot;id\&quot;:1,\&quot;nombre\&quot;:\&quot;Aitor Medrano\&quot;,\&quot;edad\&quot;:21,\&quot;contacto\&quot;:{\&quot;email\&quot;:\&quot;a.medrano@edu.gva.es\&quot;,\&quot;telefonos\&quot;:[\&quot;636 123456\&quot;,\&quot;686 567890\&quot;]},\&quot;hobbies\&quot;:[\&quot;programaci\xc3\xb3n\&quot;,\&quot;m\xc3\xbasica\&quot;,\&quot;viajes\&quot;],\&quot;direcciones\&quot;:[{\&quot;tipo\&quot;:\&quot;casa\&quot;,\&quot;ciudad\&quot;:\&quot;Elche\&quot;},{\&quot;tipo\&quot;:\&quot;trabajo\&quot;,\&quot;ciudad\&quot;:\&quot;Elche\&quot;}]}]&quot;</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$.usuarios[*].nombre&#39;</span> <span class="c1"># Obtenemos el nombre de todos los usuarios</span>
 </span><span class="linenos" data-linenos="4 "></span><span class="c1"># &quot;[\&quot;Aitor Medrano\&quot;,\&quot;Juani Moya\&quot;]&quot;</span>
 <span class="linenos" data-linenos="5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$.usuarios[*].contacto.telefonos[0]&#39;</span> <span class="c1"># Primer teléfono de cada usuario</span>
@@ -23727,13 +23727,13 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <p>Por ejemplo, podemos filtrar los datos haciendo uso de expresiones de filtrado mediante <code>?()</code> para restringir los documentos. </p>
 <p>Las rutas dentro de la condición de filtro utilizan la notación de punto con <code>@</code> para indicar el elemento actual del array o el valor actual del objeto, o <code>$</code> para indicar el elemento de nivel superior. Es importante destacar que Redis no soporta el operador <code>?()</code> para filtrar arrays directamente en la consulta.</p>
 <p>Por ejemplo:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Nombre de los usuarios mayores de 20 años</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Nombre de los usuarios menores de 20 años</span>
 <span class="linenos" data-linenos="2 "></span>JSON.GET<span class="w"> </span>usuarios<span class="w"> </span><span class="s1">&#39;$.usuarios[?(@.edad &lt; 20)].nombre&#39;</span><span class="w">      </span>
 <span class="linenos" data-linenos="3 "></span><span class="c1"># &quot;[\&quot;Juani Moya\&quot;]&quot;</span>
 <span class="linenos" data-linenos="4 "></span>
 <span class="linenos" data-linenos="5 "></span><span class="c1"># Nombre del usuario cuyo email es a.medrano@edu.gva.es</span>
 <span class="linenos" data-linenos="6 "></span>JSON.GET<span class="w"> </span>usuarios<span class="w"> </span><span class="s1">&#39;$.usuarios[?(@.contacto.email == &quot;a.medrano@edu.gva.es&quot;)].nombre&#39;</span>
-<span class="linenos" data-linenos="7 "></span><span class="s2">&quot;[\&quot;Aitor Medrano\&quot;]&quot;</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># &quot;[\&quot;Aitor Medrano\&quot;]&quot;</span>
 </code></pre></div>
 <p>También podemos emplear <code>..</code> para realizar búsquedas recursivas:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$..nombre&#39;</span>   <span class="c1"># Encontrar todos los elementos llamados &quot;nombre&quot;</span>
@@ -23741,7 +23741,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$..ciudad&#39;</span>   <span class="c1"># Encontrar todas las ciudades</span>
 <span class="linenos" data-linenos="4 "></span><span class="c1"># &quot;[\&quot;Elche\&quot;,\&quot;Elche\&quot;,\&quot;Murcia\&quot;,\&quot;Elche\&quot;]&quot;</span>
 </code></pre></div>
-<p>Una vez visto estas operaciones, cabe destacar que:</p>
+<p>Una vez vistas estas operaciones, cabe destacar que:</p>
 <ol>
 <li><em>Redis</em> tiene soporte limitado para JSONPath complejo, por lo que si necesitamos hacer consultas avanzadas, bien necesitaremos hacerlas mediante un lenguaje de programación para realizar el procesamiento adicional u optar por una solución documental como MongoDB.</li>
 <li>La eficiencia depende del tamaño y complejidad del documento</li>
@@ -23799,9 +23799,9 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </code></pre></div>
 <p>En otro terminal, ahora creamos un publicador que publica un mensaje en el canal de deportes, y luego en el canal de noticias:</p>
 <div class="highlight"><span class="filename">publicador</span><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">PUBLISH</span> <span class="n">deportes</span> <span class="s2">&quot;Nikola Jokic logra el triple-doble con mayor anotación de la historia&quot;</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="p">(</span><span class="n">integer</span><span class="p">)</span> <span class="mi">0</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># (integer) 0</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">PUBLISH</span> <span class="n">noticias</span> <span class="s2">&quot;Inteligencia Artificial y Data: la nueva familia de FP que se abre paso&quot;</span>
-</span><span class="linenos" data-linenos="4 "></span><span class="p">(</span><span class="n">integer</span><span class="p">)</span> <span class="mi">1</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="c1"># (integer) 1</span>
 </code></pre></div>
 <p>Justo en el momento de publicar en el canal <code>noticias</code>, el suscriptor recibe el mensaje.</p>
 <div class="highlight"><span class="filename">suscriptor</span><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SUBSCRIBE</span> <span class="n">noticias</span>
@@ -23815,7 +23815,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Uso de patrones</p>
-<p>Si nos queremos suscribir a más de un canal, podemos emplear <a href="https://redis.io/docs/latest/commands/psubscribe/">PSUSCRIBE</a> que nos permite utilizar patrones en los nombres de los canales, tanto <code>?</code> para sustituir un carácter, <code>*</code> para uno o más elementos o emplear <code>[]</code> para indicar el conjunto de caracteres.</p>
+<p>Si nos queremos suscribir a más de un canal, podemos emplear <a href="https://redis.io/docs/latest/commands/psubscribe/">PSUBSCRIBE</a> que nos permite utilizar patrones en los nombres de los canales, tanto <code>?</code> para sustituir un carácter, <code>*</code> para uno o más elementos o emplear <code>[]</code> para indicar el conjunto de caracteres.</p>
 <p>Por ejemplo, si queremos suscribirnos a canales que acaben en <code>s</code>, haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">PSUBSCRIBE</span> <span class="o">*</span><span class="n">s</span>
 </span></code></pre></div>
@@ -23837,7 +23837,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </div>
 <h2 id="12redis-persistencia">Persistencia<a class="headerlink" href="#12redis-persistencia" title="Permanent link">&para;</a></h2>
 <p>Por defecto, la gestión de la <a href="https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/">persistencia</a> en <em>Redis</em> implica que los datos no se almacenan instantáneamente en disco, sino que se realiza de forma periódica o a petición del cliente. </p>
-<p>Si queremos, de forma explicita, provocar que se persistan los datos en disco, usaremos el comando <a href="https://redis.io/docs/latest/commands/save/"><code>SAVE</code></a>:</p>
+<p>Si queremos, de forma explícita, provocar que se persistan los datos en disco, usaremos el comando <a href="https://redis.io/docs/latest/commands/save/"><code>SAVE</code></a>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>SAVE
 <span class="linenos" data-linenos="2 "></span><span class="c1"># OK</span>
 </code></pre></div>
@@ -23904,7 +23904,7 @@ Arquitectura: Redis Deep Dive- Core Architectures (p 68 / 275)
 <li>Recupera los valores de la última película.</li>
 <li>Recupera todas las <em>hashes</em> existentes.</li>
 <li>Elimina el año de la última película.</li>
-<li>Averigua cuantos campos tiene la última película.</li>
+<li>Averigua cuántos campos tiene la última película.</li>
 <li>Elimina la última película.</li>
 <li>Vuelve a recuperar todas las <em>hashes</em> existentes para comprobar que ya no existe.</li>
 </ol>
@@ -23922,7 +23922,7 @@ Arquitectura: Redis Deep Dive- Core Architectures (p 68 / 275)
 <li>Crea una lista que permita almacenar las series que marca un usuario como <code>ac1210:watchlist</code>, y añade 3 títulos de series a la lista por la izquierda.</li>
 <li>Añade 2 series a la lista por la derecha.</li>
 <li>Recupera el tamaño de la lista.</li>
-<li>Recupera todos las series.</li>
+<li>Recupera todas las series.</li>
 <li>Recupera la primera y la última.</li>
 <li>Saca el último elemento insertado por la derecha.</li>
 <li>Comprueba si la lista tiene un elemento menos.</li>
@@ -23956,7 +23956,7 @@ Arquitectura: Redis Deep Dive- Core Architectures (p 68 / 275)
 <li>Añade al conjunto los valores <code>MariaDB</code>, <code>PostgreSQL</code> y <code>Oracle</code>.</li>
 <li>Comprueba si el conjunto <code>ac1212:sql</code> contiene <code>Redis</code>.</li>
 <li>Crea el conjunto <code>ac1212:bd</code> con la union de los dos conjuntos.</li>
-<li>Recupera cuantos elementos tiene el nuevo conjunto.</li>
+<li>Recupera cuántos elementos tiene el nuevo conjunto.</li>
 <li>Recupera los elementos del nuevo conjunto.</li>
 <li>Elimina del nuevo conjunto el valor <code>Neo4j</code>.</li>
 <li>Comprueba si hay algún elemento compartido entre los dos conjuntos iniciales.</li>
@@ -24037,7 +24037,7 @@ Arquitectura: Redis Deep Dive- Core Architectures (p 68 / 275)
 <li>En el tercer terminal, publica un mensaje en el canal <code>canal.importante</code>.</li>
 <li>Comprueba si el mensaje aparece en los diferentes canales.</li>
 <li>En un cuarto terminal, suscríbete a todos los canales usando el patrón <code>canal.*</code>. ¿Ha recibido algún mensaje al suscribirse?</li>
-<li>En el tercer terminal, averigua cuantos suscritores tiene cada canal.</li>
+<li>En el tercer terminal, averigua cuántos suscritores tiene cada canal.</li>
 </ol>
 </li>
 </ul>
@@ -24055,7 +24055,7 @@ Arquitectura: Redis Deep Dive- Core Architectures (p 68 / 275)
 <li>Histórico de visualizaciones. Cada vez que el usuario reproduce una película, se inserta en <code>pr1218:user:usuario1:historico</code> por la izquierda. Haciendo uso de una lista, inserta tres reproducciones, recupera la última y limita la lista a las 10 más recientes.</li>
 <li>Películas favoritas. Mediante un conjunto, añade dos películas favoritas a <code>pr1218:user:usuario1:favs</code> y otras dos diferentes (con una en común) a <code>pr1218:user:usuario2:favs</code>. Calcula qué películas tienen en común ambos usuarios y guarda el resultado en <code>pr1218:recomendaciones</code>.</li>
 <li>Ranking de las más vistas. Mediante un conjunto ordenado, crea <code>pr1218:ranking</code> y, mediante <code>ZINCRBY</code>, simula una visualización para cada película. Recupera el <em>top</em> 3 con sus puntuaciones.</li>
-<li>Simula un contador atómico mediante una transacción <code>MULTI</code>/<code>EXEC</code>. Para ello, registra una nueva visualización: incrementa el ranking de <code>peli:1</code>, añádela al histórico de <code>usuario2</code> e incrementa el contador global <code>pr1218:visualizaciones:total</code>.</li>
+<li>Simula un contador atómico mediante una transacción <code>MULTI</code>/<code>EXEC</code>. Para ello, registra una nueva visualización: incrementa el ranking de <code>pr1218:peli:1</code>, añádela al histórico de <code>pr1218:user:usuario2:historico</code> e incrementa el contador global <code>pr1218:visualizaciones:total</code>.</li>
 <li>Notificaciones. En un terminal aparte, suscríbete al canal <code>pr1218:novedades</code> y, desde el terminal principal, publica un mensaje anunciando una nueva película. Verifica la recepción.</li>
 <li>Para terminar, y a modo de reflexión final, en un párrafo de 5-10 líneas, justifica los tipos de datos elegidos y qué problema habría supuesto usar uno distinto en cada apartado.</li>
 </ol>
@@ -26997,7 +26997,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p><em>MariaDB</em> es un SGBD relacional basado en <em>MySQL</em>, ampliamente utilizado en el desarrollo de aplicaciones web y multiplataforma.</p>
 <p><em>MariaDB</em> dispone de un interfaz basada en páginas web llamada <em>PhpMyAdmin</em>, que a través de un servidor web, por ejemplo <em>Apache</em>, permite administrar las bases de datos de un servidor desde cualquier equipo de la red.</p>
 <p>Este <em>software</em> dispone de opciones para realizar prácticamente cualquier operación que se pueda realizar vía SQL. Permite gestionar las bases de datos de un servidor, crear, borrar y modificar tablas, lanzar comandos SQL, exportar e importar información, recopilar estadísticas, hacer copias de seguridad, etc. Además dispone de un pequeño diseñador que permite gestionar las relaciones de las tablas.</p>
-<p>Para lanzar tanto <em>MariaDB</em> com <em>PhpMyAdmin</em> mediante <em>Docker</em>, el primer paso es crear la definición de los dos contenedores en un archivo <em>Docker Compose</em>, el cual hemos llamado <a href="resources/docker-compose-mariadb.yml"><code>docker-compose-mariadb.yml</code></a>), donde además de la definición de ambos contenedores, configuraremos el usuario para acceder al SBGD, así como el volumen para los datos:</p>
+<p>Para lanzar tanto <em>MariaDB</em> com <em>PhpMyAdmin</em> mediante <em>Docker</em>, el primer paso es crear la definición de los dos contenedores en un archivo <em>Docker Compose</em>, el cual hemos llamado <a href="resources/docker-compose-mariadb.yml"><code>docker-compose-mariadb.yml</code></a>, donde además de la definición de ambos contenedores, configuraremos el usuario para acceder al SBGD, así como el volumen para los datos:</p>
 <div class="highlight"><span class="filename">docker-compose-mariadb.yml</span><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">services</span><span class="p">:</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">mariadb</span><span class="p">:</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mariadb:latest</span>
@@ -27040,7 +27040,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </code></pre></div>
 <div class="admonition abstract">
 <p class="admonition-title">Copiando archivos en el contenedor</p>
-<p>Si queremos introducir un archivo dentro del contenedor, por ejemplo, para importar sus datos, previamente lo hemos de copiar dentro (un buen destino es <code>/tmp</code>, ya que existe en todos los contenendores):</p>
+<p>Si queremos introducir un archivo dentro del contenedor, por ejemplo, para importar sus datos, previamente lo hemos de copiar dentro (un buen destino es <code>/tmp</code>, ya que existe en todos los contenedores):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>cp<span class="w"> </span>datos.sql<span class="w"> </span>mdb:/tmp
 </code></pre></div>
 </div>
@@ -27282,13 +27282,13 @@ docker run --name postgres `
 <span class="linenos" data-linenos="3 "></span># To get help about Redis commands type: ...
 </code></pre></div>
 <h3 id="00entorno-redisinsight">RedisInsight<a class="headerlink" href="#00entorno-redisinsight" title="Permanent link">&para;</a></h3>
-<p>Si accedemos a <a href="http://localhost:5540/">http://localhost:5540/</a> accederemos a la página de inicio de <em>RedisInsight</em>, donde tras aceptar la licencia, deberemos añadir nuestra base de datos de <em>Redis</em>. Como ambos contenedores están en la misma red de <em>Docker Compose</em>, en el campo <em>Host</em> indicaremos <code>redis</code> (el nombre del servicio) y en el puerto <code>6379</code>, es decir, la url <code>redis://default@redis:6379</code>:</p>
+<p>Si accedemos a <a href="http://localhost:5540/">http://localhost:5540/</a> accederemos a la página de inicio de <em>RedisInsight</em>, donde tras aceptar la licencia, deberemos añadir nuestra base de datos de <em>Redis</em>. Como ambos contenedores están en la misma red de <em>Docker Compose</em>, en el campo <em>Host</em> indicaremos <code>redis</code> (el nombre del servicio) y en el puerto <code>6379</code>. Es decir, la URL completa de conexión es <code>redis://default@redis:6379</code>:</p>
 <figure style="align: center;">
     <img src="images/00redis-add-database.png" width="800px">
     <figcaption>Añadiendo una base de datos en Redis</figcaption>
 </figure>
 
-<p>Tras añadir la conexión, <em>RedisInsight</em> nos permite explorar las claves, ejecutar comandos en su <em>Workbench</em> integrado y visualizar los datos en forma de árbol cuando utilizamos prefijos con <code>:</code> como separador (lo veremos en la unidad de <em>Redis</em>).</p>
+<p>Tras añadir la base de datos, <em>RedisInsight</em> nos permite explorar las claves, ejecutar comandos en su <em>Workbench</em> integrado y visualizar los datos en forma de árbol cuando utilizamos prefijos con <code>:</code> como separador (lo veremos en la unidad de <em>Redis</em>).</p>
 <figure style="align: center;">
     <img src="images/00redis-insight.png" width="1024px">
     <figcaption>Redis Insight</figcaption>
@@ -27301,7 +27301,7 @@ docker run --name postgres `
     <figcaption>Redis Cloud</figcaption>
 </figure>
 
-<p>Una vez creada, obtendremos su información de acceso, con su <em>endpoint</em> público, al cual podemos conectarnos con el cliente Redis CLI o mediante el interfaz gráfico <em>Redis Insight</em> (en su caso, deberíamos también instalarlo como cliente en nuestro dispositivo).</p>
+<p>Una vez creada, obtendremos su información de acceso, con su <em>endpoint</em> público, al cual podemos conectarnos con el cliente Redis CLI o mediante el interfaz gráfico <em>RedisInsight</em> (en su caso, deberíamos también instalarlo como cliente en nuestro dispositivo).</p>
 <figure style="align: center;">
     <img src="images/00redis-cloud-s8a.png" width="1024px">
     <figcaption>Conexión a Redis Cloud</figcaption>

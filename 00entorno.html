@@ -1604,7 +1604,7 @@
 <p><em>MariaDB</em> es un SGBD relacional basado en <em>MySQL</em>, ampliamente utilizado en el desarrollo de aplicaciones web y multiplataforma.</p>
 <p><em>MariaDB</em> dispone de un interfaz basada en páginas web llamada <em>PhpMyAdmin</em>, que a través de un servidor web, por ejemplo <em>Apache</em>, permite administrar las bases de datos de un servidor desde cualquier equipo de la red.</p>
 <p>Este <em>software</em> dispone de opciones para realizar prácticamente cualquier operación que se pueda realizar vía SQL. Permite gestionar las bases de datos de un servidor, crear, borrar y modificar tablas, lanzar comandos SQL, exportar e importar información, recopilar estadísticas, hacer copias de seguridad, etc. Además dispone de un pequeño diseñador que permite gestionar las relaciones de las tablas.</p>
-<p>Para lanzar tanto <em>MariaDB</em> com <em>PhpMyAdmin</em> mediante <em>Docker</em>, el primer paso es crear la definición de los dos contenedores en un archivo <em>Docker Compose</em>, el cual hemos llamado <a href="resources/docker-compose-mariadb.yml"><code>docker-compose-mariadb.yml</code></a>), donde además de la definición de ambos contenedores, configuraremos el usuario para acceder al SBGD, así como el volumen para los datos:</p>
+<p>Para lanzar tanto <em>MariaDB</em> com <em>PhpMyAdmin</em> mediante <em>Docker</em>, el primer paso es crear la definición de los dos contenedores en un archivo <em>Docker Compose</em>, el cual hemos llamado <a href="resources/docker-compose-mariadb.yml"><code>docker-compose-mariadb.yml</code></a>, donde además de la definición de ambos contenedores, configuraremos el usuario para acceder al SBGD, así como el volumen para los datos:</p>
 <div class="highlight"><span class="filename">docker-compose-mariadb.yml</span><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">services</span><span class="p">:</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">mariadb</span><span class="p">:</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mariadb:latest</span>
@@ -1647,7 +1647,7 @@
 </code></pre></div>
 <div class="admonition abstract">
 <p class="admonition-title">Copiando archivos en el contenedor</p>
-<p>Si queremos introducir un archivo dentro del contenedor, por ejemplo, para importar sus datos, previamente lo hemos de copiar dentro (un buen destino es <code>/tmp</code>, ya que existe en todos los contenendores):</p>
+<p>Si queremos introducir un archivo dentro del contenedor, por ejemplo, para importar sus datos, previamente lo hemos de copiar dentro (un buen destino es <code>/tmp</code>, ya que existe en todos los contenedores):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>cp<span class="w"> </span>datos.sql<span class="w"> </span>mdb:/tmp
 </code></pre></div>
 </div>
@@ -1889,13 +1889,13 @@ docker run --name postgres `
 <span class="linenos" data-linenos="3 "></span># To get help about Redis commands type: ...
 </code></pre></div>
 <h3 id="redisinsight">RedisInsight<a class="headerlink" href="#redisinsight" title="Permanent link">&para;</a></h3>
-<p>Si accedemos a <a href="http://localhost:5540/">http://localhost:5540/</a> accederemos a la página de inicio de <em>RedisInsight</em>, donde tras aceptar la licencia, deberemos añadir nuestra base de datos de <em>Redis</em>. Como ambos contenedores están en la misma red de <em>Docker Compose</em>, en el campo <em>Host</em> indicaremos <code>redis</code> (el nombre del servicio) y en el puerto <code>6379</code>, es decir, la url <code>redis://default@redis:6379</code>:</p>
+<p>Si accedemos a <a href="http://localhost:5540/">http://localhost:5540/</a> accederemos a la página de inicio de <em>RedisInsight</em>, donde tras aceptar la licencia, deberemos añadir nuestra base de datos de <em>Redis</em>. Como ambos contenedores están en la misma red de <em>Docker Compose</em>, en el campo <em>Host</em> indicaremos <code>redis</code> (el nombre del servicio) y en el puerto <code>6379</code>. Es decir, la URL completa de conexión es <code>redis://default@redis:6379</code>:</p>
 <figure style="align: center;">
     <img src="images/00redis-add-database.png" width="800px">
     <figcaption>Añadiendo una base de datos en Redis</figcaption>
 </figure>
 
-<p>Tras añadir la conexión, <em>RedisInsight</em> nos permite explorar las claves, ejecutar comandos en su <em>Workbench</em> integrado y visualizar los datos en forma de árbol cuando utilizamos prefijos con <code>:</code> como separador (lo veremos en la unidad de <em>Redis</em>).</p>
+<p>Tras añadir la base de datos, <em>RedisInsight</em> nos permite explorar las claves, ejecutar comandos en su <em>Workbench</em> integrado y visualizar los datos en forma de árbol cuando utilizamos prefijos con <code>:</code> como separador (lo veremos en la unidad de <em>Redis</em>).</p>
 <figure style="align: center;">
     <img src="images/00redis-insight.png" width="1024px">
     <figcaption>Redis Insight</figcaption>
@@ -1908,7 +1908,7 @@ docker run --name postgres `
     <figcaption>Redis Cloud</figcaption>
 </figure>
 
-<p>Una vez creada, obtendremos su información de acceso, con su <em>endpoint</em> público, al cual podemos conectarnos con el cliente Redis CLI o mediante el interfaz gráfico <em>Redis Insight</em> (en su caso, deberíamos también instalarlo como cliente en nuestro dispositivo).</p>
+<p>Una vez creada, obtendremos su información de acceso, con su <em>endpoint</em> público, al cual podemos conectarnos con el cliente Redis CLI o mediante el interfaz gráfico <em>RedisInsight</em> (en su caso, deberíamos también instalarlo como cliente en nuestro dispositivo).</p>
 <figure style="align: center;">
     <img src="images/00redis-cloud-s8a.png" width="1024px">
     <figcaption>Conexión a Redis Cloud</figcaption>
