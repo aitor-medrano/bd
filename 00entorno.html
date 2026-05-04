@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -1033,6 +1033,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#cliente-redis-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cliente redis-cli
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redisinsight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RedisInsight
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#redis-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1401,6 +1423,28 @@
   
     <nav class="md-nav" aria-label="Redis">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cliente-redis-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cliente redis-cli
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redisinsight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RedisInsight
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#redis-cloud" class="md-nav__link">
@@ -1800,30 +1844,73 @@ docker run --name postgres `
 </figure>
 
 <h2 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link">&para;</a></h2>
-<p><em>Redis</em> es una solución NoSQL basada en un modelo de datos de clave-valor en memoria que se utiliza como base de datos de respuesta rápida o caché de aplicaciones.</p>
+<p><em>Redis</em> es una solución NoSQL basada en un modelo de datos de clave-valor en memoria que se utiliza como base de datos de respuesta rápida o caché de aplicaciones. A partir de la versión 8 (mayo de 2025), incluye en el <em>core</em> funcionalidades que antes se distribuían como módulos separados (<em>JSON</em>, <em>búsqueda</em>, <em>series temporales</em>, estructuras probabilísticas y <em>vector sets</em>), por lo que ya no es necesario instalar la antigua imagen <code>redis/redis-stack</code> para acceder a ellas.</p>
 <p>Aunque podemos instalar <em>Redis</em> en cualquier sistema operativo, en nuestro caso, vamos a centrarnos en hacerlo mediante un contenedor <em>Docker</em>.</p>
-<p>La primera posibilidad es instalar la imagen <code>redis/redis-stack-server</code> mediante el comando:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>redis-stack-server<span class="w"> </span>-p<span class="w"> </span><span class="m">6379</span>:6379<span class="w"> </span>redis/redis-stack-server:latest
+<div class="admonition warning">
+<p class="admonition-title">Adiós a redis-stack</p>
+<p>Si has visto en otros tutoriales las imágenes <code>redis/redis-stack</code> o <code>redis/redis-stack-server</code>, ten en cuenta que están <strong>deprecadas</strong> desde la salida de <em>Redis 8</em>: el mantenimiento de las versiones 6.2, 7.2 y 7.4 finaliza en diciembre de 2025. Para nuevas instalaciones, la imagen oficial recomendada es <code>redis:8</code> (o simplemente <code>redis:latest</code>).</p>
+<p>Otra diferencia importante: en <code>redis-stack</code>, <em>RedisInsight</em> venía empaquetado en el puerto <code>8001</code>. Desde <em>Redis 8</em>, <em>RedisInsight</em> es un contenedor independiente (<code>redis/redisinsight</code>) que se sirve por defecto en el puerto <code>5540</code>.</p>
+</div>
+<p>De forma similar a como hicimos con <em>MariaDB</em> y <em>PostgreSQL</em>, vamos a definir los contenedores en un archivo <em>Docker Compose</em>, al que llamaremos <a href="https://aitor-medrano.github.io/bd/resources/docker-compose-redis.yml"><code>docker-compose-redis.yml</code></a>, con dos servicios: el servidor de <em>Redis</em> y la interfaz gráfica <a href="https://redis.io/insight/"><em>RedisInsight</em></a>:</p>
+<div class="highlight"><span class="filename">docker-compose-redis.yml</span><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="nt">services</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nt">redis</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis:8</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379:6379</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis_data:/data</span>
+<span class="linenos" data-linenos=" 9 "></span>
+<span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="nt">redisinsight</span><span class="p">:</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis/redisinsight:latest</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redisinsight</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5540:5540</span>
+<span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="16 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redisinsight_data:/data</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span>
+<span class="linenos" data-linenos="19 "></span>
+<span class="linenos" data-linenos="20 "></span><span class="nt">volumes</span><span class="p">:</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">  </span><span class="nt">redis_data</span><span class="p">:</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">  </span><span class="nt">redisinsight_data</span><span class="p">:</span>
 </code></pre></div>
-<p>Si en cambio, queremos utilizar el <em>stack</em> de <em>Redis</em> que también incluye la herramienta gráfica <a href="https://redis.io/insight/"><em>Redis Insight</em></a> en el puerto <code>8001</code> para administrar el sistema, usaremos la imagen <code>redis/redis-stack</code> mediante el comando:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>redis-stack<span class="w"> </span>-p<span class="w"> </span><span class="m">6379</span>:6379<span class="w"> </span>-p<span class="w"> </span><span class="m">8001</span>:8001<span class="w"> </span>redis/redis-stack:latest
+<p>Para lanzar los contenedores ejecutaremos el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>compose<span class="w"> </span>-p<span class="w"> </span>redis-s8a<span class="w"> </span>-f<span class="w"> </span>docker-compose-redis.yml<span class="w"> </span>up<span class="w"> </span>-d
 </code></pre></div>
-<p>Si accedemos a <a href="http://localhost:8001/">http://localhost:8001/</a> accederemos a la página de inicio:</p>
+<h3 id="cliente-redis-cli">Cliente <code>redis-cli</code><a class="headerlink" href="#cliente-redis-cli" title="Permanent link">&para;</a></h3>
+<p>Para conectarnos al cliente interactivo <code>redis-cli</code>, primero accedemos al contenedor y, dentro, lanzamos el cliente:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker exec -it redis redis-cli
+<span class="linenos" data-linenos="2 "></span># 127.0.0.1:6379&gt;
+</code></pre></div>
+<p>Una vez dentro del cliente, podemos comprobar la versión de <em>Redis</em> con la que estamos trabajando ejecutando <code>INFO server</code> o, de forma más concisa, con el comando <code>help</code>, que en su primera línea muestra la versión instalada:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>127.0.0.1:6379&gt; help
+<span class="linenos" data-linenos="2 "></span># redis-cli 8.6.2
+<span class="linenos" data-linenos="3 "></span># To get help about Redis commands type: ...
+</code></pre></div>
+<h3 id="redisinsight">RedisInsight<a class="headerlink" href="#redisinsight" title="Permanent link">&para;</a></h3>
+<p>Si accedemos a <a href="http://localhost:5540/">http://localhost:5540/</a> accederemos a la página de inicio de <em>RedisInsight</em>, donde tras aceptar la licencia, deberemos añadir nuestra base de datos de <em>Redis</em>. Como ambos contenedores están en la misma red de <em>Docker Compose</em>, en el campo <em>Host</em> indicaremos <code>redis</code> (el nombre del servicio) y en el puerto <code>6379</code>, es decir, la url <code>redis://default@redis:6379</code>:</p>
 <figure style="align: center;">
-    <img src="images/12redis-insight.png" width="1024px">
+    <img src="images/00redis-add-database.png" width="800px">
+    <figcaption>Añadiendo una base de datos en Redis</figcaption>
+</figure>
+
+<p>Tras añadir la conexión, <em>RedisInsight</em> nos permite explorar las claves, ejecutar comandos en su <em>Workbench</em> integrado y visualizar los datos en forma de árbol cuando utilizamos prefijos con <code>:</code> como separador (lo veremos en la unidad de <em>Redis</em>).</p>
+<figure style="align: center;">
+    <img src="images/00redis-insight.png" width="1024px">
     <figcaption>Redis Insight</figcaption>
 </figure>
 
 <h3 id="redis-cloud">Redis cloud<a class="headerlink" href="#redis-cloud" title="Permanent link">&para;</a></h3>
 <p>Si no queremos instalar <em>Redis</em> en nuestro ordenador, podemos emplear <em>Redis cloud</em>, el cual ofrece de manera gratuita una instancia con 30MB de datos. Para ello, en la propia página de <em>Redis</em>, tras registrarnos, podremos crear una instancia.</p>
 <figure style="align: center;">
-    <img src="images/12redis-cloud.png" width="1024px">
+    <img src="images/00redis-cloud.png" width="1024px">
     <figcaption>Redis Cloud</figcaption>
 </figure>
 
 <p>Una vez creada, obtendremos su información de acceso, con su <em>endpoint</em> público, al cual podemos conectarnos con el cliente Redis CLI o mediante el interfaz gráfico <em>Redis Insight</em> (en su caso, deberíamos también instalarlo como cliente en nuestro dispositivo).</p>
 <figure style="align: center;">
-    <img src="images/12redis-cloud-s8a.png" width="1024px">
+    <img src="images/00redis-cloud-s8a.png" width="1024px">
     <figcaption>Conexión a Redis Cloud</figcaption>
 </figure>
 
