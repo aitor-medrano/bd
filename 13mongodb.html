@@ -2620,12 +2620,12 @@
     <figcaption>Logo de MongoDB</figcaption>
 </figure>
 
-<p><a href="http://www.mongodb.com"><em>MongoDB</em></a> es una de las bases de datos NoSQL más conocidas y empleadas. Sigue un modelo de datos documental, donde los documentos se basan en el formato JSON.</p>
+<p><a href="https://www.mongodb.com"><em>MongoDB</em></a> es una de las bases de datos NoSQL más conocidas y empleadas. Sigue un modelo de datos documental, donde los documentos se basan en el formato JSON.</p>
 <p><em>MongoDB</em> destaca porque:</p>
 <ul>
 <li>Soporta esquemas dinámicos: diferentes documentos de una misma colección pueden tener atributos diferentes.</li>
 <li>Aunque inicialmente tenía un soporte limitado de <em>joins</em>, desde la versión 5.2 se pueden realizar incluso entre colecciones particionadas.</li>
-<li>Soporte de transacciones sólo a nivel de aplicación. Lo que en un SGBD relacional puede suponer múltiples operaciones, con <em>MongoDB</em> se puede hacer en una sola operación al insertar/actualizar todo un documento de una sola vez, pero si queremos crear una transacción entre dos documentos, la gestión la debe realizar el driver.</li>
+<li>Soporte de transacciones sólo a nivel de aplicación. Lo que en un <abbr title="Sistema gestor de base de datos">SGBD</abbr> relacional puede suponer múltiples operaciones, con <em>MongoDB</em> se puede hacer en una sola operación al insertar/actualizar todo un documento de una sola vez, pero si queremos crear una transacción entre dos documentos, la gestión la debe realizar el driver.</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">huMONGOus</p>
@@ -2633,9 +2633,9 @@
 </div>
 <p>Hay una serie de conceptos que conviene conocer antes de entrar en detalle:</p>
 <ul>
-<li><em>MongoDB</em> tienen el mismo concepto de <strong>base de datos</strong> que un SGBD relacional. Dentro de una instancia de <em>MongoDB</em> podemos tener 0 o más bases de datos, actuando cada una como un contenedor de alto nivel.</li>
+<li><em>MongoDB</em> tiene el mismo concepto de <strong>base de datos</strong> que un <abbr title="Sistema gestor de base de datos">SGBD</abbr> relacional. Dentro de una instancia de <em>MongoDB</em> podemos tener 0 o más bases de datos, actuando cada una como un contenedor de alto nivel.</li>
 <li>Una base de datos tendrá 0 o más colecciones. Una <strong>colección</strong> es muy similar a lo que entendemos como tabla dentro de una base de datos relacional. <em>MongoDB</em> ofrece diferentes tipos de colecciones, desde las normales cuyo tamaño crece conforme lo hace el número de documentos, como las colecciones <em>capped</em>, las cuales tienen un tamaño predefinido y que pueden contener una cierta cantidad de información que se sustituirá por nueva cuando se llene.</li>
-<li>Las colecciones contienen 0 o más <strong>documentos</strong>, por lo que es similar a una fila o registro de un tabla relacional.</li>
+<li>Las colecciones contienen 0 o más <strong>documentos</strong>, por lo que es similar a una fila o registro de una tabla relacional.</li>
 <li>Cada documento contiene 0 o más atributos, compuestos de <strong>parejas clave/valor</strong>. Cada uno de estos documentos no sigue ningún esquema, por lo que dos documentos de una misma colección pueden contener todos los atributos diferentes entre sí. Todo documento contiene un campo <code>_id</code> que hace la función de atributo identificador del documento.</li>
 </ul>
 <figure style="align: center;">
@@ -2644,9 +2644,9 @@
 </figure>
 
 <p>Así pues, tenemos que una base de datos va a contener varias colecciones, donde cada colección contendrá un conjunto de documentos.</p>
-<p>Además, <em>MongoDB</em> soporta <strong>índices</strong>, igual que cualquier RDMS, para acelerar la búsqueda de datos. Al realizar cualquier consulta, se devuelve un <strong>cursor</strong>, con el cual podemos realizar operaciones como contar, ordenar, limitar o saltar documentos.</p>
+<p>Además, <em>MongoDB</em> soporta <strong>índices</strong>, igual que cualquier <abbr title="Relational Database Management System">RDBMS</abbr>, para acelerar la búsqueda de datos. Al realizar cualquier consulta, se devuelve un <strong>cursor</strong>, con el cual podemos realizar operaciones como contar, ordenar, limitar o saltar documentos.</p>
 <h3 id="bson">BSON<a class="headerlink" href="#bson" title="Permanent link">&para;</a></h3>
-<p>Mediante <em>JavaScript</em> podemos crear objetos que se representan con JSON. Internamente, <em>MongoDB</em> almacena los documentos mediante BSON (<em>Binary JSON</em>). Podemos consultar la especificación en <a href="http://BSONSpec.org">http://BSONSpec.org</a></p>
+<p>Mediante <em>JavaScript</em> podemos crear objetos que se representan con JSON. Internamente, <em>MongoDB</em> almacena los documentos mediante BSON (<em>Binary JSON</em>). Podemos consultar la especificación en <a href="https://BSONSpec.org">https://BSONSpec.org</a></p>
 <figure style="align: center;">
     <img src="images/13bson.jpg" alt="Especificación BSON" width="500px">
     <figcaption>Especificación BSON</figcaption>
@@ -2656,9 +2656,9 @@
 <ul>
 <li>Permite almacenar datos en binario</li>
 <li>Incluye un conjunto de tipos de datos no incluidos en JSON, como pueden ser <code>ObjectId</code>, <code>Date</code> o <code>BinData</code>.</li>
-<li>Diseñado para ser más eficiente en espacio y realizar más búsquedas de forma más eficiente.</li>
+<li>Diseñado para ser más eficiente en espacio y realizar búsquedas de forma más rápida.</li>
 </ul>
-<p>Podemos consultar todos los tipos que soporta un objeto BSON en <a href="http://docs.mongodb.org/manual/reference/bson-types/">http://docs.mongodb.org/manual/reference/bson-types/</a></p>
+<p>Podemos consultar todos los tipos que soporta un objeto BSON en <a href="https://docs.mongodb.org/manual/reference/bson-types/">https://docs.mongodb.org/manual/reference/bson-types/</a></p>
 <p>Un ejemplo de un objeto BSON podría ser:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="err">var</span><span class="w"> </span><span class="err">yo</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">{</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="kc">n</span><span class="err">ombre</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Aitor&quot;</span><span class="p">,</span>
@@ -2691,7 +2691,7 @@
 <span class="linenos" data-linenos="2 "></span><span class="p">{</span><span class="nt">&quot;edad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">}</span>
 <span class="linenos" data-linenos="3 "></span><span class="p">{</span><span class="nt">&quot;Edad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">}</span>
 </code></pre></div>
-<p>Si queremos validar si un documento JSON es válido, podemos usar <a href="http://jsonlint.com/">http://jsonlint.com/</a>. Hemos de tener en cuenta que sólo valida JSON y no BSON, por tanto nos dará errores en los tipos de datos propios de BSON.</p>
+<p>Si queremos validar si un documento JSON es válido, podemos usar <a href="https://jsonlint.com/">https://jsonlint.com/</a>. Hemos de tener en cuenta que sólo valida JSON y no BSON, por tanto nos dará errores en los tipos de datos propios de BSON.</p>
 <h2 id="puesta-en-marcha">Puesta en marcha<a class="headerlink" href="#puesta-en-marcha" title="Permanent link">&para;</a></h2>
 <p>En la actualidad, <em>MongoDB</em> se comercializa mediante tres productos:</p>
 <ul>
@@ -2701,8 +2701,8 @@
 </ul>
 <p>En nuestro caso, por comodidad, trabajaremos con la versión <em>cloud</em> de <em>Mongo Atlas</em>. Los pasos necesarios para su creación, configuración y uso, así como la conexión mediante <em>MongoDBCompass</em> los puedes encontrar en la sección de <a href="00entorno.html#mongodb">Entorno</a></p>
 <h3 id="uso-del-shell">Uso del shell<a class="headerlink" href="#uso-del-shell" title="Permanent link">&para;</a></h3>
-<p>Una vez ya tenemos en marcha <em>MongoDB</em>, llega el momento de conectarnos. Aunque utilizaremos <em>MongoDBCompas</em>, durante esta unidad vamos a practicar los diferentes comandos haciendo uso del cliente <a href="https://www.mongodb.com/docs/mongodb-shell/"><code>mongosh</code></a> (en versiones anteriores el comando utilizado era <code>mongo</code>). Para ello, en la parte superior derecha, tenemos la opción de <code>&gt;_ Open MongoDB shell</code>.</p>
-<p>El <em>shell</em> de <em>MongoDB</em> utiliza <em>JavaScript</em> como lenguaje de interacción con la base de datos, y como buen <em>shell</em>, mediante la fecha hacia arriba visualizaremos el último comando. </p>
+<p>Una vez ya tenemos en marcha <em>MongoDB</em>, llega el momento de conectarnos. Aunque utilizaremos <em>MongoDB Compass</em>, durante esta unidad vamos a practicar los diferentes comandos haciendo uso del cliente <a href="https://www.mongodb.com/docs/mongodb-shell/"><code>mongosh</code></a> (en versiones anteriores el comando utilizado era <code>mongo</code>). Para ello, en la parte superior derecha, tenemos la opción de <code>&gt;_ Open MongoDB shell</code>.</p>
+<p>El <em>shell</em> de <em>MongoDB</em> utiliza <em>JavaScript</em> como lenguaje de interacción con la base de datos, y como buen <em>shell</em>, mediante la flecha hacia arriba visualizaremos el último comando. </p>
 <p>Si queremos ver las bases de datos que existen ejecutaremos el comando <code>show dbs</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Atlas<span class="w"> </span>atlas-pxc2m9-shard-0<span class="w"> </span><span class="o">[</span>primary<span class="o">]</span><span class="w"> </span>pruebas&gt;<span class="w"> </span>show<span class="w"> </span>dbs
 <span class="linenos" data-linenos=" 2 "></span>pruebas<span class="w">             </span><span class="m">216</span>.00<span class="w"> </span>KiB
@@ -2733,12 +2733,12 @@
 </code></pre></div>
 <div class="admonition caution inline end">
 <p class="admonition-title">Tipos de datos</p>
-<p>Cuidado con los tipos, ya que no es lo mismo insertar un atributo con <code>edad:45</code> (se considera el campo como entero) que con <code>edad:"45"</code>, ya que considera el campo como texto.</p>
+<p>Cuidado con los tipos, ya que no es lo mismo insertar un atributo con <code>edad:47</code> (se considera el campo como entero) que con <code>edad:"47"</code>, ya que considera el campo como texto.</p>
 </div>
 <p>Tras ejecutar el comando, veremos que nos devuelve un objeto JSON con su ACK y el identificador del documento insertado:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
-<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">acknowledged</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">insertedId</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s1">&#39;67fa9f27d152b48c68424418&#39;</span><span class="p">)</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="err">ack</span><span class="kc">n</span><span class="err">owledged</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="err">i</span><span class="kc">nserte</span><span class="err">dId</span><span class="p">:</span><span class="w"> </span><span class="err">Objec</span><span class="kc">t</span><span class="err">Id(&#39;</span><span class="mi">67</span><span class="kc">fa</span><span class="mi">9</span><span class="kc">f</span><span class="mi">27</span><span class="err">d</span><span class="mi">152</span><span class="err">b</span><span class="mi">48</span><span class="err">c</span><span class="mi">68424418</span><span class="err">&#39;)</span>
 <span class="linenos" data-linenos="4 "></span><span class="p">}</span>
 </code></pre></div>
 <p>Una vez insertado el documento, sólo nos queda realizar una consulta para recuperar los datos y comprobar que todo funciona correctamente mediante el método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.findOne/"><code>findOne</code></a>:</p>
@@ -2992,7 +2992,7 @@
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Consejo de Rendimiento</p>
-<p>Las consultas disyuntivas, es decir, con varios criterios u operador <code>$and</code>, deben filtrar el conjunto más pequeño cuanto más pronto posible.</p>
+<p>Las consultas conjuntivas, es decir, con varios criterios u operador <code>$and</code>, deben filtrar el conjunto más pequeño cuanto más pronto posible.</p>
 <p>Supongamos que vamos a consultar documentos que cumplen los criterios A, B y C. Digamos que el criterio A lo cumplen 40.000 documentos, el B lo hacen 9.000 y el C sólo 200. Si filtramos A, luego B, y finalmente C, el conjunto que trabaja cada criterio es muy grande.</p>
 <p><figure style="align: center;">
   <img src="images/13andABC.jpg" alt="MongoDB - Restringiendo consultas AND">
@@ -3003,6 +3003,7 @@
   <img src="images/13andCBA.jpg" alt="MongoDB - Restringiendo consultas AND de menor a mayor">
   <figcaption>Restringiendo consultas AND de menor a mayor</figcaption>
 </figure></p>
+<p>Esto es relevante en ausencia de índices o cuando ningún índice cubre la consulta. Con índices adecuados, el optimizador de <em>MongoDB</em> reorganiza los criterios automáticamente.</p>
 </div>
 <p><em>MongoDB</em> también ofrece operadores lógicos para los campos numéricos:</p>
 <table>
@@ -3043,11 +3044,11 @@
 <p>Podemos pensar que la consulta anterior donde filtramos las poblaciones que tienen entre 2000 y 3000 personas, también la podríamos expresar mediante:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">zips</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">pop</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$gt</span><span class="o">:</span><span class="mf">2000</span><span class="p">},</span><span class="w"> </span><span class="nx">pop</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$lte</span><span class="o">:</span><span class="mf">3000</span><span class="p">}})</span>
 </code></pre></div>
-<p>Pero no es así. Cuando repetimos el mismo campo, <em>MongoDB</em> unicamente evalúa el último, y por lo tanto, en esta consulta, recuperaría todos los documentos cuya población fuera menor o igual a 3000 habitantes (incluidos los menores de 2000), siendo equivalente a:</p>
+<p>Pero no es así. Cuando repetimos el mismo campo, <em>MongoDB</em> únicamente evalúa el último, y por lo tanto, en esta consulta, recuperaría todos los documentos cuya población fuera menor o igual a 3000 habitantes (incluidos los menores de 2000), siendo equivalente a:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">zips</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">pop</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$lte</span><span class="o">:</span><span class="mf">3000</span><span class="p">}})</span>
 </code></pre></div>
 </div>
-<p>Para los campos de texto, además de la comparación directa, podemos usar el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/query/ne/"><code>$ne</code></a> para obtener los documentos cuyo campos no tienen un determinado valor (<em>not equal</em>). Así pues, podemos usarlo para averiguar todos las poblaciones que no pertenecen al estado de <code>PA</code>:</p>
+<p>Para los campos de texto, además de la comparación directa, podemos usar el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/query/ne/"><code>$ne</code></a> para obtener los documentos cuyos campos no tienen un determinado valor (<em>not equal</em>). Así pues, podemos usarlo para averiguar todas las poblaciones que no pertenecen al estado de <code>PA</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">zips</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">state</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$ne</span><span class="o">:</span><span class="s2">&quot;PA&quot;</span><span class="p">}</span><span class="w"> </span><span class="p">})</span>
 </code></pre></div>
 <p>Por supuesto, podemos tener diferentes operadores en campos distintos. Por ejemplo, si queremos recuperar las poblaciones del estado de <code>AL</code> con menos de 100 habitantes haríamos:</p>
@@ -3104,7 +3105,7 @@
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Consejo de Rendimiento</p>
-<p>Las consultas conjuntivas, es decir, con varios criterios excluyentes u operador <code>$or</code>, deben filtrar el conjunto más grande cuanto más pronto posible.</p>
+<p>Las consultas disyuntivas, es decir, con varios criterios excluyentes u operador <code>$or</code>, deben filtrar el conjunto más grande cuanto más pronto posible.</p>
 <p>Supongamos que vamos a consultar los mismos documentos que cumplen los criterios A (40.000 documentos), B (9.000 documentos) y C (200 documentos).</p>
 <p>Si filtramos C, luego B, y finalmente A, el conjunto de documentos que tiene que comprobar <em>MongoDB</em> es muy grande.</p>
 <p><figure style="align: center;">
@@ -3116,8 +3117,9 @@
     <img src="images/13orABC.jpg" alt="MongoDB - Restringiendo consultas OR de mayor a menor">
     <figcaption>Restringiendo consultas OR de mayor a menor</figcaption>
 </figure></p>
+<p>Esto es relevante en ausencia de índices o cuando ningún índice cubre la consulta. Con índices adecuados, el optimizador de <em>MongoDB</em> reorganiza los criterios automáticamente</p>
 </div>
-<p>También podemos utilizar el operado <a href="https://www.mongodb.com/docs/manual/reference/operator/query/nor/"><code>$nor</code></a>, que no es más que la negación de <code>$or</code> y que obtendrá aquellos documentos que no cumplan ninguna de las condiciones.</p>
+<p>También podemos utilizar el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/query/nor/"><code>$nor</code></a>, que no es más que la negación de <code>$or</code> y que obtendrá aquellos documentos que no cumplan ninguna de las condiciones.</p>
 <div class="admonition question">
 <p class="admonition-title">Autoevaluación</p>
 <p>¿Qué obtendríamos al ejecutar la siguiente consulta?</p>
@@ -3136,7 +3138,7 @@
 <p class="admonition-title">Preparando los ejemplos</p>
 <p>Para los siguientes ejemplos, vamos a utilizar una colección de 10.000 documentos sobre los viajes realizados por los usuarios de una empresa de alquiler de bicicletas, los cuales han sido extraídos de <a href="https://ride.citibikenyc.com/system-data">https://ride.citibikenyc.com/system-data</a>.</p>
 <p>Esta colección (<code>trips</code>) está cargada en los datos de ejemplo del clúster de <em>MongoAtlas</em>, dentro de la base de datos <code>sample_training</code>.</p>
-<p>Un ejemplo de viaje sería el siguiente (puedes comprobar como para los campos que contiene espacios se indican entre comillas):</p>
+<p>Un ejemplo de viaje sería el siguiente (puedes comprobar como para los campos que contienen espacios se indican entre comillas):</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="nx">use</span><span class="w"> </span><span class="nx">sample_training</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">// switched to db sample_training</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">trips</span><span class="p">.</span><span class="nx">findOne</span><span class="p">()</span>
@@ -3165,7 +3167,7 @@
 </code></pre></div>
 </div>
 <h4 id="cursores">Cursores<a class="headerlink" href="#cursores" title="Permanent link">&para;</a></h4>
-<p>Al hacer una consulta en el <em>shell</em>, se devuelve un cursor. Este cursor lo podemos guardar en un variable, y partir de ahí trabajar con él como haríamos mediante cualquier lenguaje de programación. Si <code>cur</code> es la variable que referencia al cursor, podremos utilizar los siguientes métodos:</p>
+<p>Al hacer una consulta en el <em>shell</em>, se devuelve un cursor. Este cursor lo podemos guardar en una variable, y a partir de ahí trabajar con él como haríamos mediante cualquier lenguaje de programación. Si <code>cur</code> es la variable que referencia al cursor, podremos utilizar los siguientes métodos:</p>
 <table>
 <thead>
 <tr>
@@ -3192,7 +3194,7 @@
 </tr>
 <tr>
 <td><a href="https://www.mongodb.com/docs/manual/reference/method/cursor.sort/"><code>cur.sort({campo:1})</code></a></td>
-<td>Ordena los datos por campo: <code>1</code> ascendente o <code>-1</code> o descendente</td>
+<td>Ordena los datos por campo: <code>1</code> ascendente o <code>-1</code> descendente</td>
 <td>Servidor</td>
 </tr>
 <tr>
@@ -3241,7 +3243,7 @@
 </code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">Autoevaluación</p>
-<p>A partir de la colección <code>trips</code>, escribe una consulta que recupere los viajes realizados por subscriptores ordenados descendentemente por su duración y que obtenga los documentos de 15 al 20.</p>
+<p>A partir de la colección <code>trips</code>, escribe una consulta que recupere los viajes realizados por suscriptores ordenados descendentemente por su duración y que obtenga los documentos de 15 al 20.</p>
 </div>
 <h4 id="contando">Contando<a class="headerlink" href="#contando" title="Permanent link">&para;</a></h4>
 <p>Para contar el número de documentos, en vez de <code>find</code> usaremos el método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.countDocuments/"><code>countDocuments</code></a>. Por ejemplo:</p>
@@ -3257,10 +3259,8 @@
 </code></pre></div>
 </div>
 <p>Cuando tenemos muchísimos datos, si no necesitamos exactitud, pero queremos un valor estimado el cual tarde menos en conseguirse (utiliza los metadatos de las colecciones), podemos usar <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.estimatedDocumentCount"><code>estimatedDocumentCount</code></a></p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">trips</span><span class="p">.</span><span class="nx">estimatedDocumentCount</span><span class="p">({</span><span class="s2">&quot;birth year&quot;</span><span class="o">:</span><span class="mf">1977</span><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">trips</span><span class="p">.</span><span class="nx">estimatedDocumentCount</span><span class="p">()</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1">// 10.000</span>
-<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">trips</span><span class="p">.</span><span class="nx">estimatedDocumentCount</span><span class="p">({</span><span class="s2">&quot;birth year&quot;</span><span class="o">:</span><span class="mf">1977</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tripduration&quot;</span><span class="o">:</span><span class="p">{</span><span class="nx">$lt</span><span class="o">:</span><span class="mf">600</span><span class="p">}})</span>
-</span><span class="linenos" data-linenos="4 "></span><span class="c1">// 10.000 </span>
 </code></pre></div>
 <h5 id="conjunto-de-valores">Conjunto de valores<a class="headerlink" href="#conjunto-de-valores" title="Permanent link">&para;</a></h5>
 <p>Igual que en SQL, a partir de un colección, si queremos obtener todos los diferentes valores que existen en un campo, utilizaremos el método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.distinct/"><code>distinct</code></a>:</p>
@@ -3356,8 +3356,8 @@
 <span class="linenos" data-linenos="27 "></span><span class="c1">// ]</span>
 </code></pre></div>
 <h4 id="expresiones-regulares">Expresiones regulares<a class="headerlink" href="#expresiones-regulares" title="Permanent link">&para;</a></h4>
-<p>Finalmente, si queremos realizar consultas sobre partes de un campo de texto, hemos de emplear expresiones regulares. Para ello, tenemos el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/query/regex/"><code>$regexp</code></a> o, de manera más sencilla, indicando como valor la expresión regular a cumplir:</p>
-<p>Por ejemplo, para buscar la cantidad de viajes que salen da alguna estación cuyo nombre contenga <code>Tree</code> podemos hacer:</p>
+<p>Finalmente, si queremos realizar consultas sobre partes de un campo de texto, hemos de emplear expresiones regulares. Para ello, tenemos el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/query/regex/"><code>$regex</code></a> o, de manera más sencilla, indicando como valor la expresión regular a cumplir:</p>
+<p>Por ejemplo, para buscar la cantidad de viajes que salen de alguna estación cuyo nombre contenga <code>Tree</code> podemos hacer:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">zips</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="sr">/Tree/</span><span class="p">}).</span><span class="nx">count</span><span class="p">()</span>
 <span class="linenos" data-linenos="2 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">zips</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="sr">/tree/i</span><span class="p">}).</span><span class="nx">count</span><span class="p">()</span>
 <span class="linenos" data-linenos="3 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">zips</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">city</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$regex</span><span class="o">:</span><span class="sr">/tree/i</span><span class="p">}}).</span><span class="nx">count</span><span class="p">()</span>
@@ -3365,7 +3365,7 @@
 <div class="admonition tip">
 <p class="admonition-title">Búsquedas sobre textos</p>
 <p>Si vamos a realizar búsquedas intensivas sobre texto, desde <em>MongoDB</em> han creado un producto específico dentro del ecosistema de <em>Mongo Atlas</em> el cual ofrece un mejor rendimiento y mayor funcionalidad que el uso de expresiones regulares, conocido con <a href="https://www.mongodb.com/es/atlas/search">Mongo Atlas Search</a>.</p>
-<p>Si usamos una solución <em>on-premise</em>, mediante índices de texto y el operator <a href="https://www.mongodb.com/docs/manual/reference/operator/query/text/"><code>$text</code></a> podemos realizar búsquedas.</p>
+<p>Si usamos una solución <em>on-premise</em>, mediante índices de texto y el operador <a href="https://www.mongodb.com/docs/manual/reference/operator/query/text/"><code>$text</code></a> podemos realizar búsquedas.</p>
 </div>
 <h4 id="operador-expr">Operador $expr<a class="headerlink" href="#operador-expr" title="Permanent link">&para;</a></h4>
 <p>El operador <a href="https://www.mongodb.com/docs/manual/reference/operator/query/expr/"><code>$expr</code></a> es un operador de consulta expresiva que permite utilizar expresiones de agregación dentro de las consultas.</p>
@@ -3430,7 +3430,7 @@
 <p>Si queremos filtrar teniendo en cuenta el número de ocurrencias del array, podemos utilizar:</p>
 <ul>
 <li><a href="https://www.mongodb.com/docs/manual/reference/operator/query/all/"><code>$all</code></a> para filtrar ocurrencias que tienen todos los valores especificados, es decir, los valores pasados a la consulta serán un subconjunto del resultado. Puede que devuelva los mismos, o un array con más campos (el orden no importa)</li>
-<li><a href="https://www.mongodb.com/docs/manual/reference/operator/query/in/"><code>$in</code></a>, igual que SQL, para obtener las ocurrencias que cumple con alguno de los valores pasados (similar a usar <code>$or</code> sobre un conjunto de valores de un mismo campo). Si queremos su negación, usaremos <code>$nin</code>, para obtener los documentos que no cumplen ninguno de los valores.</li>
+<li><a href="https://www.mongodb.com/docs/manual/reference/operator/query/in/"><code>$in</code></a>, igual que SQL, para obtener las ocurrencias que cumplen con alguno de los valores pasados (similar a usar <code>$or</code> sobre un conjunto de valores de un mismo campo). Si queremos su negación, usaremos <code>$nin</code>, para obtener los documentos que no cumplen ninguno de los valores.</li>
 </ul>
 <p>Por ejemplo, si queremos obtener los mensajes que contenga las etiquetas <code>dream</code> y <code>action</code> tendríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">posts</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">tags</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$all</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;dream&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;action&quot;</span><span class="p">]}},</span><span class="w"> </span><span class="p">{</span><span class="nx">tags</span><span class="o">:</span><span class="mf">1</span><span class="p">})</span>
@@ -3520,12 +3520,12 @@
 <span class="linenos" data-linenos="12 "></span><span class="c1">// }</span>
 </code></pre></div>
 </div>
-<p>Para actualizar (y fusionar datos), se utilizan los métodos <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne"><code>updateOne</code></a> / <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.updateMany"><code>updateMany</code></a> dependiendo de cuantos documentos queremos que modifique. Ambos métodos requieren 2 parámetros: el primero es la consulta para averiguar sobre qué documentos, y en el segundo parámetro, los campos a modificar utilizando los operadores de actualización (en este ejemplo comenzaremos usando <a href="https://www.mongodb.com/docs/manual/reference/operator/update/set/">$set</a>):</p>
+<p>Para actualizar (y fusionar datos), se utilizan los métodos <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.updateOne"><code>updateOne</code></a> / <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.updateMany"><code>updateMany</code></a> dependiendo de cuántos documentos queremos que modifique. Ambos métodos requieren 2 parámetros: el primero es la consulta para averiguar sobre qué documentos, y en el segundo parámetro, los campos a modificar utilizando los operadores de actualización (en este ejemplo comenzaremos usando <a href="https://www.mongodb.com/docs/manual/reference/operator/update/set/">$set</a>):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">updateOne</span><span class="p">(</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">},</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="p">{</span><span class="nx">$set</span><span class="o">:</span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">profesion</span><span class="o">:</span><span class="s2">&quot;Estudiante&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">salario</span><span class="o">:</span><span class="w"> </span><span class="mf">123456</span><span class="p">}})</span>
 </span></code></pre></div>
-<p>Al realizar la modificación, el <em>shell</em> nos devolverá información sobre cuantos documentos ha encontrado, modificado y más información:</p>
+<p>Al realizar la modificación, el <em>shell</em> nos devolverá información sobre cuántos documentos ha encontrado, modificado y más información:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span><span class="w"> </span><span class="err">ack</span><span class="kc">n</span><span class="err">owledged</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="err">i</span><span class="kc">nserte</span><span class="err">dId</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="err">ma</span><span class="kc">t</span><span class="err">chedCou</span><span class="kc">nt</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
@@ -3574,7 +3574,7 @@
 </span></code></pre></div>
 <p>Podemos consultar todas las opciones de configuración de una actualización en <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.update/">https://www.mongodb.com/docs/manual/reference/method/db.collection.update/</a>.</p>
 <h3 id="reemplazando-un-documento">Reemplazando un documento<a class="headerlink" href="#reemplazando-un-documento" title="Permanent link">&para;</a></h3>
-<p>Desde Mongo 4.2, podemos emplear la operación <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.replaceOne/"><code>replaceOne</code></a> para sustituir todo el contenido por el documento que le pasamos como parámetro.</p>
+<p>Desde Mongo 3.2, podemos emplear la operación <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.replaceOne/"><code>replaceOne</code></a> para sustituir todo el contenido por el documento que le pasamos como parámetro.</p>
 <p>Así pues, si queremos sustituir el documento de <code>Andreu Medrano</code>, borrando los campos que tuviese y remplazándolos por nuevos podríamos hacer:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">replaceOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Andreu Medrano&quot;</span><span class="p">},</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Andreu&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">apellidos</span><span class="o">:</span><span class="s2">&quot;Medrano&quot;</span><span class="p">,</span>
@@ -3582,12 +3582,35 @@
 </code></pre></div>
 <h3 id="control-de-la-concurrencia">Control de la concurrencia<a class="headerlink" href="#control-de-la-concurrencia" title="Permanent link">&para;</a></h3>
 <p>Cuando se hace una actualización múltiple, <em>MongoDB</em> no realiza la operación de manera atómica (a no ser que utilicemos <a href="https://www.mongodb.com/docs/manual/core/transactions/">transacciones</a> desde el <em>driver</em>), lo que provoca que se puedan producir pausas (<em>pause yielding</em>). Cada documento en sí es atómico, por lo que ninguno se va a quedar a la mitad.</p>
-<p><em>MongoDB</em> ofrece el método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.findAndModify/"><code>findAndModify</code></a> para encontrar y modificar un documento de manera atómica, y así evitar que, entre la búsqueda y la modificación, el estado del documento se vea afectado. Además, devuelve el documento modificado. Un caso de uso muy común es para contadores y casos similares.</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">findAndModify</span><span class="p">({</span>
-</span><span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">},</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nx">update</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$inc</span><span class="o">:</span><span class="p">{</span><span class="nx">salario</span><span class="o">:</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:-</span><span class="mf">30</span><span class="p">}},</span>
-<span class="hll"><span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="ow">new</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span class="linenos" data-linenos=" 5 "></span><span class="p">})</span>
+<p><em>MongoDB</em> ofrece un conjunto de métodos para encontrar y modificar (o reemplazar, o eliminar) un documento de manera atómica, evitando que entre la búsqueda y la modificación el estado del documento se vea afectado por otra operación concurrente. Además, devuelven el documento afectado, por lo que con una única operación obtenemos el resultado y aplicamos el cambio. Un caso de uso muy común es la implementación de contadores y casos similares.</p>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.findOneAndUpdate/"><code>findOneAndUpdate</code></a></td>
+<td>Busca un documento y le aplica los operadores de actualización indicados</td>
+</tr>
+<tr>
+<td><a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.findOneAndReplace/"><code>findOneAndReplace</code></a></td>
+<td>Busca un documento y lo sustituye por completo</td>
+</tr>
+<tr>
+<td><a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.findOneAndDelete/"><code>findOneAndDelete</code></a></td>
+<td>Busca un documento y lo elimina</td>
+</tr>
+</tbody>
+</table>
+<p>Por ejemplo, para incrementar el salario y reducir la edad de <code>Marina Medrano</code> de manera atómica, recibiendo el documento ya modificado, haríamos:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">findOneAndUpdate</span><span class="p">(</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">},</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="p">{</span><span class="nx">$inc</span><span class="o">:</span><span class="p">{</span><span class="nx">salario</span><span class="o">:</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:-</span><span class="mf">30</span><span class="p">}},</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="p">{</span><span class="nx">returnDocument</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;after&quot;</span><span class="p">}</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="p">)</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">// {</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1">//   _id: ObjectId(&#39;6808cf1d0c0cbe759bb5f899&#39;),</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="c1">//   nombre: &#39;Marina Medrano&#39;,</span>
@@ -3596,9 +3619,32 @@
 <span class="linenos" data-linenos="11 "></span><span class="c1">//   salario: 123556</span>
 <span class="linenos" data-linenos="12 "></span><span class="c1">// }</span>
 </code></pre></div>
-<p>Por defecto, el documento devuelto será el resultado que ha encontrado con la consulta. Si queremos que nos devuelva el documento modificado con los cambios deseados, necesitamos utilizar el parámetro <code>new</code> a <code>true</code>. Si no lo indicamos o lo ponemos a <code>false</code>, tendremos el comportamiento por defecto, es decir, el documento original.</p>
+<p>Por defecto, el documento devuelto será el que ha encontrado la consulta antes de aplicar la modificación. Si queremos recibir el documento ya modificado, debemos pasar la opción <code>returnDocument: "after"</code>. El valor por defecto es <code>before</code>, equivalente al comportamiento de no indicar nada.</p>
+<p>Además del filtro y la actualización, estos métodos admiten otras opciones útiles:</p>
+<ul>
+<li><code>upsert: true</code>: si no encuentra el documento, lo crea (igual que en <code>updateOne</code>).</li>
+<li><code>sort</code>: cuando varios documentos cumplen el filtro, permite indicar cuál se modifica primero.</li>
+<li><code>projection</code>: igual que en <code>find</code>, para devolver solo un subconjunto de campos.</li>
+</ul>
+<p>Por ejemplo, para obtener y eliminar de manera atómica el documento más antiguo de una cola de tareas:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">tareas</span><span class="p">.</span><span class="nx">findOneAndDelete</span><span class="p">(</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="p">{</span><span class="nx">estado</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;pendiente&quot;</span><span class="p">},</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="p">{</span><span class="nx">sort</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">fechaCreacion</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">}}</span>
+<span class="linenos" data-linenos="4 "></span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition caution">
+<p class="admonition-title">findAndModify</p>
+<p>En versiones anteriores a <em>MongoDB</em> 5.0, la operación que se utilizaba para estos casos era <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.findAndModify/"><code>findAndModify</code></a>, con una sintaxis ligeramente distinta:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">findAndModify</span><span class="p">({</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">},</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">update</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">$inc</span><span class="o">:</span><span class="p">{</span><span class="nx">salario</span><span class="o">:</span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="nx">edad</span><span class="o">:-</span><span class="mf">30</span><span class="p">}},</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">  </span><span class="ow">new</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="linenos" data-linenos="5 "></span><span class="p">})</span>
+</code></pre></div>
+<p>Esta operación sigue funcionando, pero se recomienda emplear <code>findOneAndUpdate</code> / <code>findOneAndReplace</code> / <code>findOneAndDelete</code>, que son los métodos oficiales de la API de CRUD y los que utilizan los <em>drivers</em> de los distintos lenguajes de programación. Cabe destacar que el parámetro <code>new: true</code> de <code>findAndModify</code> se corresponde con <code>returnDocument: "after"</code> en los nuevos métodos.</p>
+</div>
 <h2 id="borrando-documentos">Borrando documentos<a class="headerlink" href="#borrando-documentos" title="Permanent link">&para;</a></h2>
-<p>Para borrar, usaremos los método <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteOne/"><code>deleteOne</code></a> o <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteMany/"><code>deleteMany</code></a>, los cuales funcionan de manera similar a <code>findOne</code> y <code>find</code>. Si no pasamos ningún parámetro, <code>deleteOne</code> borrará el primer documento, o en el caso de <code>deleteMany</code> toda la colección documento a documento. Si le pasamos un parámetro, éste será el criterio de selección de documentos a eliminar.</p>
+<p>Para borrar, usaremos los métodos <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteOne/"><code>deleteOne</code></a> o <a href="https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteMany/"><code>deleteMany</code></a>, los cuales funcionan de manera similar a <code>findOne</code> y <code>find</code>. Si no pasamos ningún parámetro, <code>deleteOne</code> borrará el primer documento, o en el caso de <code>deleteMany</code> toda la colección documento a documento. Si le pasamos un parámetro, éste será el criterio de selección de documentos a eliminar.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">deleteOne</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">})</span>
 <span class="linenos" data-linenos="2 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">personas</span><span class="p">.</span><span class="nx">deleteMany</span><span class="p">({</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Marina Medrano&quot;</span><span class="p">})</span>
 </code></pre></div>
@@ -3664,7 +3710,7 @@
 <span class="linenos" data-linenos="3 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">enlaces</span><span class="p">.</span><span class="nx">updateMany</span><span class="p">({</span><span class="nx">titulo</span><span class="o">:</span><span class="s2">&quot;www.google.es&quot;</span><span class="p">},</span>
 <span class="linenos" data-linenos="4 "></span><span class="w">                     </span><span class="p">{</span><span class="nx">$push</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">tags</span><span class="o">:</span><span class="p">{</span><span class="nx">$each</span><span class="o">:</span><span class="p">[</span><span class="s2">&quot;calendario&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mapas&quot;</span><span class="p">]}}})</span>
 </code></pre></div>
-<p>Al hacer estar modificación, el resultado del documento sería:</p>
+<p>Al hacer esta modificación, el resultado del documento sería:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span><span class="w"> </span><span class="err">_id</span><span class="p">:</span><span class="w"> </span><span class="err">Objec</span><span class="kc">t</span><span class="err">Id(</span><span class="s2">&quot;633c61b5ac452ac9d7f9fe75&quot;</span><span class="err">)</span><span class="p">,</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="kc">t</span><span class="err">i</span><span class="kc">tul</span><span class="err">o</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;www.google.es&#39;</span><span class="p">,</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="kc">ta</span><span class="err">gs</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">&#39;mapas&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;videos&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;blog&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;cale</span><span class="kc">n</span><span class="err">dario&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;email&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;mapas&#39;</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
@@ -3711,7 +3757,7 @@
 <p class="admonition-title">Más operadores posicionales</p>
 <p>Además del operador posicional $, tenemos disponible el operador posicional <a href="https://www.mongodb.com/docs/manual/reference/operator/update/positional-all/"><code>$[]</code></a> que indica que afecta a todos los elementos del array, y el operador posicional <a href="https://www.mongodb.com/docs/manual/reference/operator/update/positional-filtered/"><code>$[identificador]</code></a> que identifica que elementos del array cumplen una condición para su filtrado.</p>
 </div>
-<p>Podemos consultar toda la documentación disponible sobre estos operadores en <a href="http://docs.mongodb.org/manual/reference/operator/update-array/">http://docs.mongodb.org/manual/reference/operator/update-array/</a></p>
+<p>Podemos consultar toda la documentación disponible sobre estos operadores en <a href="https://docs.mongodb.org/manual/reference/operator/update-array/">https://docs.mongodb.org/manual/reference/operator/update-array/</a></p>
 <h2 id="administracion">Administración<a class="headerlink" href="#administracion" title="Permanent link">&para;</a></h2>
 <h3 id="empleando-javascript">Empleando JavaScript<a class="headerlink" href="#empleando-javascript" title="Permanent link">&para;</a></h3>
 <p>Ya hemos comentado que el <em>shell</em> utiliza <em>JavaScript</em> como lenguaje de interacción, por lo que podemos almacenar los comandos en un script externo y ejecutarlo mediante <a href="https://www.mongodb.com/docs/mongodb-shell/reference/methods/#std-label-mongosh-native-method-load"><code>load()</code></a>:</p>
@@ -3788,7 +3834,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <h2 id="modelado-documental">Modelado documental<a class="headerlink" href="#modelado-documental" title="Permanent link">&para;</a></h2>
 <p>Una de las características más importantes al utilizar un sistema documental es que mediante un documento podemos mantener toda la información que se utiliza junta en un único documento, sin necesidad de separar los datos en diferentes colecciones.</p>
 <p>Dependiendo del tipo de relación entre dos documentos, normalizaremos los datos para minimizar la redundancia, pero manteniendo en la medida de lo posible que mediante operaciones atómicas se mantenga la integridad de los datos. Para ello, bien crearemos referencias entre dos documentos o embeberemos un documento dentro de otro, pero intentando que la información más utilizada quepa en un único documento.</p>
-<p><em>MongoDB</em> es una base de datos documental, no relacional, donde el esquema no se debe basar en el uso de claves ajenas/<em>joins</em>, ya que realmente no existen. A la hora de diseñar un esquema, si nos encontramos que el esquema está en 3FN o si cuando hacemos consultas estamos teniendo que realizar varias consultas de manera programativa (primero acceder a una tabla, con ese <code>_id</code> ir a otra tabla, etc… o hacemos un uso extensivo del operador <code>$lookup</code> mediante el <em>framework</em> de agregación) es que no estamos siguiendo el enfoque adecuado.</p>
+<p><em>MongoDB</em> es una base de datos documental, no relacional, donde el esquema no se debe basar en el uso de claves ajenas/<em>joins</em>, ya que realmente no existen. A la hora de diseñar un esquema, si nos encontramos que el esquema está en 3FN o si cuando hacemos consultas estamos teniendo que realizar varias consultas de manera programática (primero acceder a una tabla, con ese <code>_id</code> ir a otra tabla, etc… o hacemos un uso extensivo del operador <code>$lookup</code> mediante el <em>framework</em> de agregación) es que no estamos siguiendo el enfoque adecuado.</p>
 <p>En resumen, diseñar un buen modelo de datos documental supondrá que nuestro código será más legible y mantenible, así como tener un mayor rendimiento de nuestras aplicaciones, aunque conlleve la redundancia de datos.</p>
 <p>Las aplicaciones que emplean <em>MongoDB</em> utilizan dos técnicas para relacionar documentos:</p>
 <ul>
@@ -3971,7 +4017,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </li>
 </ul>
 </div>
-<p>Si cada vez que recuperamos un libro queremos tener el nombre de la editorial y con una sola consulta recuperar todos los datos, en vez poner la referencia a la editorial, podemos embeber toda la información (esto se conoce como el patrón <a href="https://aitor-medrano.github.io/iabd/sa/modelado.html#referencia-extendida"><em>referencia extendida</em></a>), a costa de que un futuro cambio en el nombre de la editorial conlleve modificar muchos libros:</p>
+<p>Si cada vez que recuperamos un libro queremos tener el nombre de la editorial y con una sola consulta recuperar todos los datos, en vez de poner la referencia a la editorial, podemos embeber toda la información (esto se conoce como el patrón <a href="https://aitor-medrano.github.io/iabd/sa/modelado.html#referencia-extendida"><em>referencia extendida</em></a>), a costa de que un futuro cambio en el nombre de la editorial conlleve modificar muchos libros:</p>
 <div class="grid cards" markdown>
 <ul>
 <li>
@@ -4017,7 +4063,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <p>En cambio, si necesitamos acceder por separado a los diferentes objetos de una relación, puede que nos convenga separarlo en dos colecciones distintas, aunque luego tengamos que hacer un <em>join</em>.</p>
 </li>
 <li>
-<p><strong>1 a muchísimos/tropecientos (1:S)</strong> (<em>one to squillions/zillions</em>), como puede ser entre una aplicación y los mensajes del log, los cuales pueden llegar a tener un volumen de millones de mensaje por aplicación. Teniendo siempre en mente la restricción de los 16MB de BSON, podemos modelar estas relaciones mediante un array de referencias:</p>
+<p><strong>1 a muchísimos/tropecientos (1:S)</strong> (<em>one to squillions/zillions</em>), como puede ser entre una aplicación y los mensajes del log, los cuales pueden llegar a tener un volumen de millones de mensajes por aplicación. Teniendo siempre en mente la restricción de los 16MB de BSON, podemos modelar estas relaciones mediante un array de referencias:</p>
 <div class="highlight"><span class="filename">aplicacion.json</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
 <span class="linenos" data-linenos="2 "></span><span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;111111&quot;</span><span class="p">),</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">  </span><span class="nx">nombre</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Gestión de clientes&quot;</span><span class="p">,</span>
@@ -4027,13 +4073,13 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 <span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;123456&quot;</span><span class="p">),</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">  </span><span class="nx">app</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;111111&quot;</span><span class="p">),</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="w">  </span><span class="nx">actividad</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Alta Cliente&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;El cliente XXX se ha creado correctamente&quot;</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">  </span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;El cliente XXX se ha creado correctamente&quot;</span><span class="p">,</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="w">  </span><span class="nx">date</span><span class="o">:</span><span class="w"> </span><span class="nx">ISODate</span><span class="p">(</span><span class="s2">&quot;2022-10-12&quot;</span><span class="p">)</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="p">},{</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="w">  </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;123457&quot;</span><span class="p">),</span>
 <span class="linenos" data-linenos=" 9 "></span><span class="w">  </span><span class="nx">app</span><span class="o">:</span><span class="w"> </span><span class="nx">ObjectId</span><span class="p">(</span><span class="s2">&quot;111111&quot;</span><span class="p">),</span>
 <span class="linenos" data-linenos="10 "></span><span class="w">  </span><span class="nx">actividad</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Modificación Cliente&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No se ha podido modificar el XXX por un error del sistema&quot;</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">  </span><span class="nx">mensaje</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;No se ha podido modificar el XXX por un error del sistema&quot;</span><span class="p">,</span>
 <span class="linenos" data-linenos="12 "></span><span class="w">  </span><span class="nx">date</span><span class="o">:</span><span class="w"> </span><span class="nx">ISODate</span><span class="p">(</span><span class="s2">&quot;2022-10-12&quot;</span><span class="p">)</span>
 <span class="linenos" data-linenos="13 "></span><span class="p">},</span>
 </code></pre></div>
@@ -4091,7 +4137,7 @@ Sí que podemos crear variables y fragmentos de código en <em>Javascript</em>, 
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Aunque tenemos información redundante</p>
-<p>Al utilizar referencias para representar una relación muchos a muchos, realmente sólo necesitamos un array de referencias en sólo una de las colección.
+<p>Al utilizar referencias para representar una relación muchos a muchos, realmente sólo necesitamos un array de referencias en sólo una de las colecciones.
 Si nos fijamos en el atributo <code>libros</code> de la colección <code>autor-con-libros</code> ¿Podríamos obtener todos los libros de un autor? Por supuesto.
 Y sí quisiéramos obtener todos los libros de autores alemanes, aunque nos tocase realizar un <em>join</em>, también lo podríamos conseguir.</p>
 <p>Dicho esto, aunque podemos tener un array en ambas colecciones, dependiendo del caso, puede conllevar una sobrecarga extra innecesaria.</p>
@@ -4111,7 +4157,7 @@ Y sí quisiéramos obtener todos los libros de autores alemanes, aunque nos toca
 <span class="linenos" data-linenos="10 "></span><span class="w">    </span><span class="nx">autores</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="nx">nombre</span><span class="o">:</span><span class="s2">&quot;Michael Ende&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">pais</span><span class="o">:</span><span class="s2">&quot;Alemania&quot;</span><span class="p">}]</span>
 <span class="linenos" data-linenos="11 "></span><span class="p">}</span>
 </code></pre></div>
-<p>En principio este enfoque no se recomienda porque el documento puede crecer mucho y provocar anomalías de modificaciones donde la información no es consistente. Si se opta por esta solución, hay que tener en cuenta que si un documento depende de otro para su creación. Por ejemplo, en una colección que relacione profesor con alumnos, si metemos los profesores dentro de los estudiantes, no vamos a poder dar de alta a profesores sin haber dado de alta previamente a un alumno.</p>
+<p>En principio este enfoque no se recomienda porque el documento puede crecer mucho y provocar anomalías de modificaciones donde la información no es consistente. Si se opta por esta solución, hay que tener en cuenta de si un documento depende de otro para su creación. Por ejemplo, en una colección que relacione profesor con alumnos, si metemos los profesores dentro de los estudiantes, no vamos a poder dar de alta a profesores sin haber dado de alta previamente a un alumno.</p>
 <p>A modo de resumen, en las relaciones N:M, hay que establecer el tamaño de N y M. Si N como máximo vale 3 y M 500000, entonces deberíamos seguir un enfoque de embeber la N dentro de la M (<em>One Way Embedding</em>).</p>
 <p>En cambio, si N vale 3 y M vale 5, entonces podemos hacer que ambos embeban al otro documento (<em>Two Way Embedding</em>).</p>
 </li>
@@ -4156,7 +4202,7 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 <p class="admonition-title">Cuidado con el tamaño</p>
 <p>El resultado del <em>pipeline</em> es un documento y por lo tanto está sujeto a la restricción de BSON, que limita su tamaño a 16MB.</p>
 </div>
-<p>En la siguiente imagen se resumen los pasos de una agrupación donde primero se eligen los elementos que vamos a agrupar mediante <code>$match</code>, el resultado saliente se agrupan con <code>$group</code>, y sobre los agrupado mediante <code>$sum</code> se calcula el total:</p>
+<p>En la siguiente imagen se resumen los pasos de una agrupación donde primero se eligen los elementos que vamos a agrupar mediante <code>$match</code>, el resultado saliente se agrupa con <code>$group</code>, y sobre lo agrupado mediante <code>$sum</code> se calcula el total:</p>
 <figure style="align: center;">
     <img src="images/13aggregation-pipeline.png">
     <figcaption>Ejemplo de pipeline con $match y $group</figcaption>
@@ -4419,7 +4465,7 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 </code></pre></div>
 <h5 id="doble-group">Doble $group<a class="headerlink" href="#doble-group" title="Permanent link">&para;</a></h5>
 <p>Si queremos obtener el resultado de una agrupación podemos aplicar el operador <code>$group</code> sobre otro <code>$group</code>.</p>
-<p>Por ejemplo, para obtener el precio medio de los precios medios de los tipos de producto por empresa haríamos:</p>
+<p>Por ejemplo, para obtener el precio medio de los precios medios de los tipos de producto por empresa (es decir, una media de medias) haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="o">&gt;</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">productos</span><span class="p">.</span><span class="nx">aggregate</span><span class="p">([</span>
 <span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="p">{</span><span class="nx">$group</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="w">      </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
@@ -4450,7 +4496,7 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 <p>La proyección dentro del <em>framework</em> de agregación es mucho más potente que dentro de las consultas normales. Se emplea para:</p>
 <ul>
 <li>renombrar campos.</li>
-<li>introducir campos calculados en el documento resultante mediante <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/add/"><code>$add</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/subtract/"><code>$substract</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/multiply/"><code>$multiply</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/divide/"><code>$divide</code></a> o <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/mod/"><code>$mod</code></a></li>
+<li>introducir campos calculados en el documento resultante mediante <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/add/"><code>$add</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/subtract/"><code>$subtract</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/multiply/"><code>$multiply</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/divide/"><code>$divide</code></a> o <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/mod/"><code>$mod</code></a></li>
 <li>transformar campos a mayúsculas <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/toUpper/"><code>$toUpper</code></a> o minúsculas <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/toLower/"><code>$toLower</code></a>, concatenar campos mediante <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/concat/"><code>$concat</code></a> u obtener subcadenas con <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/substr/"><code>$substr</code></a>.</li>
 <li>transformar campos en base a valores obtenidos a partir de una condición mediante expresiones lógicas con los operadores de comparación vistos en las consultas.</li>
 </ul>
@@ -4774,7 +4820,7 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 <li><a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/out/"><code>$out</code></a> recoge los documentos de una agregación y los persiste en una colección, sobrescribiendo los datos existentes.</li>
 <li><a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/merge/"><code>$merge</code></a> similar a <code>$out</code>, pero permite añadir el resultado a la misma colección y además soporta trabajar con colecciones particionadas.</li>
 </ul>
-<p>Por ejemplo, vamos a basarnos en las consultas con <em>join</em>, para crear una nueva colección con la población total de todos dos estados, y la vamos a almacenar en una nueva colección denominada <code>states_population</code>:</p>
+<p>Por ejemplo, vamos a basarnos en las consultas con <em>join</em>, para crear una nueva colección con la población total de todos los estados, y la vamos a almacenar en una nueva colección denominada <code>states_population</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="err">db.zips.aggrega</span><span class="kc">te</span><span class="err">(</span><span class="p">[</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="w">  </span><span class="p">{</span><span class="err">$group</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">      </span><span class="err">_id</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$state&quot;</span><span class="p">,</span>
@@ -4922,13 +4968,13 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 <ol>
 <li>Recupera los documentos que tienen menos de 50 personas (campo <code>pop</code>).</li>
 <li>Recupera los documentos que tienen entre 50 y 100 personas.</li>
-<li>Averigua cuantos documentos hay de la ciudad de <code>SAN DIEGO</code>.</li>
-<li>Averigua cuantos documentos tienen menos de 100 personas.</li>
+<li>Averigua cuántos documentos hay de la ciudad de <code>SAN DIEGO</code>.</li>
+<li>Averigua cuántos documentos tienen menos de 100 personas.</li>
 <li>Recupera los documentos donde el nombre de la ciudad contenga la palabra <code>BEACH</code>.</li>
 <li>Obtén los estados de la ciudad de <code>SAN DIEGO</code> (Solución: <code>[ 'CA', 'TX' ]</code>).</li>
 <li>Listado con los 5 códigos postales más poblados (muestra los documentos completos).</li>
 <li>Cantidad de documentos que no tienen menos de 5.000 habitantes ni más de 1.000.000 (debes utilizar el operador <code>$nor</code>).</li>
-<li>Cuantos documentos tienen más habitantes que su propio código postal (campo <code>zip</code>).</li>
+<li>Cuántos documentos tienen más habitantes que su propio código postal (campo <code>zip</code>).</li>
 </ol>
 </li>
 </ul>
@@ -4944,7 +4990,7 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 <li>Encontrar los 10 viajes más largos, ordenados de mayor a menor duración.</li>
 <li>Encontrar viajes con estaciones que contengan <code>Ave</code> en su nombre.</li>
 <li>¿Cuántos viajes han realizado los usuarios de tipo <code>Customer</code>?.</li>
-<li>Recuper los viajes realizados entre el 1 de enero y el 31 de marzo de 2016.</li>
+<li>Recuperar los viajes realizados entre el 1 de enero y el 31 de marzo de 2016.</li>
 <li>Encontrar viajes con duración entre 10 y 20 minutos, hechos por usuarios nacidos antes de 1980.</li>
 <li>Encontrar los viajes que duraron más de una hora o que fueron realizados por usuarios nacidos después del año 2000.</li>
 <li>Mostrar los 5 viajes más recientes, pero saltando los primeros 10 resultados.</li>
@@ -4977,9 +5023,9 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 <li>Recupera los mensajes que tienen la etiqueta <code>club</code>.</li>
 <li>Recupera los mensajes que tienen la etiqueta <code>club</code> y <code>spy</code>.</li>
 <li>Recupera los mensajes que tienen la etiqueta <code>club</code> o <code>spy</code>. </li>
-<li>Cuantos mensajes no tienen la etiqueta <code>restaurant</code>.</li>
-<li>Cuantos mensajes tienen únicamente un comentario.</li>
-<li>Cuantos mensajes tienen al menos un comentario. <!-- db.posts.find({"comments": {$exists: true, $ne: []}}) --></li>
+<li>Cuántos mensajes no tienen la etiqueta <code>restaurant</code>.</li>
+<li>Cuántos mensajes tienen únicamente un comentario.</li>
+<li>Cuántos mensajes tienen al menos un comentario. <!-- db.posts.find({"comments": {$exists: true, $ne: []}}) --></li>
 <li>Los mensajes que tienen algún comentario que ha escrito el usuario <code>Salena Olmos</code>.</li>
 <li>Los comentarios (con su cuerpo y email) que ha escrito el usuario <code>Salena Olmos</code>.</li>
 <li>Recupera los mensajes que en <code>body</code> contengan la palabra <code>earth</code>, y devuelve el título, 3 comentarios y 5 etiquetas.</li>
@@ -5024,7 +5070,7 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 <li>Modifica el tipo de cocina para que sea <code>Mediterránea</code>.</li>
 <li>Añade una segunda calificación.</li>
 <li>Modifica las coordenadas de la ubicación para que coincidan con las de tu ciudad.</li>
-<li>Mofica el barrio con el barrio donde vives.</li>
+<li>Modifica el barrio con el barrio donde vives.</li>
 <li>Añade una tercera calificación que sea excelente.</li>
 <li>Modifica la calle y el código postal mediante una única operación.</li>
 <li>Elimina la calificación más antigua.</li>
@@ -5092,8 +5138,8 @@ Y si nuestra aplicación tuviera que darles cabida a ambos casos, ¿qué soluci�
 <li>Calcular el promedio de elementos por venta.</li>
 <li>A partir de todos los elementos, calcula el ingreso total por ventas, teniendo en cuenta el precio y la cantidad de cada elemento. </li>
 <li>Encontrar los 3 productos más vendidos (por cantidad de unidades vendidas).</li>
-<li>Averiguar cuantas ventas se han realizado del producto <code>notepad</code>.</li>
-<li>Averiguar cuantos <code>notepad</code> se han vendido y cuanto se ha recaudado por sus ventas.</li>
+<li>Averiguar cuántas ventas se han realizado del producto <code>notepad</code>.</li>
+<li>Averiguar cuántos <code>notepad</code> se han vendido y cuánto se ha recaudado por sus ventas.</li>
 <li>Averiguar los tres productos con un precio medio más alto.</li>
 <li>Averiguar la cantidad de hombres y mujeres que han realizado compras, así como sus edades medias.</li>
 <li>Recuperar el nombre y el email de los 5 clientes que más han gastado.</li>
@@ -5135,7 +5181,7 @@ Y si nuestra aplicación tuviera que darles cabida a ambos casos, ¿qué soluci�
 <li>Recupera únicamente la población de <code>Vergel</code>.</li>
 <li>Calcula el número de ciudades de España.</li>
 <li>Datos de las ciudades españolas con más de un millón de habitantes.</li>
-<li>Recupera la cantidad de ciudades que hay entre <code>Andorra</code> (<code>AD</code>) y <code>España</code>.</li>
+<li>Recupera la cantidad total de ciudades que hay entre <code>Andorra</code> (<code>AD</code>) y <code>España</code>.</li>
 <li>Listado con el nombre y la población de las 10 ciudades más pobladas.</li>
 <li>Nombre de las distintas zonas horarias en <code>España</code>.</li>
 <li>Ciudades españolas que su zona horaria no sea <code>Europe/Madrid</code>.</li>
