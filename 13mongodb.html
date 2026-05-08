@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
@@ -1321,10 +1321,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#operadores-del-pipeline" class="md-nav__link">
+  <a href="#fases-del-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Operadores del pipeline
+        Fases del pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadores-de-expresion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operadores de expresión
       
     </span>
   </a>
@@ -2290,10 +2301,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#operadores-del-pipeline" class="md-nav__link">
+  <a href="#fases-del-pipeline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Operadores del pipeline
+        Fases del pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadores-de-expresion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operadores de expresión
       
     </span>
   </a>
@@ -3373,6 +3395,10 @@
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nx">db</span><span class="p">.</span><span class="nx">trips</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="w"> </span><span class="s2">&quot;$expr&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">&quot;$eq&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;$end station id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;$start station id&quot;</span><span class="w"> </span><span class="p">]}})</span>
 </code></pre></div>
 <p>Al poner el <code>$</code> delante de un campo, en vez de referenciar al campo, lo que hace es referenciar a su valor, por lo que <code>$end station id</code> está referenciando al valor del campo <code>end station id</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Expresiones disponibles</p>
+<p>Dentro de <code>$expr</code> se puede emplear cualquier <a href="#operadores-de-expresion">operador de expresión del pipeline</a> (aritméticos, de cadena, de conversión como <code>$toInt</code>, condicionales con <code>$cond</code>, etc.). La referencia completa está en <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/">https://www.mongodb.com/docs/manual/reference/operator/aggregation/</a>.</p>
+</div>
 <div class="admonition info">
 <p class="admonition-title">Otros operadores</p>
 <p>El operador <a href="https://www.mongodb.com/docs/manual/reference/operator/query/type/"><code>$type</code></a> permite recuperar documentos que dependan del tipo de campo que contiene.</p>
@@ -4209,8 +4235,8 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 </figure>
 
 <p>Al realizar un <em>pipeline</em> dividimos las consultas en fases, donde cada fase utiliza un operador para realizar una transformación. Aunque no hay límite en el número de fases en una consulta, es importante destacar que <strong>el orden importa</strong>, y que hay optimizaciones para ayudar a que el <em>pipeline</em> tenga un mejor rendimiento (por ejemplo, hacer un <code>$match</code> al principio para reducir la cantidad de datos)</p>
-<h3 id="operadores-del-pipeline">Operadores del pipeline<a class="headerlink" href="#operadores-del-pipeline" title="Permanent link">&para;</a></h3>
-<p>Antes de nada, cabe destacar que las fases se pueden repetir, por lo que una consulta puede repetir <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/">operadores</a> para encadenar diferentes acciones.</p>
+<h3 id="fases-del-pipeline">Fases del pipeline<a class="headerlink" href="#fases-del-pipeline" title="Permanent link">&para;</a></h3>
+<p>Antes de nada, cabe destacar que las fases se pueden repetir, por lo que una consulta puede repetir <a href="https://www.mongodb.com/es/docs/manual/reference/mql/aggregation-stages/">etapas</a> para encadenar diferentes acciones.</p>
 <p>A continuación, vamos a estudiar todos estos operadores:</p>
 <table>
 <thead>
@@ -4258,6 +4284,17 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 </tr>
 </tbody>
 </table>
+<h3 id="operadores-de-expresion">Operadores de expresión<a class="headerlink" href="#operadores-de-expresion" title="Permanent link">&para;</a></h3>
+<p>Dentro de las etapas del pipeline (especialmente <code>$project</code>, <code>$addFields</code>, <code>$group</code> y <code>$match</code> con <code>$expr</code>) se pueden emplear <a href="https://www.mongodb.com/es/docs/manual/reference/mql/expressions/"><strong>operadores de expresión</strong></a> que transforman, comparan o calculan valores. Los más habituales se agrupan en familias:</p>
+<ul>
+<li>Aritméticos: <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/add/"><code>$add</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/subtract/"><code>$subtract</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/multiply/"><code>$multiply</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/divide/"><code>$divide</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/mod/"><code>$mod</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/round/"><code>$round</code></a>…</li>
+<li>Cadenas: <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/concat/"><code>$concat</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/substr/"><code>$substr</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/toLower/"><code>$toLower</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/toUpper/"><code>$toUpper</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/split/"><code>$split</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/trim/"><code>$trim</code></a>…</li>
+<li>Conversión de tipos: <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/toInt/"><code>$toInt</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/toDouble/"><code>$toDouble</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/toString/"><code>$toString</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/toBool/"><code>$toBool</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/toDate/"><code>$toDate</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/toObjectId/"><code>$toObjectId</code></a>, o el genérico <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/convert/"><code>$convert</code></a>.</li>
+<li>Condicionales y lógicos: <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/cond/"><code>$cond</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/ifNull/"><code>$ifNull</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/switch/"><code>$switch</code></a>.</li>
+<li>Fechas: <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/year/"><code>$year</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/month/"><code>$month</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/dayOfWeek/"><code>$dayOfWeek</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateToString/"><code>$dateToString</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateFromString/"><code>$dateFromString</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/dateDiff/"><code>$dateDiff</code></a>.</li>
+<li>Arrays: <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/size/"><code>$size</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/arrayElemAt/"><code>$arrayElemAt</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/filter/"><code>$filter</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/map/"><code>$map</code></a>, <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/reduce/"><code>$reduce</code></a>.</li>
+</ul>
+<p>Por ejemplo, para convertir una cadena <code>"47"</code> a entero al proyectar, usaríamos <code>{ $toInt: "$edad" }</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Preparando los ejemplos</p>
 <p>Para los siguientes ejemplos, vamos a utilizar una colección de productos (<a href="https://aitor-medrano.github.io/iabd/sa/resources/productos.js">productos.js</a>) de una tienda de electrónica con las características y precios de los mismos.</p>
@@ -4530,6 +4567,19 @@ De las <strong>tarjetas</strong>, almacenaremos su tipo, número bancario, fecha
 <li>Incrementa el precio el 10%</li>
 <li>Renombra el campo</li>
 </ol>
+<div class="admonition example">
+<p class="admonition-title">Convirtiendo tipos al proyectar</p>
+<p>Si un campo está almacenado como cadena pero queremos operar con él como número (situación habitual al importar CSV), podemos convertirlo en el propio <code>$project</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>db.zips.aggregate([
+<span class="linenos" data-linenos="2 "></span>  { $project: {
+<span class="linenos" data-linenos="3 "></span>      city: 1,
+<span class="linenos" data-linenos="4 "></span>      poblacion: { $toInt: &quot;$pop&quot; },
+<span class="linenos" data-linenos="5 "></span>      densidad: { $divide: [ { $toDouble: &quot;$pop&quot; }, 100 ] }
+<span class="linenos" data-linenos="6 "></span>  }}
+<span class="linenos" data-linenos="7 "></span>])
+</code></pre></div>
+<p>Si la conversión puede fallar (por ejemplo, una cadena no numérica), conviene usar <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/convert/"><code>$convert</code></a>, que admite los parámetros <code>onError</code> y <code>onNull</code> para controlar los casos problemáticos.</p>
+</div>
 <h3 id="match">$match<a class="headerlink" href="#match" title="Permanent link">&para;</a></h3>
 <p>El operador <a href="https://www.mongodb.com/docs/manual/reference/operator/aggregation/match/"><code>$match</code></a> se utiliza principalmente para filtrar los documentos que pasarán a la siguiente etapa del <em>pipeline</em> o a la salida final.</p>
 <p>Por ejemplo, para seleccionar sólo las tablets haríamos:</p>

@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
@@ -1939,6 +1939,17 @@ docker run --name postgres `
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mongorestore<span class="w"> </span>--archive<span class="o">=</span>/tmp/sampledata.archive
 </code></pre></div>
 <p>Una vez cargados, nos informará que se han restaurado 433.281 documentos.</p>
+<p>Por último, para acceder al cliente de <em>MongoDB</em> <code>mongosh</code>, ejecutamos el siguiente comando:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span>mongosh
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># Current Mongosh Log ID: 69fcdbc860416d1c5444ba88</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.8.2</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># Using MongoDB:          8.2.7</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1"># Using Mongosh:          2.8.2</span>
+<span class="linenos" data-linenos="6 "></span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># ...</span>
+<span class="linenos" data-linenos="8 "></span>
+<span class="linenos" data-linenos="9 "></span>test&gt;
+</code></pre></div>
 <p>Independientemente de nuestro sistema operativo, por defecto, el demonio se lanza sobre el puerto 27017. Una vez instalado, si accedemos a <a href="http://localhost:27017">http://localhost:27017</a> podremos ver que nos indica cómo estamos intentando acceder mediante HTTP a <em>MongoDB</em> mediante el puerto reservado al <em>driver</em> nativo.</p>
 <figure style="align: center;">
     <img src="images/00localhost27017.png" alt="MongoDB - Acceso al puerto 27017">
