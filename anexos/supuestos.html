@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1511,12 +1511,12 @@ http://127.0.0.1:8000/bd/anexos/supuestos.html
 <span class="linenos" data-linenos=" 6 "></span><span class="w">            </span><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">c2</span><span class="p">.</span><span class="n">peso</span><span class="p">)</span><span class="w"> </span><span class="c1">-- calcula el peso medio de los compañeros de equipo.</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="w">            </span><span class="k">FROM</span><span class="w"> </span><span class="n">CICLISTA</span><span class="w"> </span><span class="n">c2</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="w">            </span><span class="k">WHERE</span><span class="w"> </span><span class="n">c2</span><span class="p">.</span><span class="n">equipo_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">equipo_id</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;&gt;PESO&#39;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'&gt;PESO'</span>
 <span class="linenos" data-linenos="10 "></span><span class="w">        </span><span class="k">WHEN</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">altura</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span>
 <span class="linenos" data-linenos="11 "></span><span class="w">            </span><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">c3</span><span class="p">.</span><span class="n">altura</span><span class="p">)</span><span class="w"> </span><span class="c1">-- calcula la altura media de los ciclistas de la misma edad.</span>
 <span class="linenos" data-linenos="12 "></span><span class="w">            </span><span class="k">FROM</span><span class="w"> </span><span class="n">CICLISTA</span><span class="w"> </span><span class="n">c3</span>
 <span class="linenos" data-linenos="13 "></span><span class="w">            </span><span class="k">WHERE</span><span class="w"> </span><span class="n">c3</span><span class="p">.</span><span class="n">edad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">edad</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;&lt;ALTURA&#39;</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">        </span><span class="p">)</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'&lt;ALTURA'</span>
 <span class="linenos" data-linenos="15 "></span><span class="w">        </span><span class="k">ELSE</span><span class="w"> </span><span class="k">NULL</span>
 <span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">dato</span>
 <span class="linenos" data-linenos="17 "></span><span class="k">FROM</span><span class="w"> </span>
@@ -1555,38 +1555,41 @@ http://127.0.0.1:8000/bd/anexos/supuestos.html
 <span class="linenos" data-linenos="25 "></span>
 <span class="linenos" data-linenos="26 "></span><span class="k">DELIMITER</span><span class="w"> </span><span class="p">;</span>
 </code></pre></div>
-</li>
-</ol>
-<p>DELIMITER //</p>
-<p>CREATE FUNCTION kms_finalizados_anteriores(p_ciclista_id INT)
-RETURNS DECIMAL(10,2)
-DETERMINISTIC
-BEGIN
-    DECLARE v_kms DECIMAL(10,2) DEFAULT 0;</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>SELECT IFNULL(SUM(e.km), 0)
-<span class="linenos" data-linenos=" 2 "></span>INTO v_kms
-<span class="linenos" data-linenos=" 3 "></span>FROM PARTICIPACION p
-<span class="linenos" data-linenos=" 4 "></span>JOIN ETAPA e ON p.etapa_id = e.etapa_id
-<span class="linenos" data-linenos=" 5 "></span>WHERE p.ciclista_id = p_ciclista_id
-<span class="linenos" data-linenos=" 6 "></span>  AND p.puesto != 0
-<span class="linenos" data-linenos=" 7 "></span>  AND e.fecha &lt; (
-<span class="linenos" data-linenos=" 8 "></span>      SELECT MAX(e2.fecha)
-<span class="linenos" data-linenos=" 9 "></span>      FROM PARTICIPACION p2
-<span class="linenos" data-linenos="10 "></span>      JOIN ETAPA e2 ON p2.etapa_id = e2.etapa_id
-<span class="linenos" data-linenos="11 "></span>      WHERE p2.ciclista_id = p_ciclista_id
-<span class="linenos" data-linenos="12 "></span>  );
-<span class="linenos" data-linenos="13 "></span>
-<span class="linenos" data-linenos="14 "></span>RETURN v_kms;
-</code></pre></div>
-<p>END;
-//</p>
-<p>DELIMITER ;</p>
-<p>/</p>
-<hr />
 <p>Para probar la función, podemos emplear la siguiente consulta:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">kms_finalizados_sin_ultima</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">kms_resultado</span><span class="p">;</span>
 </code></pre></div>
-<hr />
+</li>
+</ol>
+<!--
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>DELIMITER //
+<span class="linenos" data-linenos=" 2 "></span>
+<span class="linenos" data-linenos=" 3 "></span>CREATE FUNCTION kms_finalizados_anteriores(p_ciclista_id INT)
+<span class="linenos" data-linenos=" 4 "></span>RETURNS DECIMAL(10,2)
+<span class="linenos" data-linenos=" 5 "></span>DETERMINISTIC
+<span class="linenos" data-linenos=" 6 "></span>BEGIN
+<span class="linenos" data-linenos=" 7 "></span>    DECLARE v_kms DECIMAL(10,2) DEFAULT 0;
+<span class="linenos" data-linenos=" 8 "></span>
+<span class="linenos" data-linenos=" 9 "></span>    SELECT IFNULL(SUM(e.km), 0)
+<span class="linenos" data-linenos="10 "></span>    INTO v_kms
+<span class="linenos" data-linenos="11 "></span>    FROM PARTICIPACION p
+<span class="linenos" data-linenos="12 "></span>    JOIN ETAPA e ON p.etapa_id = e.etapa_id
+<span class="linenos" data-linenos="13 "></span>    WHERE p.ciclista_id = p_ciclista_id
+<span class="linenos" data-linenos="14 "></span>      AND p.puesto != 0
+<span class="linenos" data-linenos="15 "></span>      AND e.fecha &lt; (
+<span class="linenos" data-linenos="16 "></span>          SELECT MAX(e2.fecha)
+<span class="linenos" data-linenos="17 "></span>          FROM PARTICIPACION p2
+<span class="linenos" data-linenos="18 "></span>          JOIN ETAPA e2 ON p2.etapa_id = e2.etapa_id
+<span class="linenos" data-linenos="19 "></span>          WHERE p2.ciclista_id = p_ciclista_id
+<span class="linenos" data-linenos="20 "></span>      );
+<span class="linenos" data-linenos="21 "></span>
+<span class="linenos" data-linenos="22 "></span>    RETURN v_kms;
+<span class="linenos" data-linenos="23 "></span>END;
+<span class="linenos" data-linenos="24 "></span>//
+<span class="linenos" data-linenos="25 "></span>
+<span class="linenos" data-linenos="26 "></span>DELIMITER ;
+</code></pre></div>
+-->
+
 <!--
 Contenidos básicos:
 
@@ -1901,7 +1904,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "navigation.path", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../js/print-site.js"></script>
       

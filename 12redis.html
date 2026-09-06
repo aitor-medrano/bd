@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1999,10 +1999,10 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="m">127</span>.0.0.1:6379&gt;<span class="w"> </span><span class="nb">help</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1"># redis-cli 8.6.2</span>
 <span class="linenos" data-linenos="3 "></span><span class="c1"># To get help about Redis commands type:</span>
-<span class="linenos" data-linenos="4 "></span><span class="c1">#       &quot;help @&lt;group&gt;&quot; to get a list of commands in &lt;group&gt;</span>
-<span class="linenos" data-linenos="5 "></span><span class="c1">#       &quot;help &lt;command&gt;&quot; for help on &lt;command&gt;</span>
-<span class="linenos" data-linenos="6 "></span><span class="c1">#       &quot;help &lt;tab&gt;&quot; to get a list of possible help topics</span>
-<span class="linenos" data-linenos="7 "></span><span class="c1">#       &quot;quit&quot; to exit</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1">#       "help @&lt;group&gt;" to get a list of commands in &lt;group&gt;</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">#       "help &lt;command&gt;" for help on &lt;command&gt;</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1">#       "help &lt;tab&gt;" to get a list of possible help topics</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1">#       "quit" to exit</span>
 </code></pre></div>
 <h2 id="crud">CRUD<a class="headerlink" href="#crud" title="Permanent link">&para;</a></h2>
 <p>En este apartado vamos a simular que queremos crear un acortador de URLs, del tipo <a href="https://bitly.com/">bit.ly</a>, de manera que cuando un usuario pone una URL corta, accederíamos a la URL larga, lo que también nos permite llevar un contador de las visitas a cada dirección.</p>
@@ -2010,7 +2010,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="n">aitor</span><span class="o">-</span><span class="n">medrano</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">bd</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># OK</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">GET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
-</span><span class="linenos" data-linenos="4 "></span><span class="c1"># &quot;aitor-medrano.github.io/bd&quot;</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="c1"># "aitor-medrano.github.io/bd"</span>
 </code></pre></div>
 <p>Tras ejecutar un comando en <em>Redis</em>, siempre recibiremos una respuesta, ya sea <code>OK</code>, la cantidad de claves implicadas, o el resultado del comando (el valor devuelto, la lista de valores, etc...).</p>
 <div class="admonition tip inline end">
@@ -2021,58 +2021,58 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">MSET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">iabd</span> <span class="n">aitor</span><span class="o">-</span><span class="n">medrano</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">iabd</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span> <span class="n">aitor</span><span class="o">-</span><span class="n">medrano</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">iabd</span><span class="o">/</span><span class="n">blog</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># OK</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">MGET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="n">aitor</span><span class="o">-</span><span class="n">iabd</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span>
-</span><span class="linenos" data-linenos="4 "></span><span class="c1"># 1) &quot;aitor-medrano.github.io/bd&quot;</span>
-<span class="linenos" data-linenos="5 "></span><span class="c1"># 2) &quot;aitor-medrano.github.io/iabd&quot;</span>
-<span class="linenos" data-linenos="6 "></span><span class="c1"># 3) &quot;aitor-medrano.github.io/iabd/blog&quot;</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="c1"># 1) "aitor-medrano.github.io/bd"</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1"># 2) "aitor-medrano.github.io/iabd"</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># 3) "aitor-medrano.github.io/iabd/blog"</span>
 </code></pre></div>
 <p>Si queremos recuperar las claves existentes usaremos <a href="https://redis.io/docs/latest/commands/keys/"><code>KEYS</code></a>, al cual le podemos pasar <code>*</code> para mostrar todas o un prefijo para que muestre aquellas que lo cumplen (permite el uso de expresiones regulares, del estilo <code>KEYS clave[1-3]*</code> o <code>KEYS clave[^6]</code>):</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">KEYS</span> <span class="n">aitor</span><span class="o">-*</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) &quot;aitor-blog&quot;</span>
-<span class="linenos" data-linenos="3 "></span><span class="c1"># 2) &quot;aitor-bd&quot;</span>
-<span class="linenos" data-linenos="4 "></span><span class="c1"># 3) &quot;aitor-iabd&quot;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) "aitor-blog"</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># 2) "aitor-bd"</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># 3) "aitor-iabd"</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">SCAN &amp; MATCH</p>
 <p>Aunque <a href="https://redis.io/docs/latest/commands/keys/"><code>KEYS</code></a> permita recuperar todas las claves, el problema es que bloquea el servidor mientras las recorre. Esto puede provocar problemas serios en entornos de producción, ya que mientras <em>Redis</em> ejecuta el comando <code>KEYS</code>, el servidor queda bloqueado para atender otras operaciones. En bases de datos con millones de claves, esto puede significar interrupciones de servicio inaceptables.</p>
 <p>Para evitar esto, se recomienda utilizar <a href="https://redis.io/docs/latest/commands/scan/"><code>SCAN cursor [MATCH patrón] [COUNT cantidad] [TYPE tipo]</code></a>, el cual ofrece una alternativa eficiente, ya que funciona de manera incremental, devolviendo las claves en lotes. Veamos un ejemplo (a lo largo de la sesión iremos creando nuevas claves que ahora aparecen en el ejemplo):</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">SCAN</span> <span class="mi">0</span>
-</span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># 1) &quot;7&quot;            # El cursor para la siguiente iteración</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1"># 2)  1) &quot;visitas&quot;</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">#     2) &quot;pedro:visitados&quot;</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1">#     3) &quot;sitiosweb&quot;</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="c1">#     4) &quot;aitor-bd&quot;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1">#     5) &quot;noticias&quot;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1">#     6) &quot;contador&quot;</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1">#     7) &quot;aitor-dwes&quot;</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">#     8) &quot;usuario:aitor:nombre&quot;</span>
-<span class="linenos" data-linenos="11 "></span><span class="c1">#     9) &quot;tech&quot;</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1">#    10) &quot;usuario:aitor:pwd&quot;</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">#    11) &quot;usuario:aitor&quot;</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># 1) "7"            # El cursor para la siguiente iteración</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1"># 2)  1) "visitas"</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">#     2) "pedro:visitados"</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">#     3) "sitiosweb"</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">#     4) "aitor-bd"</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">#     5) "noticias"</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">#     6) "contador"</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">#     7) "aitor-dwes"</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">#     8) "usuario:aitor:nombre"</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">#     9) "tech"</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">#    10) "usuario:aitor:pwd"</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">#    11) "usuario:aitor"</span>
 <span class="linenos" data-linenos="14 "></span>
 <span class="hll"><span class="linenos" data-linenos="15 "></span><span class="n">SCAN</span> <span class="mi">7</span>
-</span><span class="linenos" data-linenos="16 "></span><span class="c1"># 1) &quot;0&quot;            # El cursor 0 indica que se ha completado la iteración</span>
+</span><span class="linenos" data-linenos="16 "></span><span class="c1"># 1) "0"            # El cursor 0 indica que se ha completado la iteración</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1"># 2) (empty array)</span>
 </code></pre></div>
 <p>También podemos filtrar por las claves, así como restringir el tipo de valor:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">SCAN</span> <span class="mi">0</span> <span class="n">MATCH</span> <span class="n">usuario</span><span class="p">:</span><span class="n">aitor</span><span class="o">*</span> <span class="n">COUNT</span> <span class="mi">15</span>
-</span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># 1) &quot;0&quot;</span>
-<span class="linenos" data-linenos=" 3 "></span><span class="c1"># 2) 1) &quot;usuario:aitor:nombre&quot;</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">#    2) &quot;usuario:aitor:pwd&quot;</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1">#    3) &quot;usuario:aitor&quot;</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># 1) "0"</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="c1"># 2) 1) "usuario:aitor:nombre"</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">#    2) "usuario:aitor:pwd"</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">#    3) "usuario:aitor"</span>
 <span class="linenos" data-linenos=" 6 "></span>
-<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">SCAN</span> <span class="mi">0</span> <span class="n">TYPE</span> <span class="s2">&quot;string&quot;</span> <span class="n">COUNT</span> <span class="mi">10</span>
-</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># 1) &quot;7&quot;</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1"># 2) 1) &quot;aitor-bd&quot;</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1">#    2) &quot;contador&quot;</span>
-<span class="linenos" data-linenos="11 "></span><span class="c1">#    3) &quot;aitor-dwes&quot;</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1">#    4) &quot;usuario:aitor:nombre&quot;</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">#    5) &quot;usuario:aitor:pwd&quot;</span>
+<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">SCAN</span> <span class="mi">0</span> <span class="n">TYPE</span> <span class="s2">"string"</span> <span class="n">COUNT</span> <span class="mi">10</span>
+</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># 1) "7"</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1"># 2) 1) "aitor-bd"</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">#    2) "contador"</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">#    3) "aitor-dwes"</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">#    4) "usuario:aitor:nombre"</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">#    5) "usuario:aitor:pwd"</span>
 <span class="linenos" data-linenos="14 "></span>
-<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="n">SCAN</span> <span class="mi">0</span> <span class="n">TYPE</span> <span class="s2">&quot;set&quot;</span>
-</span><span class="linenos" data-linenos="16 "></span><span class="c1"># 1) &quot;7&quot;</span>
-<span class="linenos" data-linenos="17 "></span><span class="c1"># 2) 1) &quot;sitiosweb&quot;</span>
-<span class="linenos" data-linenos="18 "></span><span class="c1">#    2) &quot;noticias&quot;</span>
-<span class="linenos" data-linenos="19 "></span><span class="c1">#    3) &quot;tech&quot;</span>
+<span class="hll"><span class="linenos" data-linenos="15 "></span><span class="n">SCAN</span> <span class="mi">0</span> <span class="n">TYPE</span> <span class="s2">"set"</span>
+</span><span class="linenos" data-linenos="16 "></span><span class="c1"># 1) "7"</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1"># 2) 1) "sitiosweb"</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">#    2) "noticias"</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">#    3) "tech"</span>
 </code></pre></div>
 <p>Las características principales de <code>SCAN</code> son:</p>
 <ul>
@@ -2105,17 +2105,17 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <h3 id="cadenas">Cadenas<a class="headerlink" href="#cadenas" title="Permanent link">&para;</a></h3>
 <p>Si nuestros valores son cadenas, podemos emplear una serie de operaciones para trabajar con ellos, como <a href="https://redis.io/docs/latest/commands/strlen/"><code>STRLEN</code></a> para recuperar el tamaño de un valor, <a href="https://redis.io/docs/latest/commands/getrange/"><code>GETRANGE clave inicio fin</code></a> para obtener una subcadena o <a href="https://redis.io/docs/latest/commands/append/"><code>APPEND</code></a> para añadir contenido al final</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="n">GET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="c1"># &quot;aitor-medrano.github.io/bd&quot;</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="c1"># "aitor-medrano.github.io/bd"</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">STRLEN</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
 </span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># (integer) 26</span>
 <span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">GETRANGE</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="mi">0</span> <span class="mi">22</span>
-</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># &quot;aitor-medrano.github.io&quot;</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># "aitor-medrano.github.io"</span>
 <span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">GETRANGE</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="mi">24</span> <span class="o">-</span><span class="mi">1</span>
-</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># &quot;bd&quot;</span>
-<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">APPEND</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="s2">&quot;/&quot;</span>
+</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># "bd"</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">APPEND</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="s2">"/"</span>
 </span><span class="linenos" data-linenos="10 "></span><span class="c1"># (integer) 27</span>
 <span class="linenos" data-linenos="11 "></span><span class="n">GET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1"># &quot;aitor-medrano.github.io/bd/&quot;</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1"># "aitor-medrano.github.io/bd/"</span>
 </code></pre></div>
 <h3 id="enteros">Enteros<a class="headerlink" href="#enteros" title="Permanent link">&para;</a></h3>
 <p>Aunque <em>Redis</em> almacene cadenas, también permite almacenar números enteros y realizar ciertas operaciones sobre ellos, como <a href="https://redis.io/docs/latest/commands/incr/">INCR</a> para incrementar de uno en uno <a href="https://redis.io/docs/latest/commands/incrby/">INCRBY</a> para indicar la cantidad, y sus contrarios <a href="https://redis.io/docs/latest/commands/decr/">DECR</a> y <a href="https://redis.io/docs/latest/commands/decrby/">DECRBY</a>:</p>
@@ -2124,7 +2124,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">INCR</span> <span class="n">contador</span>
 </span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># (integer) 3</span>
 <span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">GET</span> <span class="n">contador</span>
-</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># &quot;3&quot;</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># "3"</span>
 <span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">INCRBY</span> <span class="n">contador</span> <span class="mi">2</span>
 </span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># (integer) 5</span>
 <span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">DECR</span> <span class="n">contador</span>
@@ -2140,12 +2140,12 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </div>
 <p>Podemos recuperar las bases de datos que tenemos mediante <code>CONFIG GET DATABASES</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">6379</span><span class="o">&gt;</span> <span class="n">CONFIG</span> <span class="n">GET</span> <span class="n">DATABASES</span>
-<span class="linenos" data-linenos="2 "></span><span class="mi">1</span><span class="p">)</span> <span class="s2">&quot;databases&quot;</span>
-<span class="linenos" data-linenos="3 "></span><span class="mi">2</span><span class="p">)</span> <span class="s2">&quot;16&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="mi">1</span><span class="p">)</span> <span class="s2">"databases"</span>
+<span class="linenos" data-linenos="3 "></span><span class="mi">2</span><span class="p">)</span> <span class="s2">"16"</span>
 </code></pre></div>
 <p>Para elegir qué base de datos queremos emplear, usaremos el comando <a href="https://redis.io/docs/latest/commands/select/"><code>SELECT</code></a>, que permite cambiar la base de datos actual a otro espacio de nombres (al cambiar de base de datos, si no empleamos la base de datos <code>0</code>, en el CLI aparecerá entre corchetes su número identificador):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">6379</span><span class="o">&gt;</span> <span class="n">GET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
-<span class="linenos" data-linenos="2 "></span><span class="c1"># &quot;aitor-medrano.github.io/bd&quot;</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># "aitor-medrano.github.io/bd"</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">6379</span><span class="o">&gt;</span> <span class="n">SELECT</span> <span class="mi">1</span>
 </span><span class="linenos" data-linenos="4 "></span><span class="c1"># OK</span>
 <span class="linenos" data-linenos="5 "></span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">6379</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">GET</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
@@ -2157,9 +2157,9 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <p>Aunque podemos emplear <code>SELECT</code> para cambiar de base de datos, es recomendable utilizar prefijos en las claves del tipo <code>usuario:1:nombre</code> o <code>producto:1:nombre</code> para diferenciar espacios de nombres, utilizando los dos puntos (<strong><code>:</code></strong>) como separador de los prefijos.</p>
 <p>De esta manera, posteriormente podremos filtrar las claves por un subconjunto de los prefijos de las claves.</p>
 <p>Mediante <em>Redis Insight</em>, si utilizamos esta convención, al mostrar las claves podemos visualizarlas de forma jerárquica. Si insertamos estos datos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">set</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">nombre</span> <span class="s2">&quot;Aitor Medrano&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="nb">set</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">nombre</span> <span class="s2">"Aitor Medrano"</span>
 <span class="linenos" data-linenos="2 "></span><span class="nb">set</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">edad</span> <span class="mi">47</span>
-<span class="linenos" data-linenos="3 "></span><span class="nb">set</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">ciudad</span> <span class="s2">&quot;Elche&quot;</span>
+<span class="linenos" data-linenos="3 "></span><span class="nb">set</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="n">ciudad</span> <span class="s2">"Elche"</span>
 </code></pre></div>
 <p>Al pulsar en el botón de vista en forma de árbol, tendríamos:</p>
 <p><figure style="align: center;">
@@ -2263,16 +2263,16 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <li>
 <p><strong>Comandos</strong></p>
 <p>Para interactuar con un <em>Hash</em> utilizaremos los comandos <a href="https://redis.io/docs/latest/commands/hset/"><code>HSET</code></a> para asignar valores, <a href="https://redis.io/docs/latest/commands/hkeys/"><code>HKEYS</code></a> para recuperar todos los campos y <a href="https://redis.io/docs/latest/commands/hvals/"><code>HVALS</code></a> para recuperar todos los valores, o <a href="https://redis.io/docs/latest/commands/hget/"><code>HGET</code></a> para recuperar un campo concreto:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">HSET</span> <span class="n">usuario</span><span class="p">:</span><span class="n">aitor</span> <span class="n">nombre</span> <span class="s2">&quot;Aitor Medrano&quot;</span> <span class="n">pwd</span> <span class="s2">&quot;123456&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">HSET</span> <span class="n">usuario</span><span class="p">:</span><span class="n">aitor</span> <span class="n">nombre</span> <span class="s2">"Aitor Medrano"</span> <span class="n">pwd</span> <span class="s2">"123456"</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 2           # número de campos insertados</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">HVALS</span> <span class="n">usuario</span><span class="p">:</span><span class="n">aitor</span>
-</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># 1) &quot;Aitor Medrano&quot;</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1"># 2) &quot;123456&quot;</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># 1) "Aitor Medrano"</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1"># 2) "123456"</span>
 <span class="hll"><span class="linenos" data-linenos=" 6 "></span><span class="n">HKEYS</span> <span class="n">usuario</span><span class="p">:</span><span class="n">aitor</span>
-</span><span class="linenos" data-linenos=" 7 "></span><span class="c1"># 1) &quot;nombre&quot;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1"># 2) &quot;pwd&quot;</span>
+</span><span class="linenos" data-linenos=" 7 "></span><span class="c1"># 1) "nombre"</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># 2) "pwd"</span>
 <span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">HGET</span> <span class="n">usuario</span><span class="p">:</span><span class="n">aitor</span> <span class="n">nombre</span>
-</span><span class="linenos" data-linenos="10 "></span><span class="c1"># &quot;Aitor Medrano&quot;</span>
+</span><span class="linenos" data-linenos="10 "></span><span class="c1"># "Aitor Medrano"</span>
 </code></pre></div>
 <p>Otros comandos más específicos son <a href="https://redis.io/docs/latest/commands/hdel/"><code>HDEL</code></a> para elimina campos, <a href="https://redis.io/docs/latest/commands/hincrby/"><code>HINCRBY</code></a> para incrementar un campo cierta cantidad, <a href="https://redis.io/docs/latest/commands/hlen/"><code>HLEN</code></a> para obtener la cantidad de campos, <a href="https://redis.io/docs/latest/commands/hgetall/"><code>HGETALL</code></a> para recuperar todas las claves y valores y <a href="https://redis.io/docs/latest/commands/hsetnx/"><code>HSETNX</code></a> para asignar un valor sólo si la clave no existe (ya que si existe, mediante <code>HSET</code> siempre la sustituye).</p>
 </li>
@@ -2316,18 +2316,18 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">LLEN</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span>
 </span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># (integer) 3</span>
 <span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">LINDEX</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="mi">0</span>
-</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># &quot;aitor-blog&quot;</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># "aitor-blog"</span>
 <span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">LINDEX</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="o">-</span><span class="mi">1</span>
-</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># &quot;aitor-bd&quot;</span>
+</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># "aitor-bd"</span>
 <span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">LRANGE</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span>
-</span><span class="linenos" data-linenos="10 "></span><span class="c1"># 1) &quot;aitor-blog&quot;</span>
-<span class="linenos" data-linenos="11 "></span><span class="c1"># 2) &quot;aitor-iabd&quot;</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1"># 3) &quot;aitor-bd&quot;</span>
+</span><span class="linenos" data-linenos="10 "></span><span class="c1"># 1) "aitor-blog"</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1"># 2) "aitor-iabd"</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1"># 3) "aitor-bd"</span>
 </code></pre></div>
 <p>Todas las operaciones de listas utilizan un acceso <em>0-index</em>, donde un valor negativo indica el número de pasos desde el final.</p>
 <p>Para eliminar y recuperar cada valor en el orden en el que se añadieron (de forma similar a una cola FIFO), al insertarlos por la izquierda, debemos sacarlos por la derecha (la cola) de la lista:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">RPOP</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="c1"># &quot;aitor-bd&quot;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># "aitor-bd"</span>
 </code></pre></div>
 <p>Para sacar elementos, también podemos emplear <a href="https://redis.io/docs/latest/commands/lrem/"><code>LREM clave cantidad elemento</code></a> para a partir de una clave, permite indicar cuantos elementos queremos quitar de un determinado valor (si ponemos 0, borrará todos los que coincidan, y si ponemos un número negativo, borrará los indicados, pero empezando a buscar desde el final):</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">LREM</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="mi">0</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span>
@@ -2342,7 +2342,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <p>Si en cambio queremos que funcione como una pila LIFO, tras insertarlos con <code>LPUSH</code>, utilizaremos <code>LPOP</code> para sacarlos. Estas operaciones tienen un coste computacional constante (lo que significa que el tamaño de la lista no impacta en el rendimiento).</p>
 <p>Si queremos sacar, con un único comando, valores de la cola para insertarla en la cabeza de otra, antiguamente podíamos hacerlo mediante el comando <code>RPOPLPUSH</code> (<em>right pop, left push</em>):</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">RPOPLPUSH</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="n">pedro</span><span class="p">:</span><span class="n">visitados</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="c1"># &quot;aitor-iabd&quot;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># "aitor-iabd"</span>
 </code></pre></div>
 <p>Con esta operación el problema es doble. Por un lado, el comando se ha marcado como obsoleto, y por el otro, solo permite sacar por la derecha e insertar por la izquierda. Por suerte, desde la versión 6.2, podemos emplear el comando <a href="https://redis.io/docs/latest/commands/lmove/"><code>LMOVE origen destino &lt;LEFT | RIGHT&gt; &lt;LEFT | RIGHT&gt;</code></a>, el cual es más flexible al permitir sacar el elemento tanto de la izquierda como de la derecha y a su vez, volver a insertarlo a la izquierda o la derecha del destino. Así pues, podemos conseguir el mismo resultado mediante:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">LMOVE</span> <span class="n">aitor</span><span class="p">:</span><span class="n">enlaces</span> <span class="n">pedro</span><span class="p">:</span><span class="n">visitados</span> <span class="n">RIGHT</span> <span class="n">LEFT</span>
@@ -2377,44 +2377,44 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">SADD</span> <span class="n">noticias</span> <span class="n">xataka</span><span class="o">.</span><span class="n">com</span>
 </span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># (integer) 0       # Como ya existe, devuelve 0, ya que no ha insertado el elemento</span>
 <span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">SMEMBERS</span> <span class="n">noticias</span>   <span class="c1"># Devuelve todos los elementos</span>
-</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># 1) &quot;elpais.com&quot;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1"># 2) &quot;eldiario.es&quot;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1"># 3) &quot;xataka.com&quot; </span>
-<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">SISMEMBER</span> <span class="n">noticias</span> <span class="s2">&quot;xataka.com&quot;</span>  <span class="c1"># Comprueba si &quot;xataka.com&quot; está en el conjunto</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># 1) "elpais.com"</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># 2) "eldiario.es"</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># 3) "xataka.com" </span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">SISMEMBER</span> <span class="n">noticias</span> <span class="s2">"xataka.com"</span>  <span class="c1"># Comprueba si "xataka.com" está en el conjunto</span>
 </span><span class="linenos" data-linenos="10 "></span><span class="c1"># (integer) 1</span>
-<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="n">SISMEMBER</span> <span class="n">noticias</span> <span class="s2">&quot;eurogamer.es&quot;</span>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="n">SISMEMBER</span> <span class="n">noticias</span> <span class="s2">"eurogamer.es"</span>
 </span><span class="linenos" data-linenos="12 "></span><span class="c1"># (integer) 0</span>
 </code></pre></div>
 <p>Si queremos recuperar una cantidad de elementos aleatorios de un conjunto usaremos <a href="https://redis.io/docs/latest/commands/srandmember/"><code>SRANDMEMBER clave cantidad</code></a>, donde si <code>cantidad</code> es positiva devolverá elementos sin repetir, pero si es negativa, permitirá elementos repetidos:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SRANDMEMBER</span> <span class="n">noticias</span> <span class="mi">2</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) &quot;elpais.com&quot;</span>
-<span class="linenos" data-linenos="3 "></span><span class="c1"># 2) &quot;xataka.com&quot;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) "elpais.com"</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># 2) "xataka.com"</span>
 <span class="hll"><span class="linenos" data-linenos="4 "></span><span class="n">SRANDMEMBER</span> <span class="n">noticias</span> <span class="o">-</span><span class="mi">2</span>
-</span><span class="linenos" data-linenos="5 "></span><span class="c1"># 1) &quot;xataka.com&quot;</span>
-<span class="linenos" data-linenos="6 "></span><span class="c1"># 2) &quot;xataka.com&quot;</span>
+</span><span class="linenos" data-linenos="5 "></span><span class="c1"># 1) "xataka.com"</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># 2) "xataka.com"</span>
 </code></pre></div>
 <p>También podemos emplear las operaciones matemáticas de conjuntos, mediante <a href="https://redis.io/docs/latest/commands/sinter/"><code>SINTER</code></a> para la intersección, <a href="https://redis.io/docs/latest/commands/sdiff/"><code>SDIFF</code></a> para la diferencia y <a href="https://redis.io/docs/latest/commands/sunion/"><code>SUNION</code></a> para la unión:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">SADD</span> <span class="n">tech</span> <span class="n">xataka</span><span class="o">.</span><span class="n">com</span> <span class="n">eurogamer</span><span class="o">.</span><span class="n">es</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 3</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">SINTER</span> <span class="n">noticias</span> <span class="n">tech</span>    <span class="c1"># Enlaces que aparecen en los dos conjuntos</span>
-</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># 1) &quot;xataka.com&quot;</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># 1) "xataka.com"</span>
 <span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">SDIFF</span> <span class="n">noticias</span> <span class="n">tech</span>     <span class="c1"># Noticias que no son de tecnología</span>
-</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># 1) &quot;elpais.com&quot;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1"># 2) &quot;eldiario.es&quot;</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># 1) "elpais.com"</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># 2) "eldiario.es"</span>
 <span class="hll"><span class="linenos" data-linenos=" 8 "></span><span class="n">SUNION</span> <span class="n">noticias</span> <span class="n">tech</span>    <span class="c1"># Todas las noticias, sin enlaces repetidos</span>
-</span><span class="linenos" data-linenos=" 9 "></span><span class="c1"># 1) &quot;elpais.com&quot;</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1"># 2) &quot;eldiario.es&quot;</span>
-<span class="linenos" data-linenos="11 "></span><span class="c1"># 3) &quot;xataka.com&quot;</span>
-<span class="linenos" data-linenos="12 "></span><span class="c1"># 4) &quot;eurogamer.es&quot;</span>
+</span><span class="linenos" data-linenos=" 9 "></span><span class="c1"># 1) "elpais.com"</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># 2) "eldiario.es"</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1"># 3) "xataka.com"</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1"># 4) "eurogamer.es"</span>
 </code></pre></div>
 <p>Todas las operaciones sobre conjuntos ofrecen la posibilidad de almacenar el resultado en uno nuevo, así pues, podemos emplear <a href="https://redis.io/docs/latest/commands/sinterstore/"><code>SINTERSTORE</code></a>, <a href="https://redis.io/docs/latest/commands/sdiffstore/"><code>SDIFFSTORE</code></a> y <a href="https://redis.io/docs/latest/commands/sunionstore/"><code>SUNIONSTORE</code></a> respectivamente:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SUNIONSTORE</span> <span class="n">sitiosweb</span> <span class="n">noticias</span> <span class="n">tech</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># (integer) 4</span>
 <span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">SMEMBERS</span> <span class="n">sitiosweb</span>
-</span><span class="linenos" data-linenos="4 "></span><span class="c1"># 1) &quot;elpais.com&quot;</span>
-<span class="linenos" data-linenos="5 "></span><span class="c1"># 2) &quot;eldiario.es&quot;</span>
-<span class="linenos" data-linenos="6 "></span><span class="c1"># 3) &quot;xataka.com&quot;</span>
-<span class="linenos" data-linenos="7 "></span><span class="c1"># 4) &quot;eurogamer.es&quot;</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="c1"># 1) "elpais.com"</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1"># 2) "eldiario.es"</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># 3) "xataka.com"</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># 4) "eurogamer.es"</span>
 </code></pre></div>
 <p>Igual que usamos <code>LMOVE</code> para mover elementos entre listas, podemos emplear <a href="https://redis.io/docs/latest/commands/smove/"><code>SMOVE</code></a> para mover valores entre conjuntos. Otras operaciones muy útiles son <a href="https://redis.io/docs/latest/commands/scard/"><code>SCARD clave</code></a> para averiguar su tamaño (cardinalidad), <a href="https://redis.io/docs/latest/commands/spop/"><code>SPOP</code></a> para sacar un elemento cualquiera (al no estar ordenados) o <a href="https://redis.io/docs/latest/commands/srem/"><code>SREM clave valor</code></a> si queremos eliminar un valor concreto.</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SCARD</span> <span class="n">sitiosweb</span>
@@ -2452,24 +2452,24 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">ZADD</span> <span class="n">visitas</span> <span class="mi">1000</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span> <span class="mi">5000</span> <span class="n">aitor</span><span class="o">-</span><span class="n">iabd</span> <span class="mi">66</span> <span class="n">aitor</span><span class="o">-</span><span class="n">blog</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 3</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">ZSCORE</span> <span class="n">visitas</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
-</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># &quot;1000&quot;</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># "1000"</span>
 <span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="n">WITHSCORES</span>                  <span class="c1"># Todos los elementos con puntuaciones</span>
-</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># 1) &quot;aitor-blog&quot;</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="c1"># 2) &quot;66&quot;</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="c1"># 3) &quot;aitor-bd&quot;</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1"># 4) &quot;1000&quot;</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1"># 5) &quot;aitor-iabd&quot;</span>
-<span class="linenos" data-linenos="11 "></span><span class="c1"># 6) &quot;5000&quot;</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># 1) "aitor-blog"</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1"># 2) "66"</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1"># 3) "aitor-bd"</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1"># 4) "1000"</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># 5) "aitor-iabd"</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1"># 6) "5000"</span>
 <span class="hll"><span class="linenos" data-linenos="12 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="mi">50</span> <span class="mi">1500</span> <span class="n">BYSCORE</span>                  <span class="c1"># Filtrado por puntuaciones</span>
-</span><span class="linenos" data-linenos="13 "></span><span class="c1"># 1) &quot;aitor-blog&quot;</span>
-<span class="linenos" data-linenos="14 "></span><span class="c1"># 2) &quot;aitor-bd&quot;</span>
+</span><span class="linenos" data-linenos="13 "></span><span class="c1"># 1) "aitor-blog"</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1"># 2) "aitor-bd"</span>
 <span class="hll"><span class="linenos" data-linenos="15 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="p">(</span><span class="mi">66</span> <span class="mi">1500</span> <span class="n">BYSCORE</span>                 <span class="c1"># No incluye el 66</span>
-</span><span class="linenos" data-linenos="16 "></span><span class="c1"># 1) &quot;aitor-bd&quot;</span>
+</span><span class="linenos" data-linenos="16 "></span><span class="c1"># 1) "aitor-bd"</span>
 <span class="hll"><span class="linenos" data-linenos="17 "></span><span class="n">ZRANGE</span> <span class="n">visitas</span> <span class="p">(</span><span class="mi">5000</span> <span class="mi">66</span> <span class="n">REV</span> <span class="n">BYSCORE</span> <span class="n">WITHSCORES</span>  <span class="c1"># No incluye el 5000, en orden descendente</span>
-</span><span class="linenos" data-linenos="18 "></span><span class="c1"># 1) &quot;aitor-bd&quot;</span>
-<span class="linenos" data-linenos="19 "></span><span class="c1"># 2) &quot;1000&quot;</span>
-<span class="linenos" data-linenos="20 "></span><span class="c1"># 3) &quot;aitor-blog&quot;</span>
-<span class="linenos" data-linenos="21 "></span><span class="c1"># 4) &quot;66&quot;</span>
+</span><span class="linenos" data-linenos="18 "></span><span class="c1"># 1) "aitor-bd"</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1"># 2) "1000"</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1"># 3) "aitor-blog"</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1"># 4) "66"</span>
 </code></pre></div>
 <p>Han caído en desuso las operaciones <code>ZREVRANGE</code>, <code>ZRANGEBYSCORE</code>, <code>ZREVRANGEBYSCORE</code>, etc... ya que con <a href="https://redis.io/docs/latest/commands/zrange/"><code>ZRANGE</code></a> y los parámetros adecuados podemos obtener los mismos resultados.</p>
 <p>Si lo que queremos es averiguar cuántos valores tienen una puntuación entre un rango determinado, usaremos <a href="https://redis.io/docs/latest/commands/zcount/"><code>ZCOUNT clave inicio fin</code></a>:</p>
@@ -2482,7 +2482,7 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </code></pre></div>
 <p>Para incrementar la puntuación de un miembro, podemos volver a añadirlo con la nueva puntuación, lo cual modifica la puntuación, pero no añade un nuevo valor, o incrementarlo por un determinado valor  (o reducirlo mediante un valor negativo) mediante <a href="https://redis.io/docs/latest/commands/zincrby/"><code>ZINCRBY</code></a>, el cual devolverá un nuevo valor:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">ZINCRBY</span> <span class="n">visitas</span> <span class="mi">1</span> <span class="n">aitor</span><span class="o">-</span><span class="n">bd</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="c1"># &quot;1001&quot;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># "1001"</span>
 </code></pre></div>
 </li>
 </ul>
@@ -2512,54 +2512,54 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <p><strong>Comandos</strong></p>
 <p>Los comandos que más vamos a emplear son <a href="https://redis.io/docs/latest/commands/json.set/"><code>JSON.SET</code></a> para asignar una cadena JSON a una clave y <a href="https://redis.io/docs/latest/commands/json.get/"><code>JSON.GET</code></a> para recuperar un valor, pudiendo realizar selección y filtrado de elementos.</p>
 <p>Como hemos comentado, para asignar un elemento usaremos el comando <a href="https://redis.io/docs/latest/commands/json.set/"><code>JSON.SET clave ruta valor</code></a>, donde <code>ruta</code> será <code>$</code> para indicar el raíz o una expresión <em>JSONPATH</em> si queremos añadir contenido en un lugar específico, y mediante <code>valor</code> le asignamos una cadena en formato JSON. Además, podemos pasar el parámetro <code>NX</code> para indicar que lo cree si no existe o <code>XX</code> para sobrescribir en caso de que ya exista. Veamos algunos ejemplos:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="err">$</span> <span class="s1">&#39;{&quot;nombre&quot;: &quot;Aitor Medrano&quot;, &quot;altura&quot;: 182, &quot;hobbies&quot;: [&quot;baloncesto&quot;, &quot;videojuegos&quot;]}&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="err">$</span> <span class="s1">'{"nombre": "Aitor Medrano", "altura": 182, "hobbies": ["baloncesto", "videojuegos"]}'</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># OK</span>
-<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">2</span> <span class="err">$</span> <span class="s1">&#39;{&quot;nombre&quot;: &quot;José Manuel Pérez&quot;}&#39;</span> <span class="n">NX</span>   <span class="c1"># NX: Lo crea si no existe</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">2</span> <span class="err">$</span> <span class="s1">'{"nombre": "José Manuel Pérez"}'</span> <span class="n">NX</span>   <span class="c1"># NX: Lo crea si no existe</span>
 </span><span class="linenos" data-linenos="4 "></span><span class="c1"># OK</span>
-<span class="hll"><span class="linenos" data-linenos="5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">2</span> <span class="err">$</span> <span class="s1">&#39;{&quot;nombre&quot;: &quot;Andreu Medrano&quot;}&#39;</span> <span class="n">XX</span>      <span class="c1"># XX: Lo sobrescribe, sólo si ya existe. Si no, ni lo inserta</span>
+<span class="hll"><span class="linenos" data-linenos="5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">2</span> <span class="err">$</span> <span class="s1">'{"nombre": "Andreu Medrano"}'</span> <span class="n">XX</span>      <span class="c1"># XX: Lo sobrescribe, sólo si ya existe. Si no, ni lo inserta</span>
 </span></code></pre></div>
 <p>Si queremos modificar un documento, además de <code>JSON.SET</code> para campos sencillos, podemos emplear <a href="https://redis.io/docs/latest/commands/json.toggle/"><code>JSON.TOGGLE</code></a> para cambiar el estado de un campo <em>booleano</em>, <a href="https://redis.io/docs/latest/commands/json.numincrby/"><code>JSON.NUMINCRBY</code></a> para incrementar un campo numérico, y <a href="https://redis.io/docs/latest/commands/json.arrappend/"><code>JSON.ARRAPPEND</code></a> y <a href="https://redis.io/docs/latest/commands/json.arrinsert/"><code>JSON.ARRINSERT</code></a> para trabajar con <em>arrays</em> para añadir, respectivamente, elementos al final o en una posición determinada:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.altura&#39;</span> <span class="mi">183</span>   <span class="c1"># Modificamos un campo</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'$.altura'</span> <span class="mi">183</span>   <span class="c1"># Modificamos un campo</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># OK</span>
-<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">NUMINCRBY</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.altura&#39;</span> <span class="mi">10</span>   <span class="c1"># Incrementamos un campo</span>
-</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># &quot;[193]&quot;</span>
-<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.ciudad&#39;</span> <span class="s1">&#39;&quot;Elche&quot;&#39;</span>   <span class="c1"># Agregamos un nuevo campo</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">NUMINCRBY</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'$.altura'</span> <span class="mi">10</span>   <span class="c1"># Incrementamos un campo</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># "[193]"</span>
+<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'$.ciudad'</span> <span class="s1">'"Elche"'</span>   <span class="c1"># Agregamos un nuevo campo</span>
 </span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># OK</span>
-<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">ARRAPPEND</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.hobbies&#39;</span> <span class="s1">&#39;&quot;big data&quot;&#39;</span>
+<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">ARRAPPEND</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'$.hobbies'</span> <span class="s1">'"big data"'</span>
 </span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># 1) (integer) 3</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">ARRINSERT</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.hobbies&#39;</span> <span class="mi">1</span> <span class="s1">&#39;&quot;música&quot;&#39;</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">ARRINSERT</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'$.hobbies'</span> <span class="mi">1</span> <span class="s1">'"música"'</span>
 <span class="linenos" data-linenos="10 "></span><span class="c1"># 1) (integer) 4</span>
 </code></pre></div>
 <p>Para recuperar documentos usaremos <a href="https://redis.io/docs/latest/commands/json.get/"><code>JSON.GET clave [ruta]</code></a>, donde <code>ruta</code> es una expresión <em>JSONPath</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span>
-</span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># &quot;{\&quot;nombre\&quot;:\&quot;Aitor Medrano\&quot;,\&quot;altura\&quot;:183,\&quot;hobbies\&quot;:[\&quot;baloncesto\&quot;,\&quot;m\xc3\xbasica\&quot;,\&quot;videojuegos\&quot;,\&quot;big data\&quot;],\&quot;ciudad\&quot;:\&quot;Elche\&quot;}&quot;</span>
-<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.nombre&#39;</span>       <span class="c1"># Un campo sencillo</span>
-</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># &quot;[\&quot;Aitor Medrano\&quot;]&quot;</span>
-<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.hobbies&#39;</span>      <span class="c1"># Un campo array</span>
-</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># &quot;[[\&quot;baloncesto\&quot;,\&quot;m\xc3\xbasica\&quot;,\&quot;videojuegos\&quot;,\&quot;big data\&quot;]]&quot;</span>
-<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.hobbies[0]&#39;</span>   <span class="c1"># El primer elemento del array</span>
-</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># &quot;[\&quot;baloncesto\&quot;]&quot;</span>
-<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.nombre&#39;</span> <span class="s1">&#39;$.ciudad&#39;</span>    <span class="c1"># Varias rutas</span>
-</span><span class="linenos" data-linenos="10 "></span><span class="c1"># &quot;{\&quot;$.nombre\&quot;:[\&quot;Aitor Medrano\&quot;],\&quot;$.ciudad\&quot;:[\&quot;Elche\&quot;]}&quot;</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># "{\"nombre\":\"Aitor Medrano\",\"altura\":183,\"hobbies\":[\"baloncesto\",\"m\xc3\xbasica\",\"videojuegos\",\"big data\"],\"ciudad\":\"Elche\"}"</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'$.nombre'</span>       <span class="c1"># Un campo sencillo</span>
+</span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># "[\"Aitor Medrano\"]"</span>
+<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'$.hobbies'</span>      <span class="c1"># Un campo array</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># "[[\"baloncesto\",\"m\xc3\xbasica\",\"videojuegos\",\"big data\"]]"</span>
+<span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'$.hobbies[0]'</span>   <span class="c1"># El primer elemento del array</span>
+</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># "[\"baloncesto\"]"</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'$.nombre'</span> <span class="s1">'$.ciudad'</span>    <span class="c1"># Varias rutas</span>
+</span><span class="linenos" data-linenos="10 "></span><span class="c1"># "{\"$.nombre\":[\"Aitor Medrano\"],\"$.ciudad\":[\"Elche\"]}"</span>
 </code></pre></div>
 <p>También podemos emplear <a href="https://redis.io/docs/latest/commands/json.mget/"><code>JSON.MGET</code></a> para recuperar la misma ruta de varias claves:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">MGET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">2</span> <span class="s1">&#39;$.nombre&#39;</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) &quot;[\&quot;Aitor Medrano\&quot;]&quot;</span>
-<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="c1"># 2) &quot;[\&quot;Andreu Medrano\&quot;]&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">MGET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">2</span> <span class="s1">'$.nombre'</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) "[\"Aitor Medrano\"]"</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="c1"># 2) "[\"Andreu Medrano\"]"</span>
 </span></code></pre></div>
 <p>Finalmente, para eliminar elementos disponemos de <a href="https://redis.io/docs/latest/commands/json.del/"><code>JSON.DEL</code></a> y para vaciarlos <a href="https://redis.io/docs/latest/commands/json.clear/"><code>JSON.CLEAR</code></a> (vacía los arrays y los objetos y pone a cero los valores enteros). En el caso de arrays, podemos emplear <a href="https://redis.io/docs/latest/commands/json.arrpop/"><code>JSON.ARRPOP</code></a> para sacar un elemento de una posición o <a href="https://redis.io/docs/latest/commands/json.arrtrim/"><code>JSON.ARRTRIM</code></a> para recortar el <em>array</em> a un subconjunto de los elementos:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">DEL</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.ciudad&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">DEL</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'$.ciudad'</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1"># (integer) 1</span>
-<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">CLEAR</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.altura&#39;</span>         <span class="c1"># Ponemos la altura a 0</span>
+<span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">CLEAR</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'$.altura'</span>         <span class="c1"># Ponemos la altura a 0</span>
 </span><span class="linenos" data-linenos=" 4 "></span><span class="c1"># (integer) 1</span>
-<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">ARRPOP</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.hobbies&#39;</span> <span class="mi">0</span>     <span class="c1"># Sacamos el primer elemento</span>
-</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># 1) &quot;\&quot;baloncesto\&quot;&quot;</span>
+<span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">ARRPOP</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'$.hobbies'</span> <span class="mi">0</span>     <span class="c1"># Sacamos el primer elemento</span>
+</span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># 1) "\"baloncesto\""</span>
 <span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span>
-</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># &quot;{\&quot;nombre\&quot;:\&quot;Aitor Medrano\&quot;,\&quot;altura\&quot;:0,\&quot;hobbies\&quot;:[\&quot;m\xc3\xbasica\&quot;,\&quot;videojuegos\&quot;,\&quot;big data\&quot;]}&quot;</span>
-<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">ARRTRIM</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">&#39;$.hobbies&#39;</span> <span class="mi">1</span> <span class="mi">2</span>  <span class="c1"># Nos quedamos con los elementos del 1 al 2</span>
+</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># "{\"nombre\":\"Aitor Medrano\",\"altura\":0,\"hobbies\":[\"m\xc3\xbasica\",\"videojuegos\",\"big data\"]}"</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">ARRTRIM</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span> <span class="s1">'$.hobbies'</span> <span class="mi">1</span> <span class="mi">2</span>  <span class="c1"># Nos quedamos con los elementos del 1 al 2</span>
 </span><span class="linenos" data-linenos="10 "></span><span class="c1"># 1) (integer) 2</span>
 <span class="hll"><span class="linenos" data-linenos="11 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuario</span><span class="p">:</span><span class="mi">1</span>
-</span><span class="linenos" data-linenos="12 "></span><span class="c1"># &quot;{\&quot;nombre\&quot;:\&quot;Aitor Medrano\&quot;,\&quot;altura\&quot;:0,\&quot;hobbies\&quot;:[\&quot;videojuegos\&quot;,\&quot;big data\&quot;]}&quot;</span>
+</span><span class="linenos" data-linenos="12 "></span><span class="c1"># "{\"nombre\":\"Aitor Medrano\",\"altura\":0,\"hobbies\":[\"videojuegos\",\"big data\"]}"</span>
 </code></pre></div>
 <p>Otras operaciones comunes son <a href="https://redis.io/docs/latest/commands/json.arrlen/"><code>JSON.ARRLEN</code></a> para averiguar el tamaño de un array o <a href="https://redis.io/docs/latest/commands/json.type/"><code>JSON.TYPE</code></a> para obtener el tipo de un determinado campo.</p>
 </li>
@@ -2612,77 +2612,77 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <div class="admonition info">
 <p class="admonition-title">Preparando datos</p>
 <p>Vamos a crear un documento JSON complejo, con datos de dos usuarios con elementos anidados y uso de arrays, para ilustrar diferentes consultas:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="err">JSON.SET</span><span class="w"> </span><span class="err">usuarios</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="err">&#39;</span><span class="p">{</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="nt">&quot;usuarios&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="err">JSON.SET</span><span class="w"> </span><span class="err">usuarios</span><span class="w"> </span><span class="err">$</span><span class="w"> </span><span class="err">'</span><span class="p">{</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="nt">"usuarios"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">        </span><span class="p">{</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="w">            </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Aitor Medrano&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">            </span><span class="nt">&quot;edad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 7 "></span><span class="w">            </span><span class="nt">&quot;contacto&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos" data-linenos=" 8 "></span><span class="w">                </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a.medrano@edu.gva.es&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="w">                </span><span class="nt">&quot;telefonos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;636 123456&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;686 567890&quot;</span><span class="p">]</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="w">            </span><span class="nt">"nombre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aitor Medrano"</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">            </span><span class="nt">"edad"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="w">            </span><span class="nt">"contacto"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="w">                </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a.medrano@edu.gva.es"</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="w">                </span><span class="nt">"telefonos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"636 123456"</span><span class="p">,</span><span class="w"> </span><span class="s2">"686 567890"</span><span class="p">]</span>
 <span class="linenos" data-linenos="10 "></span><span class="w">            </span><span class="p">},</span>
-<span class="linenos" data-linenos="11 "></span><span class="w">            </span><span class="nt">&quot;hobbies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;programación&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;música&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;viajes&quot;</span><span class="p">],</span>
-<span class="linenos" data-linenos="12 "></span><span class="w">            </span><span class="nt">&quot;direcciones&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="linenos" data-linenos="13 "></span><span class="w">                </span><span class="p">{</span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;casa&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ciudad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Elche&quot;</span><span class="p">},</span>
-<span class="linenos" data-linenos="14 "></span><span class="w">                </span><span class="p">{</span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trabajo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ciudad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Elche&quot;</span><span class="p">}</span>
+<span class="linenos" data-linenos="11 "></span><span class="w">            </span><span class="nt">"hobbies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"programación"</span><span class="p">,</span><span class="w"> </span><span class="s2">"música"</span><span class="p">,</span><span class="w"> </span><span class="s2">"viajes"</span><span class="p">],</span>
+<span class="linenos" data-linenos="12 "></span><span class="w">            </span><span class="nt">"direcciones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="linenos" data-linenos="13 "></span><span class="w">                </span><span class="p">{</span><span class="nt">"tipo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"casa"</span><span class="p">,</span><span class="w"> </span><span class="nt">"ciudad"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elche"</span><span class="p">},</span>
+<span class="linenos" data-linenos="14 "></span><span class="w">                </span><span class="p">{</span><span class="nt">"tipo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trabajo"</span><span class="p">,</span><span class="w"> </span><span class="nt">"ciudad"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elche"</span><span class="p">}</span>
 <span class="linenos" data-linenos="15 "></span><span class="w">            </span><span class="p">]</span>
 <span class="linenos" data-linenos="16 "></span><span class="w">        </span><span class="p">},</span>
 <span class="linenos" data-linenos="17 "></span><span class="w">        </span><span class="p">{</span>
-<span class="linenos" data-linenos="18 "></span><span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="linenos" data-linenos="19 "></span><span class="w">            </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Juani Moya&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos="20 "></span><span class="w">            </span><span class="nt">&quot;edad&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
-<span class="linenos" data-linenos="21 "></span><span class="w">            </span><span class="nt">&quot;contacto&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="linenos" data-linenos="22 "></span><span class="w">                </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;j.moya@edu.gva.es&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos="23 "></span><span class="w">                </span><span class="nt">&quot;telefonos&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;696 543210&quot;</span><span class="p">]</span>
+<span class="linenos" data-linenos="18 "></span><span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="linenos" data-linenos="19 "></span><span class="w">            </span><span class="nt">"nombre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Juani Moya"</span><span class="p">,</span>
+<span class="linenos" data-linenos="20 "></span><span class="w">            </span><span class="nt">"edad"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span>
+<span class="linenos" data-linenos="21 "></span><span class="w">            </span><span class="nt">"contacto"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="linenos" data-linenos="22 "></span><span class="w">                </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"j.moya@edu.gva.es"</span><span class="p">,</span>
+<span class="linenos" data-linenos="23 "></span><span class="w">                </span><span class="nt">"telefonos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"696 543210"</span><span class="p">]</span>
 <span class="linenos" data-linenos="24 "></span><span class="w">            </span><span class="p">},</span>
-<span class="linenos" data-linenos="25 "></span><span class="w">            </span><span class="nt">&quot;hobbies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;lectura&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;música&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;deporte&quot;</span><span class="p">],</span>
-<span class="linenos" data-linenos="26 "></span><span class="w">            </span><span class="nt">&quot;direcciones&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="linenos" data-linenos="27 "></span><span class="w">                </span><span class="p">{</span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;casa&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ciudad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Murcia&quot;</span><span class="p">},</span><span class="w"> </span>
-<span class="linenos" data-linenos="28 "></span><span class="w">                </span><span class="p">{</span><span class="nt">&quot;tipo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;trabajo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;ciudad&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Elche&quot;</span><span class="p">}</span>
+<span class="linenos" data-linenos="25 "></span><span class="w">            </span><span class="nt">"hobbies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"lectura"</span><span class="p">,</span><span class="w"> </span><span class="s2">"música"</span><span class="p">,</span><span class="w"> </span><span class="s2">"deporte"</span><span class="p">],</span>
+<span class="linenos" data-linenos="26 "></span><span class="w">            </span><span class="nt">"direcciones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="linenos" data-linenos="27 "></span><span class="w">                </span><span class="p">{</span><span class="nt">"tipo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"casa"</span><span class="p">,</span><span class="w"> </span><span class="nt">"ciudad"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Murcia"</span><span class="p">},</span><span class="w"> </span>
+<span class="linenos" data-linenos="28 "></span><span class="w">                </span><span class="p">{</span><span class="nt">"tipo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trabajo"</span><span class="p">,</span><span class="w"> </span><span class="nt">"ciudad"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elche"</span><span class="p">}</span>
 <span class="linenos" data-linenos="29 "></span><span class="w">            </span><span class="p">]</span>
 <span class="linenos" data-linenos="30 "></span><span class="w">        </span><span class="p">}</span>
 <span class="linenos" data-linenos="31 "></span><span class="w">    </span><span class="p">]</span>
-<span class="linenos" data-linenos="32 "></span><span class="p">}</span><span class="err">&#39;</span>
+<span class="linenos" data-linenos="32 "></span><span class="p">}</span><span class="err">'</span>
 </code></pre></div>
 <p>Para poder ejecutar la instrucción, bien necesitamos que esté en una única línea:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">redis</span><span class="o">-</span><span class="n">cli</span> <span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuarios</span> <span class="err">$</span> <span class="s1">&#39;{&quot;usuarios&quot;:[{&quot;id&quot;:1,&quot;nombre&quot;:&quot;Aitor Medrano&quot;,&quot;edad&quot;:21,&quot;contacto&quot;:{&quot;email&quot;:&quot;a.medrano@edu.gva.es&quot;,&quot;telefonos&quot;:[&quot;636 123456&quot;,&quot;686 567890&quot;]},&quot;hobbies&quot;:[&quot;programación&quot;,&quot;música&quot;,&quot;viajes&quot;],&quot;direcciones&quot;:[{&quot;tipo&quot;:&quot;casa&quot;,&quot;ciudad&quot;:&quot;Elche&quot;},{&quot;tipo&quot;:&quot;trabajo&quot;,&quot;ciudad&quot;:&quot;Elche&quot;}]},{&quot;id&quot;:2,&quot;nombre&quot;:&quot;Juani Moya&quot;,&quot;edad&quot;:18,&quot;contacto&quot;:{&quot;email&quot;:&quot;j.moya@edu.gva.es&quot;,&quot;telefonos&quot;:[&quot;696 543210&quot;]},&quot;hobbies&quot;:[&quot;lectura&quot;,&quot;música&quot;,&quot;deporte&quot;],&quot;direcciones&quot;:[{&quot;tipo&quot;:&quot;casa&quot;,&quot;ciudad&quot;:&quot;Murcia&quot;},{&quot;tipo&quot;:&quot;trabajo&quot;,&quot;ciudad&quot;:&quot;Elche&quot;}]}]}&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">redis</span><span class="o">-</span><span class="n">cli</span> <span class="n">JSON</span><span class="o">.</span><span class="n">SET</span> <span class="n">usuarios</span> <span class="err">$</span> <span class="s1">'{"usuarios":[{"id":1,"nombre":"Aitor Medrano","edad":21,"contacto":{"email":"a.medrano@edu.gva.es","telefonos":["636 123456","686 567890"]},"hobbies":["programación","música","viajes"],"direcciones":[{"tipo":"casa","ciudad":"Elche"},{"tipo":"trabajo","ciudad":"Elche"}]},{"id":2,"nombre":"Juani Moya","edad":18,"contacto":{"email":"j.moya@edu.gva.es","telefonos":["696 543210"]},"hobbies":["lectura","música","deporte"],"direcciones":[{"tipo":"casa","ciudad":"Murcia"},{"tipo":"trabajo","ciudad":"Elche"}]}]}'</span>
 </code></pre></div>
 <p>O podemos almacenar los datos en un archivo JSON (por ejemplo, <code>usuarios.json</code>) y ejecutarlo desde fuera del CLI mediante:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>redis-cli<span class="w"> </span>JSON.SET<span class="w"> </span>usuarios<span class="w"> </span>$<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>cat<span class="w"> </span>usuarios.json<span class="k">)</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>redis-cli<span class="w"> </span>JSON.SET<span class="w"> </span>usuarios<span class="w"> </span>$<span class="w"> </span><span class="s2">"</span><span class="k">$(</span>cat<span class="w"> </span>usuarios.json<span class="k">)</span><span class="s2">"</span>
 </code></pre></div>
 </div>
 <p>Para nuestras primeras consultas, usaremos los selectores básicos:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$.usuarios[0]&#39;</span>   <span class="c1"># Recuperamos el primer usuario</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="c1"># &quot;[{\&quot;id\&quot;:1,\&quot;nombre\&quot;:\&quot;Aitor Medrano\&quot;,\&quot;edad\&quot;:21,\&quot;contacto\&quot;:{\&quot;email\&quot;:\&quot;a.medrano@edu.gva.es\&quot;,\&quot;telefonos\&quot;:[\&quot;636 123456\&quot;,\&quot;686 567890\&quot;]},\&quot;hobbies\&quot;:[\&quot;programaci\xc3\xb3n\&quot;,\&quot;m\xc3\xbasica\&quot;,\&quot;viajes\&quot;],\&quot;direcciones\&quot;:[{\&quot;tipo\&quot;:\&quot;casa\&quot;,\&quot;ciudad\&quot;:\&quot;Elche\&quot;},{\&quot;tipo\&quot;:\&quot;trabajo\&quot;,\&quot;ciudad\&quot;:\&quot;Elche\&quot;}]}]&quot;</span>
-<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$.usuarios[*].nombre&#39;</span> <span class="c1"># Obtenemos el nombre de todos los usuarios</span>
-</span><span class="linenos" data-linenos="4 "></span><span class="c1"># &quot;[\&quot;Aitor Medrano\&quot;,\&quot;Juani Moya\&quot;]&quot;</span>
-<span class="linenos" data-linenos="5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$.usuarios[*].contacto.telefonos[0]&#39;</span> <span class="c1"># Primer teléfono de cada usuario</span>
-<span class="linenos" data-linenos="6 "></span><span class="c1"># &quot;[\&quot;636 123456\&quot;,\&quot;696 543210\&quot;]&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">'$.usuarios[0]'</span>   <span class="c1"># Recuperamos el primer usuario</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># "[{\"id\":1,\"nombre\":\"Aitor Medrano\",\"edad\":21,\"contacto\":{\"email\":\"a.medrano@edu.gva.es\",\"telefonos\":[\"636 123456\",\"686 567890\"]},\"hobbies\":[\"programaci\xc3\xb3n\",\"m\xc3\xbasica\",\"viajes\"],\"direcciones\":[{\"tipo\":\"casa\",\"ciudad\":\"Elche\"},{\"tipo\":\"trabajo\",\"ciudad\":\"Elche\"}]}]"</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">'$.usuarios[*].nombre'</span> <span class="c1"># Obtenemos el nombre de todos los usuarios</span>
+</span><span class="linenos" data-linenos="4 "></span><span class="c1"># "[\"Aitor Medrano\",\"Juani Moya\"]"</span>
+<span class="linenos" data-linenos="5 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">'$.usuarios[*].contacto.telefonos[0]'</span> <span class="c1"># Primer teléfono de cada usuario</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># "[\"636 123456\",\"696 543210\"]"</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Datos sin escapar</p>
 <p>Si queremos recuperar los datos sin escapar las llaves, corchetes, etc..., desde fuera del cliente, podemos invocarlo pasándole la consulta y el parámetro <code>--raw</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">redis</span><span class="o">-</span><span class="n">cli</span> <span class="o">--</span><span class="n">raw</span> <span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$.usuarios[0]&#39;</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="c1"># [{&quot;id&quot;:1,&quot;nombre&quot;:&quot;Aitor Medrano&quot;,&quot;edad&quot;:21,&quot;contacto&quot;:{&quot;email&quot;:&quot;a.medrano@edu.gva.es&quot;,&quot;telefonos&quot;:[&quot;636 123456&quot;,&quot;686 567890&quot;]},&quot;hobbies&quot;:[&quot;programación&quot;,&quot;música&quot;,&quot;viajes&quot;],&quot;direcciones&quot;:[{&quot;tipo&quot;:&quot;casa&quot;,&quot;ciudad&quot;:&quot;Elche&quot;},{&quot;tipo&quot;:&quot;trabajo&quot;,&quot;ciudad&quot;:&quot;Elche&quot;}]}]</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">redis</span><span class="o">-</span><span class="n">cli</span> <span class="o">--</span><span class="n">raw</span> <span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">'$.usuarios[0]'</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># [{"id":1,"nombre":"Aitor Medrano","edad":21,"contacto":{"email":"a.medrano@edu.gva.es","telefonos":["636 123456","686 567890"]},"hobbies":["programación","música","viajes"],"direcciones":[{"tipo":"casa","ciudad":"Elche"},{"tipo":"trabajo","ciudad":"Elche"}]}]</span>
 </code></pre></div>
 </div>
 <p>Por ejemplo, podemos filtrar los datos haciendo uso de expresiones de filtrado mediante <code>?()</code> para restringir los documentos. </p>
 <p>Las rutas dentro de la condición de filtro utilizan la notación de punto con <code>@</code> para indicar el elemento actual del array o el valor actual del objeto, o <code>$</code> para indicar el elemento de nivel superior. Es importante destacar que Redis no soporta el operador <code>?()</code> para filtrar arrays directamente en la consulta.</p>
 <p>Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1"># Nombre de los usuarios menores de 20 años</span>
-<span class="linenos" data-linenos="2 "></span>JSON.GET<span class="w"> </span>usuarios<span class="w"> </span><span class="s1">&#39;$.usuarios[?(@.edad &lt; 20)].nombre&#39;</span><span class="w">      </span>
-<span class="linenos" data-linenos="3 "></span><span class="c1"># &quot;[\&quot;Juani Moya\&quot;]&quot;</span>
+<span class="linenos" data-linenos="2 "></span>JSON.GET<span class="w"> </span>usuarios<span class="w"> </span><span class="s1">'$.usuarios[?(@.edad &lt; 20)].nombre'</span><span class="w">      </span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># "[\"Juani Moya\"]"</span>
 <span class="linenos" data-linenos="4 "></span>
 <span class="linenos" data-linenos="5 "></span><span class="c1"># Nombre del usuario cuyo email es a.medrano@edu.gva.es</span>
-<span class="linenos" data-linenos="6 "></span>JSON.GET<span class="w"> </span>usuarios<span class="w"> </span><span class="s1">&#39;$.usuarios[?(@.contacto.email == &quot;a.medrano@edu.gva.es&quot;)].nombre&#39;</span>
-<span class="linenos" data-linenos="7 "></span><span class="c1"># &quot;[\&quot;Aitor Medrano\&quot;]&quot;</span>
+<span class="linenos" data-linenos="6 "></span>JSON.GET<span class="w"> </span>usuarios<span class="w"> </span><span class="s1">'$.usuarios[?(@.contacto.email == "a.medrano@edu.gva.es")].nombre'</span>
+<span class="linenos" data-linenos="7 "></span><span class="c1"># "[\"Aitor Medrano\"]"</span>
 </code></pre></div>
 <p>También podemos emplear <code>..</code> para realizar búsquedas recursivas:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$..nombre&#39;</span>   <span class="c1"># Encontrar todos los elementos llamados &quot;nombre&quot;</span>
-<span class="linenos" data-linenos="2 "></span><span class="c1"># &quot;[\&quot;Aitor Medrano\&quot;,\&quot;Juani Moya\&quot;]&quot;</span>
-<span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">&#39;$..ciudad&#39;</span>   <span class="c1"># Encontrar todas las ciudades</span>
-<span class="linenos" data-linenos="4 "></span><span class="c1"># &quot;[\&quot;Elche\&quot;,\&quot;Elche\&quot;,\&quot;Murcia\&quot;,\&quot;Elche\&quot;]&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">'$..nombre'</span>   <span class="c1"># Encontrar todos los elementos llamados "nombre"</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1"># "[\"Aitor Medrano\",\"Juani Moya\"]"</span>
+<span class="linenos" data-linenos="3 "></span><span class="n">JSON</span><span class="o">.</span><span class="n">GET</span> <span class="n">usuarios</span> <span class="s1">'$..ciudad'</span>   <span class="c1"># Encontrar todas las ciudades</span>
+<span class="linenos" data-linenos="4 "></span><span class="c1"># "[\"Elche\",\"Elche\",\"Murcia\",\"Elche\"]"</span>
 </code></pre></div>
 <p>Una vez vistas estas operaciones, cabe destacar que:</p>
 <ol>
@@ -2708,10 +2708,10 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 <span class="hll"><span class="linenos" data-linenos=" 5 "></span><span class="n">VADD</span> <span class="n">productos</span> <span class="n">VALUES</span> <span class="mi">3</span> <span class="mf">0.90</span> <span class="mf">0.10</span> <span class="mf">0.05</span> <span class="n">sandalias</span>
 </span><span class="linenos" data-linenos=" 6 "></span><span class="c1"># (integer) 1</span>
 <span class="hll"><span class="linenos" data-linenos=" 7 "></span><span class="n">VSIM</span> <span class="n">productos</span> <span class="n">ELE</span> <span class="n">portatil</span> <span class="n">COUNT</span> <span class="mi">2</span> <span class="n">WITHSCORES</span>
-</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># 1) &quot;portatil&quot;</span>
-<span class="linenos" data-linenos=" 9 "></span><span class="c1"># 2) &quot;1&quot;</span>
-<span class="linenos" data-linenos="10 "></span><span class="c1"># 3) &quot;ultrabook&quot;</span>
-<span class="linenos" data-linenos="11 "></span><span class="c1"># 4) &quot;0.9998...&quot;</span>
+</span><span class="linenos" data-linenos=" 8 "></span><span class="c1"># 1) "portatil"</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1"># 2) "1"</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1"># 3) "ultrabook"</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1"># 4) "0.9998..."</span>
 </code></pre></div>
 <p>Profundizaremos en bases de datos vectoriales en cursos de especialización en IA y <em>Big Data</em>. Para más información, consulta la <a href="https://redis.io/docs/latest/develop/data-types/vector-sets/">documentación oficial de Vector Sets</a>.</p>
 </div>
@@ -2735,25 +2735,25 @@ En teoría, <em>Redis</em> puede almacenar 2^32 claves en una única instancia <
 </ul>
 <p>Vamos a comenzar creando un suscriptor que se suscribe a un canal de noticias. Al lanzarlo, el cliente se quedará a la espera de recibir mensajes:</p>
 <div class="highlight"><span class="filename">suscriptor</span><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SUBSCRIBE</span> <span class="n">noticias</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) &quot;subscribe&quot;</span>
-<span class="linenos" data-linenos="3 "></span><span class="c1"># 2) &quot;noticias&quot;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) "subscribe"</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># 2) "noticias"</span>
 <span class="linenos" data-linenos="4 "></span><span class="c1"># 3) (integer) 1</span>
 <span class="linenos" data-linenos="5 "></span><span class="c1"># Reading messages... (press Ctrl-C to quit or any key to type command)</span>
 </code></pre></div>
 <p>En otro terminal, ahora creamos un publicador que publica un mensaje en el canal de deportes, y luego en el canal de noticias:</p>
-<div class="highlight"><span class="filename">publicador</span><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">PUBLISH</span> <span class="n">deportes</span> <span class="s2">&quot;Nikola Jokic logra el triple-doble con mayor anotación de la historia&quot;</span>
+<div class="highlight"><span class="filename">publicador</span><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">PUBLISH</span> <span class="n">deportes</span> <span class="s2">"Nikola Jokic logra el triple-doble con mayor anotación de la historia"</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="c1"># (integer) 0</span>
-<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">PUBLISH</span> <span class="n">noticias</span> <span class="s2">&quot;Inteligencia Artificial y Data: la nueva familia de FP que se abre paso&quot;</span>
+<span class="hll"><span class="linenos" data-linenos="3 "></span><span class="n">PUBLISH</span> <span class="n">noticias</span> <span class="s2">"Inteligencia Artificial y Data: la nueva familia de FP que se abre paso"</span>
 </span><span class="linenos" data-linenos="4 "></span><span class="c1"># (integer) 1</span>
 </code></pre></div>
 <p>Justo en el momento de publicar en el canal <code>noticias</code>, el suscriptor recibe el mensaje.</p>
 <div class="highlight"><span class="filename">suscriptor</span><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="n">SUBSCRIBE</span> <span class="n">noticias</span>
-</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) &quot;subscribe&quot;</span>
-<span class="linenos" data-linenos="3 "></span><span class="c1"># 2) &quot;noticias&quot;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1"># 1) "subscribe"</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1"># 2) "noticias"</span>
 <span class="linenos" data-linenos="4 "></span><span class="c1"># 3) (integer) 1</span>
-<span class="linenos" data-linenos="5 "></span><span class="c1"># 1) &quot;message&quot;</span>
-<span class="linenos" data-linenos="6 "></span><span class="c1"># 2) &quot;noticias&quot;</span>
-<span class="hll"><span class="linenos" data-linenos="7 "></span><span class="c1"># 3) &quot;Inteligencia Artificial y Data: la nueva familia de FP que se abre paso&quot;</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1"># 1) "message"</span>
+<span class="linenos" data-linenos="6 "></span><span class="c1"># 2) "noticias"</span>
+<span class="hll"><span class="linenos" data-linenos="7 "></span><span class="c1"># 3) "Inteligencia Artificial y Data: la nueva familia de FP que se abre paso"</span>
 </span><span class="linenos" data-linenos="8 "></span><span class="c1"># Reading messages... (press Ctrl-C to quit or any key to type command)</span>
 </code></pre></div>
 <div class="admonition tip">
@@ -2946,10 +2946,10 @@ Arquitectura: Redis Deep Dive- Core Architectures (p 68 / 275)
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP1215</strong>. (<abbr title="Gestiona la información almacenada en bases de datos no relacionales, evaluando y utilizando las posibilidades que proporciona el sistema gestor.">RABD.7</abbr> // <abbr title="Se han identificado distintas formas de gestión de la información según el tipo de base de datos no relacionales.">CE7d</abbr>, <abbr title="Se han utilizado las herramientas del sistema gestor para la gestión de la información almacenada.">CE7e</abbr> // 3p) Utilizando los comandos para gestionar documentos JSON en <em>Redis</em>, y a partir del siguiente documento:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="p">{</span>
-<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="s2">&quot;Electrónica Severa&quot;</span><span class="p">,</span>
-<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nt">&quot;productos&quot;</span><span class="p">:[</span>
-<span class="linenos" data-linenos="4 "></span><span class="w">        </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="s2">&quot;Portátil&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="mf">899.99</span><span class="p">},</span>
-<span class="linenos" data-linenos="5 "></span><span class="w">        </span><span class="p">{</span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nombre&quot;</span><span class="p">:</span><span class="s2">&quot;Monitor&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;precio&quot;</span><span class="p">:</span><span class="mf">299.99</span><span class="p">}</span>
+<span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="nt">"nombre"</span><span class="p">:</span><span class="s2">"Electrónica Severa"</span><span class="p">,</span>
+<span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="nt">"productos"</span><span class="p">:[</span>
+<span class="linenos" data-linenos="4 "></span><span class="w">        </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nt">"nombre"</span><span class="p">:</span><span class="s2">"Portátil"</span><span class="p">,</span><span class="w"> </span><span class="nt">"precio"</span><span class="p">:</span><span class="mf">899.99</span><span class="p">},</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">        </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">"nombre"</span><span class="p">:</span><span class="s2">"Monitor"</span><span class="p">,</span><span class="w"> </span><span class="nt">"precio"</span><span class="p">:</span><span class="mf">299.99</span><span class="p">}</span>
 <span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="p">]</span>
 <span class="linenos" data-linenos="7 "></span><span class="p">}</span>
 </code></pre></div>
@@ -3012,7 +3012,7 @@ Arquitectura: Redis Deep Dive- Core Architectures (p 68 / 275)
 <li>
 <p>Imagina que tienes la siguiente fila en <code>MariaDB</code> (no hace falta lanzarla):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nombre</span><span class="p">,</span><span class="w"> </span><span class="n">salario</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7</span><span class="p">;</span>
-<span class="linenos" data-linenos="2 "></span><span class="c1">-- 7, &quot;Aitor Medrano&quot;, 35000</span>
+<span class="linenos" data-linenos="2 "></span><span class="c1">-- 7, "Aitor Medrano", 35000</span>
 </code></pre></div>
 <p>Almacena el resultado en <em>Redis</em> como un <em>hash</em> en <code>ar1219:empleado:7</code> con TTL de 5 minutos.</p>
 </li>
@@ -3395,7 +3395,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
       <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["header.autohide", "navigation.top", "navigation.tracking", "navigation.footer", "navigation.indexes", "navigation.path", "content.code.annotate", "announce.dismiss", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="js/print-site.js"></script>
       
