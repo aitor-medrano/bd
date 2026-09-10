@@ -1662,7 +1662,7 @@
 <span class="linenos" data-linenos=" 5 "></span>
 <span class="linenos" data-linenos=" 6 "></span><span class="go">Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</span>
 <span class="linenos" data-linenos=" 7 "></span>
-<span class="linenos" data-linenos=" 8 "></span><span class="go">Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="go">Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.</span>
 <span class="linenos" data-linenos=" 9 "></span>
 <span class="hll"><span class="linenos" data-linenos="10 "></span><span class="go">MariaDB [pruebas]&gt;</span>
 </span></code></pre></div>
@@ -1673,7 +1673,7 @@
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mariadb<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-proot
 </code></pre></div>
 <p>Le damos todos permisos a todos los recursos al usuario <code>s8a</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">'s8a'</span><span class="o">@</span><span class="s1">'%'</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;s8a&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="k">GRANT</span><span class="w"> </span><span class="k">OPTION</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="n">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span>
 </code></pre></div>
 <p>La gestión de permisos la estudiaremos en la unidad <em>9.- Lenguaje SQL: Control de Datos DCL y Transacciones TCL</em>.</p>
@@ -1726,7 +1726,7 @@
 <span class="hll"><span class="linenos" data-linenos="26 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana/grafana-oss</span>
 </span><span class="linenos" data-linenos="27 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana</span>
 <span class="linenos" data-linenos="28 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="linenos" data-linenos="29 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"3000:3000"</span>
+<span class="linenos" data-linenos="29 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;3000:3000&quot;</span>
 <span class="linenos" data-linenos="30 "></span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="linenos" data-linenos="31 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana_data:/var/lib/grafana</span>
 <span class="linenos" data-linenos="32 "></span>
@@ -1751,7 +1751,7 @@
 </span><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:17</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pg</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="linenos" data-linenos=" 6 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"5432:5432"</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5432:5432&quot;</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=s8a</span>
 <span class="linenos" data-linenos=" 9 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=s8a</span>
@@ -1762,7 +1762,7 @@
 </span><span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dpage/pgadmin4</span>
 <span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pgadmin</span>
 <span class="linenos" data-linenos="16 "></span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"5050:80"</span>
+<span class="linenos" data-linenos="17 "></span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;5050:80&quot;</span>
 <span class="linenos" data-linenos="18 "></span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
 <span class="linenos" data-linenos="19 "></span><span class="w">      </span><span class="nt">PGADMIN_DEFAULT_EMAIL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin@s8a.com</span>
 <span class="linenos" data-linenos="20 "></span><span class="w">      </span><span class="nt">PGADMIN_DEFAULT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
@@ -1801,13 +1801,13 @@ docker run --name postgres `
 <p>Obteniendo información de la versión instalada y en la última línea muestra que ha conectado con la bd <code>pruebas</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="gp">root@6475b31d89f4:/# </span>psql<span class="w"> </span>-U<span class="w"> </span>s8a<span class="w"> </span>pruebas
 <span class="linenos" data-linenos="2 "></span><span class="go">psql (17.5 (Debian 17.5-1.pgdg120+1))</span>
-<span class="linenos" data-linenos="3 "></span><span class="go">Type "help" for help.</span>
+<span class="linenos" data-linenos="3 "></span><span class="go">Type &quot;help&quot; for help.</span>
 <span class="linenos" data-linenos="4 "></span>
 <span class="hll"><span class="linenos" data-linenos="5 "></span><span class="go">pruebas=#</span>
 </span></code></pre></div>
 <p>Además de soportar sentencias SQL estándar, <code>psql</code> también viene con varios metacomandos que le permiten obtener información sobre la conexión actual, listar objetos de base de datos existentes, copiar datos de archivos externos y mucho más. Todos estos comandos comienzan con el símbolo de la barra invertida (<code>\</code>). Por ejemplo, si queremos obtener información de la conexión usaremos el comando <code>\conninfo</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="n">pruebas</span><span class="o">=#</span><span class="w"> </span><span class="err">\</span><span class="n">conninfo</span>
-<span class="linenos" data-linenos="2 "></span><span class="n">You</span><span class="w"> </span><span class="k">are</span><span class="w"> </span><span class="n">connected</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="ss">"pruebas"</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="ss">"s8a"</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">socket</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="ss">"/var/run/postgresql"</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="ss">"5432"</span><span class="p">.</span>
+<span class="linenos" data-linenos="2 "></span><span class="n">You</span><span class="w"> </span><span class="k">are</span><span class="w"> </span><span class="n">connected</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="ss">&quot;pruebas&quot;</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="ss">&quot;s8a&quot;</span><span class="w"> </span><span class="n">via</span><span class="w"> </span><span class="n">socket</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="ss">&quot;/var/run/postgresql&quot;</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="ss">&quot;5432&quot;</span><span class="p">.</span>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Metacomandos</p>
