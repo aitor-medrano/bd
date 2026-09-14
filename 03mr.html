@@ -1892,7 +1892,7 @@
 <li>¿Qué diferencia el modelo conceptual del lógico?</li>
 <li>¿Cuál es el elemento principal del modelo relacional?</li>
 <li>¿Podemos tener dos atributos con el mismo nombre?</li>
-<li>Si una tabla tiene 3 columnas y 5 filas, ¿Cuál es su cardinalidad y grado?</li>
+<li>Si una tabla tiene 3 columnas y 5 filas, ¿cuál es su cardinalidad y grado?</li>
 <li>¿Podemos tener una tabla sin columnas?</li>
 <li>¿Y una tabla sin filas?</li>
 <li>¿Qué función tiene la clave primaria?</li>
@@ -1981,9 +1981,9 @@
     <figcaption>Modelo lógico</figcaption>
 </figure>
 
-<p>Si nuestra elección es un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> relacional, el modelo por excelencia es el <strong>modelo relacional</strong>. Creado por <em>Codd</em> a finales de los años 60, aunque los primeros <abbr title="Sistema gestor de bases de datos">SGBD</abbr> relacionales no aparecieron hasta los 80. Una base de datos modelada mediante el modelo relacional se conoce como una base de datos relacional.</p>
-<p>Supuso una revolución en el diseño lógico de las base de datos, dando lugar a la segunda generación de <abbr title="Sistema gestor de bases de datos">SGBD</abbr>.</p>
-<p>Es el modelo lógico más extendido, y <em>por ende</em>, el mercado de <abbr title="Sistema gestor de bases de datos">SGBD</abbr> está copado de soluciones relacionales como <em>Oracle</em>, <em>PostgreSQL</em>, <em>MySQL</em>, <em>SQL Server</em>, etc...</p>
+<p>Si nuestra elección es un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> relacional, el modelo por excelencia es el <strong>modelo relacional</strong>. Fue creado por <em>Codd</em> a finales de los años 60, aunque los primeros <abbr title="Sistema gestor de bases de datos">SGBD</abbr> relacionales no aparecieron hasta los 80. Una base de datos modelada mediante el modelo relacional se conoce como una base de datos relacional.</p>
+<p>Supuso una revolución en el diseño lógico de las bases de datos, dando lugar a la segunda generación de <abbr title="Sistema gestor de bases de datos">SGBD</abbr>.</p>
+<p>Es el modelo lógico más extendido, y <em>por ende</em>, el mercado de <abbr title="Sistema gestor de bases de datos">SGBD</abbr> está copado de soluciones relacionales como <em>Oracle</em>, <em>PostgreSQL</em>, <em>MySQL</em>, <em>SQL Server</em>, etc.</p>
 <p>Los objetivos del modelo relacional son:</p>
 <ul>
 <li>Independencia física<ul>
@@ -2004,7 +2004,7 @@
 <h2 id="elementos">Elementos<a class="headerlink" href="#elementos" title="Permanent link">&para;</a></h2>
 <p>El elemento principal es la <strong>relación</strong>, que consiste en una tabla que contiene filas y columnas. Una base de datos relacional consiste en un conjunto de tablas relacionadas donde cada tabla tiene un nombre único.</p>
 <p>Las relaciones se conocen como tablas relacionales o más comúnmente como <strong>tablas</strong>. </p>
-<p>Cada <strong>columna</strong> (también llamado <strong>campo</strong> o atributo de la relación) almacena información sobre una propiedad determinada de la tabla, como puede ser el nombre, DNI, apellidos o la edad.</p>
+<p>Cada <strong>columna</strong> (también llamada <strong>campo</strong> o atributo de la relación) almacena información sobre una propiedad determinada de la tabla, como puede ser el nombre, DNI, apellidos o la edad.</p>
 <p>Cada <strong>fila</strong> posee una ocurrencia o ejemplar de la instancia o relación representada por la tabla (a las filas se las llama también <strong>tuplas</strong> o <strong>registros</strong>).</p>
 <figure style="align: center;">
     <img src="images/03elementos-tabla.png" width="729" title="Elementos de una tabla">
@@ -2094,16 +2094,16 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 </table>
 </div>
 <h3 id="dominio">Dominio<a class="headerlink" href="#dominio" title="Permanent link">&para;</a></h3>
-<p>El dominio de un atributo indica el tipo de valores para un determinado campo. Dicho de otro modo, cada atributo sólo puede tomar un valor en el dominio en el que está inscrito.</p>
+<p>El dominio de un atributo indica el tipo de valores para un determinado campo. Dicho de otro modo, cada atributo solo puede tomar un valor en el dominio en el que está inscrito.</p>
 <p>Si nos basamos en el ejemplo anterior, tendríamos que los dominios serían:</p>
 <ul>
 <li><code>dni</code>: 8 dígitos y una letra.</li>
 <li><code>nombre</code>: cadena de hasta 32 caracteres.</li>
 <li><code>dirección</code>: cadena de hasta 64 caracteres.</li>
 <li><code>fecha</code>: fecha compuesta de <code>dd/mm/yy</code>.</li>
-<li><code>genero</code>: caracteres <code>M</code>, <code>F</code> o <code>?</code></li>
+<li><code>genero</code>: caracteres <code>M</code>, <code>F</code> o <code>?</code>.</li>
 </ul>
-<p>Como cada atributo sólo puede tomar un valor para una misma tupla (los valores de los campos son atómicos), no podríamos poner dos DNIs o dos fechas a un mismo cliente.</p>
+<p>Como cada atributo solo puede tomar un valor para una misma tupla (los valores de los campos son atómicos), no podríamos poner dos DNIs o dos fechas a un mismo cliente.</p>
 <p>A muy alto nivel, los tipos de datos básicos para los dominios son:</p>
 <ul>
 <li>Texto: cadena de caracteres, letras, símbolos o números con los que no se realizan operaciones (por ejemplo, un código postal).</li>
@@ -2114,10 +2114,10 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Tipos de dominio</p>
-<p>Cuando estudiemos el modelo físico haremos más hincapié en todos los tipos de dominio existente. De momento, lo más importante es tener claro que todos los valores de un determinado campo en una tabla comparten el mismo dominio.</p>
+<p>Cuando estudiemos el modelo físico haremos más hincapié en todos los tipos de dominio existentes. De momento, lo más importante es tener claro que todos los valores de un determinado campo en una tabla comparten el mismo dominio.</p>
 </div>
 <h3 id="claves">Claves<a class="headerlink" href="#claves" title="Permanent link">&para;</a></h3>
-<p>Cada tabla tiene una columna (o en algunos casos un conjunto de columnas) que sirven como <strong>clave primaria</strong> (<strong><abbr title="Primary Key / Clave primaria">PK</abbr></strong> / <em>primary key</em>). Su propósito es distinguir a una tupla de otra dentro de la tabla. </p>
+<p>Cada tabla tiene una columna (o en algunos casos un conjunto de columnas) que actúa como <strong>clave primaria</strong> (<strong><abbr title="Primary Key / Clave primaria">PK</abbr></strong> / <em>primary key</em>). Su propósito es distinguir a una tupla de otra dentro de la tabla. </p>
 <p><ins>Cada tabla debe tener una clave primaria</ins>, la cual es una columna (o conjunto de columnas) cuyo valor es único para cada fila.</p>
 <p>Volvamos al ejemplo anterior sobre la tabla <code>CLIENTE</code>:</p>
 <table>
@@ -2154,9 +2154,9 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 </tr>
 </tbody>
 </table>
-<p>El campo <code>dni</code> funciona como clave primaria de la tabla, ya que no hay dos clientes con el mismo DNI. Pero ¿y el campo <code>nombre</code>? Aunque en la tabla no tengamos ahora mismo dos clientes con el mismo nombre, conceptualmente sabemos que se puede dar el caso, y por lo tanto, no sería una elección correcta, ya que el nombre de un cliente no lo identifica de forma univoca.</p>
+<p>El campo <code>dni</code> funciona como clave primaria de la tabla, ya que no hay dos clientes con el mismo DNI. Pero ¿y el campo <code>nombre</code>? Aunque en la tabla no tengamos ahora mismo dos clientes con el mismo nombre, conceptualmente sabemos que se puede dar el caso, y por lo tanto, no sería una elección correcta, ya que el nombre de un cliente no lo identifica de forma unívoca.</p>
 <h4 id="clave-subrogada">Clave subrogada<a class="headerlink" href="#clave-subrogada" title="Permanent link">&para;</a></h4>
-<p>Cuando en una tabla no tengamos una columna que identifique claramente a una tabla, podemos crear una nueva columna numérica, normalmente denominada <code>id</code>, que tomas valores secuenciales y autoincrementables, de manera que actúa como una clave sustituta independiente de los valores de negocio, que realmente no tiene un significado por sí misma.</p>
+<p>Cuando en una tabla no tengamos una columna que identifique claramente a sus tuplas, podemos crear una nueva columna numérica, normalmente denominada <code>id</code>, que toma valores secuenciales y autoincrementables, de manera que actúa como una clave sustituta independiente de los valores de negocio, que realmente no tiene un significado por sí misma.</p>
 <p>Si añadimos una clave subrogada a la tabla <code>CLIENTE</code> tendríamos:</p>
 <table>
 <thead>
@@ -2235,7 +2235,7 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 </tbody>
 </table>
 <h4 id="claves-ajenas">Claves ajenas<a class="headerlink" href="#claves-ajenas" title="Permanent link">&para;</a></h4>
-<p>Finalmente, tenemos las <strong>claves ajenas</strong> (<strong><abbr title="Foreign Key / Clave ajena">FK</abbr></strong> / <em>foreign key</em>), los cuales son campos cuyos valores referencian a valores de otra tabla.</p>
+<p>Finalmente, tenemos las <strong>claves ajenas</strong> (<strong><abbr title="Foreign Key / Clave ajena">FK</abbr></strong> / <em>foreign key</em>), las cuales son campos cuyos valores referencian a valores de otra tabla.</p>
 <p>Dentro del modelo relacional, el hecho de relacionar los datos de una tabla con otra es crucial, y se realiza mediante las claves ajenas. Así pues, la clave ajena de una tabla referencia, normalmente, al valor de la clave primaria de otra tabla. Por ello, los dominios de la clave ajena y de la clave primaria referenciada deben ser iguales (un campo numérico no puede referenciar a un campo de texto).</p>
 <p>Comencemos con el mismo ejemplo que vimos con las <a href="02er.html#relacion-1n">relaciones 1:N</a> del modelo conceptual, donde teníamos que todo producto tiene una categoría, pero de una categoría, tenemos muchos productos, el cual representamos así:</p>
 <figure style="align: center;">
@@ -2337,7 +2337,7 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 </li>
 </ul>
 </div>
-<p>Puedes observar como hemos subrayado las claves primaria de cada tabla. ¿Qué atributo tiene la función de clave ajena? En este ejemplo, la columna <code>PRODUCTO.codCategoria</code> es una clave ajena que apunta a <code>CATEGORIA.codigo</code> (fíjate que en este caso, al atributo que es clave ajena le hemos puesto un asterisco <code>*</code> tras su nombre). Si revisamos los valores, podemos comprobar como podemos tener valores repetidos y valores nulos, facilitando que de una categoría tengamos varios productos (categorías de los productos <code>1</code> y <code>4</code>), que de una categoría no tengamos productos (la categoría <code>4</code> no está asociada a ningún producto) y, aunque el modelo conceptual no representaba dicha cardinalidad, que tengamos productos sin categoría (como el producto <code>6</code>).</p>
+<p>Puedes observar cómo hemos subrayado las claves primarias de cada tabla. ¿Qué atributo tiene la función de clave ajena? En este ejemplo, la columna <code>PRODUCTO.codCategoria</code> es una clave ajena que apunta a <code>CATEGORIA.codigo</code> (fíjate que en este caso, al atributo que es clave ajena le hemos puesto un asterisco <code>*</code> tras su nombre). Si revisamos los valores, podemos comprobar cómo podemos tener valores repetidos y valores nulos, facilitando que de una categoría tengamos varios productos (categorías de los productos <code>1</code> y <code>4</code>), que de una categoría no tengamos productos (la categoría <code>4</code> no está asociada a ningún producto) y, aunque el modelo conceptual no representaba dicha cardinalidad, que tengamos productos sin categoría (como el producto <code>6</code>).</p>
 <p>Cuando tenemos dos tablas relacionadas mediante una clave ajena, mediante operaciones relacionales que veremos en la <a href="06sql.html">Unidad 6</a>, podremos crear una nueva relación con el resultado de unir una clave ajena con los datos a los que referencia.</p>
 <p>Así pues, al unir ambas tablas, obtendríamos como resultado:</p>
 <table>
@@ -2469,10 +2469,10 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
     <figcaption>Clave ajena entre ESTUDIANTE y CURSAR</figcaption>
 </figure>
 
-<p>Conviene aclarar que un campo puede ser clave primaria y clave ajena a la vez. Además, una tabla puede tener más de una clave ajena o no tener ninguna. Además, en el caso de las relaciones reflexivas, la clave ajena de la relación enlazará con la clave primaria de sí misma.</p>
+<p>Conviene aclarar que un campo puede ser clave primaria y clave ajena a la vez. También, una tabla puede tener más de una clave ajena o no tener ninguna. Además, en el caso de las relaciones reflexivas, la clave ajena de la relación enlazará con la clave primaria de sí misma.</p>
 <h4 id="borrado-y-actualizacion">Borrado y actualización<a class="headerlink" href="#borrado-y-actualizacion" title="Permanent link">&para;</a></h4>
-<p>Cuanto trabajamos con varias tablas relacionadas mediante claves ajenas y claves primarias, debemos definir las reglas y modificar la clave primaria a la que referencian.</p>
-<p>Al actualizar/borrar un registro que contiene una clave ajena, se puede:</p>
+<p>Cuanto trabajamos con varias tablas relacionadas mediante claves ajenas y claves primarias, debemos definir las reglas que se aplican al borrar o modificar la clave primaria a la que referencian.</p>
+<p>Al actualizar/borrar un registro al que apunta una clave ajena, se puede:</p>
 <ul>
 <li><strong>Rechazar</strong>: no se permite el borrado/modificación</li>
 <li><strong>Propagar</strong>: se borra/modifica el registro, y las tuplas que lo referencian</li>
@@ -2547,14 +2547,14 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 </li>
 </ul>
 </div>
-<p>Profundizaremos en las operaciones entre claves ajenas y primarias cuando trabajemos las operaciones DML sobre el modelo físico en la <a href="05ddl.html"><em>Unidad 5.- Modelo Físico - SQL - Instrucciones DDL y DML</em></a>.</p>
+<p>Profundizaremos en las operaciones entre claves ajenas y primarias cuando trabajemos las operaciones <abbr title="Data Manipulation Language">DML</abbr> sobre el modelo físico en la <a href="05ddl.html"><em>Unidad 5.- Modelo Físico - SQL - Instrucciones <abbr title="Data Definition Language">DDL</abbr> y <abbr title="Data Manipulation Language">DML</abbr></em></a>.</p>
 <h2 id="restricciones-semanticas">Restricciones semánticas<a class="headerlink" href="#restricciones-semanticas" title="Permanent link">&para;</a></h2>
 <p>A la hora de definir las propiedades de una tabla y sus columnas podemos emplear las siguientes restricciones:</p>
 <ul>
-<li><strong>clave primaria</strong>: los atributos marcados como clave primaria no puedan repetir valores.</li>
+<li><strong>clave primaria</strong>: los atributos marcados como clave primaria no pueden repetir valores.</li>
 <li><strong>unicidad</strong>: impide que los valores de los atributos marcados de esa forma puedan repetirse, considerándose unívocos. A nivel visual se marcan con <code>UK</code>. Vamos a considerar que un atributo <code>UK</code> no permite valores repetidos pero sí nulos (dependiendo del <abbr title="Sistema gestor de bases de datos">SGBD</abbr>, en algunos casos se permiten y en otros no).</li>
-<li><strong>obligatoriedad</strong> (<code>VNN</code>): prohíbe que el atributo marcado de esta forma no tenga ningún valor (valor no nulo).</li>
-<li><strong>regla de validación</strong>: condición que debe de cumplir un dato concreto para que sea actualizado.</li>
+<li><strong>obligatoriedad</strong> (<code>VNN</code>): prohíbe que el atributo marcado de esta forma no tenga ningún valor (valor no nulo). Dicho de otra manera, obliga a que el atributo tenga siempre un valor, es decir, no admite nulos.</li>
+<li><strong>regla de validación</strong>: condición que debe cumplir un dato concreto para que sea actualizado.</li>
 </ul>
 <p>Además, podemos definir diferentes restricciones:</p>
 <ul>
@@ -2563,7 +2563,7 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 <li>a <strong>nivel de negocio</strong>, del tipo, al insertar un pedido, se debe comprobar si la dirección de envío es la misma que la dirección del cliente, y en caso de no serlo, añadir una nueva dirección al cliente.</li>
 </ul>
 <h3 id="nulos">Nulos<a class="headerlink" href="#nulos" title="Permanent link">&para;</a></h3>
-<p>Los valores nulos (<code>NULL</code>) indican contenidos de atributos que no tienen ningún valor, bien porque la información es desconocida o no aplicable. Es decir, más que un valor, es la ausencia de información. Algunos <abbr title="Sistema gestor de bases de datos">SGBD</abbr> muestran la palabra clave <code>NULL</code>, mientras que otros muestran el campo en blanco.</p>
+<p>Los valores nulos (<code>NULL</code>) indican contenidos de atributos que no tienen ningún valor, bien porque se desconoce, bien porque no es aplicable. Es decir, más que un valor, es la ausencia de información. Algunos <abbr title="Sistema gestor de bases de datos">SGBD</abbr> muestran la palabra clave <code>NULL</code>, mientras que otros muestran el campo en blanco.</p>
 <p>Por ejemplo, si en la tabla <code>ESTUDIANTE</code> tenemos un registro con la dirección nula, está indicando que desconocemos la dirección de <code>Mireia Vidal</code>, no que no tenga dirección.</p>
 <table>
 <thead>
@@ -2601,7 +2601,7 @@ La <strong>cardinalidad</strong> indica el número de filas.</p>
 </table>
 <p>Si el campo es una clave ajena, indica que el registro actual no está relacionado con ninguno.</p>
 <p>Las bases de datos relacionales admiten utilizar ese valor en todo tipo de operaciones.</p>
-<p>En cuanto a los campos booleano (V/F), define un tercer valor en la lógica, ya que además del valor verdadero o falso, existe el valor para los nulos.</p>
+<p>En cuanto a los campos booleano (V/F), el nulo añade un tercer valor a la lógica.</p>
 <h3 id="integridad-de-entidad">Integridad de entidad<a class="headerlink" href="#integridad-de-entidad" title="Permanent link">&para;</a></h3>
 <p>La integridad de entidad define que todas las claves primarias deben tener valor, y, por lo tanto, no admiten valores nulos.</p>
 <p>Si volvemos a la tabla <code>ESTUDIANTE</code>, no podemos tener ningún estudiante con el NIF vacío.</p>
@@ -2687,20 +2687,20 @@ clave primaria de la tabla que relaciona.</p>
 </table>
 </li>
 </ul>
-<p>El primer fallo que encontramos es que el campo <code>CURSAR.nifEstudiante</code> contiene nulos. Aunque las claves ajenas permiten valores nulos, al tratarse también de una clave primaria, estaría incumpliendo la integridad de entidad.</p>
-<p>El segundo error es que el valor <code>66666666Z</code> referencia a un estudiante invalido, y este valor sí que viola la integridad referencial, ya que dicho valor no existe en <code>ESTUDIANTE.nif</code>.</p>
+<p>El primer fallo que encontramos es que el campo <code>CURSAR.nifEstudiante</code> contiene nulos. Aunque las claves ajenas permiten valores nulos, al formar parte también de una clave primaria, estaría incumpliendo la integridad de entidad.</p>
+<p>El segundo error es que el valor <code>66666666Z</code> referencia a un estudiante inválido, y este valor sí que viola la integridad referencial, ya que dicho valor no existe en <code>ESTUDIANTE.nif</code>.</p>
 <h2 id="notacion">Notación<a class="headerlink" href="#notacion" title="Permanent link">&para;</a></h2>
 <!--
 FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 -->
 
-<p>Para representar una tabla en el modelo relación usaremos una notación textual que facilita su comprensión y posterior transformación al modelo físico. A esta representación se le conoce como <strong>esquema relacional</strong> (o esquema lógico/canónico).</p>
+<p>Para representar una tabla en el modelo relacional usaremos una notación textual que facilita su comprensión y posterior transformación al modelo físico. A esta representación se le conoce como <strong>esquema relacional</strong> (o esquema lógico/canónico).</p>
 <p>Pondremos el nombre de la tabla en mayúsculas, y a continuación, entre paréntesis, enumeraremos los campos mediante su nombre en minúsculas (y opcionalmente su dominio). Como convención, el primer atributo será aquel que hace la función de clave primaria, el cual además subrayaremos para facilitar la legibilidad, y a aquellos campos que sean claves ajenas les añadiremos un asterisco (<code>*</code>) para indicar su condición.</p>
 <p>Tras el listado de campos, enumeraremos las restricciones, con el siguiente orden:</p>
 <ol>
 <li>la clave primaria (<code>PK</code>), con el atributo o conjunto de atributos que identifican unívocamente a una tupla.</li>
 <li>las claves ajenas (<code>FK</code>) (si las hubiera), indicando el nombre de la columna, una flecha, y la relación a la que referencia.</li>
-<li>el resto de restricciones (<code>UK</code>, <code>VNN</code>, comprobaciones, etc...) (si las hubiera)</li>
+<li>el resto de restricciones (<code>UK</code>, <code>VNN</code>, comprobaciones, etc.) (si las hubiera)</li>
 </ol>
 <div class="admonition info">
 <p class="admonition-title">Más propiedades</p>
@@ -2715,7 +2715,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </div>
 <p>Por ejemplo, un esquema lógico en modelo relacional que relaciona un libro con un autor, y un autor con muchos libros (relación 1:N) podría ser el siguiente:</p>
 <p><code>
-<strong>AUTOR</strong> (<ins>codigo</ins>: autonumérico, nombre: texto, fnac: fecha, nacionalidad: texto)<br />
+<strong>AUTOR</strong> (<ins>codigo</ins>: autonumérico, nombre: texto, fnac: fecha, pais: texto)<br />
 · <abbr title="Primary Key / Clave primaria">PK</abbr>: (codigo)
 </code></p>
 <p><code>
@@ -2729,23 +2729,23 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 · <abbr title="Primary Key / Clave primaria">PK</abbr>: (codigo)
 </code></p>
 <p><code>
-<strong>LIBRO</strong> (<ins>isbn</ins>, titulo, autor<code>*</code>, editorial, pvp)<br />
+<strong>LIBRO</strong> (<ins>isbn</ins>, titulo, descripcion, autor<code>*</code>, editorial, pvp)<br />
 · <abbr title="Primary Key / Clave primaria">PK</abbr>: (isbn)<br />
 · <abbr title="Foreign Key / Clave ajena">FK</abbr>: (autor) → AUTOR
 </code></p>
 <p>Tenemos que el autor se identifica por un código, el cual es su clave primaria. En cambio, los libros se identifican por su ISBN, y tienen un atributo <code>autor</code> que referencia a la clave primaria de <code>AUTOR</code> (y por tanto, deben tener el mismo dominio). De esta relación, deducimos que el nombre del atributo de la clave ajena no tiene por qué coincidir con el nombre de la clave primaria, pero sí su dominio.</p>
 <p>Si analizamos las cardinalidades de las tablas, tenemos:</p>
 <ul>
-<li><code>Card(LIBRO, ESCRIBIR) = (0, 1)</code>: Todo libro tiene un atributo autor, y sólo uno, el cual puede estar rellenado o no.</li>
+<li><code>Card(LIBRO, ESCRIBIR) = (0, 1)</code>: Todo libro tiene un atributo autor, y solo uno, el cual puede estar rellenado o no.</li>
 <li><code>Card(AUTOR, ESCRIBIR) = (0, N)</code>: Si un libro tiene un atributo autor, y el mismo autor puede aparecer en más de un libro, entonces un autor puede escribir muchos libros (o ninguno, si no aparece en ninguna ocurrencia de <code>LIBRO</code>).</li>
 </ul>
 <p>En la próxima unidad estudiaremos el proceso de transformación de un modelo conceptual a uno relacional, y en concreto, cómo se gestionan las claves ajenas para cumplir las cardinalidades y restricciones de las relaciones.</p>
 <div class="admonition tip">
-<p class="admonition-title">DBML - Database Markup Language</p>
+<p class="admonition-title"><abbr title="Database Markup Language">DBML</abbr> - Database Markup Language</p>
 <p>La notación que vamos a emplear en clase es sencilla y cumple su propósito.</p>
-<p>Dicho esto, desde principio de 2020, gracias a la empresa <a href="https://dbdiagram.io/">https://dbdiagram.io/</a>, se está popularizando <a href="https://dbml.dbdiagram.io/home">DBML</a> como un lenguaje de marcado para representar bases de datos.</p>
+<p>Dicho esto, desde principios de 2020, gracias a la empresa <a href="https://dbdiagram.io/">https://dbdiagram.io/</a>, se está popularizando <a href="https://dbml.dbdiagram.io/home"><abbr title="Database Markup Language">DBML</abbr></a> como un lenguaje de marcado para representar bases de datos.</p>
 <p>Si quieres profundizar en su uso, es recomendable consultar su <a href="https://dbml.dbdiagram.io/docs">sintaxis</a> o puedes probar a generar diagramas en <a href="https://dbdiagram.io/">https://dbdiagram.io/</a>.</p>
-<p>En nuestro caso, por ejemplo, podemos representa las entidades <code>AUTOR</code> y <code>LIBRO</code> del siguiente modo:</p>
+<p>En nuestro caso, por ejemplo, podemos representar las entidades <code>AUTOR</code> y <code>LIBRO</code> del siguiente modo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span>Table AUTOR {
 <span class="linenos" data-linenos=" 2 "></span>    codigo entero [primary key]
 <span class="linenos" data-linenos=" 3 "></span>    nombre cadena
@@ -2756,10 +2756,11 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <span class="linenos" data-linenos=" 8 "></span>Table LIBRO {
 <span class="linenos" data-linenos=" 9 "></span>    isbn cadena [primary key]
 <span class="linenos" data-linenos="10 "></span>    titulo cadena
-<span class="linenos" data-linenos="11 "></span>    autor entero [ref: &gt; AUTOR.codigo]
-<span class="linenos" data-linenos="12 "></span>    editorial cadena
-<span class="linenos" data-linenos="13 "></span>    pvp real
-<span class="linenos" data-linenos="14 "></span>}
+<span class="linenos" data-linenos="11 "></span>    descripcion cadena
+<span class="linenos" data-linenos="12 "></span>    autor entero [ref: &gt; AUTOR.codigo]
+<span class="linenos" data-linenos="13 "></span>    editorial cadena
+<span class="linenos" data-linenos="14 "></span>    pvp real
+<span class="linenos" data-linenos="15 "></span>}
 </code></pre></div>
 <p>Obteniendo como resultado el diagrama:</p>
 <p><figure style="align: center;">
@@ -2789,13 +2790,13 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </tr>
 <tr>
 <td>2</td>
-<td>Juan Gómez Jurado</td>
+<td>Juan Gómez-Jurado</td>
 <td>16/12/77</td>
 <td>España</td>
 </tr>
 <tr>
 <td>3</td>
-<td>Jöel Dicker</td>
+<td>Joël Dicker</td>
 <td>16/06/85</td>
 <td>Suiza</td>
 </tr>
@@ -2847,7 +2848,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </table>
 </li>
 </ul>
-<p>Así pues, comprobamos que tenemos un autor (el <code>3</code> con dos libros), e incluso un libro sin autor, confirmando la relación 1:N conforme queríamos diseñar.</p>
+<p>Así pues, comprobamos que tenemos un autor con dos libros (el <code>3</code>), e incluso un libro sin autor, confirmando la relación 1:N conforme queríamos diseñar.</p>
 <div class="admonition question">
 <p class="admonition-title">Cardinalidad de las relaciones</p>
 <p>Con lo que sabemos hasta ahora, piensa:</p>
@@ -2857,7 +2858,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </ul>
 </div>
 <h3 id="representacion-grafica">Representación gráfica<a class="headerlink" href="#representacion-grafica" title="Permanent link">&para;</a></h3>
-<p>Aunque ya hemos visto que podemos emplear <a href="https://dbdiagram.io/">DBDiagrams</a> para generar un diagrama a partir del esquema lógico mediante <a href="https://dbml.dbdiagram.io/docs">DBML</a>, también podemos emplear diversas herramientas existentes en el mercado, como <a href="https://erdplus.com/">ERDPlus</a> o <a href="https://www.mysql.com/products/workbench/">MySQLWorbench</a> (más cercano al modelo físico), que permiten dibujar los elementos.</p>
+<p>Aunque ya hemos visto que podemos emplear <a href="https://dbdiagram.io/">DBDiagrams</a> para generar un diagrama a partir del esquema lógico mediante <a href="https://dbml.dbdiagram.io/docs"><abbr title="Database Markup Language">DBML</abbr></a>, también podemos emplear diversas herramientas existentes en el mercado, como <a href="https://erdplus.com/">ERDPlus</a> o <a href="https://www.mysql.com/products/workbench/">MySQL Worbench</a> (más cercano al modelo físico), que permiten dibujar los elementos.</p>
 <p>En nuestro caso, nos vamos a centrar en ERDPlus, principalmente por ser una herramienta online gratuita. Una vez registrados, tenemos la opción de generar un diagrama ER o un esquema relacional. En este caso, nos centraremos en el esquema relacional.</p>
 <p>Mediante la barra superior, con el botón <code>TABLE</code> nos aparecerá un diálogo a la derecha donde podremos indicar el nombre de la tabla y añadir y configurar los atributos de la tabla. Tras añadir todos los atributos, debemos configurar su clave primaria mediante el botón <em>PRIMARY KEY</em> del menú lateral:</p>
 <figure style="align: center;">
@@ -2865,9 +2866,9 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
     <figcaption>Tabla AUTOR en ERDPlus</figcaption>
 </figure>
 
-<p>A continuación, repetimos los pasos y añadimos los campos de la tabla <code>LIBRO</code>, pero sin añadir la clave ajena. Para ello, mediante el botón <em>CONNECT</em> de la barra superior, pinchamos en <code>AUTOR</code> y arrastramos a <code>LIBRO</code>, y veremos como añade un nuevo atributo en la tabla <code>LIBRO</code> con la clave primaria de <code>AUTOR</code>, marcando el nuevo atributo con la etiqueta <em><abbr title="Foreign Key / Clave ajena">FK</abbr></em>. A continuación, para que coincida con nuestro modelo lógico, renombramos el atributo, y lo colocamos tras el <code>titulo</code>:</p>
+<p>A continuación, repetimos los pasos y añadimos los campos de la tabla <code>LIBRO</code>, pero sin añadir la clave ajena. Para ello, mediante el botón <em>CONNECT</em> de la barra superior, pinchamos en <code>AUTOR</code> y arrastramos a <code>LIBRO</code>, y veremos cómo añade un nuevo atributo en la tabla <code>LIBRO</code> con la clave primaria de <code>AUTOR</code>, marcando el nuevo atributo con la etiqueta <em><abbr title="Foreign Key / Clave ajena">FK</abbr></em>. A continuación, para que coincida con nuestro modelo lógico, renombramos el atributo, y lo colocamos tras el <code>titulo</code>:</p>
 <figure style="align: center;">
-    <img src="images/03erdplus-relationhip.gif" width="1243" title="Clave ajena con ERDPlus">
+    <img src="images/03erdplus-relationship.gif" width="1243" title="Clave ajena con ERDPlus">
     <figcaption>Clave ajena con ERDPlus</figcaption>
 </figure>
 
@@ -2897,7 +2898,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </ol>
 <p>Si nos centramos en los modelos físicos, podríamos incluir otros componentes como índices, vistas, procedimientos almacenados y funciones o <em>triggers</em>, así como usuarios y permisos.</p>
 <h4 id="ejemplo">Ejemplo<a class="headerlink" href="#ejemplo" title="Permanent link">&para;</a></h4>
-<p>Para este ejemplo, nos vamos a basar en el mismo ejemplo que hemos utilizado en el apartado de <a href="#notacion">Notación</a>, donde un <code>AUTOR</code> escribe muchos <code>LIBRO</code>, pero un <code>LIBRO</code> sólo lo escribe un <code>AUTOR</code>.</p>
+<p>Para este ejemplo, nos vamos a basar en el mismo ejemplo que hemos utilizado en el apartado de <a href="#notacion">Notación</a>, donde un <code>AUTOR</code> escribe muchos <code>LIBRO</code>, pero un <code>LIBRO</code> solo lo escribe un <code>AUTOR</code>.</p>
 <p>Para documentar el diccionario de datos, se utiliza una estructura de tabla con el nombre de la columna, el tipo de datos, las restricciones y una descripción del campo:</p>
 <ul>
 <li>
@@ -2953,7 +2954,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <tbody>
 <tr>
 <td><code>isbn</code></td>
-<td><code>INT</code></td>
+<td><code>VARCHAR(13)</code></td>
 <td><abbr title="Primary Key / Clave primaria">PK</abbr></td>
 <td>Identificador único del libro.</td>
 </tr>
@@ -2995,7 +2996,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </ul>
 <h2 id="normalizacion">Normalización<a class="headerlink" href="#normalizacion" title="Permanent link">&para;</a></h2>
 <p>Un principio del diseño relacional es que "<em>hechos distintos se deben almacenar en objetos distintos</em>".</p>
-<p>Para conseguir este objetivo, la <strong>normalización</strong> es una técnica dentro del diseño de bases de datos relacionales que consiste en la separación de atributos en tablas lo más simples posibles para suprimir dependencias erróneas entre atributos, reducir la redundancia así como optimizar los procesos de inserción, modificación y borrado en la bases de datos, evitando las anomalías previamente comentadas, lo que maximiza la integridad de los datos y su consistencia.</p>
+<p>Para conseguir este objetivo, la <strong>normalización</strong> es una técnica dentro del diseño de bases de datos relacionales que consiste en la separación de atributos en tablas lo más simples posibles para suprimir dependencias erróneas entre atributos, reducir la redundancia así como optimizar los procesos de inserción, modificación y borrado en las bases de datos, evitando las anomalías que veremos a continuación, lo que maximiza la integridad de los datos y su consistencia.</p>
 <p>Podemos simplificar el objetivo de la normalización en maximizar la integridad de los datos, reduciendo su redundancia.</p>
 <p>Para conseguirlo, se basa en el análisis de dependencias entre atributos mediante un proceso que consiste en identificar y aplicar una serie de reglas a las relaciones obtenidas del esquema relacional.</p>
 <div class="admonition abstract">
@@ -3121,36 +3122,36 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <p>Antes de entrar a conocer los pasos de la normalización, previamente tenemos que definir una serie de conceptos:</p>
 <ul>
 <li>
-<p><strong>Dependencia funcional</strong> (<abbr title="Dependencia funcional">DF</abbr>): es la relación semántica existente entre atributos de una misma tabla. Decimos que <strong>A → B</strong>, es decir, que <strong>B depende funcionalmente de A</strong> (o A determina a B), si y solo si para cada valor de A sólo puede existir un B.</p>
-<p>El sentido de la relación no es bidireccional. Que para una valor de A sólo exista un B, no significa que dado B, siempre obtengamos A. Por ejemplo, la dependencia <code>dni → nombre, apellidos</code> es correcta, ya que tanto el nombre de una persona como sus apellidos dependen funcionalmente de su DNI, pero no al revés. ¿Dado un nombre de una persona, podemos saber su DNI?</p>
+<p><strong>Dependencia funcional</strong> (<abbr title="Dependencia funcional">DF</abbr>): es la relación semántica existente entre atributos de una misma tabla. Decimos que <strong>A → B</strong>, es decir, que <strong>B depende funcionalmente de A</strong> (o A determina a B), si y solo si para cada valor de A solo puede existir un B.</p>
+<p>El sentido de la relación no es bidireccional. Que para una valor de A solo exista un B, no significa que dado B, siempre obtengamos A. Por ejemplo, la dependencia <code>dni → nombre, apellidos</code> es correcta, ya que tanto el nombre de una persona como sus apellidos dependen funcionalmente de su DNI, pero no al revés. ¿Dado un nombre de una persona, podemos saber su DNI?</p>
 <div class="admonition abstract">
 <p class="admonition-title"><abbr title="Dependencia funcional">DF</abbr> - Supuesto Comerciales</p>
-<p>El primer paso es para cada columna, identificar las dependencias que hay entre los atributos.</p>
-<p>Por ejemplo, cogemos el nombre del comercial, y detectamos que dependen funcionalmente del identificador del comercial, por lo tanto: <code>comercialID → comercialNom</code>. Pero si nos fijamos bien en los nombres de los comerciales, no podemos decir lo mismo en el sentido contrario, ya que tenemos un nombre repetido en diferentes códigos de comercial (¡qué casualidad!), con lo que no es correcto decir <code>comercialNom → comercialID</code>.</p>
+<p>El primer paso es, para cada columna, identificar las dependencias que hay entre los atributos.</p>
+<p>Por ejemplo, cogemos el nombre del comercial, y detectamos que depende funcionalmente del identificador del comercial, por lo tanto: <code>comercialID → comercialNom</code>. Pero si nos fijamos bien en los nombres de los comerciales, no podemos decir lo mismo en el sentido contrario, ya que tenemos un nombre repetido en diferentes códigos de comercial (¡qué casualidad!), con lo que no es correcto decir <code>comercialNom → comercialID</code>.</p>
 <p>Si hacemos lo mismo con el identificador del estado del comercial, deducimos que depende también del identificador, obteniendo <code>comercialID → estadoID</code>.</p>
-<p>Y lo mismo con la descripción del estado. En este caso, se cumplen que tanto el identificador del comercial como el identificador del estado permiten obtener la descripción del estado, obteniendo <code>comercialID → estadoDesc</code> y <code>estadoID → estadoDesc</code>.</p>
+<p>Y lo mismo con la descripción del estado. En este caso, se cumple que tanto el identificador del comercial como el identificador del estado permiten obtener la descripción del estado, obteniendo <code>comercialID → estadoDesc</code> y <code>estadoID → estadoDesc</code>.</p>
 <p>Si continuamos con todos los atributos y agrupamos las dependencias funcionales tenemos:    </p>
 <ul>
 <li><code>comercialID → comercialNom, estadoID, estadoDesc</code></li>
 <li><code>estadoID → estadoDesc</code></li>
 <li><code>estadoDesc → estadoID</code></li>
 <li><code>provincia → provinciaPob</code></li>
-<li><code>ciudad, provincia → ciudadPob</code>, por ejemplo, tenemos dos ciudades <code>Valencia</code> en provincias diferentes</li>
-<li><code>comercialID , ciudad, provincia → ventas</code> </li>
+<li><code>ciudad, provincia → ciudadPob</code>, ya que tenemos dos ciudades <code>Valencia</code> en provincias diferentes</li>
+<li><code>comercialID, ciudad, provincia → ventas</code> </li>
 </ul>
 <p>Tal como hemos comentado previamente, cuando agrupamos los atributos, la dependencia <code>comercialID → comercialNom, estadoID, estadoDesc</code> significa que tanto el nombre del comercial, como el código de su estado y el estado dependen del identificador del comercial.</p>
 </div>
 </li>
 <li>
 <p><strong>Dependencia funcional completa</strong> (<abbr title="Dependencia funcional completa">DFC</abbr>): cuando tenemos que <em>A1, A2, ...AN → B</em> (B tiene una dependencia funcional del conjunto A1, A2, ...AN), pero no de ninguno de sus subconjuntos.</p>
-<p>Es decir, B depende de la combinación completa de atributos, y no de un parte de la clave.</p>
+<p>Es decir, B depende de la combinación completa de atributos, y no de una parte de la clave.</p>
 <div class="admonition abstract">
 <p class="admonition-title"><abbr title="Dependencia funcional completa">DFC</abbr> - Supuesto Comerciales</p>
 <p>Tenemos que las ventas dependen de la combinación <code>comercialID, ciudad, provincia</code> y no de un subconjunto de ellas, es decir, <code>comercialID, ciudad, provincia → ventas</code>.</p>
 </div>
 </li>
 <li>
-<p><strong>Dependencia funcional transitiva</strong> (<abbr title="Dependencia funcional transitiva">DFT</abbr>): se dice que hay un <abbr title="Dependencia funcional transitiva">DFT</abbr> entre A y C, si A → B y B → C, siendo B y C columnas no claves. Dicho de otro modo, cuando tenemos columnas no claves que determinan otras columnas no clave.</p>
+<p><strong>Dependencia funcional transitiva</strong> (<abbr title="Dependencia funcional transitiva">DFT</abbr>): se dice que hay una <abbr title="Dependencia funcional transitiva">DFT</abbr> entre A y C, si A → B y B → C, siendo B y C columnas no clave. Dicho de otro modo, cuando tenemos columnas no claves que determinan otras columnas no clave.</p>
 <div class="admonition abstract">
 <p class="admonition-title"><abbr title="Dependencia funcional transitiva">DFT</abbr> - Supuesto Comerciales</p>
 <p>Tenemos que <code>comercialID → comercialNom, estadoID, estadoDesc</code> y que <code>estadoID → estadoDesc</code>, por lo que tenemos una dependencia transitiva de <code>comercialID</code> a <code>estadoDesc</code>, ya que <code>comercialID → estadoID → estadoDesc</code>.</p>
@@ -3164,11 +3165,11 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </figure>
 
 <p>La normalización consiste en una serie de pasos, cada uno de los cuales se corresponde a una forma normal (<abbr title="Forma normal">FN</abbr>). Conforme se va avanzando en la normalización, las tablas tienen una estructura más limpia y con menor redundancia.</p>
-<p><em>Codd</em> propuso en 1972 tres formas normales, a las que se sumó la forma normal de <em>Boyce-Codd</em> en 1974, y luego se añadieron dos más por parte de <em>Fagin</em> entre 1977 y 1979. En este curso, nos vamos a centrar en las tres primeras, que cubren la mayoría de casos con los que nos vamos a encontrar, ya que se considera que una base de datos que está en 3FN es una base de datos correctamente diseñada</p>
+<p><em>Codd</em> propuso en 1972 tres formas normales, a las que se sumó la forma normal de <em>Boyce-Codd</em> en 1974, y luego se añadieron dos más por parte de <em>Fagin</em> entre 1977 y 1979. En este curso, nos vamos a centrar en las tres primeras, que cubren la mayoría de casos con los que nos vamos a encontrar, ya que se considera que una base de datos que está en 3FN es una base de datos correctamente diseñada.</p>
 <p>Todas las formas normales se construyen sobre una forma normal previa, de forma que se anidan unas dentro de otras:</p>
 <ul>
 <li>
-<p><strong>1FN</strong>: Una relación está en primera forma normal si, y sólo si, todos sus dominios contienen valores atómicos. Supone la eliminación de todos los campos multivaluados.</p>
+<p><strong>1FN</strong>: Una relación está en primera forma normal si, y solo si, todos sus dominios contienen valores atómicos. Supone la eliminación de todos los campos multivaluados.</p>
 <p>Por lo general, si tenemos una tabla de un modelo relacional, por las propias restricciones semánticas del modelo relacional, no deberíamos tener ningún campo con varios valores, ya que deberían haberse transformado en relaciones 1:N.</p>
 <div class="admonition abstract">
 <p class="admonition-title">1FN - Supuesto Comerciales</p>
@@ -3176,19 +3177,19 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </div>
 </li>
 <li>
-<p><strong>2FN</strong>: una relación está en segunda forma normal si está en 1FN y todas las columnas que no son clave tienen un <abbr title="Dependencia funcional completa">DFC</abbr> de la clave primaria. </p>
-<p>Para ello, descompondremos la tabla en varias subtablas, y comprobaremos que ningún subconjunto de los atributos no clave determinan campos no principales.</p>
+<p><strong>2FN</strong>: una relación está en segunda forma normal si está en 1FN y todas las columnas que no son clave tienen una <abbr title="Dependencia funcional completa">DFC</abbr> de la clave primaria. </p>
+<p>Para ello, descompondremos la tabla en varias subtablas, y comprobaremos que ningún subconjunto propio de la clave primaria determina atributos no principales.</p>
 <p>Si todas las claves candidatas de las tablas en 1FN son simples (unitarias), automáticamente las tablas ya están en 2FN. En cambio, si la clave primaria es compuesta, deberemos comprobar que todos los atributos dependen de la clave primaria compuesta y no de un subconjunto de esta.</p>
 <div class="admonition abstract">
 <p class="admonition-title">2FN - Supuesto Comerciales</p>
-<p>Si revisamos las dependencia funcionales, hemos de comprobar que  todos los atributos no clave dependan de toda la clave primaria. Para ello, necesitamos crear al menos tres tablas:</p>
+<p>Si revisamos las dependencias funcionales, hemos de comprobar que  todos los atributos no clave dependan de toda la clave primaria. Para ello, necesitamos crear al menos tres tablas:</p>
 <p><code>
 <strong>COMERCIAL</strong> (<ins>comercialID</ins>, comercialNom, estadoID, estadoDesc)<br />
-· <abbr title="Primary Key / Clave primaria">PK</abbr>: (codigo)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (comercialID)
 </code></p>
 <p><code>
 <strong>CIUDAD</strong> (<ins>ciudad</ins>, <ins>provincia</ins>, ciudadPob, provinciaPob)<br />
-· <abbr title="Primary Key / Clave primaria">PK</abbr>: (ciudad)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (ciudad, provincia)
 </code></p>
 <p><code>
 <strong>REGISTRO</strong> (<ins>comercialID</ins><code>*</code>, <ins>ciudad</ins><code>*</code>, <ins>provincia</ins><code>*</code>, ventas)<br />
@@ -3376,15 +3377,15 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <p><strong>3FN</strong>: 2FN + todo atributo que no es clave primaria no tiene una dependencia funcional transitiva de otro atributo no clave, es decir, depende únicamente de la clave primaria de modo no transitivo.    </p>
 <div class="admonition abstract">
 <p class="admonition-title">3FN - Supuesto Comerciales</p>
-<p>Ahora revisamos que no haya atributos que dependan de forma transitiva de la clave primaria. Tanto <code>COMERCIAL.estadoDesc</code> como <code>CIUDAD.provinciaPob</code> dependen de forma transitiva de un atributo no que es clave en sus tablas (<code>COMERCIAL.estadoID</code> y <code>CIUDAD.provincia</code>, respectivamente). Es decir, tenemos las <abbr title="Dependencia funcional transitiva">DFT</abbr> <code>comercialID → estadoID → estadoDesc</code> y <code>ciudad → provincia → provinciaPob</code>.</p>
-<p>Así pues, para deshacer las dependencias funcionales transitivas dividimos las tablas <code>COMERCIAL</code> y <code>CIUDAD</code> en dos nuevas tablas (<code>ESTADO</code>y <code>PROVINCIA</code>):</p>
+<p>Ahora revisamos que no haya atributos que dependan de forma transitiva de la clave primaria. Tanto <code>COMERCIAL.estadoDesc</code> como <code>CIUDAD.provinciaPob</code> dependen de forma transitiva de un atributo que no es clave en sus tablas (<code>COMERCIAL.estadoID</code> y <code>CIUDAD.provincia</code>, respectivamente). Es decir, tenemos las <abbr title="Dependencia funcional transitiva">DFT</abbr> <code>comercialID → estadoID → estadoDesc</code> y <code>ciudad → provincia → provinciaPob</code>.</p>
+<p>Así pues, para deshacer las dependencias funcionales transitivas dividimos las tablas <code>COMERCIAL</code> y <code>CIUDAD</code> en dos nuevas tablas (<code>ESTADO</code> y <code>PROVINCIA</code>):</p>
 <p><code>
 <strong>ESTADO</strong> (<ins>estadoID</ins>, estadoDesc)<br />
-· <abbr title="Primary Key / Clave primaria">PK</abbr>: (codigo)
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (estadoID)
 </code></p>
 <p><code>
 <strong>COMERCIAL</strong> (<ins>comercialID</ins>, comercialNom, estadoID<code>*</code>)<br />
-· <abbr title="Primary Key / Clave primaria">PK</abbr>: (codigo)<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (comercialID)<br />
 · <abbr title="Foreign Key / Clave ajena">FK</abbr>: (estadoID) → ESTADO<br />
 </code></p>
 <p><code>
@@ -3393,7 +3394,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </code></p>
 <p><code>
 <strong>CIUDAD</strong> (<ins>ciudad</ins>, <ins>provincia</ins><code>*</code>, ciudadPob)<br />
-· <abbr title="Primary Key / Clave primaria">PK</abbr>: (ciudad)<br />
+· <abbr title="Primary Key / Clave primaria">PK</abbr>: (ciudad, provincia)<br />
 · <abbr title="Foreign Key / Clave ajena">FK</abbr>: (provincia) → PROVINCIA<br />
 </code></p>
 <p><code>
@@ -3626,22 +3627,22 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </ul>
 </li>
 <li>
-<p><strong><abbr title="Forma normal de Boyce-Codd">FNBC</abbr></strong>: Es una mejora de la 3FN donde, si tenemos más de una clave candidata y estas son compuestas y comparten algún atributo entonces, ningún atributo, sea clave o no,  puede depender de algo que no sea la clave primaria.</p>
-<p>Si la clave no es compuesta y no existe más de una clave candidata (sólo tenemos la clave primaria), la <abbr title="Forma normal de Boyce-Codd">FNBC</abbr> es equivalente a la 3FN.</p>
+<p><strong><abbr title="Forma normal de Boyce-Codd">FNBC</abbr></strong>: Es una mejora de la 3FN donde, si tenemos más de una clave candidata y estas son compuestas y comparten algún atributo entonces, ningún atributo, sea clave o no,  puede depender de algo que no sea una clave candidata.</p>
+<p>Si la clave no es compuesta y no existe más de una clave candidata (solo tenemos la clave primaria), la <abbr title="Forma normal de Boyce-Codd">FNBC</abbr> es equivalente a la 3FN.</p>
 <p>El objetivo de la <abbr title="Forma normal de Boyce-Codd">FNBC</abbr> es asegurar que cada dato de una tabla depende únicamente de una clave real y completa, y no de otra cosa.</p>
 <div class="admonition abstract">
-<p class="admonition-title">3FN - Supuesto Comerciales</p>
+<p class="admonition-title"><abbr title="Forma normal de Boyce-Codd">FNBC</abbr> - Supuesto Comerciales</p>
 <p>Como la única tabla con una clave primaria compuesta (<code>REGISTRO</code>) no tiene otras claves candidatas, ya está en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr>.</p>
 </div>
 </li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">En resumen...</p>
-<p>En la práctica, cuando todas las tablas están en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr>, se puede considerar que la base de datos está totalmente normalizada. Una tabla en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr> ya está desde 1FN hasta 3FN y tiene las siguientes características:</p>
+<p>En la práctica, cuando todas las tablas están en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr>, se puede considerar que la base de datos está totalmente normalizada. Una tabla en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr> cumple desde la 1FN hasta 3FN y tiene las siguientes características:</p>
 <ul>
 <li>Tiene una clave primaria.</li>
 <li>No tiene columnas multivaluadas.</li>
-<li>Todas las columnas dependen de una clave pero nada más.</li>
+<li>Todas las columnas dependen de la clave, de toda la clave y de nada más que la clave.</li>
 <li>No contiene ninguna dependencia transitiva.</li>
 </ul>
 <p><figure style="align: center;">
@@ -3721,7 +3722,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <li><code>codProfesor → nomProfesor</code>: El nombre del profesor depende funcionalmente del código.</li>
 <li><code>(codAlumno, codAsignatura, codProfesor) → nota</code>: La combinación del código del alumno, el código de la asignatura y el código del profesor determina la nota.</li>
 </ul>
-<p>Las claves candidatas de la relación serían <code>codAlumno</code>, <code>codAsignatura</code>, <code>codProfesor</code> y <code>(codAlumno, codAsignatura, codProfesor)</code> y los campos no clave serían <code>nomAlumno</code>, <code>nomAsignatura</code>, <code>nomProfesor</code> y <code>nota</code>.</p>
+<p>La única clave candidata de la relación es <code>(codAlumno, codAsignatura, codProfesor)</code>, y los campos no clave serían... <code>nomAlumno</code>, <code>nomAsignatura</code>, <code>nomProfesor</code> y <code>nota</code>.</p>
 <p>A continuación, comprobamos si cumple las diferentes formas normales:</p>
 <ul>
 <li>
@@ -3729,7 +3730,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </li>
 <li>
 <p>¿Está en 2FN? Está en 1FN y comprobamos las dependencias funcionales completas entre los atributos de la relación, es decir, todos los atributos no clave tienen una <abbr title="Dependencia funcional completa">DFC</abbr> de la clave primaria.</p>
-<p>Como los atributos <code>nomAlumno</code>, <code>nomAsignatura</code>, <code>nomProfesor</code> tienen no tienen una <abbr title="Dependencia funcional completa">DFC</abbr> de la clave <code>(codAlumno, codAsignatura, codProfesor)</code> (ya que la tienen de un subconjunto de la clave, por ejemplo, el nombre del alumno depende funcionalmente de su código), necesitamos descomponer la relación en las siguientes tablas:</p>
+<p>Como los atributos <code>nomAlumno</code>, <code>nomAsignatura</code>, <code>nomProfesor</code> no tienen una <abbr title="Dependencia funcional completa">DFC</abbr> de la clave <code>(codAlumno, codAsignatura, codProfesor)</code> (ya que la tienen de un subconjunto de la clave, por ejemplo, el nombre del alumno depende funcionalmente de su código), necesitamos descomponer la relación en las siguientes tablas:</p>
 <p><code>
 <strong>ALUMNO</strong> (<ins>codAlumno</ins>, nomAlumno)<br />
 · <abbr title="Primary Key / Clave primaria">PK</abbr>: (codAlumno)
@@ -3743,7 +3744,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 · <abbr title="Primary Key / Clave primaria">PK</abbr>: (codProfesor)
 </code></p>
 <p><code>
-<strong>CALIFICAR</strong> (<ins>codAlumno</ins><code>*</code>, <ins>codAlumno</ins><code>*</code>, <ins>codAlumno</ins><code>*</code>, nota)<br />
+<strong>CALIFICAR</strong> (<ins>codAlumno</ins><code>*</code>, <ins>codAsignatura</ins><code>*</code>, <ins>codProfesor</ins><code>*</code>, nota)<br />
 · <abbr title="Primary Key / Clave primaria">PK</abbr>: (codAlumno, codAsignatura, codProfesor)<br />
 · <abbr title="Foreign Key / Clave ajena">FK</abbr>: (codAlumno) → ALUMNO<br />
 · <abbr title="Foreign Key / Clave ajena">FK</abbr>: (codAsignatura) → ASIGNATURA<br />
@@ -3755,8 +3756,9 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 <p>En la tabla <code>CALIFICAR</code> no hay dependencias transitivas, ya que nota depende directamente de la clave primaria compuesta <code>(codAlumno, codAsignatura, codProfesor)</code>.</p>
 </li>
 <li>
-<p>¿Está en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr>? Está en 3FN y además, todos los atributos no dependen de otra cosa que la clave primaria.</p>
-<p>En la tabla <code>CALIFICAR</code>, <code>(codAlumno, codAsignatura, codProfesor)</code> juntos forman la única clave candidata, por lo tanto, ya está en 8FNBC.</p>
+<p>¿Está en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr>? Está en 3FN y además, todos los atributos no dependen de otra cosa que la clave primaria, es decir, 
+todo determinante de la relación es una clave candidata.</p>
+<p>En la tabla <code>CALIFICAR</code>, <code>(codAlumno, codAsignatura, codProfesor)</code> juntos forman la única clave candidata, por lo tanto, ya está en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr>.</p>
 </li>
 </ul>
 <p>El resultado de normalizar la tabla inicial sería</p>
@@ -3883,7 +3885,7 @@ FIXME: Revisar https://dbdiagram.io/home --- cambiar notación
 </div>
 <p>Estas tablas están ahora en <abbr title="Forma normal de Boyce-Codd">FNBC</abbr>, eliminando redundancias y asegurando que todas las dependencias funcionales se respetan correctamente.</p>
 <h3 id="desnormalizacion">Desnormalización<a class="headerlink" href="#desnormalizacion" title="Permanent link">&para;</a></h3>
-<p>El concepto de <strong>desnormalizar</strong> un modelo relacional consiste en transformar una base de datos a una forma normal menor, siempre con el objetivo de mejorar el rendimiento de las operaciones de consulta de datos, a costa de aceptar cierta redundancia de datos</p>
+<p>El concepto de <strong>desnormalizar</strong> un modelo relacional consiste en transformar una base de datos a una forma normal menor, siempre con el objetivo de mejorar el rendimiento de las operaciones de consulta de datos, a costa de aceptar cierta redundancia de datos.</p>
 <p>Por ejemplo, podemos unir varias relaciones en una si se usan juntas frecuentemente mediante operaciones <em>join</em>.</p>
 <p>Además del rendimiento en las consultas, podemos desnormalizar nuestros modelos para simplificar el esquema o reducir la complejidad de ciertas consultas.</p>
 <p>Un caso muy común es unir los datos de dos tablas que tienen una relación 1:1 en una única tabla (siempre que la semántica de las relaciones lo permita).</p>
@@ -4005,7 +4007,7 @@ relación.</li>
 <p><a name="AC303"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC303</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir de los datos de las siguientes tablas, identifica todos los problemas con las restricciones semánticas asociadas al modelo relacional y aporta soluciones de cómo resolverlas, sabiendo que las <abbr title="Primary Key / Clave primaria">PK</abbr> son <code>PRODUCTO.codigo</code>y <code>CATEGORIA.codigo</code>, y tenemos una clave ajena de <code>PRODUCTO.categoria</code> que apunta a <code>CATEGORIA</code>.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC303</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir de los datos de las siguientes tablas, identifica todos los problemas con las restricciones semánticas asociadas al modelo relacional y aporta soluciones de cómo resolverlas, sabiendo que las <abbr title="Primary Key / Clave primaria">PK</abbr> son <code>PRODUCTO.codigo</code> y <code>CATEGORIA.codigo</code>, y tenemos una clave ajena de <code>PRODUCTO.categoria</code> que apunta a <code>CATEGORIA</code>.</p>
 <ul>
 <li>
 <p><code>PRODUCTO</code></p>
@@ -4178,20 +4180,20 @@ relación.</li>
 <p><a name="AC305"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC305</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr> // 3p) Crea las tablas necesarias con datos ficticios (con al menos 5 registros cada tabla) que respete las restricciones semánticas del modelo relacional a partir del siguiente esquema relacional:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC305</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) Crea las tablas necesarias con datos ficticios (con al menos 5 registros en cada tabla) que respeten las restricciones semánticas del modelo relacional a partir del siguiente esquema relacional:</p>
 <p><code>
 <strong>EMPLEADO</strong> (<ins>nif</ins>, nombre, direccion, cargo)<br />
 · <abbr title="Primary Key / Clave primaria">PK</abbr>: (nif)<br />
-· VNN: (nombre)
+· <abbr title="Valor no nulo">VNN</abbr>: (nombre)
 </code></p>
 <p><code>
 <strong>VEHICULO</strong> (<ins>matricula</ins>, codigo, marca, modelo, empleado<code>*</code>)<br />
 · <abbr title="Primary Key / Clave primaria">PK</abbr>: (matricula)<br />
 · <abbr title="Foreign Key / Clave ajena">FK</abbr>: (empleado) → EMPLEADO<br />
-· VNN: (empleado)<br />
+· <abbr title="Valor no nulo">VNN</abbr>: (empleado)<br />
 · <abbr title="Unique Key / Clave única">UK</abbr>: (codigo)
 </code></p>
-<p>Para mostrar las diferentes restricciones del modelo debes tener en cuenta las cardinalidades de la relación, los posibles valores repetidos o nulos de los campos, etc...</p>
+<p>Para mostrar las diferentes restricciones del modelo debes tener en cuenta las cardinalidades de la relación, los posibles valores repetidos o nulos de los campos, etc.</p>
 <p>Una vez realizado, dibuja a mano un diagrama que represente el modelo relacional. A continuación, utiliza <a href="https://erdplus.com/">https://erdplus.com/</a> o <a href="https://dbdiagram.io/">https://dbdiagram.io/</a> para pasarlo a digital. En la entrega en <em>Aules</em>, adjunta ambos diagramas.</p>
 </li>
 </ul>
@@ -4212,9 +4214,9 @@ relación.</li>
 <p><code>
 <strong>AUTOBUS</strong> (<ins>matricula</ins>, tipo, numPlazas)<br />
 · <abbr title="Primary Key / Clave primaria">PK</abbr>: (matricula)<br />
-· VNN: (numPlazas)
+· <abbr title="Valor no nulo">VNN</abbr>: (numPlazas)
 </code></p>
-<p>Para mostrar las diferentes restricciones del modelo debes tener en cuenta las cardinalidades de la relación, los posibles valores repetidos o nulos de los campos, etc...</p>
+<p>Para mostrar las diferentes restricciones del modelo debes tener en cuenta las cardinalidades de la relación, los posibles valores repetidos o nulos de los campos, etc.</p>
 <p>Una vez realizado, dibuja a mano un diagrama que represente el modelo relacional. A continuación, utiliza <a href="https://erdplus.com/">https://erdplus.com/</a> o <a href="https://dbdiagram.io/">https://dbdiagram.io/</a> para pasarlo a digital. En la entrega en <em>Aules</em>, adjunta ambos diagramas.</p>
 </li>
 </ul>
@@ -4227,13 +4229,14 @@ relación.</li>
 </ul>
 <p><a name="AR308"></a></p>
 <ul>
-<li><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR308</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir del siguiente diagrama, crea el esquema relacional:</li>
-</ul>
-<figure style="align: center;">
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR308</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr> // 3p) A partir del siguiente diagrama, crea el esquema relacional:</p>
+<p><figure style="align: center;">
     <img src="images/03ar308.png" width="701" title="Actividad 308">
     <figcaption>Actividad 308</figcaption>
-</figure>
-
+</figure></p>
+</li>
+</ul>
 <p><a name="AC309"></a></p>
 <ul>
 <li>
@@ -4242,14 +4245,14 @@ relación.</li>
     <img src="images/03ac309.png" width="865" title="Actividad 309">
     <figcaption>Actividad 309</figcaption>
 </figure></p>
-<p>Contesta a las siguientes preguntas argumentado tus respuestas:</p>
+<p>Contesta a las siguientes preguntas argumentando tus respuestas:</p>
 <ol>
 <li>¿Puede un <code>PEDIDO</code> contener más de un <code>PRODUCTO</code>?</li>
-<li>¿Podemos obtener cuales son las categorías de los productos con más pedidos?</li>
-<li>Si quisiéramos obtener cuales son las provincias de los clientes donde se realizan más pedidos ¿qué deberíamos añadir?</li>
+<li>¿Podemos obtener cuáles son las categorías de los productos con más pedidos?</li>
+<li>Si quisiéramos obtener cuáles son las provincias de los clientes donde se realizan más pedidos ¿qué deberíamos añadir?</li>
 <li>¿Podemos tener dos proveedores con el mismo nombre?</li>
 <li>¿Todo <code>PRODUCTO</code> obligatoriamente pertenecerá a una <code>CATEGORIA</code>?</li>
-<li>Cuando en un pedido compramos dos producto diferentes ¿Cuantas <code>LINEA_PEDIDO</code> necesitamos? ¿Y si son del mismo producto?</li>
+<li>Cuando en un pedido compramos dos productos diferentes ¿cuántas <code>LINEA_PEDIDO</code> necesitamos? ¿y si son del mismo producto?</li>
 </ol>
 </li>
 </ul>
@@ -4264,11 +4267,11 @@ relación.</li>
 <p>Contesta a las siguientes preguntas justificando tus respuestas:</p>
 <ol>
 <li>¿Puede un hotel estar en más de un punto?</li>
-<li>Dada una ciudad, ¿Cuántos hoteles podemos tener?</li>
+<li>Dada una ciudad, ¿cuántos hoteles podemos tener?</li>
 <li>¿Podemos tener dos rutas con el mismo nombre?</li>
-<li>¿De cuantos tipos puede ser una ruta? ¿Y toda ruta debe tener un tipo?</li>
-<li>¿Podemos tener hoteles que no pertenezcan a ningún viaje? ¿Y al revés?, es decir, ¿Podemos tener viajes sin hotel incluido?</li>
-<li>Si en un determinado viaje no está incluido el hotel, ¿Puede haber más de una ruta?</li>
+<li>¿De cuántos tipos puede ser una ruta? ¿y toda ruta debe tener un tipo?</li>
+<li>¿Podemos tener hoteles que no pertenezcan a ningún viaje? ¿y al revés?, es decir, ¿podemos tener viajes sin hotel incluido?</li>
+<li>Si en un determinado viaje no está incluido el hotel, ¿puede haber más de una ruta?</li>
 </ol>
 <p>A continuación, añade al modelo las tablas y relaciones necesarias para almacenar la información de los clientes que realizan el viaje, así como en qué hotel duermen.</p>
 </li>
@@ -4510,7 +4513,7 @@ salario, nomDpto, jefeDpto, puntos)</code></p>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR316</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p) Realiza la normalización, paso a paso, indicando en cada uno de ellos las tablas resultantes y sus datos, de los siguientes supuestos:</p>
 <ol>
 <li>
-<p>Un tabla que contiene la información de estudiantes y los cursos en los que se matricula, la cual tiene la siguiente información:</p>
+<p>Una tabla que contiene la información de estudiantes y los cursos en los que se matricula, la cual tiene la siguiente información:</p>
 <table>
 <thead>
 <tr>
@@ -4581,22 +4584,22 @@ salario, nomDpto, jefeDpto, puntos)</code></p>
 <p><a name="AP317"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP317</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p)  A partir del siguiente esquema relacional, se nos pide optimizar el modelo aplicando desnormalización, ya que, para cada artista, se quieren recuperar las 5 canciones primeras canciones, y con el diseño actual, la consulta es muy lenta: </p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP317</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han aplicado reglas de normalización.">CE6g</abbr> // 3p)  A partir del siguiente esquema relacional, se nos pide optimizar el modelo aplicando desnormalización, ya que, para cada artista, se quieren recuperar las 5 primeras canciones, y con el diseño actual, la consulta es muy lenta: </p>
 <p><code>
 <strong>ARTISTA</strong> (<ins>id</ins>, nombre, foto)<br />
 · <abbr title="Primary Key / Clave primaria">PK</abbr>: (id)
 </code></p>
 <p><code>
-<strong>ALBUM</strong> (<ins>id</ins>, nombre, foto, <ins>artista_id</ins><code>*</code>)<br />
+<strong>ALBUM</strong> (<ins>id</ins>, nombre, foto, artista_id<code>*</code>)<br />
 · <abbr title="Primary Key / Clave primaria">PK</abbr>: (id)<br />
 · <abbr title="Foreign Key / Clave ajena">FK</abbr>: (artista_id) → ARTISTA<br />
-· VNN: (artista_id)
+· <abbr title="Valor no nulo">VNN</abbr>: (artista_id)
 </code></p>
 <p><code>
-<strong>CANCION</strong> (<ins>id</ins>, nombre, letra, <ins>album_id</ins><code>*</code>)<br />
+<strong>CANCION</strong> (<ins>id</ins>, nombre, letra, album_id<code>*</code>)<br />
 · <abbr title="Primary Key / Clave primaria">PK</abbr>: (id)<br />
-· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (album_id) → ARTISTA<br />
-· VNN: (album_id)
+· <abbr title="Foreign Key / Clave ajena">FK</abbr>: (album_id) → ALBUM<br />
+· <abbr title="Valor no nulo">VNN</abbr>: (album_id)
 </code></p>
 <p>¿Qué has hecho para mejorar el rendimiento? ¿En qué forma normal se encuentra ahora el modelo relacional? Justifica tu respuesta.</p>
 </li>
