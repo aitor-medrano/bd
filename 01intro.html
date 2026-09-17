@@ -456,7 +456,7 @@
   <a href="#tipos-de-bases-de-datos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tipos de Bases de Datos
+        Tipos de bases de datos
       
     </span>
   </a>
@@ -553,10 +553,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#requerimientos" class="md-nav__link">
+  <a href="#requisitos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Requerimientos
+        Requisitos
       
     </span>
   </a>
@@ -1471,7 +1471,7 @@
   <a href="#tipos-de-bases-de-datos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tipos de Bases de Datos
+        Tipos de bases de datos
       
     </span>
   </a>
@@ -1568,10 +1568,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#requerimientos" class="md-nav__link">
+  <a href="#requisitos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Requerimientos
+        Requisitos
       
     </span>
   </a>
@@ -1704,8 +1704,8 @@
 <p>Almacenamiento de la información:</p>
 <ul>
 <li>Ficheros (planos, indexados, acceso directo, entre otros).</li>
-<li>Bases de datos. Conceptos, usos y tipos según el modelo de datos, la ubicación de la información.</li>
-<li>Sistemas gestores de base de datos: Funciones, componentes y tipos.</li>
+<li>Bases de datos: conceptos, usos y tipos según el modelo de datos y la ubicación de la información.</li>
+<li>Sistemas gestores de bases de datos: funciones, componentes y tipos.</li>
 <li>Legislación sobre protección de datos.</li>
 </ul>
 <div class="admonition question">
@@ -1797,8 +1797,8 @@
 <p>Seguro que has escuchado la frase "<em>Los datos son el petróleo del siglo XXI</em>". A día de hoy se generan datos de manera desorbitada, y estos son muy importantes para las empresas porque se puede extraer mucha información.</p>
 <p>Pero, ¿sabemos qué diferencia hay entre un dato e información? ¿Cuál es más importante?</p>
 <p>Un <strong>dato</strong> es un hecho, un evento, una transacción, que ha sido registrado. En cambio, consideramos <strong>información</strong> a los datos que han sido procesados y comunicados de tal manera que pueden ser entendidos e interpretados.</p>
-<p>Por ejemplo, si decimos que hace 22ºC ¿Es un dato o es información? Y si decimos que hace 22ºC en Sevilla el 15 de Julio, ¿tenemos información? </p>
-<p>Los datos necesitan de un contexto para poder obtener información. Muchas veces, dicho contexto, son más datos que nos permiten relacionar unos con otros. Una vez que se asimila la información, se transforma en conocimiento.</p>
+<p>Por ejemplo, si decimos que hace 22 ºC, ¿es un dato o es información? Y si decimos que hace 22 ºC en Sevilla el 15 de julio, ¿tenemos información?</p>
+<p>Los datos necesitan un contexto para poder obtener información. Muchas veces, dicho contexto son más datos que nos permiten relacionarlos unos con otros. Una vez que se asimila la información, se transforma en conocimiento.</p>
 <figure style="align: center;">
     <img src="images/01datos-informacion-conocimiento.svg" width="800" title="Datos < Información < Conocimiento">
     <figcaption>Evolución de los datos</figcaption>
@@ -1806,9 +1806,9 @@
 
 <p>Así pues, lo importante es la información, pero necesitamos de datos para obtenerla.</p>
 <p>Si nos centramos en el mundo empresarial, todas las empresas tienen un <strong>sistema de información</strong>, entendido como un conjunto de elementos destinados al tratamiento y administración de datos e información, organizados y listos para su posterior uso, y generados para cubrir una necesidad (objetivo). Estos sistemas de información pueden (o no) estar informatizados. </p>
-<p>¿Y qué tienen que ver el sistema de información con las bases de datos? Pues como toda empresa tiene una forma de trabajar, es necesario que almacene sus datos para poder extraer información, y saber si por ejemplo, deben reponer un producto, hacer algún tipo de oferta, o contratar a un nuevo empleado porque está perdiendo ventas por no poder atender a los clientes.</p>
+<p>¿Y qué tiene que ver el sistema de información con las bases de datos? Como toda empresa tiene una forma de trabajar, es necesario que almacene sus datos para poder extraer información y saber si, por ejemplo, debe reponer un producto, hacer algún tipo de oferta o contratar a un nuevo empleado porque está perdiendo ventas por no poder atender a los clientes.</p>
 <h2 id="ficheros">Ficheros<a class="headerlink" href="#ficheros" title="Permanent link">&para;</a></h2>
-<p>En los inicios del desarrollo de las aplicaciones, el almacenamiento de la información que gestiona cualquier aplicación informática era mediante el uso de archivos o ficheros (<em>files</em> en inglés). Esto provocaba que las aplicaciones estuvieran "<em>acopladas</em>" a los ficheros (dependencia físico-lógica), y dificultaba compartir datos entre diferentes aplicaciones, así como el acceso concurrente a los mismos.</p>
+<p>En los inicios del desarrollo de las aplicaciones, el almacenamiento de la información que gestionaba cualquier aplicación informática se realizaba mediante el uso de archivos o ficheros (<em>files</em> en inglés). Esto provocaba que las aplicaciones estuvieran "<em>acopladas</em>" a los ficheros (dependencia físico-lógica) y dificultaba compartir datos entre diferentes aplicaciones, así como el acceso concurrente a ellos.</p>
 <p>Respecto a los ficheros, conviene conocer que existen ficheros con diferente estructura y formato, como pueden ser de tipo texto (también conocidos como ficheros planos) o binario. Además, tienen un determinado formato, como puede ser CSV, JSON, XML, Parquet o Avro. Finalmente, los ficheros se identifican mediante un nombre y una extensión, la cual indica el formato. Así pues, <code>clientes.csv</code> sería un fichero en formato CSV que almacena datos sobre clientes.</p>
 <div class="admonition question">
 <p class="admonition-title">Autoevaluación</p>
@@ -1821,7 +1821,7 @@
 <p>¿Puedes citar tres más de cada tipo?</p>
 </div>
 <p>Formalmente, podemos definir un <strong>fichero</strong> como una secuencia de números binarios que organiza información relacionada a un mismo aspecto.</p>
-<p>Cuando los ficheros almacenan datos, se dice que constan de <strong>registros</strong>, los cuales son una estructura lógica que agrupa los datos de un mismo elemento (u objeto). Por ejemplo en un fichero de estudiantes, cada registro contiene datos de un único estudiante. Si el archivo contiene datos de 10.000 estudiantes, tendrá 10.000 registros. Además, cada uno de los registros se divide en <strong>campos</strong> que contienen cada una de las informaciones elementales que forman un registro (por ejemplo, el nombre del estudiante o su email).</p>
+<p>Cuando los ficheros almacenan datos, se dice que constan de <strong>registros</strong>, que son estructuras lógicas que agrupan los datos de un mismo elemento (u objeto). Por ejemplo, en un fichero de estudiantes, cada registro contiene datos de un único estudiante. Si el archivo contiene datos de 10.000 estudiantes, tendrá 10.000 registros. Además, cada uno de los registros se divide en <strong>campos</strong>, que contienen cada una de las informaciones elementales que forman un registro (por ejemplo, el nombre del estudiante o su correo electrónico).</p>
 <div class="admonition info">
 <p class="admonition-title">Discos sólidos</p>
 <p>Para que no se pierda la información, los ficheros se persisten en sistemas de almacenamiento, como discos duros mecánicos o sólidos. Es cierto que mediante los discos SSD, conectados por SATA o mediante el protocolo NVMe, el acceso a disco cada vez es más eficiente y se evita la fragmentación de los datos.</p>
@@ -1835,7 +1835,7 @@
 <p>Dependiendo del acceso, tenemos diferentes tipos de ficheros:</p>
 <ul>
 <li>
-<p><strong>Secuenciales</strong>: los registros se almacenan uno detrás de otro. Antiguamente se utilizaba cuando los ficheros se persistían mediante cintas magnéticas, y provocaba que para acceder a un registro, fuera necesario recorrer todos los anteriores.</p>
+<p><strong>Secuenciales</strong>: los registros se almacenan uno detrás de otro. Antiguamente se utilizaban cuando los ficheros se almacenaban en cintas magnéticas, lo que provocaba que, para acceder a un registro, fuera necesario recorrer todos los anteriores.</p>
 </li>
 <li>
 <p>De <strong>acceso directo</strong> o <strong>aleatorio</strong>: permite el acceso directo al registro que nos interesa, pudiendo saltar de uno a otro sin necesidad de recorrer los anteriores.</p>
@@ -1843,8 +1843,8 @@
 </ul>
 <p>Respecto a los ficheros secuenciales destacamos dos tipos:</p>
 <ul>
-<li><strong>Encadenados</strong>: cada registro, además de sus datos, almacenan un puntero (dirección de memoria) con la dirección del siguiente registro.</li>
-<li><strong>Indexados</strong>: el fichero se divide en dos zonas, una primera con la información a modo de fichero secuencial con todos los registros uno detrás de otro, y una segunda donde se guardan los índice (a modo de tabla de contenidos o índice de un libro indicando donde se encuentra cada registro), los cuales tienen un campo clave y un campo dirección con la dirección del registro del fichero (estos conceptos los profundizaréis más en el módulo profesional de <em>Sistemas Informáticos</em> y en <em>Programación</em>).</li>
+<li><strong>Encadenados</strong>: cada registro, además de sus datos, almacena un puntero (dirección de memoria) con la dirección del siguiente registro.</li>
+<li><strong>Indexados</strong>: el fichero se divide en dos zonas: una primera con la información a modo de fichero secuencial, con todos los registros uno detrás de otro, y una segunda donde se guardan los índices (a modo de tabla de contenidos o índice de un libro, indicando dónde se encuentra cada registro), los cuales tienen un campo clave y un campo dirección con la dirección del registro del fichero (estos conceptos los profundizaréis más en el módulo profesional de <em>Sistemas Informáticos</em> y en <em>Programación</em>).</li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Más información</p>
@@ -1852,20 +1852,20 @@
 </div>
 <p>Respecto a las operaciones que se pueden realizar con ficheros (y que trabajarás con mayor profundidad en el módulo profesional de <em>Programación</em>) podemos destacar la apertura o cierre de los archivos, la lectura o escritura, así como el posicionamiento en un determinado lugar (o registro). Otras operaciones asociadas a los ficheros son:</p>
 <ul>
-<li>Fragmentación y compactación: cuando toda la información de un registro no se almacena de forma consecutiva, y mediante punteros se van enlazando las partes, se dice que la información está fragmentada. Para evitarlo, se compactan los ficheros para que toda la información se pueda leer más eficientemente.</li>
-<li>Compresión: la información se codifica mediante algoritmos de compresión que reducen el tamaño de los ficheros.</li>
-<li>Cifrado de datos: la información se encripta para hacer que el contenido sea ilegible.</li>
+<li><strong>Fragmentación</strong> y <strong>compactación</strong>: cuando toda la información de un registro no se almacena de forma consecutiva, y mediante punteros se van enlazando las partes, se dice que la información está fragmentada. Para evitarlo, se compactan los ficheros para que toda la información se pueda leer más eficientemente.</li>
+<li><strong>Compresión</strong>: la información se codifica mediante algoritmos de compresión que reducen el tamaño de los ficheros.</li>
+<li><strong>Cifrado de datos</strong>: la información se encripta para hacer que el contenido sea ilegible.</li>
 </ul>
 <p>Una vez presentados los conceptos de los ficheros, conviene saber que actualmente su uso se ha visto reducido a datos específicos de las aplicaciones como archivos de configuración y datos privados, cuando no es necesario que varios usuarios accedan a la información de forma concurrente.</p>
 <h2 id="bases-de-datos">Bases de datos<a class="headerlink" href="#bases-de-datos" title="Permanent link">&para;</a></h2>
-<p>Si bien los ficheros fueron una solución factible mientras sólo accedían a los archivos una única aplicación, con la aparición de las redes de ordenadores y la explosión de internet, la gestión de los sistemas de almacenamiento mediante ficheros se vio sustituida por las bases de datos, que sí permiten que diferentes aplicaciones y usuarios accedan de forma simultánea a los datos.</p>
+<p>Si bien los ficheros fueron una solución factible mientras solo accedía a ellos una única aplicación, con la aparición de las redes de ordenadores y la explosión de internet, la gestión de los sistemas de almacenamiento mediante ficheros se vio sustituida por las bases de datos, que sí permiten que diferentes aplicaciones y usuarios accedan de forma simultánea a los datos.</p>
 <p>Formalmente, podemos definir una <strong>base de datos</strong> como un conjunto de datos interrelacionados, con características de integridad y redundancia mínima, accesibles por varios usuarios y aplicaciones.</p>
 <p>Mediante esta definición estamos introduciendo dos términos que conviene tener muy presente:</p>
 <ul>
 <li><strong>Integridad</strong>: implica que los datos son correctos y completos.</li>
-<li><strong>Redundancia mínima</strong>: cada dato sólo existe en un único lugar, evitando duplicidades.</li>
+<li><strong>Redundancia mínima</strong>: cada dato solo existe en un único lugar, evitando duplicidades.</li>
 </ul>
-<p>Respecto a las características de las bases de datos:</p>
+<p>Respecto a las características de las bases de datos, destacamos las siguientes ventajas e inconvenientes:</p>
 <table>
 <thead>
 <tr>
@@ -1909,9 +1909,9 @@
 </tbody>
 </table>
 <p>Toda base de datos debe permitir insertar, modificar y borrar datos.</p>
-<p>Una base de datos está compuesta por datos y metadatos. Los <strong>metadatos</strong> son datos que especifican la estructura de la base de datos, es decir, qué tipo de datos almacenan (texto, numérico,...), qué nombre tiene cada dato, cómo se agrupan, relacionan, etc... Estos metadatos se almacenan en el <strong>diccionario de datos</strong>.</p>
-<h3 id="tipos-de-bases-de-datos">Tipos de Bases de Datos<a class="headerlink" href="#tipos-de-bases-de-datos" title="Permanent link">&para;</a></h3>
-<p>Dependiendo de la característica que evaluemos podemos clasificar las bases de datos por:</p>
+<p>Respecto al contenido, una base de datos está compuesta por datos y metadatos. Los <strong>metadatos</strong> son datos que especifican la estructura de la base de datos, es decir, qué tipo de datos almacena (texto, numérico, etc.), qué nombre tiene cada dato y cómo se agrupan y relacionan. Estos metadatos se almacenan en el <strong>diccionario de datos</strong>.</p>
+<h3 id="tipos-de-bases-de-datos">Tipos de bases de datos<a class="headerlink" href="#tipos-de-bases-de-datos" title="Permanent link">&para;</a></h3>
+<p>Dependiendo de la característica que evaluemos, podemos clasificar las bases de datos por:</p>
 <table>
 <thead>
 <tr>
@@ -1958,8 +1958,8 @@
 <p>Inicialmente, los modelos de datos primitivos se basaban en sistemas de ficheros, tal como hemos visto en el apartado anterior.</p>
 <p>Posteriormente, se definieron los modelos clásicos, entre los que destacan los modelos:</p>
 <ul>
-<li><strong>Jerárquicos</strong> (finales de los 60): almacenan la información en forma de árbol y unidireccional, de arriba hacía abajo. La información se almacena en nodos, y los nodos se relacionan mediante punteros, permitiendo que un nodo padre puede tener muchos nodos hijos (relaciones de uno a muchos).</li>
-<li><strong>En red</strong> (principios de los 70): a partir de los modelos jerárquicos, los datos se relacionan en forma de red o grafo, permitiendo la relaciones de muchos a muchos, de manera que un nodo hijo puede tener varios nodos padre, y viceversa.</li>
+<li><strong>Jerárquicos</strong> (finales de los 60): almacenan la información en forma de árbol y de manera unidireccional, de arriba hacia abajo. La información se almacena en nodos, y los nodos se relacionan mediante punteros, permitiendo que un nodo padre pueda tener muchos nodos hijos (relaciones de uno a muchos).</li>
+<li><strong>En red</strong> (principios de los 70): a partir de los modelos jerárquicos, los datos se relacionan en forma de red o grafo, permitiendo las relaciones de muchos a muchos, de manera que un nodo hijo puede tener varios nodos padre, y viceversa.</li>
 <li><strong>Relacionales</strong> (finales de los 70 hasta hoy en día): se basan en la relación entre los datos, mediante el uso de tablas bidimensionales (filas=ocurrencia, columnas=atributo) que contienen campos que se relacionan con campos de otras tablas (este es el modelo más difundido y es que el estudiaremos en profundidad en este curso).</li>
 </ul>
 <p>Tras los clásicos, hubo un movimiento por el uso de modelos avanzados que no terminaron de cuajar, como fueron los modelos:</p>
@@ -1968,9 +1968,9 @@
 </ul>
 <p>Con la explosión de internet, y la necesidad de trabajar con grandes conjuntos de datos, aparecieron y se establecieron en el mercado los modelos:</p>
 <ul>
-<li><strong>Multidimensionales</strong> (década de los 90 y explosión en 2010 con el <em>Big Data</em>): se utilizan para desarrollar aplicaciones de <em>Data Warehouse</em> de procesamiento analítico en línea (OLAP). Las tablas se estructuran como cubos de información, mediante una tabla de hechos y varias tablas de dimensiones (tiempo, lugar, etc..).</li>
+<li><strong>Multidimensionales</strong> (década de los 90 y explosión en 2010 con el <em>Big Data</em>): se utilizan para desarrollar aplicaciones de <em>Data Warehouse</em> de procesamiento analítico en línea (OLAP). Las tablas se estructuran como cubos de información, mediante una tabla de hechos y varias tablas de dimensiones (tiempo, lugar, etc.).</li>
 <li><strong>Soluciones NoSQL</strong> (década del 2000 hasta hoy en día): como complemento a los modelos relacionales, ofrecen alternativas donde prima el rendimiento y escalabilidad de los datos. Destacan los modelos:<ul>
-<li><strong>Clave-Valor</strong>: se almacenan datos a los cuales sólo se puede acceder mediante una clave. </li>
+<li><strong>Clave-Valor</strong>: se almacenan datos a los cuales solo se puede acceder mediante una clave.</li>
 <li><strong>Documental</strong>: utiliza estructuras de documentos JSON que contiene la información de varias entidades en un mismo documento</li>
 <li><strong>Grafos</strong>: Uso de nodos y vértices para navegar por los datos.</li>
 <li><strong>Basado en columnas</strong>: gira las tablas para almacenar los datos por columnas en vez de hacerlo por filas.</li>
@@ -2003,7 +2003,7 @@
 <ul>
 <li><strong>A</strong>tomicidad: las transacciones implican que se realizan todas las operaciones o no se realiza ninguna.</li>
 <li><strong>C</strong>onsistencia: la base de datos asegura que los datos pasan de un estado válido o otro también.</li>
-<li><strong>I</strong>solation (Aislamiento): Una transacción no afecta a otras transacciones, de manera que la modificación de un registro / documento no es visible por otras lecturas hasta que ha finalizado la transacción. Esto implica que ninguna transacción obtiene una versión intermedia de los datos.</li>
+<li><strong>I</strong>solation (Aislamiento): una transacción no afecta a otras transacciones, de manera que la modificación de un registro o documento no es visible para otras lecturas hasta que ha finalizado la transacción. Esto implica que ninguna transacción obtiene una versión intermedia de los datos.</li>
 <li><strong>D</strong>urabilidad: La escritura de los datos asegura que una vez finalizada una operación, los datos no se perderán.</li>
 </ul>
 <p>Volveremos a estos conceptos cuando trabajemos la transaccionalidad de las operaciones, en la <a href="09dcl-tcl.html">unidad 9</a>.</p>
@@ -2012,8 +2012,8 @@
 <p>Un <abbr title="Sistema gestor de bases de datos">SGBD</abbr> se compone de:</p>
 <ul>
 <li><strong>Diccionario de datos</strong>: metadatos con las estructuras de las diferentes bases de datos, relaciones entre los datos, restricciones existentes así como información sobre las cuentas y permisos de los usuarios.</li>
-<li><strong>Espacio de datos</strong>: zona donde se almacenan los datos en sí. Se pueden organizar de diferentes maneras, dependiente del sistemas gestor. Por ejemplo, <em>Oracle</em> lo realiza mediante el uso de <em>tablespaces</em> y otros gestores con el concepto de base de datos.</li>
-<li>Un conjunto de herramientas, las cuales suele gestionar la persona con el rol de DBA (<em>Database Administrator</em>) para:<ul>
+<li><strong>Espacio de datos</strong>: zona donde se almacenan los datos en sí. Se puede organizar de diferentes maneras, dependiendo del sistema gestor. Por ejemplo, <em>Oracle</em> lo hace mediante el uso de <em>tablespaces</em> y otros gestores utilizan el concepto de base de datos.</li>
+<li>Un conjunto de herramientas que suele gestionar la persona con el rol de DBA (<em>Database Administrator</em>) para:<ul>
 <li>Crear y especificar los datos (mediante el <em>Data Definition Language</em> - DDL), el control de datos (mediante el <em>Data Control Language</em> - DCL) y su manipulación (mediante el <em>Data Manipulation Language</em> - DML)</li>
 <li>Recuperación (<em>failover</em>). Tras una caída del sistema, configurar los posibles mecanismos de recuperación y aceptación o revisión de las operaciones pendientes.</li>
 <li>Copia de seguridad (<em>backup</em>), ya sea copias completas o incrementales.</li>
@@ -2026,7 +2026,7 @@
 <p>Antes ya habíamos comentado que un <strong>modelo de datos</strong> es un conjunto de herramientas conceptuales para describir los datos, sus relaciones, su semántica y sus restricciones.</p>
 <p>Podemos definir un <strong>esquema</strong> como una descripción específica en términos de un modelo de datos.</p>
 <p>El grupo <em>ANSI/SPARC</em> (<em>American National Standards Institute</em> / <em>Standards Planning and Requirements Committee</em>), a mediados de los años 70, definió una arquitectura en 3 niveles diferenciando tres esquemas, con el objetivo de separar a las aplicaciones de los datos, permitir que los usuarios tuvieran diferentes vistas, y utilizar un catálogo para almacenar el esquema de la base de datos.</p>
-<p>¿Y cómo se consigue? Si queremos independencia entre los datos y las aplicaciones, necesitamos que cada programa que accede a la base de datos manipule sólo ciertos datos y estructura, de manera que cada programa posee una visión de la base de datos, lo que se conoce como <strong>esquema externo</strong>.
+<p>¿Y cómo se consigue? Si queremos independencia entre los datos y las aplicaciones, necesitamos que cada programa que accede a la base de datos manipule solo ciertos datos y estructuras, de manera que cada programa posea una visión de la base de datos, lo que se conoce como <strong>esquema externo</strong>.
 La unión de todos los datos y sus relaciones forman el llamado <strong>esquema conceptual</strong>.
 Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de los datos y sus formas de acceso.</p>
 <figure style="align: center;">
@@ -2038,7 +2038,7 @@ Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de 
 <ul>
 <li><em>Interno</em> o <em>Físico</em> (1): es el nivel más cercano al <ins>almacenamiento</ins> físico de los datos. Permite escribirlos tal y como están almacenados en el ordenador. En este nivel se diseñan los archivos que contienen la información, la ubicación de los mismos y su organización, es decir se crean los archivos de configuración.</li>
 <li><em>Conceptual</em> (1): En este nivel se representan los datos de una forma más lógica y comprensible, alejándose del aspecto físico del nivel interno y centrándose en el <ins>diseño</ins>. En el caso de bases relacionales suele ser una representación en formato de tabla.</li>
-<li><em>Externo</em> (N): Es el más cercano al <ins>usuario</ins> y es en realidad la salida de datos, la respuesta a una consulta. Puede tener formato de formulario, de un listado, un informe, etc...</li>
+<li><em>Externo</em> (N): es el más cercano al <ins>usuario</ins> y es, en realidad, la salida de datos, la respuesta a una consulta. Puede tener formato de formulario, de un listado, un informe, etc.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Volveremos sobre esto</p>
@@ -2055,7 +2055,7 @@ Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de 
 <ul>
 <li>Centralizada<ul>
 <li>Monousuario: en un único ordenador, no permitiendo el acceso concurrente (<em>MS Access</em>)</li>
-<li>Cliente-Servidor: Los datos están en un servidor, pero se desacoplan los clientes los cuales se conectan vía red/internet (<em>MySQL</em>, <em>PostgreSQL</em>, <em>Oracle</em>)</li>
+<li>Cliente-Servidor: los datos están en un servidor, pero se desacoplan los clientes, que se conectan vía red o internet (<em>MySQL</em>, <em>PostgreSQL</em>, <em>Oracle</em>).</li>
 </ul>
 </li>
 <li>Distribuida: Existen múltiples servidores, ya sea replicando, particionando o fragmentando los datos, facilitando la robustez del sistema (<em>Oracle cloud</em>, <em>MongoDB</em>, <em>Redis</em>)</li>
@@ -2102,8 +2102,8 @@ Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de 
 </ul>
 <p>Estos datos requieren un tratamiento especial y, generalmente, solo pueden ser tratados con el consentimiento explícito del interesado o bajo circunstancias específicas establecidas por la ley, como en el caso de la protección de intereses vitales del interesado, la realización de tareas en interés público, o para el cumplimiento de obligaciones legales, entre otras excepciones.</p>
 </div>
-<h3 id="requerimientos">Requerimientos<a class="headerlink" href="#requerimientos" title="Permanent link">&para;</a></h3>
-<p>Como desarrolladores, debemos tratar los datos personales de los usuarios de las aplicaciones. Estamos hablando de clientes, empleados, proveedores, curriculums, imágenes, etc. Toda esta información también debe cumplir con todos los requerimientos establecidos y los puntos a tener en cuenta son:</p>
+<h3 id="requisitos">Requisitos<a class="headerlink" href="#requisitos" title="Permanent link">&para;</a></h3>
+<p>Como desarrolladores, debemos tratar los datos personales de los usuarios de las aplicaciones. Estamos hablando de clientes, empleados, proveedores, currículos, imágenes, etc. Toda esta información también debe cumplir todos los requisitos establecidos, y los puntos que se deben tener en cuenta son:</p>
 <ol>
 <li>
 <p>Recogida de datos personales</p>
@@ -2177,7 +2177,7 @@ Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de 
 </ol>
 <p>Cumplir con estas obligaciones no solo ayudará a evitar sanciones, sino que también fomentará la confianza de los usuarios en las aplicaciones web y en la empresa que las desarrolla.</p>
 <h3 id="obligaciones">Obligaciones<a class="headerlink" href="#obligaciones" title="Permanent link">&para;</a></h3>
-<p>Así pues, en base a los requerimiento de la <abbr title="Ley Orgánica de Protección de Datos Personales y garantía de los derechos digitales">LOPDGDD</abbr>, un responsable de la gestión de una base de datos debe cumplir con las siguientes obligaciones: </p>
+<p>Así pues, sobre la base de los requisitos de la <abbr title="Ley Orgánica de Protección de Datos Personales y garantía de los derechos digitales">LOPDGDD</abbr>, la persona responsable de la gestión de una base de datos debe cumplir las siguientes obligaciones:</p>
 <ul>
 <li>Mantener las bases de datos actualizadas, para reflejar la situación actual del titular de los datos. </li>
 <li>No utilizar los datos de manera que se excedan los fines para los que fueron recabados. </li>
@@ -2219,7 +2219,7 @@ Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de 
 </tr>
 </tbody>
 </table>
-<p>Conviene destacar que la <abbr title="Ley Orgánica de Protección de Datos Personales y garantía de los derechos digitales">LOPDGDD</abbr> no fija importes propios: las cuantías las establece el art. 83 del <abbr title="Reglamento General de Protección de Datos (UE) 2016/679">RGPD</abbr> en dos umbrales, y se aplica siempre la cifra que resulte mayor.</p>
+<p>Conviene destacar que la <abbr title="Ley Orgánica de Protección de Datos Personales y garantía de los derechos digitales">LOPDGDD</abbr> no fija importes propios: las cuantías las establece el art. 83 del <abbr title="Reglamento General de Protección de Datos (UE) 2016/679">RGPD</abbr> en dos umbrales, y siempre se aplica la cifra que resulte mayor.</p>
 <h4 id="sanciones">Sanciones<a class="headerlink" href="#sanciones" title="Permanent link">&para;</a></h4>
 <p>Como ya hemos comentado, en España el organismo que vela por el cumplimiento de la <abbr title="Ley Orgánica de Protección de Datos Personales y garantía de los derechos digitales">LOPDGDD</abbr> es la Agencia Española de Protección de Datos y es ella también la que aplica y gradúa las sanciones.</p>
 <p>El artículo 83 del <abbr title="Reglamento General de Protección de Datos (UE) 2016/679">RGPD</abbr> establece dos umbrales de multa administrativa:</p>
@@ -2227,7 +2227,7 @@ Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de 
 <li>Hasta 10 millones de euros o el 2 % del volumen de negocio total anual global del ejercicio anterior, para infracciones de obligaciones del responsable y del encargado.</li>
 <li>Hasta 20 millones de euros o el 4 %, para infracciones de los principios básicos del tratamiento, las condiciones del consentimiento y los derechos de los interesados.</li>
 </ul>
-<p>Las multas pueden acompañarse de otras medidas correctivas, y en ocasiones, la <abbr title="Agencia Española de Protección de Datos">AEPD</abbr> puede optar por el apercibimiento en lugar de la multa. La información en la que basa sus resoluciones son, entre otros: el tiempo que lleva cometiéndose la infracción, el volumen de información tratada de manera fraudulenta, los beneficios obtenidos de las infracciones, el grado de intencionalidad, el daño causado con sus acciones, etc.</p>
+<p>Las multas pueden acompañarse de otras medidas correctivas y, en ocasiones, la <abbr title="Agencia Española de Protección de Datos">AEPD</abbr> puede optar por el apercibimiento en lugar de la multa. La información en la que basa sus resoluciones incluye, entre otros factores, el tiempo que lleva cometiéndose la infracción, el volumen de información tratada de manera fraudulenta, los beneficios obtenidos de las infracciones, el grado de intencionalidad y el daño causado con sus acciones.</p>
 <h2 id="referencias">Referencias<a class="headerlink" href="#referencias" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Materiales sobre el módulo de <abbr title="Base de datos">BD</abbr>:<ul>
@@ -2382,12 +2382,30 @@ Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de 
 <tbody>
 <tr>
 <td>1</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td style="text-align: center;">...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>2</td>
 <td>productos.csv</td>
-<td>Nombre</td>
+<td>nom_producto</td>
 <td>Texto</td>
 <td style="text-align: center;">Sí</td>
 <td></td>
 <td>Nombre del producto</td>
+</tr>
+<tr>
+<td>3</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td style="text-align: center;">...</td>
+<td>...</td>
+<td>...</td>
 </tr>
 </tbody>
 </table>
@@ -2460,7 +2478,7 @@ definir las columnas?</li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 3c3.88 0 7 3.14 7 7 0 2.8-1.63 5.19-4 6.31V21H9v-3H8c-1.11 0-2-.89-2-2v-3H4.5c-.42 0-.66-.5-.42-.81L6 9.66A7.003 7.003 0 0 1 13 3m-2.68 4.39h1.93c.01-.3.1-.53.28-.69a1 1 0 0 1 .66-.23c.31 0 .57.1.75.28.18.19.26.45.26.75 0 .32-.07.59-.23.82-.14.23-.35.43-.61.59-.51.34-.86.64-1.05.91-.2.26-.31.68-.31 1.18h2c0-.31.04-.56.13-.74.09-.19.26-.36.51-.52.45-.24.82-.53 1.11-.93s.44-.81.44-1.31c0-.76-.27-1.37-.81-1.82-.53-.45-1.26-.68-2.19-.68-.87 0-1.57.2-2.11.59-.52.41-.78.98-.77 1.77zM12 14h2v-2h-2zm1-13C8.41 1 4.61 4.42 4.06 8.9L2.5 11h-.03l-.02.03c-.55.76-.62 1.76-.19 2.59.36.69 1 1.17 1.74 1.32V16c0 1.85 1.28 3.42 3 3.87V23h11v-5.5c2.5-1.67 4-4.44 4-7.5 0-4.97-4.04-9-9-9"/></svg></span> <strong>AR109</strong> (<abbr title="Reconoce los elementos de las bases de datos analizando sus funciones y valorando la utilidad de los sistemas gestores">RABD.1</abbr> // <abbr title="Se han identificado los distintos tipos de bases de datos según el modelo de datos utilizado.">CE1b</abbr>, <abbr title="Se han identificado los distintos tipos de bases de datos en función de la ubicación de la información.">CE1c</abbr>, <abbr title="Se ha reconocido la función de cada uno de los elementos de un sistema gestor de bases de datos.">CE1e</abbr>, <abbr title="Se han clasificado los sistemas gestores de bases de datos.">CE1f</abbr> // 3p) Explica detalladamente los siguientes conceptos relativos a una <abbr title="Base de datos">BD</abbr> / <abbr title="Sistema gestor de bases de datos">SGBD</abbr>:</p>
 <ol>
 <li>Integridad - ¿Es válido tener datos no íntegros?</li>
-<li>Redundancia - ¿Conoces situaciones donde la redundancia sea aceptable? ¿Cuales?</li>
+<li>Redundancia: ¿conoces situaciones donde la redundancia sea aceptable? ¿Cuáles?</li>
 <li>Disponibilidad - ¿Qué relación existe con la durabilidad de los datos?</li>
 <li>Consistencia - ¿Qué relación existe con la consistencia eventual?</li>
 <li>¿Existen restricciones entre la concurrencia y la transaccionalidad de los datos?</li>
