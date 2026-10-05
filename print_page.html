@@ -2343,8 +2343,8 @@ Finalmente, el <strong>esquema físico</strong> representa el almacenamiento de 
 <p>Entra a las listas creadas en <em>MS Lists</em>, y en <em>Configuración de la lista</em> → <em>Columnas</em> y adjunta una captura. Posteriormente, responde a las siguientes preguntas:</p>
 <ol>
 <li>¿Qué información coincide con la que habías escrito en el apartado anterior?</li>
-<li>Esa información de <em>MS Lists</em>, ¿la introdujiste tú como si fuera un producto más, o la generó la herramienta al definir las columnas?</li>
-<li>Explica por qué se trata de metadatos y no de datos, y qué diferencia hay entre ambos.</li>
+<li>Esa información de <em>MS Lists</em>, ¿la introdujiste tú al crear las listas, o la generó la herramienta deduciendo los tipos a partir de los valores existentes en los datos?</li>
+<li>Explica por qué se trata de metadatos y no de datos, y qué diferencia hay entre ambos conceptos.</li>
 <li>Respecto al archivo <code>productos.csv</code> de la <a href="#01intro-AC101">AC101</a>, ¿existía algo equivalente similar al diccionario de datos? ¿Cómo sabía la aplicación <em>legacy</em> que el tercer campo era un precio y no un texto?</li>
 </ol>
 </li>
@@ -6830,7 +6830,9 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </ul>
 <h3 id="04mr-eer-contenidos">Contenidos<a class="headerlink" href="#04mr-eer-contenidos" title="Permanent link">&para;</a></h3>
 <p>Interpretación de Diagramas Entidad/Relación:</p>
-<p>− Paso del diagrama E/R al modelo relacional.</p>
+<ul>
+<li>Paso del diagrama E/R al modelo relacional.</li>
+</ul>
 <div class="admonition question">
 <p class="admonition-title">Cuestionario inicial</p>
 <ol>
@@ -6841,13 +6843,13 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <li>Cuando hablamos de generalizaciones, ¿qué tres opciones podemos plantear al transformarlas al modelo relacional?</li>
 <li>¿Qué diferencia una entidad débil respecto a una fuerte en el modelo relacional?</li>
 <li>¿Podemos tener una entidad débil sin clave primaria?</li>
-<li>Cuando una clave ajena además es clave alternativa, ¿que tipo de relación existe entre las entidades?</li>
+<li>Cuando una clave ajena además es clave alternativa, ¿qué tipo de relación existe entre las entidades?</li>
 <li>¿Y si la clave ajena además está marcada como valor no nulo?</li>
-<li>Cuando tenemos una clave ajena que toda ella es una clave primaria, ¿que tipo de relación existe entre las entidades?</li>
+<li>Cuando tenemos una clave ajena que toda ella es una clave primaria, ¿qué tipo de relación existe entre las entidades?</li>
 </ol>
 </div>
 <h3 id="04mr-eer-programacion-de-aula-15h">Programación de Aula (15h)<a class="headerlink" href="#04mr-eer-programacion-de-aula-15h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la cuarta, con lo que se imparte en la primera evaluación, durante el mes de noviembre, con una duración estimada de 14 sesiones lectivas:</p>
+<p>Esta unidad es la cuarta, con lo que se imparte en la primera evaluación, durante el mes de noviembre, con una duración estimada de 15 sesiones lectivas:</p>
 <table>
 <thead>
 <tr>
@@ -6896,13 +6898,13 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </tr>
 <tr>
 <td>7</td>
-<td><a href="#04mr-eer-de-mr-a-er">De MR a EER</a> I</td>
+<td><a href="#04mr-eer-de-mr-a-er">De MR a <abbr title="Entidad Relación Extendido">EER</abbr></a> I</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td>8</td>
-<td>De MR a EER II</td>
+<td>De MR a <abbr title="Entidad Relación Extendido">EER</abbr> II</td>
 <td><a href="#04mr-eer-AC410">AC410</a>, <a href="#04mr-eer-AC411">AC411</a></td>
 <td><abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr></td>
 </tr>
@@ -6952,12 +6954,12 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </table>
 <p>Al finalizar esta unidad, realizaremos una prueba objetiva consistente en modelar supuestos sencillos y posteriormente transformarlos a modelo relacional, así como interpretar modelos ya existentes.</p>
 <h2 id="04mr-eer-pasos">Pasos<a class="headerlink" href="#04mr-eer-pasos" title="Permanent link">&para;</a></h2>
-<p>Una vez conocido el modelo conceptual entidad-relación y el modelo lógico relacional, vamos a estudiar como transformar y pasar de uno a otro. Para ello, seguiremos los siguientes pasos:</p>
+<p>Una vez conocido el modelo conceptual entidad-relación y el modelo lógico relacional, vamos a estudiar cómo transformar y pasar de uno a otro. Para ello, seguiremos los siguientes pasos:</p>
 <ol>
-<li>Las entidades pasan a ser tablas</li>
-<li>Los atributos pasar a ser columnas</li>
-<li>Los atributos identificadores pasar a ser claves primarias.</li>
-<li>Los atributos de las relaciones pasan a columnas detrás de las claves ajenas</li>
+<li>Las entidades pasan a ser tablas.</li>
+<li>Los atributos pasan a ser columnas.</li>
+<li>Los atributos identificadores pasan a ser claves primarias.</li>
+<li>Los atributos de las relaciones pasan a columnas detrás de las claves ajenas.</li>
 <li>Las relaciones, dependiendo de la cardinalidad, pasarán a ser claves ajenas y/o tablas.</li>
 </ol>
 <h2 id="04mr-eer-atributos">Atributos<a class="headerlink" href="#04mr-eer-atributos" title="Permanent link">&para;</a></h2>
@@ -6975,10 +6977,10 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <strong>CLIENTE</strong> (<ins>dni</ins>, nombre, calle, numPiso, ciudad, fnac)<br />
 · PK: (dni)
 </code></p>
-<p>Destacar que no hemos puesto el nombre del atributo compuesto, sino cada uno de sus atributos, y además, hemos renombrado <code>numero</code> a <code>numPiso</code> para evitar confusiones con otras entidades; respecto al atributo derivado <code>edad</code>, lo hemos cambiado por la fecha de nacimiento (<code>fnac</code>).</p>
+<p>Cabe destacar que no hemos puesto el nombre del atributo compuesto, sino cada uno de sus atributos, y además, hemos renombrado <code>numero</code> a <code>numPiso</code> para evitar confusiones con otras entidades; respecto al atributo derivado <code>edad</code>, lo hemos cambiado por la fecha de nacimiento (<code>fnac</code>).</p>
 <p>Respecto a los atributos <strong>multivaluados</strong>, derivan en una relación uno a muchos (1:N), tal como veremos a continuación.</p>
 <h3 id="04mr-eer-claves-compuestas">Claves compuestas<a class="headerlink" href="#04mr-eer-claves-compuestas" title="Permanent link">&para;</a></h3>
-<p>Normalmente, cada entidad tendrá un atributo identificador que traduciremos en una clave primaria. Pero puede darse el caso que una entidad tenga una clave compuesta, o tenga marcados dos atributos identificadores (en este caso, uno será la clave primaria y el otro será una clave alternativa que marcaremos como única).</p>
+<p>Normalmente, cada entidad tendrá un atributo identificador que traduciremos en una clave primaria. Pero puede darse el caso de que una entidad tenga una clave compuesta, o tenga marcados dos atributos identificadores (en este caso, uno será la clave primaria y el otro será una clave alternativa que marcaremos como única).</p>
 <p>Por ejemplo, el siguiente diagrama representa un aula que se identifica mediante una clave compuesta:</p>
 <p><code>
 <strong>AULA</strong> (<ins>edificio</ins>, <ins>numSala</ins>, numAsientos)<br />
@@ -7013,7 +7015,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <strong>B</strong> (<ins>b0</ins>, b1)<br />
 · PK: (b0)
 </code></p>
-<p>De esta manera, tenemos que dado un registro en A, tendremos uno en B. Y dado un B, podemos tener muchos en A, cumpliendo la cardinalidad de uno a muchos.</p>
+<p>De esta manera, tenemos que dado un registro en A, tendremos como mucho uno en B. Y dado un B, podemos tener muchos en A, cumpliendo la cardinalidad de uno a muchos.</p>
 <p>Por ejemplo, si tenemos un modelo donde, en vez de un atributo multivaluado, hemos creado una entidad para modelar que una persona puede tener muchos teléfonos:</p>
 <figure style="float: left;">
     <img src="images/04ejemplo1n.png" width="260" title="Ejemplo de relación 1:N">
@@ -7030,15 +7032,15 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 · PK: (numero)<br />
 · FK: (dni) → PERSONA
 </code></p>
-<p>Conviene recordar que la clave ajena será la clave primaria que nos hemos traido desde la entidad con cardinalidad máxima a 1 (en este caso, llevamos la clave primaria de <code>PERSONA</code> a <code>TELEFONO</code>), de manera que el atributo <code>TELEFONO.dni</code> representa la relación <code>TENER</code>.</p>
-<p>Las claves ajenas se colocan tras los atributos de cada tabla (en este caso, detrás de <code>numero</code> y <code>propio</code>), y normalmente, se nombran con el mismo nombre de la clave primaria. Si diera pie a confusión, es recomendable renombrarla pudiendo como sufijo el nombre de la tabla.</p>
-<p>Finalmente, si quisiéramos generar el diagrama relacional, obtendríamos una gráfico similar al siguiente, donde se puede ver como desde <code>TELEFONO.dni</code> se conecta con <code>PERSONA.dni</code>:</p>
+<p>Conviene recordar que la clave ajena será la clave primaria que nos hemos traído desde la entidad con cardinalidad máxima a 1 (en este caso, llevamos la clave primaria de <code>PERSONA</code> a <code>TELEFONO</code>), de manera que el atributo <code>TELEFONO.dni</code> representa la relación <code>TENER</code>.</p>
+<p>Las claves ajenas se colocan tras los atributos de cada tabla (en este caso, detrás de <code>numero</code> y <code>propio</code>), y normalmente, se nombran con el mismo nombre de la clave primaria. Si diera pie a confusión, es recomendable renombrarla añadiendo como sufijo el nombre de la tabla.</p>
+<p>Finalmente, si quisiéramos generar el diagrama relacional, obtendríamos un gráfico similar al siguiente, donde se puede ver cómo desde <code>TELEFONO.dni</code> se conecta con <code>PERSONA.dni</code>:</p>
 <figure style="align: center;">
     <img src="images/04ejemplo1n-mr.png" width="427" title="Esquema relacional en ERDPlus">
     <figcaption>Esquema relacional en ERDPlus</figcaption>
 </figure>
 
-<p>Recordad la regla de integridad referencial del modelo relacional, donde cada valor de la clave ajena debe coincidir con un valor existente de la clave primaria a la que referencia (o ser nulo). De esta manera, no podemos tener un <code>dni</code> en la tabla <code>TELEFONO</code> que no exista previamente en la tabla <code>PERSONA</code>.</p>
+<p>Recuerda la regla de integridad referencial del modelo relacional, donde cada valor de la clave ajena debe coincidir con un valor existente de la clave primaria a la que referencia (o ser nulo). De esta manera, no podemos tener un <code>dni</code> en la tabla <code>TELEFONO</code> que no exista previamente en la tabla <code>PERSONA</code>.</p>
 <div class="grid cards">
 <ul>
 <li>
@@ -7106,7 +7108,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </li>
 </ul>
 </div>
-<div class="admonition success">
+<div class="admonition tip">
 <p class="admonition-title">Renombrando claves ajenas</p>
 <p>Aunque es muy común que el nombre del atributo que hace de clave ajena coincida con la clave primaria a la que apunta, podemos renombrarla y ponerle un nombre que facilite su comprensión.</p>
 <p>En el caso de la tabla <code>TELEFONO</code>, el campo <code>dni</code> hace referencia al titular del teléfono, no es que un teléfono tenga un dni. Podríamos haber modelado la tabla renombrando el <code>TELEFONO.dni</code> como <code>TELEFONO.propietario</code> dando un valor semántico al atributo:</p>
@@ -7127,19 +7129,19 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </figure></p>
 <p>Así pues, si tenemos un empleado que tiene muchos teléfonos mediante un atributo, generaremos dos tablas:</p>
 <p><code>
-<strong>EMPLEADO</strong> (<ins>nif</ins>, nombre)<br />
-· PK: (nif)
+<strong>EMPLEADO</strong> (<ins>codigo</ins>, nombre)<br />
+· PK: (codigo)
 </code></p>
 <p><code>
-<strong>TELEFONO</strong> (<ins>numero</ins>, dni<code>*</code>)<br />
+<strong>TELEFONO</strong> (<ins>numero</ins>, codigo<code>*</code>)<br />
 · PK: (numero)<br />
-· FK: (dni) → EMPLEADO
+· FK: (codigo) → EMPLEADO
 </code></p>
 <p>Si fuera un valor que pudiese compartirse entre varios empleados, como pudiera ser que un empleado tiene muchos cargos, y ese mismo cargo lo pueden tener varios empleados (pero no nos interesa a priori modelarlo conceptualmente como una entidad), podríamos crear una clave primaria compuesta:</p>
 <p><code>
-<strong>CARGO</strong> (<ins>cargo</ins>, <ins>dni</ins><code>*</code>)<br />
-· PK: (cargo, dni)<br />
-· FK: (dni) → EMPLEADO
+<strong>CARGO</strong> (<ins>cargo</ins>, <ins>codigo</ins><code>*</code>)<br />
+· PK: (cargo, codigo)<br />
+· FK: (codigo) → EMPLEADO
 </code>  </p>
 </div>
 <h3 id="04mr-eer-11">1:1<a class="headerlink" href="#04mr-eer-11" title="Permanent link">&para;</a></h3>
@@ -7177,14 +7179,14 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
     <figcaption>Ejemplo de relación 1:1</figcaption>
 </figure>
 
-<p>Vamos a poner otro ejemplo. En este caso, tenemos la relación existente entre un vehículo y el empleado que lo conduce en una empresa, dando lugar a una relación 1:1 (fíjate como en este caso, hemos renombrado la clave ajena a <code>dniEmpleado</code> para facilitar la compresión):</p>
+<p>Vamos a poner otro ejemplo. En este caso, tenemos la relación existente entre un vehículo y el empleado que lo conduce en una empresa, dando lugar a una relación 1:1 (fíjate como en este caso, hemos renombrado la clave ajena a <code>dniEmpleado</code> para facilitar la comprensión):</p>
 <p><code>
-<strong>EMPLEADO</strong> (<ins>dni</ins>, nombre, dirección)<br />
+<strong>EMPLEADO</strong> (<ins>dni</ins>, nombre, direccion)<br />
 · PK: (dni)<br />
 </code></p>
 <p><code>
-<strong>VEHICULO</strong> (<ins>matrícula</ins>, marca, modelo, dniEmpleado<code>*</code>)<br />
-· PK: (matrícula)<br />
+<strong>VEHICULO</strong> (<ins>matricula</ins>, marca, modelo, dniEmpleado<code>*</code>)<br />
+· PK: (matricula)<br />
 · FK: (dniEmpleado) → EMPLEADO<br />
 · UK: (dniEmpleado)
 </code></p>
@@ -7214,7 +7216,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · FK: (a0) → A<br />
 · FK: (b0) → B<br />
 </code></p>
-<p>Para este ejemplo, tenemos una empresa de transportes, donde un conductor conduce varios autobuses, y luego un autobus lo conducen varios conductores en diferentes trayectos, dando lugar a una relación muchos a muchos, donde en la relación añadimos el atributo <code>trayecto</code>:</p>
+<p>Para este ejemplo, tenemos una empresa de transportes, donde un conductor conduce varios autobuses, y luego un autobús lo conducen varios conductores en diferentes trayectos, dando lugar a una relación muchos a muchos, donde en la relación añadimos el atributo <code>trayecto</code>:</p>
 <figure style="float: right;">
     <img src="images/04ejemplonm.png" width="298" title="Ejemplo de relación N:M">
     <figcaption>Ejemplo de relación N:M</figcaption>
@@ -7240,7 +7242,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p>En este caso, empezaremos por <code>CONDUCTOR</code> y <code>AUTOBUS</code>, definiendo sus claves primarias y atributos.</p>
 <p>A continuación, crearemos la/s tabla/s que contiene claves ajenas a las tablas ya creadas, esto es, la tabla <code>CONDUCIR</code> que apunta a <code>CONDUCTOR</code> y <code>AUTOBUS</code>.</p>
 </div>
-<p>En este caso, el diagrama del modelo relacional se traduce en tres tablas conectadas, colocando el atributo de la relación en la nueva tabla <code>CONDUCIR</code>. Destacar como la tabla tiene una clave primaria compuesta, donde de cada parte de la clave sale una clave ajena a cada una de las tablas que relaciona:</p>
+<p>En este caso, el diagrama del modelo relacional se traduce en tres tablas conectadas, colocando el atributo de la relación en la nueva tabla <code>CONDUCIR</code>. Cabe destacar como la tabla tiene una clave primaria compuesta, donde de cada parte de la clave sale una clave ajena a cada una de las tablas que relaciona:</p>
 <figure style="align: center;">
     <img src="images/04ejemplonm-mr.png" width="620" title="Esquema relacional en ERDPlus">
     <figcaption>Esquema relacional en ERDPlus</figcaption>
@@ -7279,7 +7281,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <table>
 <thead>
 <tr>
-<th><ins>nif</ins></th>
+<th><ins>dni</ins></th>
 <th>nombre</th>
 <th>experiencia</th>
 </tr>
@@ -7308,7 +7310,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <table>
 <thead>
 <tr>
-<th><ins>nif</ins><code>*</code></th>
+<th><ins>dni</ins><code>*</code></th>
 <th><ins>matricula</ins><code>*</code></th>
 <th>trayecto</th>
 </tr>
@@ -7416,7 +7418,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </table>
 <div class="admonition question">
 <p class="admonition-title">Claves ajenas compuestas</p>
-<p>¿Y si nuestra entidad tiene una clave primaria compuesta? En este caso, la clave ajena también deberá compuesta.</p>
+<p>¿Y si nuestra entidad tiene una clave primaria compuesta? En este caso, la clave ajena también deberá ser compuesta.</p>
 <p><figure style="float: right;">
     <img src="images/04ejemplo-reflexiva.png" width="319" title="Ejemplo de reflexiva 1:N">
     <figcaption>Ejemplo de reflexiva 1:N</figcaption>
@@ -7432,7 +7434,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p>¿Serías capaz de dibujar el diagrama del modelo relacional?</p>
 </div>
 <h2 id="04mr-eer-restricciones">Restricciones<a class="headerlink" href="#04mr-eer-restricciones" title="Permanent link">&para;</a></h2>
-<p>Una vez visto como se transforman los atributos y las relaciones, vamos a ver algunas particularidades a la hora de aplicar restricciones sobre las cardinalidades.</p>
+<p>Una vez visto cómo se transforman los atributos y las relaciones, vamos a ver algunas particularidades a la hora de aplicar restricciones sobre las cardinalidades.</p>
 <h3 id="04mr-eer-cardinalidad-minima-1">Cardinalidad mínima 1<a class="headerlink" href="#04mr-eer-cardinalidad-minima-1" title="Permanent link">&para;</a></h3>
 <p>Cuando la cardinalidad mínima es 1, independientemente de la cardinalidad máxima, estamos indicando que sí o sí dicha clave ajena debe tener un valor. Para cumplirla, únicamente debemos marcar la clave ajena como valor no nulo (VNN).</p>
 <figure style="float: right;">
@@ -7469,7 +7471,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · PK: (b0)
 </code>   </p>
 <p>Si la cardinalidad mínima está en el lado de N, se produce una pérdida expresiva, porque a nivel de base de datos no podemos obligar que para cada registro de B haya como mínimo uno de A.</p>
-<p>Vamos a comprobar con datos de ejemplo la pérdida expresiva. Si en la tablas tenemos los siguientes datos:</p>
+<p>Vamos a comprobar con datos de ejemplo la pérdida expresiva. Si en las tablas tenemos los siguientes datos:</p>
 <div class="grid cards" markdown>
 <ul>
 <li>
@@ -7479,7 +7481,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <tr>
 <th><ins>a0</ins></th>
 <th>a1</th>
-<th>bo<code>*</code></th>
+<th>b0<code>*</code></th>
 </tr>
 </thead>
 <tbody>
@@ -7539,7 +7541,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p>En las restricciones de identificación, la entidad débil se identifica, completamente o en parte, con la entidad fuerte. Es decir, parte de la clave primaria de la entidad débil son los atributos clave de la entidad fuerte. Es por ello, que la clave ajena debe formar parte de la clave primaria, la cual se define como una clave compuesta por la combinación de la clave primaria de la entidad fuerte y la débil:</p>
 <p><code>
 <strong>A</strong> (<ins>a0</ins>, <ins>b0</ins><code>*</code>, a1)<br />
-· PK: (a0, bo)<br />
+· PK: (a0, b0)<br />
 · FK: (b0) → B
 </code></p>
 <p><code>
@@ -7552,7 +7554,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
     <figcaption>Ejemplo de restricción de ID</figcaption>
 </figure>
 
-<p>En el siguiente ejemplo, tenemos que cada sala se identifica por el cine al que pertenece por un número de sala, el cual se reinicia por cada cine. Es decir, la sala 1 del cine IMF no es la misma tupla que la sala 1 del cine ABC:</p>
+<p>En el siguiente ejemplo, tenemos que cada sala se identifica por el cine al que pertenece y por un número de sala, el cual se reinicia por cada cine. Es decir, la sala 1 del cine IMF no es la misma tupla que la sala 1 del cine ABC:</p>
 <p><code>
 <strong>CINE</strong> (<ins>codigo</ins>, nombre, direccion)<br />
 · PK: (codigo)
@@ -7632,7 +7634,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </div>
 <div class="admonition info">
 <p class="admonition-title">Ejemplo resuelto ID</p>
-<p>Supongamos el diagrama <abbr title="Entidad Relación">ER</abbr> que vimos en la unidad 2 al tratar las <a href="#02er-restricciones">restricciones de ID</a>. Vamos a obtener el modelo MR del mismo, teniendo en cuenta que la entidad <code>LINEA_PEDIDO</code> es una entidad débil respecto a la relación <code>CONTENER</code>, pero hace de entidad fuerte respecto a la relación <code>TENER</code>:</p>
+<p>Supongamos el diagrama <abbr title="Entidad Relación">ER</abbr> que vimos en la unidad 2 al tratar las <a href="#02er-restricciones">restricciones de ID</a>. Vamos a obtener el modelo MR del mismo, teniendo en cuenta que la entidad <code>LINEA_PEDIDO</code> es una entidad débil respecto a <code>PEDIDO</code> mediante la relación <code>CONTENER</code>, pero hace de entidad fuerte respecto a la relación <code>TENER</code>:</p>
 <p><figure style="float: right;">
     <img src="images/02restriccion-id-fuerte.png" width="528" title="Restricción de ID">
     <figcaption>Restricción de ID</figcaption>
@@ -7647,10 +7649,10 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · FK: (codigo) → PEDIDO<br />
 </code></p>
 <p><code>
-<strong>OBSERVACION</strong> (<ins>codigo</ins>, descripcion, numPedido<code>*</code>, codPedido<code>*</code>)<br />
+<strong>OBSERVACION</strong> (<ins>codigo</ins>, descripcion, numLinea<code>*</code>, codPedido<code>*</code>)<br />
 · PK: (codigo)<br />
-· FK: (numPedido, codPedido) → LINEA_PEDIDO<br />
-· VNN: (numPedido, codPedido)
+· FK: (numLinea, codPedido) → LINEA_PEDIDO<br />
+· VNN: (numLinea, codPedido)
 </code></p>
 <p>¿Qué ha pasado con el atributo <code>PEDIDO.total</code>? <sup id="fnref:1"><a class="footnote-ref" href="#04mr-eer-fn:1">1</a></sup></p>
 </div>
@@ -7661,7 +7663,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
     <figcaption>Generalización</figcaption>
 </figure>
 
-<p>Para ello, las subclases, las entidades hijo, tienen como clave principal y ajena la clave de la superclase, el padre. De esta manera, los hijos tienen como clave primaria la misma que el padre.</p>
+<p>Para ello, las subclases, las entidades hijo, tienen como clave primaria y ajena la clave de la superclase, el padre. De esta manera, los hijos tienen como clave primaria la misma que el padre.</p>
 <p><code>
 <strong>A</strong> (<ins>a0</ins>, a1)<br />
 · PK: (a0)
@@ -7680,7 +7682,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p>Por ejemplo, supongamos el siguiente modelo que representa la especialización de una persona en estudiante o trabajador:</p>
 <p>Si explicitamos las tablas obtendremos:</p>
 <p><code>
-<strong>PERSONA</strong> (<ins>dni</ins>, nombre, dirección, telefono)<br />
+<strong>PERSONA</strong> (<ins>dni</ins>, nombre, direccion, telefono)<br />
 · PK: (dni)
 </code></p>
 <p><code>
@@ -7697,7 +7699,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p>Otros planteamientos diferentes a explicitar consisten en:</p>
 <ul>
 <li>
-<p><strong>Colapsar</strong>: consiste en crea un única tabla con los datos de la superclase y las subclases. Es válido cuando las subclases se diferencian en muy pocos atributos. Como desventaja, las relaciones que los asocian al resto de las entidades son las mismas para las subclases, sin poder diferenciarlas. Así pues, es un solución más rápida, pero aporta peor semántica al modelo.</p>
+<p><strong>Colapsar</strong>: consiste en crea una única tabla con los datos de la superclase y las subclases. Es válido cuando las subclases se diferencian en muy pocos atributos. Como desventaja, las relaciones que los asocian al resto de las entidades son las mismas para las subclases, sin poder diferenciarlas. Así pues, es una solución más rápida, pero aporta peor semántica al modelo.</p>
 </li>
 <li>
 <p><strong>Dividir</strong>: si existen muchos atributos distintos entre las subclases y los accesos a los datos de las subclases también afectan a los atributos comunes, es mejor dividir los datos y crear una tabla por cada subclase, pero no para el padre. Este planteamiento es más eficiente en consultas sobre los hijos, pero aporta más redundancia de datos y peor semántica.</p>
@@ -7708,24 +7710,24 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <li>
 <p>Colapsar: Una única tabla, creando un atributo tipo para indicar si es <code>estudiante</code> o <code>trabajador</code>:</p>
 <p><code>
-<strong>PERSONA</strong> (<ins>dni</ins>, nombre, dirección, telefono, tipo, nivelEst, lugarEst, horasCur, numSegSocial, salario)<br />
+<strong>PERSONA</strong> (<ins>dni</ins>, nombre, direccion, telefono, tipo, nivelEst, lugarEst, horasCur, numSegSocial, salario)<br />
 · PK: (dni)
 </code></p>
 </li>
 <li>
 <p>Dividir: Una tabla por cada subclase:</p>
 <p><code>
-<strong>ESTUDIANTE</strong> (<ins>dni</ins>, nombre, dirección, telefono, nivelEst, lugarEst, horasCur)<br />
+<strong>ESTUDIANTE</strong> (<ins>dni</ins>, nombre, direccion, telefono, nivelEst, lugarEst, horasCur)<br />
 · PK: (dni)
 </code></p>
 <p><code>
-<strong>TRABAJADOR</strong> (<ins>dni</ins>, nombre, dirección, telefono, numSegSocial, salario)<br />
+<strong>TRABAJADOR</strong> (<ins>dni</ins>, nombre, direccion, telefono, numSegSocial, salario)<br />
 · PK: (dni)
 </code></p>
 </li>
 </ul>
 <h2 id="04mr-eer-agregacion">Agregación<a class="headerlink" href="#04mr-eer-agregacion" title="Permanent link">&para;</a></h2>
-<p>Una agregación no es más que una relación muchos a muchos, sobre la cual se relacionan otras tablas.</p>
+<p>Una agregación no es más que una relación muchos a muchos, sobre la cual se relacionan otras entidades.</p>
 <p>Vamos a pasar al modelo relacional el ejemplo que hicimos en la unidad de modelo conceptual, sobre las incidencias que se registran en un centro educativo.</p>
 <p>El modelo <abbr title="Entidad Relación">ER</abbr> es el siguiente, donde la entidad <code>SESION</code> es una agregación entre <code>DOCENTE</code> y <code>AULA</code>. La agregación que conceptualmente es una relación N:M se traduce en dos relaciones uno a muchos:</p>
 <figure style="float: left;">
@@ -7751,7 +7753,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 </code></p>
 <p>Y al relacionar <code>INCIDENCIA</code> con <code>SESION</code>, como la clave primaria de <code>SESION</code> es compuesta, también lo será la clave ajena de la relación uno a muchos:</p>
 <p><code>
-<strong>INCIDENCIA</strong> (<ins>codigo</ins><code>*</code>, descripcion, dniSesion<code>*</code>, codigoSesion<code>*</code>)<br />
+<strong>INCIDENCIA</strong> (<ins>codigo</ins>, descripcion, dniSesion<code>*</code>, codigoSesion<code>*</code>)<br />
 · PK: (codigo)<br />
 · FK: (dniSesion, codigoSesion) → SESION
 </code></p>
@@ -7843,7 +7845,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 · FK: (dni) → ALUMNO
 </code></p>
 <p><code>
-<strong>ALUMNO</strong> (<ins>dni</ins>, nombre, id<code>*</code>)<br />
+<strong>ALUMNO</strong> (<ins>dni</ins>, nombre)<br />
 · PK: (dni)
 </code></p>
 <p>Lo que conlleva que la relación 1:N cambie de sentido, con las siguientes cardinalidades:</p>
@@ -7856,7 +7858,7 @@ A continuación, rellena las dos tablas con datos y comprueba si la relación en
 <p>Y si en el último modelo, hacemos que la clave ajena de <code>ASIGNATURA</code> sea única, ¿qué pasaría? ¿Cómo cambiarían las cardinalidades?<br />
 Y si además hacemos que la clave ajena también tenga una restricción de valor no nulo (VNN), ¿qué pasaría? ¿Cómo cambiarían las cardinalidades?</p>
 </div>
-<p>Finalmente, volvamos al caso de la relación N:M, pero ¿Y si cambiamos la clave primaria de la tabla <code>MATRICULAR</code> para que no sea una clave compuesta y la dividimos en una clave primaria más una clave única? Supongamos el siguiente caso:</p>
+<p>Finalmente, volvamos al caso de la relación N:M, pero, ¿y si cambiamos la clave primaria de la tabla <code>MATRICULAR</code> para que no sea una clave compuesta y la dividimos en una clave primaria más una clave única? Supongamos el siguiente caso:</p>
 <p><code>
 <strong>MATRICULAR</strong> (<ins>id</ins><code>*</code>, dni<code>*</code>, fecha)<br />
 · PK: (id)<br />
@@ -8056,7 +8058,7 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC408</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han analizado y documentado las restricciones que no pueden plasmarse en el diseño lógico.">CE6h</abbr> // 3p) Crea el modelo relacional a partir del modelo conceptual presentado en el supuesto de la tienda visto en el apartado de generalizaciones de la <a href="#02er-supuesto-tienda">unidad 2</a>.</p>
 <p><figure style="align: center;">
     <img src="images/02solucion-tienda.png" width="948" title="Modelo EER Tienda">
-    <figcaption>Modelo EER Tienda</figcaption>
+    <figcaption>Modelo <abbr title="Entidad Relación Extendido">EER</abbr> Tienda</figcaption>
 </figure></p>
 </li>
 </ul>
@@ -8066,7 +8068,7 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.563 1.396a.95.95 0 0 0-.534.184c-.404.307-.501.9-.425 1.654.075.755.335 1.704.751 2.8.357.937.835 1.984 1.407 3.095-1.17.146-2.24.338-3.158.57-1.08.274-1.958.6-2.583.973C.397 11.045 0 11.484 0 12s.397.955 1.021 1.328c.55.33 1.308.618 2.217.87a1 1 0 0 0-.006.097c0 .485.365.887.82.887.368 0 .678-.26.784-.616q.89.171 1.898.297a31 31 0 0 0-1.408 3.067c-.421 1.093-.686 2.04-.765 2.795-.08.754.016 1.347.42 1.656.201.154.46.208.734.181s.572-.125.896-.287c.649-.323 1.407-.894 2.244-1.67.962-.89 2.026-2.058 3.118-3.421 1.086 1.37 2.146 2.543 3.103 3.439.834.78 1.588 1.355 2.235 1.682.323.163.62.265.894.293s.534-.025.736-.178c.405-.307.502-.9.426-1.654-.054-.54-.206-1.18-.437-1.9a.91.91 0 0 0 .343-.72.92.92 0 0 0-.238-.625.8.8 0 0 0-.701-.251c-.312-.75-.69-1.557-1.125-2.4a27 27 0 0 0 3.187-.575c1.08-.273 1.958-.597 2.583-.97.624-.374 1.021-.813 1.021-1.329s-.397-.957-1.021-1.33c-.625-.373-1.503-.696-2.583-.969a27 27 0 0 0-3.156-.568 31 31 0 0 0 1.406-3.063c.422-1.093.687-2.04.766-2.795.08-.754-.017-1.347-.42-1.656a.95.95 0 0 0-.531-.185 1.3 1.3 0 0 0-.203.004c-.274.026-.57.127-.895.289-.51.254-1.092.665-1.722 1.205a.8.8 0 0 0-.418-.123c-.456 0-.82.4-.82.886q0 .178.06.334a35 35 0 0 0-2.465 2.791c-1.086-1.37-2.146-2.543-3.103-3.439-.834-.78-1.588-1.355-2.235-1.682-.323-.163-.62-.265-.894-.293a1.3 1.3 0 0 0-.204-.006zm.021.385a1 1 0 0 1 .143.004c.205.02.462.105.757.254.592.298 1.33.855 2.147 1.62.955.893 2.022 2.077 3.119 3.466-.428.544-.859 1.12-1.29 1.72a42 42 0 0 0-3.29.235 31 31 0 0 1-1.453-3.184c-.409-1.075-.658-2.002-.729-2.7-.07-.7.05-1.136.276-1.307a.55.55 0 0 1 .32-.108m12.854.033a.55.55 0 0 1 .32.108c.225.172.343.61.27 1.308s-.33 1.624-.743 2.698a31 31 0 0 1-1.455 3.15 42 42 0 0 0-3.312-.234 49 49 0 0 0-1.274-1.717 35 35 0 0 1 2.436-2.772.78.78 0 0 0 .543.223c.456 0 .82-.401.82-.887a.94.94 0 0 0-.133-.484c.61-.519 1.163-.909 1.625-1.139.297-.147.555-.23.76-.25a1 1 0 0 1 .142-.004zm-6.442 5.622c.344.443.69.913 1.035 1.394q-.51-.012-1.031-.014-.532.001-1.05.014c.35-.481.699-.95 1.046-1.394M12 9.203q.668.001 1.314.02.398.563.793 1.154c.366.55.71 1.093 1.041 1.633a54 54 0 0 1-1.046 1.623q-.395.584-.791 1.138-.646.02-1.311.022-.684-.001-1.348-.022a53 53 0 0 1-.789-1.148 52 52 0 0 1-1.04-1.633 53 53 0 0 1 1.84-2.765q.658-.02 1.337-.022m-1.824.04q-.315.444-.625.905c-.334.496-.647.988-.953 1.477a47 47 0 0 1-1.239-2.178 41 41 0 0 1 2.817-.205zm3.625 0a41 41 0 0 1 2.838.202 47 47 0 0 1-1.264 2.198 53 53 0 0 0-1.574-2.4m3.248.251c1.213.146 2.317.34 3.252.576 1.057.268 1.907.587 2.478.928s.834.689.834.998-.263.655-.834.996c-.57.342-1.421.662-2.478.93-.943.239-2.056.433-3.281.58a47 47 0 0 0-1.416-2.492 47 47 0 0 0 1.445-2.516M6.95 9.496c.424.805.899 1.64 1.418 2.494a47 47 0 0 0-1.443 2.508 30 30 0 0 1-2.059-.318.9.9 0 0 0-.23-.508.8.8 0 0 0-.584-.262.8.8 0 0 0-.696.418c-.894-.247-1.63-.53-2.136-.832C.65 12.655.387 12.31.387 12s.263-.654.834-.996c.57-.342 1.421-.662 2.478-.93.935-.237 2.039-.431 3.252-.578zm4.34.8c-.576 0-1.041.5-1.041 1.112 0 .484.29.897.695 1.049v.063c0 .612.466 1.109 1.041 1.109.576 0 1.041-.497 1.041-1.11q0-.025-.002-.05c.424-.141.73-.565.73-1.063 0-.294-.107-.575-.302-.783a1.01 1.01 0 0 0-.738-.326 1 1 0 0 0-.711.3 1 1 0 0 0-.713-.3zm-2.695 2.061a51 51 0 0 0 1.572 2.397c-.99-.04-1.941-.108-2.832-.205q.573-1.067 1.26-2.192m6.779.02c.448.743.862 1.472 1.236 2.176a42 42 0 0 1-2.814.199q.313-.443.625-.902c.333-.495.647-.986.953-1.473m-8.23 2.537c1.033.117 2.141.198 3.304.236.427.6.854 1.179 1.278 1.723-1.103 1.382-2.176 2.561-3.135 3.45-.821.76-1.562 1.31-2.155 1.605-.296.147-.554.23-.76.25s-.35-.018-.462-.104c-.225-.172-.343-.61-.27-1.308s.329-1.624.742-2.698c.366-.948.861-2.018 1.458-3.154m9.656.004c.459.884.854 1.727 1.178 2.504a.91.91 0 0 0-.348.724c0 .486.364.887.82.887a1 1 0 0 0 .123-.01c.218.686.36 1.293.408 1.782.07.698-.05 1.135-.275 1.306-.113.086-.258.124-.463.104s-.462-.105-.758-.254c-.59-.298-1.329-.855-2.146-1.62-.955-.893-2.023-2.077-3.12-3.466.43-.545.862-1.123 1.294-1.725a42 42 0 0 0 3.287-.232m-3.776.246a49 49 0 0 1-1.05 1.4 49 49 0 0 1-1.04-1.398 47 47 0 0 0 2.09-.002"/></svg></span> <strong>PR409</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado las tablas del diseño lógico.">CE6b</abbr>, <abbr title="Se han identificado los campos que forman parte de las tablas del diseño lógico.">CE6c</abbr>, <abbr title="Se han analizado las relaciones entre las tablas del diseño lógico.">CE6d</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr>, <abbr title="Se han aplicado reglas de integridad.">CE6f</abbr>, <abbr title="Se han analizado y documentado las restricciones que no pueden plasmarse en el diseño lógico.">CE6h</abbr> // 6p) Crea el modelo relacional a partir del modelo conceptual presentado en la <a href="#02er-AC216">actividad 216</a> sobre una cocina de un restaurante.</p>
 <p><figure style="align: center;">
     <img src="images/02cocina.png" width="1080" title="Modelo EER Cocina">
-    <figcaption>Modelo EER Cocina</figcaption>
+    <figcaption>Modelo <abbr title="Entidad Relación Extendido">EER</abbr> Cocina</figcaption>
 </figure></p>
 </li>
 </ul>
@@ -8184,7 +8186,7 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <li>
 <p>Esquema 2</p>
 <p><code>
-<strong>A</strong> (<ins>a0</ins>, a1, bo<code>*</code>)<br />
+<strong>A</strong> (<ins>a0</ins>, a1, b0<code>*</code>)<br />
 · PK: (a0)<br />
 · UK: (b0)<br />
 · VNN: (b0)<br />
@@ -8227,8 +8229,8 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 · FK: (medicoChequeo) → MEDICO
 </code></p>
 <p><code>
-<strong>TAQUILLA</strong> (<ins>num</ins><code>*</code>, estado, tamaño)<br />
-· PK: (nun)
+<strong>TAQUILLA</strong> (<ins>num</ins>, estado, tamanyo)<br />
+· PK: (num)
 </code></p>
 <p><code>
 <strong>FIJA</strong> (<ins>num</ins><code>*</code>, socio<code>*</code>)<br />
@@ -8322,7 +8324,7 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <p><a name="AP414"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP414</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Una vez realizada la actividad <a href="#04mr-eer-AR413">AR412</a>, añade en el modelo <abbr title="Entidad Relación">ER</abbr> una entidad <code>PERSONA</code> a modo de generalización de las tablas <code>GESTOR</code>, <code>INSPECTOR</code> y <code>TRABAJADOR</code>.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.1 1.81-2.83 2.83c-.77.78-.77 2.05 0 2.83l1.41 1.41-4.55 4.55-2.82-2.83L4.89 12c-4.95 5-1.39 8.5-1.39 8.5S7 24 12 19.09l1.41-1.41-2.8-2.8 4.54-4.54 1.39 1.39c.78.77 2.05.77 2.83 0L22.2 8.9zm2.83 8.47L16.55 8.9l-1.44-1.44-1.4-1.4 1.41-1.41 4.23 4.23z"/></svg></span> <strong>AP414</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // <abbr title="Se han utilizado herramientas gráficas para representar el diseño lógico.">CE6a</abbr>, <abbr title="Se han identificado los campos clave.">CE6e</abbr> // 3p) Una vez realizada la actividad <a href="#04mr-eer-AR413">AR413</a>, añade en el modelo <abbr title="Entidad Relación">ER</abbr> una entidad <code>PERSONA</code> a modo de generalización de las tablas <code>GESTOR</code>, <code>INSPECTOR</code> y <code>TRABAJADOR</code>.</p>
 <p>Crea las tablas en el modelo relacional, modificando aquellas que sean necesarias, y comprueba si las tablas que dependen de ellas también deben modificarse.</p>
 </li>
 </ul>
@@ -8415,7 +8417,7 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 · VNN: (comercial)
 </code></p>
 <p><code>
-<strong>CLIENTE</strong> (<ins>id</ins>, nombre, categoría)<br />
+<strong>CLIENTE</strong> (<ins>id</ins>, nombre, categoria)<br />
 · PK: (id)
 </code></p>
 <p><code>
@@ -8423,13 +8425,13 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 · PK: (codigo)<br />
 · FK: (mentor) → COMERCIAL
 </code></p>
-<p>Contesta a las siguientes preguntas argumentado tus respuestas:</p>
+<p>Contesta a las siguientes preguntas argumentando tus respuestas:</p>
 <ol>
 <li>¿Puede un <code>EQUIPO</code> tener más de un <code>DETALLE_EQUIPO</code>?</li>
 <li>¿Puede un <code>COMERCIAL</code> vender varios <code>EQUIPO</code>?</li>
-<li>¿Un <code>ALQUILER</code> cuantos <code>DETALLE_EQUIPO</code> tendrá?</li>
-<li>¿Puede un <code>CLIENTE</code> alquilar y vender el mismo <code>EQUIPO</code>?</li>
-<li>¿Podemos averiguar que <code>COMERCIAL</code> vendió un determinado <code>EQUIPO</code>?</li>
+<li>Un <code>ALQUILER</code> ¿cuántos <code>DETALLE_EQUIPO</code> tendrá?</li>
+<li>¿Puede un <code>CLIENTE</code> alquilar y comprar el mismo <code>EQUIPO</code>?</li>
+<li>¿Podemos averiguar qué <code>COMERCIAL</code> vendió un determinado <code>EQUIPO</code>?</li>
 <li>¿Una persona puede ser <code>CLIENTE</code> y <code>COMERCIAL</code> a la vez?</li>
 <li>¿Todo <code>COMERCIAL</code> debe tener un mentor?</li>
 <li>¿Un <code>COMERCIAL</code> puede tener varios mentores o un mentor puede mentorizar a varios comerciales?</li>
@@ -8449,7 +8451,7 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <!--
     * Comprobación de que el modelo MR está normalizado
 -->
-<p>En las fechas indicadas por el docente, cada equipo entregará un informe con los diferentes artefactos generados y presentará al resto de la clase los modelos generados, mediante un exposición de máximo 10 minutos por equipo.</p>
+<p>En las fechas indicadas por el docente, cada equipo entregará un informe con los diferentes artefactos generados y presentará al resto de la clase los modelos generados, mediante una exposición de máximo 10 minutos por equipo.</p>
 <p>Se utilizará una rúbrica para su evaluación en base a la siguiente lista de cotejo:</p>
 <ul>
 <li>El modelo relacional refleja todo el modelo conceptual.</li>
@@ -8469,8 +8471,8 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.563 1.396a.95.95 0 0 0-.534.184c-.404.307-.501.9-.425 1.654.075.755.335 1.704.751 2.8.357.937.835 1.984 1.407 3.095-1.17.146-2.24.338-3.158.57-1.08.274-1.958.6-2.583.973C.397 11.045 0 11.484 0 12s.397.955 1.021 1.328c.55.33 1.308.618 2.217.87a1 1 0 0 0-.006.097c0 .485.365.887.82.887.368 0 .678-.26.784-.616q.89.171 1.898.297a31 31 0 0 0-1.408 3.067c-.421 1.093-.686 2.04-.765 2.795-.08.754.016 1.347.42 1.656.201.154.46.208.734.181s.572-.125.896-.287c.649-.323 1.407-.894 2.244-1.67.962-.89 2.026-2.058 3.118-3.421 1.086 1.37 2.146 2.543 3.103 3.439.834.78 1.588 1.355 2.235 1.682.323.163.62.265.894.293s.534-.025.736-.178c.405-.307.502-.9.426-1.654-.054-.54-.206-1.18-.437-1.9a.91.91 0 0 0 .343-.72.92.92 0 0 0-.238-.625.8.8 0 0 0-.701-.251c-.312-.75-.69-1.557-1.125-2.4a27 27 0 0 0 3.187-.575c1.08-.273 1.958-.597 2.583-.97.624-.374 1.021-.813 1.021-1.329s-.397-.957-1.021-1.33c-.625-.373-1.503-.696-2.583-.969a27 27 0 0 0-3.156-.568 31 31 0 0 0 1.406-3.063c.422-1.093.687-2.04.766-2.795.08-.754-.017-1.347-.42-1.656a.95.95 0 0 0-.531-.185 1.3 1.3 0 0 0-.203.004c-.274.026-.57.127-.895.289-.51.254-1.092.665-1.722 1.205a.8.8 0 0 0-.418-.123c-.456 0-.82.4-.82.886q0 .178.06.334a35 35 0 0 0-2.465 2.791c-1.086-1.37-2.146-2.543-3.103-3.439-.834-.78-1.588-1.355-2.235-1.682-.323-.163-.62-.265-.894-.293a1.3 1.3 0 0 0-.204-.006zm.021.385a1 1 0 0 1 .143.004c.205.02.462.105.757.254.592.298 1.33.855 2.147 1.62.955.893 2.022 2.077 3.119 3.466-.428.544-.859 1.12-1.29 1.72a42 42 0 0 0-3.29.235 31 31 0 0 1-1.453-3.184c-.409-1.075-.658-2.002-.729-2.7-.07-.7.05-1.136.276-1.307a.55.55 0 0 1 .32-.108m12.854.033a.55.55 0 0 1 .32.108c.225.172.343.61.27 1.308s-.33 1.624-.743 2.698a31 31 0 0 1-1.455 3.15 42 42 0 0 0-3.312-.234 49 49 0 0 0-1.274-1.717 35 35 0 0 1 2.436-2.772.78.78 0 0 0 .543.223c.456 0 .82-.401.82-.887a.94.94 0 0 0-.133-.484c.61-.519 1.163-.909 1.625-1.139.297-.147.555-.23.76-.25a1 1 0 0 1 .142-.004zm-6.442 5.622c.344.443.69.913 1.035 1.394q-.51-.012-1.031-.014-.532.001-1.05.014c.35-.481.699-.95 1.046-1.394M12 9.203q.668.001 1.314.02.398.563.793 1.154c.366.55.71 1.093 1.041 1.633a54 54 0 0 1-1.046 1.623q-.395.584-.791 1.138-.646.02-1.311.022-.684-.001-1.348-.022a53 53 0 0 1-.789-1.148 52 52 0 0 1-1.04-1.633 53 53 0 0 1 1.84-2.765q.658-.02 1.337-.022m-1.824.04q-.315.444-.625.905c-.334.496-.647.988-.953 1.477a47 47 0 0 1-1.239-2.178 41 41 0 0 1 2.817-.205zm3.625 0a41 41 0 0 1 2.838.202 47 47 0 0 1-1.264 2.198 53 53 0 0 0-1.574-2.4m3.248.251c1.213.146 2.317.34 3.252.576 1.057.268 1.907.587 2.478.928s.834.689.834.998-.263.655-.834.996c-.57.342-1.421.662-2.478.93-.943.239-2.056.433-3.281.58a47 47 0 0 0-1.416-2.492 47 47 0 0 0 1.445-2.516M6.95 9.496c.424.805.899 1.64 1.418 2.494a47 47 0 0 0-1.443 2.508 30 30 0 0 1-2.059-.318.9.9 0 0 0-.23-.508.8.8 0 0 0-.584-.262.8.8 0 0 0-.696.418c-.894-.247-1.63-.53-2.136-.832C.65 12.655.387 12.31.387 12s.263-.654.834-.996c.57-.342 1.421-.662 2.478-.93.935-.237 2.039-.431 3.252-.578zm4.34.8c-.576 0-1.041.5-1.041 1.112 0 .484.29.897.695 1.049v.063c0 .612.466 1.109 1.041 1.109.576 0 1.041-.497 1.041-1.11q0-.025-.002-.05c.424-.141.73-.565.73-1.063 0-.294-.107-.575-.302-.783a1.01 1.01 0 0 0-.738-.326 1 1 0 0 0-.711.3 1 1 0 0 0-.713-.3zm-2.695 2.061a51 51 0 0 0 1.572 2.397c-.99-.04-1.941-.108-2.832-.205q.573-1.067 1.26-2.192m6.779.02c.448.743.862 1.472 1.236 2.176a42 42 0 0 1-2.814.199q.313-.443.625-.902c.333-.495.647-.986.953-1.473m-8.23 2.537c1.033.117 2.141.198 3.304.236.427.6.854 1.179 1.278 1.723-1.103 1.382-2.176 2.561-3.135 3.45-.821.76-1.562 1.31-2.155 1.605-.296.147-.554.23-.76.25s-.35-.018-.462-.104c-.225-.172-.343-.61-.27-1.308s.329-1.624.742-2.698c.366-.948.861-2.018 1.458-3.154m9.656.004c.459.884.854 1.727 1.178 2.504a.91.91 0 0 0-.348.724c0 .486.364.887.82.887a1 1 0 0 0 .123-.01c.218.686.36 1.293.408 1.782.07.698-.05 1.135-.275 1.306-.113.086-.258.124-.463.104s-.462-.105-.758-.254c-.59-.298-1.329-.855-2.146-1.62-.955-.893-2.023-2.077-3.12-3.466.43-.545.862-1.123 1.294-1.725a42 42 0 0 0 3.287-.232m-3.776.246a49 49 0 0 1-1.05 1.4 49 49 0 0 1-1.04-1.398 47 47 0 0 0 2.09-.002"/></svg></span> <strong>PR418</strong>. (<abbr title="Diseña modelos relacionales normalizados interpretando diagramas entidad/relación.">RABD.6</abbr> // RA6 // 3p) A partir del siguiente ticket de una compra en una tienda de deportes, se pide:</p>
 <ul>
-<li>Crea el modelo EER que permita almacenar toda la información</li>
-<li>Crear el modelo relacional a partir del modelo EER anterior.</li>
+<li>Crea el modelo <abbr title="Entidad Relación Extendido">EER</abbr> que permita almacenar toda la información</li>
+<li>Crea el modelo relacional a partir del modelo <abbr title="Entidad Relación Extendido">EER</abbr> anterior.</li>
 </ul>
 <p><figure style="align: center;">
     <img src="images/04ticket.png" width="350" title="Ticket de compra">
@@ -8486,7 +8488,7 @@ Respecto a <code>D</code>, en este caso tenemos una clave ajena, pero que forma 
 <ul>
 <li>Crear un modelo <abbr title="Entidad Relación">ER</abbr> a partir de un sistema de información.</li>
 <li>Crear un modelo relacional a partir de un modelo <abbr title="Entidad Relación">ER</abbr> (basado en uno de los modelos generados en el reto de la actividad anterior).</li>
-<li>Interpreta un modelo <abbr title="Entidad Relación">ER</abbr> o un modelo relacional.</li>
+<li>Interpretar un modelo <abbr title="Entidad Relación">ER</abbr> o un modelo relacional.</li>
 <li>Crear un modelo <abbr title="Entidad Relación">ER</abbr> a partir de un modelo relacional.</li>
 </ul>
 </li>
@@ -8584,7 +8586,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <hr />
 <ol>
 <li id="04mr-eer-fn:1">
-<p>Que al tratarse de un atributo derivado, no se traduce al modelo relacional, si no que formará parte de la aplicación que después se encargará de obtener el dato mediante una consulta.&#160;<a class="footnote-backref" href="#04mr-eer-fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Que al tratarse de un atributo derivado, no se traduce al modelo relacional, sino que formará parte de la aplicación que después se encargará de obtener el dato mediante una consulta.&#160;<a class="footnote-backref" href="#04mr-eer-fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div></section><section class="print-page" id="05ddl" heading-number="6"><nav class='md-tags'><span class='md-tag'>Modelo Físico</span><span class='md-tag'>SQL</span><span class='md-tag'>SQL - DDL</span><span class='md-tag'>SQL - DML</span><span class='md-tag'>RA2</span><span class='md-tag'>RA4</span></nav><h1 id="modelo-fisico-sql-instrucciones-ddl-y-dml">Modelo Físico: SQL - Instrucciones DDL y DML<a class="headerlink" href="#05ddl-modelo-fisico-sql-instrucciones-ddl-y-dml" title="Permanent link">&para;</a></h1>
