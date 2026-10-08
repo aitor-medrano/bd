@@ -11,11 +11,9 @@ Materiales y actividades del módulo profesional **0484: Bases de Datos**, del c
 
 ## Consultar los apuntes
 
-El material se publica como sitio web estático generado a partir de MkDocs:
+El material se publica como sitio web estático generado a partir de *Material for MkDocs* en <https://aitor-medrano.github.io/bd>.
 
-**[Abrir los apuntes de Bases de Datos](https://aitor-medrano.github.io/bd)**
-
-Este repositorio contiene las páginas HTML generadas para su publicación. Los archivos Markdown originales de los apuntes no se publican aquí.
+Este repositorio contiene las páginas HTML generadas para su publicación dentro de la rama [`gh-pages`](https://github.com/aitor-medrano/bd/tree/gh-pages). Los archivos Markdown originales de los apuntes no se publican en el repositorio.
 
 ## Peticiones y avisos de errores
 
