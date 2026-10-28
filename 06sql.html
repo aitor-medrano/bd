@@ -6,14 +6,14 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Consultas sencillas son una tabla, mediante operaciones de proyección y selección. Uso de funciones. Combinaciones internas y externas de tablas.">
+        <meta name="description" content="Consultas sencillas sobre una tabla, mediante operaciones de proyección y selección. Uso de funciones. Combinaciones internas y externas de tablas.">
       
       
       
         <link rel="canonical" href="https://aitor-medrano.github.io/bd/06sql.html">
       
       
-        <link rel="prev" href="05ddl.html">
+        <link rel="prev" href="05dml.html">
       
       
         <link rel="next" href="07sql-group.html">
@@ -80,7 +80,7 @@
   
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Consultas sencillas - Bases de datos" />
-<meta property="og:description" content="Consultas sencillas son una tabla, mediante operaciones de proyección y selección. Uso de funciones. Combinaciones internas y externas de tablas." />
+<meta property="og:description" content="Consultas sencillas sobre una tabla, mediante operaciones de proyección y selección. Uso de funciones. Combinaciones internas y externas de tablas." />
 <meta property="og:image" content="https://aitor-medrano.github.io/bd/assets/images/social/06sql.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
@@ -88,7 +88,7 @@
 <meta property="og:url" content="https://aitor-medrano.github.io/bd/06sql.html" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content="Consultas sencillas - Bases de datos" />
-<meta property="twitter:description" content="Consultas sencillas son una tabla, mediante operaciones de proyección y selección. Uso de funciones. Combinaciones internas y externas de tablas." />
+<meta property="twitter:description" content="Consultas sencillas sobre una tabla, mediante operaciones de proyección y selección. Uso de funciones. Combinaciones internas y externas de tablas." />
 <meta property="twitter:image" content="https://aitor-medrano.github.io/bd/assets/images/social/06sql.png" />
 </head>
   
@@ -408,6 +408,59 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.- Diseño físico
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    5.- Diseño físico
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="05ddl.html" class="md-nav__link">
         
@@ -416,7 +469,7 @@
   <span class="md-ellipsis">
     
   
-    5.- Diseño físico: DDL y DML
+    5.1.- DDL
   
 
     
@@ -425,6 +478,42 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05dml.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2.- DML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2084,7 +2173,7 @@
 <li>¿Podemos crear variables en un campo de una consulta para utilizarlas dentro de la misma consulta?</li>
 <li>¿Con qué función podemos obtener el total de elementos de una tabla?</li>
 <li>¿Qué función hay que emplear para calcular la fecha exacta dentro de 3 meses?</li>
-<li>¿Qué función hay que emplear para redondear hacia debajo o hacia arriba?</li>
+<li>¿Qué función hay que emplear para redondear hacia abajo o hacia arriba?</li>
 <li>¿Cuál es la ordenación por defecto con la sentencia <code>ORDER BY</code> y cómo se cambia?</li>
 <li>¿Qué tipos de combinaciones podemos hacer entre tablas?</li>
 <li>¿Qué diferencia hay entre un <code>inner join</code> y un <code>left join</code>, y cómo afecta al resultado de la consulta?</li>
@@ -2094,12 +2183,8 @@
 <li>¿Qué operadores de conjuntos conoces?</li>
 </ol>
 </div>
-<!--
-Añadir preguntas de join
--->
-
 <h3 id="programacion-de-aula-11h">Programación de Aula (11h)<a class="headerlink" href="#programacion-de-aula-11h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la sexta, siendo la primera del bloque de consultas, impartiéndose al principio de la segunda evaluación, a principios de diciembre, con una duración estimada de 11 sesiones lectivas:</p>
+<p>Esta unidad es la sexta, siendo la primera del bloque de consultas, se imparte al inicio de la segunda evaluación, a principios de diciembre, con una duración estimada de 11 sesiones lectivas:</p>
 <table>
 <thead>
 <tr>
@@ -2178,28 +2263,6 @@ Añadir preguntas de join
 </tr>
 </tbody>
 </table>
-<!--
-JJS - 18h
-Herramientas gráficas proporcionadas por el sistema gestor para la realización de consultas.
-Lenguaje de manipulación de datos (DML).
-La sentencia SELECT.
-Selección de columnas y selección por fila.
-
-Condiciones WHERE.
-Operadores aritméticos.
-Operadores de comparación.
-Operadores lógicos.
-Precedencia.
-Funciones de comparación de cadenas de caracteres (LIKE, NOT LIKE).
-
-Operador IS (NULL y NOT NULL).
-Operador IN.
-Operador BETWEEN.
-Selección y ordenación de registros.
-Cláusula ORDER BY.
-Cláusula LIMIT.
--->
-
 <h2 id="algebra-relacional">Álgebra Relacional<a class="headerlink" href="#algebra-relacional" title="Permanent link">&para;</a></h2>
 <p>El álgebra relacional es un lenguaje formal utilizado para realizar consultas y operaciones sobre bases de datos relacionales. Fue propuesto por <em>Edgar F. Codd</em> en 1970 como parte de su trabajo en la teoría de bases de datos relacionales. En lugar de ser un lenguaje de programación como SQL, es un conjunto de operaciones matemáticas que permiten manipular conjuntos de datos (relaciones o tablas) de una manera lógica y estructurada.</p>
 <h3 id="operaciones">Operaciones<a class="headerlink" href="#operaciones" title="Permanent link">&para;</a></h3>
@@ -2261,6 +2324,11 @@ Cláusula LIMIT.
 </tbody>
 </table>
 <p>Supongamos que tenemos el siguiente esquema relacional:</p>
+<figure style="align: center;">
+    <img src="images/06bd-ar.png" width="882" title="Modelo físico de ejemplo con productos y categoría">
+    <figcaption>Modelo físico de ejemplo con productos y categoría</figcaption>
+</figure>
+
 <p>Y las siguientes tablas con datos:</p>
 <div class="grid cards">
 <ul>
@@ -2675,7 +2743,7 @@ Cláusula LIMIT.
 <div class="grid cards">
 <ul>
 <li>
-<p><em>Join natural </em><em>⨝</em>*</p>
+<p>Join natural <strong>⨝</strong></p>
 <hr />
 <p><code>PRODUCTO ⨝ CATEGORIA</code>  </p>
 <p>Combina las tablas de <strong>PRODUCTO</strong> y <strong>CATEGORIA</strong> basándose en los atributos que tengan comunes, en este caso, <code>categoria_id</code>.</p>
@@ -2805,7 +2873,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 </li>
 <li>
 <p>Nombre de los productos de la categoría <code>Electrodomésticos</code> (primero la selección y luego el <em>join</em>)</p>
-<p><code>π<sub>nombre</sub>(PRODUCTO ⨝<sub>PRODUCTO.categoria_id = CATEGORIA.id</sub> (𝜎<sub>nombre = "Electrodomésticos"</sub>(CATEGORIA))</code></p>
+<p><code>π<sub>nombre</sub>(PRODUCTO ⨝<sub>PRODUCTO.categoria_id = CATEGORIA.id</sub> (𝜎<sub>nombre = "Electrodomésticos"</sub>(CATEGORIA)))</code></p>
 </li>
 </ol>
 <p>Estas operaciones forman la base teórica de cómo las bases de datos relacionales manipulan los datos y son fundamentales para comprender el funcionamiento de lenguajes como SQL.</p>
@@ -2853,10 +2921,10 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 </code></pre></div>
 <p>Recuerda que, si quieres saber la estructura de una tabla, podemos utilizar el metacomando <code>\d</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="err">\</span><span class="n">d</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-</span><span class="linenos" data-linenos=" 2 "></span><span class="c1">--                                        Table &quot;public.empleado&quot;</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="c1">--                                        Table "public.empleado"</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">--   Column  |         Type          | Collation | Nullable |                  Default</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- ----------+-----------------------+-----------+----------+--------------------------------------------</span>
-<span class="linenos" data-linenos=" 5 "></span><span class="c1">--  CodEmp   | integer               |           | not null | nextval(&#39;&quot;empleado_CodEmp_seq&quot;&#39;::regclass)</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">--  CodEmp   | integer               |           | not null | nextval('"empleado_CodEmp_seq"'::regclass)</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">--  CodDep   | character(5)          |           |          |</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1">--  ExTelEmp | character varying(9)  |           |          |</span>
 <span class="linenos" data-linenos=" 8 "></span><span class="c1">--  FecInEmp | date                  |           |          |</span>
@@ -2866,22 +2934,22 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="12 "></span><span class="c1">--  NumHi    | integer               |           |          |</span>
 <span class="linenos" data-linenos="13 "></span><span class="c1">--  SalEmp   | numeric(12,2)         |           |          |</span>
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- Indexes:</span>
-<span class="linenos" data-linenos="15 "></span><span class="c1">--     &quot;empleado_pkey&quot; PRIMARY KEY, btree (&quot;CodEmp&quot;)</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">--     "empleado_pkey" PRIMARY KEY, btree ("CodEmp")</span>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- Check constraints:</span>
-<span class="linenos" data-linenos="17 "></span><span class="c1">--     &quot;empleado_NumHi_check&quot; CHECK (&quot;NumHi&quot; &gt;= 0 AND &quot;NumHi&quot; &lt;= 9)</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">--     "empleado_NumHi_check" CHECK ("NumHi" &gt;= 0 AND "NumHi" &lt;= 9)</span>
 <span class="linenos" data-linenos="18 "></span><span class="c1">-- Foreign-key constraints:</span>
-<span class="linenos" data-linenos="19 "></span><span class="c1">--     &quot;fk_emp_dep&quot; FOREIGN KEY (&quot;CodDep&quot;) REFERENCES departamento(&quot;CodDep&quot;) ON UPDATE CASCADE</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">--     "fk_emp_dep" FOREIGN KEY ("CodDep") REFERENCES departamento("CodDep") ON UPDATE CASCADE</span>
 <span class="linenos" data-linenos="20 "></span><span class="c1">-- Referenced by:</span>
-<span class="linenos" data-linenos="21 "></span><span class="c1">--     TABLE &quot;centro&quot; CONSTRAINT &quot;fk_cen_emp&quot; FOREIGN KEY (&quot;CodEmpDir&quot;) REFERENCES empleado(&quot;CodEmp&quot;) ON UPDATE CASCADE</span>
-<span class="linenos" data-linenos="22 "></span><span class="c1">--     TABLE &quot;departamento&quot; CONSTRAINT &quot;fk_dep_emp&quot; FOREIGN KEY (&quot;CodEmpDir&quot;) REFERENCES empleado(&quot;CodEmp&quot;) ON UPDATE CASCADE</span>
-<span class="linenos" data-linenos="23 "></span><span class="c1">--     TABLE &quot;habemp&quot; CONSTRAINT &quot;fk_habemp_emp&quot; FOREIGN KEY (&quot;CodEmp&quot;) REFERENCES empleado(&quot;CodEmp&quot;) ON UPDATE CASCADE</span>
-<span class="linenos" data-linenos="24 "></span><span class="c1">--     TABLE &quot;hijo&quot; CONSTRAINT &quot;fk_hij_emp&quot; FOREIGN KEY (&quot;CodEmp&quot;) REFERENCES empleado(&quot;CodEmp&quot;) ON UPDATE CASCADE ON DELETE CASCADE</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">--     TABLE "centro" CONSTRAINT "fk_cen_emp" FOREIGN KEY ("CodEmpDir") REFERENCES empleado("CodEmp") ON UPDATE CASCADE</span>
+<span class="linenos" data-linenos="22 "></span><span class="c1">--     TABLE "departamento" CONSTRAINT "fk_dep_emp" FOREIGN KEY ("CodEmpDir") REFERENCES empleado("CodEmp") ON UPDATE CASCADE</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">--     TABLE "habemp" CONSTRAINT "fk_habemp_emp" FOREIGN KEY ("CodEmp") REFERENCES empleado("CodEmp") ON UPDATE CASCADE</span>
+<span class="linenos" data-linenos="24 "></span><span class="c1">--     TABLE "hijo" CONSTRAINT "fk_hij_emp" FOREIGN KEY ("CodEmp") REFERENCES empleado("CodEmp") ON UPDATE CASCADE ON DELETE CASCADE</span>
 </code></pre></div>
 </div>
 </div>
 </div>
 </div>
-<p>En la sesión anterior estudiamos tanto la parte DDL como DML del lenguaje SQL. En esta sesión y las siguientes nos vamos a centrar en las consultas, que formarían parte de DML, y más en concreto de DQL (<em>Data Query Language</em>). Para ello, utilizaremos la sentencia <code>SELECT</code> definiendo consultas que pueden ocupar una línea o varias decenas, que acceden a una única tabla (o vista), o a múltiples tablas combinadas mediante el uso de <em>joins</em>, e incluso que utiliza diversos esquemas dentro de la misma base de datos. </p>
+<p>En la sesión anterior estudiamos tanto la parte DDL como DML del lenguaje SQL. En esta sesión y las siguientes nos vamos a centrar en las consultas, que formarían parte de DML, y más en concreto de DQL (<em>Data Query Language</em>). Para ello, utilizaremos la sentencia <code>SELECT</code> definiendo consultas que pueden ocupar una línea o varias decenas, que acceden a una única tabla (o vista), o a múltiples tablas combinadas mediante el uso de <em>joins</em>, e incluso que utilizan diversos esquemas dentro de la misma base de datos. </p>
 <p>Así pues, entremos en detalle en la sentencia <strong><code>SELECT ... FROM</code></strong>. Su sintaxis completa, con las opciones más frecuentes, tanto para <a href="https://mariadb.com/kb/en/select/">MariaDB</a> como para <em>PostgreSQL</em> es:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="err">{</span><span class="o">*</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="k">DISTINCT</span><span class="p">]</span><span class="w"> </span><span class="err">{</span><span class="n">columna</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">expresión</span><span class="err">}</span><span class="w"> </span><span class="p">[[</span><span class="k">AS</span><span class="p">]</span><span class="w"> </span><span class="k">alias</span><span class="p">],</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="err">}</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">tabla</span>
@@ -2891,7 +2959,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="p">[</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">col</span><span class="o">-</span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="n">pos</span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">-</span><span class="n">m</span><span class="o">|</span><span class="w"> </span><span class="n">pos</span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="n">DES</span><span class="p">]</span><span class="err">…</span><span class="p">]</span>
 <span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="p">[</span><span class="k">LIMIT</span><span class="w"> </span><span class="err">{</span><span class="p">[</span><span class="k">offset</span><span class="p">,]</span><span class="w"> </span><span class="k">row_count</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">row_count</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="k">offset</span><span class="err">}</span><span class="p">];</span>
 </code></pre></div>
-<p>En todo consulta siempre deberemos indicar qué datos queremos recuperar y de dónde lo haremos. Tras ejecutar una consulta obtendremos una tabla de datos, que puede tener una o varias columnas y ninguna, una o varias filas.</p>
+<p>En toda consulta siempre deberemos indicar qué datos queremos recuperar y de dónde lo haremos. Tras ejecutar una consulta obtendremos una tabla de datos, que puede tener una o varias columnas y ninguna, una o varias filas.</p>
 <div class="admonition tip">
 <p class="admonition-title">Formato</p>
 <p>A la hora de escribir una consulta, podemos dividirla en varias líneas para facilitar su legibilidad. Recuerda que hasta que no encuentre el carácter de <code>;</code>, el intérprete SQL no ejecutará la consulta.</p>
@@ -2913,7 +2981,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 </code></pre></div>
 </div>
 <h3 id="proyeccion">Proyección<a class="headerlink" href="#proyeccion" title="Permanent link">&para;</a></h3>
-<p>Para seleccionar campos utilizaremos bien <strong><code>*</code></strong> para indicar que queremos todas las columnas, o indicaremos de uno en uno el nombre de los campos que queremos recuperar;</p>
+<p>Para seleccionar campos utilizaremos bien <strong><code>*</code></strong> para indicar que queremos todas las columnas, o indicaremos de uno en uno el nombre de los campos que queremos recuperar:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">MariaDB / MySQL</label><label for="__tabbed_2_2">PostgreSQL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2948,7 +3016,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">--  OFZS   |         5 | Oficinas Zona Sur | Pl. España 14               | Cartagena</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1">-- (3 rows)</span>
 <span class="linenos" data-linenos=" 8 "></span>
-<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="k">select</span><span class="w"> </span><span class="ss">&quot;CodCen&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;PobCen&quot;</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">centro</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos=" 9 "></span><span class="k">select</span><span class="w"> </span><span class="ss">"CodCen"</span><span class="p">,</span><span class="w"> </span><span class="ss">"PobCen"</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">centro</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="10 "></span><span class="c1">--  CodCen |  PobCen</span>
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- --------+-----------</span>
 <span class="linenos" data-linenos="12 "></span><span class="c1">--  DIGE   | Murcia</span>
@@ -3045,9 +3113,9 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="19 "></span><span class="c1">-- 10 rows in set (0.001 sec)</span>
 </code></pre></div>
 <p>En cambio, en <em>PostgreSQL</em> no es posible utilizar variables de esta forma, pero sí podemos repetir la expresión tantas veces como necesitemos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="ss">&quot;NomEmp&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;SalEmp&quot;</span><span class="p">,</span>
-<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">       </span><span class="ss">&quot;SalEmp&quot;</span><span class="o">*</span><span class="mi">1</span><span class="p">.</span><span class="mi">16</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="ss">&quot;SalImp&quot;</span><span class="p">,</span>
-</span><span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="w">       </span><span class="p">(</span><span class="ss">&quot;SalEmp&quot;</span><span class="o">*</span><span class="mi">1</span><span class="p">.</span><span class="mi">16</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="p">.</span><span class="mi">05</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">bonus</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="ss">"NomEmp"</span><span class="p">,</span><span class="w"> </span><span class="ss">"SalEmp"</span><span class="p">,</span>
+<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">       </span><span class="ss">"SalEmp"</span><span class="o">*</span><span class="mi">1</span><span class="p">.</span><span class="mi">16</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="ss">"SalImp"</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="w">       </span><span class="p">(</span><span class="ss">"SalEmp"</span><span class="o">*</span><span class="mi">1</span><span class="p">.</span><span class="mi">16</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="p">.</span><span class="mi">05</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">bonus</span>
 </span><span class="linenos" data-linenos=" 4 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">--            NomEmp           |   SalEmp   |    SalImp    |     bonus</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- ----------------------------+------------+--------------+----------------</span>
@@ -3063,7 +3131,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="16 "></span><span class="c1">--  Mosc Amuerta, Mario        | 1300000.00 | 1508000.0000 | 1583400.000000</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- (10 rows)</span>
 </code></pre></div>
-<!-- FIXME: Corregir CASE PostreSQL -->
+<!-- FIXME: Corregir CASE PostgreSQL -->
 
 <p><a name="CASE"></a></p>
 <div class="admonition tip">
@@ -3073,7 +3141,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="2 "></span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="p">[</span><span class="n">condición</span><span class="p">]</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">[</span><span class="k">WHEN</span><span class="w"> </span><span class="p">[</span><span class="n">condición</span><span class="p">]</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[</span><span class="k">ELSE</span><span class="w"> </span><span class="n">resultado</span><span class="p">]</span><span class="w"> </span><span class="k">END</span>
 </code></pre></div>
 <p>Por ejemplo, a la hora de mostrar los empleados, si queremos que cuando el número de teléfono sea nulo muestre <code>0000</code> haríamos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="ss">&quot;0000&quot;</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="ss">"0000"</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------+----------+</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | CodEmp | NuevaExt |</span>
@@ -3093,7 +3161,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 </code></pre></div>
 <p>Veamos otro ejemplo. En el caso de los departamentos, la columna <code>TiDir</code> indica el tipo de director, con los valores <code>P</code> para indicar en propiedad y <code>F</code> para detallar que es un director en funciones. Si quisiéramos mostrar la frase <code>Definitivo</code> o <code>Interino</code> para estos casos haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">TiDir</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 2 "></span><span class="w">       </span><span class="k">CASE</span><span class="w"> </span><span class="n">TiDir</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="ss">&quot;P&quot;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="ss">&quot;Definitivo&quot;</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="ss">&quot;F&quot;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="ss">&quot;Interino&quot;</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">TipoDirector</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="w">       </span><span class="k">CASE</span><span class="w"> </span><span class="n">TiDir</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="ss">"P"</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="ss">"Definitivo"</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="ss">"F"</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="ss">"Interino"</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">TipoDirector</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+-------+--------------+</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | CodDep | TiDir | TipoDirector |</span>
@@ -3132,7 +3200,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- +----------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 </code></pre></div>
-<p>Si queremos recuperar cuantos elementos diferentes tenemos de un campo, en la expresión usaremos <code>DISTINCT</code>:</p>
+<p>Si queremos recuperar cuántos elementos diferentes tenemos de un campo, en la expresión usaremos <code>DISTINCT</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Cantidad de empleados que tienen habilidades</span>
 <span class="hll"><span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">codemp</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="3 "></span><span class="c1">-- +------------------------+</span>
@@ -3184,7 +3252,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="34 "></span><span class="c1">-- +-------------+----------------+</span>
 <span class="linenos" data-linenos="35 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 </code></pre></div>
-<p>En la próxima unidad estudiaremos como podemos <a href="07sql-group.html#agregaciones">agregar datos</a> por algunas columnas y realizar cálculos sobre ellas, lo que nos permitirá obtener información del tipo <em>"Cantidad de empleados de cada departamento"</em>, <em>"Salario medio por centro de los empleados"</em>, etc...</p>
+<p>En la próxima unidad estudiaremos cómo podemos <a href="07sql-group.html#agregaciones">agregar datos</a> por algunas columnas y realizar cálculos sobre ellas, lo que nos permitirá obtener información del tipo <em>"Cantidad de empleados de cada departamento"</em>, <em>"Salario medio por centro de los empleados"</em>, etc...</p>
 <h4 id="cadenas">Cadenas<a class="headerlink" href="#cadenas" title="Permanent link">&para;</a></h4>
 <p>Mediante <a href="https://mariadb.com/kb/en/string-functions/">funciones de cadenas de texto</a> podemos realizar múltiples operaciones:</p>
 <table>
@@ -3224,8 +3292,8 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 </tbody>
 </table>
 <p>Algunos ejemplos de su uso:</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">CodEmp</span><span class="p">,</span><span class="s1">&#39;_&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">concatenacion</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-</span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- select CodEmp || &#39;_&#39; || CodDep as concatenacion from empleado;  -- PostgreSQL</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">CodEmp</span><span class="p">,</span><span class="s1">'_'</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">concatenacion</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+</span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- select CodEmp || '_' || CodDep as concatenacion from empleado;  -- PostgreSQL</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +---------------+</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | concatenacion |</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +---------------+</span>
@@ -3279,27 +3347,27 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos=" 8 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 <span class="linenos" data-linenos=" 9 "></span>
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- días que faltan hasta navidad</span>
-<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="n">DATEDIFF</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;2024-12-25&#39;</span><span class="p">);</span>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="n">DATEDIFF</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="s1">'2024-12-25'</span><span class="p">);</span>
 </span><span class="linenos" data-linenos="12 "></span><span class="c1">-- +-------------------------------+</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">-- | DATEDIFF(NOW(), &#39;2024-12-25&#39;) |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | DATEDIFF(NOW(), '2024-12-25') |</span>
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- +-------------------------------+</span>
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- |                           -38 |</span>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- +-------------------------------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 <span class="linenos" data-linenos="18 "></span>
-<span class="hll"><span class="linenos" data-linenos="19 "></span><span class="k">select</span><span class="w"> </span><span class="n">DATEDIFF</span><span class="p">(</span><span class="s1">&#39;2026-01-12&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;2026-01-01&#39;</span><span class="p">);</span>
-</span><span class="linenos" data-linenos="20 "></span><span class="c1">-- SELECT DATE &#39;2026-01-12&#39; - DATE &#39;2026-01-01&#39;;</span>
-<span class="linenos" data-linenos="21 "></span><span class="c1">-- SELECT AGE(DATE &#39;2026-01-12&#39;, DATE &#39;2026-01-01&#39;);  -- PostgreSQL</span>
+<span class="hll"><span class="linenos" data-linenos="19 "></span><span class="k">select</span><span class="w"> </span><span class="n">DATEDIFF</span><span class="p">(</span><span class="s1">'2026-01-12'</span><span class="p">,</span><span class="w"> </span><span class="s1">'2026-01-01'</span><span class="p">);</span>
+</span><span class="linenos" data-linenos="20 "></span><span class="c1">-- SELECT DATE '2026-01-12' - DATE '2026-01-01';</span>
+<span class="linenos" data-linenos="21 "></span><span class="c1">-- SELECT AGE(DATE '2026-01-12', DATE '2026-01-01');  -- PostgreSQL</span>
 <span class="linenos" data-linenos="22 "></span><span class="c1">-- +--------------------------------------+</span>
-<span class="linenos" data-linenos="23 "></span><span class="c1">-- | DATEDIFF(&#39;2026-01-12&#39;, &#39;2026-01-01&#39;) |</span>
+<span class="linenos" data-linenos="23 "></span><span class="c1">-- | DATEDIFF('2026-01-12', '2026-01-01') |</span>
 <span class="linenos" data-linenos="24 "></span><span class="c1">-- +--------------------------------------+</span>
 <span class="linenos" data-linenos="25 "></span><span class="c1">-- |                                   11 |</span>
 <span class="linenos" data-linenos="26 "></span><span class="c1">-- +--------------------------------------+</span>
 <span class="linenos" data-linenos="27 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 <span class="linenos" data-linenos="28 "></span>
 <span class="linenos" data-linenos="29 "></span><span class="c1">-- fecha de hoy y dentro de 3 meses</span>
-<span class="hll"><span class="linenos" data-linenos="30 "></span><span class="k">select</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="n">DATE_ADD</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="o">+</span><span class="mi">3</span><span class="w"> </span><span class="k">MONTH</span><span class="p">)</span>
-</span><span class="linenos" data-linenos="31 "></span><span class="c1">-- select NOW(), NOW() + INTERVAL &#39;3 months&#39; -- PostgreSQL</span>
+<span class="hll"><span class="linenos" data-linenos="30 "></span><span class="k">select</span><span class="w"> </span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="n">DATE_ADD</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="o">+</span><span class="mi">3</span><span class="w"> </span><span class="k">MONTH</span><span class="p">);</span>
+</span><span class="linenos" data-linenos="31 "></span><span class="c1">-- select NOW(), NOW() + INTERVAL '3 months' -- PostgreSQL</span>
 <span class="linenos" data-linenos="32 "></span><span class="c1">-- +---------------------+------------------------------------+</span>
 <span class="linenos" data-linenos="33 "></span><span class="c1">-- | NOW()               | DATE_ADD(NOW(), INTERVAL +3 MONTH) |</span>
 <span class="linenos" data-linenos="34 "></span><span class="c1">-- +---------------------+------------------------------------+</span>
@@ -3316,8 +3384,8 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <p>O en <em>PostgreSQL</em>, directamente mediante <a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT"><code>EXTRACT unidad from CAMPO</code></a> o <code>DATE_PART('unidad', CAMPO)</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="k">YEAR</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">anyoInc</span><span class="p">,</span><span class="w"> </span><span class="k">MONTH</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">mesInc</span><span class="p">,</span>
 </span><span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">       </span><span class="n">DAYOFWEEK</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">diaSemana</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-</span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- select &quot;CodEmp&quot;, &quot;FecInEmp&quot;, EXTRACT(YEAR FROM &quot;FecInEmp&quot;) as anyoInc, EXTRACT(MONTH FROM &quot;FecInEmp&quot;) as mesInc,</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="c1">--        EXTRACT(DOW FROM &quot;FecInEmp&quot;)+1 as diaSemana from empleado; -- PostgreSQL</span>
+</span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- select "CodEmp", "FecInEmp", EXTRACT(YEAR FROM "FecInEmp") as anyoInc, EXTRACT(MONTH FROM "FecInEmp") as mesInc,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">--        EXTRACT(DOW FROM "FecInEmp")+1 as diaSemana from empleado; -- PostgreSQL</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +--------+------------+---------+--------+-----------+</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | CodEmp | FecInEmp   | anyoInc | mesInc | diaSemana |</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1">-- +--------+------------+---------+--------+-----------+</span>
@@ -3339,9 +3407,9 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <li>
 <p><em>MariaDB</em>: podemos hacer uso de <a href="https://mariadb.com/kb/en/date_format/"><code>DATE_FORMAT(fecha, formato)</code></a> para obtener información similar a la anterior (le podemos pasar un tercer parámetro con el <em>locale</em> para configurar el idioma de salida y sobrescribir el del sistema):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecInEmp</span><span class="p">,</span>
-<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%Y %y&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">anyoInc</span><span class="p">,</span>
-</span><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%M %m&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">mesInc</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;%w&quot;</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">diaSemana</span>
+<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="ss">"%Y %y"</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">anyoInc</span><span class="p">,</span>
+</span><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="ss">"%M %m"</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">mesInc</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="n">DATE_FORMAT</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="ss">"%w"</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">diaSemana</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------+------------+---------+-------------+-----------+</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1">-- | CodEmp | FecInEmp   | anyoInc | mesInc      | diaSemana |</span>
@@ -3362,10 +3430,10 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 </li>
 <li>
 <p><em>PostgreSQL</em>: usaremos <a href="https://www.postgresql.org/docs/current/functions-formatting.html"><code>TO_CHAR()</code></a></p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="ss">&quot;CodEmp&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;FecInEmp&quot;</span><span class="p">,</span>
-<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">TO_CHAR</span><span class="p">(</span><span class="ss">&quot;FecInEmp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;YYYY YY&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">anyoInc</span><span class="p">,</span>
-</span><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">TO_CHAR</span><span class="p">(</span><span class="ss">&quot;FecInEmp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Month MM&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">mesInc</span><span class="p">,</span>
-<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">EXTRACT</span><span class="p">(</span><span class="n">DOW</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">&quot;FecInEmp&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">diaSemana</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="ss">"CodEmp"</span><span class="p">,</span><span class="w"> </span><span class="ss">"FecInEmp"</span><span class="p">,</span>
+<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="n">TO_CHAR</span><span class="p">(</span><span class="ss">"FecInEmp"</span><span class="p">,</span><span class="w"> </span><span class="s1">'YYYY YY'</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">anyoInc</span><span class="p">,</span>
+</span><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">TO_CHAR</span><span class="p">(</span><span class="ss">"FecInEmp"</span><span class="p">,</span><span class="w"> </span><span class="s1">'Month MM'</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">mesInc</span><span class="p">,</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="w">    </span><span class="k">EXTRACT</span><span class="p">(</span><span class="n">DOW</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="ss">"FecInEmp"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">diaSemana</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">--  CodEmp |  FecInEmp  | anyoinc |    mesinc    | diasemana </span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1">-- --------+------------+---------+--------------+-----------</span>
@@ -3385,16 +3453,16 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 </ul>
 <p>Finalmente, otra función muy importante a la hora de trabajar con fechas es la función <a href="https://mariadb.com/kb/en/cast/"><code>CAST(expr as tipo)</code></a> que realiza la conversión de tipos de datos.</p>
 <p>De esta manera podemos convertir una expresión de cadena en un tipo fecha:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="ss">&quot;2024-12-9&quot;</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">DATE</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="ss">"2024-12-9"</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">DATE</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="condicionales-y-nulos">Condicionales y Nulos<a class="headerlink" href="#condicionales-y-nulos" title="Permanent link">&para;</a></h4>
 <p>De forma similar al operador <a href="#CASE"><code>CASE</code></a>, únicamente en <em>MariaDB</em>, si preferimos, podemos hacer uso de la función <a href="https://mariadb.com/kb/en/if-function/"><code>IF(expr,V,F)</code></a>.</p>
 <p>Por ejemplo, podemos reescribir la misma consulta vista anteriormente:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="ss">&quot;0000&quot;</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="ss">"0000"</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span>
 <span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </code></pre></div>
 <p>por otra que utilice la función <code>IF</code> mejorando la legibilidad:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="k">IF</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;0000&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="k">IF</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="ss">"0000"</span><span class="p">,</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+----------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | NuevaExt |</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+----------+</span>
@@ -3417,9 +3485,9 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <li>En <em>MariaDB</em>, también podemos utilizar <a href="https://mariadb.com/kb/en/ifnull/"><code>IFNULL(campo, valor)</code></a>: devuelve <code>valor</code> si <code>campo</code> es nulo</li>
 </ul>
 <p>Dicho esto, las siguientes consultas obtienen el mismo resultado:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;0000&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="k">IF</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;0000&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">IFNULL</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;0000&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="p">,</span><span class="w"> </span><span class="s1">'0000'</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="k">IF</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="ss">"0000"</span><span class="p">,</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">IFNULL</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="p">,</span><span class="w"> </span><span class="s1">'0000'</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="otras">Otras<a class="headerlink" href="#otras" title="Permanent link">&para;</a></h4>
 <p>También tenemos funciones <a href="https://mariadb.com/kb/en/numeric-functions/">matemáticas</a> como:</p>
@@ -3428,9 +3496,9 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <li><a href="https://mariadb.com/kb/en/sqrt/"><code>SQRT(num)</code></a>, <a href="https://mariadb.com/kb/en/pow/"><code>POW(base, exponente)</code></a>: raíz cuadrada de <code>num</code>, potencia de <code>base</code> elevado a <code>exponente</code></li>
 <li><a href="https://mariadb.com/kb/en/rand/"><code>RAND()</code></a>: obtiene un número aleatorio</li>
 <li><a href="https://mariadb.com/kb/en/round/"><code>ROUND(num)</code></a> / <a href="https://mariadb.com/kb/en/floor/"><code>FLOOR(num)</code></a> / <a href="https://mariadb.com/kb/en/ceiling/"><code>CEILING(num)</code></a>: redondea un número, por exceso o por defecto</li>
-<li><a href="https://mariadb.com/kb/en/abs/"><code>TRUNCATE(num,d)</code></a>: trunca <code>num</code> con <code>d</code> decimales</li>
+<li><a href="https://mariadb.com/kb/en/truncate/"><code>TRUNCATE(num,d)</code></a>: trunca <code>num</code> con <code>d</code> decimales</li>
 </ul>
-<p>Veamos unos ejemplos de redondeo de cantidades:</p>
+<p>Veamos unos ejemplos de redondeo de cantidades:ºº</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">NumHi</span><span class="p">),</span><span class="w"> </span><span class="n">ROUND</span><span class="p">(</span><span class="k">avg</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)),</span><span class="w"> </span><span class="n">FLOOR</span><span class="p">(</span><span class="k">avg</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)),</span><span class="w"> </span><span class="n">CEILING</span><span class="p">(</span><span class="k">avg</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)),</span><span class="w"> </span><span class="k">TRUNCATE</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">NumHi</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1">-- +------------+-------------------+-------------------+---------------------+-------------------------+</span>
 <span class="linenos" data-linenos="3 "></span><span class="c1">-- | AVG(NumHi) | ROUND(avg(NumHi)) | FLOOR(avg(NumHi)) | CEILING(avg(NumHi)) | truncate(avg(NumHi), 1) |</span>
@@ -3451,7 +3519,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <p>También podemos emplear funciones para <a href="https://mariadb.com/kb/en/encryption-hashing-and-compression-functions/">encriptar o comprimir</a>, así como para trabajar con <a href="https://mariadb.com/kb/en/geographic-functions/">coordenadas geográficas</a>.</p>
 <h3 id="ordenando-y-limitando">Ordenando y Limitando<a class="headerlink" href="#ordenando-y-limitando" title="Permanent link">&para;</a></h3>
 <p>Es muy común tener que ordenar el resultado de una consulta para darle más importancia a unos campos que otros, e incluso, reducir el número de tuplas recuperadas.</p>
-<p>Así pues, para ordenar mediante la cláusula <a href="https://mariadb.com/kb/en/order-by/"><code>ORDER BY {campo | pos} [ASC|DESC]</code></a>, indicando los diferentes campos separados por coma.</p>
+<p>Así pues, para ordenar usaremos la cláusula <a href="https://mariadb.com/kb/en/order-by/"><code>ORDER BY {campo | pos} [ASC|DESC]</code></a>, indicando los diferentes campos separados por coma.</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NifEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+-----------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | NifEmp    |</span>
@@ -3496,7 +3564,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <p class="admonition-title">Rendimiento</p>
 <p>Hay que tener en cuenta que ordenar los resultados de una consulta requiere colocar todos los datos en memoria, y dependiendo de la cantidad, puede ser una operación computacionalmente compleja.</p>
 </div>
-<p>Finalmente, a la hora de indicar el nombre de las columnas de ordenación, también podemos un número indicando la posición de la columna (en el siguiente ejemplo, 1 referencia a <code>NomEmp</code> y 2 a <code>NifEmp</code>):</p>
+<p>Finalmente, a la hora de indicar el nombre de las columnas de ordenación, también podemos usar un número indicando la posición de la columna (en el siguiente ejemplo, 1 referencia a <code>NomEmp</code> y 2 a <code>NifEmp</code>):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+-----------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | Nifemp    |</span>
@@ -3585,7 +3653,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <h3 id="seleccion">Selección<a class="headerlink" href="#seleccion" title="Permanent link">&para;</a></h3>
 <p>La selección en SQL permite filtrar filas de una tabla en función de condiciones específicas. Esto se logra mediante la cláusula <code>WHERE</code>, que define los criterios de filtrado.</p>
 <p>Para filtrar los datos y realizar una selección de tuplas, podemos emplear tanto <a href="https://mariadb.com/kb/en/function-and-operator-reference/">funciones como operadores</a> dentro del <code>WHERE</code>. Para realizar las comparaciones, se expresan mediante <code>expresion1 operador expresion2</code>, pudiendo utilizar los  operadores relacionales <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>!=</code>, así como los operadores lógicos como <code>and</code>, <code>or</code>, <code>not</code>, etc...</p>
-<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">&#39;DIRGE&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">'DIRGE'</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+--------+------------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | CodDep | FecNaEmp   |</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +-----------------------------+--------+------------+</span>
@@ -3643,7 +3711,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- 5 rows in set (0.000 sec)</span>
 <span class="linenos" data-linenos="13 "></span>
 <span class="hll"><span class="linenos" data-linenos="14 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-</span><span class="hll"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">FecInEmp</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">&#39;1970/01/01&#39;</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">&#39;1980/01/01&#39;</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">FecInEmp</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">'1970/01/01'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">'1980/01/01'</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="16 "></span><span class="c1">-- +-----------------------------+------------+------------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- | NomEmp                      | FecInEmp   | FecNaEmp   |</span>
 <span class="linenos" data-linenos="18 "></span><span class="c1">-- +-----------------------------+------------+------------+</span>
@@ -3664,7 +3732,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      7 | Forzado López, Galeote      | 1600000.00 |</span>
 <span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +--------+-----------------------------+------------+</span>
 <span class="linenos" data-linenos="10 "></span>
-<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;PROZS&#39;</span><span class="p">,</span><span class="s1">&#39;VENZS&#39;</span><span class="p">);</span>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="s1">'PROZS'</span><span class="p">,</span><span class="s1">'VENZS'</span><span class="p">);</span>
 </span><span class="linenos" data-linenos="12 "></span><span class="c1">-- +-------------------------+--------+</span>
 <span class="linenos" data-linenos="13 "></span><span class="c1">-- | NomEmp                  | CodDep |</span>
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- +-------------------------+--------+</span>
@@ -3681,7 +3749,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <p>Cuando tenemos campos de tipo texto, lo normal no es comparar por todo el valor exacto, sino por una subcadena existente. Para ello, usaremos el operador <a href="https://mariadb.com/kb/en/like/"><code>LIKE</code></a> acompañado de un patrón, siguiendo la sintaxis <code>columna [NOT] LIKE patrón</code>.</p>
 <p>En el patrón de búsqueda, podemos emplear los comodines <code>_</code> para indicar que ocupa un carácter y <code>%</code> para cero o más caracteres.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Centros que acaban en Sur</span>
-<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">PobCen</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Nomcen</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%Sur&#39;</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">PobCen</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Nomcen</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'%Sur'</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +-------------------+-----------+</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | NomCen            | PobCen    |</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +-------------------+-----------+</span>
@@ -3691,7 +3759,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos=" 9 "></span><span class="c1">-- 2 rows in set (0.003 sec)</span>
 <span class="linenos" data-linenos="10 "></span>
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- Empleados cuya segunda letra del nombre sea a</span>
-<span class="hll"><span class="linenos" data-linenos="12 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Nomemp</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;_a%&#39;</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos="12 "></span><span class="k">select</span><span class="w"> </span><span class="n">Nomemp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">Nomemp</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'_a%'</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="13 "></span><span class="c1">-- +-----------------------------+--------+</span>
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- | Nomemp                      | CodDep |</span>
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- +-----------------------------+--------+</span>
@@ -3709,14 +3777,14 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <li>
 <p>Empleados cuyo nombre empieza por vocal (<code>^</code> comienza  y entre corchetes ponemos todos los posibles valores, es decir, por una vocal en mayúsculas o minúsculas)</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">where</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^[AEIOUaeiou]&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">where</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">'^[AEIOUaeiou]'</span><span class="p">;</span>
 </code></pre></div>
 </li>
 <li>
 <p>Departamentos cuyo nombre contiene exactamente dos palabras (<code>^[^ ]+</code> una o más letras al inicio, y <code>[^ ]+$</code> una o más letras al final)</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">where</span><span class="w"> </span><span class="n">NomDep</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">&#39;^[^ ]+ [^ ]+$&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">where</span><span class="w"> </span><span class="n">NomDep</span><span class="w"> </span><span class="n">REGEXP</span><span class="w"> </span><span class="s1">'^[^ ]+ [^ ]+$'</span><span class="p">;</span>
 </code></pre></div>
 </li>
 </ul>
@@ -3749,7 +3817,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <h4 id="operadores-logicos">Operadores lógicos<a class="headerlink" href="#operadores-logicos" title="Permanent link">&para;</a></h4>
 <p>Respecto a las condiciones compuestas, podemos unir operadores mediante <code>AND</code> (conjunción), <code>OR</code> (disyunción) y <code>NOT</code> (negación).</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-</span><span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">&#39;ADMZS&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">'ADMZS'</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">ExtelEmp</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +-------------------------+--------+----------+</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | NomEmp                  | CodDep | ExtelEmp |</span>
 <span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +-------------------------+--------+----------+</span>
@@ -3760,7 +3828,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- +-------------------------+--------+----------+</span>
 <span class="linenos" data-linenos="11 "></span>
 <span class="hll"><span class="linenos" data-linenos="12 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-</span><span class="hll"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;ADMZS&#39;</span><span class="p">,</span><span class="s1">&#39;PROZS&#39;</span><span class="p">,</span><span class="s1">&#39;VENZS&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">SalEmp</span><span class="o">&gt;</span><span class="mi">5000000</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos" data-linenos="13 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">'ADMZS'</span><span class="p">,</span><span class="s1">'PROZS'</span><span class="p">,</span><span class="s1">'VENZS'</span><span class="p">)</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">SalEmp</span><span class="o">&gt;</span><span class="mi">5000000</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="14 "></span><span class="c1">-- +-----------------------+--------+------------+</span>
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- | NomEmp                | CodDep | SalEmp     |</span>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- +-----------------------+--------+------------+</span>
@@ -3783,7 +3851,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 </ul>
 </div>
 <h2 id="uniendo-tablas">Uniendo Tablas<a class="headerlink" href="#uniendo-tablas" title="Permanent link">&para;</a></h2>
-<p>Hasta ahora nos hemos dedicado a realizar consultas sobre uno o más atributos de una determinada tabla. El modelo relacional se basa en la relación de una o más tablas, y por lo tanto, necesitamos de un mecanismo que nos permite obtener información de tablas que están relacionadas.</p>
+<p>Hasta ahora nos hemos dedicado a realizar consultas sobre uno o más atributos de una determinada tabla. El modelo relacional se basa en la relación de una o más tablas, y por lo tanto, necesitamos de un mecanismo que nos permita obtener información de tablas que están relacionadas.</p>
 <p>Dicho esto, para unir varias tablas (realizar un <a href="https://mariadb.com/kb/en/join-syntax/"><em>join</em></a>) tenemos diferentes <a href="https://mariadb.com/kb/en/join-syntax/">formas</a> de hacerlo:</p>
 <ul>
 <li><em>cross join</em>: producto cartesiano entre dos tablas</li>
@@ -3931,7 +3999,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="18 "></span><span class="c1">-- +-----------------------------+----------------------------+--------------------+-----------------------------+</span>
 <span class="linenos" data-linenos="19 "></span><span class="c1">-- 10 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>En todo momento, podemos añadir filtros sobre una composición. Por ejemplo, recuperaremos los nombres de los empleados, departamentos en los que trabaja y sus centros, de aquellos empleados y que tienen al menos un hijo y cuyo departamento tenga un presupuesto superior a 20000000:</p>
+<p>En todo momento, podemos añadir filtros sobre una composición. Por ejemplo, recuperaremos los nombres de los empleados, departamentos en los que trabaja y sus centros, de aquellos empleados que tienen al menos un hijo y cuyo departamento tenga un presupuesto superior a 20000000:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
@@ -3949,7 +4017,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 </code></pre></div>
 <h4 id="composicion-reflexiva">Composición reflexiva<a class="headerlink" href="#composicion-reflexiva" title="Permanent link">&para;</a></h4>
 <p>Cuando tenemos una relación reflexiva de una tabla consigo misma, para obtener los datos, hemos de realizar una join de la tabla con otra instancia de sí misma.</p>
-<p>Por ejemplo, en la tabla <code>departamento</code>, la columna <code>CodDepDep</code> referenciar al departamento del que depende; aquellos que tenga como valor <code>NULL</code>, no dependen de ninguno y podríamos decir que son departamentos principales.</p>
+<p>Por ejemplo, en la tabla <code>departamento</code>, la columna <code>CodDepDep</code> referencia al departamento del que depende; aquellos que tengan como valor <code>NULL</code>, no dependen de ninguno y podríamos decir que son departamentos principales.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">CodDepDep</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+-----------+----------------------------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodDep | CodDepDep | NomDep                     |</span>
@@ -3963,7 +4031,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- +--------+-----------+----------------------------+</span>
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>Así pues, si queremos recuperar todos los departamentos secundarios, así como el código y nombre de su departamento principal necesitamos referencias a la tabla <code>departamento</code> mediante un <em>join</em> consigo misma. Para ello, es imperativo utilizar un alias descriptivo para identificar el rol de la tabla en cada caso (en nuestro caso, <code>sec</code> como departamento secundario y <code>prin</code> para los principales):</p>
+<p>Así pues, si queremos recuperar todos los departamentos secundarios, así como el código y nombre de su departamento principal necesitamos referenciar a la tabla <code>departamento</code> mediante un <em>join</em> consigo misma. Para ello, es imperativo utilizar un alias descriptivo para identificar el rol de la tabla en cada caso (en nuestro caso, <code>sec</code> como departamento secundario y <code>prin</code> para los principales):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">sec</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">CodDepSec</span><span class="p">,</span><span class="w"> </span><span class="n">sec</span><span class="p">.</span><span class="n">NomDep</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NomDepSec</span><span class="p">,</span><span class="w"> </span><span class="n">prin</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">CodDepPrin</span><span class="p">,</span><span class="w"> </span><span class="n">prin</span><span class="p">.</span><span class="n">NomDep</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NomDepPrin</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">prin</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">sec</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">prin</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sec</span><span class="p">.</span><span class="n">CodDepDep</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +-----------+--------------------------+------------+----------------------------+</span>
@@ -3983,7 +4051,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <li>Izquierda: <code>LEFT [OUTER] JOIN</code> – Todos los de la tabla de la izquierda, y de la derecha los relacionados.</li>
 <li>Derecha: <code>RIGHT [OUTER] JOIN</code> – Los de la izquierda los relacionados, y de la derecha todos los datos.</li>
 </ul>
-<p>Veamos con un ejemplo qué datos obtenemos. Primero realizamos un <em>join</em> entre empleados y sus habilidades para obtener los empleados que tienen habilidades (obtenemos 6 registros porque tenemos clientes que tienen más de una habilidad, pero no todos los clientes tienen habilidades):</p>
+<p>Veamos con un ejemplo qué datos obtenemos. Primero realizamos un <em>join</em> entre empleados y sus habilidades para obtener los empleados que tienen habilidades (obtenemos 6 registros porque tenemos empleados que tienen más de una habilidad, pero no todos los empleados tienen habilidades):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
@@ -4129,7 +4197,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- +--------+----------------------+--------+--------+--------+--------+-----------------------------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 9 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>La misma consulta con sólo una consulta externa sería:</p>
+<p>La misma consulta con sólo una composición externa sería:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span><span class="p">;</span>
@@ -4149,7 +4217,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 9 rows in set (0.000 sec)</span>
 </code></pre></div>
 <h4 id="antijoin">Antijoin<a class="headerlink" href="#antijoin" title="Permanent link">&para;</a></h4>
-<p>Se conoce como <em>antijoin</em> los registros obtenidos de una tabla que no se combinan con otra. Es decir, son los registros que no se seleccionan al realizar un <em>inner join</em>, y de ahí el prefijo <em>anti</em>.</p>
+<p>Se conoce como <em>antijoin</em> la operación que obtiene los registros de una tabla que no se combinan con otra. Es decir, son los registros que no se seleccionan al realizar un <em>inner join</em>, y de ahí el prefijo <em>anti</em>.</p>
 <p>Para aprender su uso, vamos a recuperar los empleados que no tienen habilidades:</p>
 <figure style="align: center;">
     <img src="images/06antijoin.png" width="404" title="Antijoin entre empleados y habilidades">
@@ -4216,7 +4284,7 @@ CATEGORIA.nombre = "Electrodomésticos"</sub> CATEGORIA)</code></p>
 <span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">id</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">UNION</span>
 <span class="linenos" data-linenos="4 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t1</span>
-<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">id</span>
+<span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">t2</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">t1</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t2</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
 </code></pre></div>
 <h2 id="operadores-de-conjuntos">Operadores de conjuntos<a class="headerlink" href="#operadores-de-conjuntos" title="Permanent link">&para;</a></h2>
 <p>Los operadores de conjuntos no operan sobre tipos de datos simples, sino sobre los resultados de dos o más consultas, las cuales deben tener la misma estructura, es decir, que la cantidad y los tipos de datos deben ser los mismos.</p>
@@ -4393,13 +4461,13 @@ b) Fueron contratados en 1994.</p>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC607</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr> // 3p) Explica qué recuperan las siguientes consultas (en lenguaje natural, no leyendo la consulta):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">ROUND</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2500000</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">NumHij</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">hijo</span><span class="p">;</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodHab</span><span class="p">,</span><span class="w"> </span><span class="n">DesHab</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">LOWER</span><span class="p">(</span><span class="n">DesHab</span><span class="p">)</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%gestión%&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="3 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodHab</span><span class="p">,</span><span class="w"> </span><span class="n">DesHab</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="k">LOWER</span><span class="p">(</span><span class="n">DesHab</span><span class="p">)</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'%gestión%'</span><span class="p">;</span>
 <span class="linenos" data-linenos="4 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">NumHi</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="linenos" data-linenos="5 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">TIMESTAMPDIFF</span><span class="p">(</span><span class="k">YEAR</span><span class="p">,</span><span class="w"> </span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CURDATE</span><span class="p">())</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">TIMESTAMPDIFF</span><span class="p">(</span><span class="k">YEAR</span><span class="p">,</span><span class="w"> </span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CURDATE</span><span class="p">())</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span>
-<span class="linenos" data-linenos="6 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodCen</span><span class="p">,</span><span class="w"> </span><span class="n">NomCen</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">PobCen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">&quot;Elche&quot;</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">NomCen</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+<span class="linenos" data-linenos="6 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodCen</span><span class="p">,</span><span class="w"> </span><span class="n">NomCen</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">PobCen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"Elche"</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">NomCen</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 <span class="linenos" data-linenos="7 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">PreAnu</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20000000</span><span class="p">;</span>
-<span class="linenos" data-linenos="8 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NumHi</span><span class="p">,</span><span class="w"> </span><span class="ss">&quot;0000&quot;</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
-<span class="linenos" data-linenos="9 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodHab</span><span class="p">,</span><span class="w"> </span><span class="n">DesHab</span><span class="p">,</span><span class="w"> </span><span class="k">CHAR_LENGTH</span><span class="p">(</span><span class="n">DesHab</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodHab</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;A%&#39;</span><span class="p">;</span>
+<span class="linenos" data-linenos="8 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="k">COALESCE</span><span class="p">(</span><span class="n">ExTelEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NumHi</span><span class="p">,</span><span class="w"> </span><span class="ss">"0000"</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<span class="linenos" data-linenos="9 "></span><span class="k">SELECT</span><span class="w"> </span><span class="n">CodHab</span><span class="p">,</span><span class="w"> </span><span class="n">DesHab</span><span class="p">,</span><span class="w"> </span><span class="k">CHAR_LENGTH</span><span class="p">(</span><span class="n">DesHab</span><span class="p">)</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodHab</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'A%'</span><span class="p">;</span>
 </code></pre></div>
 </li>
 </ul>
@@ -4494,7 +4562,7 @@ b) Fueron contratados en 1994.</p>
 <p><a name="PY615"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg></span> <strong>PY615</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han identificado las herramientas y sentencias para realizar consultas.">CE3a</abbr>, <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr> // 3p) A partir del modelo físico creado en la actividad <a href="05ddl.html#PY518">PY518</a> del <a href="05ddl.html#reto-ii-creamos">Reto II - Creamos</a>, en esta actividad nos vamos a centrar en definir una serie de consultas para explotar nuestra base de datos.</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg></span> <strong>PY615</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han identificado las herramientas y sentencias para realizar consultas.">CE3a</abbr>, <abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr> // 3p) A partir del modelo físico creado en la actividad <a href="05dml.html#PY519">PY519</a> del <a href="05dml.html#reto-ii-creamos">Reto II - Creamos</a>, en esta actividad nos vamos a centrar en definir una serie de consultas para explotar nuestra base de datos.</p>
 <p>Para ello, se pide un informe que detalle:</p>
 <ul>
 <li>Definición de 10 consultas que extraigan información, las cuales deben utilizar combinaciones de tablas (tanto internas como externas), filtrado, ordenación y cálculos sencillos.</li>
@@ -4688,7 +4756,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
       <nav class="md-footer__inner md-grid" aria-label="Pie" >
         
           
-          <a href="05ddl.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 5.- Diseño físico: DDL y DML">
+          <a href="05dml.html" class="md-footer__link md-footer__link--prev" aria-label="Anterior: 5.2.- DML">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4698,7 +4766,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
                 Anterior
               </span>
               <div class="md-ellipsis">
-                5.- Diseño físico: DDL y DML
+                5.2.- DML
               </div>
             </div>
           </a>

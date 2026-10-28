@@ -11,6 +11,7 @@ services:
       - MYSQL_PASSWORD=s8a
     volumes:
       - mariabd_data:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d
 
   phpmyadmin:
     image: phpmyadmin

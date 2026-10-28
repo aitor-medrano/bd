@@ -1,0 +1,50 @@
+-- =============================================================
+-- Gimnasio "SeveroFit" - script DDL con errores (AC515)
+-- =============================================================
+DROP DATABASE IF EXISTS gimnasio;
+CREATE DATABASE gimnasio;
+USE gimnasio;
+
+CREATE TABLE INSCRIPCION (
+    socio INT UNSIGNED,
+    actividad CHAR(4),
+    fecha DATE NOT NULL DEFAULT CURRENT_DATE,
+    CONSTRAINT PK_INSCRIPCION PRIMARY KEY (socio, actividad),
+    CONSTRAINT FK_INS_SOC FOREIGN KEY (socio) REFERENCES SOCIO(id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT FK_ACT_MON FOREIGN KEY (actividad) REFERENCES ACTIVIDAD(codigo)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE MONITOR (
+    id INT UNSIGNED AUTO_INCREMENT,
+    dni CHAR(9) NOT NULL,
+    nombre VARCHAR(64) NOT NULL,
+    email VARCHAR(128),
+    fecha_alta DATE DEFAULT CURRENT_DATE,
+    CONSTRAINT UK_MONITOR_DNI UNIQUE (dni)
+);
+
+CREATE TABLE SOCIO (
+    id INT UNSIGNED AUTO_INCREMENT,
+    dni CHAR(9) NOT NULL,
+    nombre VARCHAR(64) NOT NULL,
+    cuota DECIMAL(5,2) NOT NULL DEFAULT 35,
+    tipo ENUM('mensual', 'trimestral', 'anual') NOT NULL DEFAULT 'semanal',
+    CONSTRAINT PK_SOCIO PRIMARY KEY (id),
+    CONSTRAINT CK_SOCIO_CUOTA CHECK (cuota BETWEEN 20 AND 200
+);
+
+CREATE TABLE ACTIVIDAD (
+    codigo CHAR(4),
+    nombre VARCHAR(64) NOT NULL,
+    desc VARCHAR(200),
+    plazas TINYINT UNSIGNED NOT NULL,
+    monitor INT,
+    CONSTRAINT PK_ACTIVIDAD PRIMARY KEY (codigo),
+    CONSTRAINT CK_ACTIVIDAD_PLAZAS CHECK (plazas >= 1 OR plazas <= 30),
+    CONSTRAINT FK_ACT_MON FOREIGN KEY (monitor) REFERENCES MONITOR(id)
+        ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+ALTER TABLE MONITOR CONSTRAINT UK_MONITOR_EMAIL UNIQUE (email);
