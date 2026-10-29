@@ -2606,37 +2606,34 @@ Es más eficiente y seguro que ejecutar varias operaciones independientes.
 <p><a name="AC515"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC515</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr>, <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p + 3p) El gimnasio <em>SeveroFit</em> nos ha pasado dos <em>scripts</em>, uno para crear su base de datos (<a href="resources/ac515.sql"><code>ac515.sql</code></a>) y otro para cargar sus datos (<a href="resources/ac515-datos.sql"><code>ac515-datos.sql</code></a>), pero quien los escribió no llegó a probarlos. Tu tarea es depurarlos hasta que funcionen y cumplan todos los requisitos del gimnasio:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC515</strong>. (<abbr title="Crea bases de datos definiendo su estructura y las características de sus elementos según el modelo relacional">RABD.2</abbr>, <abbr title="Modifica la información almacenada en la base de datos utilizando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.4</abbr> // <abbr title="Se han creado las tablas y las relaciones entre ellas.">CE2b</abbr>, <abbr title="Se han implantado las restricciones reflejadas en el diseño lógico.">CE2e</abbr>, <abbr title="Se han utilizado asistentes, herramientas gráficas y los lenguajes de definición y control de datos.">CE2h</abbr>, <abbr title="Se han insertado, borrado y actualizado datos en las tablas.">CE4b</abbr>, <abbr title="Se han diseñado guiones de sentencias para llevar a cabo tareas complejas.">CE4d</abbr>, <abbr title="Se han adoptado medidas para mantener la integridad y consistencia de la información.">CE4h</abbr> // 3p + 3p) El gimnasio <em>SeveroFit</em> nos ha pasado dos <em>scripts</em>, uno para crear su base de datos (<a href="resources/ac515.sql"><code>ac515.sql</code></a>) y otro para cargar sus datos (<a href="resources/ac515-datos.sql"><code>ac515-datos.sql</code></a>), pero quien los escribió no llegó a probarlos.</p>
+<p>Nos han pedido depurarlos hasta que funcionen y cumplan todos los requisitos del gimnasio:</p>
 <ul>
-<li><strong>Monitores</strong>: se identifican mediante un código autonumérico. El DNI y el nombre son obligatorios, y no puede haber dos monitores con el mismo DNI ni con el mismo email (que es opcional). Si no se indica la fecha de alta, será la fecha actual.</li>
-<li><strong>Socios</strong>: se identifican mediante un código autonumérico. El DNI y el nombre son obligatorios, y no puede haber dos socios con el mismo DNI. La cuota debe estar comprendida entre 20 y 200 € (35 € por defecto) y el tipo de abono puede ser <code>mensual</code>, <code>trimestral</code> o <code>anual</code> (por defecto, <code>mensual</code>).</li>
-<li><strong>Actividades</strong>: se identifican mediante un código de 4 caracteres. El nombre es obligatorio y la descripción, opcional. Cada actividad tiene entre 1 y 30 plazas y puede estar impartida por un monitor. Si se elimina un monitor, sus actividades se quedan sin monitor.</li>
-<li><strong>Inscripciones</strong>: un socio solo puede inscribirse una vez en cada actividad, y se guarda la fecha de inscripción (por defecto, la actual). Si un socio se da de baja, se eliminan sus inscripciones, pero <strong>no se puede eliminar una actividad que tenga socios inscritos</strong>.</li>
+<li>Monitores: se identifican mediante un código autonumérico. El DNI y el nombre son obligatorios, y no puede haber dos monitores con el mismo DNI ni con el mismo email (que es opcional). Si no se indica la fecha de alta, será la fecha actual.</li>
+<li>Socios: se identifican mediante un código autonumérico. El DNI y el nombre son obligatorios, y no puede haber dos socios con el mismo DNI. La cuota debe estar comprendida entre 20 y 200 € (35 € por defecto) y el tipo de abono puede ser <code>mensual</code>, <code>trimestral</code> o <code>anual</code> (por defecto, <code>mensual</code>).</li>
+<li>Actividades: se identifican mediante un código de 4 caracteres. El nombre es obligatorio y la descripción, opcional. Cada actividad tiene entre 1 y 30 plazas y puede estar impartida por un monitor. Si se elimina un monitor, sus actividades se quedan sin monitor.</li>
+<li>Inscripciones: un socio solo puede inscribirse una vez en cada actividad, y se guarda la fecha de inscripción (por defecto, la actual). Si un socio se da de baja, se eliminan sus inscripciones, pero no se puede eliminar una actividad que tenga socios inscritos.</li>
 </ul>
 <p>El cliente <code>mariadb</code> se detiene en el primer error e indica la línea en la que se produce, por lo que podrás ir corrigiéndolos de uno en uno. Por cada error, anota en una tabla: el número de línea, el código y mensaje de error, la causa y la corrección aplicada.</p>
-<p><strong>Parte 1 - Estructura (DDL)</strong></p>
+<p>Se pide:</p>
 <ol>
 <li>
-<p>Ejecuta el <em>script</em> de creación y corrige sus <strong>8 errores</strong>:</p>
+<p>Ejecuta el <em>script</em> DDL y corrige sus errores, tanto de sintaxis como de semántica, hasta que se ejecute sin errores:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-i<span class="w"> </span>mdb<span class="w"> </span>mariadb<span class="w"> </span>-u<span class="w"> </span>s8a<span class="w"> </span>-ps8a<span class="w"> </span>&lt;<span class="w"> </span>ac515.sql
 </code></pre></div>
 </li>
 <li>
-<p>Una vez se ejecute sin errores, revisa que cumple <strong>todos</strong> los requisitos: hay <strong>3 errores más</strong> que no provocan ningún mensaje, pero que permiten guardar datos incorrectos. Para cada uno, escribe una sentencia que demuestre el problema, corrígelo y comprueba que, tras la corrección, el SGBD rechaza la operación.</p>
+<p>Una vez se ejecute sin errores, revisa que cumple todos los requisitos: hay 3 errores más que no provocan ningún mensaje, pero que permiten guardar datos incorrectos. Para cada uno, escribe una sentencia que demuestre el problema, corrígelo y comprueba que, tras la corrección, el SGBD rechaza la operación.</p>
 </li>
-<li>Conéctate con <em>DBeaver</em> y adjunta una captura del diagrama entidad-relación de la base de datos.</li>
-</ol>
-<p><strong>Parte 2 - Carga de datos (DML)</strong></p>
-<ol start="4">
 <li>
-<p>Tras volver a crear la base de datos con tu <em>script</em> corregido, ejecuta el <em>script</em> de datos y corrige sus errores. Cuando un dato incumpla un requisito, corrige el dato, no la estructura:</p>
+<p>Conéctate con la herramienta gráfica que desees y adjunta una captura del modelo físico de la base de datos.</p>
+</li>
+<li>
+<p>A continuación, ejecuta el <em>script</em> de datos y corrige sus errores. Cuando un dato incumpla un requisito, corrige el dato, no la estructura:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-i<span class="w"> </span>mdb<span class="w"> </span>mariadb<span class="w"> </span>-u<span class="w"> </span>s8a<span class="w"> </span>-ps8a<span class="w"> </span>&lt;<span class="w"> </span>ac515-datos.sql
 </code></pre></div>
-<p>El <em>script</em> contiene <strong>10 errores</strong>. Si con tu base de datos aparecen menos, es que tu DDL todavía admite datos incorrectos: vuelve a la parte 1.</p>
+<p>El <em>script</em> contiene 10 errores. Si con tu base de datos aparecen menos, es que tu DDL todavía admite datos incorrectos: vuelve a la parte 1.</p>
 </li>
-</ol>
-<p><strong>Parte 3 - Operaciones (DML)</strong></p>
-<ol start="5">
 <li>
 <p>Escribe las sentencias SQL para realizar las siguientes operaciones y responde a las preguntas:</p>
 <ol>
@@ -2650,7 +2647,7 @@ Es más eficiente y seguro que ejecutar varias operaciones independientes.
 </ol>
 </li>
 </ol>
-<p>Debes entregar en <em>Aules</em> los dos <em>scripts</em> corregidos, la tabla de errores, las sentencias de prueba de la parte 1 con su resultado, la captura del diagrama y las sentencias y respuestas de la parte 3.</p>
+<p>Debes entregar en <em>Aules</em> los dos <em>scripts</em> corregidos, la tabla de errores, las sentencias de prueba del apartado 1 con su resultado, la captura del diagrama y las sentencias y respuestas de la parte 4.</p>
 <div class="admonition tip">
 <p class="admonition-title">Mismo error, distinta causa</p>
 <p>Fíjate bien en los mensajes: en el <em>script</em> de creación, dos de los errores producen exactamente el mismo mensaje, pero su causa es diferente.</p>
