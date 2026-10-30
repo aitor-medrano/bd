@@ -2183,7 +2183,7 @@
 </ol>
 </div>
 <h3 id="programacion-de-aula-11h">Programación de Aula (11h)<a class="headerlink" href="#programacion-de-aula-11h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la sexta, siendo la primera del bloque de consultas, se imparte al inicio de la segunda evaluación, a principios de diciembre, con una duración estimada de 11 sesiones lectivas:</p>
+<p>Esta unidad es la sexta, siendo la primera del bloque de consultas. Se imparte al inicio de la segunda evaluación, a principios de diciembre, con una duración estimada de 11 sesiones lectivas:</p>
 <table>
 <thead>
 <tr>
@@ -2244,7 +2244,7 @@
 </tr>
 <tr>
 <td>9</td>
-<td>Detección errores</td>
+<td>Detección de errores</td>
 <td><a href="#AC612">AC612</a></td>
 <td><abbr title="Se han realizado consultas simples sobre una tabla.">CE3b</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr></td>
 </tr>
@@ -2313,7 +2313,7 @@
 <tr>
 <td><strong>Join natural</strong></td>
 <td>Relación1 <strong>⨝</strong> Relación2</td>
-<td>Une dos relaciones en función de un atributo común de forma implícita.</td>
+<td>Une dos relaciones en función de todos los atributos con el mismo nombre.</td>
 </tr>
 <tr>
 <td><strong>Join equi</strong></td>
@@ -2514,8 +2514,8 @@
 <table>
 <thead>
 <tr>
-<th>id</th>
 <th>nombre</th>
+<th>precio</th>
 </tr>
 </thead>
 <tbody>
@@ -2752,7 +2752,7 @@
 <p>Join natural <strong>⨝</strong></p>
 <hr />
 <p><code>PRODUCTO ⨝ CATEGORIA</code>  </p>
-<p>Combina las tablas de <strong>PRODUCTO</strong> y <strong>CATEGORIA</strong> basándose en los atributos que tengan comunes, en este caso, el <code>id</code> y el <code>nombre</code>.</p>
+<p>Combina las tablas de <strong>PRODUCTO</strong> y <strong>CATEGORIA</strong> basándose en los atributos que tengan en común, en este caso, el <code>id</code> y el <code>nombre</code>.</p>
 <table>
 <thead>
 <tr>
@@ -3113,8 +3113,8 @@
 <div class="admonition tip">
 <p class="admonition-title">El operador CASE</p>
 <p>El operador <a href="https://mariadb.com/kb/en/case-operator/">CASE</a> permite agregar a la proyección la estructura lógica condicional de <code>if/else</code>. Su sintaxis es la siguiente:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CASE</span><span class="w"> </span><span class="n">campo</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">valor1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">[</span><span class="k">WHEN</span><span class="w"> </span><span class="p">[</span><span class="n">valor2</span><span class="p">]</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[</span><span class="k">ELSE</span><span class="w"> </span><span class="n">resultado</span><span class="p">]</span><span class="w"> </span><span class="k">END</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">condición</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">[</span><span class="k">WHEN</span><span class="w"> </span><span class="p">[</span><span class="n">condición</span><span class="p">]</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[</span><span class="k">ELSE</span><span class="w"> </span><span class="n">resultado</span><span class="p">]</span><span class="w"> </span><span class="k">END</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CASE</span><span class="w"> </span><span class="n">campo</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">valor1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">[</span><span class="k">WHEN</span><span class="w"> </span><span class="n">valor2</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[</span><span class="k">ELSE</span><span class="w"> </span><span class="n">resultado</span><span class="p">]</span><span class="w"> </span><span class="k">END</span>
+<span class="linenos" data-linenos="2 "></span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">condición</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">[</span><span class="k">WHEN</span><span class="w"> </span><span class="n">condición</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[</span><span class="k">ELSE</span><span class="w"> </span><span class="n">resultado</span><span class="p">]</span><span class="w"> </span><span class="k">END</span>
 </code></pre></div>
 <p>Por ejemplo, a la hora de mostrar los empleados, si queremos que cuando el número de teléfono sea nulo muestre <code>0000</code> haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">'0000'</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NuevaExt</span><span class="w"> </span>
@@ -3153,7 +3153,7 @@
 </code></pre></div>
 </div>
 <h3 id="funciones">Funciones<a class="headerlink" href="#funciones" title="Permanent link">&para;</a></h3>
-<p>A la hora de recuperar o filtrar datos, es muy común utilizar <a href="https://mariadb.com/kb/en/built-in-functions/">funciones</a> que facilitan el trabajo con cadenas, cálculos numéricos, etc.. Como ya has estudiado en el módulo profesional de <em>Programación</em>, las funciones reciben uno o más datos de entrada, también conocidos como parámetros (aunque existen algunas funciones que no reciben ninguno), y devuelven un resultado en base a los datos de entrada.</p>
+<p>A la hora de recuperar o filtrar datos, es muy común utilizar <a href="https://mariadb.com/kb/en/built-in-functions/">funciones</a> que facilitan el trabajo con cadenas, cálculos numéricos, etc. Como ya has estudiado en el módulo profesional de <em>Programación</em>, las funciones reciben uno o más datos de entrada, también conocidos como parámetros (aunque existen algunas funciones que no reciben ninguno), y devuelven un resultado en base a los datos de entrada.</p>
 <p>Cabe destacar que las funciones no están completamente estandarizadas entre los diferentes SGBD, así pues, conviene revisar la sintaxis exacta en el caso de migrar de un sistema a otro.</p>
 <h4 id="funciones-agregadas">Funciones agregadas<a class="headerlink" href="#funciones-agregadas" title="Permanent link">&para;</a></h4>
 <p>Se emplean para realizar cálculos sobre el total de elementos de la consulta (o agrupación). Tras el <code>SELECT</code> indicaremos la función (o funciones) a realizar sobre el total de elementos devueltos por la consulta.</p>
@@ -3228,7 +3228,7 @@
 <span class="linenos" data-linenos="34 "></span><span class="c1">-- +-------------+----------------+</span>
 <span class="linenos" data-linenos="35 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 </code></pre></div>
-<p>En la próxima unidad estudiaremos cómo podemos <a href="07sql-group.html#agregaciones">agregar datos</a> por algunas columnas y realizar cálculos sobre ellas, lo que nos permitirá obtener información del tipo <em>"Cantidad de empleados de cada departamento"</em>, <em>"Salario medio por centro de los empleados"</em>, etc...</p>
+<p>En la próxima unidad estudiaremos cómo podemos <a href="07sql-group.html#agregaciones">agregar datos</a> por algunas columnas y realizar cálculos sobre ellas, lo que nos permitirá obtener información del tipo <em>"Cantidad de empleados de cada departamento"</em>, <em>"Salario medio por centro de los empleados"</em>, etc.</p>
 <h4 id="cadenas">Cadenas<a class="headerlink" href="#cadenas" title="Permanent link">&para;</a></h4>
 <p>Mediante <a href="https://mariadb.com/kb/en/string-functions/">funciones de cadenas de texto</a> podemos realizar múltiples operaciones:</p>
 <table>
@@ -3327,11 +3327,11 @@
 <span class="linenos" data-linenos=" 8 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 <span class="linenos" data-linenos=" 9 "></span>
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- días que faltan hasta navidad</span>
-<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="n">DATEDIFF</span><span class="p">(</span><span class="n">NOW</span><span class="p">(),</span><span class="w"> </span><span class="s1">'2024-12-25'</span><span class="p">);</span>
+<span class="hll"><span class="linenos" data-linenos="11 "></span><span class="k">select</span><span class="w"> </span><span class="n">DATEDIFF</span><span class="p">(</span><span class="s1">'2024-12-25'</span><span class="p">,</span><span class="w"> </span><span class="n">NOW</span><span class="p">());</span>
 </span><span class="linenos" data-linenos="12 "></span><span class="c1">-- +-------------------------------+</span>
-<span class="linenos" data-linenos="13 "></span><span class="c1">-- | DATEDIFF(NOW(), '2024-12-25') |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- | DATEDIFF('2024-12-25', NOW()) |</span>
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- +-------------------------------+</span>
-<span class="linenos" data-linenos="15 "></span><span class="c1">-- |                           -38 |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- |                            38 |</span>
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- +-------------------------------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 <span class="linenos" data-linenos="18 "></span>
@@ -3478,7 +3478,7 @@
 <li><a href="https://mariadb.com/kb/en/round/"><code>ROUND(num)</code></a> / <a href="https://mariadb.com/kb/en/floor/"><code>FLOOR(num)</code></a> / <a href="https://mariadb.com/kb/en/ceiling/"><code>CEILING(num)</code></a>: redondea un número, por exceso o por defecto</li>
 <li><a href="https://mariadb.com/kb/en/truncate/"><code>TRUNCATE(num,d)</code></a>: trunca <code>num</code> con <code>d</code> decimales</li>
 </ul>
-<p>Veamos unos ejemplos de redondeo de cantidades:ºº</p>
+<p>Veamos unos ejemplos de redondeo de cantidades:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">NumHi</span><span class="p">),</span><span class="w"> </span><span class="n">ROUND</span><span class="p">(</span><span class="k">avg</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)),</span><span class="w"> </span><span class="n">FLOOR</span><span class="p">(</span><span class="k">avg</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)),</span><span class="w"> </span><span class="n">CEILING</span><span class="p">(</span><span class="k">avg</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)),</span><span class="w"> </span><span class="k">TRUNCATE</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">NumHi</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1">-- +------------+-------------------+-------------------+---------------------+-------------------------+</span>
 <span class="linenos" data-linenos="3 "></span><span class="c1">-- | AVG(NumHi) | ROUND(avg(NumHi)) | FLOOR(avg(NumHi)) | CEILING(avg(NumHi)) | truncate(avg(NumHi), 1) |</span>
@@ -3590,7 +3590,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +--------+---------------------------+</span>
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- 4 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>Por último, podemos expresar lo mismo mediante <a href="https://mariadb.com/kb/en/limit/"><code>LIMIT cantidad OFFSET inicio</code></a>, sólo que cambiamos el orden de los parámetros:</p>
+<p>Por último, podemos expresar lo mismo mediante <a href="https://mariadb.com/kb/en/limit/"><code>LIMIT cantidad OFFSET inicio</code></a>, solo que cambiamos el orden de los parámetros:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+---------------------------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | NomEmp                    |</span>
@@ -3605,7 +3605,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <h4 id="empates">Empates<a class="headerlink" href="#empates" title="Permanent link">&para;</a></h4>
 <p>¿Qué sucede si al ordenar hay varios registros que empatan en la primera/última posición? Por ejemplo, si ordenamos por salario y los dos últimos empleados tienen el mismo salario, ¿cuál de los dos se mostrará?</p>
 <p>Es muy común realizar consultas donde queremos recuperar el mejor/peor elemento que cumple un criterio, y en ocasiones, hay empates y la técnica de ordenar y recuperar un elemento mediante <code>ORDER BY campo LIMIT 1</code> no funciona.</p>
-<p>Para resolver estos casos, <em>MariaDB</em> soporta la cláusula <a href="https://mariadb.com/docs/server/reference/sql-statements/data-manipulation/selecting-data/select-offset-fetch"><code>FETCH FIRST n ROWS WITH TIES</code></a> que permite recuperar todas las filas que empatan en una posición. <em>PostgreSQL</em> no soporta esta cláusula, pero se puede simular mediante una subconsulta o utilizando <code>DISTINCT ON</code>.</p>
+<p>Para resolver estos casos, el estándar SQL define la cláusula <a href="https://mariadb.com/docs/server/reference/sql-statements/data-manipulation/selecting-data/select-offset-fetch"><code>FETCH FIRST n ROWS WITH TIES</code></a>, que recupera además todas las filas que empatan con la última. <em>MariaDB</em> la soporta desde la versión 10.6 y <a href="https://www.postgresql.org/docs/13/sql-select.html#SQL-LIMIT"><em>PostgreSQL</em></a> desde la 13.</p>
 <p>Por ejemplo, para recuperar los empleados con salarios más bajos, haríamos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Recuperar los empleados con el salario más bajo</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
@@ -3633,7 +3633,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 </code></pre></div>
 <h3 id="seleccion">Selección<a class="headerlink" href="#seleccion" title="Permanent link">&para;</a></h3>
 <p>La selección en SQL permite filtrar filas de una tabla en función de condiciones específicas. Esto se logra mediante la cláusula <code>WHERE</code>, que define los criterios de filtrado.</p>
-<p>Para filtrar los datos y realizar una selección de tuplas, podemos emplear tanto <a href="https://mariadb.com/kb/en/function-and-operator-reference/">funciones como operadores</a> dentro del <code>WHERE</code>. Para realizar las comparaciones, se expresan mediante <code>expresion1 operador expresion2</code>, pudiendo utilizar los  operadores relacionales <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>!=</code>, así como los operadores lógicos como <code>and</code>, <code>or</code>, <code>not</code>, etc...</p>
+<p>Para filtrar los datos y realizar una selección de tuplas, podemos emplear tanto <a href="https://mariadb.com/kb/en/function-and-operator-reference/">funciones como operadores</a> dentro del <code>WHERE</code>. Para realizar las comparaciones, se expresan mediante <code>expresion1 operador expresion2</code>, pudiendo utilizar los  operadores relacionales <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>!=</code>, así como los operadores lógicos como <code>and</code>, <code>or</code>, <code>not</code>, etc.</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">'DIRGE'</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +-----------------------------+--------+------------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | NomEmp                      | CodDep | FecNaEmp   |</span>
@@ -3829,14 +3829,13 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <li><code>NOT</code>.</li>
 <li><code>AND</code>.</li>
 <li><code>OR</code>.</li>
-<li></li>
 </ul>
+</div>
 <div class="admonition question">
 <p class="admonition-title">Autoevaluación</p>
-<p>¿Qué devuelve la siguiente consulta<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>?</p>
+<p>¿Qué devuelve la siguiente consulta? <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">'PROZS'</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">'VENZS'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5000000</span><span class="p">;</span>
 </code></pre></div>
-</div>
 </div>
 <h2 id="uniendo-tablas">Uniendo Tablas<a class="headerlink" href="#uniendo-tablas" title="Permanent link">&para;</a></h2>
 <p>Hasta ahora nos hemos dedicado a realizar consultas sobre uno o más atributos de una determinada tabla. El modelo relacional se basa en la relación de una o más tablas, y por lo tanto, necesitamos de un mecanismo que nos permita obtener información de tablas que están relacionadas.</p>
@@ -3917,8 +3916,8 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">USING</span><span class="w"> </span><span class="p">(</span><span class="n">CodDep</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="natural-join">Natural join<a class="headerlink" href="#natural-join" title="Permanent link">&para;</a></h4>
-<p>Forma parte del estándar SQL desde SQL:1999, y se trata de una especialización de <code>INNER JOIN</code>, ya que simplifica la unión entre dos tablas al basarse automáticamente en las columnas con nombres coincidentes en ambas tablas.</p>
-<p>La tabla resultante contiene sólo una columna por cada par de columnas con el mismo nombre.</p>
+<p>Forma parte del estándar SQL desde SQL-92, y se trata de una especialización de <code>INNER JOIN</code>, ya que simplifica la unión entre dos tablas al basarse automáticamente en las columnas con nombres coincidentes en ambas tablas.</p>
+<p>La tabla resultante contiene solo una columna por cada par de columnas con el mismo nombre.</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomDep</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">NATURAL</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">departamento</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +-----------------------------+----------------------------+</span>
@@ -4111,7 +4110,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 </span><span class="linenos" data-linenos="18 "></span><span class="c1">-- +--------+--------+--------+--------+-----------------------------+</span>
 <span class="linenos" data-linenos="19 "></span><span class="c1">-- 12 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>¿Y si tenemos tres tablas? Vamos a unir las habilidades de los empleados con todas las existentes (seguimos recuperando los mismos 6 registros, sólo que ahora tenemos acceso a los nombres de las habilidades):</p>
+<p>¿Y si tenemos tres tablas? Vamos a unir las habilidades de los empleados con todas las existentes (seguimos recuperando los mismos 6 registros, solo que ahora tenemos acceso a los nombres de las habilidades):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span><span class="p">;</span>
@@ -4143,7 +4142,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <span class="linenos" data-linenos="13 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- 6 rows in set (0.001 sec)</span>
 </code></pre></div>
-<p>¿Qué ha pasado? ¿Por qué sólo 6 registros? Al realizar el segundo <em>join</em>, ha eliminado aquellos registros que tienen la habilidad nula.</p>
+<p>¿Qué ha pasado? ¿Por qué solo 6 registros? Al realizar el segundo <em>join</em>, ha eliminado aquellos registros que tienen la habilidad nula.</p>
 <p>Pero ¿cómo lo solucionamos? Primero vamos a unir los códigos y habilidades, y luego hacemos el <em>join</em> por la derecha con todos los empleados:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span>
@@ -4185,7 +4184,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- +--------+----------------------+--------+--------+--------+--------+-----------------------------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 9 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>La misma consulta con sólo una composición externa sería:</p>
+<p>La misma consulta con solo una composición externa sería:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span><span class="p">;</span>
@@ -4390,7 +4389,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <li>Lista el nombre de los empleados, así como un campo para su nombre y otro para sus apellidos (puedes utilizar las funciones <a href="https://mariadb.com/kb/en/locate/"><code>LOCATE(subcadena, cadena)</code></a> y <a href="https://mariadb.com/kb/en/substring/"><code>SUBSTRING(cadena, posición [,longitud])</code></a>)</li>
 <li>Lista los nombres, el salario y el salario incrementado un 12%, redondeando el salario incrementado.</li>
 <li>Lista los nombres, el salario y el salario incrementado un 12%, truncando el salario incrementado con un único decimal.</li>
-<li>Muestra el nombre de los empleados, la cantidad de hijos que tiene, y el tipo de familia, mostrando <code>Sin familia</code> si no tiene hijos, <code>Ordinaria</code> si sólo tiene un hijo, <code>Semi-numerosa</code> si tiene 2 hijos y <code>Numerosa</code> si tiene 3 o más hijos.</li>
+<li>Muestra el nombre de los empleados, la cantidad de hijos que tiene, y el tipo de familia, mostrando <code>Sin familia</code> si no tiene hijos, <code>Ordinaria</code> si solo tiene un hijo, <code>Semi-numerosa</code> si tiene 2 hijos y <code>Numerosa</code> si tiene 3 o más hijos.</li>
 </ol>
 </li>
 </ul>
@@ -4502,7 +4501,7 @@ b) Fueron contratados en 1994.</p>
 <ol>
 <li>Muestra un listado de todas las habilidades, y si tienen, el código del empleado y el nivel de su habilidad.</li>
 <li>Muestra un listado de las habilidades que no tiene ningún empleado.</li>
-<li>Comprueba si los empleados que no tienen hijos (<code>empleado.NumHi</code>) coinciden con los empleados no tienen hijos relacionados (tabla <code>hijo</code>).</li>
+<li>Comprueba si los empleados que no tienen hijos (<code>empleado.NumHi</code>) coinciden con los empleados que no tienen hijos relacionados (tabla <code>hijo</code>).</li>
 <li>Obtén el nombre del empleado y el nombre del hijo, si tuviese, para todos los empleados.</li>
 <li>Mostrar un listado con todos los departamentos junto con los nombres de los departamentos de los cuales dependen (propiedad <code>CodDepDep</code>) (en el caso que dependan de alguno).</li>
 <li>Devuelve un listado de los empleados que no son directivos (usando <em>joins</em>) de departamentos.</li>
@@ -4628,10 +4627,10 @@ b) Fueron contratados en 1994.</p>
 <p>Se utilizará una rúbrica para su evaluación en base a la siguiente lista de cotejo:</p>
 <ul>
 <li>Limpieza y calidad de las consultas.</li>
-<li>Variedad de consultas, desde consultas sencilla a más complejas.</li>
+<li>Variedad de consultas, desde consultas sencillas a más complejas.</li>
 <li>Documentación de las consultas.</li>
 <li>El informe entregado no contiene faltas de ortografía.</li>
-<li>El informe entregado tiene un formato adecuado (portada, apartados, autores, etc...).</li>
+<li>El informe entregado tiene un formato adecuado (portada, apartados, autores, etc.).</li>
 <li>El informe debe indicar cómo se han repartido las tareas y qué ha realizado cada alumno/a.</li>
 </ul>
 </li>
