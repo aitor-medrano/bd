@@ -12682,7 +12682,8 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </tbody>
 </table>
 <h2 id="06sql-algebra-relacional">Álgebra Relacional<a class="headerlink" href="#06sql-algebra-relacional" title="Permanent link">&para;</a></h2>
-<p>El álgebra relacional es un lenguaje formal utilizado para realizar consultas y operaciones sobre bases de datos relacionales. Fue propuesto por <em>Edgar F. Codd</em> en 1970 como parte de su trabajo en la teoría de bases de datos relacionales. En lugar de ser un lenguaje de programación como SQL, es un conjunto de operaciones matemáticas que permiten manipular conjuntos de datos (relaciones o tablas) de una manera lógica y estructurada.</p>
+<p>El álgebra relacional es un lenguaje formal utilizado para realizar consultas y operaciones sobre bases de datos relacionales. Fue propuesto por <em>Edgar F. Codd</em> en 1970 como parte de su trabajo en la teoría de bases de datos relacionales. </p>
+<p>A diferencia de SQL, que es un lenguaje <strong>declarativo</strong> (indicamos <em>qué</em> datos queremos), el álgebra relacional es un lenguaje <strong>procedimental</strong>: un conjunto de operaciones matemáticas sobre relaciones (tablas) en el que indicamos <em>cómo</em> obtener el resultado y en qué orden aplicar cada operación.</p>
 <h3 id="06sql-operaciones">Operaciones<a class="headerlink" href="#06sql-operaciones" title="Permanent link">&para;</a></h3>
 <p>Las operaciones que podemos realizar son:</p>
 <table>
@@ -13204,6 +13205,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <th>PRODUCTO.nombre</th>
 <th>precio</th>
 <th>categoria_id</th>
+<th>CATEGORIA.id</th>
 <th>CATEGORIA.nombre</th>
 </tr>
 </thead>
@@ -13213,12 +13215,14 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <td>Televisor</td>
 <td>500</td>
 <td>1</td>
+<td>1</td>
 <td>Electrónica</td>
 </tr>
 <tr>
 <td>2</td>
 <td>Laptop</td>
 <td>1200</td>
+<td>2</td>
 <td>2</td>
 <td>Informática</td>
 </tr>
@@ -13227,6 +13231,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <td>Smartphone</td>
 <td>800</td>
 <td>2</td>
+<td>2</td>
 <td>Informática</td>
 </tr>
 <tr>
@@ -13234,12 +13239,14 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <td>Lavadora</td>
 <td>400</td>
 <td>3</td>
+<td>3</td>
 <td>Electrodomésticos</td>
 </tr>
 <tr>
 <td>5</td>
 <td>Tostadora</td>
 <td>50</td>
+<td>3</td>
 <td>3</td>
 <td>Electrodomésticos</td>
 </tr>
@@ -13256,11 +13263,11 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </li>
 <li>
 <p>Seleccionar los productos cuyo precio sea menor o igual a 500</p>
-<p><code>𝜎<sub>precio ≤ 500</sub>(PRODUCTO)</code></p>
+<p><code>σ<sub>precio ≤ 500</sub>(PRODUCTO)</code></p>
 </li>
 <li>
 <p>Nombre y precio de los productos cuyo precio sea superior a 300.</p>
-<p><code>π<sub>nombre, precio</sub>(𝜎<sub>precio &gt; 300</sub>(PRODUCTO))</code></p>
+<p><code>π<sub>nombre, precio</sub>(σ<sub>precio &gt; 300</sub>(PRODUCTO))</code></p>
 </li>
 <li>
 <p>Nombre de los productos de la categoría <code>Electrodomésticos</code> (primero el <em>join</em> y luego selección)</p>
@@ -13268,7 +13275,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </li>
 <li>
 <p>Nombre de los productos de la categoría <code>Electrodomésticos</code> (primero la selección y luego el <em>join</em>)</p>
-<p><code>π<sub>PRODUCTO.nombre</sub>(PRODUCTO ⨝<sub>PRODUCTO.categoria_id = CATEGORIA.id</sub> (𝜎<sub>nombre = "Electrodomésticos"</sub>(CATEGORIA)))</code></p>
+<p><code>π<sub>PRODUCTO.nombre</sub>(PRODUCTO ⨝<sub>PRODUCTO.categoria_id = CATEGORIA.id</sub> (σ<sub>nombre = "Electrodomésticos"</sub>(CATEGORIA)))</code></p>
 </li>
 </ol>
 <p>Estas operaciones forman la base teórica de cómo las bases de datos relacionales manipulan los datos y son fundamentales para comprender el funcionamiento de lenguajes como SQL.</p>
@@ -13289,7 +13296,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>A continuación, nos conectamos mediante el cliente que nos sintamos más cómodo. Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>mariadb<span class="w"> </span>-u<span class="w"> </span>s8a<span class="w"> </span>-p<span class="w"> </span>empresa<span class="p">;</span>
 </code></pre></div>
-<p>Recuerda que, si quieres saber la estructura de una tabla, podemos utilizar la sentencia <code>DESCRIBE</code>/ <code>DESC</code>:</p>
+<p>Recuerda que, si quieres conocer la estructura de una tabla, podemos utilizar la sentencia <code>DESCRIBE</code> / <code>DESC</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">DESCRIBE</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +----------+---------------+------+-----+---------+----------------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | Field    | Type          | Null | Key | Default | Extra          |</span>
@@ -13314,7 +13321,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>A continuación, nos conectamos mediante el cliente que nos sintamos más cómodo. Por ejemplo:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>psql<span class="w"> </span>-U<span class="w"> </span>s8a<span class="w"> </span>empresa<span class="p">;</span>
 </code></pre></div>
-<p>Recuerda que, si quieres saber la estructura de una tabla, podemos utilizar el metacomando <code>\d</code>:</p>
+<p>Recuerda que, si quieres conocer la estructura de una tabla, podemos utilizar el metacomando <code>\d</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="err">\</span><span class="n">d</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">--                                        Table "public.empleado"</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">--   Column  |         Type          | Collation | Nullable |                  Default</span>
@@ -13351,8 +13358,8 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="n">condición</span><span class="p">]</span>
 <span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="p">[</span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">col1</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">col2</span><span class="p">]</span><span class="w"> </span><span class="p">...]</span>
 <span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="p">[</span><span class="k">HAVING</span><span class="w"> </span><span class="n">predicado</span><span class="w"> </span><span class="n">grupo</span><span class="p">]</span>
-<span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="p">[</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">col</span><span class="o">-</span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="n">pos</span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">-</span><span class="n">m</span><span class="o">|</span><span class="w"> </span><span class="n">pos</span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="n">DES</span><span class="p">]</span><span class="err">…</span><span class="p">]</span>
-<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="p">[</span><span class="k">LIMIT</span><span class="w"> </span><span class="err">{</span><span class="p">[</span><span class="k">offset</span><span class="p">,]</span><span class="w"> </span><span class="k">row_count</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">row_count</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="k">offset</span><span class="err">}</span><span class="p">];</span>
+<span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="p">[</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">col</span><span class="o">-</span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="n">pos</span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">-</span><span class="n">m</span><span class="o">|</span><span class="w"> </span><span class="n">pos</span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">]</span><span class="err">…</span><span class="p">]</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="p">[</span><span class="k">LIMIT</span><span class="w"> </span><span class="err">{</span><span class="p">[</span><span class="n">desplazamiento</span><span class="p">,]</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="n">desplazamiento</span><span class="err">}</span><span class="p">];</span><span class="w">  </span><span class="c1">-- PostgreSQL solo admite LIMIT n OFFSET m</span>
 </code></pre></div>
 <p>En toda consulta siempre deberemos indicar qué datos queremos recuperar y de dónde lo haremos. Tras ejecutar una consulta obtendremos una tabla de datos, que puede tener una o varias columnas y ninguna, una o varias filas.</p>
 <div class="admonition tip">
@@ -13434,7 +13441,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="9 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
 </code></pre></div>
 <h4 id="06sql-duplicados">Duplicados<a class="headerlink" href="#06sql-duplicados" title="Permanent link">&para;</a></h4>
-<p>Si realizamos la siguiente consulta sobre la tabla <code>empleado</code>, obtendremos todos los códigos de departamento de los empleados. Como podéis observar, aparecen repetidos, porque obtenemos una fila por empleado existente en la tabla:</p>
+<p>Si realizamos la siguiente consulta sobre la tabla <code>empleado</code>, obtendremos todos los códigos de departamento de los empleados. Como podemos observar, aparecen repetidos, porque obtenemos una fila por empleado existente en la tabla:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodDep |</span>
@@ -13507,6 +13514,10 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="18 "></span><span class="c1">-- +-----------------------------+------------+----------------------+---------+</span>
 <span class="linenos" data-linenos="19 "></span><span class="c1">-- 10 rows in set (0.001 sec)</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Variables en la misma consulta</p>
+<p><em>MariaDB</em> no garantiza el orden en el que se evalúan las expresiones de un <code>SELECT</code>, por lo que asignar y leer una variable en la misma sentencia puede producir resultados inesperados (en <em>MySQL</em> 8 este uso está marcado como obsoleto). Es más seguro repetir la expresión, tal como hacemos a continuación en <em>PostgreSQL</em>.</p>
+</div>
 <p>En cambio, en <em>PostgreSQL</em> no es posible utilizar variables de esta forma, pero sí podemos repetir la expresión tantas veces como necesitemos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="ss">"NomEmp"</span><span class="p">,</span><span class="w"> </span><span class="ss">"SalEmp"</span><span class="p">,</span>
 <span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">       </span><span class="ss">"SalEmp"</span><span class="o">*</span><span class="mi">1</span><span class="p">.</span><span class="mi">16</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="ss">"SalImp"</span><span class="p">,</span>
@@ -13526,12 +13537,11 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="16 "></span><span class="c1">--  Mosc Amuerta, Mario        | 1300000.00 | 1508000.0000 | 1583400.000000</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- (10 rows)</span>
 </code></pre></div>
-<!-- FIXME: Corregir CASE PostgreSQL -->
-
 <p><a name="CASE"></a></p>
 <div class="admonition tip">
 <p class="admonition-title">El operador CASE</p>
-<p>El operador <a href="https://mariadb.com/kb/en/case-operator/">CASE</a> permite agregar a la proyección la estructura lógica condicional de <code>if/else</code>. Su sintaxis es la siguiente:</p>
+<p>El operador <a href="https://mariadb.com/kb/en/case-operator/">CASE</a> (también en 
+<a href="https://www.postgresql.org/docs/current/functions-conditional.html#FUNCTIONS-CASE"><em>PostgreSQL</em></a>) permite agregar a la proyección la estructura lógica condicional de <code>if/else</code>. Su sintaxis es la siguiente:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">CASE</span><span class="w"> </span><span class="n">campo</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">valor1</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">[</span><span class="k">WHEN</span><span class="w"> </span><span class="n">valor2</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[</span><span class="k">ELSE</span><span class="w"> </span><span class="n">resultado</span><span class="p">]</span><span class="w"> </span><span class="k">END</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">condición</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">[</span><span class="k">WHEN</span><span class="w"> </span><span class="n">condición</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="n">resultado</span><span class="w"> </span><span class="p">...]</span><span class="w"> </span><span class="p">[</span><span class="k">ELSE</span><span class="w"> </span><span class="n">resultado</span><span class="p">]</span><span class="w"> </span><span class="k">END</span>
 </code></pre></div>
@@ -13722,14 +13732,18 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="33 "></span><span class="c1">-- +-----------------------------+-----------------+--------------------------+</span>
 <span class="linenos" data-linenos="34 "></span><span class="c1">-- 10 rows in set (0.002 sec)</span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title"><code>CONCAT</code> y los nulos</p>
+<p>En <em>MariaDB</em>, si algún argumento de <code>CONCAT</code> es <code>NULL</code>, el resultado completo es <code>NULL</code>. En <em>PostgreSQL</em>, <code>CONCAT</code> ignora los nulos, pero el operador <code>||</code> también devuelve <code>NULL</code>. Para evitarlo, podemos combinar <code>CONCAT</code> con <code>COALESCE</code> / <code>IFNULL</code>, o utilizar <code>CONCAT_WS(separador, cadena1, cadena2, …)</code>, que omite los valores nulos.</p>
+</div>
 <p>Otras funciones que podemos utilizar son <a href="https://mariadb.com/docs/server/reference/sql-functions/string-functions/char_length"><code>CHAR_LENGTH(cadena)</code></a> para obtener el tamaño, <a href="https://mariadb.com/docs/server/reference/sql-functions/string-functions/locate"><code>LOCATE(subcadena, cadena)</code></a> para encontrar una subcadena en una cadena, <a href="https://mariadb.com/docs/server/reference/sql-functions/string-functions/replace-function"><code>REPLACE(cadena, cadenaOrigen, cadenaDestino)</code></a> para sustituir una subcadena por otra o <a href="https://mariadb.com/docs/server/reference/sql-functions/string-functions/reverse"><code>REVERSE(cadena)</code></a> para invertir una cadena.</p>
 <h4 id="06sql-fecha-hora">Fecha / Hora<a class="headerlink" href="#06sql-fecha-hora" title="Permanent link">&para;</a></h4>
 <p>Si trabajamos con campos de tipo fecha, podemos emplear las siguientes funciones en <a href="https://mariadb.com/kb/en/date-time-functions/">MariaDB</a> o <a href="https://www.postgresql.org/docs/current/functions-datetime.html">PostgreSQL</a>:</p>
 <ul>
 <li><a href="https://mariadb.com/kb/en/now/"><code>NOW()</code> / <code>CURRENT_TIMESTAMP</code></a>: fecha y hora actual del sistema.</li>
 <li><a href="https://mariadb.com/kb/en/curdate/"><code>CURDATE()</code> / <code>CURRENT_DATE</code></a>: fecha actual en formato <code>yyyy-mm-dd</code> o <code>yyyymmdd</code>.</li>
-<li><a href="https://mariadb.com/kb/en/datediff/"><code>DATEDIFF(fecha1, fecha2)</code></a> en <em>MariaDB</em>, o <code>AGE(fecha1, fecha2)</code> en <em>PostgreSQL</em>: diferencia de días entre dos fechas. También se puede restar fechas directamente (<code>fecha1 - fecha2</code>) siempre y cuando ambos campos sean de tipo <code>DATE</code>.</li>
-<li><a href="https://mariadb.com/kb/en/timestampdiff/"><code>TIMESTAMPDIFF(unidad, fecha1, fecha2)</code></a> en <em>MariaDB</em>, o <a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT"><code>EXTRACT(unidad FROM AGE(fecha1, fecha2))</code></a> en <em>PostgreSQL</em>: diferencia medida en <code>unidad</code> entre dos fechas.</li>
+<li><a href="https://mariadb.com/kb/en/datediff/"><code>DATEDIFF(fecha1, fecha2)</code></a> en <em>MariaDB</em>: diferencia de días entre dos fechas. En <em>PostgreSQL</em> basta con restar las fechas directamente (<code>fecha1 - fecha2</code>), siempre y cuando ambos campos sean de tipo <code>DATE</code>. La función <code>AGE(fecha1, fecha2)</code> de <em>PostgreSQL</em> no devuelve días, sino un intervalo (por ejemplo, <code>1 year 2 mons 3 days</code>).</li>
+<li><a href="https://mariadb.com/kb/en/timestampdiff/"><code>TIMESTAMPDIFF(unidad, fecha1, fecha2)</code></a> en <em>MariaDB</em>, o <a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT"><code>EXTRACT(unidad FROM AGE(fecha1, fecha2))</code></a> en <em>PostgreSQL</em>: diferencia medida en <code>unidad</code> entre dos fechas. Debemos tener en cuenta que en <em>PostgreSQL</em> se extrae solo ese componente del intervalo; con <code>YEAR</code> funciona como esperamos, pero con <code>MONTH</code> devuelve un valor entre 0 y 11, no el total de meses. </li>
 <li><a href="https://mariadb.com/kb/en/date_add/"><code>DATE_ADD(fecha, INTERVAL expresión Tipo)</code></a> / <a href="https://mariadb.com/kb/en/date_sub/"><code>DATE_SUB</code></a>, pudiendo utilizar los siguientes <a href="https://mariadb.com/kb/en/date-and-time-units/">tipos</a> en <em>MariaDB</em>, o directamente en <em>PostgreSQL</em> sobre un campo fecha, le podemos sumar o restar un <code>INTERVAL</code>.</li>
 </ul>
 <div class="admonition warning">
@@ -13780,7 +13794,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <li><a href="https://mariadb.com/kb/en/month/"><code>MONTH(fecha)</code></a>: mes en formato <code>mm</code></li>
 <li>Otras funciones útiles son <code>SECOND</code>, <code>MINUTE</code>, <code>HOUR</code>, <code>DAY</code>, <code>WEEK</code>, <code>DAYOFWEEK</code> …</li>
 </ul>
-<p>O en <em>PostgreSQL</em>, directamente mediante <a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT"><code>EXTRACT unidad from CAMPO</code></a> o <code>DATE_PART('unidad', CAMPO)</code>:</p>
+<p>O en <em>PostgreSQL</em>, directamente mediante <a href="https://www.postgresql.org/docs/current/functions-datetime.html#FUNCTIONS-DATETIME-EXTRACT"><code>EXTRACT(unidad from CAMPO)</code></a> o <code>DATE_PART('unidad', CAMPO)</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="k">YEAR</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">anyoInc</span><span class="p">,</span><span class="w"> </span><span class="k">MONTH</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">mesInc</span><span class="p">,</span>
 </span><span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">       </span><span class="n">DAYOFWEEK</span><span class="p">(</span><span class="n">FecInEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">diaSemana</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="c1">-- select "CodEmp", "FecInEmp", EXTRACT(YEAR FROM "FecInEmp") as anyoInc, EXTRACT(MONTH FROM "FecInEmp") as mesInc,</span>
@@ -13852,7 +13866,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </ul>
 <p>Finalmente, otra función muy importante a la hora de trabajar con fechas es la función <a href="https://mariadb.com/kb/en/cast/"><code>CAST(expr as tipo)</code></a> que realiza la conversión de tipos de datos.</p>
 <p>De esta manera podemos convertir una expresión de cadena en un tipo fecha:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="ss">"2024-12-9"</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">DATE</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">CAST</span><span class="p">(</span><span class="s1">'2024-12-9'</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nb">DATE</span><span class="p">);</span>
 </code></pre></div>
 <h4 id="06sql-condicionales-y-nulos">Condicionales y Nulos<a class="headerlink" href="#06sql-condicionales-y-nulos" title="Permanent link">&para;</a></h4>
 <p>De forma similar al operador <a href="#06sql-CASE"><code>CASE</code></a>, únicamente en <em>MariaDB</em>, si preferimos, podemos hacer uso de la función <a href="https://mariadb.com/kb/en/if-function/"><code>IF(expr,V,F)</code></a>.</p>
@@ -13898,9 +13912,9 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <li><a href="https://mariadb.com/kb/en/truncate/"><code>TRUNCATE(num,d)</code></a>: trunca <code>num</code> con <code>d</code> decimales</li>
 </ul>
 <p>Veamos unos ejemplos de redondeo de cantidades:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">NumHi</span><span class="p">),</span><span class="w"> </span><span class="n">ROUND</span><span class="p">(</span><span class="k">avg</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)),</span><span class="w"> </span><span class="n">FLOOR</span><span class="p">(</span><span class="k">avg</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)),</span><span class="w"> </span><span class="n">CEILING</span><span class="p">(</span><span class="k">avg</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)),</span><span class="w"> </span><span class="k">TRUNCATE</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">NumHi</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">NumHi</span><span class="p">),</span><span class="w"> </span><span class="n">ROUND</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)),</span><span class="w"> </span><span class="n">FLOOR</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)),</span><span class="w"> </span><span class="n">CEILING</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">NumHi</span><span class="p">)),</span><span class="w"> </span><span class="k">TRUNCATE</span><span class="p">(</span><span class="k">AVG</span><span class="p">(</span><span class="n">NumHi</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1">-- +------------+-------------------+-------------------+---------------------+-------------------------+</span>
-<span class="linenos" data-linenos="3 "></span><span class="c1">-- | AVG(NumHi) | ROUND(avg(NumHi)) | FLOOR(avg(NumHi)) | CEILING(avg(NumHi)) | truncate(avg(NumHi), 1) |</span>
+<span class="linenos" data-linenos="3 "></span><span class="c1">-- | AVG(NumHi) | ROUND(AVG(NumHi)) | FLOOR(AVG(NumHi)) | CEILING(AVG(NumHi)) | TRUNCATE(AVG(NumHi), 1) |</span>
 <span class="linenos" data-linenos="4 "></span><span class="c1">-- +------------+-------------------+-------------------+---------------------+-------------------------+</span>
 <span class="linenos" data-linenos="5 "></span><span class="c1">-- |     0.7000 |                 1 |                 0 |                   1 |                     0.7 |</span>
 <span class="linenos" data-linenos="6 "></span><span class="c1">-- +------------+-------------------+-------------------+---------------------+-------------------------+</span>
@@ -13961,7 +13975,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Rendimiento</p>
-<p>Hay que tener en cuenta que ordenar los resultados de una consulta requiere colocar todos los datos en memoria, y dependiendo de la cantidad, puede ser una operación computacionalmente compleja.</p>
+<p>Ordenar los resultados de una consulta puede ser una operación costosa cuando hay muchos datos: el SGBD necesita comparar todas las filas y, si no caben en memoria, ordenarlas en disco. Si existe un índice sobre la columna de ordenación, el SGBD puede aprovecharlo y evitar ese coste (estudiaremos los índices en la <a href="#08sql-subquerys">UT8</a>).</p>
 </div>
 <p>Finalmente, a la hora de indicar el nombre de las columnas de ordenación, también podemos usar un número indicando la posición de la columna (en el siguiente ejemplo, 1 referencia a <code>NomEmp</code> y 2 a <code>NifEmp</code>):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">Nifemp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">ASC</span><span class="p">;</span>
@@ -13997,8 +14011,8 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>En ocasiones, cuando queremos obtener una muestra de los datos, en vez de hacer una consulta <code>select * from ...</code> para comprobar qué datos almacena una determinada tabla, es mucho mejor acostumbrarse a realizar un <code>select * from ... LIMIT 10</code>. De este modo, no sobrecargamos el servidor ni incrementamos el tráfico de datos.<br />
 Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORDER BY</code>; sin él, el SGBD puede devolver cualquier subconjunto.</p>
 </div>
-<p>Si no queremos coger los primeros elementos, podemos hacer uso <a href="https://mariadb.com/kb/en/limit/"><code>LIMIT inicio, cantidad</code></a>, teniendo en cuenta que <code>inicio</code> referencia al desplazamiento, es decir, la cantidad de filas que se ignorarán.</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">;</span>
+<p>Si no queremos coger los primeros elementos, podemos hacer uso de <a href="https://mariadb.com/kb/en/limit/"><code>LIMIT inicio, cantidad</code></a>, teniendo en cuenta que <code>inicio</code> referencia al desplazamiento, es decir, la cantidad de filas que se ignorarán (<em>PostgreSQL</em> no admite esta forma, solo la de <code>OFFSET</code> que veremos a continuación).</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+---------------------------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | NomEmp                    |</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+---------------------------+</span>
@@ -14037,7 +14051,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +-------------------------+------------+</span>
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 <span class="linenos" data-linenos="11 "></span>
-<span class="linenos" data-linenos="12 "></span><span class="c1">-- Recuperar los empleados con los dos salarios más bajos, contando los empates</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- Las dos primeras filas, más las que empatan con la segunda</span>
 <span class="linenos" data-linenos="13 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
 <span class="linenos" data-linenos="14 "></span><span class="w">    </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">ASC</span>
 <span class="hll"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">FETCH</span><span class="w"> </span><span class="k">FIRST</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">ROWS</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">TIES</span><span class="p">;</span>
@@ -14072,6 +14086,11 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
 </code></pre></div>
 <p>Como puede observarse, no es necesario que el o los atributos que usemos en la selección luego aparezcan en la proyección, ni viceversa.</p>
+<p>Ten en cuenta que los alias no pueden utilizarse en el <code>WHERE</code>, ya que este se evalúa antes que la proyección; lo entenderemos al estudiar el <a href="#07sql-group-orden-de-ejecucion">orden de ejecución</a> en la siguiente unidad.</p>
+<p>Así pues, si intentamos hacer lo siguiente, obtendremos un error:</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">Salario</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">Salario</span><span class="o">&gt;</span><span class="mi">2000000</span><span class="p">;</span>
+</span><span class="linenos" data-linenos="2 "></span><span class="c1">-- ERROR 1054 (42S22): Unknown column 'Salario' in 'where clause'</span>
+</code></pre></div>
 <h4 id="06sql-rangos">Rangos<a class="headerlink" href="#06sql-rangos" title="Permanent link">&para;</a></h4>
 <p>Supongamos que queremos recuperar los empleados que cobran entre uno y dos millones. Podemos hacerlo haciendo uso de una conjunción entre dos comparaciones:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1000000</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">2000000</span><span class="p">;</span>
@@ -14084,7 +14103,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <span class="linenos" data-linenos="8 "></span><span class="c1">-- +-------------------------+------------+</span>
 <span class="linenos" data-linenos="9 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>Si el conjunto de valores a comparar forma parte de un rango numérico, es mejor utilizar <a href="https://mariadb.com/kb/en/between-and/"><code>BETWEEN .. AND</code></a>, siguiendo la sintaxis <code>expresión1 [NOT] BETWEEN expresión2 AND expresión3</code>:</p>
+<p>Si el conjunto de valores a comparar forma parte de un rango numérico, es mejor utilizar <a href="https://mariadb.com/kb/en/between-and/"><code>BETWEEN .. AND</code></a>, siguiendo la sintaxis <code>expresión1 [NOT] BETWEEN expresión2 AND expresión3</code>. Ten en cuenta que <code>BETWEEN</code> es inclusivo, es decir, incluye ambos extremos, por lo que equivale a <code>expresión1 &gt;= expresión2 AND expresión1 &lt;= expresión3</code>.</p>
 <p>Así pues, la misma consulta la podemos reescribir así:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">1000000</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">2000000</span><span class="p">;</span>
 <span class="linenos" data-linenos="2 "></span><span class="c1">-- +-------------------------+------------+</span>
@@ -14111,7 +14130,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- 5 rows in set (0.000 sec)</span>
 <span class="linenos" data-linenos="13 "></span>
 <span class="hll"><span class="linenos" data-linenos="14 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecInEmp</span><span class="p">,</span><span class="w"> </span><span class="n">FecNaEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
-</span><span class="hll"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">FecInEmp</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">'1970/01/01'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">'1980/01/01'</span><span class="p">;</span>
+</span><span class="hll"><span class="linenos" data-linenos="15 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">FecInEmp</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">'1970-01-01'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">'1980-01-01'</span><span class="p">;</span>
 </span><span class="linenos" data-linenos="16 "></span><span class="c1">-- +-----------------------------+------------+------------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- | NomEmp                      | FecInEmp   | FecNaEmp   |</span>
 <span class="linenos" data-linenos="18 "></span><span class="c1">-- +-----------------------------+------------+------------+</span>
@@ -14252,7 +14271,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 </div>
 <div class="admonition question">
 <p class="admonition-title">Autoevaluación</p>
-<p>¿Qué devuelve la siguiente consulta? <sup id="fnref:1"><a class="footnote-ref" href="#06sql-fn:1">1</a></sup></p>
+<p>¿Qué devuelve la siguiente consulta?<sup id="fnref:1"><a class="footnote-ref" href="#06sql-fn:1">1</a></sup></p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">'PROZS'</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">CodDep</span><span class="o">=</span><span class="s1">'VENZS'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5000000</span><span class="p">;</span>
 </code></pre></div>
 </div>
@@ -14355,6 +14374,10 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <span class="linenos" data-linenos="16 "></span><span class="c1">-- +-----------------------------+----------------------------+</span>
 <span class="linenos" data-linenos="17 "></span><span class="c1">-- 10 rows in set (0.001 sec)    </span>
 </code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Cuidado con el <em>natural join</em></p>
+<p>Une por todas las columnas que se llamen igual en ambas tablas, como ya vimos en el <a href="#06sql-operaciones">álgebra relacional</a>. Si en el futuro alguna tabla incorpora una columna con el mismo nombre que otra (<code>nombre</code>, <code>fecha_alta</code>…), la consulta cambiará de significado sin dar ningún error. Por ello, en la práctica se prefiere <code>JOIN ... USING</code> o <code>JOIN ... ON</code>.</p>
+</div>
 <h4 id="06sql-consultas-sobre-varias-tablas">Consultas sobre varias tablas<a class="headerlink" href="#06sql-consultas-sobre-varias-tablas" title="Permanent link">&para;</a></h4>
 <p>Cuando necesitamos información que está en diferentes tablas, o necesitamos que los datos obtenidos dependan de las relaciones en las que participan, deberemos emparejar los campos que han de tener valores iguales (FKs con PKs)</p>
 <p>Algunos aspectos a tener en cuenta:</p>
@@ -14545,7 +14568,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <span class="linenos" data-linenos="13 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>Si quiero recuperar todos los empleados y el nombre de la habilidad si la tienen, tenemos que hacer un <em>left join</em>:</p>
+<p>Si queremos recuperar todos los empleados y el nombre de la habilidad si la tienen, podríamos pensar que basta con un <em>left join</em>:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span><span class="p">;</span>
@@ -14562,7 +14585,29 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- 6 rows in set (0.001 sec)</span>
 </code></pre></div>
 <p>¿Qué ha pasado? ¿Por qué solo 6 registros? Al realizar el segundo <em>join</em>, ha eliminado aquellos registros que tienen la habilidad nula.</p>
-<p>Pero ¿cómo lo solucionamos? Primero vamos a unir los códigos y habilidades, y luego hacemos el <em>join</em> por la derecha con todos los empleados:</p>
+<p>Pero ¿cómo lo solucionamos? La forma más natural es que el segundo <em>join</em> también sea externo. Una vez comenzamos una cadena de composiciones externas, las siguientes también deben serlo para no perder las filas con nulos:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span><span class="p">;</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="c1">-- | CodEmp | NomEmp                      | CodHab | CodEmp | NivHab | CodHab | DesHab               |</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | GEREN  |      1 |     10 | GEREN  | Gerencia             |</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="c1">-- |      1 | Saladino Mandamás, Augusto  | RELPU  |      1 |      9 | RELPU  | Relaciones Públicas  |</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- |      2 | Manrique Bacterio, Luisa    | NULL   |   NULL |   NULL | NULL   | NULL                 |</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- |      3 | Monforte Cid, Roldán        | MARKE  |      3 |      9 | MARKE  | Marketing            |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- |      4 | Topaz Illán, Carlos         | NULL   |   NULL |   NULL | NULL   | NULL                 |</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | GESCO  |      5 |      9 | GESCO  | Gestión Contable     |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- |      5 | Alada Veraz, Juana          | RELPU  |      5 |      8 | RELPU  | Relaciones Públicas  |</span>
+<span class="linenos" data-linenos="14 "></span><span class="c1">-- |      6 | Gozque Altanero, Cándido    | NULL   |   NULL |   NULL | NULL   | NULL                 |</span>
+<span class="linenos" data-linenos="15 "></span><span class="c1">-- |      7 | Forzado López, Galeote      | NULL   |   NULL |   NULL | NULL   | NULL                 |</span>
+<span class="linenos" data-linenos="16 "></span><span class="c1">-- |      8 | Mascullas Alto, Eloísa      | FONTA  |      8 |      7 | FONTA  | Fontanería           |</span>
+<span class="linenos" data-linenos="17 "></span><span class="c1">-- |      9 | Mando Correa, Rosa          | NULL   |   NULL |   NULL | NULL   | NULL                 |</span>
+<span class="linenos" data-linenos="18 "></span><span class="c1">-- |     10 | Mosc Amuerta, Mario         | NULL   |   NULL |   NULL | NULL   | NULL                 |</span>
+<span class="linenos" data-linenos="19 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+--------+----------------------+</span>
+<span class="linenos" data-linenos="20 "></span><span class="c1">-- 12 rows in set (0.000 sec)</span>
+</code></pre></div>
+<p>Otra opción es primero unir los códigos con las habilidades, y luego hacer el <em>join</em> por la derecha con todos los empleados, obteniendo el mismo resultado:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habilidad</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodHab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="p">.</span><span class="n">CodHab</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="k">RIGHT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
@@ -14666,7 +14711,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 </span><span class="linenos" data-linenos="18 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
 <span class="linenos" data-linenos="19 "></span><span class="c1">-- 12 rows in set (0.000 sec)</span>
 </code></pre></div>
-<p>Así pues, si sobre el <em>left join</em>, nos quedamos con los que tienen la clave primaria referenciada nula, obtendremos justo los empleados que no tienen habilidades (operación que se conoce como <em>anti-join</em>):</p>
+<p>Así pues, si sobre el <em>left join</em>, nos quedamos con las filas que tienen la clave primaria referenciada nula, obtendremos justo los empleados que no tienen habilidades, ya que esas filas no tienen pareja (operación que se conoce como <em>antijoin</em>):</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="k">where</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
@@ -14683,7 +14728,7 @@ Si el orden importa, <code>LIMIT</code> siempre debe ir acompañado de <code>ORD
 <span class="linenos" data-linenos="14 "></span><span class="c1">-- 6 rows in set (0.003 sec)</span>
 </code></pre></div>
 <h4 id="06sql-full-outer-join">Full Outer Join<a class="headerlink" href="#06sql-full-outer-join" title="Permanent link">&para;</a></h4>
-<p>Aunque no está soportado por <em>MariaDB</em>, conviene conocer la combinación externa completa, aunque su uso es muy limitado (por la propia restricción de integridad referencial). Su resultado presenta los resultados de la tabla de la izquierda y de la tabla de la derecha aunque no tengan correspondencia en la otra tabla.</p>
+<p><em>MariaDB</em> no soporta la combinación externa completa, aunque <em>PostgreSQL</em> sí, mediante <code>FULL [OUTER] JOIN</code>. Conviene conocerla, si bien su uso es muy limitado (por la propia restricción de integridad referencial). Su resultado incluye las filas de ambas tablas, aunque no tengan correspondencia en la otra.</p>
 <p>Es decir, la tabla combinada contendrá entonces todos los registros de ambas tablas y presentará valores nulos para registros sin pareja.</p>
 <p>Si necesitamos dicho resultado, podemos simularlo haciendo una unión entre un <em>left join</em> y un <em>right join</em>. De esta manera obtendríamos todos los registros de T1 y los valores de T2 relacionados o nulos en los que no, y en una segunda consulta, los valores de T1 relacionados o nulos en los que no, y todos los valores de T2:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">t1</span>
@@ -14827,7 +14872,7 @@ Añadir alguna consulta que realice algún cálculo agregado
 <li>Crea un listado con el nombre de los departamentos, así como un nuevo código formado por el código del departamento, un número aleatorio de dos cifras y el código del centro.</li>
 <li>Listado del tipo de director, código, nombre y presupuesto de los departamentos ordenado por tipo de director (orden alfabético) y dentro de este criterio por presupuesto anual en orden ascendente.</li>
 <li>Listado del nombre y salario de los empleados (con dos decimales y separadores de miles) ordenado por criterio descendente del salario.</li>
-<li>Lista los tres departamentos ordenados por presupuesto anual y por el código del centro con menor presupuesto.</li>
+<li>Lista los tres departamentos con menor presupuesto anual; en caso de empate en el presupuesto, ordénalos por el código del centro.</li>
 <li>Recupera el empleado que más cobra.</li>
 </ol>
 </li>
@@ -15214,7 +15259,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </ol>
 </div>
 <h3 id="07sql-group-programacion-de-aula-10h">Programación de Aula (10h)<a class="headerlink" href="#07sql-group-programacion-de-aula-10h" title="Permanent link">&para;</a></h3>
-<p>Esta unidad es la séptima, siendo la segunda del bloque de consultas, impartiéndose al principio de la segunda evaluación, a principios de enero, con una duración estimada de 10 sesiones lectivas:</p>
+<p>Esta unidad es la séptima, siendo la segunda del bloque de consultas, impartiéndose durante la segunda evaluación, a la vuelta de las vacaciones de Navidad, con una duración estimada de 10 sesiones lectivas:</p>
 <table>
 <thead>
 <tr>
@@ -15227,15 +15272,15 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <tbody>
 <tr>
 <td>1</td>
-<td><a href="#07sql-group-consultas-agregadas">Consultas agregadas</a></td>
+<td><a href="#07sql-group-agregaciones">Consultas agregadas</a></td>
 <td><a href="#07sql-group-AC701">AC701</a></td>
-<td><abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
+<td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
 </tr>
 <tr>
 <td>2</td>
 <td><a href="#07sql-group-group-by">Agrupando con GROUP BY</a></td>
 <td><a href="#07sql-group-AC702">AC702</a></td>
-<td><abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
+<td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
 </tr>
 <tr>
 <td>3</td>
@@ -15259,7 +15304,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <td>6</td>
 <td><a href="#07sql-group-funciones-ventana">Funciones ventana</a></td>
 <td><a href="#07sql-group-AC708">AC708</a></td>
-<td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
+<td><abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr></td>
 </tr>
 <tr>
 <td>7</td>
@@ -15275,7 +15320,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </tr>
 <tr>
 <td>9</td>
-<td>Resolución Supuesto</td>
+<td>Resolución del Supuesto</td>
 <td></td>
 <td></td>
 </tr>
@@ -15295,12 +15340,12 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="p">[</span><span class="k">WHERE</span><span class="w"> </span><span class="n">condición</span><span class="p">]</span>
 <span class="hll"><span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="p">[</span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">col1</span><span class="w"> </span><span class="p">[,</span><span class="w"> </span><span class="n">col2</span><span class="p">]</span><span class="w"> </span><span class="p">...]</span>
 </span><span class="hll"><span class="linenos" data-linenos="5 "></span><span class="w">    </span><span class="p">[</span><span class="k">HAVING</span><span class="w"> </span><span class="n">predicado</span><span class="w"> </span><span class="n">grupo</span><span class="p">]</span>
-</span><span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="p">[</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">col</span><span class="o">-</span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="n">pos</span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">-</span><span class="n">m</span><span class="o">|</span><span class="w"> </span><span class="n">pos</span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="n">DES</span><span class="p">]</span><span class="err">…</span><span class="p">]</span>
-<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="p">[</span><span class="k">LIMIT</span><span class="w"> </span><span class="err">{</span><span class="p">[</span><span class="k">offset</span><span class="p">,]</span><span class="w"> </span><span class="k">row_count</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">row_count</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="k">offset</span><span class="err">}</span><span class="p">];</span>
+</span><span class="linenos" data-linenos="6 "></span><span class="w">    </span><span class="p">[</span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">col</span><span class="o">-</span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="n">pos</span><span class="o">-</span><span class="n">n</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">-</span><span class="n">m</span><span class="o">|</span><span class="w"> </span><span class="n">pos</span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">]</span><span class="err">…</span><span class="p">]</span>
+<span class="linenos" data-linenos="7 "></span><span class="w">    </span><span class="p">[</span><span class="k">LIMIT</span><span class="w"> </span><span class="err">{</span><span class="p">[</span><span class="n">desplazamiento</span><span class="p">,]</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">cantidad</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="n">desplazamiento</span><span class="err">}</span><span class="p">];</span><span class="w">  </span><span class="c1">-- PostgreSQL solo admite LIMIT n OFFSET m</span>
 </code></pre></div>
-<p>En esta unidad vamos a trabajar con ellas, la cual nos permite agregar datos y realizar cálculos sobre columnas resumen.</p>
+<p>En esta unidad vamos a trabajar con ellas, las cuales nos permiten agregar datos y realizar cálculos sobre columnas resumen.</p>
 <h3 id="07sql-group-operadores-de-agregacion">Operadores de agregación<a class="headerlink" href="#07sql-group-operadores-de-agregacion" title="Permanent link">&para;</a></h3>
-<p>Tal como vimos en el apartado <a href="#06sql-funciones-agregadas">Funciones agregadas</a> de la sesión anterior, podemos utilizar los operadores <a href="https://mariadb.com/kb/en/count/"><code>COUNT(expr)</code></a>, <a href="https://mariadb.com/kb/en/sum/"><code>SUM(expr)</code></a>, <a href="https://mariadb.com/kb/en/min/"><code>MIN(expr)</code></a>, <a href="https://mariadb.com/kb/en/max/"><code>MAX(expr)</code></a> y <a href="https://mariadb.com/kb/en/avg/"><code>AVG(expr)</code></a> para operar sobre una columna o expresión.</p>
+<p>Tal como vimos en el apartado <a href="#06sql-funciones-agregadas">Funciones agregadas</a> de la unidad anterior, podemos utilizar los operadores <a href="https://mariadb.com/kb/en/count/"><code>COUNT(expr)</code></a>, <a href="https://mariadb.com/kb/en/sum/"><code>SUM(expr)</code></a>, <a href="https://mariadb.com/kb/en/min/"><code>MIN(expr)</code></a>, <a href="https://mariadb.com/kb/en/max/"><code>MAX(expr)</code></a> y <a href="https://mariadb.com/kb/en/avg/"><code>AVG(expr)</code></a> para operar sobre una columna o expresión.</p>
 <p>Para este apartado, nos vamos a centrar en la tabla de empleados:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">NumHi</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+----------+-----------------------------+-------+------------+</span>
@@ -15347,7 +15392,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="6 "></span><span class="c1">-- +----------+-----------------+---------------------------+--------------+------------------------+</span>
 <span class="linenos" data-linenos="7 "></span><span class="c1">-- 1 row in set (0.000 sec)</span>
 </code></pre></div>
-<p>Aquí podemos observar cómo de las 7 extensiones telefónicas que teníamos, ninguna se repite. Pero en cambio, sabemos que todos los empleados tienen la cantidad de hijos anotados y que tenemos 3 posibles valores (<code>0</code>, <code>1</code> y <code>2</code> hijos)</p>
+<p>Aquí podemos observar cómo de las 7 extensiones telefónicas que teníamos, ninguna se repite. Pero en cambio, sabemos que todos los empleados tienen la cantidad de hijos anotada y que tenemos 3 posibles valores (<code>0</code>, <code>1</code> y <code>2</code> hijos).</p>
 <div class="admonition failure">
 <p class="admonition-title">Funciones de agregación anidadas</p>
 <p><strong>No es posible anidar funciones de agregación</strong>. Por ejemplo, no podemos hacer <code>SUM(COUNT(*))</code> o <code>MAX(SUM(SalEmp))</code>. Si queremos realizar este tipo de cálculos, deberemos hacerlo en varias consultas haciendo uso de subconsultas o CTE (las estudiaremos en la <a href="#08sql-subquerys">siguiente unidad</a>) o utilizando <a href="#07sql-group-funciones-ventana">funciones ventana</a>.</p>
@@ -15356,7 +15401,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p class="admonition-title">COUNT(*) FILTER</p>
 <p>En <em>PostgreSQL</em> podemos utilizar <a href="https://www.postgresql.org/docs/current/sql-expressions.html#SYNTAX-AGGREGATES">expresiones agregadas</a> sobre las funciones de agregación. Una de las expresiones más utilizadas es <a href="https://www.datacamp.com/doc/postgresql/filter"><code>FILTER</code></a>. Por ejemplo, podemos filtrar los elementos que queremos contar de una determinada expresión:</p>
 <div class="highlight"><span class="filename">PostgreSQL</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">),</span>
-<span class="hll"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">FILTER</span><span class="w"> </span><span class="p">(</span><span class="k">where</span><span class="w"> </span><span class="ss">"NumHi"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">filtrado_sin_hijos</span>
+<span class="hll"><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">FILTER</span><span class="w"> </span><span class="p">(</span><span class="k">where</span><span class="w"> </span><span class="s1">'NumHi'</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">filtrado_sin_hijos</span>
 </span><span class="linenos" data-linenos="3 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="p">;</span>
 <span class="linenos" data-linenos="4 "></span><span class="c1">-- count | filtrado_sin_hijos </span>
 <span class="linenos" data-linenos="5 "></span><span class="c1">-- -------+--------------------</span>
@@ -15404,7 +15449,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- +--------+--------------+</span>
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- 3 rows in set (0.002 sec)</span>
 </code></pre></div>
-<p>Es decir, el valor de <code>51000000.00</code> del centro <code>DIGE</code> se obtiene de sumar las filas de la tabla anterior de dicho centro, es decir, <code>26000000.00</code> y <code>25000000.00</code> de los departamentos <code>Dirección General</code> e <code>Investigación y Diseño</code>. Dicho de otro modo, al realizar una agrupación, junto las filas que tienen el mismo valor en la columna agrupada, y realiza el cálculo indicado con dichas filas.</p>
+<p>Es decir, el valor de <code>51000000.00</code> del centro <code>DIGE</code> se obtiene de sumar las filas de la tabla anterior de dicho centro, es decir, <code>26000000.00</code> y <code>25000000.00</code> de los departamentos <code>Dirección General</code> e <code>Investigación y Diseño</code>. Dicho de otro modo, al realizar una agrupación, se juntan las filas que tienen el mismo valor en la columna agrupada, y se realiza el cálculo indicado con dichas filas.</p>
 <p>¿Y si quiero obtener el nombre del centro en vez de su código? Podemos pensar que, si hago un <em>join</em> y muestro su nombre y el presupuesto, obtendré la misma información:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span><span class="p">;</span>
@@ -15434,7 +15479,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="11 "></span><span class="c1">-- 3 rows in set (0.000 sec)</span>
 </code></pre></div>
 <h4 id="07sql-group-agrupaciones-con-combinaciones-externas">Agrupaciones con combinaciones externas<a class="headerlink" href="#07sql-group-agrupaciones-con-combinaciones-externas" title="Permanent link">&para;</a></h4>
-<p>En la sesión anterior obtuvimos las diferentes habilidades que tenían los empleados:</p>
+<p>En la unidad anterior obtuvimos las diferentes habilidades que tenían los empleados:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">inner</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">habemp</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------+-----------------------------+--------+--------+--------+</span>
@@ -15502,8 +15547,8 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos="15 "></span><span class="c1">-- 6 rows in set (0.001 sec)</span>
 </code></pre></div>
 <h4 id="07sql-group-select-n-group-by-n"><code>SELECT</code> N - <code>GROUP BY</code> N<a class="headerlink" href="#07sql-group-select-n-group-by-n" title="Permanent link">&para;</a></h4>
-<p>Es importante destacar que al menos la cantidad y datos que utilizamos en la proyección (<code>SELECT</code>) que agrupan, también hemos de utilizarlos dentro del <code>GROUP BY</code>. Dicho de otro modo, si en el <code>SELECT</code> ponemos tres columnas y dos cálculos, en el <code>GROUP BY</code> deberemos poner las tres mismas columnas.</p>
-<p>Es decir, <strong>no debemos hacer esto</strong> (dos en <code>SELECT</code>, uno en <code>GROUP BY</code>), ya que no estaría mostrando la información que queremos. Si repetimos el ejemplo anterior, obtenemos un resultado en <em>MariaDB</em> , pero lo que obtenemos no es correcto (en <em>PostgreSQL</em> directamente obtendremos un error):</p>
+<p>Es importante destacar que todas las columnas de la proyección (<code>SELECT</code>) que no forman parte de una función de agregación deben aparecer en el <code>GROUP BY</code>. Dicho de otro modo, si en el <code>SELECT</code> ponemos tres columnas y dos cálculos, en el <code>GROUP BY</code> deberemos poner las tres mismas columnas.</p>
+<p>Es decir, <strong>no debemos hacer esto</strong> (dos en <code>SELECT</code>, uno en <code>GROUP BY</code>), ya que no estaría mostrando la información que queremos. Si repetimos el ejemplo anterior, obtenemos un resultado en <em>MariaDB</em>, pero lo que obtenemos no es correcto (en <em>PostgreSQL</em> directamente obtendremos un error):</p>
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">SalEmp</span><span class="p">)</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span>
@@ -15536,7 +15581,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </code></pre></div>
 <h4 id="07sql-group-rollup"><code>ROLLUP</code><a class="headerlink" href="#07sql-group-rollup" title="Permanent link">&para;</a></h4>
 <p>Cuando hacemos una consulta con una agregación, podemos emplear la cláusula <a href="https://mariadb.com/kb/en/select-with-rollup/">SELECT ... WITH ROLLUP</a> para que añada filas extras con totales de la agregación.</p>
-<p>Si recuperamos la consulta que obteníamos el presupuesto anual de cada departamento, pero le añadimos <code>WITH ROLLUP</code> podemos observar cómo añade al resultado una nueva fila agrupada por <code>NULL</code> y que suma todos los otros valores:</p>
+<p>Si recuperamos la consulta que obteníamos el presupuesto anual de cada centro, pero le añadimos <code>WITH ROLLUP</code> podemos observar cómo añade al resultado una nueva fila agrupada por <code>NULL</code> y que suma todos los otros valores:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodCen</span><span class="p">,</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">CodCen</span>
 <span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="k">WITH</span><span class="w"> </span><span class="k">ROLLUP</span><span class="p">;</span>
@@ -15577,7 +15622,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <p>En el caso de <em>PostgreSQL</em> cabe destacar que no tiene soporte para <code>WITH ROLLUP</code>. En cambio, dispone de otras funciones similares como <code>GROUPING SETS</code>, <code>CUBE</code> y <code>ROLLUP</code>.</p>
 </div>
 <h3 id="07sql-group-having"><code>HAVING</code><a class="headerlink" href="#07sql-group-having" title="Permanent link">&para;</a></h3>
-<p>La cláusula <code>HAVING</code> permite filtrar tras realizar los cálculos de agrupación. Sería similar al <code>WHERE</code> pero una vez realizados los datos agregados.</p>
+<p>La cláusula <code>HAVING</code> permite filtrar tras realizar los cálculos de agrupación. Sería similar al <code>WHERE</code> pero una vez calculados los datos agregados.</p>
 <p>El orden de ejecución de las cláusulas dentro de una consulta es:</p>
 <ol>
 <li><code>WHERE</code> que filtra las filas según las condiciones que pongamos.</li>
@@ -15621,7 +15666,7 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NumEmp</span>
 </span><span class="linenos" data-linenos=" 2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span>
-<span class="hll"><span class="linenos" data-linenos=" 4 "></span><span class="k">HAVING</span><span class="w"> </span><span class="n">NumEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="hll"><span class="linenos" data-linenos=" 4 "></span><span class="k">HAVING</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 </span><span class="linenos" data-linenos=" 5 "></span><span class="c1">-- +-----------------+--------+</span>
 <span class="linenos" data-linenos=" 6 "></span><span class="c1">-- | NomDep          | NumEmp |</span>
 <span class="linenos" data-linenos=" 7 "></span><span class="c1">-- +-----------------+--------+</span>
@@ -15629,7 +15674,8 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +-----------------+--------+</span>
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- 1 row in set (0.006 sec)</span>
 </code></pre></div>
-<p>En este caso, como estamos filtrando sobre el resultado de una función de agregación (<code>count</code>), debemos utilizar <code>HAVING</code>. Además, en vez de poner la función de agregación, hemos utilizado el alias de la función que hemos definido en el <code>select</code>.</p>
+<p>En este caso, como estamos filtrando sobre el resultado de una función de agregación (<code>count</code>), debemos utilizar <code>HAVING</code>.</p>
+<p>Fíjate en que en el <code>HAVING</code> repetimos la función de agregación en vez de usar el alias <code>NumEmp</code>: según el orden de ejecución, el <code>HAVING</code> se evalúa antes que el <code>SELECT</code>. <em>MariaDB</em> acepta el alias como extensión, pero <em>PostgreSQL</em> devuelve un error.</p>
 <p>En cambio, si intentamos hacerlo con <code>WHERE</code>, obtendremos un error:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">select</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">NomDep</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">CodEmp</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">NumEmp</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">CodDep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodDep</span>
@@ -15639,10 +15685,10 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 </span></code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Recuerda</p>
-<p>Recuerda que <code>WHERE</code> filtra las filas antes de aplicar la agrupación, mientras que <code>HAVING</code> filtra los grupos después de que se han calculado las funciones de agregación. Dicho de otro modo, si la condición involucra una función de agregación (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>...), debemos utilizar <code>HAVING</code>. Si no, es cuando lo colocamos en <code>WHERE</code>.</p>
+<p>Recuerda que <code>WHERE</code> filtra las filas antes de aplicar la agrupación, mientras que <code>HAVING</code> filtra los grupos después de que se han calculado las funciones de agregación. Dicho de otro modo, si la condición involucra una función de agregación (<code>COUNT</code>, <code>SUM</code>, <code>AVG</code>...), debemos utilizar <code>HAVING</code>. En caso contrario, la colocaremos en el <code>WHERE</code>.</p>
 </div>
 <h2 id="07sql-group-orden-de-ejecucion">Orden de ejecución<a class="headerlink" href="#07sql-group-orden-de-ejecucion" title="Permanent link">&para;</a></h2>
-<p>En este punto que ya hemos visto la mayoría de las cláusulas dentro de una consulta SQL, es conveniente tener claro su orden de ejecución.</p>
+<p>Llegados a este punto, una vez vistas la mayoría de las cláusulas dentro de una consulta SQL, es conveniente tener claro su orden de ejecución.</p>
 <p>Las etapas de ejecución de una consulta son:</p>
 <ol>
 <li><code>FROM</code> y <code>JOIN</code>: selección de tablas y su combinación, tanto internas como externas</li>
@@ -15654,16 +15700,21 @@ La formación del módulo contribuye a alcanzar los objetivos generales c), e), 
 <li><code>LIMIT</code>: filtrado del resultado</li>
 </ol>
 <p>A modo de ejemplo tendríamos:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="w">                </span><span class="c1">-- 5.1 y 5.2</span>
-<span class="linenos" data-linenos="2 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w">                     </span><span class="c1">-- 1.1</span>
-<span class="linenos" data-linenos="3 "></span><span class="k">JOIN</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="o">=</span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span><span class="w">      </span><span class="c1">-- 1.2</span>
-<span class="linenos" data-linenos="4 "></span><span class="k">WHERE</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20000000</span><span class="w">               </span><span class="c1">-- 2                         </span>
-<span class="linenos" data-linenos="5 "></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="w">                       </span><span class="c1">-- 3</span>
-<span class="linenos" data-linenos="6 "></span><span class="k">HAVING</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100000000</span><span class="w">        </span><span class="c1">-- 4</span>
-<span class="linenos" data-linenos="7 "></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span><span class="w">                       </span><span class="c1">-- 6</span>
-<span class="linenos" data-linenos="8 "></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">OFFSET</span><span class="w"> </span><span class="mi">2</span><span class="w">                        </span><span class="c1">-- 7</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">SELECT</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="p">,</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">PreCen</span><span class="w">    </span><span class="c1">-- 5</span>
+<span class="linenos" data-linenos=" 2 "></span><span class="k">FROM</span><span class="w"> </span><span class="n">departamento</span><span class="w"> </span><span class="n">d</span><span class="w">                         </span><span class="c1">-- 1.1</span>
+<span class="linenos" data-linenos=" 3 "></span><span class="k">JOIN</span><span class="w"> </span><span class="n">centro</span><span class="w"> </span><span class="k">c</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">CodCen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">CodCen</span><span class="w">        </span><span class="c1">-- 1.2</span>
+<span class="linenos" data-linenos=" 4 "></span><span class="k">WHERE</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10000000</span><span class="w">                   </span><span class="c1">-- 2</span>
+<span class="linenos" data-linenos=" 5 "></span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">c</span><span class="p">.</span><span class="n">NomCen</span><span class="w">                           </span><span class="c1">-- 3</span>
+<span class="linenos" data-linenos=" 6 "></span><span class="k">HAVING</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">30000000</span><span class="w">             </span><span class="c1">-- 4</span>
+<span class="linenos" data-linenos=" 7 "></span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">PreCen</span><span class="w"> </span><span class="k">DESC</span><span class="w">                        </span><span class="c1">-- 6</span>
+<span class="linenos" data-linenos=" 8 "></span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                                    </span><span class="c1">-- 7</span>
+<span class="linenos" data-linenos=" 9 "></span><span class="c1">-- +-------------------+--------------+</span>
+<span class="linenos" data-linenos="10 "></span><span class="c1">-- | NomCen            | PreCen       |</span>
+<span class="linenos" data-linenos="11 "></span><span class="c1">-- +-------------------+--------------+</span>
+<span class="linenos" data-linenos="12 "></span><span class="c1">-- | Fábrica Zona Sur  | 108000000.00 |</span>
+<span class="linenos" data-linenos="13 "></span><span class="c1">-- +-------------------+--------------+                   -- 7</span>
 </code></pre></div>
-<h3 id="07sql-group-errores-comunes">Errores comunes<a class="headerlink" href="#07sql-group-errores-comunes" title="Permanent link">&para;</a></h3>
+<h2 id="07sql-group-errores-comunes">Errores comunes<a class="headerlink" href="#07sql-group-errores-comunes" title="Permanent link">&para;</a></h2>
 <!--
 FIXME: Revisar JJS + formatear
 Poner que no se pueden utilizar dos funciones agregadas SUM(COUNT(*)) o MAX(SUM(SalEmp)) y que para ello se pueden hacer varias consultas o utilizar funciones ventana
@@ -15673,11 +15724,8 @@ en el Having, dejar un cálculo sin comparación ... HAVING MAX(SalEmp) ... y qu
 <p>De forma general, los errores más comunes a la hora de realizar consultas son:</p>
 <ul>
 <li>
-<p>No usar <code>WHERE</code> en las modificaciones o eliminaciones. ¡No te olvides de poner el <code>WHERE</code> en el <code>DELETE FROM</code>!</p>
-</li>
-<li>
-<p>Confundir la comparación de valores nulos, utilizando la asignación en vez del operador <code>IS NULL</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">--- Incorrecto</span>
+<p>Confundir la comparación de valores nulos, utilizando el operador de igualdad (<code>=</code>) en vez del operador <code>IS NULL</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Incorrecto</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">NULL</span>
 <span class="linenos" data-linenos="3 "></span><span class="c1">-- Correcto</span>
 <span class="linenos" data-linenos="4 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ExTelEmp</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">NULL</span>
@@ -15685,18 +15733,18 @@ en el Having, dejar un cálculo sin comparación ... HAVING MAX(SalEmp) ... y qu
 </li>
 <li>
 <p>No comprobar la existencia de uno o más valores en las subconsultas. Si la subconsulta devuelve un único registro, podemos usar <code>=</code>. Si no, deberemos utilizar <code>IN</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">--- Incorrecto si la subconsulta retorna más de una fila</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span><span class="c1">-- Incorrecto si la subconsulta retorna más de una fila</span>
 <span class="linenos" data-linenos="2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span>
 <span class="linenos" data-linenos="3 "></span><span class="k">where</span><span class="w"> </span><span class="n">PreAnu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">Max</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="p">);</span>
 <span class="linenos" data-linenos="4 "></span>
-<span class="linenos" data-linenos="5 "></span><span class="c1">-- Mejor, ya que podemos tener dos departamento con el mismo presupuesto máximo</span>
+<span class="linenos" data-linenos="5 "></span><span class="c1">-- Mejor, ya que podemos tener dos departamentos con el mismo presupuesto máximo</span>
 <span class="linenos" data-linenos="6 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span>
 <span class="linenos" data-linenos="7 "></span><span class="k">where</span><span class="w"> </span><span class="n">PreAnu</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="k">Max</span><span class="p">(</span><span class="n">PreAnu</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">departamento</span><span class="p">);</span>
 </code></pre></div>
 </li>
 <li>
 <p>Utilizar <code>HAVING</code> para filtrar filas en lugar de <code>WHERE</code>: La cláusula <code>HAVING</code> se ejecuta después de <code>GROUP BY</code> y está pensada para filtrar datos agregados. Si estás filtrando datos no agregados, pertenece a la cláusula <code>WHERE</code>. Conocer la diferencia en el orden de ejecución entre WHERE y HAVING te ayuda a determinar dónde debe colocarse cada condición.</p>
-<p>Si quiero obtener los departamentos que tiene más de 5 empleados:</p>
+<p>Si quiero obtener los departamentos que tienen más de 5 empleados:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="c1">-- Incorrecto</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">total</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
@@ -15752,7 +15800,7 @@ en el Having, dejar un cálculo sin comparación ... HAVING MAX(SalEmp) ... y qu
 <span class="linenos" data-linenos="13 "></span><span class="c1">-- 6 rows in set (0.000 sec)</span>
 </code></pre></div>
 <p>Mientras que una cláusula <code>group by</code> devolverá un registro por cada valor de grupo coincidente, una función de ventana, la cual no contrae los resultados por grupo, puede devolver un registro distinto para cada fila.</p>
-<p>Así que, si quisiéramos obtener el nombre de todos los empleados, y además, cuantos compañeros tiene, podemos realizar una partición por el código del empleado. Para ello, hemos de utilizar la cláusula <strong><code>OVER (PARTITION BY campo)</code></strong> precedida de la función ventana que queramos emplear; en este caso, contaremos:</p>
+<p>Así que, si quisiéramos obtener el nombre de todos los empleados, y además, cuantos compañeros tiene, podemos realizar una partición por el código del departamento. Para ello, hemos de utilizar la cláusula <strong><code>OVER (PARTITION BY campo)</code></strong> precedida de la función ventana que queramos emplear; en este caso, contaremos:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span>
 <span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">companyeros</span>
 </span><span class="linenos" data-linenos=" 3 "></span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span><span class="p">;</span>
@@ -15833,7 +15881,7 @@ en el Having, dejar un cálculo sin comparación ... HAVING MAX(SalEmp) ... y qu
 </code></pre></div>
 </li>
 <li>
-<p>Porcentaje de salario de cada empleado respecto al acumulado por su departamento</p>
+<p>Porcentaje de salario de cada empleado respecto al total de su departamento</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="n">NomEmp</span><span class="p">,</span><span class="w"> </span><span class="n">SalEmp</span><span class="p">,</span><span class="w"> </span><span class="n">CodDep</span><span class="p">,</span>
 <span class="hll"><span class="linenos" data-linenos=" 2 "></span><span class="w">    </span><span class="k">sum</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">SalDep</span><span class="p">,</span>
 </span><span class="hll"><span class="linenos" data-linenos=" 3 "></span><span class="w">    </span><span class="n">round</span><span class="p">((</span><span class="n">SalEmp</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">SalEmp</span><span class="p">)</span><span class="w"> </span><span class="n">OVER</span><span class="w"> </span><span class="p">(</span><span class="n">PARTITION</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">CodDep</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">PorSal</span>
@@ -15880,22 +15928,22 @@ en el Having, dejar un cálculo sin comparación ... HAVING MAX(SalEmp) ... y qu
 </code></pre></div>
 </li>
 </ul>
-<p>Las funciones ventana son un aspecto avanzado a la hora de realizar consultas. Si quieres profundizar más en su aprendizaje, te recomiendo comenzar por el siguiente artículo: <a href="https://hackernoon.com/lang/es/una-guia-para-principiantes-para-comprender-las-funciones-de-ventana-sql-y-sus-capacidades"><em>Una guía para principiantes para comprender las funciones de la ventana SQL y sus capacidades</em></a>, así como en modificar el <a href="https://mariadb.com/kb/en/window-frames/">tamaño de la ventana</a></p>
+<p>Las funciones ventana son un aspecto avanzado a la hora de realizar consultas. Si quieres profundizar más en su aprendizaje, te recomiendo comenzar por el siguiente artículo: <a href="https://hackernoon.com/lang/es/una-guia-para-principiantes-para-comprender-las-funciones-de-ventana-sql-y-sus-capacidades"><em>Una guía para principiantes para comprender las funciones de la ventana SQL y sus capacidades</em></a>, así como a modificar el <a href="https://mariadb.com/kb/en/window-frames/">tamaño de la ventana</a>.</p>
 <h2 id="07sql-group-vistas">Vistas<a class="headerlink" href="#07sql-group-vistas" title="Permanent link">&para;</a></h2>
 <p>Si retomamos la <a href="#01intro-arquitectura-de-3-niveles">arquitectura de tres niveles</a> que estudiamos en la primera unidad, un esquema externo, que es a lo que accede el usuario final, se compone de un conjunto de tablas y vistas que luego se transforman en formularios y/o informes.</p>
-<p>Dicho esto, una vista es un objeto que se define con una consulta y que se comporta como una tabla virtual. Cuando un usuario accede a una vista, aparentemente piensa que está accediendo a una tabla.</p>
+<p>Dicho esto, una vista es un objeto que se define con una consulta y que se comporta como una tabla virtual. Cuando un usuario accede a una vista, es como si accediera a una tabla.</p>
 <figure style="align: center;">
     <img src="images/07views.webp" width="492" title="Vistas">
     <figcaption>Vistas - https://www.datacamp.com/tutorial/views-in-sql</figcaption>
 </figure>
 
 <p>Para ello, usaremos la sentencia <a href="https://mariadb.com/kb/en/create-view/"><code>CREATE [OR REPLACE] VIEW nombre AS SELECT...</code></a></p>
-<p><div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="w"> </span><span class="k">AS</span>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="linenos" data-linenos="1 "></span><span class="k">CREATE</span><span class="w"> </span><span class="k">VIEW</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="w"> </span><span class="k">AS</span>
 </span><span class="linenos" data-linenos="2 "></span><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="o">*</span>
 <span class="linenos" data-linenos="3 "></span><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">empleado</span>
 <span class="linenos" data-linenos="4 "></span><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">NumHi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </code></pre></div>
-Una vez creada, podemos hacer consultas sobre la vista:</p>
+<p>Una vez creada, podemos hacer consultas sobre la vista:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- | CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp                   | NumHi | SalEmp     |</span>
@@ -15908,7 +15956,7 @@ Una vez creada, podemos hacer consultas sobre la vista:</p>
 <span class="linenos" data-linenos="10 "></span><span class="c1">-- 4 rows in set (0.000 sec)</span>
 </code></pre></div>
 <p>Las vistas, como estructuras virtuales, son dinámicas, al reflejar los cambios que se producen en las tablas de origen. Así pues, si insertamos un nuevo registro en <code>empleado</code> con <code>NumHi=0</code>, si volvemos a consultar <code>empleadosSinHijos</code>, veremos dicho valor:</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="ss">"PROZS"</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="ss">"2024-11-30"</span><span class="p">,</span><span class="w"> </span><span class="ss">"1977-01-01"</span><span class="p">,</span><span class="w"> </span><span class="ss">"12345678A"</span><span class="p">,</span><span class="w"> </span><span class="ss">"Casas García, Pedro"</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1234567</span><span class="p">.</span><span class="mi">89</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">empleado</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="s1">'PROZS'</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="s1">'2024-11-30'</span><span class="p">,</span><span class="w"> </span><span class="s1">'1977-01-01'</span><span class="p">,</span><span class="w"> </span><span class="s1">'12345678A'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Casas García, Pedro'</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1234567</span><span class="p">.</span><span class="mi">89</span><span class="p">);</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp                   | NumHi | SalEmp     |</span>
@@ -15955,7 +16003,7 @@ Una vez creada, podemos hacer consultas sobre la vista:</p>
 <span class="linenos" data-linenos="12 "></span><span class="c1">-- 5 rows in set (0.000 sec)</span>
 </code></pre></div>
 <p>¿Y si inserto un nuevo empleado en la vista pero que sí tiene hijos?</p>
-<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">44</span><span class="p">,</span><span class="w"> </span><span class="ss">"PROZS"</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="ss">"2024-11-30"</span><span class="p">,</span><span class="w"> </span><span class="ss">"1977-01-01"</span><span class="p">,</span><span class="w"> </span><span class="ss">"87654321A"</span><span class="p">,</span><span class="w"> </span><span class="ss">"Blasco Antón, Estefanía"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1234567</span><span class="p">.</span><span class="mi">89</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="linenos" data-linenos=" 1 "></span><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="p">(</span><span class="mi">44</span><span class="p">,</span><span class="w"> </span><span class="s1">'PROZS'</span><span class="p">,</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="s1">'2024-11-30'</span><span class="p">,</span><span class="w"> </span><span class="s1">'1977-01-01'</span><span class="p">,</span><span class="w"> </span><span class="s1">'87654321A'</span><span class="p">,</span><span class="w"> </span><span class="s1">'Blasco Antón, Estefanía'</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1234567</span><span class="p">.</span><span class="mi">89</span><span class="p">);</span>
 <span class="linenos" data-linenos=" 2 "></span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">empleadosSinHijos</span><span class="p">;</span>
 <span class="linenos" data-linenos=" 3 "></span><span class="c1">-- +--------+--------+----------+------------+------------+-----------+--------------------------+-------+------------+</span>
 <span class="linenos" data-linenos=" 4 "></span><span class="c1">-- | CodEmp | CodDep | ExTelEmp | FecInEmp   | FecNaEmp   | NifEmp    | NomEmp                   | NumHi | SalEmp     |</span>
@@ -16105,7 +16153,7 @@ You cannot associate a trigger with a view.
 <ol>
 <li>Descarga el <a href="resources/06bd-retail.sql">script DDL y DML</a>, así como el de creación de las <a href="resources/06bd-retail-fk.sql">claves ajenas</a>.</li>
 <li>
-<p>Si usas <em>Docker</em>, copia ambos archivo dentro del contenedor:</p>
+<p>Si usas <em>Docker</em>, copia ambos archivos dentro del contenedor:</p>
 <div class="highlight"><pre><span></span><code><span class="linenos" data-linenos="1 "></span>docker<span class="w"> </span>cp<span class="w"> </span>06bd-retail.sql<span class="w"> </span>pg:/tmp
 <span class="linenos" data-linenos="2 "></span>docker<span class="w"> </span>cp<span class="w"> </span>06bd-retail-fk.sql<span class="w"> </span>pg:/tmp
 </code></pre></div>
@@ -16164,10 +16212,10 @@ You cannot associate a trigger with a view.
 <p><a name="AC701"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC701</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>empresa</code>, utilizando las funciones agregadas, necesitamos obtener:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC701</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>empresa</code>, utilizando las funciones agregadas, necesitamos obtener:</p>
 <ol>
 <li>La cantidad de empleados de la empresa que tienen 2 hijos.</li>
-<li>Cuantos empleados no tiene extensión telefónica.</li>
+<li>Cuantos empleados no tienen extensión telefónica.</li>
 <li>La edad media de los empleados.</li>
 <li>La edad media de los empleados que no son jefes.</li>
 <li>La edad media de los empleados que trabajan en un centro que esté en Murcia.</li>
@@ -16180,7 +16228,7 @@ You cannot associate a trigger with a view.
 <p><a name="AC702"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC702</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>empresa</code>, utilizando consultas agregadas, se pide:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC702</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>empresa</code>, utilizando consultas agregadas, se pide:</p>
 <ol>
 <li>Listar para cada departamento, su código, nombre, salario mínimo, máximo y medio.</li>
 <li>Obtener, para cada empleado (mostrando su código y nombre), cuantas habilidades tiene.</li>
@@ -16195,7 +16243,7 @@ You cannot associate a trigger with a view.
 <p><a name="AC703"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC703</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>retail</code> utilizada en la actividad <a href="#06sql-PR615">PR615</a> de la sesión anterior, realiza las consultas necesarias para obtener:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC703</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>retail</code> utilizada en la actividad <a href="#06sql-PR615">PR615</a> de la unidad anterior, realiza las consultas necesarias para obtener:</p>
 <ol>
 <li>Cantidad de productos</li>
 <li>Cantidad de productos por categoría</li>
@@ -16219,11 +16267,11 @@ You cannot associate a trigger with a view.
 <p><a name="AC706"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC706</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones externas.">CE3d</abbr> // 3p) Sobre la base de datos <code>empresa</code> realiza las siguientes consultas:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC706</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>empresa</code> realiza las siguientes consultas:</p>
 <ol>
 <li>Departamentos con más de 3 empleados</li>
 <li>Centros con más de 3 empleados</li>
-<li>Departamentos cuyos empleados tiene más de 2 hijos de media.</li>
+<li>Departamentos cuyos empleados tienen más de 2 hijos de media.</li>
 <li>Habilidades asociadas a más de 3 empleados.</li>
 <li>Centros con antigüedad promedio de empleados mayor a 10 años</li>
 <li>Centros con más de 3 empleados que lleven al menos 20 años en la empresa</li>
@@ -16248,7 +16296,7 @@ You cannot associate a trigger with a view.
 <p><a name="AC708"></a></p>
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC708</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>empresa</code>, y utilizando funciones ventana, realiza las siguientes consultas:</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.832 3.367 8.668.108a3.15 3.15 0 0 0-3.856 2.226L.943 16.777a3.15 3.15 0 0 0 2.226 3.856l12.163 3.259a3.15 3.15 0 0 0 3.855-2.226l3.87-14.443a3.15 3.15 0 0 0-2.226-3.856M6.332 2.741a1.574 1.574 0 0 1 1.928-1.113l12.163 3.26a1.574 1.574 0 0 1 1.113 1.927l-3.87 14.444a1.574 1.574 0 0 1-1.928 1.113l-12.163-3.26a1.574 1.574 0 0 1-1.113-1.927zm2.634 2.336a.787.787 0 1 0-.407 1.52l9.122 2.444a.787.787 0 1 0 .407-1.52zM6.985 9.434a.787.787 0 0 1 .963-.557l9.123 2.445a.787.787 0 0 1-.408 1.52l-9.122-2.444a.787.787 0 0 1-.556-.964m-.055 3.244a.787.787 0 0 0-.407 1.52l5.32 1.427a.787.787 0 0 0 .408-1.52z"/></svg></span> <strong>AC708</strong>. (<abbr title="Consulta la información almacenada en una base de datos empleando asistentes, herramientas gráficas y el lenguaje de manipulación de datos.">RABD.3</abbr> // <abbr title="Se han realizado consultas sobre el contenido de varias tablas mediante composiciones internas.">CE3c</abbr>, <abbr title="Se han realizado consultas resumen.">CE3e</abbr> // 3p) Sobre la base de datos <code>empresa</code>, y utilizando funciones ventana, realiza las siguientes consultas:</p>
 <ol>
 <li>Para cada empleado, muestra su nombre, edad, y la edad media del centro donde trabaja.</li>
 <li>Muestra para cada empleado, su código de departamento, nombre, salario, el salario promedio de su departamento, y <code>Por encima</code> o <code>Por debajo</code> si el empleado cobra más que su departamento.</li>
@@ -16307,7 +16355,7 @@ You cannot associate a trigger with a view.
 <ol>
 <li>Obtener los nombres de las categorías</li>
 <li>Obtener la cantidad total de productos.</li>
-<li>Listas los estados únicos de los clientes.</li>
+<li>Listar los estados únicos de los clientes.</li>
 <li>Cuantos clientes hay en cada estado.</li>
 <li>Listar los estados con más de diez clientes únicos.</li>
 <li>Calcula el precio medio y el máximo de los productos</li>
@@ -16316,7 +16364,7 @@ You cannot associate a trigger with a view.
 <li>Para cada nombre de categoría, obtener cuantos productos.</li>
 <li>Recupera el ingreso total generado para cada cliente.</li>
 <li>Listar los nombres de los departamentos junto con el total de ingresos generados</li>
-<li>Listado de clientes, y cantidad de pedidos realizados (si no ha realizado ninguno, debe aparece 0)</li>
+<li>Listado de clientes, y cantidad de pedidos realizados (si no ha realizado ninguno, debe aparecer 0)</li>
 <li>Nombres de los clientes que han realizado pedidos en <code>Caguas</code>.</li>
 <li>Clientes que no han realizado pedidos.</li>
 <li>Categorías que no tienen productos.</li>
@@ -16324,7 +16372,7 @@ You cannot associate a trigger with a view.
 <li>Para cada categoría, cuanto cuesta el producto más caro.</li>
 <li>Obtener el nombre del cliente que más ha gastado.</li>
 <li>Ranking de clientes según sus ingresos totales.</li>
-<li>Recuperar los clientes que han gastado en compras más de 1.000$.</li>
+<li>Recuperar los clientes que han gastado en compras más de 1.000 $.</li>
 </ol>
 </li>
 </ul>
